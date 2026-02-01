@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Round to the Nearest 10/100/1000 - Grade 3 Math Activity - Meadow Math">
+  <title>Round to the Nearest 10/100/1000 - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🎯</span>
+            <span data-i18n="section.activities.rounding-10-100-1000.title">Round to the Nearest 10/100/1000</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.rounding-10-100-1000.description">Round numbers to the nearest 10, 100, or 1,000.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Question Display -->
+          <div class="question-display" id="question-display">
+            <div class="rounding-prompt" id="rounding-prompt">
+              <span class="round-label" data-i18n="section.activities.rounding-10-100-1000.roundTo">Round</span>
+              <span class="target-number" id="target-number">6,472</span>
+              <span class="to-nearest-label" data-i18n="section.activities.rounding-10-100-1000.toNearest">to the nearest</span>
+              <span class="rounding-place" id="rounding-place">100</span>
+            </div>
+          </div>
+
+          <!-- Number Line Visual -->
+          <div class="number-line-container" id="number-line-container">
+            <div class="number-line-visual">
+              <div class="benchmark-left" id="benchmark-left">
+                <div class="benchmark-marker">⬇️</div>
+                <div class="benchmark-value" id="benchmark-left-value">6,400</div>
+              </div>
+              <div class="number-line-track">
+                <div class="target-marker" id="target-marker">
+                  <div class="marker-arrow">⬇️</div>
+                  <div class="marker-label" id="marker-label">6,472</div>
+                </div>
+              </div>
+              <div class="benchmark-right" id="benchmark-right">
+                <div class="benchmark-marker">⬇️</div>
+                <div class="benchmark-value" id="benchmark-right-value">6,500</div>
+              </div>
+            </div>
+            <div class="distance-hint" id="distance-hint">
+              <span data-i18n="section.activities.rounding-10-100-1000.whichCloser">Which benchmark is closer?</span>
+            </div>
+          </div>
+
+          <!-- Choice Buttons -->
+          <div class="choice-container" id="choice-container">
+            <button class="choice-btn" id="choice-left"></button>
+            <button class="choice-btn" id="choice-right"></button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.rounding-10-100-1000.great">Great rounding!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Round to the Nearest 10/100/1000 Activity - Grade 3 Level 1
+    const RoundingActivity = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      targetNumber: 0,
+      roundTo: 10, // Can be 10, 100, or 1000
+      benchmarkLeft: 0,
+      benchmarkRight: 0,
+      correctAnswer: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // DOM elements
+      targetNumberEl: null,
+      roundingPlace: null,
+      benchmarkLeftValue: null,
+      benchmarkRightValue: null,
+      targetMarker: null,
+      markerLabel: null,
+      choiceLeft: null,
+      choiceRight: null,
+      choiceContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.targetNumberEl = document.getElementById('target-number');
+        this.roundingPlace = document.getElementById('rounding-place');
+        this.benchmarkLeftValue = document.getElementById('benchmark-left-value');
+        this.benchmarkRightValue = document.getElementById('benchmark-right-value');
+        this.targetMarker = document.getElementById('target-marker');
+        this.markerLabel = document.getElementById('marker-label');
+        this.choiceLeft = document.getElementById('choice-left');
+        this.choiceRight = document.getElementById('choice-right');
+        this.choiceContainer = document.getElementById('choice-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Event listeners
+        this.choiceLeft.addEventListener('click', () => this.selectChoice(this.benchmarkLeft));
+        this.choiceRight.addEventListener('click', () => this.selectChoice(this.benchmarkRight));
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Update the rounding place text if needed
+        if (this.roundTo && window.i18n) {
+          this.updateRoundingPlaceText();
+        }
+      },
+
+      updateRoundingPlaceText() {
+        const placeKey = this.roundTo === 10 ? 'ten' : this.roundTo === 100 ? 'hundred' : 'thousand';
+        const translatedPlace = window.i18n
+          ? i18n.t(`section.activities.rounding-10-100-1000.${placeKey}`) || this.roundTo.toLocaleString()
+          : this.roundTo.toLocaleString();
+        this.roundingPlace.textContent = translatedPlace;
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      formatNumber(num) {
+        return num.toLocaleString();
+      },
+
+      generateProblem() {
+        // Progressive difficulty: start with 10, then 100, then 1000
+        if (this.currentQuestion < 3) {
+          // Round to nearest 10
+          this.roundTo = 10;
+          this.targetNumber = this.randomInt(15, 995);
+          // Avoid numbers ending in 5 (exactly in middle) for first few
+          if (this.currentQuestion < 2) {
+            while (this.targetNumber % 10 === 5) {
+              this.targetNumber = this.randomInt(15, 995);
+            }
+          }
+        } else if (this.currentQuestion < 6) {
+          // Round to nearest 100
+          this.roundTo = 100;
+          this.targetNumber = this.randomInt(150, 9950);
+          // Avoid numbers ending in 50 for first ones
+          if (this.currentQuestion < 5) {
+            while (this.targetNumber % 100 === 50) {
+              this.targetNumber = this.randomInt(150, 9950);
+            }
+          }
+        } else {
+          // Round to nearest 1000
+          this.roundTo = 1000;
+          this.targetNumber = this.randomInt(1500, 9500);
+          // Include some tricky ones with 500
+        }
+
+        // Calculate benchmarks
+        this.benchmarkLeft = Math.floor(this.targetNumber / this.roundTo) * this.roundTo;
+        this.benchmarkRight = this.benchmarkLeft + this.roundTo;
+
+        // Calculate correct answer (closer benchmark)
+        const distanceLeft = this.targetNumber - this.benchmarkLeft;
+        const distanceRight = this.benchmarkRight - this.targetNumber;
+
+        if (distanceLeft < distanceRight) {
+          this.correctAnswer = this.benchmarkLeft;
+        } else if (distanceRight < distanceLeft) {
+          this.correctAnswer = this.benchmarkRight;
+        } else {
+          // Exactly in middle - round up by convention
+          this.correctAnswer = this.benchmarkRight;
+        }
+
+        this.isAnswered = false;
+      },
+
+      startQuestion() {
+        this.generateProblem();
+        this.updateDisplay();
+        this.positionMarker();
+        this.feedback.classList.remove('show', 'error');
+
+        // Reset choice buttons
+        this.choiceLeft.disabled = false;
+        this.choiceRight.disabled = false;
+        this.choiceLeft.classList.remove('correct', 'incorrect');
+        this.choiceRight.classList.remove('correct', 'incorrect');
+
+        this.renderProgress();
+      },
+
+      updateDisplay() {
+        this.targetNumberEl.textContent = this.formatNumber(this.targetNumber);
+        this.updateRoundingPlaceText();
+        this.benchmarkLeftValue.textContent = this.formatNumber(this.benchmarkLeft);
+        this.benchmarkRightValue.textContent = this.formatNumber(this.benchmarkRight);
+        this.markerLabel.textContent = this.formatNumber(this.targetNumber);
+
+        const leftFormatted = this.formatNumber(this.benchmarkLeft);
+        const rightFormatted = this.formatNumber(this.benchmarkRight);
+        this.choiceLeft.textContent = leftFormatted;
+        this.choiceRight.textContent = rightFormatted;
+        this.choiceLeft.setAttribute('aria-label', `Round to ${leftFormatted}`);
+        this.choiceRight.setAttribute('aria-label', `Round to ${rightFormatted}`);
+      },
+
+      positionMarker() {
+        // Position the target marker on the number line
+        const range = this.benchmarkRight - this.benchmarkLeft;
+        const position = ((this.targetNumber - this.benchmarkLeft) / range) * 100;
+        this.targetMarker.style.left = `${position}%`;
+      },
+
+      selectChoice(value) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const isCorrect = value === this.correctAnswer;
+
+        // Highlight correct and incorrect choices
+        if (this.choiceLeft.textContent === this.formatNumber(this.correctAnswer)) {
+          this.choiceLeft.classList.add('correct');
+        }
+        if (this.choiceRight.textContent === this.formatNumber(this.correctAnswer)) {
+          this.choiceRight.classList.add('correct');
+        }
+
+        if (!isCorrect) {
+          if (value === this.benchmarkLeft) {
+            this.choiceLeft.classList.add('incorrect');
+          } else {
+            this.choiceRight.classList.add('incorrect');
+          }
+        }
+
+        // Disable buttons
+        this.choiceLeft.disabled = true;
+        this.choiceRight.disabled = true;
+
+        // Show feedback
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = window.i18n
+            ? i18n.t('feedback.correct') || 'Correct!'
+            : 'Correct!';
+          this.feedback.textContent = `${msg} 🎯`;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const msg = window.i18n
+            ? (i18n.t('section.activities.rounding-10-100-1000.incorrectMsg') || 'Closer to {answer}')
+              .replace('{answer}', this.formatNumber(this.correctAnswer))
+            : `Closer to ${this.formatNumber(this.correctAnswer)}`;
+          this.feedback.textContent = msg;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        // Auto-advance
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.rounding-10-100-1000.perfect') || 'Amazing rounding skills!'
+            : 'Amazing rounding skills!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🎯';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.rounding-10-100-1000.great') || 'Great work!'
+            : 'Great work!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.rounding-10-100-1000.keepPracticing') || 'Keep practicing!'
+            : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => RoundingActivity.init());
+      } else {
+        RoundingActivity.init();
+      }
+    });
+  </script>
+  <style>
+    /* Rounding Activity specific styles */
+
+    .question-display {
+      margin-bottom: var(--space-6);
+    }
+
+    .rounding-prompt {
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 3px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 var(--color-primary-dark);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .target-number {
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      padding: 0 var(--space-2);
+    }
+
+    .rounding-place {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #f59e0b;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-lg);
+      border: 2px solid #f59e0b;
+    }
+
+    /* Number Line Visual */
+    .number-line-container {
+      margin: var(--space-6) 0;
+      padding: var(--space-2);
+    }
+
+    .number-line-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-6) var(--space-4);
+      margin-bottom: var(--space-2);
+    }
+
+    .benchmark-left, .benchmark-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 5;
+    }
+
+    .benchmark-marker {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-1);
+    }
+
+    .benchmark-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--color-primary);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .number-line-track {
+      position: absolute;
+      left: 80px;
+      right: 80px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 12px;
+      background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+      border-radius: var(--radius-full);
+      border: 3px solid #818cf8;
+    }
+
+    .target-marker {
+      position: absolute;
+      top: -45px;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .marker-arrow {
+      font-size: var(--text-2xl);
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    .marker-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #7c3aed;
+      background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-md);
+      border: 2px solid #a78bfa;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-top: var(--space-1);
+      white-space: nowrap;
+    }
+
+    .distance-hint {
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      margin-top: var(--space-4);
+    }
+
+    /* Choice Container */
+    .choice-container {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+      margin: var(--space-6) 0;
+      padding: var(--space-2);
+    }
+
+    .choice-btn {
+      min-width: 160px;
+      min-height: 80px;
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 4px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4), 0 4px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      box-shadow: 0 4px 0 #15803d;
+      color: #166534;
+      animation: pulse-correct 0.5s ease;
+    }
+
+    @keyframes pulse-correct {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      box-shadow: 0 4px 0 #b91c1c;
+      color: #991b1b;
+      animation: wiggle 0.3s ease;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-3deg); }
+      75% { transform: rotate(3deg); }
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Activity area padding for feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .rounding-prompt {
+        font-size: var(--text-base);
+        padding: var(--space-3);
+      }
+
+      .target-number {
+        font-size: var(--text-2xl);
+      }
+
+      .rounding-place {
+        font-size: var(--text-lg);
+        padding: var(--space-1) var(--space-2);
+      }
+
+      .number-line-track {
+        left: 60px;
+        right: 60px;
+      }
+
+      .benchmark-value {
+        font-size: var(--text-base);
+        padding: var(--space-1) var(--space-2);
+      }
+
+      .marker-label {
+        font-size: var(--text-sm);
+      }
+
+      .choice-btn {
+        min-width: 130px;
+        min-height: 70px;
+        font-size: var(--text-xl);
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .choice-container {
+        gap: var(--space-3);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .rounding-prompt {
+        font-size: var(--text-sm);
+        flex-direction: column;
+        gap: var(--space-1);
+      }
+
+      .target-number {
+        font-size: var(--text-xl);
+      }
+
+      .rounding-place {
+        font-size: var(--text-base);
+      }
+
+      .number-line-track {
+        left: 55px;
+        right: 55px;
+        height: 8px;
+      }
+
+      .number-line-visual {
+        padding: var(--space-8) var(--space-2);
+      }
+
+      .benchmark-marker {
+        font-size: var(--text-lg);
+      }
+
+      .benchmark-value {
+        font-size: var(--text-sm);
+        padding: 2px var(--space-1);
+      }
+
+      .marker-arrow {
+        font-size: var(--text-lg);
+      }
+
+      .marker-label {
+        font-size: var(--text-xs);
+        padding: 2px var(--space-1);
+      }
+
+      .choice-btn {
+        min-width: 120px;
+        min-height: 70px;
+        font-size: var(--text-lg);
+        padding: var(--space-2);
+      }
+
+      .choice-container {
+        gap: var(--space-2);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

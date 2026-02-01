@@ -8,65 +8,62 @@ const Grade1Page = {
   // Data storage
   data: null,
   currentLang: 'en',
-  
+
   // DOM elements
   container: null,
-  
+
   /**
    * Initialize the Grade 1 page
    */
   async init() {
     this.container = document.getElementById('levels-container');
-    
+
     if (!this.container) {
       console.error('Levels container not found');
       return;
     }
-    
+
     // Wait for i18n to be ready
     await this.waitForI18n();
-    
+
     // Get current language
     this.currentLang = window.i18n?.currentLang || 'en';
-    
+
     // Load data and render
     await this.loadData();
-    
+
     // Listen for language changes
     this.setupLanguageListener();
   },
-  
+
   /**
    * Wait for i18n system to be initialized with section data
    */
   waitForI18n() {
+    // Use i18n.ready() which resolves when init() completes
+    if (window.i18n?.ready) {
+      return window.i18n.ready();
+    }
+    // Fallback: wait for i18n to exist
     return new Promise((resolve) => {
-      const checkReady = () => {
-        // Check if i18n exists and has section data loaded (not just common.json)
-        const hasSection = window.i18n?.translations?.[window.i18n?.currentLang]?.section;
-        return window.i18n && hasSection;
-      };
-      
-      if (checkReady()) {
+      if (window.i18n) {
         resolve();
       } else {
-        // Poll for i18n readiness
         const checkInterval = setInterval(() => {
-          if (checkReady()) {
+          if (window.i18n) {
             clearInterval(checkInterval);
             resolve();
           }
         }, 50);
-        
-        // Timeout after 3 seconds
+        // Short timeout - i18n should load quickly
         setTimeout(() => {
           clearInterval(checkInterval);
           resolve();
-        }, 3000);
+        }, 500);
       }
     });
   },
-  
+
   /**
    * Load activity data from JSON
    */
@@ -75,11 +72,11 @@ const Grade1Page = {
       // Determine base path for data
       const basePath = this.getBasePath();
       const response = await fetch(`${basePath}/data/grade1.json`);
-      
+
       if (!response.ok) {
         throw new Error(`Failed to load data: ${response.status}`);
       }
-      
+
       this.data = await response.json();
       this.render();
     } catch (error) {
@@ -87,38 +84,38 @@ const Grade1Page = {
       this.renderError();
     }
   },
-  
+
   /**
    * Get base path for data files
    */
   getBasePath() {
     const path = window.location.pathname;
-    
+
     // Check if we're in file:// protocol
     if (window.location.protocol === 'file:') {
       return '..';
     }
-    
+
     // For HTTP, return empty for root-relative paths
     return '..';
   },
-  
+
   /**
    * Get translated text for an activity or resource
    */
   getTranslation(type, id, field) {
     const i18nKey = `section.${type}.${id}.${field}`;
     const translated = window.i18n?.t(i18nKey);
-    
+
     // If translation found and it's not the key itself, use it
     if (translated && translated !== i18nKey) {
       return translated;
     }
-    
+
     // Fallback to data from JSON
     return null;
   },
-  
+
   /**
    * Get Learn More translation by card id and level number
    */
@@ -127,22 +124,22 @@ const Grade1Page = {
     try {
       const sectionData = window.i18n?.translations?.[window.i18n?.currentLang]?.section;
       const levelKey = `level${levelNumber}`;
-      
+
       if (sectionData?.levels?.[levelKey]?.learnMore?.[cardId]?.[field]) {
         return sectionData.levels[levelKey].learnMore[cardId][field];
       }
     } catch (e) {
       // Fall through to t() method
     }
-    
+
     // Fallback to t() method
     const i18nKey = `section.levels.level${levelNumber}.learnMore.${cardId}.${field}`;
     const translated = window.i18n?.t(i18nKey);
-    
+
     if (translated && translated !== i18nKey) {
       return translated;
     }
-    
+
     return null;
   },
 
@@ -152,14 +149,14 @@ const Grade1Page = {
   getLevelTranslation(levelId, field) {
     const i18nKey = `section.levels.level${levelId.replace('level-', '')}.${field}`;
     const translated = window.i18n?.t(i18nKey);
-    
+
     if (translated && translated !== i18nKey) {
       return translated;
     }
-    
+
     return null;
   },
-  
+
   /**
    * Render all levels
    */
@@ -168,29 +165,29 @@ const Grade1Page = {
       this.renderError();
       return;
     }
-    
+
     const html = this.data.levels.map(level => this.renderLevel(level)).join('');
     this.container.innerHTML = html;
-    
+
     // Set up tab functionality
     this.setupTabs();
   },
-  
+
   /**
    * Render a single level section
    */
   renderLevel(level) {
     const levelNumber = level.number;
     const levelClass = `level-${levelNumber}`;
-    
+
     // Get translated title and goal
     const title = this.getLevelTranslation(level.id, 'title') || level.title;
     const goal = this.getLevelTranslation(level.id, 'goal') || level.goal;
-    
+
     // Get tab translations
     const activitiesTab = window.i18n?.t('tabs.exercises') || 'Activities';
     const learnMoreTab = window.i18n?.t('tabs.learnMore') || 'Learn More';
-    
+
     return `
       <section class="level-section ${levelClass}" data-level="${levelNumber}">
         <header class="level-header">
@@ -198,7 +195,7 @@ const Grade1Page = {
           <h2 class="level-title">${this.escapeHtml(title)}</h2>
           <p class="level-goal">${this.escapeHtml(goal)}</p>
         </header>
-        
+
         <div class="tabs-container">
           <div class="tabs-list" role="tablist">
             <button 
@@ -222,7 +219,7 @@ const Grade1Page = {
               ${this.escapeHtml(learnMoreTab)}
             </button>
           </div>
-          
+
           <div 
             class="tab-panel active" 
             role="tabpanel" 
@@ -233,7 +230,7 @@ const Grade1Page = {
               ${level.activities.map(activity => this.renderActivityCard(activity)).join('')}
             </div>
           </div>
-          
+
           <div 
             class="tab-panel" 
             role="tabpanel" 
@@ -246,7 +243,7 @@ const Grade1Page = {
       </section>
     `;
   },
-  
+
   /**
    * Render an activity card
    */
@@ -254,7 +251,7 @@ const Grade1Page = {
     // Get translated title and description
     const title = this.getTranslation('activities', activity.id, 'title') || activity.title;
     const description = this.getTranslation('activities', activity.id, 'description') || activity.description;
-    
+
     return `
       <a href="${this.escapeHtml(activity.path)}" class="activity-card" data-activity="${activity.id}">
         <div class="activity-icon">${activity.icon}</div>
@@ -263,7 +260,7 @@ const Grade1Page = {
       </a>
     `;
   },
-  
+
   /**
    * Render Learn More content as cards (field guide format)
    */
@@ -271,45 +268,45 @@ const Grade1Page = {
     if (!level.learnMore) {
       return '<p>No learning resources available for this level.</p>';
     }
-    
+
     // Handle card-based format (new format)
     if (level.learnMore.type === 'cards' && level.learnMore.cards) {
       return this.renderLearnMoreCards(level);
     }
-    
+
     // Handle legacy text format (old format - for backwards compatibility)
     if (level.learnMore.type === 'text') {
       return this.renderLearnMoreText(level);
     }
-    
+
     return '<p>No learning resources available for this level.</p>';
   },
-  
+
   /**
    * Render Learn More in card format (field guide)
    */
   renderLearnMoreCards(level) {
     const levelNumber = level.number;
-    
+
     // Debug: Check if translations are available
     const sectionData = window.i18n?.translations?.[window.i18n?.currentLang]?.section;
     const translationsAvailable = !!sectionData?.levels?.[`level${levelNumber}`]?.learnMore;
-    
+
     const cardsHtml = level.learnMore.cards.map(card => {
       // Get translated title and content using the new method
       let title = this.getLearnMoreTranslation(levelNumber, card.id, 'title');
       let content = this.getLearnMoreTranslation(levelNumber, card.id, 'content');
-      
+
       // Fallback to card.title if no translation
       if (!title) {
         title = card.title;
       }
-      
+
       // If no content found, show a debug message
       if (!content) {
         content = `<em style="color: #999;">(Content loading... translations available: ${translationsAvailable})</em>`;
       }
-      
+
       // Parse markdown-style content to HTML (only if it's real content)
       // Use different parsing for try-at-home cards (no bullets)
       let formattedContent;
@@ -322,14 +319,14 @@ const Grade1Page = {
       } else {
         formattedContent = this.parseMarkdownContent(content);
       }
-      
+
       // Determine card type class based on card id
       let cardTypeClass = '';
       if (card.id.includes('big-idea')) cardTypeClass = 'learn-more-card-big-idea';
       else if (card.id.includes('notice')) cardTypeClass = 'learn-more-card-notice';
       else if (card.id.includes('home')) cardTypeClass = 'learn-more-card-home';
       else if (card.id.includes('videos')) cardTypeClass = 'learn-more-card-videos';
-      
+
       return `
         <div class="learn-more-card ${cardTypeClass}" data-card-id="${card.id}">
           <div class="learn-more-card-header">
@@ -340,25 +337,25 @@ const Grade1Page = {
         </div>
       `;
     }).join('');
-    
+
     return `<div class="learn-more-cards">${cardsHtml}</div>`;
   },
-  
+
   /**
    * Parse markdown-style content to HTML
    * Supports: **bold**, *italic*, bullet lists, and preserves HTML links
    */
   parseMarkdownContent(content) {
     if (!content) return '';
-    
+
     // Split into lines
     let lines = content.split('\n');
     let result = [];
     let inList = false;
-    
+
     lines.forEach(line => {
       const trimmedLine = line.trim();
-      
+
       // Check if it's a bullet point
       if (trimmedLine.startsWith('* ')) {
         if (!inList) {
@@ -373,22 +370,22 @@ const Grade1Page = {
           result.push('</ul>');
           inList = false;
         }
-        
+
         if (trimmedLine) {
           const formattedLine = this.formatInlineMarkdown(trimmedLine);
           result.push(`<p>${formattedLine}</p>`);
         }
       }
     });
-    
+
     // Close any open list
     if (inList) {
       result.push('</ul>');
     }
-    
+
     return result.join('');
   },
-  
+
   /**
    * Format inline markdown: **bold**, *italic*, backticks
    * Preserves existing HTML (like anchor tags)
@@ -400,13 +397,13 @@ const Grade1Page = {
       htmlTags.push(match);
       return `\x00HTML${htmlTags.length - 1}\x00`;
     });
-    
+
     // Escape HTML in the non-tag parts
     preservedText = preservedText
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
-    
+
     // Format markdown
     // Bold: **text**
     preservedText = preservedText.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
@@ -414,29 +411,29 @@ const Grade1Page = {
     preservedText = preservedText.replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<em>$1</em>');
     // Inline code: `text`
     preservedText = preservedText.replace(/`([^`]+)`/g, '<code>$1</code>');
-    
+
     // Restore HTML tags
     preservedText = preservedText.replace(/\x00HTML(\d+)\x00/g, (_, index) => {
       return htmlTags[parseInt(index)];
     });
-    
+
     return preservedText;
   },
-  
+
   /**
    * Parse Try at Home content - converts bullets to simple blocks without list styling
    */
   parseTryAtHomeContent(content) {
     if (!content) return '';
-    
+
     // Split into lines and process
     let lines = content.split('\n');
     let result = [];
     let currentBlock = null;
-    
+
     lines.forEach(line => {
       const trimmedLine = line.trim();
-      
+
       // Check if it's a new game (starts with * **Game...)
       if (trimmedLine.startsWith('* **')) {
         // Save previous block if exists
@@ -459,15 +456,15 @@ const Grade1Page = {
         currentBlock.description += this.formatInlineMarkdown(trimmedLine);
       }
     });
-    
+
     // Don't forget the last block
     if (currentBlock) {
       result.push(this.renderTryAtHomeBlock(currentBlock));
     }
-    
+
     return result.join('');
   },
-  
+
   /**
    * Render a single Try at Home block
    */
@@ -479,35 +476,35 @@ const Grade1Page = {
       </div>
     `;
   },
-  
+
   /**
    * Parse Videos content - adds youtube-search-link class to links
    */
   parseVideosContent(content) {
     if (!content) return '';
-    
+
     // Use regular markdown parsing but add class to links
     let html = this.parseMarkdownContent(content);
-    
+
     // Add youtube-search-link class to all links in videos section
     html = html.replace(/<a /g, '<a class="youtube-search-link" ');
-    
+
     return html;
   },
-  
+
   /**
    * Render Learn More in text format (legacy)
    */
   renderLearnMoreText(level) {
     const intro = this.getLevelTranslation(level.id, 'learnMore.intro') || level.learnMore.intro;
-    
+
     // Render resources as bullet list
     const resourcesHtml = level.learnMore.resources.map((resource, index) => {
       // Try to get translation using the resource id (if present), otherwise fall back to index
       const resourceKey = resource.id || index;
       const query = this.getLevelTranslation(level.id, `learnMore.resources.${resourceKey}.query`) || resource.query;
       const description = this.getLevelTranslation(level.id, `learnMore.resources.${resourceKey}.description`) || resource.description;
-      
+
       if (resource.source === 'youtube') {
         const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query).replace(/%20/g, '+')}`;
         return `
@@ -519,7 +516,7 @@ const Grade1Page = {
         return `<li>${this.escapeHtml(description)}</li>`;
       }
     }).join('');
-    
+
     return `
       <div class="learn-more-text">
         <p class="learn-more-intro">${this.escapeHtml(intro)}</p>
@@ -529,18 +526,18 @@ const Grade1Page = {
       </div>
     `;
   },
-  
+
   /**
    * Render a resource card (Learn More) - DEPRECATED - keeping for compatibility
    */
   renderResourceCard(resource) {
     // Use explicit id if provided, fallback to generated id
     const resourceId = resource.id || this.generateResourceId(resource.title);
-    
+
     // Get translated title and content
     const title = this.getTranslation('learnMore', resourceId, 'title') || resource.title;
     const content = this.getTranslation('learnMore', resourceId, 'content') || resource.content;
-    
+
     // Grade 1: Render as text-only card (no link)
     // Note: content may contain HTML (e.g., YouTube search links), so we use innerHTML
     return `
@@ -553,7 +550,7 @@ const Grade1Page = {
       </div>
     `;
   },
-  
+
   /**
    * Generate a resource ID from title for i18n (fallback)
    */
@@ -565,18 +562,18 @@ const Grade1Page = {
       .replace(/-+/g, '-')
       .trim();
   },
-  
+
   /**
    * Set up tab switching functionality
    */
   setupTabs() {
     const tabButtons = this.container.querySelectorAll('.tab-button');
-    
+
     tabButtons.forEach(button => {
       button.addEventListener('click', (e) => {
         const tabId = button.dataset.tab;
         const tabsContainer = button.closest('.tabs-container');
-        
+
         // Update button states
         tabsContainer.querySelectorAll('.tab-button').forEach(btn => {
           btn.classList.remove('active');
@@ -584,12 +581,12 @@ const Grade1Page = {
         });
         button.classList.add('active');
         button.setAttribute('aria-selected', 'true');
-        
+
         // Update panel visibility
         tabsContainer.querySelectorAll('.tab-panel').forEach(panel => {
           panel.classList.remove('active');
         });
-        
+
         const targetPanel = tabsContainer.querySelector(`#panel-${tabId}`);
         if (targetPanel) {
           targetPanel.classList.add('active');
@@ -597,7 +594,7 @@ const Grade1Page = {
       });
     });
   },
-  
+
   /**
    * Set up language change listener
    */
@@ -613,7 +610,7 @@ const Grade1Page = {
       });
     });
   },
-  
+
   /**
    * Render error state
    */
@@ -625,7 +622,7 @@ const Grade1Page = {
       </div>
     `;
   },
-  
+
   /**
    * Escape HTML to prevent XSS
    */

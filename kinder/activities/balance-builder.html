@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Balance Builder - Kindergarten Math Activity - Meadow Math">
+  <title>Balance Builder - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">⚖️</span>
+            <span data-i18n="section.activities.balance-builder.title">Balance Builder</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.balance-builder.instruction">Make the scale balance!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Balance Scale -->
+          <div class="balance-scene">
+            <div class="scale-container" id="scale-container">
+              <!-- Left Pan -->
+              <div class="scale-pan left-pan" id="left-pan">
+                <div class="pan-items" id="left-items">
+                  <!-- Items generated by JS -->
+                </div>
+                <div class="pan-count" id="left-count">3</div>
+              </div>
+
+              <!-- Scale Center -->
+              <div class="scale-center">
+                <div class="scale-beam" id="scale-beam"></div>
+                <div class="scale-fulcrum">
+                  <span class="fulcrum-emoji">⚖️</span>
+                </div>
+                <div class="scale-base"></div>
+              </div>
+
+              <!-- Right Pan -->
+              <div class="scale-pan right-pan" id="right-pan">
+                <div class="pan-items" id="right-items">
+                  <!-- Will show ? until answered -->
+                </div>
+                <div class="pan-count" id="right-count">?</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question -->
+          <div class="question-section">
+            <p class="question-text" data-i18n="section.activities.balance-builder.question">How many do we need on the right?</p>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices">
+            <!-- Generated by JS -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">⚖️</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great balancing!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Balance Builder Styles */
+    .balance-scene {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-5);
+      padding: var(--space-4);
+    }
+
+    .scale-container {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: var(--space-2);
+      position: relative;
+    }
+
+    .scale-pan {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      transition: transform 0.5s ease;
+    }
+
+    .pan-items {
+      width: 110px;
+      height: 90px;
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      border: 4px solid #94a3b8;
+      border-radius: var(--radius-xl) var(--radius-xl) 50% 50%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: var(--space-2);
+      box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.1), 0 4px 0 #64748b;
+      transition: all 0.3s ease;
+    }
+
+    .pan-items.balanced {
+      border-color: #22c55e;
+      box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.1), 0 4px 0 #16a34a;
+    }
+
+    .pan-items.mystery {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.1), 0 4px 0 #d97706;
+    }
+
+    .pan-item {
+      font-size: 24px;
+      animation: itemPop 0.3s ease backwards;
+    }
+
+    @keyframes itemPop {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+
+    .pan-count {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #475569;
+      background: white;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-lg);
+      border: 3px solid #e2e8f0;
+      box-shadow: 0 2px 0 #cbd5e1;
+      min-width: 45px;
+      text-align: center;
+    }
+
+    .pan-count.mystery {
+      color: #d97706;
+      border-color: #fde68a;
+      animation: gentlePulse 2s ease infinite;
+    }
+
+    @keyframes gentlePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .scale-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      margin: 0 var(--space-2);
+    }
+
+    .scale-beam {
+      width: 220px;
+      height: 8px;
+      background: linear-gradient(135deg, #94a3b8, #64748b);
+      border-radius: var(--radius-md);
+      margin-bottom: -4px;
+      transition: transform 0.5s ease;
+      transform-origin: center;
+    }
+
+    .scale-beam.tilted-left {
+      transform: rotate(-8deg);
+    }
+
+    .scale-beam.tilted-right {
+      transform: rotate(8deg);
+    }
+
+    .scale-beam.balanced {
+      transform: rotate(0deg);
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+    }
+
+    .scale-fulcrum {
+      position: relative;
+      z-index: 1;
+    }
+
+    .fulcrum-emoji {
+      font-size: 48px;
+      display: block;
+    }
+
+    .scale-base {
+      width: 60px;
+      height: 20px;
+      background: linear-gradient(135deg, #64748b, #475569);
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+      margin-top: -8px;
+    }
+
+    /* Question Section */
+    .question-section {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+    }
+
+    /* Answer choices */
+    .answer-choices {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .answer-btn {
+      width: 75px;
+      height: 75px;
+      border: 4px solid #e2e8f0;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 0 #cbd5e1, 0 6px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      transform: translateY(-4px) scale(1.05);
+      border-color: #3b82f6;
+      box-shadow: 0 8px 0 #2563eb, 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .answer-btn:focus {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .answer-btn:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .answer-btn:focus-visible {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .answer-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #cbd5e1;
+    }
+
+    .answer-btn:disabled {
+      cursor: not-allowed;
+    }
+
+    .answer-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPop 0.5s ease;
+    }
+
+    .answer-btn.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      color: #92400e;
+      box-shadow: 0 4px 0 #d97706;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .pan-items {
+        width: 90px;
+        height: 75px;
+      }
+
+      .pan-item {
+        font-size: 20px;
+      }
+
+      .scale-beam {
+        width: 180px;
+      }
+
+      .fulcrum-emoji {
+        font-size: 40px;
+      }
+
+      .answer-btn {
+        width: 65px;
+        height: 65px;
+        font-size: var(--text-2xl);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .scale-container {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-3);
+      }
+
+      .scale-center {
+        order: -1;
+        margin: 0;
+      }
+
+      .scale-beam {
+        display: none;
+      }
+
+      .pan-items {
+        width: 100px;
+        height: 80px;
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Balance Builder Activity
+    const BalanceBuilder = {
+      // Game state
+      round: 1,
+      maxRounds: 8,
+      leftCount: 0,
+      answer: 0,
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+
+      // Current item emoji
+      itemEmoji: '⭐',
+
+      // DOM elements
+      progress: null,
+      leftPan: null,
+      rightPan: null,
+      leftItems: null,
+      rightItems: null,
+      leftCountEl: null,
+      rightCountEl: null,
+      scaleBeam: null,
+      answerChoices: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Items to use
+      items: ['⭐', '🍎', '🔵', '💜', '🌸', '🍪', '🎈', '🌺'],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.leftPan = document.getElementById('left-pan');
+        this.rightPan = document.getElementById('right-pan');
+        this.leftItems = document.getElementById('left-items');
+        this.rightItems = document.getElementById('right-items');
+        this.leftCountEl = document.getElementById('left-count');
+        this.rightCountEl = document.getElementById('right-count');
+        this.scaleBeam = document.getElementById('scale-beam');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+
+        // Pick random item
+        this.itemEmoji = this.items[randomInt(0, this.items.length - 1)];
+
+        // Generate left count (progressive difficulty)
+        // Rounds 1-3: 2-4 items
+        // Rounds 4-6: 3-6 items
+        // Rounds 7-8: 4-8 items
+        let min, max;
+        if (this.round <= 3) {
+          min = 2; max = 4;
+        } else if (this.round <= 6) {
+          min = 3; max = 6;
+        } else {
+          min = 4; max = 8;
+        }
+
+        this.leftCount = randomInt(min, max);
+        this.answer = this.leftCount; // Same count to balance
+
+        // Render left pan
+        this.renderLeftPan();
+
+        // Reset right pan to mystery
+        this.rightItems.innerHTML = '<span class="mystery-text">?</span>';
+        this.rightItems.classList.add('mystery');
+        this.rightItems.classList.remove('balanced');
+        this.rightCountEl.textContent = '?';
+        this.rightCountEl.classList.add('mystery');
+
+        // Reset scale beam
+        this.scaleBeam.classList.remove('balanced', 'tilted-left', 'tilted-right');
+        this.scaleBeam.classList.add('tilted-left');
+
+        // Reset feedback
+        this.feedback.classList.remove('show', 'error');
+
+        // Render choices
+        this.renderChoices();
+        this.renderProgress();
+      },
+
+      /**
+       * Render left pan items
+       */
+      renderLeftPan() {
+        this.leftItems.innerHTML = '';
+        for (let i = 0; i < this.leftCount; i++) {
+          const item = document.createElement('span');
+          item.className = 'pan-item';
+          item.textContent = this.itemEmoji;
+          item.style.animationDelay = `${i * 0.08}s`;
+          this.leftItems.appendChild(item);
+        }
+        this.leftCountEl.textContent = this.leftCount;
+        this.leftItems.classList.remove('balanced');
+      },
+
+      /**
+       * Render answer choices
+       */
+      renderChoices() {
+        this.answerChoices.innerHTML = '';
+
+        // Generate choices
+        const choices = new Set([this.answer]);
+
+        // Add distractors
+        while (choices.size < 4) {
+          let distractor;
+          if (Math.random() > 0.5) {
+            distractor = this.answer + randomInt(-2, 2);
+          } else {
+            distractor = randomInt(1, 10);
+          }
+          if (distractor >= 1 && distractor <= 10 && distractor !== this.answer) {
+            choices.add(distractor);
+          }
+        }
+
+        // Convert to array and shuffle
+        const choicesArray = Array.from(choices);
+        this.shuffleArray(choicesArray);
+
+        // Create buttons
+        choicesArray.forEach(num => {
+          const btn = document.createElement('button');
+          btn.className = 'answer-btn';
+          btn.textContent = num;
+          btn.addEventListener('click', () => this.selectAnswer(num, btn));
+          this.answerChoices.appendChild(btn);
+        });
+      },
+
+      /**
+       * Shuffle array
+       */
+      shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      },
+
+      /**
+       * Select answer
+       */
+      selectAnswer(num, btn) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        // Disable all buttons
+        const allBtns = this.answerChoices.querySelectorAll('.answer-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        // Show right pan items
+        this.rightItems.innerHTML = '';
+        this.rightItems.classList.remove('mystery');
+        for (let i = 0; i < num; i++) {
+          const item = document.createElement('span');
+          item.className = 'pan-item';
+          item.textContent = this.itemEmoji;
+          item.style.animationDelay = `${i * 0.08}s`;
+          this.rightItems.appendChild(item);
+        }
+        this.rightCountEl.textContent = num;
+        this.rightCountEl.classList.remove('mystery');
+
+        const isCorrect = num === this.answer;
+
+        if (isCorrect) {
+          btn.classList.add('correct');
+          this.leftItems.classList.add('balanced');
+          this.rightItems.classList.add('balanced');
+          this.scaleBeam.classList.remove('tilted-left', 'tilted-right');
+          this.scaleBeam.classList.add('balanced');
+
+          const msg = i18n.t('section.activities.balance-builder.correct') || 'Balanced! {{left}} = {{right}}';
+          this.feedback.textContent = msg
+            .replace('{{left}}', this.leftCount)
+            .replace('{{right}}', num);
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          if (typeof celebrate === 'function') {
+            celebrate(btn);
+          }
+        } else {
+          btn.classList.add('incorrect');
+          // Highlight correct answer
+          allBtns.forEach(b => {
+            if (parseInt(b.textContent) === this.answer) {
+              b.classList.add('correct');
+            }
+          });
+
+          // Update beam tilt
+          this.scaleBeam.classList.remove('tilted-left');
+          if (num > this.leftCount) {
+            this.scaleBeam.classList.add('tilted-right');
+          } else {
+            this.scaleBeam.classList.add('tilted-left');
+          }
+
+          const msg = i18n.t('section.activities.balance-builder.incorrect') || 'Not balanced! Need {{answer}} to match {{left}}';
+          this.feedback.textContent = msg
+            .replace('{{answer}}', this.answer)
+            .replace('{{left}}', this.leftCount);
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '⚖️';
+          this.statsMessage.textContent = i18n.t('section.activities.balance-builder.perfect') || 'Balance Master!';
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.balance-builder.great') || 'Great balancing!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.balance-builder.keepPracticing') || 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      BalanceBuilder.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

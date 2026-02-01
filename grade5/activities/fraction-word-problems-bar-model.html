@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fraction Word Problems with Bar Models - Grade 5 Math Activity - Meadow Math">
+  <title>Fraction Word Problems - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧱</span>
+            <span data-i18n="section.activities.fraction-word-problems-bar-model.title">Fraction Word Problems</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.fraction-word-problems-bar-model.instruction">Use the bar model to solve!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Story Problem -->
+          <div class="story-container" id="story-container">
+            <div class="story-icon" id="story-icon" aria-hidden="true">📖</div>
+            <div class="story-text" id="story-text">
+              <!-- Story text will be inserted here -->
+            </div>
+          </div>
+
+          <!-- Bar Model Visualization -->
+          <div class="bar-model-container" id="bar-model-container">
+            <div class="bar-model-label" id="bar-model-label">
+              <span data-i18n="section.activities.fraction-word-problems-bar-model.barModel">Bar Model</span>
+            </div>
+            <div class="bar-model" id="bar-model">
+              <!-- Bar segments will be generated here -->
+            </div>
+            <div class="bar-legend" id="bar-legend">
+              <!-- Legend will be generated here -->
+            </div>
+          </div>
+
+          <!-- Equation Display -->
+          <div class="equation-container" id="equation-container">
+            <div class="equation-label" id="equation-label">
+              <span data-i18n="section.activities.fraction-word-problems-bar-model.equation">Equation</span>:
+            </div>
+            <div class="equation-display" id="equation-display">
+              <!-- Equation will be shown here -->
+            </div>
+          </div>
+
+          <!-- Question Section -->
+          <div class="question-section" id="question-section">
+            <div class="question-text" id="question-text">
+              <!-- Question will be inserted here -->
+            </div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <!-- Choices will be generated here -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.fraction-word-problems-bar-model.great">Great work with fraction word problems!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Fraction Word Problems with Bar Model Activity - Grade 5 Level 3
+    const FractionWordProblems = {
+      currentQuestion: 0,
+      totalQuestions: 6,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+
+      // DOM elements
+      storyContainer: null,
+      storyIcon: null,
+      storyText: null,
+      barModelContainer: null,
+      barModel: null,
+      barLegend: null,
+      equationContainer: null,
+      equationDisplay: null,
+      questionSection: null,
+      questionText: null,
+      choicesContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.storyContainer = document.getElementById('story-container');
+        this.storyIcon = document.getElementById('story-icon');
+        this.storyText = document.getElementById('story-text');
+        this.barModelContainer = document.getElementById('bar-model-container');
+        this.barModel = document.getElementById('bar-model');
+        this.barLegend = document.getElementById('bar-legend');
+        this.equationContainer = document.getElementById('equation-container');
+        this.equationDisplay = document.getElementById('equation-display');
+        this.questionSection = document.getElementById('question-section');
+        this.questionText = document.getElementById('question-text');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      // Calculate GCD using Euclidean algorithm
+      gcd(a, b) {
+        return b === 0 ? a : this.gcd(b, a % b);
+      },
+
+      // Simplify a fraction
+      simplify(num, den) {
+        if (num === 0) return { num: 0, den: 1 };
+        const g = this.gcd(Math.abs(num), Math.abs(den));
+        return { num: num / g, den: den / g };
+      },
+
+      // Add two fractions
+      addFractions(n1, d1, n2, d2) {
+        const newNum = n1 * d2 + n2 * d1;
+        const newDen = d1 * d2;
+        return this.simplify(newNum, newDen);
+      },
+
+      // Subtract two fractions
+      subtractFractions(n1, d1, n2, d2) {
+        const newNum = n1 * d2 - n2 * d1;
+        const newDen = d1 * d2;
+        return this.simplify(newNum, newDen);
+      },
+
+      // Format fraction for HTML display
+      formatFractionHTML(num, den) {
+        if (den === 1) return `<span class="whole-number">${num}</span>`;
+
+        // Handle mixed numbers
+        const whole = Math.floor(Math.abs(num) / den);
+        const remainder = Math.abs(num) % den;
+        const sign = num < 0 ? '-' : '';
+
+        if (whole > 0 && remainder > 0) {
+          return `<span class="mixed-number">${sign}${whole}<span class="frac-display"><span class="frac-num">${remainder}</span><span class="frac-bar"></span><span class="frac-den">${den}</span></span></span>`;
+        } else if (whole > 0) {
+          return `<span class="whole-number">${sign}${whole}</span>`;
+        }
+
+        return `<span class="frac-display"><span class="frac-num">${sign}${Math.abs(num)}</span><span class="frac-bar"></span><span class="frac-den">${den}</span></span>`;
+      },
+
+      // Format fraction as text
+      formatFractionText(num, den) {
+        if (den === 1) return `${num}`;
+
+        const whole = Math.floor(Math.abs(num) / den);
+        const remainder = Math.abs(num) % den;
+        const sign = num < 0 ? '-' : '';
+
+        if (whole > 0 && remainder > 0) {
+          return `${sign}${whole} ${remainder}/${den}`;
+        } else if (whole > 0) {
+          return `${sign}${whole}`;
+        }
+
+        return `${sign}${Math.abs(num)}/${den}`;
+      },
+
+      generateQuestions() {
+        // Word problem templates for fraction operations
+        const problemTemplates = [
+          // Addition problems
+          {
+            type: 'add',
+            icon: '🍕',
+            storyKey: 'storyPizza',
+            storyDefault: 'Maya ate {frac1} of a pizza. Then she ate {frac2} more of the pizza.',
+            questionKey: 'questionTotal',
+            questionDefault: 'How much pizza did Maya eat in all?',
+            frac1: { num: 3, den: 8 },
+            frac2: { num: 1, den: 4 }
+          },
+          {
+            type: 'add',
+            icon: '📏',
+            storyKey: 'storyRibbon',
+            storyDefault: 'Mina used {frac1} of a meter of ribbon for one bow. Then she used {frac2} of a meter for another bow.',
+            questionKey: 'questionTotal',
+            questionDefault: 'How much ribbon did Mina use in all?',
+            frac1: { num: 1, den: 3 },
+            frac2: { num: 1, den: 6 }
+          },
+          {
+            type: 'add',
+            icon: '🥛',
+            storyKey: 'storyMilk',
+            storyDefault: 'Dani drank {frac1} of a carton of milk in the morning. Later, she drank {frac2} more of the carton.',
+            questionKey: 'questionTotal',
+            questionDefault: 'What fraction of the carton did Dani drink altogether?',
+            frac1: { num: 2, den: 5 },
+            frac2: { num: 1, den: 5 }
+          },
+          // Subtraction problems
+          {
+            type: 'subtract',
+            icon: '🍰',
+            storyKey: 'storyCake',
+            storyDefault: 'A bakery had {frac1} of a cake. They sold {frac2} of the whole cake.',
+            questionKey: 'questionRemain',
+            questionDefault: 'How much cake is left?',
+            frac1: { num: 5, den: 6 },
+            frac2: { num: 1, den: 3 }
+          },
+          {
+            type: 'subtract',
+            icon: '📐',
+            storyKey: 'storyPaper',
+            storyDefault: 'Jamal had {frac1} of a sheet of paper. He used {frac2} of a sheet for his project.',
+            questionKey: 'questionRemain',
+            questionDefault: 'How much paper does Jamal have left?',
+            frac1: { num: 3, den: 4 },
+            frac2: { num: 1, den: 2 }
+          },
+          {
+            type: 'subtract',
+            icon: '🚗',
+            storyKey: 'storyDistance',
+            storyDefault: 'The trip is {frac1} of the way done. The family already drove {frac2} of the trip yesterday.',
+            questionKey: 'questionToday',
+            questionDefault: 'How much of the trip did they drive today?',
+            frac1: { num: 7, den: 8 },
+            frac2: { num: 1, den: 2 }
+          },
+          // More addition problems
+          {
+            type: 'add',
+            icon: '🎨',
+            storyKey: 'storyPaint',
+            storyDefault: 'For her art project, Lily used {frac1} of a jar of blue paint and {frac2} of a jar of green paint.',
+            questionKey: 'questionTotal',
+            questionDefault: 'How much paint did Lily use in total?',
+            frac1: { num: 1, den: 4 },
+            frac2: { num: 3, den: 8 }
+          },
+          {
+            type: 'add',
+            icon: '📚',
+            storyKey: 'storyBook',
+            storyDefault: 'Sam read {frac1} of a book on Monday and {frac2} of the book on Tuesday.',
+            questionKey: 'questionTotal',
+            questionDefault: 'What fraction of the book has Sam read?',
+            frac1: { num: 2, den: 5 },
+            frac2: { num: 3, den: 10 }
+          },
+          // More subtraction problems
+          {
+            type: 'subtract',
+            icon: '💧',
+            storyKey: 'storyWater',
+            storyDefault: 'A water bottle was {frac1} full. Someone drank {frac2} of the bottle.',
+            questionKey: 'questionRemain',
+            questionDefault: 'How much water is left?',
+            frac1: { num: 4, den: 5 },
+            frac2: { num: 2, den: 5 }
+          },
+          {
+            type: 'subtract',
+            icon: '🧵',
+            storyKey: 'storyYarn',
+            storyDefault: 'Emma had {frac1} of a ball of yarn. She used {frac2} of the ball for a scarf.',
+            questionKey: 'questionRemain',
+            questionDefault: 'How much yarn is left?',
+            frac1: { num: 5, den: 6 },
+            frac2: { num: 1, den: 2 }
+          }
+        ];
+
+        // Shuffle and take 6
+        const shuffled = shuffle(problemTemplates);
+        this.questions = [];
+
+        for (let i = 0; i < this.totalQuestions; i++) {
+          const template = shuffled[i % shuffled.length];
+          const frac1 = template.frac1;
+          const frac2 = template.frac2;
+
+          let answer;
+          if (template.type === 'add') {
+            answer = this.addFractions(frac1.num, frac1.den, frac2.num, frac2.den);
+          } else {
+            answer = this.subtractFractions(frac1.num, frac1.den, frac2.num, frac2.den);
+          }
+
+          this.questions.push({
+            type: template.type,
+            icon: template.icon,
+            storyKey: template.storyKey,
+            storyDefault: template.storyDefault,
+            questionKey: template.questionKey,
+            questionDefault: template.questionDefault,
+            frac1: frac1,
+            frac2: frac2,
+            answerNum: answer.num,
+            answerDen: answer.den
+          });
+        }
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        // Build story display
+        this.buildStoryDisplay(question);
+
+        // Build bar model
+        this.buildBarModel(question);
+
+        // Build equation display
+        this.buildEquationDisplay(question);
+
+        // Build question and choices
+        this.buildQuestionAndChoices(question);
+
+        this.renderProgress();
+      },
+
+      buildStoryDisplay(question) {
+        this.storyIcon.textContent = question.icon;
+
+        // Get story text with placeholders replaced
+        let storyText = this.getTranslation(
+          `section.activities.fraction-word-problems-bar-model.${question.storyKey}`,
+          question.storyDefault
+        );
+
+        // Replace placeholders with formatted fractions
+        storyText = storyText
+          .replace('{frac1}', `<span class="story-fraction">${this.formatFractionHTML(question.frac1.num, question.frac1.den)}</span>`)
+          .replace('{frac2}', `<span class="story-fraction">${this.formatFractionHTML(question.frac2.num, question.frac2.den)}</span>`);
+
+        this.storyText.innerHTML = storyText;
+      },
+
+      buildBarModel(question) {
+        this.barModel.innerHTML = '';
+        this.barLegend.innerHTML = '';
+
+        // Find common denominator for visualization
+        const commonDen = question.frac1.den * question.frac2.den / this.gcd(question.frac1.den, question.frac2.den);
+        const frac1Parts = question.frac1.num * (commonDen / question.frac1.den);
+        const frac2Parts = question.frac2.num * (commonDen / question.frac2.den);
+
+        // Create the bar segments
+        const totalParts = commonDen;
+
+        // Create bar wrapper
+        const barWrapper = document.createElement('div');
+        barWrapper.className = 'bar-wrapper';
+
+        for (let i = 0; i < totalParts; i++) {
+          const segment = document.createElement('div');
+          segment.className = 'bar-segment';
+
+          if (question.type === 'add') {
+            // For addition: first fraction + second fraction
+            if (i < frac1Parts) {
+              segment.classList.add('part-1');
+            } else if (i < frac1Parts + frac2Parts) {
+              segment.classList.add('part-2');
+            } else {
+              segment.classList.add('part-empty');
+            }
+          } else {
+            // For subtraction: show original, then what's removed
+            if (i < frac1Parts) {
+              if (i < frac2Parts) {
+                segment.classList.add('part-removed');
+              } else {
+                segment.classList.add('part-remaining');
+              }
+            } else {
+              segment.classList.add('part-empty');
+            }
+          }
+
+          barWrapper.appendChild(segment);
+        }
+
+        this.barModel.appendChild(barWrapper);
+
+        // Create legend
+        if (question.type === 'add') {
+          this.barLegend.innerHTML = `
+            <div class="legend-item">
+              <div class="legend-color part-1"></div>
+              <span class="legend-text">${this.formatFractionHTML(question.frac1.num, question.frac1.den)}</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color part-2"></div>
+              <span class="legend-text">${this.formatFractionHTML(question.frac2.num, question.frac2.den)}</span>
+            </div>
+          `;
+        } else {
+          this.barLegend.innerHTML = `
+            <div class="legend-item">
+              <div class="legend-color part-remaining"></div>
+              <span class="legend-text">${this.getTranslation('section.activities.fraction-word-problems-bar-model.remaining', 'Remaining')}</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color part-removed"></div>
+              <span class="legend-text">${this.formatFractionHTML(question.frac2.num, question.frac2.den)} ${this.getTranslation('section.activities.fraction-word-problems-bar-model.used', 'used')}</span>
+            </div>
+          `;
+        }
+      },
+
+      buildEquationDisplay(question) {
+        const operatorSymbol = question.type === 'add' ? '+' : '−';
+
+        this.equationDisplay.innerHTML = `
+          <span class="eq-part">${this.formatFractionHTML(question.frac1.num, question.frac1.den)}</span>
+          <span class="eq-operator">${operatorSymbol}</span>
+          <span class="eq-part">${this.formatFractionHTML(question.frac2.num, question.frac2.den)}</span>
+          <span class="eq-equals">=</span>
+          <span class="eq-answer" id="eq-answer">?</span>
+        `;
+      },
+
+      buildQuestionAndChoices(question) {
+        // Get question text
+        const questionTextContent = this.getTranslation(
+          `section.activities.fraction-word-problems-bar-model.${question.questionKey}`,
+          question.questionDefault
+        );
+
+        this.questionText.innerHTML = `<span class="question-prompt">${questionTextContent}</span>`;
+
+        // Generate choices
+        this.choicesContainer.innerHTML = '';
+
+        const correctAnswer = this.formatFractionText(question.answerNum, question.answerDen);
+        const choices = new Set();
+        choices.add(correctAnswer);
+
+        // Generate distractors
+        // Wrong common denominator
+        const wrongDenom1 = this.simplify(question.frac1.num + question.frac2.num, Math.max(question.frac1.den, question.frac2.den));
+        choices.add(this.formatFractionText(wrongDenom1.num, wrongDenom1.den));
+
+        // Slightly off answer
+        const offAnswer = question.type === 'add'
+          ? this.simplify(question.answerNum + 1, question.answerDen)
+          : this.simplify(Math.abs(question.answerNum - 1), question.answerDen);
+        choices.add(this.formatFractionText(offAnswer.num, offAnswer.den));
+
+        // Different denominator mistake
+        const wrongDenom2 = this.simplify(question.frac1.num + question.frac2.num, question.frac1.den + question.frac2.den);
+        if (wrongDenom2.num > 0) {
+          choices.add(this.formatFractionText(wrongDenom2.num, wrongDenom2.den));
+        }
+
+        // Add more if needed
+        const extraDistractors = [
+          this.formatFractionText(question.frac1.num, question.frac1.den),
+          this.formatFractionText(question.frac2.num, question.frac2.den),
+          this.formatFractionText(question.answerNum + 2, question.answerDen)
+        ];
+
+        for (const d of extraDistractors) {
+          if (choices.size < 4) choices.add(d);
+        }
+
+        // Convert to array and shuffle
+        let choicesArray = Array.from(choices).slice(0, 4);
+        choicesArray = shuffle(choicesArray);
+
+        // Create buttons
+        choicesArray.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+
+          // Parse and format the choice for display
+          if (choice.includes('/')) {
+            const parts = choice.split(' ');
+            if (parts.length === 2) {
+              // Mixed number
+              const whole = parseInt(parts[0]);
+              const [num, den] = parts[1].split('/').map(Number);
+              btn.innerHTML = this.formatFractionHTML(whole * den + num, den);
+            } else {
+              const [num, den] = choice.split('/').map(Number);
+              btn.innerHTML = this.formatFractionHTML(num, den);
+            }
+          } else {
+            btn.textContent = choice;
+          }
+
+          btn.dataset.value = choice;
+          btn.addEventListener('click', () => this.checkAnswer(choice, btn, question));
+          this.choicesContainer.appendChild(btn);
+        });
+      },
+
+      checkAnswer(selected, btn, question) {
+        if (this.isAnswered) return;
+
+        this.isAnswered = true;
+        const correctAnswer = this.formatFractionText(question.answerNum, question.answerDen);
+        const isCorrect = selected === correctAnswer;
+
+        // Disable all buttons
+        const allBtns = this.choicesContainer.querySelectorAll('.choice-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        // Update equation answer
+        const eqAnswer = document.getElementById('eq-answer');
+        eqAnswer.innerHTML = this.formatFractionHTML(question.answerNum, question.answerDen);
+        eqAnswer.classList.add('revealed');
+
+        if (isCorrect) {
+          this.correctCount++;
+          btn.classList.add('correct');
+
+          const feedbackText = this.getTranslation(
+            'section.activities.fraction-word-problems-bar-model.correct',
+            'Correct!'
+          ) + ` ${this.formatFractionText(question.frac1.num, question.frac1.den)} ${question.type === 'add' ? '+' : '−'} ${this.formatFractionText(question.frac2.num, question.frac2.den)} = ${correctAnswer}`;
+
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          btn.classList.add('incorrect');
+
+          // Highlight correct answer
+          allBtns.forEach(b => {
+            if (b.dataset.value === correctAnswer) {
+              b.classList.add('correct');
+            }
+          });
+
+          const feedbackText = this.getTranslation(
+            'section.activities.fraction-word-problems-bar-model.wrong',
+            'The answer is {answer}.'
+          ).replace('{answer}', correctAnswer);
+
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+        this.scheduleAdvance();
+      },
+
+      scheduleAdvance() {
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+
+        // Refresh current question if not answered
+        if (!this.isAnswered && this.questions[this.currentQuestion]) {
+          const question = this.questions[this.currentQuestion];
+          this.buildStoryDisplay(question);
+          this.buildBarModel(question);
+          this.buildEquationDisplay(question);
+          this.buildQuestionAndChoices(question);
+        }
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.fraction-word-problems-bar-model.perfect',
+            'Perfect! You mastered fraction word problems!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.fraction-word-problems-bar-model.great',
+            'Great work with fraction word problems!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.fraction-word-problems-bar-model.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.fraction-word-problems-bar-model.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => FractionWordProblems.init());
+      } else {
+        FractionWordProblems.init();
+      }
+    });
+  </script>
+  <style>
+    /* Fraction Word Problems with Bar Model specific styles */
+
+    .story-container {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+
+    .story-icon {
+      font-size: var(--text-4xl);
+      flex-shrink: 0;
+    }
+
+    .story-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-medium);
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    .story-fraction {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 var(--space-1);
+      font-weight: var(--weight-bold);
+      color: #7c3aed;
+    }
+
+    .story-fraction .frac-display {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+      vertical-align: middle;
+    }
+
+    .story-fraction .frac-num,
+    .story-fraction .frac-den {
+      font-size: 0.9em;
+    }
+
+    .story-fraction .frac-bar {
+      width: 100%;
+      height: 2px;
+      background: #7c3aed;
+      margin: 2px 0;
+    }
+
+    /* Bar Model Container */
+    .bar-model-container {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 2px solid #e5e7eb;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .bar-model-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-2);
+    }
+
+    .bar-model {
+      margin-bottom: var(--space-3);
+    }
+
+    .bar-wrapper {
+      display: flex;
+      height: 50px;
+      border: 2px solid #374151;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .bar-segment {
+      flex: 1;
+      border-right: 1px solid rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .bar-segment:last-child {
+      border-right: none;
+    }
+
+    .bar-segment.part-1 {
+      background: linear-gradient(180deg, #a78bfa, #8b5cf6);
+    }
+
+    .bar-segment.part-2 {
+      background: linear-gradient(180deg, #67e8f9, #22d3ee);
+    }
+
+    .bar-segment.part-remaining {
+      background: linear-gradient(180deg, #86efac, #22c55e);
+    }
+
+    .bar-segment.part-removed {
+      background: linear-gradient(180deg, #fca5a5, #ef4444);
+      opacity: 0.6;
+    }
+
+    .bar-segment.part-empty {
+      background: #f3f4f6;
+    }
+
+    .bar-legend {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .legend-color {
+      width: 24px;
+      height: 24px;
+      border-radius: var(--radius-sm);
+      border: 2px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .legend-color.part-1 {
+      background: linear-gradient(180deg, #a78bfa, #8b5cf6);
+    }
+
+    .legend-color.part-2 {
+      background: linear-gradient(180deg, #67e8f9, #22d3ee);
+    }
+
+    .legend-color.part-remaining {
+      background: linear-gradient(180deg, #86efac, #22c55e);
+    }
+
+    .legend-color.part-removed {
+      background: linear-gradient(180deg, #fca5a5, #ef4444);
+      opacity: 0.6;
+    }
+
+    .legend-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: #374151;
+      display: flex;
+      align-items: center;
+    }
+
+    .legend-text .frac-display {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+      vertical-align: middle;
+    }
+
+    .legend-text .frac-num,
+    .legend-text .frac-den {
+      font-size: 0.9em;
+    }
+
+    .legend-text .frac-bar {
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      margin: 1px 0;
+    }
+
+    /* Equation Container */
+    .equation-container {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #8b5cf6;
+      padding: var(--space-3);
+      margin-bottom: var(--space-4);
+      text-align: center;
+    }
+
+    .equation-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-2);
+    }
+
+    .equation-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .eq-part {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #374151;
+    }
+
+    .eq-part .frac-display {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .eq-part .frac-num,
+    .eq-part .frac-den {
+      font-size: 0.85em;
+    }
+
+    .eq-part .frac-bar {
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      margin: 2px 0;
+    }
+
+    .eq-operator,
+    .eq-equals {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #6b7280;
+    }
+
+    .eq-answer {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #059669;
+      padding: var(--space-1) var(--space-2);
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: var(--radius-md);
+      min-width: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .eq-answer.revealed {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+    }
+
+    .eq-answer .frac-display {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .eq-answer .frac-num,
+    .eq-answer .frac-den {
+      font-size: 0.85em;
+    }
+
+    .eq-answer .frac-bar {
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      margin: 2px 0;
+    }
+
+    /* Question Section */
+    .question-section {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-medium);
+      color: #374151;
+    }
+
+    .question-prompt {
+      color: #1e3a5f;
+      font-weight: var(--weight-bold);
+    }
+
+    /* Answer Choices */
+    .choices-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      max-width: 400px;
+      margin: 0 auto var(--space-4);
+    }
+
+    .choice-btn {
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #1e3a5f;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 3px solid #0ea5e9;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: scale(1.03);
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+      border-color: #0284c7;
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: scale(0.97);
+    }
+
+    .choice-btn:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .choice-btn:focus-visible {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border-color: #ef4444;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    .choice-btn .frac-display {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .choice-btn .frac-num,
+    .choice-btn .frac-den {
+      font-size: 0.8em;
+    }
+
+    .choice-btn .frac-bar {
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      margin: 2px 0;
+    }
+
+    .choice-btn .mixed-number {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+      20%, 40%, 60%, 80% { transform: translateX(4px); }
+    }
+
+    /* Feedback and layout */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Fraction display utilities */
+    .frac-display {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .frac-num,
+    .frac-den {
+      font-size: 0.8em;
+    }
+
+    .frac-bar {
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      margin: 2px 0;
+    }
+
+    .whole-number {
+      vertical-align: middle;
+    }
+
+    .mixed-number {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .story-container {
+        padding: var(--space-3);
+        gap: var(--space-2);
+      }
+
+      .story-icon {
+        font-size: var(--text-3xl);
+      }
+
+      .story-text {
+        font-size: var(--text-base);
+      }
+
+      .bar-model-container {
+        padding: var(--space-3);
+      }
+
+      .bar-wrapper {
+        height: 40px;
+      }
+
+      .legend-color {
+        width: 20px;
+        height: 20px;
+      }
+
+      .legend-text {
+        font-size: var(--text-xs);
+      }
+
+      .equation-container {
+        padding: var(--space-2);
+      }
+
+      .equation-display {
+        gap: var(--space-2);
+      }
+
+      .eq-part,
+      .eq-operator,
+      .eq-equals,
+      .eq-answer {
+        font-size: var(--text-lg);
+      }
+
+      .question-text {
+        font-size: var(--text-base);
+      }
+
+      .choices-container {
+        gap: var(--space-2);
+        max-width: 320px;
+      }
+
+      .choice-btn {
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--text-lg);
+        min-height: 60px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .story-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .story-text {
+        font-size: var(--text-sm);
+      }
+
+      .bar-wrapper {
+        height: 35px;
+      }
+
+      .bar-legend {
+        gap: var(--space-2);
+      }
+
+      .legend-item {
+        gap: var(--space-1);
+      }
+
+      .legend-color {
+        width: 16px;
+        height: 16px;
+      }
+
+      .eq-part,
+      .eq-operator,
+      .eq-equals,
+      .eq-answer {
+        font-size: var(--text-base);
+      }
+
+      .choices-container {
+        max-width: 280px;
+      }
+
+      .choice-btn {
+        font-size: var(--text-base);
+        min-height: 55px;
+        padding: var(--space-2);
+      }
+    }
+
+    @media (max-width: 360px) {
+      .choices-container {
+        grid-template-columns: 1fr 1fr;
+        max-width: 260px;
+      }
+
+      .choice-btn {
+        min-height: 50px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -37,7 +37,7 @@ function isStorageAvailable() {
  */
 function getItem(key, defaultValue = null) {
   if (!isStorageAvailable()) return defaultValue;
-  
+
   try {
     const item = localStorage.getItem(key);
     return item ? JSON.parse(item) : defaultValue;
@@ -55,7 +55,7 @@ function getItem(key, defaultValue = null) {
  */
 function setItem(key, value) {
   if (!isStorageAvailable()) return false;
-  
+
   try {
     localStorage.setItem(key, JSON.stringify(value));
     return true;
@@ -72,7 +72,7 @@ function setItem(key, value) {
  */
 function removeItem(key) {
   if (!isStorageAvailable()) return false;
-  
+
   try {
     localStorage.removeItem(key);
     return true;
@@ -107,16 +107,16 @@ function getProgress() {
  */
 function saveActivityProgress(grade, activityId, data) {
   const progress = getProgress();
-  
+
   if (!progress[grade]) {
     progress[grade] = {};
   }
-  
+
   progress[grade][activityId] = {
     ...data,
     lastPlayed: new Date().toISOString()
   };
-  
+
   return setItem(KEYS.PROGRESS, progress);
 }
 
@@ -139,7 +139,7 @@ function getActivityProgress(grade, activityId) {
  */
 function markActivityCompleted(grade, activityId) {
   const currentProgress = getActivityProgress(grade, activityId) || {};
-  
+
   return saveActivityProgress(grade, activityId, {
     ...currentProgress,
     completed: true,
@@ -200,23 +200,23 @@ function getStats() {
  */
 function updateStats(updates) {
   const stats = getStats();
-  
+
   // Increment counts
   if (updates.activityPlayed) {
     stats.totalActivitiesPlayed++;
   }
-  
+
   if (typeof updates.timeSpent === 'number') {
     stats.totalTimeSpent += updates.timeSpent;
   }
-  
+
   if (updates.correct) {
     stats.correctAnswers++;
     stats.totalAnswers++;
   } else if (updates.incorrect) {
     stats.totalAnswers++;
   }
-  
+
   return setItem(KEYS.STATS, stats);
 }
 

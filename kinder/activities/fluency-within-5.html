@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fluency Within 5 - Kindergarten Math Activity - Meadow Math">
+  <title>Fluency Within 5 - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🌟</span>
+            <span data-i18n="section.activities.fluency-within-5.title">Fluency Within 5</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.fluency-within-5.instruction">Take your time! What's the answer?</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Equation Card -->
+          <div class="equation-card" id="equation-card">
+            <div class="equation-display" id="equation-display">
+              <span class="eq-part num" id="num-a">2</span>
+              <span class="eq-part op" id="operator">+</span>
+              <span class="eq-part num" id="num-b">1</span>
+              <span class="eq-part op">=</span>
+              <span class="eq-part num mystery" id="answer-slot">?</span>
+            </div>
+          </div>
+
+          <!-- Visual dots -->
+          <div class="visual-dots" id="visual-dots">
+            <!-- Generated by JS -->
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices">
+            <!-- Generated by JS -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Fluency Within 5 Activity Styles */
+    .equation-card {
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      border: 4px solid #3b82f6;
+      border-radius: var(--radius-2xl);
+      padding: var(--space-5) var(--space-6);
+      margin-bottom: var(--space-4);
+      box-shadow: 0 6px 0 #2563eb, 0 10px 20px rgba(59, 130, 246, 0.15);
+    }
+
+    .equation-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .eq-part {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+    }
+
+    .eq-part.num {
+      padding: var(--space-2) var(--space-4);
+      background: white;
+      color: #1e40af;
+      border: 3px solid #60a5fa;
+      border-radius: var(--radius-xl);
+      min-width: 60px;
+      text-align: center;
+    }
+
+    .eq-part.op {
+      color: var(--color-neutral-500);
+    }
+
+    .eq-part.op.subtract {
+      color: #dc2626;
+    }
+
+    .eq-part.mystery {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #d97706;
+      border-color: #f59e0b;
+      animation: gentlePulse 2s ease infinite;
+    }
+
+    .eq-part.mystery.revealed {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      color: #166534;
+      border-color: #22c55e;
+      animation: none;
+    }
+
+    @keyframes gentlePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    /* Visual dots */
+    .visual-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-5);
+      flex-wrap: wrap;
+    }
+
+    .dot-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      padding: var(--space-3);
+      background: white;
+      border: 3px solid #e2e8f0;
+      border-radius: var(--radius-xl);
+      min-width: 60px;
+      min-height: 50px;
+    }
+
+    .dot-group.group-a {
+      border-color: #3b82f6;
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    }
+
+    .dot-group.group-b {
+      border-color: #22c55e;
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    }
+
+    .dot-group.crossed {
+      position: relative;
+    }
+
+    .dot-group.crossed::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: #ef4444;
+      transform: rotate(-10deg);
+    }
+
+    .dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      animation: popIn 0.3s ease backwards;
+    }
+
+    .dot.blue {
+      background: linear-gradient(135deg, #60a5fa, #3b82f6);
+      border: 2px solid #1d4ed8;
+    }
+
+    .dot.green {
+      background: linear-gradient(135deg, #86efac, #22c55e);
+      border: 2px solid #16a34a;
+    }
+
+    .dot.crossed {
+      opacity: 0.3;
+      text-decoration: line-through;
+    }
+
+    .visual-op {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-500);
+    }
+
+    .visual-op.subtract {
+      color: #dc2626;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0); }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    /* Answer choices */
+    .answer-choices {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .answer-btn {
+      width: 80px;
+      height: 80px;
+      border: 4px solid #e2e8f0;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 0 #cbd5e1, 0 6px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      transform: translateY(-4px) scale(1.05);
+      border-color: #3b82f6;
+      box-shadow: 0 8px 0 #2563eb, 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .answer-btn:focus {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .answer-btn:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .answer-btn:focus-visible {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .answer-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #cbd5e1;
+    }
+
+    .answer-btn:disabled {
+      cursor: not-allowed;
+    }
+
+    .answer-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPop 0.5s ease;
+    }
+
+    .answer-btn.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      color: #92400e;
+      box-shadow: 0 4px 0 #d97706;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .equation-card {
+        padding: var(--space-4);
+      }
+
+      .eq-part {
+        font-size: var(--text-3xl);
+      }
+
+      .eq-part.num {
+        min-width: 50px;
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .dot {
+        width: 20px;
+        height: 20px;
+      }
+
+      .answer-btn {
+        width: 70px;
+        height: 70px;
+        font-size: var(--text-2xl);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Fluency Within 5 Activity
+    const FluencyWithin5 = {
+      // Game state
+      round: 1,
+      maxRounds: 10,
+      numA: 0,
+      numB: 0,
+      answer: 0,
+      operation: '+',
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+
+      // DOM elements
+      progress: null,
+      equationCard: null,
+      numAEl: null,
+      numBEl: null,
+      operatorEl: null,
+      answerSlot: null,
+      visualDots: null,
+      answerChoices: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      /**
+       * Initialize
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.equationCard = document.getElementById('equation-card');
+        this.numAEl = document.getElementById('num-a');
+        this.numBEl = document.getElementById('num-b');
+        this.operatorEl = document.getElementById('operator');
+        this.answerSlot = document.getElementById('answer-slot');
+        this.visualDots = document.getElementById('visual-dots');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+
+        // Progressive difficulty:
+        // Rounds 1-4: Addition only within 5
+        // Rounds 5-7: Mix add/subtract, easier numbers
+        // Rounds 8-10: Full mix within 5
+        if (this.round <= 4) {
+          this.operation = '+';
+          this.numA = randomInt(1, 3);
+          this.numB = randomInt(1, 5 - this.numA);
+          this.answer = this.numA + this.numB;
+        } else if (this.round <= 7) {
+          this.operation = Math.random() > 0.4 ? '+' : '-';
+          if (this.operation === '+') {
+            this.numA = randomInt(1, 3);
+            this.numB = randomInt(1, 5 - this.numA);
+            this.answer = this.numA + this.numB;
+          } else {
+            this.numA = randomInt(3, 5);
+            this.numB = randomInt(1, this.numA - 1);
+            this.answer = this.numA - this.numB;
+          }
+        } else {
+          this.operation = Math.random() > 0.5 ? '+' : '-';
+          if (this.operation === '+') {
+            this.numA = randomInt(0, 4);
+            this.numB = randomInt(1, 5 - this.numA);
+            this.answer = this.numA + this.numB;
+          } else {
+            this.numA = randomInt(2, 5);
+            this.numB = randomInt(1, this.numA);
+            this.answer = this.numA - this.numB;
+          }
+        }
+
+        // Update display
+        this.numAEl.textContent = this.numA;
+        this.numBEl.textContent = this.numB;
+        this.operatorEl.textContent = this.operation === '+' ? '+' : '−';
+        this.operatorEl.classList.toggle('subtract', this.operation === '-');
+        this.answerSlot.textContent = '?';
+        this.answerSlot.classList.remove('revealed');
+
+        // Render visual
+        this.renderVisual();
+
+        // Reset UI
+        this.feedback.classList.remove('show', 'error');
+
+        this.renderChoices();
+        this.renderProgress();
+      },
+
+      /**
+       * Render visual dots
+       */
+      renderVisual() {
+        const isAdd = this.operation === '+';
+
+        let html = '';
+
+        // First group (only show if numA > 0 to avoid empty box)
+        if (this.numA > 0) {
+          html += '<div class="dot-group group-a">';
+          for (let i = 0; i < this.numA; i++) {
+            html += `<div class="dot blue" style="animation-delay: ${i * 0.1}s"></div>`;
+          }
+          html += '</div>';
+
+          // Operator (only show if we have a first group)
+          html += `<span class="visual-op ${isAdd ? '' : 'subtract'}">${isAdd ? '+' : '−'}</span>`;
+        }
+
+        // Second group
+        if (isAdd) {
+          html += '<div class="dot-group group-b">';
+          for (let i = 0; i < this.numB; i++) {
+            html += `<div class="dot green" style="animation-delay: ${(this.numA + i) * 0.1}s"></div>`;
+          }
+          html += '</div>';
+        } else {
+          // For subtraction, show crossed out dots
+          html += '<div class="dot-group crossed">';
+          for (let i = 0; i < this.numB; i++) {
+            html += `<div class="dot blue crossed" style="animation-delay: ${(this.numA + i) * 0.1}s"></div>`;
+          }
+          html += '</div>';
+        }
+
+        this.visualDots.innerHTML = html;
+      },
+
+      /**
+       * Render answer choices
+       */
+      renderChoices() {
+        this.answerChoices.innerHTML = '';
+
+        // Create choices
+        const choices = new Set([this.answer]);
+
+        // Add distractors (close numbers within 0-5)
+        while (choices.size < 4) {
+          let distractor;
+          if (Math.random() > 0.5) {
+            distractor = this.answer + randomInt(-2, 2);
+          } else {
+            distractor = randomInt(0, 5);
+          }
+          if (distractor >= 0 && distractor <= 5 && distractor !== this.answer) {
+            choices.add(distractor);
+          }
+        }
+
+        const choicesArray = Array.from(choices);
+        this.shuffleArray(choicesArray);
+
+        choicesArray.forEach(num => {
+          const btn = document.createElement('button');
+          btn.className = 'answer-btn';
+          btn.textContent = num;
+          btn.addEventListener('click', () => this.selectAnswer(num, btn));
+          this.answerChoices.appendChild(btn);
+        });
+      },
+
+      /**
+       * Shuffle array
+       */
+      shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      },
+
+      /**
+       * Select answer
+       */
+      selectAnswer(num, btn) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        // Disable all buttons
+        const allBtns = this.answerChoices.querySelectorAll('.answer-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        // Reveal answer
+        this.answerSlot.textContent = this.answer;
+        this.answerSlot.classList.add('revealed');
+
+        const isCorrect = num === this.answer;
+        const opSymbol = this.operation === '+' ? '+' : '−';
+
+        if (isCorrect) {
+          btn.classList.add('correct');
+          const msg = i18n.t('section.activities.fluency-within-5.correct') || 'Yes! {{a}} {{op}} {{b}} = {{answer}}';
+          this.feedback.textContent = msg
+            .replace('{{a}}', this.numA)
+            .replace('{{op}}', opSymbol)
+            .replace('{{b}}', this.numB)
+            .replace('{{answer}}', this.answer);
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          if (typeof celebrate === 'function') {
+            celebrate(btn);
+          }
+        } else {
+          btn.classList.add('incorrect');
+          allBtns.forEach(b => {
+            if (parseInt(b.textContent) === this.answer) {
+              b.classList.add('correct');
+            }
+          });
+          const msg = i18n.t('section.activities.fluency-within-5.incorrect') || '{{a}} {{op}} {{b}} = {{answer}}';
+          this.feedback.textContent = msg
+            .replace('{{a}}', this.numA)
+            .replace('{{op}}', opSymbol)
+            .replace('{{b}}', this.numB)
+            .replace('{{answer}}', this.answer);
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.fluency-within-5.perfect') || 'Math Star!';
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.fluency-within-5.great') || 'Great practice!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.fluency-within-5.keepPracticing') || 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      FluencyWithin5.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

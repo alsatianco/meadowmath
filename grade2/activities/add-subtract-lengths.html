@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Add/Subtract Lengths - Grade 2 Math Activity - Meadow Math">
+  <title>Add/Subtract Lengths - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade2">Grade 2</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🧮</span>
+            <span data-i18n="section.activities.add-subtract-lengths.title">Add/Subtract Lengths</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.add-subtract-lengths.instruction">Solve word problems about lengths!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Story Card -->
+          <div class="story-card" id="story-card">
+            <div class="story-icon" id="story-icon">📏</div>
+            <div class="story-text" id="story-text"></div>
+          </div>
+
+          <!-- Visual Length Display -->
+          <div class="length-visual" id="length-visual">
+            <div class="length-bar-container">
+              <div class="length-bar original" id="original-bar"></div>
+              <div class="length-bar-label" id="original-label"></div>
+            </div>
+            <div class="operation-indicator" id="operation-indicator"></div>
+            <div class="length-bar-container result-container" id="result-container">
+              <div class="length-bar result" id="result-bar"></div>
+              <div class="length-bar-label result-label" id="result-label">?</div>
+            </div>
+          </div>
+
+          <!-- Question -->
+          <div class="question-text" id="question-text"></div>
+
+          <!-- Choice Buttons -->
+          <div class="choice-container" id="choice-container"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job with lengths!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Add/Subtract Lengths Activity - Grade 2 Level 4
+    const AddSubtractLengths = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // Current question state
+      originalLength: 0,
+      changeLength: 0,
+      operation: 'add', // 'add' or 'subtract'
+      unit: 'cm',
+      storyType: null,
+
+      // Story templates
+      storyTemplates: {
+        add: [
+          { icon: '🎀', key: 'ribbonAdd', object: 'ribbon' },
+          { icon: '🪵', key: 'stickAdd', object: 'stick' },
+          { icon: '📏', key: 'paperAdd', object: 'paper' },
+          { icon: '🧵', key: 'stringAdd', object: 'string' }
+        ],
+        subtract: [
+          { icon: '🎀', key: 'ribbonCut', object: 'ribbon' },
+          { icon: '🪵', key: 'stickBreak', object: 'stick' },
+          { icon: '📏', key: 'paperCut', object: 'paper' },
+          { icon: '🧵', key: 'stringCut', object: 'string' }
+        ]
+      },
+
+      // DOM elements
+      storyIcon: null,
+      storyText: null,
+      originalBar: null,
+      originalLabel: null,
+      operationIndicator: null,
+      resultBar: null,
+      resultLabel: null,
+      questionText: null,
+      choiceContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.storyIcon = document.getElementById('story-icon');
+        this.storyText = document.getElementById('story-text');
+        this.originalBar = document.getElementById('original-bar');
+        this.originalLabel = document.getElementById('original-label');
+        this.operationIndicator = document.getElementById('operation-indicator');
+        this.resultBar = document.getElementById('result-bar');
+        this.resultLabel = document.getElementById('result-label');
+        this.resultContainer = document.getElementById('result-container');
+        this.questionText = document.getElementById('question-text');
+        this.choiceContainer = document.getElementById('choice-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        // Redraw visual on resize for responsive scaling
+        window.addEventListener('resize', () => {
+          this.renderVisual();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Re-render story and question on language change
+        if (!this.isAnswered) {
+          this.renderStory();
+          this.renderQuestion();
+        }
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      },
+
+      generateQuestion() {
+        // Alternate between addition and subtraction
+        this.operation = this.currentQuestion % 2 === 0 ? 'add' : 'subtract';
+
+        // Alternate units
+        this.unit = this.currentQuestion % 4 < 2 ? 'cm' : 'inches';
+
+        // Generate lengths based on operation
+        if (this.operation === 'add') {
+          // For addition: two smaller numbers that add up to ≤ 50
+          this.originalLength = this.randomInt(5, 30);
+          this.changeLength = this.randomInt(3, Math.min(20, 50 - this.originalLength));
+        } else {
+          // For subtraction: larger number minus smaller (result > 0)
+          this.originalLength = this.randomInt(15, 40);
+          this.changeLength = this.randomInt(3, Math.min(15, this.originalLength - 2));
+        }
+
+        // Pick a story template
+        const templates = this.storyTemplates[this.operation];
+        this.storyType = templates[this.randomInt(0, templates.length - 1)];
+
+        this.isAnswered = false;
+      },
+
+      getAnswer() {
+        return this.operation === 'add'
+          ? this.originalLength + this.changeLength
+          : this.originalLength - this.changeLength;
+      },
+
+      startQuestion() {
+        this.generateQuestion();
+        this.renderStory();
+        this.renderVisual();
+        this.renderQuestion();
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      renderStory() {
+        const unitLabel = this.getUnitLabel();
+        const storyKey = `section.activities.add-subtract-lengths.stories.${this.storyType.key}`;
+
+        this.storyIcon.textContent = this.storyType.icon;
+
+        // Try to get translated story, fallback to English
+        let storyText = window.i18n ? i18n.t(storyKey) : null;
+
+        if (!storyText || storyText === storyKey) {
+          // Fallback stories in English
+          const fallbackStories = {
+            ribbonAdd: `A ribbon is ${this.originalLength} ${unitLabel} long. You add another piece that is ${this.changeLength} ${unitLabel}.`,
+            stickAdd: `A stick is ${this.originalLength} ${unitLabel} long. You attach another piece that is ${this.changeLength} ${unitLabel}.`,
+            paperAdd: `A strip of paper is ${this.originalLength} ${unitLabel} long. You tape on ${this.changeLength} ${unitLabel} more.`,
+            stringAdd: `A piece of string is ${this.originalLength} ${unitLabel} long. You tie on ${this.changeLength} ${unitLabel} more.`,
+            ribbonCut: `A ribbon is ${this.originalLength} ${unitLabel} long. You cut off ${this.changeLength} ${unitLabel}.`,
+            stickBreak: `A stick is ${this.originalLength} ${unitLabel} long. ${this.changeLength} ${unitLabel} breaks off.`,
+            paperCut: `A strip of paper is ${this.originalLength} ${unitLabel} long. You cut off ${this.changeLength} ${unitLabel}.`,
+            stringCut: `A piece of string is ${this.originalLength} ${unitLabel} long. You cut off ${this.changeLength} ${unitLabel}.`
+          };
+          storyText = fallbackStories[this.storyType.key];
+        } else {
+          // Replace placeholders
+          storyText = storyText
+            .replace('{original}', this.originalLength)
+            .replace('{change}', this.changeLength)
+            .replace('{unit}', unitLabel);
+        }
+
+        this.storyText.textContent = storyText;
+      },
+
+      getUnitLabel() {
+        if (this.unit === 'cm') {
+          return window.i18n ? i18n.t('section.activities.add-subtract-lengths.cm') : 'cm';
+        } else {
+          return window.i18n ? i18n.t('section.activities.add-subtract-lengths.inches') : 'in';
+        }
+      },
+
+      renderVisual() {
+        const unitLabel = this.getUnitLabel();
+        const answer = this.getAnswer();
+
+        // Scale for visual (pixels per unit)
+        const isMobile = window.innerWidth <= 480;
+        const pixelsPerUnit = this.unit === 'cm'
+          ? (isMobile ? 4 : 6)
+          : (isMobile ? 8 : 12);
+        const maxWidth = isMobile ? 250 : 350;
+
+        // Original bar
+        const originalWidth = Math.min(this.originalLength * pixelsPerUnit, maxWidth);
+        this.originalBar.style.width = `${originalWidth}px`;
+        this.originalLabel.textContent = `${this.originalLength} ${unitLabel}`;
+
+        // Operation indicator
+        if (this.operation === 'add') {
+          this.operationIndicator.textContent = `+ ${this.changeLength} ${unitLabel}`;
+          this.operationIndicator.className = 'operation-indicator add';
+        } else {
+          this.operationIndicator.textContent = `− ${this.changeLength} ${unitLabel}`;
+          this.operationIndicator.className = 'operation-indicator subtract';
+        }
+
+        // Result bar (hidden until answered)
+        this.resultBar.style.width = '0px';
+        this.resultLabel.textContent = '?';
+        this.resultContainer.classList.remove('revealed');
+      },
+
+      renderQuestion() {
+        this.choiceContainer.innerHTML = '';
+
+        if (this.isAnswered) return;
+
+        const unitLabel = this.getUnitLabel();
+        const answer = this.getAnswer();
+
+        // Set question text
+        let questionKey = this.operation === 'add'
+          ? 'section.activities.add-subtract-lengths.howLongNow'
+          : 'section.activities.add-subtract-lengths.howLongLeft';
+
+        let question = window.i18n ? i18n.t(questionKey) : null;
+        if (!question || question === questionKey) {
+          question = this.operation === 'add'
+            ? 'How long is it now?'
+            : 'How long is it now?';
+        }
+        this.questionText.textContent = question;
+
+        // Generate choices
+        const choices = [answer];
+        const distractors = new Set();
+
+        // Wrong operation answer
+        const wrongOp = this.operation === 'add'
+          ? this.originalLength - this.changeLength
+          : this.originalLength + this.changeLength;
+        if (wrongOp > 0) distractors.add(wrongOp);
+
+        // Off by small amounts
+        [-3, -2, -1, 1, 2, 3, 5].forEach(offset => {
+          const d = answer + offset;
+          if (d > 0 && d !== answer) {
+            distractors.add(d);
+          }
+        });
+
+        // Convert to array and pick 3
+        const distractorArray = Array.from(distractors).filter(d => d !== answer);
+        this.shuffleArray(distractorArray);
+        choices.push(...distractorArray.slice(0, 3));
+
+        // Ensure we have 4 choices
+        while (choices.length < 4) {
+          const extra = this.randomInt(Math.max(1, answer - 10), answer + 10);
+          if (extra > 0 && !choices.includes(extra)) {
+            choices.push(extra);
+          }
+        }
+
+        this.shuffleArray(choices);
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.textContent = `${choice} ${unitLabel}`;
+          btn.dataset.value = choice;
+          btn.addEventListener('click', () => this.selectAnswer(choice));
+          this.choiceContainer.appendChild(btn);
+        });
+      },
+
+      selectAnswer(value) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const answer = this.getAnswer();
+        const isCorrect = value === answer;
+        const unitLabel = this.getUnitLabel();
+
+        // Highlight buttons
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          const btnValue = parseInt(btn.dataset.value);
+          if (btnValue === answer) {
+            btn.classList.add('correct');
+          } else if (btnValue === value && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+          btn.disabled = true;
+        });
+
+        // Reveal result bar
+        this.revealResult(answer);
+
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = window.i18n
+            ? i18n.t('section.activities.add-subtract-lengths.correct')
+                .replace('{answer}', answer)
+                .replace('{unit}', unitLabel)
+            : `✓ Correct! It's ${answer} ${unitLabel}.`;
+          this.feedback.textContent = msg;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const msg = window.i18n
+            ? i18n.t('section.activities.add-subtract-lengths.wrong')
+                .replace('{answer}', answer)
+                .replace('{unit}', unitLabel)
+            : `The answer is ${answer} ${unitLabel}.`;
+          this.feedback.textContent = msg;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      revealResult(answer) {
+        const unitLabel = this.getUnitLabel();
+        const isMobile = window.innerWidth <= 480;
+        const pixelsPerUnit = this.unit === 'cm'
+          ? (isMobile ? 4 : 6)
+          : (isMobile ? 8 : 12);
+        const maxWidth = isMobile ? 250 : 350;
+
+        const resultWidth = Math.min(answer * pixelsPerUnit, maxWidth);
+
+        this.resultContainer.classList.add('revealed');
+        this.resultBar.style.width = `${resultWidth}px`;
+        this.resultLabel.textContent = `${answer} ${unitLabel}`;
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.isAnswered = false;
+        this.renderQuestion();
+        this.renderVisual();
+        this.feedback.classList.remove('show', 'error');
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.add-subtract-lengths.perfect')
+            : 'Amazing length skills!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🧮';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.add-subtract-lengths.great')
+            : 'Great work with lengths!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.add-subtract-lengths.keepPracticing')
+            : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => AddSubtractLengths.init());
+      } else {
+        AddSubtractLengths.init();
+      }
+    });
+  </script>
+  <style>
+    /* Add/Subtract Lengths specific styles */
+
+    /* Story Card */
+    .story-card {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-4);
+      padding: var(--space-5);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #7dd3fc;
+      margin: var(--space-4) auto;
+      max-width: 500px;
+    }
+
+    .story-icon {
+      font-size: 48px;
+      flex-shrink: 0;
+    }
+
+    .story-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-medium);
+      color: var(--color-neutral-700);
+      line-height: 1.5;
+    }
+
+    /* Length Visual */
+    .length-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-3);
+      margin: var(--space-5) auto;
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #fefce8, #fef3c7);
+      border-radius: var(--radius-xl);
+      border: 3px solid #fde047;
+      max-width: 500px;
+    }
+
+    .length-bar-container {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      width: 100%;
+    }
+
+    .length-bar {
+      height: 32px;
+      border-radius: var(--radius-md);
+      transition: width 0.5s ease;
+      min-width: 20px;
+    }
+
+    .length-bar.original {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      border: 2px solid #1d4ed8;
+    }
+
+    .length-bar.result {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border: 2px solid #15803d;
+    }
+
+    .length-bar-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-600);
+      white-space: nowrap;
+    }
+
+    .result-label {
+      font-size: var(--text-xl);
+      color: #16a34a;
+    }
+
+    .result-container {
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+
+    .result-container.revealed {
+      opacity: 1;
+    }
+
+    /* Operation Indicator */
+    .operation-indicator {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      margin-left: var(--space-8);
+    }
+
+    .operation-indicator.add {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      color: #166534;
+      border: 2px solid #22c55e;
+    }
+
+    .operation-indicator.subtract {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      color: #991b1b;
+      border: 2px solid #f87171;
+    }
+
+    /* Question text */
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      margin: var(--space-4) 0;
+      text-align: center;
+    }
+
+    /* Choice Container */
+    .choice-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      margin: var(--space-4) auto;
+      max-width: 360px;
+    }
+
+    .choice-btn {
+      padding: var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #ffffff, #f8fafc);
+      border: 3px solid var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 0 var(--color-neutral-300);
+      min-height: 80px;
+      aspect-ratio: 1.3 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: #3b82f6;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 #2563eb;
+    }
+
+    .choice-btn:focus:not(:disabled) {
+      outline: none;
+      box-shadow: 0 3px 0 var(--color-neutral-300), 0 0 0 3px rgba(59, 130, 246, 0.4);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 1px 0 var(--color-neutral-300);
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      box-shadow: 0 3px 0 #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      box-shadow: 0 3px 0 #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    .choice-btn:disabled {
+      cursor: default;
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback positioning */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .story-card {
+        padding: var(--space-4);
+        gap: var(--space-3);
+      }
+
+      .story-icon {
+        font-size: 36px;
+      }
+
+      .story-text {
+        font-size: var(--text-base);
+      }
+
+      .length-visual {
+        padding: var(--space-3);
+      }
+
+      .length-bar {
+        height: 26px;
+      }
+
+      .length-bar-label {
+        font-size: var(--text-sm);
+      }
+
+      .operation-indicator {
+        font-size: var(--text-base);
+        margin-left: var(--space-6);
+      }
+
+      .question-text {
+        font-size: var(--text-lg);
+      }
+
+      .choice-container {
+        gap: var(--space-2);
+        max-width: 320px;
+      }
+
+      .choice-btn {
+        padding: var(--space-3);
+        font-size: var(--text-lg);
+        min-height: 70px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .story-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .length-visual {
+        padding: var(--space-2);
+      }
+
+      .operation-indicator {
+        margin-left: var(--space-4);
+        font-size: var(--text-sm);
+        padding: var(--space-1) var(--space-3);
+      }
+
+      .choice-container {
+        max-width: 300px;
+      }
+
+      .choice-btn {
+        font-size: var(--text-base);
+        min-height: 68px;
+        padding: var(--space-3);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

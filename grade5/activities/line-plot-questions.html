@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Line Plot Questions - Grade 5 Math Activity - Meadow Math">
+  <title>Line Plot Questions - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">❓</span>
+            <span data-i18n="section.activities.line-plot-questions.title">Line Plot Questions</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.line-plot-questions.instruction">Answer questions about the line plot!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Line Plot Display -->
+          <div class="plot-container" id="plot-container">
+            <div class="plot-title" id="plot-title">
+              <!-- Title will be shown here -->
+            </div>
+            <div class="plot-area" id="plot-area">
+              <!-- Plot marks will be rendered here -->
+            </div>
+            <div class="plot-axis" id="plot-axis">
+              <!-- Axis labels will be rendered here -->
+            </div>
+            <div class="plot-label" id="plot-label">
+              <!-- Label will be shown here -->
+            </div>
+          </div>
+
+          <!-- Question Area -->
+          <div class="question-container" id="question-container">
+            <div class="question-text" id="question-text">
+              <!-- Question will be shown here -->
+            </div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <!-- Choices will be rendered here -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.line-plot-questions.great">Great work with line plot questions!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Line Plot Questions Activity - Grade 5 Level 4
+    const LinePlotQuestions = {
+      currentQuestion: 0,
+      totalQuestions: 6,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+      currentPlot: null,
+
+      // Data set templates (pre-built line plots)
+      dataSets: [
+        {
+          title: 'Plant Heights',
+          titleKey: 'titlePlantHeights',
+          unit: 'inches',
+          unitKey: 'unitInches',
+          data: { '1/4': 3, '1/2': 4, '3/4': 2, '1': 1 },
+          min: 0, max: 1, step: 1/4
+        },
+        {
+          title: 'Pencil Lengths',
+          titleKey: 'titlePencilLengths',
+          unit: 'inches',
+          unitKey: 'unitInches',
+          data: { '5 1/4': 1, '5 1/2': 3, '5 3/4': 2, '6': 2 },
+          min: 5, max: 6, step: 1/4
+        },
+        {
+          title: 'Rainfall Amounts',
+          titleKey: 'titleRainfallAmounts',
+          unit: 'inches',
+          unitKey: 'unitInches',
+          data: { '1/8': 2, '1/4': 3, '3/8': 2, '1/2': 1 },
+          min: 0, max: 1/2, step: 1/8
+        },
+        {
+          title: 'Bug Lengths',
+          titleKey: 'titleBugLengths',
+          unit: 'cm',
+          unitKey: 'unitCm',
+          data: { '1/4': 1, '1/2': 3, '3/4': 2, '1': 2 },
+          min: 0, max: 1, step: 1/4
+        },
+        {
+          title: 'Ribbon Pieces',
+          titleKey: 'titleRibbonPieces',
+          unit: 'yards',
+          unitKey: 'unitYards',
+          data: { '1/4': 4, '1/2': 3, '3/4': 2, '1': 1 },
+          min: 0, max: 1, step: 1/4
+        },
+        {
+          title: 'Snowfall',
+          titleKey: 'titleSnowfall',
+          unit: 'inches',
+          unitKey: 'unitInches',
+          data: { '2 1/4': 2, '2 1/2': 3, '2 3/4': 2, '3': 1 },
+          min: 2, max: 3, step: 1/4
+        }
+      ],
+
+      // Question types
+      questionTypes: ['total', 'count', 'difference', 'mode'],
+
+      // DOM elements
+      plotContainer: null,
+      plotTitle: null,
+      plotArea: null,
+      plotAxis: null,
+      plotLabel: null,
+      questionContainer: null,
+      questionText: null,
+      choicesContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.plotContainer = document.getElementById('plot-container');
+        this.plotTitle = document.getElementById('plot-title');
+        this.plotArea = document.getElementById('plot-area');
+        this.plotAxis = document.getElementById('plot-axis');
+        this.plotLabel = document.getElementById('plot-label');
+        this.questionContainer = document.getElementById('question-container');
+        this.questionText = document.getElementById('question-text');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      // Fraction utilities
+      parseFraction(str) {
+        str = String(str).trim();
+        const parts = str.split(' ');
+        if (parts.length === 2) {
+          const whole = parseInt(parts[0]);
+          const [num, den] = parts[1].split('/').map(Number);
+          return whole + num / den;
+        } else if (str.includes('/')) {
+          const [num, den] = str.split('/').map(Number);
+          return num / den;
+        }
+        return parseFloat(str);
+      },
+
+      formatFraction(decimal, step) {
+        const den = Math.round(1 / step);
+        const whole = Math.floor(decimal);
+        const remainder = decimal - whole;
+
+        if (Math.abs(remainder) < 0.0001) {
+          return whole.toString();
+        }
+
+        const num = Math.round(remainder * den);
+        if (whole === 0) {
+          return `${num}/${den}`;
+        }
+        return `${whole} ${num}/${den}`;
+      },
+
+      gcd(a, b) {
+        a = Math.abs(Math.round(a));
+        b = Math.abs(Math.round(b));
+        while (b) { const t = b; b = a % b; a = t; }
+        return a;
+      },
+
+      simplifyFraction(num, den) {
+        const g = this.gcd(num, den);
+        return { num: num / g, den: den / g };
+      },
+
+      formatSimplifiedFraction(decimal) {
+        // Convert decimal to simplified fraction or mixed number
+        const tolerance = 0.0001;
+        for (let den = 1; den <= 100; den++) {
+          const num = Math.round(decimal * den);
+          if (Math.abs(num / den - decimal) < tolerance) {
+            const simplified = this.simplifyFraction(num, den);
+            if (simplified.den === 1) {
+              return simplified.num.toString();
+            }
+            const whole = Math.floor(simplified.num / simplified.den);
+            const remainder = simplified.num % simplified.den;
+            if (whole === 0) {
+              return `${simplified.num}/${simplified.den}`;
+            } else if (remainder === 0) {
+              return whole.toString();
+            } else {
+              return `${whole} ${remainder}/${simplified.den}`;
+            }
+          }
+        }
+        // Fallback to decimal
+        return decimal.toFixed(2);
+      },
+
+      generateQuestions() {
+        this.questions = [];
+        const shuffledSets = shuffle([...this.dataSets]);
+
+        // Generate questions from different datasets and types
+        for (let i = 0; i < this.totalQuestions; i++) {
+          const dataSet = shuffledSets[i % shuffledSets.length];
+          const type = this.questionTypes[i % this.questionTypes.length];
+          this.questions.push({ dataSet, type });
+        }
+
+        // Shuffle questions
+        this.questions = shuffle(this.questions);
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        const questionData = this.questions[this.currentQuestion];
+        if (!questionData) {
+          this.showStats();
+          return;
+        }
+
+        this.currentPlot = questionData.dataSet;
+
+        // Build the line plot display
+        this.buildPlot(this.currentPlot);
+
+        // Generate question and choices
+        const { question, answer, choices } = this.generateQuestionData(questionData);
+
+        // Display question
+        this.questionText.textContent = question;
+
+        // Display choices
+        this.renderChoices(choices, answer);
+
+        this.renderProgress();
+      },
+
+      buildPlot(dataSet) {
+        this.plotArea.innerHTML = '';
+        this.plotAxis.innerHTML = '';
+
+        // Calculate tick positions
+        const tickValues = [];
+        for (let v = dataSet.min; v <= dataSet.max + 0.001; v += dataSet.step) {
+          tickValues.push(Math.round(v * 1000) / 1000);
+        }
+
+        // Create columns for each tick
+        tickValues.forEach((val) => {
+          const col = document.createElement('div');
+          col.className = 'plot-column static';
+
+          // Marks container
+          const marksContainer = document.createElement('div');
+          marksContainer.className = 'marks-container';
+
+          // Get count for this value
+          const fracStr = this.formatFraction(val, dataSet.step);
+          const count = dataSet.data[fracStr] || 0;
+
+          for (let i = 0; i < count; i++) {
+            const mark = document.createElement('div');
+            mark.className = 'plot-mark';
+            mark.textContent = 'X';
+            marksContainer.appendChild(mark);
+          }
+
+          col.appendChild(marksContainer);
+          this.plotArea.appendChild(col);
+
+          // Axis tick and label
+          const tick = document.createElement('div');
+          tick.className = 'axis-tick';
+
+          const tickLine = document.createElement('div');
+          tickLine.className = 'tick-line';
+          tick.appendChild(tickLine);
+
+          const tickLabel = document.createElement('span');
+          tickLabel.className = 'tick-label';
+          tickLabel.textContent = fracStr;
+          tick.appendChild(tickLabel);
+
+          this.plotAxis.appendChild(tick);
+        });
+
+        // Set plot label
+        const titleText = this.getTranslation(
+          `section.activities.line-plot-questions.${dataSet.titleKey}`,
+          dataSet.title
+        );
+        const unitText = this.getTranslation(
+          `section.activities.line-plot-questions.${dataSet.unitKey}`,
+          dataSet.unit
+        );
+        this.plotLabel.textContent = `${titleText} (${unitText})`;
+      },
+
+      generateQuestionData(questionData) {
+        const { dataSet, type } = questionData;
+        const unitText = this.getTranslation(
+          `section.activities.line-plot-questions.${dataSet.unitKey}`,
+          dataSet.unit
+        );
+
+        let question, answer, choices;
+
+        // Calculate totals from data
+        const entries = Object.entries(dataSet.data);
+        const values = entries.map(([frac, count]) => ({
+          frac,
+          decimal: this.parseFraction(frac),
+          count
+        }));
+
+        const totalCount = values.reduce((sum, v) => sum + v.count, 0);
+        const totalSum = values.reduce((sum, v) => sum + v.decimal * v.count, 0);
+        const maxVal = Math.max(...values.map(v => v.decimal));
+        const minVal = Math.min(...values.filter(v => v.count > 0).map(v => v.decimal));
+        const modeEntry = values.reduce((max, v) => v.count > max.count ? v : max, values[0]);
+
+        switch (type) {
+          case 'total':
+            question = this.getTranslation(
+              'section.activities.line-plot-questions.questionTotal',
+              `What is the total of all the ${unitText} combined?`
+            ).replace('{unit}', unitText);
+            answer = totalSum;
+            break;
+
+          case 'count':
+            question = this.getTranslation(
+              'section.activities.line-plot-questions.questionCount',
+              'How many data points are on the line plot?'
+            );
+            answer = totalCount;
+            break;
+
+          case 'difference':
+            question = this.getTranslation(
+              'section.activities.line-plot-questions.questionDifference',
+              `What is the difference between the longest and shortest measurement?`
+            ).replace('{unit}', unitText);
+            answer = maxVal - minVal;
+            break;
+
+          case 'mode':
+            question = this.getTranslation(
+              'section.activities.line-plot-questions.questionMode',
+              'Which measurement appears most often?'
+            );
+            answer = modeEntry.frac;
+            break;
+        }
+
+        // Generate choices
+        if (type === 'mode') {
+          choices = values.map(v => v.frac);
+          choices = shuffle(choices);
+        } else if (type === 'count') {
+          choices = this.generateNumberChoices(answer, 1, totalCount + 3);
+        } else {
+          choices = this.generateFractionChoices(answer, dataSet.step);
+        }
+
+        return { question, answer, choices };
+      },
+
+      generateNumberChoices(correct, min, max) {
+        const choices = [correct];
+        const used = new Set([correct]);
+
+        while (choices.length < 4) {
+          let distractor;
+          if (choices.length === 1) {
+            distractor = correct + 1;
+          } else if (choices.length === 2) {
+            distractor = correct - 1;
+          } else {
+            distractor = correct + (Math.random() > 0.5 ? 2 : -2);
+          }
+          distractor = Math.max(min, Math.min(max, Math.round(distractor)));
+          if (!used.has(distractor)) {
+            choices.push(distractor);
+            used.add(distractor);
+          }
+        }
+
+        return shuffle(choices);
+      },
+
+      generateFractionChoices(correct, step) {
+        const choices = [correct];
+        const used = new Set([correct.toFixed(4)]);
+
+        // Add nearby fractions as distractors
+        const distractors = [
+          correct + step,
+          correct - step,
+          correct + step * 2,
+          correct - step * 2,
+          correct * 2,
+          correct / 2
+        ].filter(v => v > 0 && !used.has(v.toFixed(4)));
+
+        for (const d of distractors) {
+          if (choices.length >= 4) break;
+          if (!used.has(d.toFixed(4))) {
+            choices.push(d);
+            used.add(d.toFixed(4));
+          }
+        }
+
+        // Fill remaining with random variations
+        while (choices.length < 4) {
+          const random = correct + (Math.random() - 0.5) * step * 4;
+          const rounded = Math.round(random / step) * step;
+          if (rounded > 0 && !used.has(rounded.toFixed(4))) {
+            choices.push(rounded);
+            used.add(rounded.toFixed(4));
+          }
+        }
+
+        return shuffle(choices);
+      },
+
+      renderChoices(choices, answer) {
+        this.choicesContainer.innerHTML = '';
+        const questionData = this.questions[this.currentQuestion];
+        const type = questionData.type;
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.setAttribute('tabindex', '0');
+
+          // Format the choice text
+          let displayText;
+          if (type === 'mode') {
+            displayText = choice;
+          } else if (type === 'count') {
+            displayText = choice.toString();
+          } else {
+            displayText = this.formatSimplifiedFraction(choice);
+          }
+
+          btn.textContent = displayText;
+          btn.addEventListener('click', () => this.checkAnswer(choice, answer, type));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.checkAnswer(choice, answer, type);
+            }
+          });
+
+          this.choicesContainer.appendChild(btn);
+        });
+      },
+
+      checkAnswer(selected, correct, type) {
+        if (this.isAnswered) return;
+
+        this.isAnswered = true;
+
+        // Disable all buttons
+        const buttons = this.choicesContainer.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => btn.disabled = true);
+
+        // Check if correct
+        let isCorrect;
+        if (type === 'mode') {
+          isCorrect = selected === correct;
+        } else {
+          isCorrect = Math.abs(selected - correct) < 0.0001;
+        }
+
+        // Highlight correct/incorrect
+        buttons.forEach(btn => {
+          let btnValue;
+          if (type === 'mode') {
+            btnValue = btn.textContent;
+          } else if (type === 'count') {
+            btnValue = parseInt(btn.textContent);
+          } else {
+            btnValue = this.parseFraction(btn.textContent);
+          }
+
+          let isThisCorrect;
+          if (type === 'mode') {
+            isThisCorrect = btnValue === correct;
+          } else {
+            isThisCorrect = Math.abs(btnValue - correct) < 0.0001;
+          }
+
+          if (isThisCorrect) {
+            btn.classList.add('correct');
+          } else if (btn.textContent === (type === 'mode' ? selected : this.formatSimplifiedFraction(selected)) ||
+                     (type === 'count' && parseInt(btn.textContent) === selected)) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+          const feedbackText = this.getTranslation(
+            'section.activities.line-plot-questions.correct',
+            'Correct!'
+          );
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          let correctDisplay;
+          if (type === 'mode') {
+            correctDisplay = correct;
+          } else if (type === 'count') {
+            correctDisplay = correct;
+          } else {
+            correctDisplay = this.formatSimplifiedFraction(correct);
+          }
+
+          const feedbackText = this.getTranslation(
+            'section.activities.line-plot-questions.wrong',
+            'The answer is {answer}.'
+          ).replace('{answer}', correctDisplay);
+
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+        this.scheduleAdvance();
+      },
+
+      scheduleAdvance() {
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+
+        // Refresh current question if not answered
+        if (!this.isAnswered && this.currentPlot) {
+          this.buildPlot(this.currentPlot);
+        }
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.line-plot-questions.perfect',
+            'Perfect! You mastered line plot questions!'
+          );
+        } else if (percent >= 0.75) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.line-plot-questions.great',
+            'Great work with line plot questions!'
+          );
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.line-plot-questions.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.line-plot-questions.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => LinePlotQuestions.init());
+      } else {
+        LinePlotQuestions.init();
+      }
+    });
+  </script>
+  <style>
+    /* Line Plot Questions specific styles */
+
+    /* Plot Container */
+    .plot-container {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 2px solid #e5e7eb;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .plot-title {
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: #6b7280;
+      margin-bottom: var(--space-3);
+    }
+
+    .plot-area {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      min-height: 120px;
+      border-bottom: 3px solid #374151;
+      padding-bottom: var(--space-2);
+      margin-bottom: var(--space-2);
+    }
+
+    .plot-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      min-height: 100px;
+      padding: var(--space-1);
+    }
+
+    .plot-column.static {
+      cursor: default;
+    }
+
+    .marks-container {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .plot-mark {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #3b82f6;
+      line-height: 1;
+    }
+
+    .plot-axis {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .axis-tick {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tick-line {
+      width: 2px;
+      height: 10px;
+      background: #374151;
+    }
+
+    .tick-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: #374151;
+      margin-top: var(--space-1);
+    }
+
+    .plot-label {
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #1e3a5f;
+      margin-top: var(--space-3);
+    }
+
+    /* Question Container */
+    .question-container {
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border-radius: var(--radius-xl);
+      border: 3px solid #0ea5e9;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      text-align: center;
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #0c4a6e;
+    }
+
+    /* Choices Container */
+    .choices-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .choice-btn {
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #374151;
+      background: white;
+      border: 3px solid #d1d5db;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 60px;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: #f3f4f6;
+      border-color: #9ca3af;
+      transform: scale(1.02);
+    }
+
+    .choice-btn:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn.correct {
+      background: #dcfce7;
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: #fee2e2;
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    /* Feedback and layout */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .plot-container {
+        padding: var(--space-3);
+      }
+
+      .plot-area {
+        min-height: 100px;
+      }
+
+      .plot-column {
+        min-height: 80px;
+      }
+
+      .plot-mark {
+        font-size: var(--text-base);
+      }
+
+      .tick-label {
+        font-size: var(--text-xs);
+      }
+
+      .plot-label {
+        font-size: var(--text-sm);
+      }
+
+      .question-container {
+        padding: var(--space-3);
+      }
+
+      .question-text {
+        font-size: var(--text-base);
+      }
+
+      .choices-container {
+        gap: var(--space-2);
+      }
+
+      .choice-btn {
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--text-base);
+        min-height: 50px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .plot-column {
+        min-height: 60px;
+        padding: 2px;
+      }
+
+      .plot-mark {
+        font-size: var(--text-sm);
+      }
+
+      .tick-label {
+        font-size: 10px;
+      }
+
+      .plot-label {
+        font-size: var(--text-xs);
+      }
+
+      .question-text {
+        font-size: var(--text-sm);
+      }
+
+      .choices-container {
+        grid-template-columns: 1fr;
+      }
+
+      .choice-btn {
+        font-size: var(--text-base);
+        min-height: 48px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

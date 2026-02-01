@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Build the Fraction - Grade 3 Math Activity - Meadow Math">
+  <title>Build the Fraction - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧱</span>
+            <span data-i18n="section.activities.build-the-fraction.title">Build the Fraction</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.build-the-fraction.instruction">Tap parts to make the fraction!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Target Fraction Display -->
+          <div class="target-display" id="target-display">
+            <span class="target-label" data-i18n="section.activities.build-the-fraction.make">Make:</span>
+            <div class="target-fraction" id="target-fraction">
+              <span class="fraction-numerator" id="target-numerator">3</span>
+              <span class="fraction-denominator" id="target-denominator">4</span>
+            </div>
+          </div>
+
+          <!-- Shape Display -->
+          <div class="shape-display" id="shape-display">
+            <!-- Interactive shape with clickable parts will be shown here -->
+          </div>
+
+          <!-- Current Count Display -->
+          <div class="count-display" id="count-display">
+            <span data-i18n="section.activities.build-the-fraction.shaded">Shaded:</span>
+            <span id="shaded-count">0</span> / <span id="total-parts">4</span>
+          </div>
+
+          <!-- Check Button -->
+          <button class="btn-activity btn-primary check-btn" id="btn-check" data-i18n="section.activities.build-the-fraction.checkAnswer">Check My Answer</button>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.build-the-fraction.great">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Build the Fraction specific styles */
+    .target-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      padding: var(--space-4) var(--space-6);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 4px solid #f59e0b;
+      margin-bottom: var(--space-6);
+    }
+
+    .target-label {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-text);
+    }
+
+    .target-fraction {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      line-height: 1;
+    }
+
+    .target-fraction .fraction-numerator {
+      border-bottom: 4px solid currentColor;
+      padding-bottom: 4px;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .target-fraction .fraction-denominator {
+      padding-top: 4px;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .shape-display {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: var(--space-6);
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 4px solid #e2e8f0;
+      margin-bottom: var(--space-4);
+      min-height: 220px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .shape-display svg {
+      width: 280px;
+      height: 200px;
+      max-width: 100%;
+    }
+
+    .shape-part {
+      cursor: pointer;
+      transition: all 0.2s ease;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    .shape-part:hover {
+      filter: brightness(0.95);
+    }
+
+    .shape-part:active {
+      transform: scale(0.97);
+    }
+
+    .shape-part:focus {
+      outline: none;
+    }
+
+    .shape-part:focus-visible {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .shape-part.shaded {
+      fill: #93c5fd;
+    }
+
+    .count-display {
+      text-align: center;
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text);
+      margin-bottom: var(--space-4);
+      padding: var(--space-3);
+      background: #f8fafc;
+      border-radius: var(--radius-lg);
+      border: 2px solid #e2e8f0;
+    }
+
+    .count-display #shaded-count {
+      color: var(--color-primary);
+      font-weight: var(--weight-bold);
+    }
+
+    .check-btn {
+      display: block;
+      margin: 0 auto var(--space-6);
+      padding: var(--space-3) var(--space-8);
+      font-size: var(--text-lg);
+      min-width: 200px;
+    }
+
+    .check-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    @media (max-width: 767px) {
+      .target-display {
+        gap: var(--space-3);
+        padding: var(--space-3) var(--space-4);
+        margin-bottom: var(--space-4);
+      }
+
+      .target-label {
+        font-size: var(--text-lg);
+      }
+
+      .target-fraction {
+        font-size: var(--text-3xl);
+      }
+
+      .shape-display {
+        padding: var(--space-4);
+        margin-bottom: var(--space-3);
+        min-height: 180px;
+      }
+
+      .shape-display svg {
+        width: 240px;
+        height: 170px;
+      }
+
+      .count-display {
+        font-size: var(--text-lg);
+        margin-bottom: var(--space-3);
+      }
+
+      .check-btn {
+        padding: var(--space-3) var(--space-6);
+        font-size: var(--text-base);
+        min-width: 160px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .shape-display svg {
+        width: 200px;
+        height: 140px;
+      }
+
+      .target-fraction {
+        font-size: var(--text-2xl);
+      }
+    }
+
+    /* Activity area needs padding for feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    /* Feedback at bottom */
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Build the Fraction Activity - Grade 3
+    const BuildTheFraction = {
+      // Game state
+      currentRound: 1,
+      maxRounds: 8,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1500,
+      currentQuestion: null,
+      questions: [],
+      shadedParts: [],
+
+      // DOM elements
+      targetNumerator: null,
+      targetDenominator: null,
+      shapeDisplay: null,
+      shadedCountEl: null,
+      totalPartsEl: null,
+      btnCheck: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Shape colors
+      colors: {
+        unshaded: '#f8fafc',
+        shaded: '#93c5fd',
+        stroke: '#3b82f6',
+        hoverUnshaded: '#e2e8f0'
+      },
+
+      /**
+       * Fraction options for the activity
+       * Grade 3 uses denominators 2, 3, 4, 6, 8 (per content-g3.md)
+       */
+      fractions: [
+        { numerator: 1, denominator: 2 },
+        { numerator: 1, denominator: 3 },
+        { numerator: 2, denominator: 3 },
+        { numerator: 1, denominator: 4 },
+        { numerator: 2, denominator: 4 },
+        { numerator: 3, denominator: 4 },
+        { numerator: 1, denominator: 6 },
+        { numerator: 5, denominator: 6 },
+        { numerator: 3, denominator: 8 },
+        { numerator: 5, denominator: 8 },
+        { numerator: 7, denominator: 8 }
+      ],
+
+      /**
+       * Generate a rectangle divided into parts (horizontal)
+       */
+      generateRectangle(totalParts) {
+        const width = 240;
+        const height = 100;
+        const x = 20;
+        const y = 50;
+        const partWidth = width / totalParts;
+
+        let svg = `<svg viewBox="0 0 280 200" role="group" aria-label="Rectangle divided into ${totalParts} equal parts. Tap parts to shade them.">`;
+
+        for (let i = 0; i < totalParts; i++) {
+          const partFill = this.colors.unshaded;
+          svg += `<rect
+            class="shape-part"
+            data-index="${i}"
+            x="${x + i * partWidth}"
+            y="${y}"
+            width="${partWidth}"
+            height="${height}"
+            fill="${partFill}"
+            stroke="${this.colors.stroke}"
+            stroke-width="3"
+            tabindex="0"
+            role="button"
+            aria-label="Part ${i + 1} of ${totalParts}"
+            aria-pressed="false"
+          />`;
+        }
+
+        svg += `</svg>`;
+        return svg;
+      },
+
+      /**
+       * Generate a circle divided into pie slices
+       */
+      generateCircle(totalParts) {
+        const cx = 140;
+        const cy = 100;
+        const r = 80;
+
+        let svg = `<svg viewBox="0 0 280 200" role="group" aria-label="Circle divided into ${totalParts} equal parts. Tap parts to shade them.">`;
+
+        const angleStep = 360 / totalParts;
+        for (let i = 0; i < totalParts; i++) {
+          const startAngle = i * angleStep - 90;
+          const endAngle = startAngle + angleStep;
+          const partFill = this.colors.unshaded;
+
+          const startRad = startAngle * Math.PI / 180;
+          const endRad = endAngle * Math.PI / 180;
+
+          const x1 = cx + r * Math.cos(startRad);
+          const y1 = cy + r * Math.sin(startRad);
+          const x2 = cx + r * Math.cos(endRad);
+          const y2 = cy + r * Math.sin(endRad);
+
+          const largeArcFlag = angleStep > 180 ? 1 : 0;
+
+          svg += `<path
+            class="shape-part"
+            data-index="${i}"
+            d="M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 ${largeArcFlag} 1 ${x2} ${y2} Z"
+            fill="${partFill}"
+            stroke="${this.colors.stroke}"
+            stroke-width="3"
+            tabindex="0"
+            role="button"
+            aria-label="Part ${i + 1} of ${totalParts}"
+            aria-pressed="false"
+          />`;
+        }
+
+        svg += `</svg>`;
+        return svg;
+      },
+
+      /**
+       * Generate a bar (fraction strip) divided into parts
+       */
+      generateBar(totalParts) {
+        const width = 260;
+        const height = 60;
+        const x = 10;
+        const y = 70;
+        const partWidth = width / totalParts;
+
+        let svg = `<svg viewBox="0 0 280 200" role="group" aria-label="Bar divided into ${totalParts} equal parts. Tap parts to shade them.">`;
+
+        for (let i = 0; i < totalParts; i++) {
+          const partFill = this.colors.unshaded;
+          svg += `<rect
+            class="shape-part"
+            data-index="${i}"
+            x="${x + i * partWidth}"
+            y="${y}"
+            width="${partWidth}"
+            height="${height}"
+            fill="${partFill}"
+            stroke="${this.colors.stroke}"
+            stroke-width="3"
+            tabindex="0"
+            role="button"
+            aria-label="Part ${i + 1} of ${totalParts}"
+            aria-pressed="false"
+          />`;
+        }
+
+        svg += `</svg>`;
+        return svg;
+      },
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        // Get DOM elements
+        this.targetNumerator = document.getElementById('target-numerator');
+        this.targetDenominator = document.getElementById('target-denominator');
+        this.shapeDisplay = document.getElementById('shape-display');
+        this.shadedCountEl = document.getElementById('shaded-count');
+        this.totalPartsEl = document.getElementById('total-parts');
+        this.btnCheck = document.getElementById('btn-check');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up event listeners
+        this.btnCheck.addEventListener('click', () => this.checkAnswer());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        // Generate question sequence
+        this.generateSequence();
+
+        // Start first round
+        this.generateRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Generate a random sequence of questions
+       */
+      generateSequence() {
+        this.questions = [];
+        const shapeTypes = ['rectangle', 'circle', 'bar'];
+
+        // Shuffle fractions and pick for rounds
+        const shuffledFractions = shuffle([...this.fractions]);
+
+        for (let i = 0; i < this.maxRounds; i++) {
+          const fraction = shuffledFractions[i % shuffledFractions.length];
+          const shapeType = shapeTypes[i % shapeTypes.length];
+
+          this.questions.push({
+            fraction,
+            shapeType
+          });
+        }
+
+        // Shuffle questions for variety
+        this.questions = shuffle(this.questions);
+      },
+
+      /**
+       * Update translations when language changes
+       */
+      updateTranslations() {
+        // Update feedback message if showing
+        if (this.feedback.classList.contains('show')) {
+          const isError = this.feedback.classList.contains('error');
+          if (isError) {
+            const { fraction } = this.currentQuestion;
+            const fractionText = `${fraction.numerator}/${fraction.denominator}`;
+            this.feedback.textContent = i18n.t('section.activities.build-the-fraction.wrong')
+              .replace('{fraction}', fractionText);
+          } else {
+            this.feedback.textContent = i18n.t('section.activities.build-the-fraction.correct');
+          }
+        }
+      },
+
+      /**
+       * Generate a new round
+       */
+      generateRound() {
+        this.feedback.classList.remove('show');
+        this.btnCheck.disabled = false;
+        this.currentQuestion = this.questions[this.currentRound - 1];
+        this.shadedParts = [];
+
+        // Update target display
+        this.targetNumerator.textContent = this.currentQuestion.fraction.numerator;
+        this.targetDenominator.textContent = this.currentQuestion.fraction.denominator;
+        this.totalPartsEl.textContent = this.currentQuestion.fraction.denominator;
+
+        this.renderShape();
+        this.updateCount();
+      },
+
+      /**
+       * Render the current shape
+       */
+      renderShape() {
+        const { shapeType, fraction } = this.currentQuestion;
+        const { denominator } = fraction;
+
+        let svg;
+        switch (shapeType) {
+          case 'rectangle':
+            svg = this.generateRectangle(denominator);
+            break;
+          case 'circle':
+            svg = this.generateCircle(denominator);
+            break;
+          case 'bar':
+            svg = this.generateBar(denominator);
+            break;
+        }
+
+        this.shapeDisplay.innerHTML = svg;
+
+        // Add click handlers to parts
+        const parts = this.shapeDisplay.querySelectorAll('.shape-part');
+        parts.forEach(part => {
+          part.addEventListener('click', () => this.togglePart(part));
+          part.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.togglePart(part);
+            }
+          });
+        });
+      },
+
+      /**
+       * Toggle shading on a part
+       */
+      togglePart(part) {
+        const index = parseInt(part.dataset.index);
+        const isShaded = this.shadedParts.includes(index);
+
+        if (isShaded) {
+          // Remove from shaded
+          this.shadedParts = this.shadedParts.filter(i => i !== index);
+          part.setAttribute('fill', this.colors.unshaded);
+          part.classList.remove('shaded');
+          part.setAttribute('aria-pressed', 'false');
+        } else {
+          // Add to shaded
+          this.shadedParts.push(index);
+          part.setAttribute('fill', this.colors.shaded);
+          part.classList.add('shaded');
+          part.setAttribute('aria-pressed', 'true');
+        }
+
+        this.updateCount();
+      },
+
+      /**
+       * Update the shaded count display
+       */
+      updateCount() {
+        this.shadedCountEl.textContent = this.shadedParts.length;
+      },
+
+      /**
+       * Check the selected answer
+       */
+      checkAnswer() {
+        this.btnCheck.disabled = true;
+
+        // Disable all parts
+        const parts = this.shapeDisplay.querySelectorAll('.shape-part');
+        parts.forEach(part => {
+          part.style.pointerEvents = 'none';
+          part.setAttribute('tabindex', '-1');
+        });
+
+        const { fraction } = this.currentQuestion;
+        const isCorrect = this.shadedParts.length === fraction.numerator;
+
+        if (isCorrect) {
+          this.feedback.textContent = i18n.t('section.activities.build-the-fraction.correct');
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+        } else {
+          const fractionText = `${fraction.numerator}/${fraction.denominator}`;
+          this.feedback.textContent = i18n.t('section.activities.build-the-fraction.wrong')
+            .replace('{fraction}', fractionText);
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+
+          // Show correct answer by shading the correct number of parts
+          this.showCorrectAnswer();
+        }
+
+        this.renderProgress();
+
+        // Auto-advance after delay
+        setTimeout(() => {
+          if (this.currentRound < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show the correct answer visually
+       */
+      showCorrectAnswer() {
+        const { fraction } = this.currentQuestion;
+        const parts = this.shapeDisplay.querySelectorAll('.shape-part');
+
+        // Clear all shading first
+        parts.forEach(part => {
+          part.setAttribute('fill', this.colors.unshaded);
+          part.classList.remove('shaded');
+        });
+
+        // Shade the correct number of parts
+        for (let i = 0; i < fraction.numerator; i++) {
+          parts[i].setAttribute('fill', this.colors.shaded);
+          parts[i].classList.add('shaded');
+        }
+      },
+
+      /**
+       * Show completion stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = i18n.t('section.activities.build-the-fraction.perfect');
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.build-the-fraction.great');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = i18n.t('section.activities.build-the-fraction.keepPracticing');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart the entire activity
+       */
+      restartActivity() {
+        this.currentRound = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateSequence();
+        this.generateRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Go to next round
+       */
+      nextRound() {
+        this.currentRound++;
+        this.generateRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Render progress indicator
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      BuildTheFraction.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

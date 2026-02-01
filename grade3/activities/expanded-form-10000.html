@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Expanded Form Match (to 10,000) - Grade 3 Math Activity - Meadow Math">
+  <title>Expanded Form Match (to 10,000) - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🧩</span>
+            <span data-i18n="section.activities.expanded-form-10000.title">Expanded Form Match (to 10,000)</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.expanded-form-10000.description">Match the number to its expanded form.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Instruction -->
+          <div class="question-text" id="instruction">
+            <span data-i18n="section.activities.expanded-form-10000.instruction">Match numbers with their expanded forms!</span>
+          </div>
+
+          <!-- Matching Game Grid -->
+          <div class="matching-grid">
+            <!-- Left side: Numbers -->
+            <div class="column-section">
+              <div class="column-label" data-i18n="activity.numbers">Numbers</div>
+              <div class="numbers-column" id="numbers-column">
+                <!-- Will be populated by JS -->
+              </div>
+            </div>
+
+            <!-- Right side: Expanded forms -->
+            <div class="column-section">
+              <div class="column-label" data-i18n="section.activities.expanded-form-10000.expandedForms">Expanded Forms</div>
+              <div class="expanded-column" id="expanded-column">
+                <!-- Will be populated by JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" aria-live="assertive" aria-atomic="true"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.expanded-form-10000.great">Great job matching expanded forms!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Expanded Form Match (to 10,000) Activity - Grade 3 Level 1
+    const ExpandedFormMatch = {
+      // Game state
+      currentRound: 0,
+      totalRounds: 6,
+      correctCount: 0,
+      incorrectCount: 0,
+      selectedNumber: null,
+      selectedNumberElement: null,
+      matchPairs: [],
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // DOM elements
+      numbersColumn: null,
+      expandedColumn: null,
+      feedback: null,
+      progress: null,
+      instruction: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        // Get DOM elements
+        this.numbersColumn = document.getElementById('numbers-column');
+        this.expandedColumn = document.getElementById('expanded-column');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.instruction = document.getElementById('instruction');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up event listeners
+        this.btnReset.addEventListener('click', () => this.resetCurrentRound());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        // Generate rounds and start
+        this.generateRounds();
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Generate rounds with 3-4 pairs each
+       */
+      generateRounds() {
+        this.matchPairs = [];
+
+        for (let round = 0; round < this.totalRounds; round++) {
+          // First 2 rounds have 3 pairs, rest have 4
+          const pairCount = round < 2 ? 3 : 4;
+
+          // Progressive difficulty
+          let numbers;
+          if (round < 2) {
+            // Rounds 0-1: Simpler 4-digit numbers (all non-zero digits)
+            numbers = this.generateSimpleNumbers(pairCount);
+          } else if (round < 4) {
+            // Rounds 2-3: Mix with some zeros
+            numbers = this.generateMixedNumbers(pairCount);
+          } else {
+            // Rounds 4-5: Harder numbers with multiple zeros
+            numbers = this.generateHarderNumbers(pairCount);
+          }
+
+          this.matchPairs.push({
+            numbers: numbers,
+            pairCount: pairCount
+          });
+        }
+      },
+
+      /**
+       * Generate simple 4-digit numbers with all non-zero digits
+       */
+      generateSimpleNumbers(count) {
+        const numbers = [];
+        while (numbers.length < count) {
+          const th = this.randomInt(1, 9);
+          const h = this.randomInt(1, 9);
+          const t = this.randomInt(1, 9);
+          const o = this.randomInt(1, 9);
+          const num = th * 1000 + h * 100 + t * 10 + o;
+          if (!numbers.includes(num)) {
+            numbers.push(num);
+          }
+        }
+        return numbers;
+      },
+
+      /**
+       * Generate numbers with some zeros (one zero place)
+       */
+      generateMixedNumbers(count) {
+        const numbers = [];
+        while (numbers.length < count) {
+          const th = this.randomInt(1, 9);
+          let h = this.randomInt(0, 9);
+          let t = this.randomInt(0, 9);
+          let o = this.randomInt(0, 9);
+
+          // Force exactly one zero
+          const zeroPos = this.randomInt(0, 2);
+          if (zeroPos === 0) { h = 0; if (t === 0) t = this.randomInt(1, 9); if (o === 0) o = this.randomInt(1, 9); }
+          else if (zeroPos === 1) { t = 0; if (h === 0) h = this.randomInt(1, 9); if (o === 0) o = this.randomInt(1, 9); }
+          else { o = 0; if (h === 0) h = this.randomInt(1, 9); if (t === 0) t = this.randomInt(1, 9); }
+
+          const num = th * 1000 + h * 100 + t * 10 + o;
+          if (!numbers.includes(num) && num >= 1000) {
+            numbers.push(num);
+          }
+        }
+        return numbers;
+      },
+
+      /**
+       * Generate harder numbers with multiple zeros
+       */
+      generateHarderNumbers(count) {
+        const numbers = [];
+        while (numbers.length < count) {
+          const th = this.randomInt(1, 9);
+          let h = this.randomInt(0, 9);
+          let t = this.randomInt(0, 9);
+          let o = this.randomInt(0, 9);
+
+          // Force at least one zero, possibly two
+          const zeroCount = this.randomInt(1, 2);
+          const positions = [0, 1, 2];
+          this.shuffleArray(positions);
+
+          for (let i = 0; i < zeroCount; i++) {
+            if (positions[i] === 0) h = 0;
+            else if (positions[i] === 1) t = 0;
+            else o = 0;
+          }
+
+          // Ensure at least one non-thousand digit is non-zero
+          if (h === 0 && t === 0 && o === 0) {
+            const nonZeroPos = this.randomInt(0, 2);
+            if (nonZeroPos === 0) h = this.randomInt(1, 9);
+            else if (nonZeroPos === 1) t = this.randomInt(1, 9);
+            else o = this.randomInt(1, 9);
+          }
+
+          const num = th * 1000 + h * 100 + t * 10 + o;
+          if (!numbers.includes(num) && num >= 1000) {
+            numbers.push(num);
+          }
+        }
+        return numbers;
+      },
+
+      /**
+       * Random integer helper
+       */
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      /**
+       * Shuffle array (Fisher-Yates)
+       */
+      shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      },
+
+      /**
+       * Convert a number to its expanded form string
+       */
+      toExpandedForm(num) {
+        const thousands = Math.floor(num / 1000);
+        const hundreds = Math.floor((num % 1000) / 100);
+        const tens = Math.floor((num % 100) / 10);
+        const ones = num % 10;
+
+        const parts = [];
+        if (thousands > 0) parts.push(`${thousands * 1000}`);
+        if (hundreds > 0) parts.push(`${hundreds * 100}`);
+        if (tens > 0) parts.push(`${tens * 10}`);
+        if (ones > 0) parts.push(`${ones}`);
+
+        return parts.join(' + ');
+      },
+
+      /**
+       * Update translations for dynamic content
+       */
+      updateTranslations() {
+        // Re-apply translations if needed
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        const roundData = this.matchPairs[this.currentRound];
+        this.selectedNumber = null;
+        this.selectedNumberElement = null;
+        this.isAnswered = false;
+
+        // Update UI
+        this.feedback.classList.remove('show', 'error');
+
+        // Render numbers and expanded forms
+        this.renderNumbers(roundData.numbers);
+        this.renderExpandedForms(roundData.numbers);
+        this.renderProgress();
+      },
+
+      /**
+       * Render number cards
+       */
+      renderNumbers(numbers) {
+        this.numbersColumn.innerHTML = '';
+
+        numbers.forEach(num => {
+          const card = document.createElement('div');
+          card.className = 'number-card';
+          card.dataset.value = num;
+          card.innerHTML = `<span class="number-value">${num.toLocaleString()}</span>`;
+          card.setAttribute('tabindex', '0');
+          card.setAttribute('role', 'button');
+          card.setAttribute('aria-label', `Number ${num.toLocaleString()}`);
+
+          card.addEventListener('click', () => this.selectNumber(card, num));
+          card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.selectNumber(card, num);
+            }
+          });
+
+          this.numbersColumn.appendChild(card);
+        });
+      },
+
+      /**
+       * Render expanded form cards (shuffled)
+       */
+      renderExpandedForms(numbers) {
+        this.expandedColumn.innerHTML = '';
+
+        // Shuffle to make it more challenging
+        const shuffledNumbers = this.shuffleArray([...numbers]);
+
+        shuffledNumbers.forEach(num => {
+          const expandedForm = this.toExpandedForm(num);
+          const card = document.createElement('div');
+          card.className = 'expanded-card';
+          card.dataset.value = num;
+          card.innerHTML = `<span class="expanded-value">${expandedForm}</span>`;
+          card.setAttribute('tabindex', '0');
+          card.setAttribute('role', 'button');
+          card.setAttribute('aria-label', `Expanded form ${expandedForm}`);
+
+          card.addEventListener('click', () => this.selectExpandedForm(card, num));
+          card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.selectExpandedForm(card, num);
+            }
+          });
+
+          this.expandedColumn.appendChild(card);
+        });
+      },
+
+      /**
+       * Select a number card
+       */
+      selectNumber(card, value) {
+        if (this.isAnswered) return;
+        if (card.classList.contains('matched')) return;
+
+        // Deselect previous number
+        if (this.selectedNumberElement && this.selectedNumberElement !== card) {
+          this.selectedNumberElement.classList.remove('selected');
+        }
+
+        // Select this number
+        card.classList.add('selected');
+        this.selectedNumber = value;
+        this.selectedNumberElement = card;
+      },
+
+      /**
+       * Select an expanded form card and check match
+       */
+      selectExpandedForm(card, value) {
+        if (this.isAnswered) return;
+        if (card.classList.contains('matched')) return;
+
+        // Must select a number first
+        if (this.selectedNumber === null) {
+          const msg = window.i18n ? i18n.t('section.activities.expanded-form-10000.selectNumberFirst') : 'Select a number first!';
+          this.showTemporaryFeedback(msg, false);
+          return;
+        }
+
+        // Check if match is correct
+        const isCorrect = (this.selectedNumber === value);
+
+        if (isCorrect) {
+          // Correct match!
+          this.correctCount++;
+
+          // Mark both cards as matched
+          this.selectedNumberElement.classList.add('matched');
+          this.selectedNumberElement.classList.remove('selected');
+          card.classList.add('matched');
+
+          // Show feedback
+          const correctMsg = window.i18n ? i18n.t('feedback.correct') : 'Correct!';
+          this.showTemporaryFeedback(`${correctMsg} 🧩`, true);
+
+          // Reset selection
+          this.selectedNumber = null;
+          this.selectedNumberElement = null;
+
+          // Check if all matches are done
+          const allMatched = this.numbersColumn.querySelectorAll('.number-card.matched').length === this.matchPairs[this.currentRound].pairCount;
+
+          if (allMatched) {
+            // Round complete, advance after delay
+            setTimeout(() => {
+              if (this.currentRound < this.totalRounds - 1) {
+                this.nextRound();
+              } else {
+                this.showStats();
+              }
+            }, this.autoAdvanceDelay);
+          }
+        } else {
+          // Incorrect match
+          this.incorrectCount++;
+
+          // Shake both cards
+          card.classList.add('shake');
+          this.selectedNumberElement.classList.add('shake');
+
+          setTimeout(() => {
+            card.classList.remove('shake');
+            if (this.selectedNumberElement) {
+              this.selectedNumberElement.classList.remove('shake', 'selected');
+            }
+          }, 500);
+
+          // Show feedback
+          const tryAgainMsg = window.i18n ? i18n.t('feedback.tryAgain') : 'Try again!';
+          this.showTemporaryFeedback(tryAgainMsg, false);
+
+          // Reset selection
+          this.selectedNumber = null;
+          this.selectedNumberElement = null;
+        }
+      },
+
+      /**
+       * Show temporary feedback message
+       */
+      showTemporaryFeedback(message, isCorrect) {
+        this.feedback.textContent = message;
+        this.feedback.classList.remove('error');
+        if (!isCorrect) {
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        // Auto-hide after a moment (unless it's the last match)
+        setTimeout(() => {
+          const allMatched = this.numbersColumn.querySelectorAll('.number-card.matched').length === this.matchPairs[this.currentRound].pairCount;
+          if (!allMatched) {
+            this.feedback.classList.remove('show');
+          }
+        }, 1000);
+      },
+
+      /**
+       * Go to next round
+       */
+      nextRound() {
+        this.currentRound++;
+        this.startRound();
+      },
+
+      /**
+       * Reset current round
+       */
+      resetCurrentRound() {
+        this.selectedNumber = null;
+        this.selectedNumberElement = null;
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        // Clear matched/selected states
+        this.numbersColumn.querySelectorAll('.number-card').forEach(card => {
+          card.classList.remove('selected', 'matched', 'shake');
+        });
+        this.expandedColumn.querySelectorAll('.expanded-card').forEach(card => {
+          card.classList.remove('matched', 'shake');
+        });
+      },
+
+      /**
+       * Show completion stats
+       */
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        // Calculate percentage
+        const totalMatches = this.matchPairs.reduce((sum, round) => sum + round.pairCount, 0);
+        const percentage = (this.correctCount / totalMatches) * 100;
+
+        if (percentage >= 90) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.expanded-form-10000.perfect') : 'Perfect expanded form matching!';
+        } else if (percentage >= 70) {
+          this.statsIcon.textContent = '🧩';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.expanded-form-10000.great') : 'Great expanded form work!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.expanded-form-10000.keepPracticing') : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart the activity
+       */
+      restartActivity() {
+        this.currentRound = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateRounds();
+        this.startRound();
+      },
+
+      /**
+       * Render progress indicator
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => ExpandedFormMatch.init());
+      } else {
+        ExpandedFormMatch.init();
+      }
+    });
+  </script>
+  <style>
+    /* Expanded Form Match specific styles */
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-4);
+      text-align: center;
+    }
+
+    /* Matching Grid */
+    .matching-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+      margin: var(--space-4) 0;
+      padding: var(--space-4);
+    }
+
+    .column-section {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .column-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-500);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+
+    .numbers-column,
+    .expanded-column {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    /* Number Cards */
+    .number-card {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 3px solid var(--color-neutral-200);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 0 var(--color-neutral-300);
+      position: relative;
+      padding: var(--space-3);
+    }
+
+    .number-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+    }
+
+    .number-card:hover:not(.matched) {
+      transform: translateY(-2px) scale(1.03);
+      border-color: var(--color-primary);
+      box-shadow: 0 6px 0 var(--color-primary-dark);
+    }
+
+    .number-card:active:not(.matched) {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 2px 0 var(--color-neutral-300);
+    }
+
+    .number-card:focus {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 2px;
+      box-shadow: 0 6px 0 var(--color-primary-dark), 0 0 0 6px rgba(114, 208, 255, 0.3);
+    }
+
+    .number-card.selected {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+      border-color: var(--color-primary-dark);
+      box-shadow: 0 4px 0 var(--color-primary-dark);
+    }
+
+    .number-card.selected .number-value {
+      color: white;
+    }
+
+    .number-card.matched {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border-color: #15803d;
+      box-shadow: 0 4px 0 #15803d;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .number-card.matched .number-value {
+      color: white;
+    }
+
+    .number-card.matched::after {
+      content: '✓';
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    /* Expanded Form Cards */
+    .expanded-card {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid var(--color-neutral-200);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 0 var(--color-neutral-300);
+      padding: var(--space-3);
+      position: relative;
+    }
+
+    .expanded-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+      text-align: center;
+      word-break: break-word;
+    }
+
+    .expanded-card:hover:not(.matched) {
+      transform: translateY(-2px) scale(1.03);
+      border-color: #f59e0b;
+      box-shadow: 0 6px 0 #d97706;
+    }
+
+    .expanded-card:active:not(.matched) {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 2px 0 var(--color-neutral-300);
+    }
+
+    .expanded-card:focus {
+      outline: 3px solid #f59e0b;
+      outline-offset: 2px;
+      box-shadow: 0 6px 0 #d97706, 0 0 0 6px rgba(251, 191, 36, 0.3);
+    }
+
+    .expanded-card.matched {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border-color: #15803d;
+      box-shadow: 0 4px 0 #15803d;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .expanded-card.matched .expanded-value {
+      color: white;
+    }
+
+    .expanded-card.matched::after {
+      content: '✓';
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    /* Shake animation for incorrect */
+    .shake {
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback positioning */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .matching-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-3);
+        padding: var(--space-2);
+      }
+
+      .column-section {
+        gap: var(--space-1);
+      }
+
+      .column-label {
+        font-size: 0.7rem;
+      }
+
+      .numbers-column,
+      .expanded-column {
+        gap: var(--space-2);
+      }
+
+      .number-card,
+      .expanded-card {
+        min-height: 64px;
+        padding: var(--space-2);
+      }
+
+      .number-value {
+        font-size: var(--text-lg);
+      }
+
+      .expanded-value {
+        font-size: var(--text-sm);
+        line-height: 1.3;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .question-text {
+        font-size: var(--text-base);
+        margin-bottom: var(--space-2);
+      }
+
+      .matching-grid {
+        gap: var(--space-2);
+        padding: var(--space-1);
+      }
+
+      .number-card,
+      .expanded-card {
+        min-height: 56px;
+        border-width: 2px;
+        box-shadow: 0 3px 0 var(--color-neutral-300);
+      }
+
+      .number-value {
+        font-size: var(--text-base);
+      }
+
+      .expanded-value {
+        font-size: 0.75rem;
+      }
+
+      .number-card.matched::after,
+      .expanded-card.matched::after {
+        font-size: 1rem;
+        top: 4px;
+        right: 8px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

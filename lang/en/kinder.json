@@ -1,0 +1,983 @@
+{
+  "title": "Kindergarten Activities",
+  "description": "Growing number skills through play and discovery",
+  "levels": {
+    "level1": {
+      "title": "Counting & Number Names (0-20 to 100)",
+      "goal": "Build reliable counting, numeral recognition, and counting routines that scale to 100.",
+      "learnMore": {
+        "k-l1-big-idea": {
+          "title": "Big idea",
+          "content": "Counting is more than reciting: children match **one number to one object**, and the *last* number answers \"how many?\""
+        },
+        "k-l1-notice": {
+          "title": "What to notice",
+          "content": "* Touches each object once (no skipping, no double counting)\n* Answers \"how many?\" without restarting\n* Can start counting from 7 (not only from 1)\n* Begins to \"see\" small groups quickly (1-3; then 5-frame structure)"
+        },
+        "k-l1-home": {
+          "title": "Try at home",
+          "content": "* **Game A: \"Count & Tell\"** Line up 15-25 items; child counts, then you ask \"How many?\"\n* **Game B: \"Start-At Counting\"** Start at 13; take turns counting until 20 (then 50)."
+        },
+        "k-l1-videos": {
+          "title": "Optional videos",
+          "content": "**Search YouTube for:**\n* <a href='https://www.youtube.com/results?search_query=counting+to+100+for+kindergarten' target='_blank' rel='noopener noreferrer'>counting to 100 for kindergarten</a>\n* <a href='https://www.youtube.com/results?search_query=one+to+one+correspondence+counting' target='_blank' rel='noopener noreferrer'>one to one correspondence counting</a>\n* <a href='https://www.youtube.com/results?search_query=number+names+0+to+20' target='_blank' rel='noopener noreferrer'>number names 0 to 20</a>\n* <a href='https://www.youtube.com/results?search_query=100+chart+patterns+kindergarten' target='_blank' rel='noopener noreferrer'>100 chart patterns kindergarten</a>"
+        }
+      }
+    },
+    "level2": {
+      "title": "Compare, Order, Ten-Frames & Teen Numbers",
+      "goal": "Build comparison language and structured representations (ten-frames / number line), including teen numbers as 10 + ones.",
+      "learnMore": {
+        "k-l2-big-idea": {
+          "title": "Big idea",
+          "content": "Comparing is about relationships: kids can decide \"more/fewer/same\" by **pairing** (not always by counting). Teen numbers are a key bridge to place value: **ten-and-some-ones**."
+        },
+        "k-l2-notice": {
+          "title": "What to notice",
+          "content": "* Pairs items (\"one for you, one for me\")\n* Recognizes ten-frame patterns without counting every dot\n* Explains teen numbers (\"It's 10 and 4\")\n* Places numbers on a 0-10 line with confidence"
+        },
+        "k-l2-home": {
+          "title": "Try at home",
+          "content": "* **Game A: \"Snack Balance\"** Move snacks one at a time until bowls match.\n* **Game B: \"Ten-Frame Flash\"** Flash a ten-frame (0-10). Say the number; then check by counting."
+        },
+        "k-l2-videos": {
+          "title": "Optional videos",
+          "content": "**Search YouTube for:**\n* <a href='https://www.youtube.com/results?search_query=ten+frame+kindergarten' target='_blank' rel='noopener noreferrer'>ten frame kindergarten</a>\n* <a href='https://www.youtube.com/results?search_query=more+less+same+for+kids' target='_blank' rel='noopener noreferrer'>more less same for kids</a>\n* <a href='https://www.youtube.com/results?search_query=teen+numbers+ten+and+some+ones' target='_blank' rel='noopener noreferrer'>teen numbers ten and some ones</a>\n* <a href='https://www.youtube.com/results?search_query=number+line+0+to+20' target='_blank' rel='noopener noreferrer'>number line 0 to 20</a>"
+        }
+      }
+    },
+    "level3": {
+      "title": "Make 10 & Part-Whole Thinking",
+      "goal": "Help children see numbers as made of parts - especially combinations that make 5 and 10.",
+      "learnMore": {
+        "k-l3-big-idea": {
+          "title": "Big idea",
+          "content": "When kids learn numbers are **made of parts**, addition and subtraction become \"rearranging parts,\" not memorizing. \"Make 10\" is a powerful bridge from counting to mental math."
+        },
+        "k-l3-notice": {
+          "title": "What to notice",
+          "content": "* Names more than one way to make 6, 7, 8...\n* Uses five/ten-frame structure (\"5 and 2 more\")\n* Finds partner to 10 quickly (8 needs 2)\n* Recognizes doubles (4+4) as \"same + same\""
+        },
+        "k-l3-home": {
+          "title": "Try at home",
+          "content": "* **Game A: \"Ten-Frame Fill\"** Put 6 pennies in a ten-frame; ask \"How many more to make 10?\"\n* **Game B: \"Shake & Spill\"** Spill two-color counters; record: \"__ and __ makes 10.\""
+        },
+        "k-l3-videos": {
+          "title": "Optional videos",
+          "content": "**Search YouTube for:**\n* <a href='https://www.youtube.com/results?search_query=make+10+kindergarten' target='_blank' rel='noopener noreferrer'>make 10 kindergarten</a>\n* <a href='https://www.youtube.com/results?search_query=number+bonds+to+10' target='_blank' rel='noopener noreferrer'>number bonds to 10</a>\n* <a href='https://www.youtube.com/results?search_query=ten+frame+make+10' target='_blank' rel='noopener noreferrer'>ten frame make 10</a>\n* <a href='https://www.youtube.com/results?search_query=subitizing+to+10' target='_blank' rel='noopener noreferrer'>subitizing to 10</a>"
+        }
+      }
+    },
+    "level4": {
+      "title": "Add & Subtract Within 10 (Stories + Equations)",
+      "goal": "Solve add/sub problems within 10 using objects, pictures, and (lightly) equations.",
+      "learnMore": {
+        "k-l4-big-idea": {
+          "title": "Big idea",
+          "content": "Addition and subtraction start as **real stories** (join / separate). Equations are just a way to *write down what happened*."
+        },
+        "k-l4-notice": {
+          "title": "What to notice",
+          "content": "* Acts out stories before solving\n* Uses fingers/objects naturally (that's fine)\n* Can match a story to an equation like 4 + 2 = 6\n* Solves missing-part problems with pictures"
+        },
+        "k-l4-home": {
+          "title": "Try at home",
+          "content": "* **Game A: \"Story with Toys\"** \"You have 4 cars, I give 2 more...\" act it out; then write 4+2=__.\n* **Game B: \"Cover the Part\"** Put 8 pennies down; cover some; ask \"How many are hiding?\""
+        },
+        "k-l4-videos": {
+          "title": "Optional videos",
+          "content": "**Search YouTube for:**\n* <a href='https://www.youtube.com/results?search_query=kindergarten+addition+subtraction+within+10' target='_blank' rel='noopener noreferrer'>kindergarten addition subtraction within 10</a>\n* <a href='https://www.youtube.com/results?search_query=kindergarten+story+problems' target='_blank' rel='noopener noreferrer'>kindergarten story problems</a>\n* <a href='https://www.youtube.com/results?search_query=missing+addend+within+10' target='_blank' rel='noopener noreferrer'>missing addend within 10</a>\n* <a href='https://www.youtube.com/results?search_query=number+bonds+to+10' target='_blank' rel='noopener noreferrer'>number bonds to 10</a>"
+        }
+      }
+    },
+    "level5": {
+      "title": "Patterns, Logic, Measurement, Data & Shapes",
+      "goal": "Grow 'math thinking tools' (patterns, logic, planning) while exploring math in the real world.",
+      "learnMore": {
+        "k-l5-big-idea": {
+          "title": "Big idea",
+          "content": "This is \"math you can see and touch\": patterns help children notice structure, and measurement/shape language helps them describe the world. Short playful talk during routines is the best practice."
+        },
+        "k-l5-notice": {
+          "title": "What to notice",
+          "content": "* Explains a pattern (\"it alternates\")\n* Tries again after feedback (no fear)\n* Compares by aligning objects; uses longer/shorter/heavier/lighter\n* Sorts consistently and reads a simple picture graph (most/least)\n* Names shapes by attributes (corners/sides), not by orientation"
+        },
+        "k-l5-home": {
+          "title": "Try at home",
+          "content": "* **Game A: \"Clap Patterns\"** Clap-tap-tap; child continues or invents a new pattern.\n* **Game B: \"Kitchen Shape Hunt + Graph\"** Find 3 circles/3 rectangles; make a tiny picture graph and compare."
+        },
+        "k-l5-videos": {
+          "title": "Optional videos",
+          "content": "**Search YouTube for:**\n* <a href='https://www.youtube.com/results?search_query=patterns+for+kindergarten' target='_blank' rel='noopener noreferrer'>patterns for kindergarten</a>\n* <a href='https://www.youtube.com/results?search_query=coding+unplugged+robot+directions' target='_blank' rel='noopener noreferrer'>coding unplugged robot directions</a>\n* <a href='https://www.youtube.com/results?search_query=kindergarten+measurement+longer+shorter' target='_blank' rel='noopener noreferrer'>kindergarten measurement longer shorter</a>\n* <a href='https://www.youtube.com/results?search_query=2D+and+3D+shapes+for+kindergarten' target='_blank' rel='noopener noreferrer'>2D and 3D shapes for kindergarten</a>\n* <a href='https://www.youtube.com/results?search_query=picture+graphs+for+kindergarten' target='_blank' rel='noopener noreferrer'>picture graphs for kindergarten</a>"
+        }
+      }
+    }
+  },
+  "activities": {
+    "tap-count-20": {
+      "title": "Tap & Count to 20",
+      "description": "Tap each item and count out loud!",
+      "instruction": "Tap each item to count!",
+      "howMany": "How many did you count?",
+      "correct": "Yes! You counted {{count}}!",
+      "incorrect": "Not quite! It was {{count}}.",
+      "perfect": "Amazing counting! You're a star!",
+      "great": "Great job counting!",
+      "keepPracticing": "Good effort! Keep practicing!"
+    },
+    "count-on": {
+      "title": "Count On",
+      "description": "Start at a number and keep counting!",
+      "instruction": "What comes next?",
+      "question": "What comes next?",
+      "correct": "Yes! {{prev}} → {{answer}}!",
+      "incorrect": "Not quite! After {{prev}} comes {{answer}}.",
+      "perfect": "Amazing! You're a counting champion!",
+      "great": "Great job counting on!",
+      "keepPracticing": "Good effort! Keep practicing!"
+    },
+    "missing-number-train": {
+      "title": "Missing Number Train",
+      "description": "Find the missing number on the train!",
+      "instruction": "Which number fell off? Put it back!",
+      "whichNumber": "Which number is missing?",
+      "correct": "Correct! The missing number is {{number}}!",
+      "incorrect": "Not quite! It was {{number}}.",
+      "perfect": "Amazing! You're a number train conductor!",
+      "great": "Great job finding the missing numbers!",
+      "keepPracticing": "Good effort! Keep practicing!"
+    },
+    "number-quantity-match-k": {
+      "title": "Number Match",
+      "description": "Match the number to the group!",
+      "instruction": "Match the number to the group!",
+      "question": "Which group has this many?",
+      "correct": "Yes! That's {{number}}!",
+      "incorrect": "Not quite! This is {{number}}.",
+      "perfect": "Amazing! You're a number matching star!",
+      "great": "Great job matching numbers!",
+      "keepPracticing": "Good effort! Keep practicing!"
+    },
+    "counting-collections": {
+      "title": "Counting Collections",
+      "description": "Count items in the jar!",
+      "instruction": "Tap each item to count!",
+      "howMany": "How many items in the jar?",
+      "hint": "Tip: Try counting in groups of {{size}}!",
+      "correct": "Yes! You counted {{count}}!",
+      "incorrect": "Not quite! It was {{count}}.",
+      "perfect": "Amazing counting!",
+      "great": "Great job counting collections!",
+      "keepPracticing": "Good effort! Keep practicing!"
+    },
+    "count-by-tens-k": {
+      "title": "Count by Tens Rocket",
+      "description": "Help the rocket fly by counting by tens!",
+      "instruction": "Tap the next number to help the rocket fly!",
+      "countLabel": "Count:",
+      "correct": "Yes! {{count}}!",
+      "incorrect": "Not quite! Next is {{next}}.",
+      "perfect": "Rocket Master!",
+      "great": "Great counting by tens!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "hundred-chart-k": {
+      "title": "100 Chart Hunt",
+      "description": "Find numbers on the 100 chart!",
+      "instruction": "Find the number on the chart!",
+      "find": "Find:",
+      "correct": "Found it! {{number}}!",
+      "reveal": "Here it is! {{number}} is here.",
+      "hintRow": "Hint: Look in row {{row}} ({{start}}-{{end}})",
+      "hintClose": "Getting closer! The ones digit is {{ones}}.",
+      "perfect": "Chart Champion!",
+      "great": "Great chart hunting!",
+      "keepPracticing": "Keep exploring the chart!"
+    },
+    "number-word-to-numeral": {
+      "title": "Number Word to Numeral",
+      "description": "Match number words to numerals!",
+      "instruction": "Match the word to the number!",
+      "wordLabel": "Word:",
+      "question": "Which number is this?",
+      "correct": "Yes! \"{{word}}\" is {{number}}!",
+      "incorrect": "Not quite! \"{{word}}\" is {{number}}.",
+      "perfect": "Word Wizard!",
+      "great": "Great word matching!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "who-has-more-k": {
+      "title": "Who Has More?",
+      "description": "Compare groups and find who has more!",
+      "instruction": "Tap the group that has more!",
+      "question": "Which group has more?",
+      "correct": "Yes! {{count}} is more!",
+      "incorrect": "Not quite! {{count}} is more.",
+      "perfect": "Comparison Champion!",
+      "great": "Great comparing!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "compare-numbers-k": {
+      "title": "Compare Numbers",
+      "description": "Use < = > to compare numbers!",
+      "instruction": "Which symbol goes in the middle?",
+      "crocHint": "The crocodile eats the bigger number!",
+      "lessThan": "less than",
+      "equals": "equals",
+      "greaterThan": "greater than",
+      "correct": "Yes! {{left}} {{symbol}} {{right}}!",
+      "incorrect": "Not quite! {{left}} {{symbol}} {{right}}.",
+      "perfect": "Number Comparison Pro!",
+      "great": "Great comparing!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "order-numbers-k": {
+      "title": "Put Numbers in Order",
+      "description": "Order numbers from smallest to largest!",
+      "instruction": "Tap the numbers from smallest to largest!",
+      "orderLabel": "Order:",
+      "correct": "Perfect! {{order}}",
+      "incorrect": "The order is {{order}}",
+      "perfect": "Ordering Expert!",
+      "great": "Great ordering!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "ten-frame-snap": {
+      "title": "Ten-Frame Snap",
+      "description": "Quick! How many dots do you see?",
+      "instruction": "Look quick! How many dots?",
+      "question": "How many dots?",
+      "correct": "Yes! {{count}} dots!",
+      "incorrect": "Not quite! It was {{count}}.",
+      "perfect": "Quick Eyes!",
+      "great": "Great subitizing!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "number-line-place-k": {
+      "title": "Number Line Place",
+      "description": "Place numbers on the number line!",
+      "instruction": "Tap where the number goes!",
+      "place": "Place:",
+      "correct": "Yes! {{number}} goes here!",
+      "incorrect": "{{number}} goes here!",
+      "perfect": "Number Line Pro!",
+      "great": "Great number placing!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "enough-seats": {
+      "title": "Enough Seats?",
+      "description": "Are there enough seats for everyone?",
+      "instruction": "Are there enough seats for everyone?",
+      "friends": "Friends:",
+      "seats": "Seats:",
+      "question": "Are there enough seats?",
+      "yes": "Yes!",
+      "no": "No",
+      "correctYes": "Yes! {{seats}} seats for {{animals}} friends!",
+      "correctNo": "Right! {{seats}} seats is not enough for {{animals}} friends.",
+      "incorrectYes": "Actually, {{seats}} seats IS enough for {{animals}} friends!",
+      "incorrectNo": "Actually, {{seats}} seats is NOT enough for {{animals}} friends.",
+      "perfect": "Seat Counter Champion!",
+      "great": "Great comparing!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "more-fewer-same": {
+      "title": "More, Fewer, or Same",
+      "description": "Compare groups and decide!",
+      "instruction": "Does the red group have more, fewer, or the same?",
+      "question": "Red has...",
+      "more": "More",
+      "fewer": "Fewer",
+      "same": "Same",
+      "correctMore": "Correct! Red has more!",
+      "correctFewer": "Correct! Red has fewer!",
+      "correctSame": "Correct! They have the same!",
+      "incorrectMore": "Not quite! Red has more.",
+      "incorrectFewer": "Not quite! Red has fewer.",
+      "incorrectSame": "Not quite! They have the same.",
+      "perfect": "Amazing! You're a comparison champion!",
+      "great": "Great job comparing groups!",
+      "keepPracticing": "Good effort! Keep practicing!"
+    },
+    "ten-frame-builder": {
+      "title": "Ten-Frame Builder",
+      "description": "Build numbers on a ten-frame!",
+      "instruction": "Tap to build the number!",
+      "build": "Build:",
+      "tapToAdd": "Tap to add",
+      "correct": "Perfect! You built {{number}}!",
+      "perfect": "Amazing! You're a ten-frame master!",
+      "great": "Great job building numbers!",
+      "keepPracticing": "Good effort! Keep practicing!"
+    },
+    "teen-stories": {
+      "title": "Teen Stories",
+      "description": "10 and some more - how many in all?",
+      "instruction": "10 and some more - how many in all?",
+      "question": "How many in all?",
+      "correct": "Yes! 10 + {{ones}} = {{total}}!",
+      "incorrect": "Not quite! 10 + {{ones}} = {{total}}",
+      "perfect": "Amazing! You're a teen number star!",
+      "great": "Great job with teen numbers!",
+      "keepPracticing": "Good effort! Keep practicing!"
+    },
+    "number-bonds-k": {
+      "title": "Build a Number Bond",
+      "description": "Find the missing part!",
+      "instruction": "Find the missing part!",
+      "whole": "whole",
+      "part": "part",
+      "correct": "{{left}} and {{right}} make {{whole}}!",
+      "incorrect": "{{left}} + {{right}} = {{whole}}",
+      "perfect": "Number Bond Builder!",
+      "great": "Great number bonding!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "fill-five-frame": {
+      "title": "Fill the Five-Frame",
+      "description": "How many more to make 5?",
+      "instruction": "How many more to make 5?",
+      "question": "How many more to make 5?",
+      "fiveFingers": "5 fingers!",
+      "filledLabel": "filled",
+      "correct": "Yes! {{filled}} + {{empty}} = 5!",
+      "incorrect": "{{filled}} needs {{empty}} more to make 5.",
+      "perfect": "Five-Frame Master!",
+      "great": "Great job with 5!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "fill-ten-frame": {
+      "title": "Fill the Ten-Frame",
+      "description": "How many more to make 10?",
+      "instruction": "How many more to make 10?",
+      "question": "How many more to make 10?",
+      "filledLabel": "filled",
+      "correct": "Yes! {{filled}} + {{empty}} = 10!",
+      "incorrect": "Not quite! {{filled}} needs {{empty}} more to make 10.",
+      "perfect": "Amazing! You're a Make 10 master!",
+      "great": "Great job finding partners to 10!",
+      "keepPracticing": "Good effort! Keep practicing!"
+    },
+    "shake-spill": {
+      "title": "Shake & Spill",
+      "description": "Shake counters and count each color!",
+      "instruction": "Tap to shake and spill the counters!",
+      "total": "Total:",
+      "counters": "counters",
+      "tapToShake": "Tap to shake!",
+      "howMany": "How many of each color?",
+      "correct": "{{red}} and {{yellow}} make {{total}}!",
+      "incorrect": "Look! {{red}} red + {{yellow}} yellow = {{total}}",
+      "perfect": "Shake & Spill Star!",
+      "great": "Great counting!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "partners-to-10": {
+      "title": "Partners to 10 Match",
+      "description": "Match pairs that make 10!",
+      "instruction": "Match numbers that make 10!",
+      "targetText": "Find pairs that make",
+      "correct": "{{num1}} + {{num2}} = 10!",
+      "incorrect": "Not quite! {{num1}} + {{num2}} = {{sum}}, not 10.",
+      "perfect": "Amazing! You know your partners to 10!",
+      "great": "Great job matching partners!",
+      "keepPracticing": "Good effort! Keep practicing!"
+    },
+    "make-10-two-groups": {
+      "title": "Make 10 with Two Groups",
+      "description": "Add two groups and find how many more to make 10!",
+      "instruction": "How many more to make 10?",
+      "total": "Total:",
+      "question": "How many more to make 10?",
+      "correct": "{{total}} + {{needed}} = 10!",
+      "incorrect": "{{total}} needs {{needed}} more to make 10.",
+      "perfect": "Make 10 Master!",
+      "great": "Great making 10!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "doubles-within-10": {
+      "title": "Double Trouble",
+      "description": "Same + Same = How many?",
+      "instruction": "Same + Same = How many?",
+      "question": "How many in all?",
+      "correct": "{{num}} + {{num}} = {{total}}!",
+      "incorrect": "{{num}} + {{num}} = {{total}}",
+      "perfect": "Doubles Champion!",
+      "great": "Great doubling!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "quick-look-10": {
+      "title": "Quick Look to 10",
+      "description": "Look fast! How many do you see?",
+      "instruction": "Look fast! How many do you see?",
+      "ready": "Ready? Tap!",
+      "question": "How many did you see?",
+      "correct": "Yes! {{count}} dots!",
+      "incorrect": "There were {{count}} dots.",
+      "perfect": "Quick Eyes Champion!",
+      "great": "Great quick looking!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "add-with-pictures-k": {
+      "title": "Add with Pictures",
+      "description": "Count pictures to find the total!",
+      "instruction": "Count both groups to find the total!",
+      "question": "How many in all?",
+      "correct": "Yes! {{a}} + {{b}} = {{total}}!",
+      "incorrect": "Not quite! {{a}} + {{b}} = {{total}}",
+      "perfect": "Amazing! You're an addition star!",
+      "great": "Great job adding!",
+      "keepPracticing": "Good effort! Keep practicing!"
+    },
+    "subtract-with-pictures-k": {
+      "title": "Subtract with Pictures",
+      "description": "Some fly away! Count what's left!",
+      "instruction": "Some fly away! How many are left?",
+      "storyTemplate": "{{start}} {{name}}. {{take}} {{action}}. How many are left?",
+      "question": "How many are left?",
+      "correct": "Yes! {{start}} - {{take}} = {{left}}!",
+      "incorrect": "{{start}} - {{take}} = {{left}}",
+      "perfect": "Subtraction Star!",
+      "great": "Great subtracting!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "number-line-hops-k": {
+      "title": "Number Line Hops",
+      "description": "Help the frog hop on the number line!",
+      "instruction": "Help the frog hop on the number line!",
+      "question": "Where does the frog land?",
+      "correct": "Yes! {{start}} {{op}} {{hop}} = {{end}}!",
+      "incorrect": "{{start}} {{op}} {{hop}} = {{end}}",
+      "perfect": "Hopping Champion!",
+      "great": "Great hopping!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "story-problems-k": {
+      "title": "Story Problems",
+      "description": "Read stories and solve math problems!",
+      "instruction": "Read the story and solve!",
+      "question": "How many in all?",
+      "correct": "Yes! {{a}} {{op}} {{b}} = {{answer}}!",
+      "incorrect": "{{a}} {{op}} {{b}} = {{answer}}",
+      "perfect": "Story Solver!",
+      "great": "Great problem solving!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "missing-part-k": {
+      "title": "Missing Part Mystery",
+      "description": "Find the missing number in the equation!",
+      "instruction": "What number goes in the box?",
+      "question": "What's the missing number?",
+      "correct": "Yes! {{a}} + {{missing}} = {{total}}!",
+      "incorrect": "Not quite! The missing part is {{missing}}.",
+      "perfect": "Amazing! You're a mystery solver!",
+      "great": "Great job finding the missing parts!",
+      "keepPracticing": "Good effort! Keep practicing!"
+    },
+    "true-or-not-k": {
+      "title": "True or Not?",
+      "description": "Check if the equation is true!",
+      "instruction": "Is this equation true?",
+      "question": "Is this true or not true?",
+      "true": "True",
+      "false": "Not True",
+      "correctTrue": "Yes! {{a}} {{op}} {{b}} = {{result}} is TRUE!",
+      "correctFalse": "Right! It's NOT true.",
+      "incorrectTrue": "Not quite! It's not true.",
+      "incorrectFalse": "Actually, it IS true!",
+      "perfect": "Equation Expert!",
+      "great": "Great checking!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "make-10-to-add": {
+      "title": "Make 10 to Add",
+      "description": "Find pairs that make 10!",
+      "instruction": "Find the number that makes 10!",
+      "target": "Make",
+      "question": "What number goes with {{num}} to make 10?",
+      "correct": "Yes! {{known}} + {{missing}} = 10!",
+      "incorrect": "{{known}} + {{missing}} = 10",
+      "perfect": "Make 10 Master!",
+      "great": "Great making 10!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "fluency-within-5": {
+      "title": "Fluency Within 5",
+      "description": "Practice adding and subtracting within 5!",
+      "instruction": "Take your time! What's the answer?",
+      "correct": "Yes! {{a}} {{op}} {{b}} = {{answer}}",
+      "incorrect": "{{a}} {{op}} {{b}} = {{answer}}",
+      "perfect": "Math Star!",
+      "great": "Great practice!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "join-the-picnic": {
+      "title": "Join the Picnic",
+      "description": "Add treats at the picnic!",
+      "instruction": "How many treats at the picnic?",
+      "question": "How many in all?",
+      "basket1": "Basket 1",
+      "basket2": "Basket 2",
+      "correct": "Yay! {{a}} + {{b}} = {{total}} treats!",
+      "incorrect": "{{a}} + {{b}} = {{total}}",
+      "perfect": "Picnic champion!",
+      "great": "Great picnic math!",
+      "keepPracticing": "Keep counting treats!"
+    },
+    "take-away-bunnies": {
+      "title": "Take Away Bunnies",
+      "description": "Bunnies hop away! How many stay?",
+      "instruction": "Some bunnies hop away! How many stay?",
+      "question": "How many bunnies stay?",
+      "story": "{{start}} bunnies in the meadow. {{take}} hop away. How many stay?",
+      "correct": "{{start}} - {{take}} = {{left}} bunnies!",
+      "incorrect": "{{start}} - {{take}} = {{left}}",
+      "perfect": "Bunny Math Star!",
+      "great": "Great bunny counting!",
+      "keepPracticing": "Keep counting bunnies!"
+    },
+    "k-dice-add": {
+      "title": "Dice Add",
+      "description": "Roll dice and add the dots!",
+      "instruction": "Roll the dice and add the dots!",
+      "roll": "Roll the Dice!",
+      "question": "How many dots in all?",
+      "correct": "{{a}} + {{b}} = {{answer}}!",
+      "incorrect": "{{a}} + {{b}} = {{answer}}",
+      "perfect": "Dice Master!",
+      "great": "Great dice adding!",
+      "keepPracticing": "Keep rolling!"
+    },
+    "balance-builder": {
+      "title": "Balance Builder",
+      "description": "Make the scale balance!",
+      "instruction": "Make the scale balance!",
+      "question": "How many do we need on the right?",
+      "correct": "Balanced! {{left}} = {{right}}",
+      "incorrect": "Not balanced! Need {{answer}} to match {{left}}",
+      "perfect": "Balance Master!",
+      "great": "Great balancing!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "name-shapes-2d-k": {
+      "title": "Name That Shape",
+      "description": "Identify 2D shapes!",
+      "instruction": "What shape is this?",
+      "question": "What shape is this?",
+      "correct": "Yes! That's a {{shape}}!",
+      "incorrect": "Not quite! That's a {{shape}}.",
+      "perfect": "Amazing! You're a shape expert!",
+      "great": "Great job naming shapes!",
+      "keepPracticing": "Good effort! Keep practicing!",
+      "shapes": {
+        "circle": "Circle",
+        "triangle": "Triangle",
+        "square": "Square",
+        "rectangle": "Rectangle",
+        "hexagon": "Hexagon",
+        "oval": "Oval"
+      }
+    },
+    "find-the-pattern": {
+      "title": "Find the Pattern",
+      "description": "What comes next in the pattern?",
+      "instruction": "What comes next?",
+      "correct": "Yes! The pattern continues!",
+      "incorrect": "Not quite! The next one is {{answer}}.",
+      "pattern-ab": "AB pattern (alternates)",
+      "pattern-aab": "AAB pattern",
+      "pattern-abb": "ABB pattern",
+      "pattern-abc": "ABC pattern",
+      "pattern-aba": "ABA pattern",
+      "perfect": "Pattern Master!",
+      "great": "Great pattern finding!",
+      "keepPracticing": "Keep exploring patterns!",
+      "patternsFound": "patterns found"
+    },
+    "longer-shorter": {
+      "title": "Longer or Shorter?",
+      "description": "Which object is longer?",
+      "instruction": "Tap the one that is longer!",
+      "questionLonger": "Which one is longer?",
+      "questionShorter": "Which one is shorter?",
+      "correctLonger": "Yes! This one is longer!",
+      "correctShorter": "Yes! This one is shorter!",
+      "incorrectLonger": "Not quite! This one is longer.",
+      "incorrectShorter": "Not quite! This one is shorter.",
+      "perfect": "Measurement Master!",
+      "great": "Great measuring!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "heavier-lighter": {
+      "title": "Heavier or Lighter?",
+      "description": "Which side of the scale is heavier?",
+      "instruction": "Tap the side that is heavier!",
+      "questionHeavier": "Which side is heavier?",
+      "questionLighter": "Which side is lighter?",
+      "correctHeavier": "Yes! This side is heavier!",
+      "correctLighter": "Yes! This side is lighter!",
+      "incorrectHeavier": "Not quite! This side is heavier.",
+      "incorrectLighter": "Not quite! This side is lighter.",
+      "perfect": "Weight Wizard!",
+      "great": "Great weighing!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "holds-more-less": {
+      "title": "Holds More or Less?",
+      "description": "Which container holds more?",
+      "instruction": "Tap the container that holds more!",
+      "questionMore": "Which container holds more?",
+      "questionLess": "Which container holds less?",
+      "correctMore": "Yes! This one holds more!",
+      "correctLess": "Yes! This one holds less!",
+      "incorrectMore": "Not quite! This one holds more.",
+      "incorrectLess": "Not quite! This one holds less.",
+      "perfect": "Capacity Champion!",
+      "great": "Great comparing!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "sort-and-count": {
+      "title": "Sort & Count",
+      "description": "Sort objects into groups, then count!",
+      "instruction": "Sort the items into baskets, then count!",
+      "sortPhase": "Tap each item to sort it!",
+      "countPhase": "Now count! How many in each basket?",
+      "question": "How many {{emoji}}?",
+      "correct": "Yes! There are {{count}}!",
+      "incorrect": "Not quite! There are {{count}}.",
+      "perfect": "Sorting Star!",
+      "great": "Great sorting!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "picture-graph-k": {
+      "title": "Build a Picture Graph",
+      "description": "Read picture graphs and answer questions!",
+      "instruction": "Look at the graph and answer!",
+      "howMany": "How many {{emoji}}?",
+      "whichMost": "Which has the most?",
+      "whichLeast": "Which has the least?",
+      "correct": "Yes! Great graph reading!",
+      "incorrect": "Not quite! The answer is {{answer}}.",
+      "perfect": "Graph Master!",
+      "great": "Great graphing!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "name-shapes-3d-k": {
+      "title": "Solid Shapes Finder",
+      "description": "Identify 3D solid shapes!",
+      "instruction": "What solid shape is this?",
+      "question": "What shape is this?",
+      "realWorld": "Like a:",
+      "correct": "Yes! That's a {{shape}}!",
+      "incorrect": "Not quite! That's a {{shape}}.",
+      "perfect": "3D Shape Master!",
+      "great": "Great shape finding!",
+      "keepPracticing": "Keep practicing!",
+      "shapes": {
+        "cube": "Cube",
+        "sphere": "Sphere",
+        "cylinder": "Cylinder",
+        "cone": "Cone"
+      }
+    },
+    "compose-shapes-k": {
+      "title": "Make a New Shape",
+      "description": "Put shapes together to make bigger shapes!",
+      "instruction": "Tap pieces to build the shape!",
+      "makeThis": "Make this shape:",
+      "usePieces": "Use these pieces:",
+      "placePiece": "Place a piece here",
+      "selectFirst": "Tap a piece first!",
+      "correct": "You made a {{shape}}!",
+      "perfect": "Shape Builder Master!",
+      "great": "Great building!",
+      "keepPracticing": "Keep practicing!",
+      "shapes": {
+        "square": "square",
+        "rectangle": "rectangle",
+        "house": "house",
+        "big-triangle": "big triangle",
+        "hexagon": "hexagon",
+        "diamond": "diamond"
+      }
+    },
+    "dot-flash": {
+      "title": "Dot Flash",
+      "description": "Quick! How many dots do you see?",
+      "instruction": "How many dots do you see?",
+      "ready": "Ready? Tap!",
+      "question": "How many dots?",
+      "correct": "Yes! {{count}} dots!",
+      "incorrect": "There were {{count}} dots.",
+      "perfect": "Lightning Fast Eyes!",
+      "great": "Great dot spotting!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "garden-tap-count": {
+      "title": "Garden Tap Count",
+      "description": "Count the flowers and garden friends!",
+      "instruction": "Count the garden friends!",
+      "howMany": "How many garden friends?",
+      "correct": "Yes! You counted {{count}} garden friends!",
+      "incorrect": "Not quite! There were {{count}} garden friends.",
+      "perfect": "Garden Counting Star!",
+      "great": "Great garden counting!",
+      "keepPracticing": "Keep growing!"
+    },
+    "k-number-match": {
+      "title": "Number Match",
+      "description": "Match numbers to groups!",
+      "instruction": "Find the group that matches!",
+      "question": "Which group has this many?",
+      "correct": "Yes! That's {{number}}!",
+      "incorrect": "Not quite! This group has {{number}}.",
+      "perfect": "Perfect Matching!",
+      "great": "Great matching!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "find-the-number": {
+      "title": "Find the Number",
+      "description": "Count items and find the matching number!",
+      "instruction": "Count and find the matching number!",
+      "question": "How many are in the basket? Find the number!",
+      "correct": "Yes! There are {{count}}!",
+      "incorrect": "Not quite! There are {{count}}.",
+      "perfect": "Number Finding Pro!",
+      "great": "Great number finding!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "ten-train": {
+      "title": "Ten Train",
+      "description": "Help the train move by counting by tens!",
+      "instruction": "Tap the next number to help the train go!",
+      "countLabel": "Station:",
+      "correct": "Choo choo! Station {{count}}!",
+      "incorrect": "Not quite! Next station is {{next}}.",
+      "perfect": "Train Conductor!",
+      "great": "Great train ride!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "more-less-same": {
+      "title": "More, Less, Same",
+      "description": "Compare groups - does one have more, less, or the same?",
+      "instruction": "Does the green group have more, less, or the same?",
+      "greenGroup": "Green Group",
+      "orangeGroup": "Orange Group",
+      "question": "Green has...",
+      "more": "More",
+      "less": "Less",
+      "same": "Same",
+      "correctMore": "Correct! Green has more! ({{green}} > {{orange}})",
+      "correctLess": "Correct! Green has less! ({{green}} < {{orange}})",
+      "correctSame": "Correct! They have the same! ({{green}} = {{orange}})",
+      "incorrectMore": "Not quite! Green has more ({{green}} > {{orange}})",
+      "incorrectLess": "Not quite! Green has less ({{green}} < {{orange}})",
+      "incorrectSame": "Not quite! They have the same ({{green}} = {{orange}})",
+      "perfect": "Crocodile Champion!",
+      "great": "Great comparing!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "number-order-path": {
+      "title": "Number Order Path",
+      "description": "Walk the path by ordering numbers from smallest to largest!",
+      "instruction": "Help the hiker walk the path! Tap stones from smallest to largest.",
+      "hint": "Tap the smallest number first!",
+      "correct": "Great hiking! {{order}}",
+      "incorrect": "The path is {{order}}",
+      "perfect": "Trail Master!",
+      "great": "Great hiking!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "make-10-pairs": {
+      "title": "Make 10 Pairs",
+      "description": "Match fruits that add up to 10!",
+      "instruction": "Pick two fruits that make 10 together!",
+      "targetText": "Pick fruits that add to",
+      "correct": "Yummy! {{num1}} + {{num2}} = 10!",
+      "incorrect": "Not quite! {{num1}} + {{num2}} = {{sum}}, not 10.",
+      "perfect": "Fruit Matching Pro!",
+      "great": "Great fruit picking!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "counting-rule": {
+      "title": "Counting Rule",
+      "description": "Find the counting pattern and complete the sequence!",
+      "instruction": "Find the counting pattern and pick the next number!",
+      "ruleHint": "What's the pattern?",
+      "rule1": "Count by 1s",
+      "rule2": "Count by 2s",
+      "rule5": "Count by 5s",
+      "rule10": "Count by 10s",
+      "correct": "Yes! The pattern is +{{by}}!",
+      "incorrect": "Not quite! The answer is {{answer}} (counting by {{by}}s).",
+      "perfect": "Pattern Pro!",
+      "great": "Great counting patterns!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "robot-steps": {
+      "title": "Robot Steps",
+      "description": "Plan a path to help the robot find treasure!",
+      "instruction": "Help the robot reach the treasure!",
+      "yourPlan": "Your Plan:",
+      "tapArrows": "Tap arrows to plan!",
+      "clear": "Clear",
+      "go": "GO!",
+      "tries": "Tries",
+      "success": "You found the treasure!",
+      "tryAgain": "Almost! Try a different path!",
+      "perfect": "Robot Master!",
+      "great": "Great planning!",
+      "keepPracticing": "Keep exploring!"
+    },
+    "shape-detective": {
+      "title": "Shape Detective",
+      "description": "Find the shape that doesn't belong!",
+      "instruction": "Find the one that doesn't belong!",
+      "question": "Which one is different?",
+      "correct": "Great detective work!",
+      "incorrect": "Not quite!",
+      "reasonShape": "It has a different shape!",
+      "reasonColor": "It has a different color!",
+      "reasonSize": "It has a different size!",
+      "perfect": "Super Detective!",
+      "great": "Great observing!",
+      "keepPracticing": "Keep looking!"
+    },
+    "timo-logic-tiles": {
+      "title": "TIMO Logic Tiles",
+      "description": "Find the missing tile in the pattern!",
+      "instruction": "Find the missing tile!",
+      "question": "What goes here?",
+      "correct": "Great thinking!",
+      "incorrect": "Not quite! Look at the pattern.",
+      "perfect": "Logic Master!",
+      "great": "Great thinking!",
+      "keepPracticing": "Keep puzzling!"
+    },
+    "shape-builder": {
+      "title": "Shape Builder",
+      "description": "Build pictures using shapes!",
+      "instruction": "Build a picture using shapes!",
+      "prompt": "What will you create?",
+      "shapes": "Shapes:",
+      "colors": "Colors:",
+      "undo": "Undo",
+      "clear": "Clear",
+      "done": "I'm Done!",
+      "amazing": "Amazing Creation!",
+      "shapesUsed": "shapes used",
+      "newCreation": "New Creation",
+      "nice": "Nice!",
+      "great": "Great!",
+      "cool": "Cool!",
+      "wow": "Wow!",
+      "artist": "You're a great artist!",
+      "beautiful": "What a beautiful picture!",
+      "creative": "So creative!"
+    },
+    "block-counter": {
+      "title": "Block Counter",
+      "description": "Count all the stacked blocks!",
+      "instruction": "Count all the blocks!",
+      "question": "How many blocks?",
+      "correct": "Yes! There are {{count}} blocks!",
+      "incorrect": "Not quite! There are {{count}} blocks.",
+      "perfect": "Block Counting Champion!",
+      "great": "Great counting!",
+      "keepPracticing": "Keep building!"
+    },
+    "draw-the-map": {
+      "title": "Draw the Map",
+      "description": "Place objects using position words!",
+      "instruction": "Put the object in the right place!",
+      "place": "Place:",
+      "prompt": "Put the {{object}} {{direction}} the {{landmark}}!",
+      "above": "ABOVE",
+      "below": "BELOW",
+      "left": "to the LEFT of",
+      "right": "to the RIGHT of",
+      "nextTo": "NEXT TO",
+      "correct": "Perfect placement!",
+      "incorrect": "Not quite! Look where it goes.",
+      "perfect": "Map Master!",
+      "great": "Great directions!",
+      "keepPracticing": "Keep exploring!"
+    },
+    "calendar-helper": {
+      "title": "Calendar Helper",
+      "description": "Learn about days of the week!",
+      "instruction": "Learn about days!",
+      "yesterday": "Yesterday",
+      "today": "Today",
+      "tomorrow": "Tomorrow",
+      "whatIsToday": "What is TODAY?",
+      "whatWasYesterday": "What was YESTERDAY?",
+      "whatIsTomorrow": "What is TOMORROW?",
+      "dayBefore": "What day comes BEFORE {{day}}?",
+      "dayAfter": "What day comes AFTER {{day}}?",
+      "days": {
+        "sunday": "Sunday",
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday"
+      },
+      "correct": "Yes! That's right!",
+      "incorrect": "Not quite! It's {{answer}}.",
+      "perfect": "Calendar Expert!",
+      "great": "Great with days!",
+      "keepPracticing": "Keep learning days!"
+    },
+    "measure-and-compare": {
+      "title": "Measure & Compare",
+      "description": "Compare length, weight, and size!",
+      "instruction": "Compare and find the answer!",
+      "whichLonger": "Which one is longer?",
+      "whichShorter": "Which one is shorter?",
+      "whichHeavier": "Which one is heavier?",
+      "whichLighter": "Which one is lighter?",
+      "whichHoldsMore": "Which one holds more?",
+      "whichHoldsLess": "Which one holds less?",
+      "correctLonger": "Yes! This one is longer!",
+      "correctShorter": "Yes! This one is shorter!",
+      "correctHeavier": "Yes! This one is heavier!",
+      "correctLighter": "Yes! This one is lighter!",
+      "correctMore": "Yes! This one holds more!",
+      "correctLess": "Yes! This one holds less!",
+      "incorrectLonger": "Not quite! The other one is longer.",
+      "incorrectShorter": "Not quite! The other one is shorter.",
+      "incorrectHeavier": "Not quite! The other one is heavier.",
+      "incorrectLighter": "Not quite! The other one is lighter.",
+      "incorrectMore": "Not quite! The other one holds more.",
+      "incorrectLess": "Not quite! The other one holds less.",
+      "perfect": "Measurement Expert!",
+      "great": "Great comparing!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "timo-mixed-quest": {
+      "title": "TIMO Mixed Quest",
+      "description": "Mixed puzzle adventure!",
+      "instruction": "Collect badges by solving puzzles!",
+      "questComplete": "Quest Complete!",
+      "findMissing": "Find the missing piece!",
+      "completePattern": "What comes next?",
+      "howMany": "How many are there?",
+      "nameShape": "What shape is this?",
+      "whichBigger": "Which number is bigger?",
+      "shapes": {
+        "triangle": "Triangle",
+        "square": "Square",
+        "circle": "Circle",
+        "diamond": "Diamond",
+        "rectangle": "Rectangle"
+      },
+      "correct": "You earned a badge!",
+      "tryAgain": "Keep trying!",
+      "champion": "Quest Champion!",
+      "great": "Great adventurer!",
+      "keepGoing": "Keep exploring!"
+    }
+  }
+}

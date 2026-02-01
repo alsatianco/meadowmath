@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Draw an Angle - Grade 4 Math Activity - Meadow Math">
+  <title>Draw an Angle - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link">
+            <span data-i18n="activity.backTo">← Back to</span>
+            <span data-i18n="nav.grade4">Grade 4</span>
+          </a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🎨</span>
+            <span data-i18n="section.activities.draw-angles.title">Draw an Angle</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.draw-angles.description">Make an angle of a given size.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Target Angle Display -->
+          <div class="target-card">
+            <div class="target-label" data-i18n="section.activities.draw-angles.drawAngle">Draw an angle of:</div>
+            <div class="target-value" id="target-angle">45°</div>
+          </div>
+
+          <!-- Drawing Canvas -->
+          <div class="drawing-card">
+            <div class="drawing-canvas" id="drawing-canvas" aria-label="Angle drawing area">
+              <svg id="drawing-svg" viewBox="0 0 300 200" aria-hidden="true">
+                <!-- Angle will be drawn here -->
+              </svg>
+            </div>
+
+            <!-- Current Angle Display -->
+            <div class="current-angle">
+              <span data-i18n="section.activities.draw-angles.yourAngle">Your angle:</span>
+              <span class="current-value" id="current-angle">0°</span>
+            </div>
+
+            <!-- Slider Control -->
+            <div class="slider-container">
+              <label for="angle-slider" class="slider-label" data-i18n="section.activities.draw-angles.dragToAdjust">Drag to adjust the angle:</label>
+              <input type="range" id="angle-slider" class="angle-slider" min="0" max="180" value="0" step="5" aria-label="Angle slider">
+              <div class="slider-ticks">
+                <span>0°</span>
+                <span>45°</span>
+                <span>90°</span>
+                <span>135°</span>
+                <span>180°</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Check Button -->
+          <div class="action-buttons">
+            <button class="btn-activity btn-primary" id="btn-check" data-i18n="buttons.check">Check</button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.draw-angles.great">Great angle drawing!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Draw an Angle Activity - Grade 4 Level 5
+    const DrawAngles = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+      targetAngle: null,
+      currentDrawnAngle: 0,
+      tolerance: 5, // Accept within ±5°
+      lastTarget: null,
+      advanceTimeout: null,
+
+      // Possible target angles (multiples of 5, avoiding extremes)
+      possibleTargets: [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160],
+
+      init() {
+        this.drawingSvg = document.getElementById('drawing-svg');
+        this.targetAngleEl = document.getElementById('target-angle');
+        this.currentAngleEl = document.getElementById('current-angle');
+        this.angleSlider = document.getElementById('angle-slider');
+        this.btnCheck = document.getElementById('btn-check');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.angleSlider.addEventListener('input', () => this.handleSliderChange());
+        this.btnCheck.addEventListener('click', () => this.checkAnswer());
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(key);
+          return translated !== key ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      generateTargetAngle() {
+        // Pick a random target, avoiding repeating the same target
+        let availableTargets = this.possibleTargets.filter(a => a !== this.lastTarget);
+        const target = availableTargets[this.randomInt(0, availableTargets.length - 1)];
+        this.lastTarget = target;
+        this.targetAngle = target;
+        return target;
+      },
+
+      handleSliderChange() {
+        if (this.isAnswered) return;
+
+        this.currentDrawnAngle = parseInt(this.angleSlider.value);
+        this.currentAngleEl.textContent = `${this.currentDrawnAngle}°`;
+        this.drawAngle(this.currentDrawnAngle);
+      },
+
+      drawAngle(degrees) {
+        const svg = this.drawingSvg;
+        const cx = 150;
+        const cy = 150;
+        const rayLength = 120;
+
+        // Convert angle to radians
+        const rad = (degrees * Math.PI) / 180;
+
+        // Calculate second ray endpoint
+        const x2 = cx + rayLength * Math.cos(-rad);
+        const y2 = cy + rayLength * Math.sin(-rad);
+
+        // Base ray (0°) - horizontal right
+        const x1 = cx + rayLength;
+        const y1 = cy;
+
+        // Draw angle arc
+        const arcRadius = 30;
+        const arcEndX = cx + arcRadius * Math.cos(-rad);
+        const arcEndY = cy + arcRadius * Math.sin(-rad);
+        const largeArc = degrees > 180 ? 1 : 0;
+
+        // Right angle indicator
+        const isRight = degrees === 90;
+        const squareSize = 20;
+
+        svg.innerHTML = `
+          <!-- Background grid (subtle) -->
+          <defs>
+            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e5e7eb" stroke-width="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="300" height="200" fill="url(#grid)" opacity="0.5"/>
+
+          <!-- Angle arc -->
+          <path d="M ${cx + arcRadius} ${cy} A ${arcRadius} ${arcRadius} 0 ${largeArc} 0 ${arcEndX} ${arcEndY}"
+                fill="none" stroke="#f59e0b" stroke-width="3" />
+
+          ${isRight ? `
+          <!-- Right angle square -->
+          <rect x="${cx}" y="${cy - squareSize}" width="${squareSize}" height="${squareSize}"
+                fill="rgba(245, 158, 11, 0.2)" stroke="#f59e0b" stroke-width="2" />
+          ` : ''}
+
+          <!-- Base ray (0°) - gray dashed -->
+          <line x1="${cx}" y1="${cy}" x2="${x1}" y2="${y1}" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" stroke-dasharray="8,4" />
+          <text x="${x1 + 10}" y="${y1 + 5}" font-size="12" fill="#64748b">0°</text>
+
+          <!-- Movable ray -->
+          <line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="#6366f1" stroke-width="4" stroke-linecap="round" />
+
+          <!-- Ray endpoint handle -->
+          <circle cx="${x2}" cy="${y2}" r="8" fill="#6366f1" stroke="white" stroke-width="2" />
+
+          <!-- Vertex point -->
+          <circle cx="${cx}" cy="${cy}" r="6" fill="#6366f1" />
+
+          <!-- Current angle label -->
+          <text x="${cx + 45 * Math.cos(-rad/2)}" y="${cy + 45 * Math.sin(-rad/2) + 5}"
+                text-anchor="middle" font-size="14" fill="#f59e0b" font-weight="bold">${degrees}°</text>
+        `;
+      },
+
+      startQuestion() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error', 'success');
+        this.btnCheck.disabled = false;
+        this.angleSlider.disabled = false;
+
+        // Reset slider to a random starting position (not too close to target)
+        let startAngle;
+        do {
+          startAngle = this.randomInt(0, 36) * 5; // 0 to 180 in steps of 5
+        } while (Math.abs(startAngle - this.targetAngle) <= this.tolerance);
+
+        const target = this.generateTargetAngle();
+
+        // Now set a random start that's not too close to the new target
+        do {
+          startAngle = this.randomInt(0, 36) * 5;
+        } while (Math.abs(startAngle - target) <= this.tolerance);
+
+        this.angleSlider.value = startAngle;
+        this.currentDrawnAngle = startAngle;
+        this.currentAngleEl.textContent = `${startAngle}°`;
+
+        this.targetAngleEl.textContent = `${target}°`;
+        this.drawAngle(startAngle);
+        this.renderProgress();
+      },
+
+      checkAnswer() {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+        this.btnCheck.disabled = true;
+        this.angleSlider.disabled = true;
+
+        const difference = Math.abs(this.currentDrawnAngle - this.targetAngle);
+        const isCorrect = difference <= this.tolerance;
+
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = this.getTranslation(
+            'section.activities.draw-angles.correct',
+            'Great job! You drew {drawn}° (target was {target}°).'
+          );
+          this.feedback.textContent = msg
+            .replace('{drawn}', this.currentDrawnAngle)
+            .replace('{target}', this.targetAngle);
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('success');
+        } else {
+          this.incorrectCount++;
+          const msg = this.getTranslation(
+            'section.activities.draw-angles.wrong',
+            'The target was {target}°. You drew {drawn}°.'
+          );
+          this.feedback.textContent = msg
+            .replace('{drawn}', this.currentDrawnAngle)
+            .replace('{target}', this.targetAngle);
+          this.feedback.classList.add('error');
+          this.feedback.classList.remove('success');
+
+          if (typeof wiggle === 'function') {
+            wiggle(this.angleSlider.parentElement);
+          }
+        }
+
+        this.feedback.classList.add('show');
+
+        this.advanceTimeout = setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        // Reset to starting position without changing target
+        const target = this.targetAngle;
+        let startAngle;
+        do {
+          startAngle = this.randomInt(0, 36) * 5;
+        } while (Math.abs(startAngle - target) <= this.tolerance);
+
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error', 'success');
+        this.btnCheck.disabled = false;
+        this.angleSlider.disabled = false;
+        this.angleSlider.value = startAngle;
+        this.currentDrawnAngle = startAngle;
+        this.currentAngleEl.textContent = `${startAngle}°`;
+        this.drawAngle(startAngle);
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.draw-angles.perfect',
+            'Perfect angle drawing!'
+          );
+        } else if (percent >= 0.75) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.draw-angles.great',
+            'Great angle drawing!'
+          );
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.draw-angles.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.draw-angles.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.lastTarget = null;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      },
+
+      updateTranslations() {
+        this.updateProgressLabel();
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => DrawAngles.init());
+      } else {
+        DrawAngles.init();
+      }
+    });
+  </script>
+  <style>
+    /* Draw an Angle specific styles */
+
+    .target-card {
+      text-align: center;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid #f59e0b;
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      box-shadow: 0 4px 0 #d97706;
+    }
+
+    .target-label {
+      font-size: var(--text-lg);
+      color: #92400e;
+      margin-bottom: var(--space-2);
+    }
+
+    .target-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #78350f;
+    }
+
+    .drawing-card {
+      width: min(480px, 100%);
+      text-align: center;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 3px solid #0ea5e9;
+      border-radius: var(--radius-2xl);
+      padding: var(--space-5);
+      margin-bottom: var(--space-4);
+      box-shadow: 0 6px 0 #0284c7;
+    }
+
+    .drawing-canvas {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 3px solid #7dd3fc;
+      padding: var(--space-2);
+      margin-bottom: var(--space-4);
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #drawing-svg {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+    }
+
+    .current-angle {
+      font-size: var(--text-lg);
+      color: #0c4a6e;
+      margin-bottom: var(--space-4);
+    }
+
+    .current-value {
+      font-family: var(--font-secondary);
+      font-weight: var(--weight-bold);
+      color: #6366f1;
+      font-size: var(--text-xl);
+    }
+
+    .slider-container {
+      padding: 0 var(--space-2);
+    }
+
+    .slider-label {
+      display: block;
+      font-size: var(--text-sm);
+      color: #0c4a6e;
+      margin-bottom: var(--space-2);
+    }
+
+    .angle-slider {
+      width: 100%;
+      height: 12px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: linear-gradient(to right, #c4b5fd, #8b5cf6);
+      border-radius: 6px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .angle-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 28px;
+      height: 28px;
+      background: #6366f1;
+      border: 3px solid white;
+      border-radius: 50%;
+      cursor: grab;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .angle-slider::-moz-range-thumb {
+      width: 28px;
+      height: 28px;
+      background: #6366f1;
+      border: 3px solid white;
+      border-radius: 50%;
+      cursor: grab;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .angle-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.1);
+    }
+
+    .angle-slider:active::-webkit-slider-thumb {
+      cursor: grabbing;
+      transform: scale(1.15);
+    }
+
+    .angle-slider:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .angle-slider:disabled::-webkit-slider-thumb {
+      cursor: not-allowed;
+    }
+
+    .slider-ticks {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-2) 0;
+      font-size: var(--text-xs);
+      color: #64748b;
+    }
+
+    .action-buttons {
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    .feedback-message.success {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    @media (max-width: 480px) {
+      .target-card {
+        padding: var(--space-3);
+      }
+
+      .target-value {
+        font-size: var(--text-3xl);
+      }
+
+      .drawing-card {
+        padding: var(--space-4);
+      }
+
+      .current-angle {
+        font-size: var(--text-base);
+      }
+
+      .current-value {
+        font-size: var(--text-lg);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

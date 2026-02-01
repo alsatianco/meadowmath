@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Build a Line Plot - Grade 5 Math Activity - Meadow Math">
+  <title>Build a Line Plot - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">📍</span>
+            <span data-i18n="section.activities.line-plot-build.title">Build a Line Plot</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.line-plot-build.instruction">Add marks to the line plot!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Data List -->
+          <div class="data-container" id="data-container">
+            <div class="data-title">
+              <span class="data-icon">📊</span>
+              <span data-i18n="section.activities.line-plot-build.measurements">Measurements</span>
+              <span class="data-unit" id="data-unit">(inches)</span>
+            </div>
+            <div class="data-list" id="data-list">
+              <!-- Data values will be shown here -->
+            </div>
+          </div>
+
+          <!-- Line Plot Area -->
+          <div class="plot-container" id="plot-container">
+            <div class="plot-title" id="plot-title">
+              <span data-i18n="section.activities.line-plot-build.clickToAdd">Click to add marks</span>
+            </div>
+            <div class="plot-area" id="plot-area">
+              <!-- Plot marks will be rendered here -->
+            </div>
+            <div class="plot-axis" id="plot-axis">
+              <!-- Axis labels will be rendered here -->
+            </div>
+            <div class="plot-label" id="plot-label">
+              <!-- Label will be shown here -->
+            </div>
+          </div>
+
+          <!-- Counter -->
+          <div class="counter-container" id="counter-container">
+            <span data-i18n="section.activities.line-plot-build.marksPlaced">Marks placed</span>:
+            <span class="counter-value" id="marks-placed">0</span> / <span id="total-marks">0</span>
+          </div>
+
+          <!-- Check Button -->
+          <div class="action-container">
+            <button class="btn-activity btn-primary" id="btn-check" data-i18n="buttons.check">Check</button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.line-plot-build.great">Great work building line plots!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Build a Line Plot Activity - Grade 5 Level 4
+    const LinePlotBuild = {
+      currentQuestion: 0,
+      totalQuestions: 4,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 2000,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+      placedMarks: {},
+      expectedMarks: {},
+
+      // Data set templates
+      dataSets: [
+        {
+          title: 'Plant Heights',
+          titleKey: 'titlePlantHeights',
+          unit: 'inches',
+          unitKey: 'unitInches',
+          data: ['1/4', '1/2', '1/4', '3/4', '1/2', '1/4', '1', '3/4', '1/2'],
+          min: 0,
+          max: 1,
+          step: 1/4
+        },
+        {
+          title: 'Pencil Lengths',
+          titleKey: 'titlePencilLengths',
+          unit: 'inches',
+          unitKey: 'unitInches',
+          data: ['5 1/2', '6', '5 3/4', '6', '5 1/2', '5 1/4', '5 3/4', '6'],
+          min: 5,
+          max: 6,
+          step: 1/4
+        },
+        {
+          title: 'Rainfall Amounts',
+          titleKey: 'titleRainfallAmounts',
+          unit: 'inches',
+          unitKey: 'unitInches',
+          data: ['1/8', '1/4', '1/8', '3/8', '1/4', '1/2', '3/8', '1/4'],
+          min: 0,
+          max: 1/2,
+          step: 1/8
+        },
+        {
+          title: 'Bug Lengths',
+          titleKey: 'titleBugLengths',
+          unit: 'cm',
+          unitKey: 'unitCm',
+          data: ['1/2', '1', '3/4', '1/2', '1', '3/4', '1/4', '1/2'],
+          min: 0,
+          max: 1,
+          step: 1/4
+        },
+        {
+          title: 'Ribbon Pieces',
+          titleKey: 'titleRibbonPieces',
+          unit: 'yards',
+          unitKey: 'unitYards',
+          data: ['1/4', '1/2', '1/4', '3/4', '1/2', '1/4', '1/2', '3/4', '1/4'],
+          min: 0,
+          max: 1,
+          step: 1/4
+        },
+        {
+          title: 'Snowfall',
+          titleKey: 'titleSnowfall',
+          unit: 'inches',
+          unitKey: 'unitInches',
+          data: ['2 1/4', '2 1/2', '2 3/4', '2 1/2', '2 1/4', '3', '2 3/4', '2 1/2'],
+          min: 2,
+          max: 3,
+          step: 1/4
+        }
+      ],
+
+      // DOM elements
+      dataContainer: null,
+      dataUnit: null,
+      dataList: null,
+      plotContainer: null,
+      plotTitle: null,
+      plotArea: null,
+      plotAxis: null,
+      plotLabel: null,
+      marksPlaced: null,
+      totalMarksEl: null,
+      counterContainer: null,
+      btnCheck: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.dataContainer = document.getElementById('data-container');
+        this.dataUnit = document.getElementById('data-unit');
+        this.dataList = document.getElementById('data-list');
+        this.plotContainer = document.getElementById('plot-container');
+        this.plotTitle = document.getElementById('plot-title');
+        this.plotArea = document.getElementById('plot-area');
+        this.plotAxis = document.getElementById('plot-axis');
+        this.plotLabel = document.getElementById('plot-label');
+        this.marksPlaced = document.getElementById('marks-placed');
+        this.totalMarksEl = document.getElementById('total-marks');
+        this.counterContainer = document.getElementById('counter-container');
+        this.btnCheck = document.getElementById('btn-check');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnCheck.addEventListener('click', () => this.checkAnswer());
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      // Parse fraction string to decimal
+      parseFraction(str) {
+        str = str.trim();
+        const parts = str.split(' ');
+        if (parts.length === 2) {
+          // Mixed number like "5 1/2"
+          const whole = parseInt(parts[0]);
+          const [num, den] = parts[1].split('/').map(Number);
+          return whole + num / den;
+        } else if (str.includes('/')) {
+          const [num, den] = str.split('/').map(Number);
+          return num / den;
+        }
+        return parseFloat(str);
+      },
+
+      // Format decimal to fraction string
+      formatFraction(decimal, step) {
+        const den = Math.round(1 / step);
+        const wholeWithFrac = decimal;
+        const whole = Math.floor(wholeWithFrac);
+        const remainder = wholeWithFrac - whole;
+
+        if (remainder === 0) {
+          return whole.toString();
+        }
+
+        const num = Math.round(remainder * den);
+        if (whole === 0) {
+          return `${num}/${den}`;
+        }
+        return `${whole} ${num}/${den}`;
+      },
+
+      generateQuestions() {
+        // Shuffle datasets and pick questions
+        const shuffled = shuffle([...this.dataSets]);
+        this.questions = shuffled.slice(0, this.totalQuestions);
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.placedMarks = {};
+        this.feedback.classList.remove('show', 'error');
+        this.btnCheck.disabled = false;
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        // Calculate expected marks
+        this.expectedMarks = {};
+        question.data.forEach(val => {
+          const decimal = this.parseFraction(val);
+          const key = decimal.toFixed(4);
+          this.expectedMarks[key] = (this.expectedMarks[key] || 0) + 1;
+        });
+
+        // Build data display
+        this.buildDataDisplay(question);
+
+        // Build plot
+        this.buildPlot(question);
+
+        // Update counter
+        this.totalMarksEl.textContent = question.data.length;
+        this.marksPlaced.textContent = '0';
+
+        this.renderProgress();
+      },
+
+      buildDataDisplay(question) {
+        // Set unit
+        const unitText = this.getTranslation(
+          `section.activities.line-plot-build.${question.unitKey}`,
+          question.unit
+        );
+        this.dataUnit.textContent = `(${unitText})`;
+
+        // Display data values
+        this.dataList.innerHTML = '';
+        question.data.forEach(val => {
+          const chip = document.createElement('span');
+          chip.className = 'data-chip';
+          chip.textContent = val;
+          this.dataList.appendChild(chip);
+        });
+      },
+
+      buildPlot(question) {
+        this.plotArea.innerHTML = '';
+        this.plotAxis.innerHTML = '';
+
+        // Calculate tick positions
+        const tickValues = [];
+        for (let v = question.min; v <= question.max + 0.001; v += question.step) {
+          tickValues.push(Math.round(v * 1000) / 1000);
+        }
+
+        // Create click areas for each tick
+        tickValues.forEach((val, idx) => {
+          // Click area column
+          const col = document.createElement('div');
+          col.className = 'plot-column';
+          col.dataset.value = val.toFixed(4);
+          col.setAttribute('tabindex', '0');
+          col.setAttribute('role', 'button');
+          col.setAttribute('aria-label', `Add mark at ${this.formatFraction(val, question.step)}`);
+          col.addEventListener('click', () => this.toggleMark(val, question));
+          col.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.toggleMark(val, question);
+            }
+          });
+
+          // Marks container
+          const marksContainer = document.createElement('div');
+          marksContainer.className = 'marks-container';
+          marksContainer.id = `marks-${val.toFixed(4)}`;
+          col.appendChild(marksContainer);
+
+          this.plotArea.appendChild(col);
+
+          // Axis tick and label
+          const tick = document.createElement('div');
+          tick.className = 'axis-tick';
+
+          const tickLine = document.createElement('div');
+          tickLine.className = 'tick-line';
+          tick.appendChild(tickLine);
+
+          const tickLabel = document.createElement('span');
+          tickLabel.className = 'tick-label';
+          tickLabel.textContent = this.formatFraction(val, question.step);
+          tick.appendChild(tickLabel);
+
+          this.plotAxis.appendChild(tick);
+        });
+
+        // Set plot label
+        const titleText = this.getTranslation(
+          `section.activities.line-plot-build.${question.titleKey}`,
+          question.title
+        );
+        const unitText = this.getTranslation(
+          `section.activities.line-plot-build.${question.unitKey}`,
+          question.unit
+        );
+        this.plotLabel.textContent = `${titleText} (${unitText})`;
+      },
+
+      toggleMark(val, question) {
+        if (this.isAnswered) return;
+
+        const key = val.toFixed(4);
+        const marksContainer = document.getElementById(`marks-${key}`);
+        if (!marksContainer) return;
+
+        // Get current count
+        const currentCount = this.placedMarks[key] || 0;
+        const expectedCount = this.expectedMarks[key] || 0;
+
+        // Toggle: if at expected, reset to 0. Otherwise add one
+        if (currentCount >= Math.max(expectedCount, 3)) {
+          this.placedMarks[key] = 0;
+        } else {
+          this.placedMarks[key] = currentCount + 1;
+        }
+
+        // Update display
+        this.renderMarks(key);
+        this.updateCounter();
+      },
+
+      renderMarks(key) {
+        const marksContainer = document.getElementById(`marks-${key}`);
+        if (!marksContainer) return;
+
+        marksContainer.innerHTML = '';
+        const count = this.placedMarks[key] || 0;
+
+        for (let i = 0; i < count; i++) {
+          const mark = document.createElement('div');
+          mark.className = 'plot-mark';
+          mark.textContent = 'X';
+          marksContainer.appendChild(mark);
+        }
+      },
+
+      updateCounter() {
+        let total = 0;
+        for (const key in this.placedMarks) {
+          total += this.placedMarks[key];
+        }
+        this.marksPlaced.textContent = total;
+      },
+
+      checkAnswer() {
+        if (this.isAnswered) return;
+
+        this.isAnswered = true;
+        this.btnCheck.disabled = true;
+
+        // Compare placed marks with expected
+        let isCorrect = true;
+        const allKeys = new Set([...Object.keys(this.expectedMarks), ...Object.keys(this.placedMarks)]);
+
+        for (const key of allKeys) {
+          const expected = this.expectedMarks[key] || 0;
+          const placed = this.placedMarks[key] || 0;
+          if (expected !== placed) {
+            isCorrect = false;
+            break;
+          }
+        }
+
+        if (isCorrect) {
+          this.correctCount++;
+
+          const feedbackText = this.getTranslation(
+            'section.activities.line-plot-build.correct',
+            'Correct! Your line plot is perfect!'
+          );
+
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.remove('error');
+
+          // Highlight all columns as correct
+          const columns = this.plotArea.querySelectorAll('.plot-column');
+          columns.forEach(col => col.classList.add('correct'));
+        } else {
+          this.incorrectCount++;
+
+          // Show the correct marks - first clear all placed marks
+          for (const key in this.placedMarks) {
+            if (!this.expectedMarks[key]) {
+              this.placedMarks[key] = 0;
+              this.renderMarks(key);
+            }
+          }
+          // Then set the correct marks
+          for (const key in this.expectedMarks) {
+            this.placedMarks[key] = this.expectedMarks[key];
+            this.renderMarks(key);
+          }
+
+          const feedbackText = this.getTranslation(
+            'section.activities.line-plot-build.wrong',
+            'Not quite. Here is the correct plot.'
+          );
+
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.add('error');
+
+          // Highlight incorrect columns
+          const columns = this.plotArea.querySelectorAll('.plot-column');
+          columns.forEach(col => {
+            const key = col.dataset.value;
+            const expected = this.expectedMarks[key] || 0;
+            const placed = this.placedMarks[key] || 0;
+            if (expected === placed) {
+              col.classList.add('correct');
+            } else {
+              col.classList.add('incorrect');
+            }
+          });
+        }
+
+        this.feedback.classList.add('show');
+        this.scheduleAdvance();
+      },
+
+      scheduleAdvance() {
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+
+        // Refresh current question if not answered
+        if (!this.isAnswered && this.questions[this.currentQuestion]) {
+          const question = this.questions[this.currentQuestion];
+          this.buildDataDisplay(question);
+          // Re-render plot label
+          const titleText = this.getTranslation(
+            `section.activities.line-plot-build.${question.titleKey}`,
+            question.title
+          );
+          const unitText = this.getTranslation(
+            `section.activities.line-plot-build.${question.unitKey}`,
+            question.unit
+          );
+          this.plotLabel.textContent = `${titleText} (${unitText})`;
+        }
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.line-plot-build.perfect',
+            'Perfect! You mastered line plots!'
+          );
+        } else if (percent >= 0.75) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.line-plot-build.great',
+            'Great work building line plots!'
+          );
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.line-plot-build.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.line-plot-build.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => LinePlotBuild.init());
+      } else {
+        LinePlotBuild.init();
+      }
+    });
+  </script>
+  <style>
+    /* Build a Line Plot specific styles */
+
+    .data-container {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+      padding: var(--space-3);
+      margin-bottom: var(--space-4);
+      text-align: center;
+    }
+
+    .data-title {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+      margin-bottom: var(--space-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+    }
+
+    .data-icon {
+      font-size: var(--text-xl);
+    }
+
+    .data-unit {
+      font-size: var(--text-base);
+      font-weight: var(--weight-medium);
+      color: #b45309;
+    }
+
+    .data-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-2);
+    }
+
+    .data-chip {
+      background: white;
+      border: 2px solid #d97706;
+      border-radius: var(--radius-md);
+      padding: var(--space-1) var(--space-2);
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+    }
+
+    /* Plot Container */
+    .plot-container {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 2px solid #e5e7eb;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .plot-title {
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: #6b7280;
+      margin-bottom: var(--space-3);
+    }
+
+    .plot-area {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      min-height: 150px;
+      border-bottom: 3px solid #374151;
+      padding-bottom: var(--space-2);
+      margin-bottom: var(--space-2);
+    }
+
+    .plot-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      min-height: 120px;
+      cursor: pointer;
+      padding: var(--space-1);
+      border-radius: var(--radius-md);
+      transition: background 0.2s ease;
+    }
+
+    .plot-column:hover,
+    .plot-column:focus {
+      background: rgba(59, 130, 246, 0.1);
+    }
+
+    .plot-column:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .plot-column.correct {
+      background: rgba(34, 197, 94, 0.2);
+    }
+
+    .plot-column.incorrect {
+      background: rgba(239, 68, 68, 0.2);
+    }
+
+    .marks-container {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .plot-mark {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #3b82f6;
+      line-height: 1;
+    }
+
+    .plot-axis {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .axis-tick {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tick-line {
+      width: 2px;
+      height: 10px;
+      background: #374151;
+    }
+
+    .tick-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: #374151;
+      margin-top: var(--space-1);
+    }
+
+    .plot-label {
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #1e3a5f;
+      margin-top: var(--space-3);
+    }
+
+    /* Counter */
+    .counter-container {
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-medium);
+      color: #374151;
+      margin-bottom: var(--space-3);
+    }
+
+    .counter-value {
+      font-weight: var(--weight-bold);
+      color: #3b82f6;
+    }
+
+    /* Action Container */
+    .action-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+
+    #btn-check {
+      min-width: 150px;
+    }
+
+    /* Feedback and layout */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .data-container {
+        padding: var(--space-2);
+      }
+
+      .data-title {
+        font-size: var(--text-base);
+        flex-wrap: wrap;
+      }
+
+      .data-chip {
+        font-size: var(--text-sm);
+        padding: 2px 6px;
+      }
+
+      .plot-container {
+        padding: var(--space-3);
+      }
+
+      .plot-area {
+        min-height: 120px;
+      }
+
+      .plot-column {
+        min-height: 100px;
+      }
+
+      .plot-mark {
+        font-size: var(--text-base);
+      }
+
+      .tick-label {
+        font-size: var(--text-xs);
+      }
+
+      .plot-label {
+        font-size: var(--text-sm);
+      }
+
+      .counter-container {
+        font-size: var(--text-base);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .data-list {
+        gap: var(--space-1);
+      }
+
+      .data-chip {
+        font-size: var(--text-xs);
+        padding: 2px 4px;
+      }
+
+      .plot-area {
+        min-height: 100px;
+      }
+
+      .plot-column {
+        min-height: 80px;
+        padding: 2px;
+      }
+
+      .plot-mark {
+        font-size: var(--text-sm);
+      }
+
+      .tick-label {
+        font-size: 10px;
+      }
+
+      .plot-label {
+        font-size: var(--text-xs);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

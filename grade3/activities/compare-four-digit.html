@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Compare 4-Digit Numbers - Grade 3 Math Activity - Meadow Math">
+  <title>Compare 4-Digit Numbers - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🐊</span>
+            <span data-i18n="section.activities.compare-four-digit.title">Compare 4-Digit Numbers</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.compare-four-digit.description">Pick &gt;, &lt;, or = to compare.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Question -->
+          <div class="question-text" id="question">
+            <span data-i18n="section.activities.compare-four-digit.instruction">Which symbol makes the comparison true?</span>
+          </div>
+
+          <!-- Comparison Display -->
+          <div class="comparison-display" id="comparison-display">
+            <div class="number-box left-number" id="left-number">1,234</div>
+            <div class="symbol-box" id="symbol-box">?</div>
+            <div class="number-box right-number" id="right-number">5,678</div>
+          </div>
+
+          <!-- Place Value Breakdown (optional hint) -->
+          <div class="place-value-hint" id="place-value-hint">
+            <button class="hint-toggle" id="hint-toggle" aria-expanded="false" data-i18n="section.activities.compare-four-digit.showHint">Show place values</button>
+            <div class="hint-content" id="hint-content" hidden>
+              <div class="breakdown-row">
+                <span class="breakdown-left" id="breakdown-left"></span>
+                <span class="breakdown-vs" data-i18n="activity.vs">vs</span>
+                <span class="breakdown-right" id="breakdown-right"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scale Visual -->
+          <div class="scale-visual" id="scale-visual">
+            <div class="scale-beam" id="scale-beam">
+              <div class="scale-left">🐊</div>
+              <div class="scale-fulcrum">⚖️</div>
+              <div class="scale-right">🐊</div>
+            </div>
+          </div>
+
+          <!-- Choice Buttons -->
+          <div class="choice-container" id="choice-container">
+            <button class="choice-btn symbol-btn" data-value="<">&lt;</button>
+            <button class="choice-btn symbol-btn" data-value="=">=</button>
+            <button class="choice-btn symbol-btn" data-value=">">&gt;</button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.compare-four-digit.great">Great comparing!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Compare 4-Digit Numbers Activity - Grade 3 Level 1
+    const CompareFourDigit = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      leftNum: 0,
+      rightNum: 0,
+      correctSymbol: '=',
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+      hintVisible: false,
+
+      leftNumber: null,
+      rightNumber: null,
+      symbolBox: null,
+      scaleBeam: null,
+      choiceContainer: null,
+      feedback: null,
+      progress: null,
+      hintToggle: null,
+      hintContent: null,
+      breakdownLeft: null,
+      breakdownRight: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.leftNumber = document.getElementById('left-number');
+        this.rightNumber = document.getElementById('right-number');
+        this.symbolBox = document.getElementById('symbol-box');
+        this.scaleBeam = document.getElementById('scale-beam');
+        this.choiceContainer = document.getElementById('choice-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.hintToggle = document.getElementById('hint-toggle');
+        this.hintContent = document.getElementById('hint-content');
+        this.breakdownLeft = document.getElementById('breakdown-left');
+        this.breakdownRight = document.getElementById('breakdown-right');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up choice buttons
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.addEventListener('click', () => this.selectChoice(btn.dataset.value));
+        });
+
+        // Set up hint toggle
+        this.hintToggle.addEventListener('click', () => this.toggleHint());
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Update hint toggle text
+        if (this.hintToggle && window.i18n) {
+          const showKey = 'section.activities.compare-four-digit.showHint';
+          const hideKey = 'section.activities.compare-four-digit.hideHint';
+          this.hintToggle.textContent = this.hintVisible ? i18n.t(hideKey) : i18n.t(showKey);
+        }
+        // Update place value breakdown with translated words
+        if (this.breakdownLeft && this.breakdownRight && this.leftNum && this.rightNum) {
+          this.breakdownLeft.textContent = this.getPlaceValueBreakdown(this.leftNum);
+          this.breakdownRight.textContent = this.getPlaceValueBreakdown(this.rightNum);
+        }
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      formatNumber(num) {
+        return num.toLocaleString();
+      },
+
+      getPlaceValueBreakdown(num) {
+        const th = Math.floor(num / 1000);
+        const h = Math.floor((num % 1000) / 100);
+        const t = Math.floor((num % 100) / 10);
+        const o = num % 10;
+
+        // Use translated words if available
+        const thousandsWord = window.i18n ? i18n.t('section.activities.compare-four-digit.thousandsWord') : 'thousands';
+        const hundredsWord = window.i18n ? i18n.t('section.activities.compare-four-digit.hundredsWord') : 'hundreds';
+        const tensWord = window.i18n ? i18n.t('section.activities.compare-four-digit.tensWord') : 'tens';
+        const onesWord = window.i18n ? i18n.t('section.activities.compare-four-digit.onesWord') : 'ones';
+
+        return `${th} ${thousandsWord}, ${h} ${hundredsWord}, ${t} ${tensWord}, ${o} ${onesWord}`;
+      },
+
+      generateNumbers() {
+        // Progressive difficulty for 4-digit numbers
+        let num1, num2;
+
+        if (this.currentQuestion < 3) {
+          // Obvious differences - different thousands
+          const th1 = this.randomInt(1, 4);
+          const th2 = this.randomInt(5, 9);
+          num1 = th1 * 1000 + this.randomInt(0, 999);
+          num2 = th2 * 1000 + this.randomInt(0, 999);
+          if (Math.random() > 0.5) [num1, num2] = [num2, num1];
+        } else if (this.currentQuestion < 5) {
+          // Same thousands, different hundreds
+          const th = this.randomInt(1, 9);
+          const h1 = this.randomInt(0, 4);
+          const h2 = this.randomInt(5, 9);
+          num1 = th * 1000 + h1 * 100 + this.randomInt(0, 99);
+          num2 = th * 1000 + h2 * 100 + this.randomInt(0, 99);
+          if (Math.random() > 0.5) [num1, num2] = [num2, num1];
+        } else if (this.currentQuestion < 7) {
+          // Same thousands and hundreds, different tens
+          const th = this.randomInt(1, 9);
+          const h = this.randomInt(0, 9);
+          const t1 = this.randomInt(0, 4);
+          const t2 = this.randomInt(5, 9);
+          num1 = th * 1000 + h * 100 + t1 * 10 + this.randomInt(0, 9);
+          num2 = th * 1000 + h * 100 + t2 * 10 + this.randomInt(0, 9);
+          if (Math.random() > 0.5) [num1, num2] = [num2, num1];
+        } else if (this.currentQuestion < 9) {
+          // Same thousands, hundreds, tens - different ones
+          const base = this.randomInt(100, 999) * 10;
+          num1 = base + this.randomInt(0, 4);
+          num2 = base + this.randomInt(5, 9);
+          if (Math.random() > 0.5) [num1, num2] = [num2, num1];
+        } else {
+          // Mix - include equal numbers and tricky close numbers
+          if (Math.random() < 0.25) {
+            // Equal
+            num1 = num2 = this.randomInt(1000, 9999);
+          } else {
+            // Close numbers or random
+            num1 = this.randomInt(1000, 9900);
+            num2 = num1 + this.randomInt(-50, 50);
+            if (num2 < 1000) num2 = 1000;
+            if (num2 > 9999) num2 = 9999;
+          }
+        }
+
+        this.leftNum = num1;
+        this.rightNum = num2;
+
+        if (num1 < num2) {
+          this.correctSymbol = '<';
+        } else if (num1 > num2) {
+          this.correctSymbol = '>';
+        } else {
+          this.correctSymbol = '=';
+        }
+
+        this.isAnswered = false;
+      },
+
+      startQuestion() {
+        this.generateNumbers();
+        this.leftNumber.textContent = this.formatNumber(this.leftNum);
+        this.rightNumber.textContent = this.formatNumber(this.rightNum);
+        this.symbolBox.textContent = '?';
+        this.symbolBox.className = 'symbol-box';
+
+        // Update place value breakdown
+        this.breakdownLeft.textContent = this.getPlaceValueBreakdown(this.leftNum);
+        this.breakdownRight.textContent = this.getPlaceValueBreakdown(this.rightNum);
+
+        // Reset scale
+        this.scaleBeam.className = 'scale-beam';
+
+        // Reset buttons
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.disabled = false;
+          btn.classList.remove('correct', 'incorrect', 'selected');
+        });
+
+        // Hide hint
+        this.hintVisible = false;
+        this.hintContent.hidden = true;
+        this.hintToggle.setAttribute('aria-expanded', 'false');
+        if (window.i18n) {
+          this.hintToggle.textContent = i18n.t('section.activities.compare-four-digit.showHint') || 'Show place values';
+        } else {
+          this.hintToggle.textContent = 'Show place values';
+        }
+
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      toggleHint() {
+        this.hintVisible = !this.hintVisible;
+        this.hintContent.hidden = !this.hintVisible;
+        this.hintToggle.setAttribute('aria-expanded', this.hintVisible.toString());
+
+        if (window.i18n) {
+          const showKey = 'section.activities.compare-four-digit.showHint';
+          const hideKey = 'section.activities.compare-four-digit.hideHint';
+          this.hintToggle.textContent = this.hintVisible ? i18n.t(hideKey) : i18n.t(showKey);
+        } else {
+          this.hintToggle.textContent = this.hintVisible ? 'Hide place values' : 'Show place values';
+        }
+      },
+
+      selectChoice(value) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const isCorrect = value === this.correctSymbol;
+
+        // Show selected and correct
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.disabled = true;
+          if (btn.dataset.value === this.correctSymbol) {
+            btn.classList.add('correct');
+          } else if (btn.dataset.value === value && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        // Update symbol box
+        this.symbolBox.textContent = this.correctSymbol;
+        this.symbolBox.classList.add(isCorrect ? 'correct' : 'show-correct');
+
+        // Animate scale with crocodile
+        if (this.correctSymbol === '<') {
+          this.scaleBeam.classList.add('tilt-right');
+        } else if (this.correctSymbol === '>') {
+          this.scaleBeam.classList.add('tilt-left');
+        } else {
+          this.scaleBeam.classList.add('balanced');
+        }
+
+        if (isCorrect) {
+          this.correctCount++;
+          this.feedback.textContent = window.i18n ? i18n.t('feedback.correct') + ' 🐊' : '✓ Correct! 🐊';
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          this.feedback.textContent = window.i18n
+            ? i18n.t('feedback.tryAgain') + ` ${this.formatNumber(this.leftNum)} ${this.correctSymbol} ${this.formatNumber(this.rightNum)}`
+            : `✗ ${this.formatNumber(this.leftNum)} ${this.correctSymbol} ${this.formatNumber(this.rightNum)}`;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.compare-four-digit.perfect') : 'Amazing comparing!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🐊';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.compare-four-digit.great') : 'Great number sense!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.compare-four-digit.keepPracticing') : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => CompareFourDigit.init());
+      } else {
+        CompareFourDigit.init();
+      }
+    });
+  </script>
+  <style>
+    /* Compare 4-Digit Numbers specific styles */
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-4);
+      text-align: center;
+    }
+
+    /* Comparison Display */
+    .comparison-display {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-3);
+      margin: var(--space-6) 0 var(--space-3);
+    }
+
+    .number-box {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      padding: var(--space-3) var(--space-5);
+      border-radius: var(--radius-xl);
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .left-number {
+      color: #7c3aed;
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border: 3px solid #a78bfa;
+    }
+
+    .right-number {
+      color: #0891b2;
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      border: 3px solid #22d3ee;
+    }
+
+    .symbol-box {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-500);
+      padding: var(--space-2) var(--space-4);
+      background: var(--color-neutral-100);
+      border: 3px dashed var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      min-width: 70px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .symbol-box.correct {
+      color: #166534;
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border: 3px solid #22c55e;
+    }
+
+    .symbol-box.show-correct {
+      color: #166534;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid #f59e0b;
+    }
+
+    /* Place Value Hint */
+    .place-value-hint {
+      text-align: center;
+      margin-bottom: var(--space-3);
+    }
+
+    .hint-toggle {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-primary);
+      background: transparent;
+      border: 2px solid var(--color-primary-light);
+      border-radius: var(--radius-md);
+      padding: var(--space-1) var(--space-3);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .hint-toggle:hover {
+      background: var(--color-primary-light);
+      color: var(--color-primary-dark);
+    }
+
+    .hint-toggle:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
+    .hint-toggle:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+    }
+
+    .hint-content {
+      margin-top: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border-radius: var(--radius-md);
+      border: 2px solid var(--color-primary-light);
+    }
+
+    .breakdown-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .breakdown-left, .breakdown-right {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      color: var(--color-neutral-700);
+    }
+
+    .breakdown-left {
+      color: #7c3aed;
+    }
+
+    .breakdown-right {
+      color: #0891b2;
+    }
+
+    .breakdown-vs {
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-500);
+    }
+
+    /* Scale Visual */
+    .scale-visual {
+      display: flex;
+      justify-content: center;
+      margin: var(--space-3) 0 var(--space-4);
+    }
+
+    .scale-beam {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-8);
+      font-size: 2rem;
+      transition: transform 0.5s ease;
+      transform-origin: center;
+    }
+
+    .scale-fulcrum {
+      font-size: 2.5rem;
+    }
+
+    .scale-left, .scale-right {
+      transition: transform 0.5s ease;
+    }
+
+    .scale-beam.tilt-left .scale-left {
+      transform: translateY(-15px);
+    }
+    .scale-beam.tilt-left .scale-right {
+      transform: translateY(15px);
+    }
+
+    .scale-beam.tilt-right .scale-left {
+      transform: translateY(15px);
+    }
+    .scale-beam.tilt-right .scale-right {
+      transform: translateY(-15px);
+    }
+
+    .scale-beam.balanced .scale-left,
+    .scale-beam.balanced .scale-right {
+      animation: pulse-scale 0.5s ease;
+    }
+
+    @keyframes pulse-scale {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    /* Choice Container */
+    .choice-container {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+      margin: var(--space-4) 0;
+      padding: var(--space-2);
+    }
+
+    .choice-btn.symbol-btn {
+      min-width: 80px;
+      min-height: 80px;
+      padding: var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 4px solid var(--color-primary-light);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 var(--color-primary);
+    }
+
+    .choice-btn.symbol-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 0 var(--color-primary);
+    }
+
+    .choice-btn.symbol-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 var(--color-primary);
+    }
+
+    .choice-btn.symbol-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4), 0 4px 0 var(--color-primary);
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      box-shadow: 0 4px 0 #15803d;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      box-shadow: 0 4px 0 #b91c1c;
+      color: #991b1b;
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .comparison-display {
+        gap: var(--space-2);
+      }
+
+      .number-box {
+        font-size: var(--text-xl);
+        padding: var(--space-2) var(--space-3);
+        min-width: 90px;
+      }
+
+      .symbol-box {
+        font-size: var(--text-xl);
+        padding: var(--space-2);
+        min-width: 50px;
+      }
+
+      .scale-beam {
+        font-size: 1.5rem;
+        gap: var(--space-4);
+      }
+
+      .scale-fulcrum {
+        font-size: 2rem;
+      }
+
+      .choice-btn.symbol-btn {
+        min-width: 60px;
+        min-height: 60px;
+        font-size: var(--text-2xl);
+        padding: var(--space-3);
+      }
+
+      .breakdown-row {
+        flex-direction: column;
+        gap: var(--space-1);
+      }
+
+      .breakdown-left, .breakdown-right {
+        font-size: var(--text-xs);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .number-box {
+        font-size: var(--text-lg);
+        padding: var(--space-2);
+        min-width: 70px;
+      }
+
+      .symbol-box {
+        font-size: var(--text-lg);
+        padding: var(--space-1) var(--space-2);
+        min-width: 44px;
+      }
+
+      .choice-btn.symbol-btn {
+        min-width: 60px;
+        min-height: 60px;
+        font-size: var(--text-xl);
+        padding: var(--space-2);
+      }
+
+      .choice-container {
+        gap: var(--space-2);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,11 @@
+/**
+ * Kindergarten Activity Styles
+ *
+ * This file imports the shared activity styles from the central CSS folder.
+ * Add any Kindergarten specific overrides below the import.
+ */
+
+@import url('../../css/activity.css');
+
+/* ========== KINDERGARTEN SPECIFIC OVERRIDES ========== */
+/* Add Kindergarten specific styles here if needed */

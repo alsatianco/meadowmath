@@ -27,12 +27,12 @@ class ActivityBase {
     this.incorrectCount = 0;
     this.isAnswered = false;
     this.autoAdvanceDelay = config.autoAdvanceDelay || 1500;
-    
+
     // Activity config
     this.activityId = config.activityId || '';
     this.activityName = config.activityName || 'Activity';
     this.gradeLevel = config.gradeLevel || 'grade1'; // 'prek', 'kindergarten', 'grade1', etc.
-    
+
     // DOM elements (common across all activities)
     this.progress = null;
     this.feedback = null;
@@ -187,7 +187,7 @@ class ActivityBase {
    */
   updateStatsDisplay() {
     const percentage = Math.round((this.correctCount / this.totalRounds) * 100);
-    
+
     // Update icon
     if (this.statsIcon) {
       if (percentage >= 80) {

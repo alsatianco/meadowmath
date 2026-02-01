@@ -1,0 +1,97 @@
+/* Geoboard Tool Styles */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-size: var(--text-xl);
+  color: var(--color-neutral-600);
+  background: white;
+  border: 2px solid var(--color-neutral-200);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.back-link:hover {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+/* Color Buttons */
+.color-buttons {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.color-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.color-btn:hover {
+  transform: scale(1.1);
+}
+
+.color-btn.active {
+  border-color: var(--color-primary-dark);
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--color-primary-dark);
+}
+
+/* Geoboard SVG */
+.geoboard-svg {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #8B4513, #A0522D);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 6px 0 #5D3A1A, 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Pegs */
+.peg {
+  fill: #C0C0C0;
+  stroke: #808080;
+  stroke-width: 1;
+  cursor: pointer;
+  transition: all 0.15s ease-out;
+}
+
+.peg:hover {
+  fill: #E0E0E0;
+  r: 8;
+}
+
+.peg.selected {
+  fill: var(--color-accent-pink);
+  stroke: var(--color-primary-dark);
+  stroke-width: 2;
+}
+
+/* Rubber Bands */
+.rubber-band {
+  fill: rgba(255, 107, 157, 0.3);
+  stroke: #FF6B9D;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .geoboard-svg {
+    max-width: 300px;
+  }
+
+  .color-btn {
+    width: 28px;
+    height: 28px;
+  }
+}

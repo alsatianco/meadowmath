@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ten-Frame Builder - Kindergarten Math Activity - Meadow Math">
+  <title>Ten-Frame Builder - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🟦</span>
+            <span data-i18n="section.activities.ten-frame-builder.title">Ten-Frame Builder</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.ten-frame-builder.instruction">Tap to build the number!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Target Number -->
+          <div class="target-display">
+            <span class="target-label" data-i18n="section.activities.ten-frame-builder.build">Build:</span>
+            <span class="target-number" id="target-number">13</span>
+          </div>
+
+          <!-- Ten-Frame Display -->
+          <div class="frames-container" id="frames-container">
+            <!-- Ten-frame will be generated here -->
+          </div>
+
+          <!-- Counter chips to tap -->
+          <div class="chips-area">
+            <div class="chip-source" id="chip-source">
+              <span class="chip-emoji">🔵</span>
+              <span class="chip-text" data-i18n="section.activities.ten-frame-builder.tapToAdd">Tap to add</span>
+            </div>
+          </div>
+
+          <!-- Current count and equation -->
+          <div class="count-display" id="count-display">
+            <span class="current-count" id="current-count">0</span>
+          </div>
+
+          <!-- Equation reveal -->
+          <div class="equation-display" id="equation-display"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <!-- Auto-advance, no buttons needed -->
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Ten-Frame Builder Activity Styles */
+    .target-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .target-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      color: var(--color-neutral-600);
+    }
+
+    .target-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary-600);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      padding: var(--space-2) var(--space-5);
+      border-radius: var(--radius-xl);
+      border: 4px solid var(--color-primary-400);
+      box-shadow: 0 4px 0 var(--color-primary-500);
+      min-width: 80px;
+      text-align: center;
+    }
+
+    .frames-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .ten-frame {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 4px;
+      padding: var(--space-2);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 4px solid #f59e0b;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 0 #d97706;
+    }
+
+    .frame-cell {
+      width: 48px;
+      height: 48px;
+      background: white;
+      border: 2px solid #fbbf24;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      transition: all 0.2s ease;
+    }
+
+    .frame-cell.filled {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: #3b82f6;
+    }
+
+    .frame-cell.filled .cell-chip {
+      animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0); }
+      70% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    /* Extra ones (for teen numbers) */
+    .extra-ones {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 4px solid #22c55e;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 0 #16a34a;
+      min-width: 60px;
+      min-height: 60px;
+    }
+
+    .extra-cell {
+      width: 48px;
+      height: 48px;
+      background: white;
+      border: 2px solid #86efac;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      transition: all 0.2s ease;
+    }
+
+    .extra-cell.filled {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+    }
+
+    /* Chip source area */
+    .chips-area {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .chip-source {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-3) var(--space-5);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 4px solid #0ea5e9;
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 0 #0284c7, 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .chip-source:hover:not(.disabled) {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 0 #0284c7, 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .chip-source:active:not(.disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #0284c7;
+    }
+
+    .chip-source.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .chip-emoji {
+      font-size: 40px;
+    }
+
+    .chip-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: #0369a1;
+    }
+
+    /* Count display */
+    .count-display {
+      text-align: center;
+      margin-bottom: var(--space-3);
+    }
+
+    .current-count {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-600);
+    }
+
+    /* Equation display */
+    .equation-display {
+      text-align: center;
+      min-height: 40px;
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary-600);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.5s ease;
+    }
+
+    .equation-display.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .frame-cell, .extra-cell {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+      }
+
+      .target-number {
+        font-size: var(--text-3xl);
+      }
+
+      .chip-emoji {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .frame-cell, .extra-cell {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+      }
+
+      .frames-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Ten-Frame Builder Activity
+    const TenFrameBuilder = {
+      // Game state
+      round: 1,
+      maxRounds: 10,
+      targetNumber: 0,
+      currentCount: 0,
+      hasCompleted: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+
+      // DOM elements
+      progress: null,
+      targetNumberEl: null,
+      framesContainer: null,
+      chipSource: null,
+      currentCountEl: null,
+      equationDisplay: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Round configurations - progressive difficulty
+      rounds: [
+        { min: 3, max: 5 },    // Start small (within five-frame)
+        { min: 5, max: 7 },
+        { min: 6, max: 9 },
+        { min: 8, max: 10 },
+        { min: 10, max: 10 }, // Exactly 10
+        { min: 11, max: 13 }, // Teen numbers start
+        { min: 12, max: 15 },
+        { min: 14, max: 17 },
+        { min: 15, max: 18 },
+        { min: 16, max: 19 }
+      ],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        // Get DOM elements
+        this.progress = document.getElementById('progress');
+        this.targetNumberEl = document.getElementById('target-number');
+        this.framesContainer = document.getElementById('frames-container');
+        this.chipSource = document.getElementById('chip-source');
+        this.currentCountEl = document.getElementById('current-count');
+        this.equationDisplay = document.getElementById('equation-display');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up event listeners
+        this.chipSource.addEventListener('click', () => this.addChip());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Start
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasCompleted = false;
+        this.currentCount = 0;
+
+        // Get target number based on round difficulty
+        const config = this.rounds[Math.min(this.round - 1, this.rounds.length - 1)];
+        this.targetNumber = randomInt(config.min, config.max);
+
+        // Update display
+        this.targetNumberEl.textContent = this.targetNumber;
+        this.currentCountEl.textContent = '0';
+        this.equationDisplay.classList.remove('show');
+        this.equationDisplay.textContent = '';
+        this.feedback.classList.remove('show', 'error');
+
+        // Build frame(s)
+        this.buildFrames();
+
+        // Enable chip source
+        this.chipSource.classList.remove('disabled');
+
+        // Update progress
+        this.renderProgress();
+      },
+
+      /**
+       * Build the ten-frame(s) based on target number
+       */
+      buildFrames() {
+        this.framesContainer.innerHTML = '';
+
+        // Always show a ten-frame
+        const tenFrame = document.createElement('div');
+        tenFrame.className = 'ten-frame';
+        tenFrame.id = 'ten-frame';
+
+        for (let i = 0; i < 10; i++) {
+          const cell = document.createElement('div');
+          cell.className = 'frame-cell';
+          cell.dataset.index = i;
+          tenFrame.appendChild(cell);
+        }
+
+        this.framesContainer.appendChild(tenFrame);
+
+        // If target > 10, add extra ones area
+        if (this.targetNumber > 10) {
+          const extrasContainer = document.createElement('div');
+          extrasContainer.className = 'extra-ones';
+          extrasContainer.id = 'extra-ones';
+
+          // Create cells for the extras (up to 9)
+          const extraCount = this.targetNumber - 10;
+          for (let i = 0; i < extraCount; i++) {
+            const cell = document.createElement('div');
+            cell.className = 'extra-cell';
+            cell.dataset.index = i;
+            extrasContainer.appendChild(cell);
+          }
+
+          this.framesContainer.appendChild(extrasContainer);
+        }
+      },
+
+      /**
+       * Add a chip when tapped
+       */
+      addChip() {
+        if (this.hasCompleted || this.currentCount >= this.targetNumber) return;
+
+        this.currentCount++;
+        this.currentCountEl.textContent = this.currentCount;
+
+        // Fill the appropriate cell
+        this.fillCell(this.currentCount);
+
+        // Check if complete
+        if (this.currentCount === this.targetNumber) {
+          this.completeRound();
+        }
+      },
+
+      /**
+       * Fill a cell based on current count
+       */
+      fillCell(count) {
+        if (count <= 10) {
+          // Fill ten-frame
+          const tenFrame = document.getElementById('ten-frame');
+          const cell = tenFrame.children[count - 1];
+          if (cell) {
+            cell.classList.add('filled');
+            cell.innerHTML = '<span class="cell-chip">🔵</span>';
+          }
+        } else {
+          // Fill extra ones
+          const extras = document.getElementById('extra-ones');
+          if (extras) {
+            const extraIndex = count - 11;
+            const cell = extras.children[extraIndex];
+            if (cell) {
+              cell.classList.add('filled');
+              cell.innerHTML = '<span class="cell-chip">🔵</span>';
+            }
+          }
+        }
+      },
+
+      /**
+       * Handle round completion
+       */
+      completeRound() {
+        this.hasCompleted = true;
+        this.chipSource.classList.add('disabled');
+
+        // Show equation for numbers > 5
+        if (this.targetNumber > 10) {
+          const ones = this.targetNumber - 10;
+          this.equationDisplay.textContent = `${this.targetNumber} = 10 + ${ones}`;
+          this.equationDisplay.classList.add('show');
+        } else if (this.targetNumber > 5) {
+          const extras = this.targetNumber - 5;
+          this.equationDisplay.textContent = `${this.targetNumber} = 5 + ${extras}`;
+          this.equationDisplay.classList.add('show');
+        }
+
+        // Show feedback
+        this.feedback.textContent = '🎉 Perfect! You built ' + this.targetNumber + '!';
+        this.feedback.classList.remove('error');
+        this.feedback.classList.add('show');
+        this.correctCount++;
+
+        // Celebrate
+        if (typeof celebrate === 'function') {
+          celebrate(this.framesContainer);
+        }
+
+        this.renderProgress();
+
+        // Auto-advance
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show completion stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = 'Amazing! You\'re a ten-frame master!';
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = 'Great job building numbers!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = 'Good effort! Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart the activity
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Go to next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress indicator
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasCompleted)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      TenFrameBuilder.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

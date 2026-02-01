@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shape Hierarchy Tree - Grade 5 Math Activity - Meadow Math">
+  <title>Shape Hierarchy Tree - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🌳</span>
+            <span data-i18n="section.activities.shape-hierarchy.title">Shape Hierarchy Tree</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.shape-hierarchy.instruction">Drag the shape names to build the family tree!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Prompt -->
+          <div class="prompt-card" id="prompt-card">
+            <span class="prompt-text" id="prompt-text">Which shape goes in the blank?</span>
+          </div>
+
+          <!-- Hierarchy Tree Display -->
+          <div class="hierarchy-container" id="hierarchy-container">
+            <!-- Tree will be rendered here -->
+          </div>
+
+          <!-- Draggable Labels -->
+          <div class="labels-container" id="labels-container">
+            <!-- Draggable labels will be rendered here -->
+          </div>
+
+          <!-- Check Button -->
+          <button class="btn-activity btn-primary check-btn" id="btn-check" disabled data-i18n="buttons.check">Check</button>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.shape-hierarchy.great">Great job building the shape family tree!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Shape Hierarchy Tree Activity - Grade 5 Level 5
+    const ShapeHierarchy = {
+      currentQuestion: 0,
+      totalQuestions: 6,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 2000,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+      selectedLabel: null,
+      draggedElement: null,
+
+      // DOM elements
+      promptCard: null,
+      promptText: null,
+      hierarchyContainer: null,
+      labelsContainer: null,
+      btnCheck: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Shape name translations
+      shapeNames: {
+        quadrilateral: 'Quadrilateral',
+        parallelogram: 'Parallelogram',
+        rectangle: 'Rectangle',
+        square: 'Square',
+        rhombus: 'Rhombus',
+        trapezoid: 'Trapezoid',
+        triangle: 'Triangle',
+        rightTriangle: 'Right Triangle',
+        isoscelesTriangle: 'Isosceles Triangle',
+        equilateralTriangle: 'Equilateral Triangle'
+      },
+
+      // Hierarchy puzzles - each shows a tree with blanks
+      puzzles: [
+        {
+          // Quadrilateral hierarchy - fill in Rectangle
+          type: 'quadrilateral',
+          tree: [
+            { id: 'q1', shape: 'quadrilateral', level: 0, show: true },
+            { id: 'q2', shape: 'parallelogram', level: 1, show: true },
+            { id: 'q3', shape: 'rectangle', level: 2, show: false, isBlank: true },
+            { id: 'q4', shape: 'square', level: 3, show: true }
+          ],
+          answer: 'rectangle',
+          distractors: ['trapezoid', 'rhombus', 'triangle']
+        },
+        {
+          // Quadrilateral hierarchy - fill in Square
+          type: 'quadrilateral',
+          tree: [
+            { id: 'q1', shape: 'quadrilateral', level: 0, show: true },
+            { id: 'q2', shape: 'parallelogram', level: 1, show: true },
+            { id: 'q3', shape: 'rectangle', level: 2, show: true },
+            { id: 'q4', shape: 'square', level: 3, show: false, isBlank: true }
+          ],
+          answer: 'square',
+          distractors: ['rhombus', 'trapezoid', 'triangle']
+        },
+        {
+          // Quadrilateral hierarchy - fill in Parallelogram
+          type: 'quadrilateral',
+          tree: [
+            { id: 'q1', shape: 'quadrilateral', level: 0, show: true },
+            { id: 'q2', shape: 'parallelogram', level: 1, show: false, isBlank: true },
+            { id: 'q3', shape: 'rectangle', level: 2, show: true },
+            { id: 'q4', shape: 'square', level: 3, show: true }
+          ],
+          answer: 'parallelogram',
+          distractors: ['trapezoid', 'rhombus', 'triangle']
+        },
+        {
+          // Quadrilateral hierarchy - fill in Quadrilateral
+          type: 'quadrilateral',
+          tree: [
+            { id: 'q1', shape: 'quadrilateral', level: 0, show: false, isBlank: true },
+            { id: 'q2', shape: 'parallelogram', level: 1, show: true },
+            { id: 'q3', shape: 'rectangle', level: 2, show: true },
+            { id: 'q4', shape: 'square', level: 3, show: true }
+          ],
+          answer: 'quadrilateral',
+          distractors: ['trapezoid', 'triangle', 'rhombus']
+        },
+        {
+          // Rhombus branch - fill in Rhombus
+          type: 'parallelogramBranch',
+          tree: [
+            { id: 'q1', shape: 'parallelogram', level: 0, show: true },
+            { id: 'q2', shape: 'rhombus', level: 1, show: false, isBlank: true, branch: 'left' },
+            { id: 'q3', shape: 'rectangle', level: 1, show: true, branch: 'right' }
+          ],
+          answer: 'rhombus',
+          distractors: ['square', 'trapezoid', 'triangle'],
+          prompt: 'bothSpecial'
+        },
+        {
+          // Triangle hierarchy
+          type: 'triangle',
+          tree: [
+            { id: 't1', shape: 'triangle', level: 0, show: true },
+            { id: 't2', shape: 'rightTriangle', level: 1, show: true, branch: 'left' },
+            { id: 't3', shape: 'isoscelesTriangle', level: 1, show: false, isBlank: true, branch: 'center' },
+            { id: 't4', shape: 'equilateralTriangle', level: 1, show: true, branch: 'right' }
+          ],
+          answer: 'isoscelesTriangle',
+          distractors: ['square', 'rectangle', 'parallelogram'],
+          prompt: 'triangleTypes'
+        }
+      ],
+
+      init() {
+        this.promptCard = document.getElementById('prompt-card');
+        this.promptText = document.getElementById('prompt-text');
+        this.hierarchyContainer = document.getElementById('hierarchy-container');
+        this.labelsContainer = document.getElementById('labels-container');
+        this.btnCheck = document.getElementById('btn-check');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnCheck.addEventListener('click', () => this.checkAnswer());
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      generateQuestions() {
+        const shuffled = shuffle([...this.puzzles]);
+        this.questions = shuffled.slice(0, this.totalQuestions);
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      getShapeName(shape) {
+        const key = `section.activities.shape-hierarchy.shape${shape.charAt(0).toUpperCase() + shape.slice(1)}`;
+        return this.getTranslation(key, this.shapeNames[shape] || shape);
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.selectedLabel = null;
+        this.feedback.classList.remove('show', 'error');
+        this.btnCheck.disabled = true;
+
+        const q = this.questions[this.currentQuestion];
+        if (!q) {
+          this.showStats();
+          return;
+        }
+
+        // Update prompt
+        this.updatePrompt(q);
+
+        // Render hierarchy tree
+        this.renderTree(q);
+
+        // Render draggable labels
+        this.renderLabels(q);
+
+        this.renderProgress();
+      },
+
+      updatePrompt(q) {
+        let promptKey = 'section.activities.shape-hierarchy.prompt';
+        let promptFallback = 'Which shape completes the family tree?';
+
+        if (q.prompt === 'bothSpecial') {
+          promptKey = 'section.activities.shape-hierarchy.promptBothSpecial';
+          promptFallback = 'What special parallelogram has 4 equal sides?';
+        } else if (q.prompt === 'triangleTypes') {
+          promptKey = 'section.activities.shape-hierarchy.promptTriangle';
+          promptFallback = 'Which triangle type is missing?';
+        }
+
+        this.promptText.textContent = this.getTranslation(promptKey, promptFallback);
+      },
+
+      renderTree(q) {
+        this.hierarchyContainer.innerHTML = '';
+        this.hierarchyContainer.className = 'hierarchy-container ' + q.type;
+
+        if (q.type === 'quadrilateral') {
+          this.renderLinearTree(q.tree);
+        } else if (q.type === 'parallelogramBranch') {
+          this.renderBranchTree(q.tree, 2);
+        } else if (q.type === 'triangle') {
+          this.renderBranchTree(q.tree, 3);
+        }
+      },
+
+      renderLinearTree(tree) {
+        // Vertical linear hierarchy
+        tree.forEach((node, idx) => {
+          const nodeDiv = document.createElement('div');
+          nodeDiv.className = 'tree-node level-' + node.level;
+          nodeDiv.setAttribute('data-id', node.id);
+
+          if (node.isBlank) {
+            nodeDiv.classList.add('blank-node');
+            nodeDiv.setAttribute('data-shape', node.shape);
+            nodeDiv.innerHTML = '<span class="blank-text">?</span>';
+
+            // Add drop target functionality
+            nodeDiv.addEventListener('dragover', (e) => {
+              e.preventDefault();
+              nodeDiv.classList.add('drag-over');
+            });
+            nodeDiv.addEventListener('dragleave', () => {
+              nodeDiv.classList.remove('drag-over');
+            });
+            nodeDiv.addEventListener('drop', (e) => {
+              e.preventDefault();
+              nodeDiv.classList.remove('drag-over');
+              this.handleDrop(node.id);
+            });
+            // Click to place selected label
+            nodeDiv.addEventListener('click', () => {
+              if (this.selectedLabel && !this.isAnswered) {
+                this.placeLabel(node.id);
+              }
+            });
+          } else {
+            nodeDiv.classList.add('filled-node');
+            nodeDiv.textContent = this.getShapeName(node.shape);
+          }
+
+          this.hierarchyContainer.appendChild(nodeDiv);
+
+          // Add arrow between nodes (except last)
+          if (idx < tree.length - 1) {
+            const arrow = document.createElement('div');
+            arrow.className = 'tree-arrow';
+            arrow.innerHTML = '↓';
+            this.hierarchyContainer.appendChild(arrow);
+          }
+        });
+      },
+
+      renderBranchTree(tree, branches) {
+        // Root node
+        const root = tree.find(n => n.level === 0);
+        if (root) {
+          const rootDiv = document.createElement('div');
+          rootDiv.className = 'tree-node level-0 filled-node';
+          rootDiv.textContent = this.getShapeName(root.shape);
+          this.hierarchyContainer.appendChild(rootDiv);
+
+          // Arrow down
+          const arrow = document.createElement('div');
+          arrow.className = 'tree-arrow';
+          arrow.innerHTML = '↓';
+          this.hierarchyContainer.appendChild(arrow);
+        }
+
+        // Branch container
+        const branchContainer = document.createElement('div');
+        branchContainer.className = 'branch-container branches-' + branches;
+
+        const children = tree.filter(n => n.level === 1);
+        children.forEach(node => {
+          const nodeDiv = document.createElement('div');
+          nodeDiv.className = 'tree-node branch-node';
+          nodeDiv.setAttribute('data-id', node.id);
+
+          if (node.isBlank) {
+            nodeDiv.classList.add('blank-node');
+            nodeDiv.setAttribute('data-shape', node.shape);
+            nodeDiv.innerHTML = '<span class="blank-text">?</span>';
+
+            nodeDiv.addEventListener('dragover', (e) => {
+              e.preventDefault();
+              nodeDiv.classList.add('drag-over');
+            });
+            nodeDiv.addEventListener('dragleave', () => {
+              nodeDiv.classList.remove('drag-over');
+            });
+            nodeDiv.addEventListener('drop', (e) => {
+              e.preventDefault();
+              nodeDiv.classList.remove('drag-over');
+              this.handleDrop(node.id);
+            });
+            nodeDiv.addEventListener('click', () => {
+              if (this.selectedLabel && !this.isAnswered) {
+                this.placeLabel(node.id);
+              }
+            });
+          } else {
+            nodeDiv.classList.add('filled-node');
+            nodeDiv.textContent = this.getShapeName(node.shape);
+          }
+
+          branchContainer.appendChild(nodeDiv);
+        });
+
+        this.hierarchyContainer.appendChild(branchContainer);
+      },
+
+      renderLabels(q) {
+        this.labelsContainer.innerHTML = '';
+
+        const choices = shuffle([q.answer, ...q.distractors]);
+
+        choices.forEach(shape => {
+          const label = document.createElement('div');
+          label.className = 'drag-label';
+          label.setAttribute('draggable', 'true');
+          label.setAttribute('tabindex', '0');
+          label.setAttribute('data-shape', shape);
+          label.textContent = this.getShapeName(shape);
+
+          // Drag events
+          label.addEventListener('dragstart', (e) => {
+            this.draggedElement = label;
+            label.classList.add('dragging');
+            e.dataTransfer.setData('text/plain', shape);
+          });
+          label.addEventListener('dragend', () => {
+            label.classList.remove('dragging');
+            this.draggedElement = null;
+          });
+
+          // Click to select (for touch/accessibility)
+          label.addEventListener('click', () => {
+            if (this.isAnswered) return;
+            this.selectLabel(label);
+          });
+
+          // Keyboard
+          label.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              if (!this.isAnswered) this.selectLabel(label);
+            }
+          });
+
+          this.labelsContainer.appendChild(label);
+        });
+      },
+
+      selectLabel(labelEl) {
+        // Deselect previous
+        const labels = this.labelsContainer.querySelectorAll('.drag-label');
+        labels.forEach(l => l.classList.remove('selected'));
+
+        labelEl.classList.add('selected');
+        this.selectedLabel = labelEl.getAttribute('data-shape');
+
+        // Auto-place if there's only one blank
+        const blanks = this.hierarchyContainer.querySelectorAll('.blank-node');
+        if (blanks.length === 1) {
+          this.placeLabel(blanks[0].getAttribute('data-id'));
+        }
+      },
+
+      handleDrop(nodeId) {
+        if (this.draggedElement && !this.isAnswered) {
+          this.selectedLabel = this.draggedElement.getAttribute('data-shape');
+          this.placeLabel(nodeId);
+        }
+      },
+
+      placeLabel(nodeId) {
+        if (!this.selectedLabel || this.isAnswered) return;
+
+        const blankNode = this.hierarchyContainer.querySelector(`[data-id="${nodeId}"]`);
+        if (!blankNode || !blankNode.classList.contains('blank-node')) return;
+
+        // Place the label in the blank
+        blankNode.classList.add('filled');
+        blankNode.innerHTML = '';
+        blankNode.textContent = this.getShapeName(this.selectedLabel);
+        blankNode.setAttribute('data-placed', this.selectedLabel);
+
+        // Hide the used label
+        const usedLabel = this.labelsContainer.querySelector(`[data-shape="${this.selectedLabel}"]`);
+        if (usedLabel) {
+          usedLabel.classList.add('used');
+          usedLabel.classList.remove('selected');
+        }
+
+        this.btnCheck.disabled = false;
+        this.selectedLabel = null;
+      },
+
+      checkAnswer() {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const q = this.questions[this.currentQuestion];
+        const blankNode = this.hierarchyContainer.querySelector('.blank-node');
+        const placedShape = blankNode ? blankNode.getAttribute('data-placed') : null;
+
+        const isCorrect = placedShape === q.answer;
+
+        if (isCorrect) {
+          this.correctCount++;
+          blankNode.classList.add('correct');
+          this.feedback.textContent = this.getTranslation(
+            'section.activities.shape-hierarchy.correct',
+            'Correct! {shape} fits perfectly in the hierarchy.'
+          ).replace('{shape}', this.getShapeName(q.answer));
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          blankNode.classList.add('incorrect');
+          this.feedback.textContent = this.getTranslation(
+            'section.activities.shape-hierarchy.wrong',
+            'The correct answer is {shape}.'
+          ).replace('{shape}', this.getShapeName(q.answer));
+          this.feedback.classList.add('error');
+
+          // Show correct answer
+          setTimeout(() => {
+            blankNode.textContent = this.getShapeName(q.answer);
+            blankNode.classList.remove('incorrect');
+            blankNode.classList.add('correct');
+          }, 800);
+        }
+
+        this.feedback.classList.add('show');
+        this.btnCheck.disabled = true;
+        this.scheduleAdvance();
+      },
+
+      scheduleAdvance() {
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+
+        const q = this.questions[this.currentQuestion];
+        if (q && !this.isAnswered) {
+          this.updatePrompt(q);
+          this.renderTree(q);
+          this.renderLabels(q);
+        }
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.shape-hierarchy.perfect',
+            'Perfect! You mastered the shape family tree!'
+          );
+        } else if (percent >= 0.75) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.shape-hierarchy.great',
+            'Great job building the shape family tree!'
+          );
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.shape-hierarchy.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.shape-hierarchy.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => ShapeHierarchy.init());
+      } else {
+        ShapeHierarchy.init();
+      }
+    });
+  </script>
+  <style>
+    /* Shape Hierarchy Tree specific styles */
+
+    /* Prompt Card */
+    .prompt-card {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #3b82f6;
+      padding: var(--space-3);
+      margin-bottom: var(--space-3);
+      text-align: center;
+    }
+
+    .prompt-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #1e40af;
+    }
+
+    /* Hierarchy Container */
+    .hierarchy-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-1);
+      margin-bottom: var(--space-4);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border-radius: var(--radius-xl);
+      border: 3px solid #22c55e;
+      min-height: 200px;
+    }
+
+    /* Tree Nodes */
+    .tree-node {
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-lg);
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      text-align: center;
+      min-width: 120px;
+      transition: all 0.2s ease;
+    }
+
+    .filled-node {
+      background: white;
+      border: 3px solid #22c55e;
+      color: #166534;
+    }
+
+    .blank-node {
+      background: #fef3c7;
+      border: 3px dashed #f59e0b;
+      color: #92400e;
+      cursor: pointer;
+      min-width: 140px;
+    }
+
+    .blank-node:hover:not(.filled) {
+      background: #fde68a;
+      transform: scale(1.02);
+    }
+
+    .blank-node.drag-over {
+      background: #fde68a;
+      border-style: solid;
+      transform: scale(1.05);
+    }
+
+    .blank-node.filled {
+      background: white;
+      border: 3px solid #3b82f6;
+      color: #1e40af;
+    }
+
+    .blank-node.correct {
+      background: #dcfce7;
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .blank-node.incorrect {
+      background: #fee2e2;
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+
+    .blank-text {
+      font-size: var(--text-lg);
+    }
+
+    /* Tree Arrows */
+    .tree-arrow {
+      font-size: var(--text-lg);
+      color: #22c55e;
+      line-height: 1;
+    }
+
+    /* Branch Container */
+    .branch-container {
+      display: flex;
+      gap: var(--space-3);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .branch-container.branches-2 {
+      gap: var(--space-4);
+    }
+
+    .branch-container.branches-3 {
+      gap: var(--space-2);
+    }
+
+    .branch-node {
+      min-width: 100px;
+    }
+
+    /* Level indentation for visual hierarchy */
+    .level-0 {
+      font-size: var(--text-base);
+      padding: var(--space-3) var(--space-5);
+    }
+
+    .level-1 {
+      font-size: var(--text-sm);
+    }
+
+    .level-2 {
+      font-size: var(--text-sm);
+    }
+
+    .level-3 {
+      font-size: var(--text-sm);
+    }
+
+    /* Labels Container */
+    .labels-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      justify-content: center;
+      margin-bottom: var(--space-3);
+    }
+
+    .drag-label {
+      padding: var(--space-2) var(--space-3);
+      background: white;
+      border: 3px solid #6366f1;
+      border-radius: var(--radius-lg);
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: #4338ca;
+      cursor: grab;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .drag-label:hover {
+      background: #eef2ff;
+      transform: scale(1.05);
+    }
+
+    .drag-label:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .drag-label.selected {
+      background: #c7d2fe;
+      border-color: #4f46e5;
+      transform: scale(1.05);
+    }
+
+    .drag-label.dragging {
+      opacity: 0.5;
+      cursor: grabbing;
+    }
+
+    .drag-label.used {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    /* Check Button */
+    .check-btn {
+      display: block;
+      margin: 0 auto var(--space-4);
+      min-width: 120px;
+    }
+
+    /* Feedback and layout */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .hierarchy-container {
+        padding: var(--space-3);
+        min-height: 180px;
+      }
+
+      .tree-node {
+        padding: var(--space-2) var(--space-3);
+        min-width: 100px;
+        font-size: var(--text-xs);
+      }
+
+      .level-0 {
+        font-size: var(--text-sm);
+        padding: var(--space-2) var(--space-4);
+      }
+
+      .branch-node {
+        min-width: 80px;
+      }
+
+      .drag-label {
+        padding: var(--space-2);
+        font-size: var(--text-xs);
+      }
+
+      .prompt-text {
+        font-size: var(--text-sm);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .branch-container {
+        gap: var(--space-1);
+      }
+
+      .branch-node {
+        min-width: 70px;
+        font-size: 10px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

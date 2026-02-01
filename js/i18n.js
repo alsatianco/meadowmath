@@ -22,31 +22,31 @@
 const i18n = {
   // Current language
   currentLang: 'en',
-  
+
   // Loaded translations (merged common + section-specific)
   translations: {},
-  
+
   // Default fallback language
   fallbackLang: 'en',
-  
+
   // Supported languages
   supportedLanguages: ['en', 'vi'],
-  
+
   // Available sections (for lazy loading)
-  sections: ['prek', 'kindergarten', 'grade1', 'grade2', 'grade3', 'grade4', 'grade5'],
-  
+  sections: ['prek', 'kinder', 'kindergarten', 'grade1', 'grade2', 'grade3', 'grade4', 'grade5', 'tools', 'about'],
+
   // Cache for loaded translations
   cache: {
     en: {},
     vi: {}
   },
-  
+
   // Flag to track if running from file:// protocol
   isFileProtocol: window.location.protocol === 'file:',
 
   // Promise that resolves when init() finishes
   _initPromise: null,
-  
+
   /**
    * Get the base path for language files
    * Handles both development (file://) and production (http://) environments
@@ -55,15 +55,15 @@ const i18n = {
     if (this.isFileProtocol) {
       // For file:// protocol, calculate relative path from current page
       const path = window.location.pathname;
-      
+
       // Check if we're in a subdirectory (like /prek/, /grade1/, etc.)
       const pathParts = path.split('/').filter(p => p && !p.includes('.html'));
       const isInSubfolder = this.sections.some(s => pathParts.includes(s)) || 
                            pathParts.includes('kindergarten');
-      
+
       // Check if we're in an activities subfolder
       const isInActivities = pathParts.includes('activities');
-      
+
       if (isInActivities) {
         return '../../lang';
       }
@@ -84,15 +84,15 @@ const i18n = {
     if (savedLang && this.supportedLanguages.includes(savedLang)) {
       this.currentLang = savedLang;
     }
-    
+
     // Load common translations for current language
     await this.loadCommon(this.currentLang);
-    
+
     // Also load fallback language common translations
     if (this.currentLang !== this.fallbackLang) {
       await this.loadCommon(this.fallbackLang);
     }
-    
+
     // Detect current section and load section-specific translations
     const currentSection = this.detectCurrentSection();
     if (currentSection) {
@@ -101,13 +101,13 @@ const i18n = {
         await this.loadSection(this.fallbackLang, currentSection);
       }
     }
-    
+
     // Apply translations to page
     this.applyTranslations();
-    
+
     // Set up language button listeners
     this.setupLanguageButtons();
-    
+
     // Update HTML lang attribute
     document.documentElement.lang = this.currentLang;
   },
@@ -125,13 +125,13 @@ const i18n = {
    */
   detectCurrentSection() {
     const path = window.location.pathname.toLowerCase();
-    
+
     for (const section of this.sections) {
       if (path.includes(`/${section}/`) || path.includes(`/${section}.`) || path.endsWith(`/${section}`)) {
         return section;
       }
     }
-    
+
     return null;
   },
 
@@ -143,15 +143,15 @@ const i18n = {
       this.translations[lang] = { ...this.cache[lang].common };
       return;
     }
-    
+
     try {
       const basePath = this.getBasePath();
       const response = await fetch(`${basePath}/${lang}/common.json`);
-      
+
       if (!response.ok) {
         throw new Error(`Failed to load common translations for ${lang}`);
       }
-      
+
       const data = await response.json();
       this.cache[lang].common = data;
       this.translations[lang] = { ...data };
@@ -169,26 +169,26 @@ const i18n = {
    */
   async loadSection(lang, section) {
     if (this.cache[lang][section]) {
-      // Merge section translations into main translations
+      // Wrap section translations under 'section' key for data-i18n attributes
       this.translations[lang] = {
         ...this.translations[lang],
         section: this.cache[lang][section]
       };
       return;
     }
-    
+
     try {
       const basePath = this.getBasePath();
       const response = await fetch(`${basePath}/${lang}/${section}.json`);
-      
+
       if (!response.ok) {
         throw new Error(`Failed to load ${section} translations for ${lang}`);
       }
-      
+
       const data = await response.json();
       this.cache[lang][section] = data;
-      
-      // Merge section translations into main translations under 'section' key
+
+      // Wrap section translations under 'section' key for data-i18n attributes
       this.translations[lang] = {
         ...this.translations[lang],
         section: data
@@ -204,7 +204,7 @@ const i18n = {
   t(key) {
     const keys = key.split('.');
     let value = this.translations[this.currentLang];
-    
+
     // Navigate through nested keys
     for (const k of keys) {
       if (value && typeof value === 'object' && k in value) {
@@ -213,7 +213,7 @@ const i18n = {
         // Try fallback language
         value = this.translations[this.fallbackLang];
         if (!value) return key;
-        
+
         for (const fk of keys) {
           if (value && typeof value === 'object' && fk in value) {
             value = value[fk];
@@ -224,7 +224,7 @@ const i18n = {
         break;
       }
     }
-    
+
     return typeof value === 'string' ? value : key;
   },
 
@@ -234,11 +234,11 @@ const i18n = {
    */
   getRaw(key) {
     const keys = key.split('.');
-    
+
     // Try current language first
     let value = this.translations[this.currentLang];
     let found = true;
-    
+
     for (const k of keys) {
       if (value && typeof value === 'object' && k in value) {
         value = value[k];
@@ -247,15 +247,15 @@ const i18n = {
         break;
       }
     }
-    
+
     if (found && value !== undefined) {
       return value;
     }
-    
+
     // Try fallback language
     value = this.translations[this.fallbackLang];
     if (!value) return null;
-    
+
     for (const k of keys) {
       if (value && typeof value === 'object' && k in value) {
         value = value[k];
@@ -263,7 +263,7 @@ const i18n = {
         return null;
       }
     }
-    
+
     return value !== undefined ? value : null;
   },
 
@@ -272,16 +272,16 @@ const i18n = {
    */
   applyTranslations() {
     const elements = document.querySelectorAll('[data-i18n]');
-    
+
     elements.forEach(el => {
       const key = el.getAttribute('data-i18n');
       const translation = this.t(key);
-      
+
       if (translation !== key) {
         el.textContent = translation;
       }
     });
-    
+
     // Handle placeholder translations
     const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
     placeholderElements.forEach(el => {
@@ -291,7 +291,7 @@ const i18n = {
         el.placeholder = translation;
       }
     });
-    
+
     // Handle title/aria-label translations
     const titleElements = document.querySelectorAll('[data-i18n-title]');
     titleElements.forEach(el => {
@@ -302,7 +302,7 @@ const i18n = {
         el.setAttribute('aria-label', translation);
       }
     });
-    
+
     // Update page title if needed
     const titleEl = document.querySelector('title[data-i18n]');
     if (titleEl) {
@@ -320,10 +320,10 @@ const i18n = {
    */
   setupLanguageButtons() {
     const buttons = document.querySelectorAll('.lang-btn');
-    
+
     buttons.forEach(btn => {
       const lang = btn.getAttribute('data-lang');
-      
+
       // Set initial active state
       if (lang === this.currentLang) {
         btn.classList.add('active');
@@ -332,13 +332,13 @@ const i18n = {
         btn.classList.remove('active');
         btn.setAttribute('aria-pressed', 'false');
       }
-      
+
       // Add click handler
       btn.addEventListener('click', async () => {
         if (lang === this.currentLang) return; // Already active
-        
+
         await this.setLanguage(lang);
-        
+
         // Update button states
         buttons.forEach(b => {
           const bLang = b.getAttribute('data-lang');
@@ -362,26 +362,26 @@ const i18n = {
       console.warn(`Language "${lang}" not supported`);
       return;
     }
-    
+
     this.currentLang = lang;
-    
+
     // Save preference
     localStorage.setItem('meadowmath-lang', lang);
-    
+
     // Update HTML lang attribute
     document.documentElement.lang = lang;
-    
+
     // Load translations if not already cached
     await this.loadCommon(lang);
-    
+
     const currentSection = this.detectCurrentSection();
     if (currentSection) {
       await this.loadSection(lang, currentSection);
     }
-    
+
     // Apply new translations
     this.applyTranslations();
-    
+
     // Emit language change event for activities to listen to
     document.dispatchEvent(new CustomEvent('languageChanged', { 
       detail: { language: lang } 
@@ -422,3 +422,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Export for use in other modules
 window.i18n = i18n;
+
+// Reload Grade 3 activities on language change to refresh dynamic strings
+document.addEventListener('languageChanged', () => {
+  const path = window.location.pathname.toLowerCase();
+  if (path.includes('/grade3/activities/')) {
+    window.location.reload();
+  }
+});

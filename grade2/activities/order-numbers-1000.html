@@ -218,7 +218,7 @@
         // Generate 4 unique numbers to order
         const count = 4;
         const nums = new Set();
-        
+
         // Progressive difficulty
         let minNum, maxNum, minGap;
         if (this.currentQuestion < 3) {
@@ -239,7 +239,7 @@
           maxNum = base + 50;
           minGap = 5;
         }
-        
+
         while (nums.size < count) {
           const num = this.randomInt(minNum, maxNum);
           // Check minimum gap
@@ -254,7 +254,7 @@
             nums.add(num);
           }
         }
-        
+
         this.numbers = Array.from(nums);
         this.correctOrder = [...this.numbers].sort((a, b) => a - b);
         this.shuffleArray(this.numbers);
@@ -272,11 +272,11 @@
 
       renderCards() {
         this.numberCards.innerHTML = '';
-        
+
         this.numbers.forEach((num, index) => {
           // Check if already selected
           if (this.selectedOrder.includes(num)) return;
-          
+
           const card = document.createElement('button');
           card.className = 'number-card';
           card.textContent = num;
@@ -288,12 +288,12 @@
 
       renderSlots() {
         this.answerSlots.innerHTML = '';
-        
+
         for (let i = 0; i < this.correctOrder.length; i++) {
           const slot = document.createElement('div');
           slot.className = 'answer-slot';
           slot.dataset.index = i;
-          
+
           if (i < this.selectedOrder.length) {
             // Filled slot
             slot.classList.add('filled');
@@ -307,7 +307,7 @@
             // Empty slot
             slot.textContent = '';
           }
-          
+
           // Add position labels
           const label = document.createElement('span');
           label.className = 'slot-label';
@@ -319,18 +319,18 @@
             label.textContent = `${i + 1}`;
           }
           slot.appendChild(label);
-          
+
           this.answerSlots.appendChild(slot);
         }
       },
 
       selectNumber(num) {
         if (this.isAnswered) return;
-        
+
         this.selectedOrder.push(num);
         this.renderCards();
         this.renderSlots();
-        
+
         // Check if complete
         if (this.selectedOrder.length === this.correctOrder.length) {
           this.checkAnswer();
@@ -339,7 +339,7 @@
 
       unselectNumber(index) {
         if (this.isAnswered) return;
-        
+
         // Remove this and all subsequent selections
         this.selectedOrder = this.selectedOrder.slice(0, index);
         this.renderCards();
@@ -348,9 +348,9 @@
 
       checkAnswer() {
         this.isAnswered = true;
-        
+
         const isCorrect = this.selectedOrder.every((num, i) => num === this.correctOrder[i]);
-        
+
         // Show correct/incorrect on slots
         const slots = this.answerSlots.querySelectorAll('.answer-slot');
         slots.forEach((slot, i) => {
@@ -663,5 +663,5 @@
       }
     }
   </style>
-</body>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
 </html>

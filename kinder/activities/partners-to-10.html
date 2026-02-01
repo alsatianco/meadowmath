@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Partners to 10 Match - Kindergarten Math Activity - Meadow Math">
+  <title>Partners to 10 Match - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🧠</span>
+            <span data-i18n="section.activities.partners-to-10.title">Partners to 10 Match</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.partners-to-10.instruction">Match numbers that make 10!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Target display -->
+          <div class="target-display">
+            <span class="target-label">🎯</span>
+            <span class="target-text" data-i18n="section.activities.partners-to-10.targetText">Find pairs that make</span>
+            <span class="target-number">10</span>
+          </div>
+
+          <!-- Match Area -->
+          <div class="match-area">
+            <!-- Left column (numbers) -->
+            <div class="number-column left-column" id="left-column">
+              <!-- Numbers will be generated -->
+            </div>
+
+            <!-- Right column (partners) -->
+            <div class="number-column right-column" id="right-column">
+              <!-- Partners will be generated -->
+            </div>
+          </div>
+
+          <!-- Matched pairs display -->
+          <div class="matched-pairs" id="matched-pairs">
+            <!-- Matched pairs will appear here -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <!-- Auto-advance when all matched -->
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Partners to 10 Match Activity Styles */
+    .target-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-5);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+    }
+
+    .target-label {
+      font-size: var(--text-2xl);
+    }
+
+    .target-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      color: var(--color-neutral-700);
+    }
+
+    .target-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #d97706;
+      background: white;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-lg);
+      border: 3px solid #f59e0b;
+    }
+
+    .match-area {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-8);
+      margin-bottom: var(--space-5);
+    }
+
+    .number-column {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .number-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      user-select: none;
+    }
+
+    .left-column .number-card {
+      background: linear-gradient(135deg, #dbeafe, #93c5fd);
+      border: 4px solid #3b82f6;
+      color: #1e40af;
+      box-shadow: 0 4px 0 #2563eb, 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .right-column .number-card {
+      background: linear-gradient(135deg, #dcfce7, #86efac);
+      border: 4px solid #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #16a34a, 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .number-card:hover:not(.matched):not(.selected) {
+      transform: translateY(-4px) scale(1.05);
+    }
+
+    .number-card:active:not(.matched) {
+      transform: translateY(2px);
+    }
+
+    .number-card.selected {
+      transform: scale(1.1);
+      box-shadow: 0 0 0 4px #fbbf24, 0 8px 0 #d97706, 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .number-card.matched {
+      opacity: 0.5;
+      cursor: default;
+      transform: scale(0.9);
+    }
+
+    .number-card.correct-flash {
+      animation: matchPulse 0.5s ease;
+    }
+
+    .number-card.wrong-flash {
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes matchPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-10px); }
+      75% { transform: translateX(10px); }
+    }
+
+    /* Matched pairs display */
+    .matched-pairs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-3);
+      min-height: 50px;
+    }
+
+    .matched-pair {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 3px solid #22c55e;
+      border-radius: var(--radius-lg);
+      animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .matched-pair .pair-num {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #166534;
+    }
+
+    .matched-pair .pair-plus {
+      color: #16a34a;
+      font-weight: bold;
+    }
+
+    .matched-pair .pair-equals {
+      color: #16a34a;
+      font-weight: bold;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0); opacity: 0; }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .match-area {
+        gap: var(--space-6);
+      }
+
+      .number-card {
+        width: 60px;
+        height: 60px;
+        font-size: var(--text-xl);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .match-area {
+        gap: var(--space-4);
+      }
+
+      .number-card {
+        width: 55px;
+        height: 55px;
+        font-size: var(--text-lg);
+      }
+
+      .number-column {
+        gap: var(--space-2);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Partners to 10 Match Activity
+    const PartnersTo10 = {
+      // Game state
+      round: 1,
+      maxRounds: 5,
+      selectedCard: null,
+      selectedSide: null,
+      matchedPairs: [],
+      pairsPerRound: 4,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1500,
+
+      // DOM elements
+      progress: null,
+      leftColumn: null,
+      rightColumn: null,
+      matchedPairsEl: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // All possible pairs that make 10
+      allPairs: [
+        [1, 9], [2, 8], [3, 7], [4, 6], [5, 5],
+        [6, 4], [7, 3], [8, 2], [9, 1]
+      ],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        // Get DOM elements
+        this.progress = document.getElementById('progress');
+        this.leftColumn = document.getElementById('left-column');
+        this.rightColumn = document.getElementById('right-column');
+        this.matchedPairsEl = document.getElementById('matched-pairs');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up event listeners
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Start
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.selectedCard = null;
+        this.selectedSide = null;
+        this.matchedPairs = [];
+
+        // Pick pairs for this round (avoiding duplicates like 1+9 and 9+1)
+        const uniquePairs = [[1, 9], [2, 8], [3, 7], [4, 6], [5, 5]];
+        const shuffledPairs = [...uniquePairs].sort(() => Math.random() - 0.5);
+        const roundPairs = shuffledPairs.slice(0, this.pairsPerRound);
+
+        // Extract left and right numbers
+        const leftNumbers = roundPairs.map(p => p[0]);
+        const rightNumbers = roundPairs.map(p => p[1]);
+
+        // Shuffle both columns independently
+        leftNumbers.sort(() => Math.random() - 0.5);
+        rightNumbers.sort(() => Math.random() - 0.5);
+
+        // Build left column
+        this.leftColumn.innerHTML = '';
+        leftNumbers.forEach(num => {
+          const card = this.createCard(num, 'left');
+          this.leftColumn.appendChild(card);
+        });
+
+        // Build right column
+        this.rightColumn.innerHTML = '';
+        rightNumbers.forEach(num => {
+          const card = this.createCard(num, 'right');
+          this.rightColumn.appendChild(card);
+        });
+
+        // Clear matched pairs display
+        this.matchedPairsEl.innerHTML = '';
+
+        // Reset UI
+        this.feedback.classList.remove('show', 'error');
+
+        // Update progress
+        this.renderProgress();
+      },
+
+      /**
+       * Create a number card
+       */
+      createCard(num, side) {
+        const card = document.createElement('div');
+        card.className = 'number-card';
+        card.textContent = num;
+        card.dataset.value = num;
+        card.dataset.side = side;
+        card.addEventListener('click', () => this.selectCard(card, num, side));
+        return card;
+      },
+
+      /**
+       * Handle card selection
+       */
+      selectCard(card, num, side) {
+        // Ignore if already matched
+        if (card.classList.contains('matched')) return;
+
+        // If no card selected yet
+        if (!this.selectedCard) {
+          this.selectedCard = card;
+          this.selectedSide = side;
+          card.classList.add('selected');
+          return;
+        }
+
+        // If clicking the same card, deselect
+        if (this.selectedCard === card) {
+          card.classList.remove('selected');
+          this.selectedCard = null;
+          this.selectedSide = null;
+          return;
+        }
+
+        // If clicking same side, switch selection
+        if (this.selectedSide === side) {
+          this.selectedCard.classList.remove('selected');
+          this.selectedCard = card;
+          card.classList.add('selected');
+          return;
+        }
+
+        // Different sides - check for match
+        const firstNum = parseInt(this.selectedCard.dataset.value);
+        const secondNum = num;
+
+        if (firstNum + secondNum === 10) {
+          // Match!
+          this.handleMatch(this.selectedCard, card, firstNum, secondNum);
+        } else {
+          // No match
+          this.handleWrongMatch(this.selectedCard, card);
+        }
+      },
+
+      /**
+       * Handle successful match
+       */
+      handleMatch(card1, card2, num1, num2) {
+        card1.classList.remove('selected');
+        card1.classList.add('matched', 'correct-flash');
+        card2.classList.add('matched', 'correct-flash');
+
+        this.selectedCard = null;
+        this.selectedSide = null;
+
+        // Add to matched pairs display
+        const pairEl = document.createElement('div');
+        pairEl.className = 'matched-pair';
+        pairEl.innerHTML = `
+          <span class="pair-num">${num1}</span>
+          <span class="pair-plus">+</span>
+          <span class="pair-num">${num2}</span>
+          <span class="pair-equals">=</span>
+          <span class="pair-num">10</span>
+        `;
+        this.matchedPairsEl.appendChild(pairEl);
+
+        this.matchedPairs.push([num1, num2]);
+        this.correctCount++;
+
+        // Show feedback
+        this.feedback.textContent = '🎉 ' + num1 + ' + ' + num2 + ' = 10!';
+        this.feedback.classList.remove('error');
+        this.feedback.classList.add('show');
+
+        if (typeof celebrate === 'function') {
+          celebrate(card2);
+        }
+
+        // Check if round complete
+        if (this.matchedPairs.length >= this.pairsPerRound) {
+          setTimeout(() => {
+            if (this.round < this.maxRounds) {
+              this.nextRound();
+            } else {
+              this.showStats();
+            }
+          }, this.autoAdvanceDelay);
+        }
+
+        this.renderProgress();
+      },
+
+      /**
+       * Handle wrong match
+       */
+      handleWrongMatch(card1, card2) {
+        const num1 = parseInt(card1.dataset.value);
+        const num2 = parseInt(card2.dataset.value);
+
+        card1.classList.remove('selected');
+        card1.classList.add('wrong-flash');
+        card2.classList.add('wrong-flash');
+
+        this.wrongCount++;
+
+        // Show feedback
+        this.feedback.textContent = 'Not quite! ' + num1 + ' + ' + num2 + ' = ' + (num1 + num2) + ', not 10.';
+        this.feedback.classList.add('show', 'error');
+
+        // Remove flash after animation
+        setTimeout(() => {
+          card1.classList.remove('wrong-flash');
+          card2.classList.remove('wrong-flash');
+        }, 500);
+
+        this.selectedCard = null;
+        this.selectedSide = null;
+
+        this.renderProgress();
+      },
+
+      /**
+       * Show completion stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const totalAttempts = this.correctCount + this.wrongCount;
+        const percent = totalAttempts > 0 ? this.correctCount / totalAttempts : 0;
+
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = 'Amazing! You know your partners to 10!';
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = 'Great job matching partners!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = 'Good effort! Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart the activity
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Go to next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress indicator
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      PartnersTo10.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

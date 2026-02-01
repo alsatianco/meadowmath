@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Expanded Form Match - Grade 5 Math Activity - Meadow Math">
+  <title>Expanded Form Match - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧠</span>
+            <span data-i18n="section.activities.expanded-form-decimals.title">Expanded Form Match</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.expanded-form-decimals.instruction">Match each number to its other forms!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Round Info -->
+          <div class="round-info" id="round-info">
+            <span data-i18n="section.activities.expanded-form-decimals.matchAll">Match all the forms!</span>
+            <span class="matches-count">(<span id="matches-found">0</span>/<span id="matches-total">4</span>)</span>
+          </div>
+
+          <!-- Matching Container -->
+          <div class="matching-container" id="matching-container">
+            <!-- Left Column: Standard Form -->
+            <div class="match-column" id="column-standard">
+              <div class="column-header">
+                <span class="column-label" data-i18n="section.activities.expanded-form-decimals.standard">Standard Form</span>
+              </div>
+              <div class="cards-container" id="cards-standard"></div>
+            </div>
+
+            <!-- Middle Column: Expanded Form -->
+            <div class="match-column" id="column-expanded">
+              <div class="column-header">
+                <span class="column-label" data-i18n="section.activities.expanded-form-decimals.expanded">Expanded Form</span>
+              </div>
+              <div class="cards-container" id="cards-expanded"></div>
+            </div>
+
+            <!-- Right Column: Word Form -->
+            <div class="match-column" id="column-word">
+              <div class="column-header">
+                <span class="column-label" data-i18n="section.activities.expanded-form-decimals.word">Word Form</span>
+              </div>
+              <div class="cards-container" id="cards-word"></div>
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.expanded-form-decimals.great">Great matching!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Expanded Form Match Activity - Grade 5 Level 1
+    const ExpandedFormMatch = {
+      currentRound: 0,
+      totalRounds: 4,
+      matchesPerRound: 4,
+      correctCount: 0,
+      incorrectCount: 0,
+      currentMatches: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      currentQuestionSet: [],
+      selectedCard: null,
+      matchedPairs: new Set(),
+      isProcessing: false,
+      advanceTimeout: null,
+
+      // DOM elements
+      cardsStandard: null,
+      cardsExpanded: null,
+      cardsWord: null,
+      matchesFound: null,
+      matchesTotal: null,
+      btnReset: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Number bank for generating questions
+      numberBank: [
+        { value: 405.032, hundreds: 4, tens: 0, ones: 5, tenths: 0, hundredths: 3, thousandths: 2 },
+        { value: 23.456, hundreds: 0, tens: 2, ones: 3, tenths: 4, hundredths: 5, thousandths: 6 },
+        { value: 100.507, hundreds: 1, tens: 0, ones: 0, tenths: 5, hundredths: 0, thousandths: 7 },
+        { value: 8.042, hundreds: 0, tens: 0, ones: 8, tenths: 0, hundredths: 4, thousandths: 2 },
+        { value: 350.19, hundreds: 3, tens: 5, ones: 0, tenths: 1, hundredths: 9, thousandths: 0 },
+        { value: 6.789, hundreds: 0, tens: 0, ones: 6, tenths: 7, hundredths: 8, thousandths: 9 },
+        { value: 72.305, hundreds: 0, tens: 7, ones: 2, tenths: 3, hundredths: 0, thousandths: 5 },
+        { value: 500.06, hundreds: 5, tens: 0, ones: 0, tenths: 0, hundredths: 6, thousandths: 0 },
+        { value: 15.008, hundreds: 0, tens: 1, ones: 5, tenths: 0, hundredths: 0, thousandths: 8 },
+        { value: 204.75, hundreds: 2, tens: 0, ones: 4, tenths: 7, hundredths: 5, thousandths: 0 },
+        { value: 0.456, hundreds: 0, tens: 0, ones: 0, tenths: 4, hundredths: 5, thousandths: 6 },
+        { value: 90.009, hundreds: 0, tens: 9, ones: 0, tenths: 0, hundredths: 0, thousandths: 9 },
+        { value: 1.234, hundreds: 0, tens: 0, ones: 1, tenths: 2, hundredths: 3, thousandths: 4 },
+        { value: 67.08, hundreds: 0, tens: 6, ones: 7, tenths: 0, hundredths: 8, thousandths: 0 },
+        { value: 300.003, hundreds: 3, tens: 0, ones: 0, tenths: 0, hundredths: 0, thousandths: 3 },
+        { value: 45.6, hundreds: 0, tens: 4, ones: 5, tenths: 6, hundredths: 0, thousandths: 0 }
+      ],
+
+      init() {
+        this.cardsStandard = document.getElementById('cards-standard');
+        this.cardsExpanded = document.getElementById('cards-expanded');
+        this.cardsWord = document.getElementById('cards-word');
+        this.matchesFound = document.getElementById('matches-found');
+        this.matchesTotal = document.getElementById('matches-total');
+        this.btnReset = document.getElementById('btn-reset');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentRound());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateAllQuestions();
+        this.startRound();
+        this.renderProgress();
+      },
+
+      formatStandard(num) {
+        // Format with proper decimals, removing trailing zeros after decimal
+        const str = num.value.toString();
+        return str;
+      },
+
+      formatExpanded(num) {
+        const parts = [];
+
+        if (num.hundreds > 0) parts.push(num.hundreds * 100);
+        if (num.tens > 0) parts.push(num.tens * 10);
+        if (num.ones > 0) parts.push(num.ones);
+        if (num.tenths > 0) parts.push(num.tenths / 10);
+        if (num.hundredths > 0) parts.push(num.hundredths / 100);
+        if (num.thousandths > 0) parts.push(num.thousandths / 1000);
+
+        // Handle case where all digits are 0 (shouldn't happen but safe)
+        if (parts.length === 0) parts.push(0);
+
+        // Format parts with proper decimal display
+        return parts.map(p => {
+          if (p >= 1) return p.toString();
+          if (p >= 0.1) return p.toFixed(1);
+          if (p >= 0.01) return p.toFixed(2);
+          return p.toFixed(3);
+        }).join(' + ');
+      },
+
+      formatWord(num) {
+        const ones = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+        const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+        const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+
+        const numberToWords = (n) => {
+          if (n === 0) return '';
+          if (n < 10) return ones[n];
+          if (n < 20) return teens[n - 10];
+          if (n < 100) {
+            const t = Math.floor(n / 10);
+            const o = n % 10;
+            return tens[t] + (o > 0 ? '-' + ones[o] : '');
+          }
+          if (n < 1000) {
+            const h = Math.floor(n / 100);
+            const rest = n % 100;
+            return ones[h] + ' hundred' + (rest > 0 ? ' ' + numberToWords(rest) : '');
+          }
+          return n.toString();
+        };
+
+        // Get whole part
+        const wholePart = Math.floor(num.value);
+        const decimalPart = num.tenths * 100 + num.hundredths * 10 + num.thousandths;
+
+        let result = '';
+
+        if (wholePart > 0) {
+          result = numberToWords(wholePart);
+        }
+
+        if (decimalPart > 0) {
+          if (wholePart > 0) {
+            result += ' and ';
+          }
+
+          // Determine denominator based on precision
+          let denominator = 'thousandths';
+          let decimalValue = decimalPart;
+
+          if (num.thousandths === 0 && num.hundredths === 0) {
+            denominator = 'tenths';
+            decimalValue = num.tenths;
+          } else if (num.thousandths === 0) {
+            denominator = 'hundredths';
+            decimalValue = num.tenths * 10 + num.hundredths;
+          }
+
+          result += numberToWords(decimalValue) + ' ' + denominator;
+        }
+
+        if (result === '') result = 'zero';
+
+        return result;
+      },
+
+      generateAllQuestions() {
+        // Shuffle and take enough numbers for all rounds
+        const shuffled = shuffle([...this.numberBank]);
+        const needed = this.totalRounds * this.matchesPerRound;
+        this.questions = shuffled.slice(0, Math.min(needed, shuffled.length));
+
+        // If we need more, cycle through again
+        while (this.questions.length < needed) {
+          const more = shuffle([...this.numberBank]);
+          this.questions.push(...more.slice(0, needed - this.questions.length));
+        }
+      },
+
+      getCurrentRoundQuestions() {
+        const start = this.currentRound * this.matchesPerRound;
+        return this.questions.slice(start, start + this.matchesPerRound);
+      },
+
+      createCard(text, type, pairId) {
+        const card = document.createElement('button');
+        card.className = 'match-card';
+        card.type = 'button';
+        card.dataset.type = type;
+        card.dataset.pairId = pairId;
+        card.textContent = text;
+        card.setAttribute('aria-pressed', 'false');
+        card.addEventListener('click', () => this.selectCard(card));
+        return card;
+      },
+
+      renderCards() {
+        this.cardsStandard.innerHTML = '';
+        this.cardsExpanded.innerHTML = '';
+        this.cardsWord.innerHTML = '';
+
+        const questions = this.getCurrentRoundQuestions();
+
+        // Create cards for each column and shuffle within each column
+        const standardCards = questions.map((q, i) => ({
+          text: this.formatStandard(q),
+          pairId: i
+        }));
+
+        const expandedCards = questions.map((q, i) => ({
+          text: this.formatExpanded(q),
+          pairId: i
+        }));
+
+        const wordCards = questions.map((q, i) => ({
+          text: this.formatWord(q),
+          pairId: i
+        }));
+
+        // Shuffle each column independently
+        shuffle(standardCards).forEach(c => {
+          this.cardsStandard.appendChild(this.createCard(c.text, 'standard', c.pairId));
+        });
+
+        shuffle(expandedCards).forEach(c => {
+          this.cardsExpanded.appendChild(this.createCard(c.text, 'expanded', c.pairId));
+        });
+
+        shuffle(wordCards).forEach(c => {
+          this.cardsWord.appendChild(this.createCard(c.text, 'word', c.pairId));
+        });
+      },
+
+      selectCard(card) {
+        if (this.isProcessing) return;
+        if (card.classList.contains('matched')) return;
+
+        const pairId = card.dataset.pairId;
+        const type = card.dataset.type;
+
+        // If clicking same card, deselect
+        if (this.selectedCard === card) {
+          card.classList.remove('selected');
+          card.setAttribute('aria-pressed', 'false');
+          this.selectedCard = null;
+          return;
+        }
+
+        // If no card selected, select this one
+        if (!this.selectedCard) {
+          card.classList.add('selected');
+          card.setAttribute('aria-pressed', 'true');
+          this.selectedCard = card;
+          return;
+        }
+
+        // Two cards selected - check if they match
+        const prevCard = this.selectedCard;
+        const prevPairId = prevCard.dataset.pairId;
+        const prevType = prevCard.dataset.type;
+
+        // Can't match same column
+        if (type === prevType) {
+          prevCard.classList.remove('selected');
+          prevCard.setAttribute('aria-pressed', 'false');
+          card.classList.add('selected');
+          card.setAttribute('aria-pressed', 'true');
+          this.selectedCard = card;
+          return;
+        }
+
+        // Check match
+        if (pairId === prevPairId) {
+          this.handleMatch(card, prevCard, pairId);
+        } else {
+          this.handleMismatch(card, prevCard);
+        }
+      },
+
+      handleMatch(card1, card2, pairId) {
+        this.isProcessing = true;
+
+        card1.classList.add('selected');
+        card2.classList.add('selected');
+
+        setTimeout(() => {
+          card1.classList.remove('selected');
+          card2.classList.remove('selected');
+          card1.classList.add('matched');
+          card2.classList.add('matched');
+          card1.disabled = true;
+          card2.disabled = true;
+
+          // Check if the third card in this pair is also matched
+          this.markPairMatched(pairId, card1.dataset.type, card2.dataset.type);
+
+          this.selectedCard = null;
+          this.currentMatches++;
+          this.correctCount++;
+          this.matchesFound.textContent = this.currentMatches;
+
+          this.showFeedback(true);
+
+          if (this.currentMatches >= this.matchesPerRound) {
+            this.clearAdvanceTimeout();
+            this.advanceTimeout = setTimeout(() => {
+              this.advanceTimeout = null;
+              if (this.currentRound < this.totalRounds - 1) {
+                this.nextRound();
+              } else {
+                this.showStats();
+              }
+            }, this.autoAdvanceDelay);
+          }
+
+          this.isProcessing = false;
+        }, 300);
+      },
+
+      markPairMatched(pairId, type1, type2) {
+        // Mark the third card of this pair as matched too if we have two matches
+        const types = ['standard', 'expanded', 'word'];
+        const matchedTypes = [type1, type2];
+        const remainingType = types.find(t => !matchedTypes.includes(t));
+
+        const allCards = document.querySelectorAll('.match-card');
+        allCards.forEach(card => {
+          if (card.dataset.pairId === pairId && card.dataset.type === remainingType) {
+            card.classList.add('matched');
+            card.disabled = true;
+          }
+        });
+      },
+
+      handleMismatch(card1, card2) {
+        this.isProcessing = true;
+
+        card1.classList.add('selected');
+        card2.classList.add('selected');
+
+        setTimeout(() => {
+          card1.classList.add('incorrect');
+          card2.classList.add('incorrect');
+          this.incorrectCount++;
+
+          this.showFeedback(false);
+
+          setTimeout(() => {
+            card1.classList.remove('selected', 'incorrect');
+            card2.classList.remove('selected', 'incorrect');
+            card1.setAttribute('aria-pressed', 'false');
+            card2.setAttribute('aria-pressed', 'false');
+            this.selectedCard = null;
+            this.isProcessing = false;
+          }, 800);
+        }, 300);
+      },
+
+      showFeedback(isCorrect) {
+        this.feedback.classList.remove('show', 'error');
+
+        if (isCorrect) {
+          this.feedback.textContent = this.getTranslation(
+            'section.activities.expanded-form-decimals.correct',
+            'Match!'
+          );
+        } else {
+          this.feedback.textContent = this.getTranslation(
+            'section.activities.expanded-form-decimals.wrong',
+            'Not a match. Try again!'
+          );
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          this.feedback.classList.remove('show');
+        }, 1200);
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      startRound() {
+        this.clearAdvanceTimeout();
+        this.currentMatches = 0;
+        this.matchedPairs.clear();
+        this.selectedCard = null;
+        this.isProcessing = false;
+        this.matchesFound.textContent = '0';
+        this.matchesTotal.textContent = this.matchesPerRound;
+        this.feedback.classList.remove('show', 'error');
+
+        this.renderCards();
+        this.renderProgress();
+      },
+
+      nextRound() {
+        this.currentRound++;
+        this.startRound();
+      },
+
+      resetCurrentRound() {
+        this.startRound();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const totalAttempts = this.correctCount + this.incorrectCount;
+        const percent = totalAttempts > 0 ? this.correctCount / totalAttempts : 0;
+
+        if (percent >= 0.9) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.expanded-form-decimals.perfect',
+            'Perfect matching!'
+          );
+        } else if (percent >= 0.7) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.expanded-form-decimals.great',
+            'Great matching!'
+          );
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.expanded-form-decimals.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.expanded-form-decimals.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentRound = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateAllQuestions();
+        this.startRound();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      updateTranslations() {
+        // Update column headers
+        const standardLabel = document.querySelector('#column-standard .column-label');
+        const expandedLabel = document.querySelector('#column-expanded .column-label');
+        const wordLabel = document.querySelector('#column-word .column-label');
+
+        if (standardLabel) {
+          standardLabel.textContent = this.getTranslation(
+            'section.activities.expanded-form-decimals.standard',
+            'Standard Form'
+          );
+        }
+        if (expandedLabel) {
+          expandedLabel.textContent = this.getTranslation(
+            'section.activities.expanded-form-decimals.expanded',
+            'Expanded Form'
+          );
+        }
+        if (wordLabel) {
+          wordLabel.textContent = this.getTranslation(
+            'section.activities.expanded-form-decimals.word',
+            'Word Form'
+          );
+        }
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+
+        this.updateProgressLabel();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentRound + 1, this.totalRounds);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalRounds}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => ExpandedFormMatch.init());
+      } else {
+        ExpandedFormMatch.init();
+      }
+    });
+  </script>
+  <style>
+    /* Expanded Form Match specific styles */
+
+    .round-info {
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-4);
+    }
+
+    .matches-count {
+      color: #7c3aed;
+      margin-left: var(--space-2);
+    }
+
+    .matching-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .match-column {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .column-header {
+      text-align: center;
+      padding: var(--space-2) var(--space-3);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border-radius: var(--radius-lg);
+      border: 3px solid #0ea5e9;
+    }
+
+    .column-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #0369a1;
+    }
+
+    #column-standard .column-header {
+      background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+      border-color: #14b8a6;
+    }
+
+    #column-standard .column-label {
+      color: #0f766e;
+    }
+
+    #column-expanded .column-header {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+    }
+
+    #column-expanded .column-label {
+      color: #92400e;
+    }
+
+    #column-word .column-header {
+      background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+      border-color: #a855f7;
+    }
+
+    #column-word .column-label {
+      color: #6b21a8;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .match-card {
+      padding: var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      text-align: center;
+      background: white;
+      border: 3px solid var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 3px 0 var(--color-neutral-200);
+      color: var(--color-neutral-700);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      word-break: break-word;
+      line-height: 1.3;
+    }
+
+    .match-card:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 var(--color-neutral-200);
+      border-color: #0ea5e9;
+    }
+
+    .match-card:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 var(--color-neutral-200);
+    }
+
+    .match-card:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.35), 0 3px 0 var(--color-neutral-200);
+    }
+
+    .match-card.selected {
+      background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+      border-color: #8b5cf6;
+      box-shadow: 0 3px 0 #7c3aed;
+      color: #5b21b6;
+      transform: scale(1.02);
+    }
+
+    .match-card.matched {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 3px 0 #16a34a;
+      color: #166534;
+      cursor: default;
+      opacity: 0.8;
+    }
+
+    .match-card.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      box-shadow: 0 3px 0 #dc2626;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    .match-card:disabled {
+      cursor: default;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+      20%, 40%, 60%, 80% { transform: translateX(4px); }
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 900px) {
+      .matching-container {
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+      }
+
+      .match-column {
+        gap: var(--space-2);
+      }
+
+      .cards-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-2);
+      }
+
+      .match-card {
+        min-height: 55px;
+        font-size: var(--text-sm);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .column-label {
+        font-size: var(--text-sm);
+      }
+
+      .cards-container {
+        grid-template-columns: 1fr;
+      }
+
+      .match-card {
+        min-height: 50px;
+        padding: var(--space-2);
+        font-size: var(--text-sm);
+      }
+
+      .round-info {
+        font-size: var(--text-base);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

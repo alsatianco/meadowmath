@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Number Line Hops - Kindergarten Math Activity - Meadow Math">
+  <title>Number Line Hops - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">➡️</span>
+            <span data-i18n="section.activities.number-line-hops-k.title">Number Line Hops</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.number-line-hops-k.instruction">Help the frog hop on the number line!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Problem Display -->
+          <div class="problem-display">
+            <span class="problem-start" id="problem-start">3</span>
+            <span class="problem-operation" id="problem-operation">+ 2</span>
+            <span class="problem-equals">=</span>
+            <span class="problem-answer" id="problem-answer">?</span>
+          </div>
+
+          <!-- Number Line -->
+          <div class="number-line-container">
+            <div class="number-line" id="number-line">
+              <!-- Generated by JS -->
+            </div>
+            <!-- Frog character -->
+            <div class="frog" id="frog">🐸</div>
+            <!-- Hop arcs -->
+            <div class="hop-arcs" id="hop-arcs"></div>
+          </div>
+
+          <!-- Question -->
+          <p class="question-text" data-i18n="section.activities.number-line-hops-k.question">Where does the frog land?</p>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices">
+            <!-- Generated by JS -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Number Line Hops Styles */
+    .problem-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+    }
+
+    .problem-start {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #1d4ed8;
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 3px solid #3b82f6;
+      min-width: 60px;
+      text-align: center;
+    }
+
+    .problem-operation {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: #166534;
+    }
+
+    .problem-operation.subtract {
+      color: #dc2626;
+    }
+
+    .problem-equals {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-500);
+    }
+
+    .problem-answer {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #dc2626;
+      background: white;
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 3px dashed #f87171;
+      min-width: 60px;
+      text-align: center;
+    }
+
+    .problem-answer.revealed {
+      color: #166534;
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border: 3px solid #22c55e;
+      border-style: solid;
+    }
+
+    /* Number line container */
+    .number-line-container {
+      position: relative;
+      padding: var(--space-8) var(--space-4) var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .number-line {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 0;
+      position: relative;
+      padding-top: var(--space-10);
+    }
+
+    .number-line::before {
+      content: '';
+      position: absolute;
+      bottom: 40px;
+      left: 10px;
+      right: 10px;
+      height: 6px;
+      background: linear-gradient(90deg, #3b82f6, #60a5fa);
+      border-radius: 3px;
+    }
+
+    .line-point {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-1);
+      padding: 0 var(--space-3);
+      position: relative;
+    }
+
+    .line-tick {
+      width: 4px;
+      height: 20px;
+      background: #3b82f6;
+      border-radius: 2px;
+    }
+
+    .line-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-600);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-md);
+    }
+
+    .line-point.start .line-label {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      color: #1d4ed8;
+      border: 2px solid #3b82f6;
+    }
+
+    .line-point.end .line-label {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      color: #166534;
+      border: 2px solid #22c55e;
+      animation: landingPulse 0.5s ease;
+    }
+
+    @keyframes landingPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    /* Frog character */
+    .frog {
+      position: absolute;
+      font-size: 36px;
+      transform: translateX(-50%);
+      transition: left 0.4s ease-in-out;
+      z-index: 10;
+      top: 10px;
+    }
+
+    .frog.hopping {
+      animation: hopUp 0.4s ease-in-out;
+    }
+
+    @keyframes hopUp {
+      0% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-30px); }
+      100% { transform: translateX(-50%) translateY(0); }
+    }
+
+    /* Hop arcs */
+    .hop-arcs {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+    }
+
+    .hop-arc {
+      position: absolute;
+      width: 40px;
+      height: 25px;
+      border: 3px solid transparent;
+      border-top-color: #22c55e;
+      border-radius: 50% 50% 0 0;
+      top: 50px;
+      opacity: 0;
+      animation: showArc 0.3s ease forwards;
+    }
+
+    .hop-arc.subtract {
+      border-top-color: #ef4444;
+      transform: scaleX(-1);
+    }
+
+    @keyframes showArc {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Question text */
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    /* Answer choices */
+    .answer-choices {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .answer-btn {
+      width: 80px;
+      height: 80px;
+      border: 4px solid #e2e8f0;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 0 #cbd5e1, 0 6px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      transform: translateY(-4px);
+      border-color: #3b82f6;
+      box-shadow: 0 8px 0 #2563eb, 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .answer-btn:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .answer-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .answer-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPop 0.5s ease;
+    }
+
+    .answer-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      color: #991b1b;
+      box-shadow: 0 4px 0 #dc2626;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .problem-display {
+        padding: var(--space-2);
+        gap: var(--space-2);
+      }
+
+      .problem-start, .problem-answer {
+        font-size: var(--text-2xl);
+        padding: var(--space-1) var(--space-2);
+        min-width: 45px;
+      }
+
+      .problem-operation {
+        font-size: var(--text-xl);
+      }
+
+      .line-point {
+        padding: 0 var(--space-2);
+      }
+
+      .line-label {
+        font-size: var(--text-base);
+      }
+
+      .frog {
+        font-size: 28px;
+      }
+
+      .answer-btn {
+        width: 70px;
+        height: 70px;
+        font-size: var(--text-2xl);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Number Line Hops Activity
+    const NumberLineHopsK = {
+      // Game state
+      round: 1,
+      maxRounds: 8,
+      startNumber: 0,
+      hopCount: 0,
+      isAddition: true,
+      endNumber: 0,
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+      pointWidth: 0,
+
+      // DOM elements
+      progress: null,
+      problemStart: null,
+      problemOperation: null,
+      problemAnswer: null,
+      numberLine: null,
+      frog: null,
+      hopArcs: null,
+      answerChoices: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.problemStart = document.getElementById('problem-start');
+        this.problemOperation = document.getElementById('problem-operation');
+        this.problemAnswer = document.getElementById('problem-answer');
+        this.numberLine = document.getElementById('number-line');
+        this.frog = document.getElementById('frog');
+        this.hopArcs = document.getElementById('hop-arcs');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Get config based on round
+       */
+      getConfig() {
+        // Progressive difficulty
+        // Early rounds: small numbers, only addition
+        // Later rounds: larger numbers, some subtraction
+        if (this.round <= 3) {
+          return {
+            maxStart: 5,
+            maxHop: 3,
+            canSubtract: false
+          };
+        } else if (this.round <= 5) {
+          return {
+            maxStart: 7,
+            maxHop: 4,
+            canSubtract: true
+          };
+        } else {
+          return {
+            maxStart: 8,
+            maxHop: 5,
+            canSubtract: true
+          };
+        }
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+        this.hopArcs.innerHTML = '';
+
+        const config = this.getConfig();
+
+        // Decide addition or subtraction
+        this.isAddition = !config.canSubtract || Math.random() > 0.4;
+
+        if (this.isAddition) {
+          // Addition: start + hop <= 10
+          this.startNumber = randomInt(1, config.maxStart);
+          this.hopCount = randomInt(1, Math.min(config.maxHop, 10 - this.startNumber));
+          this.endNumber = this.startNumber + this.hopCount;
+        } else {
+          // Subtraction: start >= hop, result >= 0
+          this.startNumber = randomInt(3, config.maxStart + 2);
+          this.hopCount = randomInt(1, Math.min(config.maxHop, this.startNumber));
+          this.endNumber = this.startNumber - this.hopCount;
+        }
+
+        // Update problem display
+        this.problemStart.textContent = this.startNumber;
+        this.problemOperation.textContent = this.isAddition ? `+ ${this.hopCount}` : `− ${this.hopCount}`;
+        this.problemOperation.classList.toggle('subtract', !this.isAddition);
+        this.problemAnswer.textContent = '?';
+        this.problemAnswer.classList.remove('revealed');
+
+        // Reset UI
+        this.feedback.classList.remove('show', 'error');
+
+        // Render number line and start animation
+        this.renderNumberLine();
+        this.renderProgress();
+
+        // Animate hops after a short delay
+        setTimeout(() => this.animateHops(), 500);
+      },
+
+      /**
+       * Render number line (0-10)
+       */
+      renderNumberLine() {
+        this.numberLine.innerHTML = '';
+
+        for (let num = 0; num <= 10; num++) {
+          const point = document.createElement('div');
+          point.className = 'line-point';
+          point.dataset.num = num;
+
+          const tick = document.createElement('div');
+          tick.className = 'line-tick';
+
+          const label = document.createElement('div');
+          label.className = 'line-label';
+          label.textContent = num;
+
+          point.appendChild(tick);
+          point.appendChild(label);
+
+          if (num === this.startNumber) {
+            point.classList.add('start');
+          }
+
+          this.numberLine.appendChild(point);
+        }
+
+        // Position frog at start
+        this.positionFrog(this.startNumber, false);
+      },
+
+      /**
+       * Position frog at a number
+       */
+      positionFrog(num, animate = true) {
+        const point = this.numberLine.querySelector(`[data-num="${num}"]`);
+        if (!point) return;
+
+        const rect = point.getBoundingClientRect();
+        const containerRect = this.numberLine.parentElement.getBoundingClientRect();
+        const left = rect.left - containerRect.left + rect.width / 2;
+
+        if (animate) {
+          this.frog.classList.add('hopping');
+          setTimeout(() => this.frog.classList.remove('hopping'), 400);
+        }
+
+        this.frog.style.left = `${left}px`;
+
+        // Store point width for arc positioning
+        this.pointWidth = rect.width;
+      },
+
+      /**
+       * Animate hops
+       */
+      animateHops() {
+        let currentPos = this.startNumber;
+        let hopsDone = 0;
+
+        const doHop = () => {
+          if (hopsDone >= this.hopCount) {
+            // All hops done, show choices
+            setTimeout(() => this.renderChoices(), 300);
+            return;
+          }
+
+          // Calculate next position
+          const nextPos = this.isAddition ? currentPos + 1 : currentPos - 1;
+
+          // Draw arc
+          this.drawHopArc(currentPos, nextPos, hopsDone);
+
+          // Move frog
+          setTimeout(() => {
+            this.positionFrog(nextPos, true);
+            currentPos = nextPos;
+            hopsDone++;
+
+            // Next hop
+            setTimeout(doHop, 450);
+          }, 100);
+        };
+
+        doHop();
+      },
+
+      /**
+       * Draw hop arc between two positions
+       */
+      drawHopArc(from, to, index) {
+        const fromPoint = this.numberLine.querySelector(`[data-num="${from}"]`);
+        const toPoint = this.numberLine.querySelector(`[data-num="${to}"]`);
+        if (!fromPoint || !toPoint) return;
+
+        const containerRect = this.numberLine.parentElement.getBoundingClientRect();
+        const fromRect = fromPoint.getBoundingClientRect();
+        const toRect = toPoint.getBoundingClientRect();
+
+        const arc = document.createElement('div');
+        arc.className = 'hop-arc';
+        if (!this.isAddition) arc.classList.add('subtract');
+
+        // Position arc between the two points
+        const midX = (fromRect.left + toRect.left) / 2 - containerRect.left + fromRect.width / 2 - 20;
+        arc.style.left = `${midX}px`;
+        arc.style.animationDelay = `${index * 0.1}s`;
+
+        this.hopArcs.appendChild(arc);
+      },
+
+      /**
+       * Render answer choices
+       */
+      renderChoices() {
+        this.answerChoices.innerHTML = '';
+
+        // Generate choices including the correct answer
+        const choices = new Set([this.endNumber]);
+
+        // Add distractors
+        while (choices.size < 4) {
+          let distractor;
+          if (Math.random() > 0.5) {
+            // Close distractor
+            distractor = this.endNumber + randomInt(-2, 2);
+          } else {
+            // Random distractor
+            distractor = randomInt(0, 10);
+          }
+          if (distractor >= 0 && distractor <= 10 && distractor !== this.endNumber) {
+            choices.add(distractor);
+          }
+        }
+
+        // Convert to array and shuffle
+        const choicesArray = Array.from(choices);
+        this.shuffleArray(choicesArray);
+
+        // Create buttons
+        choicesArray.forEach(num => {
+          const btn = document.createElement('button');
+          btn.className = 'answer-btn';
+          btn.textContent = num;
+          btn.setAttribute('tabindex', '0');
+          btn.addEventListener('click', () => this.selectAnswer(num, btn));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.selectAnswer(num, btn);
+            }
+          });
+          this.answerChoices.appendChild(btn);
+        });
+      },
+
+      /**
+       * Shuffle array
+       */
+      shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      },
+
+      /**
+       * Select answer
+       */
+      selectAnswer(num, btn) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        // Disable all buttons
+        const allBtns = this.answerChoices.querySelectorAll('.answer-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        // Reveal answer
+        this.problemAnswer.textContent = this.endNumber;
+        this.problemAnswer.classList.add('revealed');
+
+        // Mark end position on number line
+        const endPoint = this.numberLine.querySelector(`[data-num="${this.endNumber}"]`);
+        if (endPoint) endPoint.classList.add('end');
+
+        const isCorrect = num === this.endNumber;
+
+        if (isCorrect) {
+          btn.classList.add('correct');
+          const opSymbol = this.isAddition ? '+' : '−';
+          const msg = i18n.t('section.activities.number-line-hops-k.correct') || 'Yes! {{start}} {{op}} {{hop}} = {{end}}!';
+          this.feedback.textContent = msg
+            .replace('{{start}}', this.startNumber)
+            .replace('{{op}}', opSymbol)
+            .replace('{{hop}}', this.hopCount)
+            .replace('{{end}}', this.endNumber);
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          if (typeof celebrate === 'function') {
+            celebrate(btn);
+          }
+        } else {
+          btn.classList.add('incorrect');
+          // Highlight correct answer
+          allBtns.forEach(b => {
+            if (parseInt(b.textContent) === this.endNumber) {
+              b.classList.add('correct');
+            }
+          });
+          const opSymbol = this.isAddition ? '+' : '−';
+          const msg = i18n.t('section.activities.number-line-hops-k.incorrect') || '{{start}} {{op}} {{hop}} = {{end}}';
+          this.feedback.textContent = msg
+            .replace('{{start}}', this.startNumber)
+            .replace('{{op}}', opSymbol)
+            .replace('{{hop}}', this.hopCount)
+            .replace('{{end}}', this.endNumber);
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.number-line-hops-k.perfect') || "Hopping Champion!";
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.number-line-hops-k.great') || 'Great hopping!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.number-line-hops-k.keepPracticing') || 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      NumberLineHopsK.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

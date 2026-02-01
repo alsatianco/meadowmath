@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Regrouping Practice: Add (Column) - Grade 3 Math Activity - Meadow Math">
+  <title>Regrouping Practice: Add (Column) - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🎒</span>
+            <span data-i18n="section.activities.add-regrouping-1000.title">Regrouping Practice: Add (Column)</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.add-regrouping-1000.description">Practice adding with regrouping.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Column Addition Display -->
+          <div class="column-addition-section">
+            <div class="column-addition">
+              <!-- Carry row (shown when needed) -->
+              <div class="carry-row" id="carry-row">
+                <span class="carry-digit" id="carry-hundreds"></span>
+                <span class="carry-digit" id="carry-tens"></span>
+                <span class="carry-digit" id="carry-ones"></span>
+              </div>
+              <!-- First number -->
+              <div class="number-row first-number">
+                <span class="digit" id="first-hundreds">0</span>
+                <span class="digit" id="first-tens">0</span>
+                <span class="digit" id="first-ones">0</span>
+              </div>
+              <!-- Second number with operator -->
+              <div class="number-row second-number">
+                <span class="operator">+</span>
+                <span class="digit" id="second-hundreds">0</span>
+                <span class="digit" id="second-tens">0</span>
+                <span class="digit" id="second-ones">0</span>
+              </div>
+              <!-- Line -->
+              <div class="addition-line"></div>
+              <!-- Result row -->
+              <div class="result-row" id="result-row">
+                <span class="result-digit" id="result-thousands"></span>
+                <span class="result-digit" id="result-hundreds">?</span>
+                <span class="result-digit" id="result-tens">?</span>
+                <span class="result-digit" id="result-ones">?</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question Prompt -->
+          <div class="question-prompt" id="question-prompt">
+            <span class="prompt-icon" aria-hidden="true">🤔</span>
+            <span class="prompt-text" id="prompt-text" data-i18n="section.activities.add-regrouping-1000.whatIsSum">What is the sum?</span>
+          </div>
+
+          <!-- Hint Toggle -->
+          <button class="hint-toggle" id="hint-toggle">
+            <span class="hint-icon" aria-hidden="true">💡</span>
+            <span class="hint-label" id="hint-label" data-i18n="section.activities.add-regrouping-1000.showHint">Show hint</span>
+          </button>
+
+          <!-- Hint Panel -->
+          <div class="hint-panel" id="hint-panel">
+            <div class="hint-content" id="hint-content"></div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choice-container" id="choice-container" role="group" aria-label="Answer choices">
+            <!-- Choices will be dynamically inserted -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.add-regrouping-1000.great">Great regrouping work!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Regrouping Practice: Add (Column) Activity - Grade 3 Level 2
+    const AddRegrouping1000 = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      numberFirst: 0,
+      numberSecond: 0,
+      correctAnswer: 0,
+      questionType: 'full', // 'ones', 'tens', 'full'
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+      hintVisible: false,
+
+      // DOM elements
+      firstHundreds: null,
+      firstTens: null,
+      firstOnes: null,
+      secondHundreds: null,
+      secondTens: null,
+      secondOnes: null,
+      resultThousands: null,
+      resultHundreds: null,
+      resultTens: null,
+      resultOnes: null,
+      carryHundreds: null,
+      carryTens: null,
+      carryOnes: null,
+      carryRow: null,
+      questionPrompt: null,
+      promptText: null,
+      hintToggle: null,
+      hintLabel: null,
+      hintPanel: null,
+      hintContent: null,
+      choiceContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        // Get DOM elements
+        this.firstHundreds = document.getElementById('first-hundreds');
+        this.firstTens = document.getElementById('first-tens');
+        this.firstOnes = document.getElementById('first-ones');
+        this.secondHundreds = document.getElementById('second-hundreds');
+        this.secondTens = document.getElementById('second-tens');
+        this.secondOnes = document.getElementById('second-ones');
+        this.resultThousands = document.getElementById('result-thousands');
+        this.resultHundreds = document.getElementById('result-hundreds');
+        this.resultTens = document.getElementById('result-tens');
+        this.resultOnes = document.getElementById('result-ones');
+        this.carryHundreds = document.getElementById('carry-hundreds');
+        this.carryTens = document.getElementById('carry-tens');
+        this.carryOnes = document.getElementById('carry-ones');
+        this.carryRow = document.getElementById('carry-row');
+        this.questionPrompt = document.getElementById('question-prompt');
+        this.promptText = document.getElementById('prompt-text');
+        this.hintToggle = document.getElementById('hint-toggle');
+        this.hintLabel = document.getElementById('hint-label');
+        this.hintPanel = document.getElementById('hint-panel');
+        this.hintContent = document.getElementById('hint-content');
+        this.choiceContainer = document.getElementById('choice-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Event listeners
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+        this.hintToggle.addEventListener('click', () => this.toggleHint());
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Update prompt text based on question type
+        this.updatePromptText();
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      generateProblem() {
+        // Progressive difficulty with focus on regrouping
+        // Questions 0-2: 2-digit + 2-digit, ensure ones regroup
+        // Questions 3-5: 2-digit + 2-digit, ensure tens regroup
+        // Questions 6-7: 3-digit + 2-digit, mixed regrouping
+        // Questions 8-9: 3-digit + 3-digit, possibly both regroup
+
+        let first, second;
+
+        if (this.currentQuestion < 3) {
+          // Ensure ones column requires regrouping
+          const firstOnes = this.randomInt(5, 9);
+          const secondOnes = this.randomInt(10 - firstOnes + 1, 9);
+          const firstTens = this.randomInt(1, 7);
+          const secondTens = this.randomInt(1, 9 - firstTens);
+          first = firstTens * 10 + firstOnes;
+          second = secondTens * 10 + secondOnes;
+          this.questionType = this.randomInt(0, 2) === 0 ? 'ones' : 'full';
+        } else if (this.currentQuestion < 6) {
+          // Ensure tens column requires regrouping
+          const firstOnes = this.randomInt(1, 5);
+          const secondOnes = this.randomInt(1, 9 - firstOnes);
+          const firstTens = this.randomInt(5, 9);
+          const secondTens = this.randomInt(10 - firstTens + 1, 9);
+          first = firstTens * 10 + firstOnes;
+          second = secondTens * 10 + secondOnes;
+          this.questionType = this.randomInt(0, 2) === 0 ? 'tens' : 'full';
+        } else if (this.currentQuestion < 8) {
+          // 3-digit + 2-digit, ensure at least one regrouping
+          first = this.randomInt(200, 500);
+          // Ensure ones column requires regrouping
+          const firstOnes = first % 10;
+          const secondOnes = firstOnes < 5 ? this.randomInt(10 - firstOnes, 9) : this.randomInt(11 - firstOnes, 9);
+          // If firstOnes >= 5, secondOnes needs to be (11-firstOnes) to 9 to guarantee sum > 10
+          // e.g., firstOnes=5, secondOnes needs to be 6-9 (sum 11-14)
+          // e.g., firstOnes=9, secondOnes needs to be 2-9 (sum 11-18)
+          second = this.randomInt(5, 9) * 10 + secondOnes;
+          this.questionType = 'full';
+        } else {
+          // 3-digit + 3-digit, ensure regrouping in multiple places
+          const firstH = this.randomInt(2, 4);
+          const firstT = this.randomInt(5, 9);
+          const firstO = this.randomInt(5, 9);
+          first = firstH * 100 + firstT * 10 + firstO;
+
+          const secondH = this.randomInt(1, 4);
+          const secondT = this.randomInt(10 - firstT, 9);
+          const secondO = this.randomInt(10 - firstO, 9);
+          second = secondH * 100 + secondT * 10 + secondO;
+
+          // Ensure sum is under 1000
+          if (first + second >= 1000) {
+            second = 999 - first - this.randomInt(1, 50);
+          }
+          this.questionType = 'full';
+        }
+
+        this.numberFirst = first;
+        this.numberSecond = second;
+        this.correctAnswer = first + second;
+        this.isAnswered = false;
+        this.hintVisible = false;
+      },
+
+      startQuestion() {
+        this.generateProblem();
+        this.displayProblem();
+        this.updatePromptText();
+        this.generateChoices();
+        this.feedback.classList.remove('show', 'error');
+        this.hintPanel.classList.remove('show');
+        this.hintToggle.classList.remove('active');
+        this.updateHintLabel();
+        this.renderProgress();
+      },
+
+      displayProblem() {
+        // Parse first number digits
+        const first = this.numberFirst;
+        const firstH = Math.floor(first / 100);
+        const firstT = Math.floor((first % 100) / 10);
+        const firstO = first % 10;
+
+        // Parse second number digits
+        const second = this.numberSecond;
+        const secondH = Math.floor(second / 100);
+        const secondT = Math.floor((second % 100) / 10);
+        const secondO = second % 10;
+
+        // Display first number
+        this.firstHundreds.textContent = firstH > 0 ? firstH : '';
+        this.firstTens.textContent = (firstH > 0 || firstT > 0) ? firstT : '';
+        this.firstOnes.textContent = firstO;
+
+        // Display second number
+        this.secondHundreds.textContent = secondH > 0 ? secondH : '';
+        this.secondTens.textContent = (secondH > 0 || secondT > 0) ? secondT : '';
+        this.secondOnes.textContent = secondO;
+
+        // Clear result row
+        this.resultThousands.textContent = '';
+        this.resultHundreds.textContent = '?';
+        this.resultTens.textContent = '?';
+        this.resultOnes.textContent = '?';
+
+        // Clear carry row
+        this.carryHundreds.textContent = '';
+        this.carryTens.textContent = '';
+        this.carryOnes.textContent = '';
+        this.carryRow.classList.remove('show');
+
+        // Generate and display hint
+        this.generateHint();
+      },
+
+      generateHint() {
+        // Calculate carries
+        const first = this.numberFirst;
+        const second = this.numberSecond;
+
+        const firstO = first % 10;
+        const secondO = second % 10;
+        const onesSum = firstO + secondO;
+        const carryToTens = onesSum >= 10 ? 1 : 0;
+
+        const firstT = Math.floor((first % 100) / 10);
+        const secondT = Math.floor((second % 100) / 10);
+        const tensSum = firstT + secondT + carryToTens;
+        const carryToHundreds = tensSum >= 10 ? 1 : 0;
+
+        const firstH = Math.floor(first / 100);
+        const secondH = Math.floor(second / 100);
+        const hundredsSum = firstH + secondH + carryToHundreds;
+        const carryToThousands = hundredsSum >= 10 ? 1 : 0;
+
+        let hintHtml = '<div class="hint-steps">';
+
+        // Step 1: Ones
+        hintHtml += '<div class="hint-step">';
+        hintHtml += `<span class="step-label">${this.getTranslation('onesLabel', 'Ones')}: </span>`;
+        hintHtml += `<span class="step-calc">${firstO} + ${secondO} = ${onesSum}</span>`;
+        if (carryToTens) {
+          hintHtml += `<span class="step-note">${this.getTranslation('writeCarry', 'Write {digit}, carry {carry}').replace('{digit}', onesSum % 10).replace('{carry}', '1')}</span>`;
+        }
+        hintHtml += '</div>';
+
+        // Step 2: Tens
+        hintHtml += '<div class="hint-step">';
+        hintHtml += `<span class="step-label">${this.getTranslation('tensLabel', 'Tens')}: </span>`;
+        if (carryToTens) {
+          hintHtml += `<span class="step-calc">${firstT} + ${secondT} + 1 = ${tensSum}</span>`;
+        } else {
+          hintHtml += `<span class="step-calc">${firstT} + ${secondT} = ${tensSum}</span>`;
+        }
+        if (carryToHundreds) {
+          hintHtml += `<span class="step-note">${this.getTranslation('writeCarry', 'Write {digit}, carry {carry}').replace('{digit}', tensSum % 10).replace('{carry}', '1')}</span>`;
+        }
+        hintHtml += '</div>';
+
+        // Step 3: Hundreds (if applicable)
+        if (firstH > 0 || secondH > 0 || carryToHundreds) {
+          hintHtml += '<div class="hint-step">';
+          hintHtml += `<span class="step-label">${this.getTranslation('hundredsLabel', 'Hundreds')}: </span>`;
+          if (carryToHundreds) {
+            hintHtml += `<span class="step-calc">${firstH} + ${secondH} + 1 = ${hundredsSum}</span>`;
+          } else {
+            hintHtml += `<span class="step-calc">${firstH} + ${secondH} = ${hundredsSum}</span>`;
+          }
+          if (carryToThousands) {
+            hintHtml += `<span class="step-note">${this.getTranslation('writeCarry', 'Write {digit}, carry {carry}').replace('{digit}', hundredsSum % 10).replace('{carry}', '1')}</span>`;
+          }
+          hintHtml += '</div>';
+        }
+
+        hintHtml += '</div>';
+        this.hintContent.innerHTML = hintHtml;
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.add-regrouping-1000.${key}`);
+          return translated !== `section.activities.add-regrouping-1000.${key}` ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      updatePromptText() {
+        let prompt = '';
+        if (this.questionType === 'ones') {
+          prompt = this.getTranslation('whatOnesDigit', 'What is the ones digit in the answer?');
+        } else if (this.questionType === 'tens') {
+          prompt = this.getTranslation('whatTensDigit', 'What is the tens digit in the answer?');
+        } else {
+          prompt = this.getTranslation('whatIsSum', 'What is the sum?');
+        }
+        this.promptText.textContent = prompt;
+      },
+
+      toggleHint() {
+        this.hintVisible = !this.hintVisible;
+        if (this.hintVisible) {
+          this.hintPanel.classList.add('show');
+          this.hintToggle.classList.add('active');
+        } else {
+          this.hintPanel.classList.remove('show');
+          this.hintToggle.classList.remove('active');
+        }
+        this.updateHintLabel();
+      },
+
+      updateHintLabel() {
+        const showText = this.getTranslation('showHint', 'Show hint');
+        const hideText = this.getTranslation('hideHint', 'Hide hint');
+        this.hintLabel.textContent = this.hintVisible ? hideText : showText;
+      },
+
+      generateChoices() {
+        const choices = [];
+        let correctValue;
+
+        if (this.questionType === 'ones') {
+          correctValue = this.correctAnswer % 10;
+        } else if (this.questionType === 'tens') {
+          correctValue = Math.floor((this.correctAnswer % 100) / 10);
+        } else {
+          correctValue = this.correctAnswer;
+        }
+
+        choices.push(correctValue);
+
+        if (this.questionType === 'ones' || this.questionType === 'tens') {
+          // Generate single digit distractors
+          while (choices.length < 4) {
+            const distractor = this.randomInt(0, 9);
+            if (!choices.includes(distractor)) {
+              choices.push(distractor);
+            }
+          }
+        } else {
+          // Generate full sum distractors
+          // Distractor 1: Off by 10 (forgot to carry or carried wrong)
+          let d1 = correctValue + (Math.random() < 0.5 ? 10 : -10);
+          if (d1 > 0 && !choices.includes(d1)) choices.push(d1);
+
+          // Distractor 2: Off by 1
+          let d2 = correctValue + (Math.random() < 0.5 ? 1 : -1);
+          if (d2 > 0 && !choices.includes(d2)) choices.push(d2);
+
+          // Distractor 3: "No carry" error - sum each column without regrouping
+          const first = this.numberFirst;
+          const second = this.numberSecond;
+          const noCarryOnes = (first % 10) + (second % 10);
+          const noCarryTens = (Math.floor((first % 100) / 10) + Math.floor((second % 100) / 10));
+          const noCarryHundreds = (Math.floor(first / 100) + Math.floor(second / 100));
+          const d3 = noCarryHundreds * 100 + noCarryTens * 10 + noCarryOnes;
+          if (d3 !== correctValue && d3 > 0 && !choices.includes(d3)) {
+            choices.push(d3);
+          }
+
+          // Fill remaining with nearby values
+          while (choices.length < 4) {
+            const offset = this.randomInt(-30, 30);
+            const distractor = correctValue + offset;
+            if (distractor > 0 && distractor !== correctValue && !choices.includes(distractor)) {
+              choices.push(distractor);
+            }
+          }
+        }
+
+        // Shuffle
+        this.shuffle(choices);
+
+        // Render buttons
+        let html = '';
+        choices.forEach(choice => {
+          const displayValue = choice.toLocaleString ? choice.toLocaleString() : choice;
+          html += `<button class="choice-btn" data-value="${choice}" aria-label="Select ${displayValue}">${displayValue}</button>`;
+        });
+        this.choiceContainer.innerHTML = html;
+
+        // Attach event listeners
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.addEventListener('click', () => this.selectChoice(parseInt(btn.dataset.value)));
+        });
+      },
+
+      shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      },
+
+      selectChoice(value) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        let correctValue;
+        if (this.questionType === 'ones') {
+          correctValue = this.correctAnswer % 10;
+        } else if (this.questionType === 'tens') {
+          correctValue = Math.floor((this.correctAnswer % 100) / 10);
+        } else {
+          correctValue = this.correctAnswer;
+        }
+
+        const isCorrect = value === correctValue;
+
+        // Highlight correct and incorrect choices
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.disabled = true;
+          if (parseInt(btn.dataset.value) === correctValue) {
+            btn.classList.add('correct');
+          } else if (parseInt(btn.dataset.value) === value && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        // Show the complete answer in the column display
+        this.showAnswer();
+
+        // Show feedback
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = window.i18n ? i18n.t('feedback.correct') || 'Correct!' : 'Correct!';
+          if (this.questionType === 'full') {
+            this.feedback.textContent = `${msg} ${this.numberFirst} + ${this.numberSecond} = ${this.correctAnswer}`;
+          } else {
+            this.feedback.textContent = msg;
+          }
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          let incorrectMsg;
+          if (this.questionType === 'ones') {
+            incorrectMsg = this.getTranslation('incorrectOnes', 'The ones digit is {answer}').replace('{answer}', correctValue);
+          } else if (this.questionType === 'tens') {
+            incorrectMsg = this.getTranslation('incorrectTens', 'The tens digit is {answer}').replace('{answer}', correctValue);
+          } else {
+            incorrectMsg = this.getTranslation('incorrectMsg', 'The sum is {answer}').replace('{answer}', this.correctAnswer.toLocaleString());
+          }
+          this.feedback.textContent = incorrectMsg;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        // Auto-advance
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      showAnswer() {
+        const answer = this.correctAnswer;
+        const answerStr = answer.toString().padStart(3, '0');
+
+        // Calculate carries for display
+        const first = this.numberFirst;
+        const second = this.numberSecond;
+        const firstO = first % 10;
+        const secondO = second % 10;
+        const onesSum = firstO + secondO;
+        const carryToTens = onesSum >= 10 ? 1 : 0;
+
+        const firstT = Math.floor((first % 100) / 10);
+        const secondT = Math.floor((second % 100) / 10);
+        const tensSum = firstT + secondT + carryToTens;
+        const carryToHundreds = tensSum >= 10 ? 1 : 0;
+
+        // Show carry digits
+        if (carryToTens || carryToHundreds) {
+          this.carryRow.classList.add('show');
+          this.carryTens.textContent = carryToTens ? '1' : '';
+          this.carryHundreds.textContent = carryToHundreds ? '1' : '';
+        }
+
+        // Show result
+        if (answer >= 1000) {
+          this.resultThousands.textContent = Math.floor(answer / 1000);
+          this.resultHundreds.textContent = Math.floor((answer % 1000) / 100);
+        } else if (answer >= 100) {
+          this.resultThousands.textContent = '';
+          this.resultHundreds.textContent = Math.floor(answer / 100);
+        } else {
+          this.resultThousands.textContent = '';
+          this.resultHundreds.textContent = '';
+        }
+        this.resultTens.textContent = Math.floor((answer % 100) / 10);
+        this.resultOnes.textContent = answer % 10;
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation('perfect', 'Amazing regrouping skills!');
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🎒';
+          this.statsMessage.textContent = this.getTranslation('great', 'Great work!');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation('keepPracticing', 'Keep practicing!');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => AddRegrouping1000.init());
+      } else {
+        AddRegrouping1000.init();
+      }
+    });
+  </script>
+  <style>
+    /* Regrouping Practice: Add (Column) specific styles */
+
+    /* Column Addition Section */
+    .column-addition-section {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .column-addition {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding: var(--space-4) var(--space-6);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 3px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 var(--color-primary-dark);
+      min-width: 200px;
+    }
+
+    .carry-row {
+      display: none;
+      justify-content: flex-end;
+      gap: var(--space-3);
+      margin-bottom: var(--space-1);
+      padding-right: var(--space-1);
+    }
+
+    .carry-row.show {
+      display: flex;
+    }
+
+    .carry-digit {
+      width: 32px;
+      height: 24px;
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      color: #dc2626;
+      text-align: center;
+    }
+
+    .number-row {
+      display: flex;
+      gap: var(--space-3);
+    }
+
+    .number-row.first-number {
+      margin-bottom: var(--space-2);
+    }
+
+    .number-row.second-number {
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .number-row.second-number .operator {
+      position: absolute;
+      left: 0;
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+    }
+
+    .digit {
+      width: 32px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-800);
+    }
+
+    .addition-line {
+      width: 100%;
+      height: 3px;
+      background: var(--color-neutral-800);
+      margin: var(--space-2) 0;
+      border-radius: 2px;
+    }
+
+    .result-row {
+      display: flex;
+      gap: var(--space-3);
+    }
+
+    .result-digit {
+      width: 32px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+    }
+
+    /* Question Prompt */
+    .question-prompt {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid #f59e0b;
+      border-radius: var(--radius-lg);
+    }
+
+    .prompt-icon {
+      font-size: var(--text-xl);
+    }
+
+    .prompt-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #92400e;
+    }
+
+    /* Hint Toggle */
+    .hint-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin: 0 auto var(--space-3);
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border: 2px solid var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .hint-toggle:hover {
+      background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+      border-color: var(--color-neutral-400);
+    }
+
+    .hint-toggle:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
+    .hint-toggle.active {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: var(--color-primary);
+    }
+
+    .hint-icon {
+      font-size: var(--text-lg);
+    }
+
+    .hint-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+    }
+
+    .hint-toggle.active .hint-label {
+      color: var(--color-primary-dark);
+    }
+
+    /* Hint Panel */
+    .hint-panel {
+      display: none;
+      margin-bottom: var(--space-4);
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #10b981;
+      border-radius: var(--radius-lg);
+    }
+
+    .hint-panel.show {
+      display: block;
+      animation: slideDown 0.2s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hint-steps {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .hint-step {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .step-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      color: #065f46;
+      min-width: 80px;
+    }
+
+    .step-calc {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      color: var(--color-neutral-700);
+    }
+
+    .step-note {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xs);
+      color: #dc2626;
+      font-style: italic;
+    }
+
+    /* Choice Container */
+    .choice-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+      max-width: 400px;
+      margin: 0 auto;
+      padding: var(--space-2);
+    }
+
+    .choice-btn {
+      min-height: 70px;
+      min-width: 110px;
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 4px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4), 0 4px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      box-shadow: 0 4px 0 #15803d;
+      color: #166534;
+      animation: pulse-correct 0.5s ease;
+    }
+
+    @keyframes pulse-correct {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      box-shadow: 0 4px 0 #b91c1c;
+      color: #991b1b;
+      animation: wiggle 0.3s ease;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-3deg); }
+      75% { transform: rotate(3deg); }
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .column-addition {
+        padding: var(--space-3) var(--space-4);
+        min-width: 160px;
+      }
+
+      .digit, .result-digit {
+        width: 28px;
+        height: 36px;
+        font-size: var(--text-xl);
+      }
+
+      .carry-digit {
+        width: 28px;
+        font-size: var(--text-xs);
+      }
+
+      .number-row, .result-row, .carry-row {
+        gap: var(--space-2);
+      }
+
+      .number-row.second-number {
+        padding-left: 28px;
+      }
+
+      .number-row.second-number .operator {
+        font-size: var(--text-xl);
+      }
+
+      .choice-container {
+        gap: var(--space-3);
+      }
+
+      .choice-btn {
+        min-height: 64px;
+        font-size: var(--text-lg);
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .step-label {
+        min-width: 70px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .column-addition {
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .digit, .result-digit {
+        width: 24px;
+        height: 32px;
+        font-size: var(--text-lg);
+      }
+
+      .carry-digit {
+        width: 24px;
+      }
+
+      .choice-container {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+        max-width: 300px;
+      }
+
+      .choice-btn {
+        min-height: 60px;
+        font-size: var(--text-lg);
+      }
+
+      .question-prompt {
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .prompt-text {
+        font-size: var(--text-sm);
+      }
+
+      .hint-panel {
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .step-label {
+        min-width: 60px;
+        font-size: var(--text-xs);
+      }
+
+      .step-calc, .step-note {
+        font-size: var(--text-xs);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

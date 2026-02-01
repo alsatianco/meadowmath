@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Reasonableness & Units - Grade 5 Math Activity - Meadow Math">
+  <title>Reasonableness & Units - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧭</span>
+            <span data-i18n="section.activities.measurement-reasonableness.title">Reasonableness & Units</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.measurement-reasonableness.instruction">Choose the most reasonable answer!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Scenario Card -->
+          <div class="scenario-card" id="scenario-card">
+            <div class="scenario-icon" id="scenario-icon" aria-hidden="true">📏</div>
+            <div class="scenario-text" id="scenario-text">
+              A classroom is about ___ long.
+            </div>
+          </div>
+
+          <!-- Thinking Hint -->
+          <div class="thinking-hint" id="thinking-hint">
+            <span class="hint-icon" aria-hidden="true">💭</span>
+            <span class="hint-text" id="hint-text">Think: How does this compare to things you know?</span>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <!-- Choices will be rendered here -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.measurement-reasonableness.great">Great measurement sense!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Reasonableness & Units Activity - Grade 5 Level 4
+    const MeasurementReasonableness = {
+      currentQuestion: 0,
+      totalQuestions: 12,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 2000,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+
+      // Question bank organized by category
+      questionBank: [
+        // Length - classroom/building scale
+        {
+          scenarioKey: 'classroom',
+          scenarioFallback: 'A classroom is about ___ long.',
+          icon: '🏫',
+          value: 10,
+          correctUnit: 'm',
+          wrongUnits: ['cm', 'km'],
+          hintKey: 'hintClassroom',
+          hintFallback: 'Think: 10 cm is about as long as your hand. 10 km is very far!'
+        },
+        {
+          scenarioKey: 'pencil',
+          scenarioFallback: 'A pencil is about ___ long.',
+          icon: '✏️',
+          value: 18,
+          correctUnit: 'cm',
+          wrongUnits: ['mm', 'm'],
+          hintKey: 'hintPencil',
+          hintFallback: 'Think: 18 mm is less than an inch. 18 m is taller than a house!'
+        },
+        {
+          scenarioKey: 'ant',
+          scenarioFallback: 'An ant is about ___ long.',
+          icon: '🐜',
+          value: 5,
+          correctUnit: 'mm',
+          wrongUnits: ['cm', 'm'],
+          hintKey: 'hintAnt',
+          hintFallback: 'Think: Ants are tiny! 5 cm is about 2 inches.'
+        },
+        {
+          scenarioKey: 'highway',
+          scenarioFallback: 'A highway between two cities is about ___ long.',
+          icon: '🛣️',
+          value: 50,
+          correctUnit: 'km',
+          wrongUnits: ['m', 'cm'],
+          hintKey: 'hintHighway',
+          hintFallback: 'Think: Cities are far apart. 50 m is shorter than a football field.'
+        },
+        // Mass/Weight
+        {
+          scenarioKey: 'apple',
+          scenarioFallback: 'An apple weighs about ___.',
+          icon: '🍎',
+          value: 200,
+          correctUnit: 'g',
+          wrongUnits: ['mg', 'kg'],
+          hintKey: 'hintApple',
+          hintFallback: 'Think: 200 mg is lighter than a paperclip. 200 kg is heavier than a person!'
+        },
+        {
+          scenarioKey: 'dog',
+          scenarioFallback: 'A medium-sized dog weighs about ___.',
+          icon: '🐕',
+          value: 15,
+          correctUnit: 'kg',
+          wrongUnits: ['g', 'mg'],
+          hintKey: 'hintDog',
+          hintFallback: 'Think: 15 g is about as heavy as a few coins.'
+        },
+        {
+          scenarioKey: 'paperclip',
+          scenarioFallback: 'A paperclip weighs about ___.',
+          icon: '📎',
+          value: 1,
+          correctUnit: 'g',
+          wrongUnits: ['kg', 'mg'],
+          hintKey: 'hintPaperclip',
+          hintFallback: 'Think: 1 kg is about a bag of flour. 1 mg is almost nothing!'
+        },
+        {
+          scenarioKey: 'car',
+          scenarioFallback: 'A car weighs about ___.',
+          icon: '🚗',
+          value: 1500,
+          correctUnit: 'kg',
+          wrongUnits: ['g', 'mg'],
+          hintKey: 'hintCar',
+          hintFallback: 'Think: 1500 g is only about 3 pounds. Cars are heavy!'
+        },
+        // Capacity/Volume
+        {
+          scenarioKey: 'waterBottle',
+          scenarioFallback: 'A water bottle holds about ___.',
+          icon: '🧴',
+          value: 500,
+          correctUnit: 'mL',
+          wrongUnits: ['L', 'kL'],
+          hintKey: 'hintWaterBottle',
+          hintFallback: 'Think: 500 L could fill many bathtubs!'
+        },
+        {
+          scenarioKey: 'fishTank',
+          scenarioFallback: 'A home fish tank holds about ___.',
+          icon: '🐠',
+          value: 40,
+          correctUnit: 'L',
+          wrongUnits: ['mL', 'kL'],
+          hintKey: 'hintFishTank',
+          hintFallback: 'Think: 40 mL is just a few spoonfuls. 40 kL could fill a pool!'
+        },
+        {
+          scenarioKey: 'teaspoon',
+          scenarioFallback: 'A teaspoon holds about ___.',
+          icon: '🥄',
+          value: 5,
+          correctUnit: 'mL',
+          wrongUnits: ['L', 'kL'],
+          hintKey: 'hintTeaspoon',
+          hintFallback: 'Think: Teaspoons are small. 5 L is about a big jug!'
+        },
+        {
+          scenarioKey: 'swimmingPool',
+          scenarioFallback: 'An Olympic swimming pool holds about ___.',
+          icon: '🏊',
+          value: 2500,
+          correctUnit: 'kL',
+          wrongUnits: ['mL', 'L'],
+          hintKey: 'hintSwimmingPool',
+          hintFallback: 'Think: Swimming pools are huge! 2500 L is only about 2.5 bathtubs.'
+        },
+        // More length
+        {
+          scenarioKey: 'book',
+          scenarioFallback: 'A textbook is about ___ wide.',
+          icon: '📚',
+          value: 20,
+          correctUnit: 'cm',
+          wrongUnits: ['mm', 'm'],
+          hintKey: 'hintBook',
+          hintFallback: 'Think: 20 mm is less than an inch. 20 m is very long!'
+        },
+        {
+          scenarioKey: 'door',
+          scenarioFallback: 'A door is about ___ tall.',
+          icon: '🚪',
+          value: 2,
+          correctUnit: 'm',
+          wrongUnits: ['cm', 'km'],
+          hintKey: 'hintDoor',
+          hintFallback: 'Think: 2 cm is about the width of your finger. 2 km is very far!'
+        },
+        {
+          scenarioKey: 'finger',
+          scenarioFallback: 'Your finger is about ___ wide.',
+          icon: '👆',
+          value: 15,
+          correctUnit: 'mm',
+          wrongUnits: ['cm', 'm'],
+          hintKey: 'hintFinger',
+          hintFallback: 'Think: 15 cm is about 6 inches - much wider than a finger!'
+        },
+        // More mass
+        {
+          scenarioKey: 'elephant',
+          scenarioFallback: 'An elephant weighs about ___.',
+          icon: '🐘',
+          value: 5000,
+          correctUnit: 'kg',
+          wrongUnits: ['g', 'mg'],
+          hintKey: 'hintElephant',
+          hintFallback: 'Think: 5000 g is only about 11 pounds. Elephants are HUGE!'
+        },
+        {
+          scenarioKey: 'grape',
+          scenarioFallback: 'A single grape weighs about ___.',
+          icon: '🍇',
+          value: 5,
+          correctUnit: 'g',
+          wrongUnits: ['kg', 'mg'],
+          hintKey: 'hintGrape',
+          hintFallback: 'Think: 5 kg is about 11 pounds - way too heavy for a grape!'
+        },
+        // More capacity
+        {
+          scenarioKey: 'bathtub',
+          scenarioFallback: 'A bathtub holds about ___.',
+          icon: '🛁',
+          value: 300,
+          correctUnit: 'L',
+          wrongUnits: ['mL', 'kL'],
+          hintKey: 'hintBathtub',
+          hintFallback: 'Think: 300 mL is just over a cup. 300 kL could fill many pools!'
+        },
+        {
+          scenarioKey: 'eyeDropper',
+          scenarioFallback: 'An eye dropper holds about ___.',
+          icon: '💧',
+          value: 1,
+          correctUnit: 'mL',
+          wrongUnits: ['L', 'kL'],
+          hintKey: 'hintEyeDropper',
+          hintFallback: 'Think: Eye droppers are tiny. 1 L is a whole liter bottle!'
+        }
+      ],
+
+      // DOM elements
+      scenarioCard: null,
+      scenarioIcon: null,
+      scenarioText: null,
+      thinkingHint: null,
+      hintText: null,
+      choicesContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.scenarioCard = document.getElementById('scenario-card');
+        this.scenarioIcon = document.getElementById('scenario-icon');
+        this.scenarioText = document.getElementById('scenario-text');
+        this.thinkingHint = document.getElementById('thinking-hint');
+        this.hintText = document.getElementById('hint-text');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      generateQuestions() {
+        const shuffled = shuffle([...this.questionBank]);
+        this.questions = shuffled.slice(0, this.totalQuestions);
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        const q = this.questions[this.currentQuestion];
+        if (!q) {
+          this.showStats();
+          return;
+        }
+
+        // Set scenario
+        this.scenarioIcon.textContent = q.icon;
+        const scenarioText = this.getTranslation(
+          `section.activities.measurement-reasonableness.${q.scenarioKey}`,
+          q.scenarioFallback
+        );
+        this.scenarioText.textContent = scenarioText;
+
+        // Set hint
+        const hintText = this.getTranslation(
+          `section.activities.measurement-reasonableness.${q.hintKey}`,
+          q.hintFallback
+        );
+        this.hintText.textContent = hintText;
+
+        // Generate choices
+        const choices = this.generateChoices(q);
+        this.renderChoices(choices, q.value, q.correctUnit);
+
+        this.renderProgress();
+      },
+
+      generateChoices(q) {
+        const allUnits = [q.correctUnit, ...q.wrongUnits];
+        return shuffle(allUnits.map(unit => ({
+          value: q.value,
+          unit: unit,
+          isCorrect: unit === q.correctUnit
+        })));
+      },
+
+      renderChoices(choices, value, correctUnit) {
+        this.choicesContainer.innerHTML = '';
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.setAttribute('tabindex', '0');
+
+          // Format the display
+          const unitDisplay = this.formatUnit(choice.unit);
+          btn.innerHTML = `
+            <span class="choice-value">${choice.value}</span>
+            <span class="choice-unit">${unitDisplay}</span>
+          `;
+
+          btn.addEventListener('click', () => this.checkAnswer(choice, correctUnit));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.checkAnswer(choice, correctUnit);
+            }
+          });
+
+          this.choicesContainer.appendChild(btn);
+        });
+      },
+
+      formatUnit(unit) {
+        // Get translated unit names
+        const unitNames = {
+          'mm': this.getTranslation('section.activities.measurement-reasonableness.mm', 'mm'),
+          'cm': this.getTranslation('section.activities.measurement-reasonableness.cm', 'cm'),
+          'm': this.getTranslation('section.activities.measurement-reasonableness.m', 'm'),
+          'km': this.getTranslation('section.activities.measurement-reasonableness.km', 'km'),
+          'mg': this.getTranslation('section.activities.measurement-reasonableness.mg', 'mg'),
+          'g': this.getTranslation('section.activities.measurement-reasonableness.g', 'g'),
+          'kg': this.getTranslation('section.activities.measurement-reasonableness.kg', 'kg'),
+          'mL': this.getTranslation('section.activities.measurement-reasonableness.mL', 'mL'),
+          'L': this.getTranslation('section.activities.measurement-reasonableness.L', 'L'),
+          'kL': this.getTranslation('section.activities.measurement-reasonableness.kL', 'kL')
+        };
+        return unitNames[unit] || unit;
+      },
+
+      checkAnswer(selected, correctUnit) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const buttons = this.choicesContainer.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => btn.disabled = true);
+
+        const isCorrect = selected.isCorrect;
+
+        buttons.forEach(btn => {
+          const btnUnit = btn.querySelector('.choice-unit').textContent;
+          const correctUnitDisplay = this.formatUnit(correctUnit);
+          if (btnUnit === correctUnitDisplay) {
+            btn.classList.add('correct');
+          } else if (btnUnit === this.formatUnit(selected.unit) && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+          this.feedback.textContent = this.getTranslation(
+            'section.activities.measurement-reasonableness.correct',
+            'Correct! That makes sense!'
+          );
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const wrongText = this.getTranslation(
+            'section.activities.measurement-reasonableness.wrong',
+            'The reasonable answer is {value} {unit}.'
+          )
+            .replace('{value}', selected.value)
+            .replace('{unit}', this.formatUnit(correctUnit));
+          this.feedback.textContent = wrongText;
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+        this.scheduleAdvance();
+      },
+
+      scheduleAdvance() {
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+
+        // Refresh current question display if not showing stats
+        if (!this.statsOverlay.classList.contains('show') && this.questions[this.currentQuestion]) {
+          const q = this.questions[this.currentQuestion];
+
+          // Update scenario text
+          const scenarioText = this.getTranslation(
+            `section.activities.measurement-reasonableness.${q.scenarioKey}`,
+            q.scenarioFallback
+          );
+          this.scenarioText.textContent = scenarioText;
+
+          // Update hint text
+          const hintText = this.getTranslation(
+            `section.activities.measurement-reasonableness.${q.hintKey}`,
+            q.hintFallback
+          );
+          this.hintText.textContent = hintText;
+
+          // Update unit labels in choices
+          this.choicesContainer.querySelectorAll('.choice-btn').forEach(btn => {
+            const unitEl = btn.querySelector('.choice-unit');
+            const currentText = unitEl.textContent;
+            // Find the unit key by checking all units
+            const unitKeys = ['mm', 'cm', 'm', 'km', 'mg', 'g', 'kg', 'mL', 'L', 'kL'];
+            for (const key of unitKeys) {
+              if (this.formatUnit(key) === currentText || key === currentText) {
+                unitEl.textContent = this.formatUnit(key);
+                break;
+              }
+            }
+          });
+        }
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.measurement-reasonableness.perfect',
+            'Perfect! You have excellent measurement sense!'
+          );
+        } else if (percent >= 0.75) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.measurement-reasonableness.great',
+            'Great measurement sense!'
+          );
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.measurement-reasonableness.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.measurement-reasonableness.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => MeasurementReasonableness.init());
+      } else {
+        MeasurementReasonableness.init();
+      }
+    });
+  </script>
+  <style>
+    /* Reasonableness & Units specific styles */
+
+    /* Scenario Card */
+    .scenario-card {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #3b82f6;
+      padding: var(--space-4);
+      margin-bottom: var(--space-3);
+      text-align: center;
+    }
+
+    .scenario-icon {
+      font-size: 3rem;
+      margin-bottom: var(--space-2);
+    }
+
+    .scenario-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #1e3a8a;
+      line-height: 1.4;
+    }
+
+    /* Thinking Hint */
+    .thinking-hint {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-lg);
+      border: 2px solid #f59e0b;
+      padding: var(--space-2) var(--space-3);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-2);
+    }
+
+    .hint-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .hint-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: #92400e;
+      line-height: 1.4;
+    }
+
+    /* Choices Container */
+    .choices-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .choice-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      color: #374151;
+      background: white;
+      border: 3px solid #d1d5db;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 60px;
+    }
+
+    .choice-value {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+    }
+
+    .choice-unit {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #6b7280;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: #f3f4f6;
+      border-color: #9ca3af;
+      transform: scale(1.02);
+    }
+
+    .choice-btn:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn.correct {
+      background: #dcfce7;
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .choice-btn.correct .choice-unit {
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: #fee2e2;
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+
+    .choice-btn.incorrect .choice-unit {
+      color: #991b1b;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    /* Feedback and layout */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .scenario-icon {
+        font-size: 2.5rem;
+      }
+
+      .scenario-text {
+        font-size: var(--text-base);
+      }
+
+      .hint-text {
+        font-size: var(--text-xs);
+      }
+
+      .choice-btn {
+        padding: var(--space-2) var(--space-3);
+        min-height: 55px;
+      }
+
+      .choice-value {
+        font-size: var(--text-xl);
+      }
+
+      .choice-unit {
+        font-size: var(--text-base);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .scenario-icon {
+        font-size: 2rem;
+      }
+
+      .scenario-text {
+        font-size: var(--text-sm);
+      }
+
+      .thinking-hint {
+        padding: var(--space-2);
+      }
+
+      .hint-icon {
+        font-size: 1.2rem;
+      }
+
+      .choice-btn {
+        min-height: 50px;
+      }
+
+      .choice-value {
+        font-size: var(--text-lg);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

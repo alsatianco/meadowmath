@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Subtract Within 100 - Grade 2 Math Activity - Meadow Math">
+  <title>Subtract Within 100 - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade2">Grade 2</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">➖</span>
+            <span data-i18n="section.activities.subtract-within-100.title">Subtract Within 100</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.subtract-within-100.description">Take away tens and ones to subtract.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Question -->
+          <div class="question-text" id="question">
+            <span data-i18n="section.activities.subtract-within-100.instruction">Subtract the numbers using tens and ones!</span>
+          </div>
+
+          <!-- Subtraction Display -->
+          <div class="subtraction-display" id="subtraction-display">
+            <!-- Minuend (first number) blocks -->
+            <div class="operand-section minuend-section">
+              <div class="operand-label" id="num1-label">52</div>
+              <div class="blocks-row">
+                <div class="block-group tens-group">
+                  <div class="blocks" id="num1-tens"></div>
+                </div>
+                <div class="block-group ones-group">
+                  <div class="blocks" id="num1-ones"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Minus sign -->
+            <div class="operator-row">
+              <span class="operator-symbol">−</span>
+            </div>
+
+            <!-- Subtrahend (second number) blocks -->
+            <div class="operand-section subtrahend-section">
+              <div class="operand-label" id="num2-label">28</div>
+              <div class="blocks-row">
+                <div class="block-group tens-group">
+                  <div class="blocks" id="num2-tens"></div>
+                </div>
+                <div class="block-group ones-group">
+                  <div class="blocks" id="num2-ones"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Equals and result -->
+            <div class="result-row">
+              <span class="operator-symbol">=</span>
+              <span class="result-placeholder">?</span>
+            </div>
+          </div>
+
+          <!-- Choice Buttons -->
+          <div class="choice-container" id="choice-container"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Subtract Within 100 Activity - Grade 2
+    const SubtractWithin100 = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      num1: 0, // minuend
+      num2: 0, // subtrahend
+      correctAnswer: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // DOM elements
+      num1Label: null,
+      num2Label: null,
+      num1Tens: null,
+      num1Ones: null,
+      num2Tens: null,
+      num2Ones: null,
+      choiceContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.num1Label = document.getElementById('num1-label');
+        this.num2Label = document.getElementById('num2-label');
+        this.num1Tens = document.getElementById('num1-tens');
+        this.num1Ones = document.getElementById('num1-ones');
+        this.num2Tens = document.getElementById('num2-tens');
+        this.num2Ones = document.getElementById('num2-ones');
+        this.choiceContainer = document.getElementById('choice-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Update stats message if visible
+        if (this.statsOverlay.classList.contains('show')) {
+          const percentage = (this.correctCount / this.totalQuestions) * 100;
+          if (percentage >= 80) {
+            this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.subtract-within-100.perfect') : 'Amazing subtraction skills!';
+          } else if (percentage >= 50) {
+            this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.subtract-within-100.great') : 'Great subtracting!';
+          } else {
+            this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.subtract-within-100.keepPracticing') : 'Keep practicing!';
+          }
+        }
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      },
+
+      generateProblem() {
+        // Progressive difficulty
+        if (this.currentQuestion < 3) {
+          // Easy: No regrouping (ones in minuend >= ones in subtrahend)
+          const t1 = this.randomInt(3, 6);
+          const o1 = this.randomInt(5, 9);
+          const t2 = this.randomInt(1, t1 - 1);
+          const o2 = this.randomInt(1, o1);
+          this.num1 = t1 * 10 + o1;
+          this.num2 = t2 * 10 + o2;
+        } else if (this.currentQuestion < 7) {
+          // Medium: May have regrouping (ones in minuend < ones in subtrahend)
+          const t1 = this.randomInt(4, 7);
+          const o1 = this.randomInt(2, 5);
+          const t2 = this.randomInt(1, t1 - 2);
+          const o2 = this.randomInt(o1 + 1, 9);
+          this.num1 = t1 * 10 + o1;
+          this.num2 = t2 * 10 + o2;
+          // Ensure result is positive
+          if (this.num1 - this.num2 < 10) {
+            this.num2 = Math.max(11, this.num1 - this.randomInt(15, 30));
+          }
+        } else {
+          // Hard: Larger numbers, likely regrouping
+          const t1 = this.randomInt(5, 9);
+          const o1 = this.randomInt(1, 4);
+          const t2 = this.randomInt(2, t1 - 1);
+          const o2 = this.randomInt(5, 9);
+          this.num1 = t1 * 10 + o1;
+          this.num2 = t2 * 10 + o2;
+          // Ensure result is positive and reasonable
+          if (this.num1 - this.num2 < 10) {
+            this.num2 = Math.max(11, this.num1 - this.randomInt(20, 40));
+          }
+        }
+
+        this.correctAnswer = this.num1 - this.num2;
+        this.isAnswered = false;
+      },
+
+      startQuestion() {
+        this.generateProblem();
+        this.renderBlocks();
+        this.renderChoices();
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      renderBlocks() {
+        const t1 = Math.floor(this.num1 / 10);
+        const o1 = this.num1 % 10;
+        const t2 = Math.floor(this.num2 / 10);
+        const o2 = this.num2 % 10;
+
+        // Update labels
+        this.num1Label.textContent = this.num1;
+        this.num2Label.textContent = this.num2;
+
+        // Render minuend's tens
+        this.num1Tens.innerHTML = '';
+        for (let i = 0; i < t1; i++) {
+          const block = document.createElement('div');
+          block.className = 'block ten-block';
+          block.textContent = '10';
+          this.num1Tens.appendChild(block);
+        }
+
+        // Render minuend's ones
+        this.num1Ones.innerHTML = '';
+        for (let i = 0; i < o1; i++) {
+          const block = document.createElement('div');
+          block.className = 'block one-block';
+          this.num1Ones.appendChild(block);
+        }
+
+        // Render subtrahend's tens (crossed out style)
+        this.num2Tens.innerHTML = '';
+        for (let i = 0; i < t2; i++) {
+          const block = document.createElement('div');
+          block.className = 'block ten-block subtract-block';
+          block.textContent = '10';
+          this.num2Tens.appendChild(block);
+        }
+
+        // Render subtrahend's ones (crossed out style)
+        this.num2Ones.innerHTML = '';
+        for (let i = 0; i < o2; i++) {
+          const block = document.createElement('div');
+          block.className = 'block one-block subtract-block';
+          this.num2Ones.appendChild(block);
+        }
+      },
+
+      renderChoices() {
+        this.choiceContainer.innerHTML = '';
+
+        if (this.isAnswered) return;
+
+        const choices = [this.correctAnswer];
+
+        // Generate distractors
+        const distractors = [];
+        // Off by 10
+        distractors.push(this.correctAnswer + 10);
+        if (this.correctAnswer > 10) distractors.push(this.correctAnswer - 10);
+        // Off by 1
+        distractors.push(this.correctAnswer + 1);
+        if (this.correctAnswer > 1) distractors.push(this.correctAnswer - 1);
+        // Common mistake: forgot to regroup (off by 10 in wrong direction)
+        const o1 = this.num1 % 10;
+        const o2 = this.num2 % 10;
+        if (o1 < o2) {
+          // Regrouping case - might forget to borrow, getting wrong answer
+          const wrongNoRegroup = this.correctAnswer + 10;
+          distractors.push(wrongNoRegroup);
+          // Or might subtract wrong way in ones place
+          const wrongOnesSwap = Math.floor(this.num1 / 10) * 10 - Math.floor(this.num2 / 10) * 10 + (o2 - o1);
+          if (wrongOnesSwap > 0 && wrongOnesSwap !== this.correctAnswer) {
+            distractors.push(wrongOnesSwap);
+          }
+        }
+        // Swapped digits mistake
+        const tens = Math.floor(this.correctAnswer / 10);
+        const ones = this.correctAnswer % 10;
+        if (tens !== ones && ones * 10 + tens > 0) distractors.push(ones * 10 + tens);
+
+        // Filter valid unique distractors
+        const validDistractors = distractors.filter(d =>
+          d > 0 && d < 100 && !choices.includes(d)
+        );
+        this.shuffleArray(validDistractors);
+        choices.push(...validDistractors.slice(0, 3));
+
+        // Fill remaining with random if needed
+        while (choices.length < 4) {
+          const d = this.randomInt(
+            Math.max(1, this.correctAnswer - 20),
+            Math.min(99, this.correctAnswer + 20)
+          );
+          if (!choices.includes(d) && d > 0) choices.push(d);
+        }
+
+        this.shuffleArray(choices);
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.textContent = choice;
+          btn.dataset.value = choice;
+          btn.setAttribute('aria-label', `Answer: ${choice}`);
+          btn.addEventListener('click', () => this.selectChoice(choice));
+          this.choiceContainer.appendChild(btn);
+        });
+      },
+
+      selectChoice(value) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const isCorrect = value === this.correctAnswer;
+
+        // Highlight selection
+        const buttons = this.choiceContainer.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => {
+          btn.disabled = true;
+          const btnValue = parseInt(btn.dataset.value);
+          if (btnValue === this.correctAnswer) {
+            btn.classList.add('correct');
+          } else if (btnValue === value && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = window.i18n ? i18n.t('section.activities.subtract-within-100.correct') : 'Correct!';
+          this.feedback.textContent = '✓ ' + msg.replace('{a}', this.num1).replace('{b}', this.num2).replace('{diff}', this.correctAnswer);
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const msg = window.i18n ? i18n.t('section.activities.subtract-within-100.wrong') : `The answer is ${this.correctAnswer}`;
+          this.feedback.textContent = msg.replace('{a}', this.num1).replace('{b}', this.num2).replace('{diff}', this.correctAnswer);
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.subtract-within-100.perfect') : 'Amazing subtraction skills!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '➖';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.subtract-within-100.great') : 'Great subtracting!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.subtract-within-100.keepPracticing') : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => SubtractWithin100.init());
+      } else {
+        SubtractWithin100.init();
+      }
+    });
+  </script>
+  <style>
+    /* Subtract Within 100 specific styles */
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-4);
+      text-align: center;
+    }
+
+    /* Subtraction Display */
+    .subtraction-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      margin: var(--space-4) auto;
+      padding: var(--space-4);
+      max-width: 500px;
+    }
+
+    .operand-section {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-3);
+      background: var(--color-neutral-100);
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--color-neutral-300);
+      width: 100%;
+    }
+
+    .minuend-section {
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border-color: #86efac;
+    }
+
+    .subtrahend-section {
+      background: linear-gradient(135deg, #fef2f2, #fee2e2);
+      border-color: #fca5a5;
+    }
+
+    .operand-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      min-width: 60px;
+      text-align: center;
+      padding: var(--space-2) var(--space-3);
+      background: white;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--color-neutral-300);
+    }
+
+    .blocks-row {
+      display: flex;
+      gap: var(--space-3);
+      flex: 1;
+    }
+
+    .block-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 60px;
+    }
+
+    .blocks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      justify-content: flex-start;
+      align-items: flex-end;
+      min-height: 40px;
+    }
+
+    .tens-group .blocks {
+      flex-direction: row;
+    }
+
+    .ones-group .blocks {
+      flex-direction: row;
+      max-width: 100px;
+    }
+
+    /* Block styles */
+    .block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-weight: var(--weight-bold);
+      border-radius: var(--radius-sm);
+      transition: transform 0.2s ease;
+    }
+
+    .ten-block {
+      width: 44px;
+      height: 18px;
+      background: linear-gradient(135deg, #93c5fd, #60a5fa);
+      border: 2px solid #2563eb;
+      color: #1e40af;
+      font-size: 10px;
+    }
+
+    .one-block {
+      width: 18px;
+      height: 18px;
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border: 2px solid #16a34a;
+    }
+
+    /* Subtract blocks - visual indicator that these are being taken away */
+    .subtract-block {
+      opacity: 0.7;
+      position: relative;
+    }
+
+    .subtract-block.ten-block {
+      background: linear-gradient(135deg, #fca5a5, #f87171);
+      border-color: #dc2626;
+      color: #991b1b;
+    }
+
+    .subtract-block.one-block {
+      background: linear-gradient(135deg, #fca5a5, #f87171);
+      border-color: #dc2626;
+    }
+
+    /* Operator row */
+    .operator-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .operator-symbol {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      padding: 0 var(--space-2);
+    }
+
+    .result-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-2);
+    }
+
+    .result-placeholder {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-500);
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px dashed #fbbf24;
+      border-radius: var(--radius-lg);
+    }
+
+    /* Choice Container */
+    .choice-container {
+      display: grid;
+      grid-template-columns: repeat(2, 80px);
+      justify-content: center;
+      gap: var(--space-4);
+      margin: var(--space-4) auto;
+    }
+
+    .choice-btn {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 3px solid var(--color-primary-light);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 var(--color-primary-light);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--color-primary-light);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 var(--color-primary-light);
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      color: #166534;
+      animation: pop 0.4s ease;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .subtraction-display {
+        padding: var(--space-2);
+      }
+
+      .operand-section {
+        flex-direction: column;
+        gap: var(--space-2);
+        padding: var(--space-2);
+      }
+
+      .operand-label {
+        font-size: var(--text-2xl);
+        min-width: 50px;
+      }
+
+      .blocks-row {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .ten-block {
+        width: 36px;
+        height: 14px;
+        font-size: 8px;
+      }
+
+      .one-block {
+        width: 14px;
+        height: 14px;
+      }
+
+      .operator-symbol {
+        font-size: var(--text-2xl);
+      }
+
+      .result-placeholder {
+        font-size: var(--text-2xl);
+        padding: var(--space-1) var(--space-3);
+      }
+
+      .choice-container {
+        grid-template-columns: repeat(2, 70px);
+        gap: var(--space-3);
+      }
+
+      .choice-btn {
+        width: 70px;
+        height: 70px;
+        font-size: var(--text-xl);
+      }
+    }
+
+    @media (max-width: 400px) {
+      .choice-container {
+        grid-template-columns: repeat(2, 60px);
+      }
+
+      .choice-btn {
+        width: 60px;
+        height: 60px;
+        font-size: var(--text-lg);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

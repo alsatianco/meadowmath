@@ -268,7 +268,7 @@
         {
           "id": "odd-even-number-line",
           "title": "Odd/Even on Number Line",
-          "description": "Find even numbers on the number line.",
+          "description": "Find even or odd numbers on the number line.",
           "icon": "📍",
           "path": "activities/odd-even-number-line.html",
           "type": "interactive"

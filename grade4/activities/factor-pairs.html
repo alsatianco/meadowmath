@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Factor Pairs Garden - Grade 4 Math Activity - Meadow Math">
+  <title>Factor Pairs Garden - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade4">Grade 4</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🌿</span>
+            <span data-i18n="section.activities.factor-pairs.title">Factor Pairs Garden</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.factor-pairs.description">Grow rectangles to find factor pairs.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Target Number -->
+          <div class="target-display">
+            <div class="target-label" data-i18n="section.activities.factor-pairs.targetNumber">Target number</div>
+            <div class="target-number" id="target-number">24</div>
+          </div>
+
+          <div class="builder-layout">
+            <!-- Builder Panel -->
+            <div class="builder-panel">
+              <div class="panel-title" data-i18n="section.activities.factor-pairs.buildRectangle">Build a rectangle</div>
+
+              <div class="dimension-control">
+                <span class="dimension-label" data-i18n="section.activities.factor-pairs.rows">Rows</span>
+                <div class="stepper">
+                  <button class="control-btn minus" data-dimension="rows" data-action="minus" aria-label="Decrease rows">−</button>
+                  <div class="dimension-value" id="rows-value">1</div>
+                  <button class="control-btn plus" data-dimension="rows" data-action="plus" aria-label="Increase rows">+</button>
+                </div>
+              </div>
+
+              <div class="dimension-control">
+                <span class="dimension-label" data-i18n="section.activities.factor-pairs.columns">Columns</span>
+                <div class="stepper">
+                  <button class="control-btn minus" data-dimension="cols" data-action="minus" aria-label="Decrease columns">−</button>
+                  <div class="dimension-value" id="cols-value">1</div>
+                  <button class="control-btn plus" data-dimension="cols" data-action="plus" aria-label="Increase columns">+</button>
+                </div>
+              </div>
+
+              <div class="equation-hint" data-i18n="section.activities.factor-pairs.hint">Rows × Columns = Total</div>
+              <div class="equation-preview" id="equation-preview">1 × 24 = 24</div>
+
+              <button class="btn-activity btn-primary" id="btn-check-pair" data-i18n="section.activities.factor-pairs.checkPair">Check Pair</button>
+            </div>
+
+            <!-- Garden Grid -->
+            <div class="grid-panel">
+              <div class="panel-title" data-i18n="section.activities.factor-pairs.gardenPlot">Garden plot</div>
+              <div class="grid-wrapper">
+                <div class="array-grid" id="array-grid" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pairs Found -->
+          <div class="pairs-section">
+            <div class="pairs-header">
+              <span data-i18n="section.activities.factor-pairs.pairsFound">Pairs found</span>
+              <span class="pairs-count"><span id="pairs-count">0</span> / <span id="pairs-total">0</span></span>
+            </div>
+            <div class="pairs-list" id="pairs-list"></div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" aria-live="assertive" aria-atomic="true"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.factor-pairs.great">Great factor hunting!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Factor Pairs Garden Activity - Grade 4 Level 2
+    const FactorPairsGarden = {
+      currentRound: 0,
+      totalRounds: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+
+      baseTargets: [12, 18, 20, 24, 30, 36, 42, 48],
+      targetNumbers: [],
+      targetNumber: 0,
+      factorPairs: [],
+      foundPairs: [],
+      foundPairKeys: new Set(),
+      rows: 1,
+      cols: 1,
+      isRoundComplete: false,
+      holdTimeout: null,
+      holdInterval: null,
+
+      // DOM elements
+      progress: null,
+      targetDisplay: null,
+      rowsValue: null,
+      colsValue: null,
+      equationPreview: null,
+      gridWrapper: null,
+      grid: null,
+      pairsCount: null,
+      pairsTotal: null,
+      pairsList: null,
+      feedback: null,
+      btnCheckPair: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.progress = document.getElementById('progress');
+        this.targetDisplay = document.getElementById('target-number');
+        this.rowsValue = document.getElementById('rows-value');
+        this.colsValue = document.getElementById('cols-value');
+        this.equationPreview = document.getElementById('equation-preview');
+        this.gridWrapper = document.querySelector('.grid-wrapper');
+        this.grid = document.getElementById('array-grid');
+        this.pairsCount = document.getElementById('pairs-count');
+        this.pairsTotal = document.getElementById('pairs-total');
+        this.pairsList = document.getElementById('pairs-list');
+        this.feedback = document.getElementById('feedback');
+        this.btnCheckPair = document.getElementById('btn-check-pair');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        document.querySelectorAll('.control-btn').forEach(btn => {
+          btn.addEventListener('click', () => this.handleAdjust(btn));
+          btn.addEventListener('pointerdown', (event) => this.startHold(btn, event));
+          btn.addEventListener('pointerup', () => this.stopHold());
+          btn.addEventListener('pointerleave', () => this.stopHold());
+          btn.addEventListener('pointercancel', () => this.stopHold());
+        });
+
+        this.btnCheckPair.addEventListener('click', () => this.checkPair());
+        this.btnReset.addEventListener('click', () => this.resetCurrentRound());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        window.addEventListener('resize', () => this.renderGrid());
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.targetNumbers = this.shuffleArray([...this.baseTargets]);
+        this.startRound();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        this.updateEquationPreview();
+      },
+
+      shuffleArray(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      },
+
+      generatePairs(target) {
+        const pairs = [];
+        for (let i = 1; i <= Math.sqrt(target); i++) {
+          if (target % i === 0) {
+            pairs.push([i, target / i]);
+          }
+        }
+        return pairs;
+      },
+
+      startRound() {
+        this.targetNumber = this.targetNumbers[this.currentRound];
+        this.factorPairs = this.generatePairs(this.targetNumber);
+        this.foundPairs = [];
+        this.foundPairKeys = new Set();
+        this.rows = 1;
+        this.cols = this.targetNumber;
+        this.isRoundComplete = false;
+
+        this.targetDisplay.textContent = this.targetNumber.toLocaleString();
+        this.pairsCount.textContent = '0';
+        this.pairsTotal.textContent = this.factorPairs.length;
+
+        this.updateDimensionDisplays();
+        this.updateEquationPreview();
+        this.renderPairsList();
+        this.renderGrid();
+
+        this.feedback.classList.remove('show', 'error');
+        this.setControlsEnabled(true);
+        this.renderProgress();
+      },
+
+      setControlsEnabled(enabled) {
+        document.querySelectorAll('.control-btn, #btn-check-pair').forEach(btn => {
+          btn.disabled = !enabled;
+        });
+      },
+
+      handleAdjust(btn) {
+        if (this.isRoundComplete) return;
+        const dimension = btn.dataset.dimension;
+        const action = btn.dataset.action;
+        this.adjustDimension(dimension, action);
+      },
+
+      startHold(btn, event) {
+        if (this.isRoundComplete || event.pointerType === 'mouse' && event.button !== 0) return;
+        this.stopHold();
+
+        this.holdTimeout = setTimeout(() => {
+          this.holdInterval = setInterval(() => this.handleAdjust(btn), 120);
+        }, 300);
+      },
+
+      stopHold() {
+        if (this.holdTimeout) {
+          clearTimeout(this.holdTimeout);
+          this.holdTimeout = null;
+        }
+        if (this.holdInterval) {
+          clearInterval(this.holdInterval);
+          this.holdInterval = null;
+        }
+      },
+
+      adjustDimension(dimension, action) {
+        const min = 1;
+        const max = this.targetNumber;
+        const delta = action === 'plus' ? 1 : -1;
+        const nextValue = Math.min(max, Math.max(min, this[dimension] + delta));
+        if (nextValue === this[dimension]) return;
+
+        this[dimension] = nextValue;
+        this.updateDimensionDisplays();
+        this.updateEquationPreview();
+        this.renderGrid();
+      },
+
+      updateDimensionDisplays() {
+        this.rowsValue.textContent = this.rows;
+        this.colsValue.textContent = this.cols;
+      },
+
+      updateEquationPreview() {
+        const product = this.rows * this.cols;
+        this.equationPreview.textContent = `${this.rows} × ${this.cols} = ${product}`;
+      },
+
+      renderGrid() {
+        if (!this.gridWrapper) return;
+        const containerWidth = Math.max(200, this.gridWrapper.clientWidth - 24);
+        const maxDimension = Math.max(this.rows, this.cols);
+        const gap = maxDimension > 32 ? 1 : maxDimension > 20 ? 2 : 4;
+        const minCellSize = maxDimension > 32 ? 2 : 4;
+        const availableWidth = containerWidth - gap * (maxDimension - 1);
+        const cellSize = Math.max(minCellSize, Math.min(32, Math.floor(availableWidth / maxDimension)));
+
+        this.grid.style.setProperty('--cell-size', `${cellSize}px`);
+        this.grid.style.setProperty('--cell-gap', `${gap}px`);
+        this.grid.style.gridTemplateColumns = `repeat(${this.cols}, var(--cell-size))`;
+        this.grid.style.gridTemplateRows = `repeat(${this.rows}, var(--cell-size))`;
+        this.grid.innerHTML = '';
+
+        const cellCount = this.rows * this.cols;
+        for (let i = 0; i < cellCount; i++) {
+          const cell = document.createElement('div');
+          cell.className = 'grid-cell';
+          this.grid.appendChild(cell);
+        }
+      },
+
+      renderPairsList() {
+        this.pairsList.innerHTML = '';
+        this.foundPairs.forEach(pair => {
+          const chip = document.createElement('div');
+          chip.className = 'pair-chip';
+          chip.textContent = `${pair[0]} × ${pair[1]}`;
+          this.pairsList.appendChild(chip);
+        });
+      },
+
+      checkPair() {
+        if (this.isRoundComplete) return;
+
+        const product = this.rows * this.cols;
+        const min = Math.min(this.rows, this.cols);
+        const max = Math.max(this.rows, this.cols);
+        const pairKey = `${min}x${max}`;
+
+        if (product !== this.targetNumber) {
+          this.incorrectCount++;
+          const tryAgainMsg = window.i18n ? i18n.t('feedback.tryAgain') : 'Try again!';
+          const detail = window.i18n
+            ? i18n.t('section.activities.factor-pairs.notMatch')
+                .replace('{product}', product)
+                .replace('{target}', this.targetNumber)
+            : `That makes ${product}, not ${this.targetNumber}.`;
+          this.showFeedback(`${tryAgainMsg} ${detail}`, true);
+          this.animateGrid(false);
+          return;
+        }
+
+        if (this.foundPairKeys.has(pairKey)) {
+          this.incorrectCount++;
+          const tryAgainMsg = window.i18n ? i18n.t('feedback.tryAgain') : 'Try again!';
+          const detail = window.i18n
+            ? i18n.t('section.activities.factor-pairs.alreadyFound')
+                .replace('{rows}', min)
+                .replace('{cols}', max)
+            : `You already found ${min} × ${max}.`;
+          this.showFeedback(`${tryAgainMsg} ${detail}`, true);
+          this.animateGrid(false);
+          return;
+        }
+
+        this.correctCount++;
+        this.foundPairs.push([min, max]);
+        this.foundPairKeys.add(pairKey);
+        this.pairsCount.textContent = this.foundPairs.length;
+        this.renderPairsList();
+
+        const correctMsg = window.i18n ? i18n.t('feedback.correct') : 'Correct!';
+        const detail = window.i18n
+          ? i18n.t('section.activities.factor-pairs.foundPair')
+              .replace('{rows}', min)
+              .replace('{cols}', max)
+          : `${min} × ${max} is a factor pair.`;
+
+        const isComplete = this.foundPairs.length === this.factorPairs.length;
+        if (isComplete) {
+          const allFoundMsg = window.i18n
+            ? i18n.t('section.activities.factor-pairs.allFound')
+                .replace('{target}', this.targetNumber)
+            : `All pairs found for ${this.targetNumber}!`;
+          this.showFeedback(`${correctMsg} ${allFoundMsg}`, false);
+          this.completeRound();
+        } else {
+          this.showFeedback(`${correctMsg} ${detail}`, false);
+        }
+
+        this.animateGrid(true);
+      },
+
+      completeRound() {
+        this.isRoundComplete = true;
+        this.setControlsEnabled(false);
+
+        setTimeout(() => {
+          if (this.currentRound < this.totalRounds - 1) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      animateGrid(isCorrect) {
+        this.grid.classList.remove('grid-correct', 'grid-wiggle');
+        void this.grid.offsetWidth;
+        if (isCorrect) {
+          this.grid.classList.add('grid-correct');
+        } else {
+          this.grid.classList.add('grid-wiggle');
+        }
+      },
+
+      showFeedback(message, isError) {
+        this.feedback.textContent = message;
+        this.feedback.classList.toggle('error', isError);
+        this.feedback.classList.add('show');
+      },
+
+      nextRound() {
+        this.currentRound++;
+        this.startRound();
+      },
+
+      resetCurrentRound() {
+        this.rows = 1;
+        this.cols = this.targetNumber;
+        this.isRoundComplete = false;
+
+        this.updateDimensionDisplays();
+        this.updateEquationPreview();
+        this.feedback.classList.remove('show', 'error');
+        this.setControlsEnabled(true);
+        this.renderGrid();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const totalAttempts = this.correctCount + this.incorrectCount;
+        const percentage = totalAttempts > 0 ? (this.correctCount / totalAttempts) * 100 : 0;
+
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.factor-pairs.perfect') : 'Perfect factor work!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🌿';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.factor-pairs.great') : 'Great factor hunting!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.factor-pairs.keepPracticing') : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentRound = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.targetNumbers = this.shuffleArray([...this.baseTargets]);
+        this.startRound();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => FactorPairsGarden.init());
+      } else {
+        FactorPairsGarden.init();
+      }
+    });
+  </script>
+  <style>
+    /* Factor Pairs Garden specific styles */
+
+    .target-display {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .target-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      margin-bottom: var(--space-2);
+    }
+
+    .target-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #166534;
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border: 3px solid #22c55e;
+      border-radius: var(--radius-xl);
+      padding: var(--space-2) var(--space-6);
+      display: inline-block;
+      box-shadow: 0 4px 0 #16a34a;
+    }
+
+    .builder-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-4);
+      width: 100%;
+      margin-bottom: var(--space-4);
+    }
+
+    .builder-panel,
+    .grid-panel {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      border: 2px solid rgba(134, 239, 172, 0.5);
+      box-shadow: 0 4px 16px rgba(34, 197, 94, 0.12);
+    }
+
+    .panel-title {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-3);
+    }
+
+    .dimension-control {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      margin-bottom: var(--space-3);
+    }
+
+    .dimension-label {
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+    }
+
+    .stepper {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .dimension-value {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-800);
+      background: white;
+      border: 2px solid var(--color-neutral-200);
+      border-radius: var(--radius-lg);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    .control-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      border: 2px solid transparent;
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    .control-btn.plus {
+      background: linear-gradient(135deg, #fef9c3, #fde047);
+      color: #a16207;
+      border-color: #facc15;
+    }
+
+    .control-btn.minus {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      color: #b91c1c;
+      border-color: #fca5a5;
+    }
+
+    .control-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+    }
+
+    .control-btn:active:not(:disabled) {
+      transform: translateY(1px);
+    }
+
+    .control-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .control-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.4);
+    }
+
+    .equation-hint {
+      font-size: var(--text-sm);
+      color: var(--color-neutral-500);
+      margin-bottom: var(--space-2);
+    }
+
+    .equation-preview {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #166534;
+      background: linear-gradient(135deg, #ecfccb, #bbf7d0);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 2px solid #22c55e;
+      text-align: center;
+      margin-bottom: var(--space-3);
+    }
+
+    #btn-check-pair {
+      width: 100%;
+    }
+
+    .grid-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #ecfccb, #fef9c3);
+      border-radius: var(--radius-lg);
+      border: 2px solid rgba(34, 197, 94, 0.4);
+      min-height: 160px;
+    }
+
+    .array-grid {
+      display: grid;
+      gap: var(--cell-gap, 4px);
+      justify-content: center;
+      --cell-size: 22px;
+    }
+
+    .grid-cell {
+      width: var(--cell-size);
+      height: var(--cell-size);
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, #d9f99d, #86efac);
+      border: 1px solid #4ade80;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+
+    .grid-correct {
+      animation: gardenPop 0.4s ease;
+    }
+
+    .grid-wiggle {
+      animation: wiggle 0.4s ease;
+    }
+
+    @keyframes gardenPop {
+      0% { transform: scale(0.97); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      50% { transform: translateX(4px); }
+      75% { transform: translateX(-3px); }
+    }
+
+    .pairs-section {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: var(--radius-xl);
+      padding: var(--space-3) var(--space-4);
+      border: 2px dashed rgba(34, 197, 94, 0.4);
+      margin-bottom: var(--space-3);
+    }
+
+    .pairs-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-secondary);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+    }
+
+    .pairs-count {
+      font-size: var(--text-base);
+      color: #166534;
+    }
+
+    .pairs-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-2);
+      min-height: 40px;
+    }
+
+    .pair-chip {
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, #fef9c3, #fde68a);
+      border: 2px solid #facc15;
+      font-weight: var(--weight-semibold);
+      color: #92400e;
+      box-shadow: 0 2px 0 rgba(217, 119, 6, 0.4);
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 900px) {
+      .builder-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .target-number {
+        font-size: var(--text-3xl);
+      }
+
+      .dimension-value {
+        width: 52px;
+        height: 52px;
+      }
+
+      .control-btn {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid-wrapper {
+        padding: var(--space-2);
+      }
+
+      .equation-preview {
+        font-size: var(--text-lg);
+      }
+
+      .dimension-value {
+        width: 48px;
+        height: 48px;
+        font-size: var(--text-xl);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

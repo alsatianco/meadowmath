@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Clean-Up Math - Pre-K Math Activity - Meadow Math">
   <title>Clean-Up Math - Meadow Math</title>
-  
+
   <!-- CSS Files -->
   <link rel="stylesheet" href="../../css/reset.css">
   <link rel="stylesheet" href="../../css/variables.css">
@@ -45,7 +45,7 @@
           <span class="nav-item-icon">🪺</span>
           <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
         </a>
-        <a href="../../kindergarten/index.html" class="nav-item">
+        <a href="../../kinder/index.html" class="nav-item">
           <span class="nav-item-icon">🌱</span>
           <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
         </a>
@@ -68,6 +68,17 @@
         <a href="../../grade5/index.html" class="nav-item">
           <span class="nav-item-icon">➗</span>
           <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
         </a>
       </nav>
 
@@ -494,7 +505,7 @@
       renderBox(box, count) {
         box.innerHTML = '';
         const shuffled = [...this.toys].sort(() => Math.random() - 0.5);
-        
+
         for (let i = 0; i < count; i++) {
           const item = document.createElement('span');
           item.className = 'cleanup-item';
@@ -525,7 +536,7 @@
         if (choice === this.correctAnswer) {
           // Correct!
           selectedBtn.classList.add('correct');
-          
+
           if (this.correctAnswer === 'fewer') {
             this.feedback.textContent = `🎉 Right! We have FEWER toys now. ${this.beforeCount} → ${this.afterCount}!`;
           } else if (this.correctAnswer === 'more') {
@@ -533,7 +544,7 @@
           } else {
             this.feedback.textContent = `🎉 Right! We have the SAME number: ${this.beforeCount}!`;
           }
-          
+
           this.feedback.classList.remove('error');
           this.feedback.classList.add('show');
           this.isComplete = true;
@@ -547,7 +558,7 @@
           // Incorrect
           selectedBtn.classList.add('incorrect');
           correctBtn.classList.add('correct');
-          
+
           if (this.correctAnswer === 'fewer') {
             this.feedback.textContent = `Look again! ${this.beforeCount} → ${this.afterCount}. We have FEWER toys now!`;
           } else if (this.correctAnswer === 'more') {
@@ -555,7 +566,7 @@
           } else {
             this.feedback.textContent = `Look again! Both have ${this.beforeCount}. They're the SAME!`;
           }
-          
+
           this.feedback.classList.add('show', 'error');
           this.wrongCount++;
         }
@@ -578,7 +589,7 @@
       showStats() {
         this.statsCorrect.textContent = this.correctCount;
         this.statsWrong.textContent = this.wrongCount;
-        
+
         const percent = this.correctCount / this.maxRounds;
         if (percent >= 0.8) {
           this.statsIcon.textContent = '🌟';
@@ -590,7 +601,7 @@
           this.statsIcon.textContent = '👍';
           this.statsMessage.textContent = 'Good effort! Try again!';
         }
-        
+
         this.statsOverlay.classList.add('show');
       },
 

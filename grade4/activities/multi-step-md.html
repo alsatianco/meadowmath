@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Multi-Step Multiply/Divide Problems - Grade 4 Math Activity - Meadow Math">
+  <title>Multi-Step Multiply/Divide Problems - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade4">Grade 4</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧭</span>
+            <span data-i18n="section.activities.multi-step-md.title">Multi-Step Multiply/Divide Problems</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.multi-step-md.description">Solve 1-2 step word problems with multiply and divide.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Story Display -->
+          <div class="story-section">
+            <div class="story-card" id="story-card">
+              <div class="story-icon" id="story-icon" aria-hidden="true">📖</div>
+              <div class="story-text" id="story-text" data-i18n="section.activities.multi-step-md.loadingStory">Loading story...</div>
+            </div>
+          </div>
+
+          <!-- Bar Model -->
+          <div class="model-section">
+            <div class="model-card">
+              <div class="model-title" data-i18n="section.activities.multi-step-md.barModelTitle">Bar model</div>
+              <div class="model-rows">
+                <div class="model-row" id="model-row-1">
+                  <div class="model-step-label" data-i18n="section.activities.multi-step-md.stepLabel1">Step 1:</div>
+                  <div class="model-bar" id="model-bar-1">
+                    <div class="bar-total" id="bar-total-1">Total ?</div>
+                    <div class="bar-track" id="bar-track-1"></div>
+                    <div class="bar-caption" id="bar-caption-1"></div>
+                  </div>
+                </div>
+                <div class="model-row" id="model-row-2">
+                  <div class="model-step-label" data-i18n="section.activities.multi-step-md.stepLabel2">Step 2:</div>
+                  <div class="model-bar" id="model-bar-2">
+                    <div class="bar-total" id="bar-total-2">Total ?</div>
+                    <div class="bar-track" id="bar-track-2"></div>
+                    <div class="bar-caption" id="bar-caption-2"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step Indicator -->
+          <div class="step-indicator" id="step-indicator">
+            <span class="step-icon" aria-hidden="true">1️⃣</span>
+            <span class="step-text" id="step-text" data-i18n="section.activities.multi-step-md.step1">Step 1: Choose the first operation</span>
+          </div>
+
+          <!-- Step 1: First Operation Choice -->
+          <div class="operation-section" id="operation-section-1">
+            <div class="operation-prompt" id="operation-prompt-1">
+              <span class="prompt-icon" aria-hidden="true">🤔</span>
+              <span class="prompt-text" id="prompt-text-1" data-i18n="section.activities.multi-step-md.whatOperation1">What operation do we use first?</span>
+            </div>
+            <div class="equation-preview" id="equation-preview-1">
+              <span class="eq-num" id="eq1-num1">?</span>
+              <span class="eq-op" id="eq1-op">?</span>
+              <span class="eq-num" id="eq1-num2">?</span>
+              <span class="eq-equals">=</span>
+              <span class="eq-result" id="eq1-result">?</span>
+            </div>
+            <div class="operation-choices" id="operation-choices-1" role="group" aria-label="Operation choices">
+              <button class="op-btn" data-op="*" aria-label="Multiplication" data-i18n-title="section.activities.multi-step-md.multiplication">×</button>
+              <button class="op-btn" data-op="/" aria-label="Division" data-i18n-title="section.activities.multi-step-md.division">÷</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Second Operation Choice -->
+          <div class="operation-section hidden" id="operation-section-2">
+            <div class="operation-prompt" id="operation-prompt-2">
+              <span class="prompt-icon" aria-hidden="true">🤔</span>
+              <span class="prompt-text" id="prompt-text-2" data-i18n="section.activities.multi-step-md.whatOperation2">What operation do we use next?</span>
+            </div>
+            <div class="equation-preview" id="equation-preview-2">
+              <span class="eq-num" id="eq2-num1">?</span>
+              <span class="eq-op" id="eq2-op">?</span>
+              <span class="eq-num" id="eq2-num2">?</span>
+              <span class="eq-equals">=</span>
+              <span class="eq-result" id="eq2-result">?</span>
+            </div>
+            <div class="operation-choices" id="operation-choices-2" role="group" aria-label="Operation choices">
+              <button class="op-btn" data-op="*" aria-label="Multiplication" data-i18n-title="section.activities.multi-step-md.multiplication">×</button>
+              <button class="op-btn" data-op="/" aria-label="Division" data-i18n-title="section.activities.multi-step-md.division">÷</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Final Answer -->
+          <div class="answer-section hidden" id="answer-section">
+            <div class="answer-prompt" id="answer-prompt">
+              <span class="prompt-icon" aria-hidden="true">✏️</span>
+              <span class="prompt-text" id="prompt-text-3" data-i18n="section.activities.multi-step-md.whatAnswer">What is the final answer?</span>
+            </div>
+            <div class="solution-summary" id="solution-summary">
+              <div class="solution-step" id="solution-step-1">
+                <span class="step-label" data-i18n="section.activities.multi-step-md.stepLabel1">Step 1:</span>
+                <span class="step-equation" id="summary-eq1">? × ? = ?</span>
+              </div>
+              <div class="solution-step" id="solution-step-2">
+                <span class="step-label" data-i18n="section.activities.multi-step-md.stepLabel2">Step 2:</span>
+                <span class="step-equation" id="summary-eq2">? ÷ ? = ?</span>
+              </div>
+            </div>
+            <div class="choice-container" id="choice-container" role="group" aria-label="Answer choices"></div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.multi-step-md.great">Great thinking!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Multi-Step Multiply/Divide Problems Activity - Grade 4 Level 2
+    const MultiStepMultiplyDivide = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      currentStep: 1,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+      step1Revealed: false,
+      step2Revealed: false,
+      advanceTimeout: null,
+      lastFeedback: null,
+
+      // Current problem data
+      problemData: null,
+      step1Result: 0,
+      step2Result: 0,
+      userOp1: null,
+      userOp2: null,
+
+      // DOM elements
+      storyCard: null,
+      storyIcon: null,
+      storyText: null,
+      stepIndicator: null,
+      stepText: null,
+      operationSection1: null,
+      operationSection2: null,
+      answerSection: null,
+      operationChoices1: null,
+      operationChoices2: null,
+      choiceContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+      modelRow1: null,
+      modelRow2: null,
+      barTotal1: null,
+      barTotal2: null,
+      barTrack1: null,
+      barTrack2: null,
+      barCaption1: null,
+      barCaption2: null,
+
+      // Word problem templates
+      problems: [
+        {
+          storyKey: 'gardenPots',
+          icon: '🌷',
+          type: 'mulDiv',
+          names: ['Ava', 'Leo', 'Mia', 'Noah'],
+          ranges: { groups: [3, 6], each: [6, 14], divisor: [2, 6] }
+        },
+        {
+          storyKey: 'classArtwork',
+          icon: '🖼️',
+          type: 'divMul',
+          names: null,
+          ranges: { total: [60, 180], group: [4, 6], multiplier: [2, 5] }
+        },
+        {
+          storyKey: 'sportsBottles',
+          icon: '🏀',
+          type: 'mulMul',
+          names: ['Riley', 'Jordan', 'Sofia', 'Evan'],
+          ranges: { groups: [3, 6], each: [6, 12], multiplier: [2, 4] }
+        },
+        {
+          storyKey: 'pizzaSlices',
+          icon: '🍕',
+          type: 'mulDiv',
+          names: null,
+          ranges: { groups: [3, 6], each: [8, 16], divisor: [2, 6] }
+        },
+        {
+          storyKey: 'museumTickets',
+          icon: '🎟️',
+          type: 'divMul',
+          names: null,
+          ranges: { total: [72, 168], group: [3, 6], multiplier: [2, 5] }
+        },
+        {
+          storyKey: 'bookFair',
+          icon: '📚',
+          type: 'mulDiv',
+          names: null,
+          ranges: { groups: [3, 6], each: [9, 15], divisor: [2, 6] }
+        },
+        {
+          storyKey: 'gardenFences',
+          icon: '🧑‍🌾',
+          type: 'mulMul',
+          names: null,
+          ranges: { groups: [3, 6], each: [5, 10], multiplier: [2, 4] }
+        },
+        {
+          storyKey: 'marathonMedals',
+          icon: '🏅',
+          type: 'divMul',
+          names: null,
+          ranges: { total: [80, 200], group: [4, 6], multiplier: [2, 4] }
+        }
+      ],
+
+      init() {
+        // Get DOM elements
+        this.storyCard = document.getElementById('story-card');
+        this.storyIcon = document.getElementById('story-icon');
+        this.storyText = document.getElementById('story-text');
+        this.stepIndicator = document.getElementById('step-indicator');
+        this.stepText = document.getElementById('step-text');
+        this.operationSection1 = document.getElementById('operation-section-1');
+        this.operationSection2 = document.getElementById('operation-section-2');
+        this.answerSection = document.getElementById('answer-section');
+        this.operationChoices1 = document.getElementById('operation-choices-1');
+        this.operationChoices2 = document.getElementById('operation-choices-2');
+        this.choiceContainer = document.getElementById('choice-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+        this.modelRow1 = document.getElementById('model-row-1');
+        this.modelRow2 = document.getElementById('model-row-2');
+        this.barTotal1 = document.getElementById('bar-total-1');
+        this.barTotal2 = document.getElementById('bar-total-2');
+        this.barTrack1 = document.getElementById('bar-track-1');
+        this.barTrack2 = document.getElementById('bar-track-2');
+        this.barCaption1 = document.getElementById('bar-caption-1');
+        this.barCaption2 = document.getElementById('bar-caption-2');
+
+        // Equation elements
+        this.eq1Num1 = document.getElementById('eq1-num1');
+        this.eq1Op = document.getElementById('eq1-op');
+        this.eq1Num2 = document.getElementById('eq1-num2');
+        this.eq1Result = document.getElementById('eq1-result');
+        this.eq2Num1 = document.getElementById('eq2-num1');
+        this.eq2Op = document.getElementById('eq2-op');
+        this.eq2Num2 = document.getElementById('eq2-num2');
+        this.eq2Result = document.getElementById('eq2-result');
+        this.summaryEq1 = document.getElementById('summary-eq1');
+        this.summaryEq2 = document.getElementById('summary-eq2');
+
+        // Event listeners
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Operation choice listeners
+        this.operationChoices1.querySelectorAll('.op-btn').forEach(btn => {
+          btn.addEventListener('click', () => this.selectOperation(1, btn.dataset.op));
+        });
+        this.operationChoices2.querySelectorAll('.op-btn').forEach(btn => {
+          btn.addEventListener('click', () => this.selectOperation(2, btn.dataset.op));
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+        this.updateAriaLabels();
+      },
+
+      updateTranslations() {
+        this.updateStepText();
+        this.renderStory();
+        this.renderModel();
+        this.updateAriaLabels();
+        this.updateFeedbackMessage();
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+      },
+
+      updateAriaLabels() {
+        const opLabel = this.getTranslation('operationChoicesLabel', 'Operation choices');
+        const answerLabel = this.getTranslation('answerChoicesLabel', 'Answer choices');
+
+        this.operationChoices1.setAttribute('aria-label', opLabel);
+        this.operationChoices2.setAttribute('aria-label', opLabel);
+        this.choiceContainer.setAttribute('aria-label', answerLabel);
+
+        this.updateChoiceAriaLabels();
+      },
+
+      updateChoiceAriaLabels() {
+        const answerTemplate = this.getTranslation('answerChoiceLabel', 'Select {value}');
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          const value = btn.textContent.trim();
+          btn.setAttribute('aria-label', answerTemplate.replace('{value}', value));
+        });
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      shuffle(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      },
+
+      formatOp(op) {
+        return op === '*' ? '×' : '÷';
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.multi-step-md.${key}`);
+          return translated !== `section.activities.multi-step-md.${key}` ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      getFeedbackMessage() {
+        if (!this.lastFeedback) return '';
+        if (this.lastFeedback.type === 'correct') {
+          return window.i18n ? i18n.t('feedback.correct') || 'Correct!' : 'Correct!';
+        }
+        if (this.lastFeedback.type === 'incorrectOp1' || this.lastFeedback.type === 'incorrectOp2') {
+          const opName = this.lastFeedback.op === '*'
+            ? this.getTranslation('multiplication', 'multiplication (×)')
+            : this.getTranslation('division', 'division (÷)');
+          const key = this.lastFeedback.type === 'incorrectOp1' ? 'incorrectOp1' : 'incorrectOp2';
+          return this.getTranslation(key, 'The operation is {op}').replace('{op}', opName);
+        }
+        if (this.lastFeedback.type === 'incorrectAnswer') {
+          return this.getTranslation('incorrectAnswer', 'The answer is {answer}')
+            .replace('{answer}', this.lastFeedback.answer.toLocaleString());
+        }
+        return '';
+      },
+
+      updateFeedbackMessage() {
+        if (this.feedback.classList.contains('show') && this.lastFeedback) {
+          this.feedback.textContent = this.getFeedbackMessage();
+        }
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      setAdvanceTimeout(callback) {
+        this.clearAdvanceTimeout();
+        this.advanceTimeout = setTimeout(callback, this.autoAdvanceDelay);
+      },
+
+      pickFromRange(range) {
+        return this.randomInt(range[0], range[1]);
+      },
+
+      pickDivisor(total, minDiv, maxDiv) {
+        const options = [];
+        for (let d = minDiv; d <= maxDiv; d++) {
+          if (total % d === 0) options.push(d);
+        }
+        if (options.length === 0) return null;
+        return options[this.randomInt(0, options.length - 1)];
+      },
+
+      generateNumbers(problem) {
+        let attempts = 0;
+        if (problem.type === 'mulDiv') {
+          while (attempts < 40) {
+            const groups = this.pickFromRange(problem.ranges.groups);
+            const each = this.pickFromRange(problem.ranges.each);
+            const total = groups * each;
+            const divisor = this.pickDivisor(total, problem.ranges.divisor[0], problem.ranges.divisor[1]);
+            if (divisor) {
+              return { a: groups, b: each, c: divisor };
+            }
+            attempts++;
+          }
+        }
+
+        if (problem.type === 'divMul') {
+          while (attempts < 40) {
+            const group = this.pickFromRange(problem.ranges.group);
+            const total = this.pickFromRange(problem.ranges.total);
+            if (total % group === 0) {
+              const multiplier = this.pickFromRange(problem.ranges.multiplier);
+              return { a: total, b: group, c: multiplier };
+            }
+            attempts++;
+          }
+        }
+
+        if (problem.type === 'mulMul') {
+          const groups = this.pickFromRange(problem.ranges.groups);
+          const each = this.pickFromRange(problem.ranges.each);
+          const multiplier = this.pickFromRange(problem.ranges.multiplier);
+          return { a: groups, b: each, c: multiplier };
+        }
+
+        return { a: 4, b: 6, c: 3 };
+      },
+
+      generateProblem() {
+        const problemIndex = this.currentQuestion % this.problems.length;
+        const problem = this.problems[problemIndex];
+        const { a, b, c } = this.generateNumbers(problem);
+
+        const name = problem.names ? problem.names[this.randomInt(0, problem.names.length - 1)] : null;
+        const template = this.getTranslation(`stories.${problem.storyKey}.template`, '');
+        const question = this.getTranslation(`stories.${problem.storyKey}.question`, '');
+
+        const storyText = template
+          .replace(/{a}/g, a.toLocaleString())
+          .replace(/{b}/g, b.toLocaleString())
+          .replace(/{c}/g, c.toLocaleString())
+          .replace(/{name}/g, name || '');
+
+        const questionText = question
+          .replace(/{name}/g, name || '');
+
+        const op1 = problem.type === 'divMul' ? '/' : '*';
+        const op2 = problem.type === 'mulDiv' ? '/' : '*';
+
+        const step1Result = op1 === '*' ? a * b : Math.round(a / b);
+        const finalResult = op2 === '*' ? step1Result * c : Math.round(step1Result / c);
+
+        this.problemData = {
+          icon: problem.icon,
+          storyKey: problem.storyKey,
+          storyText: storyText,
+          questionText: questionText,
+          name,
+          a,
+          b,
+          c,
+          op1,
+          op2,
+          step1Result,
+          finalResult
+        };
+
+        this.currentStep = 1;
+        this.isAnswered = false;
+        this.step1Revealed = false;
+        this.step2Revealed = false;
+        this.userOp1 = null;
+        this.userOp2 = null;
+      },
+
+      renderStory() {
+        const problem = this.problemData;
+        const fallbackTemplate = this.getTranslation(`stories.${problem.storyKey}.template`, '');
+        const fallbackQuestion = this.getTranslation(`stories.${problem.storyKey}.question`, '');
+        const template = fallbackTemplate || problem.storyText;
+        const question = fallbackQuestion || problem.questionText;
+
+        const storyText = template
+          .replace(/{a}/g, problem.a.toLocaleString())
+          .replace(/{b}/g, problem.b.toLocaleString())
+          .replace(/{c}/g, problem.c.toLocaleString())
+          .replace(/{name}/g, problem.name || '');
+
+        const questionText = question
+          .replace(/{name}/g, problem.name || '');
+
+        this.storyIcon.textContent = problem.icon;
+        this.storyText.innerHTML = `<p class="story-narrative">${storyText}</p><p class="story-question"><strong>${questionText}</strong></p>`;
+      },
+
+      renderBar(trackEl, totalEl, captionEl, config) {
+        const maxSegments = 6;
+        trackEl.innerHTML = '';
+
+        const groupCount = Math.min(config.groups, maxSegments);
+        for (let i = 0; i < groupCount; i++) {
+          const segment = document.createElement('div');
+          segment.className = 'bar-segment';
+          segment.textContent = config.segmentLabel;
+          trackEl.appendChild(segment);
+        }
+
+        if (config.groups > maxSegments) {
+          const overflow = document.createElement('div');
+          overflow.className = 'bar-overflow';
+          overflow.textContent = `×${config.groups}`;
+          trackEl.appendChild(overflow);
+        }
+
+        totalEl.textContent = config.totalLabel;
+        captionEl.textContent = config.caption;
+      },
+
+      renderModel() {
+        const problem = this.problemData;
+
+        const step1Config = this.buildModelConfig(problem.op1, problem.a, problem.b, problem.step1Result, this.step1Revealed);
+        const step2Base = this.step1Revealed ? problem.step1Result : null;
+        const step2Config = this.buildModelConfig(problem.op2, step2Base, problem.c, problem.finalResult, this.step2Revealed);
+
+        this.renderBar(this.barTrack1, this.barTotal1, this.barCaption1, step1Config);
+        this.renderBar(this.barTrack2, this.barTotal2, this.barCaption2, step2Config);
+
+        this.updateModelHighlight();
+      },
+
+      buildModelConfig(op, a, b, result, revealResult) {
+        if (op === '*') {
+          const hasBase = a !== null && a !== undefined;
+          let groups = hasBase ? a : b;
+          let each = hasBase ? b : '?';
+          if (hasBase && groups > 6 && b <= 6) {
+            groups = b;
+            each = a;
+          }
+          const captionTemplate = this.getTranslation('barGroupsOf', '{groups} groups of {each}');
+          return {
+            groups,
+            segmentLabel: each === '?' ? '?' : each.toLocaleString(),
+            totalLabel: this.getTotalLabel(revealResult ? result : null),
+            caption: captionTemplate
+              .replace('{groups}', groups.toLocaleString())
+              .replace('{each}', each === '?' ? '?' : each.toLocaleString())
+          };
+        }
+
+        const captionTemplate = this.getTranslation('barDivideLabel', 'Split into {groups} groups');
+        return {
+          groups: b,
+          segmentLabel: revealResult ? result.toLocaleString() : '?',
+          totalLabel: this.getTotalLabel(a === null ? null : a),
+          caption: captionTemplate.replace('{groups}', b.toLocaleString())
+        };
+      },
+
+      getTotalLabel(value) {
+        const template = this.getTranslation('barTotalLabel', 'Total {total}');
+        const display = value === null ? '?' : value.toLocaleString();
+        return template.replace('{total}', display);
+      },
+
+      updateModelHighlight() {
+        this.modelRow1.classList.remove('active', 'completed');
+        this.modelRow2.classList.remove('active', 'completed');
+
+        if (this.currentStep === 1) {
+          this.modelRow1.classList.add('active');
+        } else if (this.currentStep === 2) {
+          this.modelRow1.classList.add('completed');
+          this.modelRow2.classList.add('active');
+        } else {
+          this.modelRow1.classList.add('completed');
+          this.modelRow2.classList.add('completed');
+        }
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.generateProblem();
+        this.displayProblem();
+        this.updateStepText();
+        this.updateStepVisibility();
+        this.feedback.classList.remove('show', 'error');
+        this.lastFeedback = null;
+        this.renderProgress();
+      },
+
+      displayProblem() {
+        this.renderStory();
+
+        this.eq1Num1.textContent = this.problemData.a.toLocaleString();
+        this.eq1Op.textContent = '?';
+        this.eq1Num2.textContent = this.problemData.b.toLocaleString();
+        this.eq1Result.textContent = '?';
+
+        this.eq2Num1.textContent = '?';
+        this.eq2Op.textContent = '?';
+        this.eq2Num2.textContent = this.problemData.c.toLocaleString();
+        this.eq2Result.textContent = '?';
+
+        this.operationChoices1.querySelectorAll('.op-btn').forEach(btn => {
+          btn.classList.remove('selected', 'correct', 'incorrect');
+          btn.disabled = false;
+        });
+        this.operationChoices2.querySelectorAll('.op-btn').forEach(btn => {
+          btn.classList.remove('selected', 'correct', 'incorrect');
+          btn.disabled = false;
+        });
+
+        this.operationSection1.classList.remove('completed');
+        this.operationSection2.classList.remove('completed');
+
+        this.renderModel();
+      },
+
+      updateStepVisibility() {
+        this.operationSection1.classList.remove('hidden');
+        this.operationSection2.classList.add('hidden');
+        this.answerSection.classList.add('hidden');
+
+        if (this.currentStep === 2) {
+          this.operationSection1.classList.add('completed');
+          this.operationSection2.classList.remove('hidden');
+        } else if (this.currentStep === 3) {
+          this.operationSection1.classList.add('completed');
+          this.operationSection2.classList.add('completed');
+          this.operationSection2.classList.remove('hidden');
+          this.answerSection.classList.remove('hidden');
+        }
+      },
+
+      updateStepText() {
+        const stepIcon = this.stepIndicator.querySelector('.step-icon');
+        let text = '';
+        let icon = '';
+
+        if (this.currentStep === 1) {
+          icon = '1️⃣';
+          text = this.getTranslation('step1', 'Step 1: Choose the first operation');
+        } else if (this.currentStep === 2) {
+          icon = '2️⃣';
+          text = this.getTranslation('step2', 'Step 2: Choose the second operation');
+        } else {
+          icon = '3️⃣';
+          text = this.getTranslation('step3', 'Step 3: What is the final answer?');
+        }
+
+        stepIcon.textContent = icon;
+        this.stepText.textContent = text;
+        this.updateModelHighlight();
+      },
+
+      selectOperation(step, op) {
+        if (this.isAnswered) return;
+
+        if (step === 1) {
+          this.userOp1 = op;
+          const correctOp = this.problemData.op1;
+          const isCorrect = op === correctOp;
+
+          this.operationChoices1.querySelectorAll('.op-btn').forEach(btn => {
+            btn.disabled = true;
+            if (btn.dataset.op === op) {
+              btn.classList.add('selected');
+              btn.classList.add(isCorrect ? 'correct' : 'incorrect');
+            }
+            if (!isCorrect && btn.dataset.op === correctOp) {
+              btn.classList.add('correct');
+            }
+          });
+
+          this.eq1Op.textContent = this.formatOp(op);
+          const userResult = op === '*' ? this.problemData.a * this.problemData.b : Math.round(this.problemData.a / this.problemData.b);
+          this.eq1Result.textContent = userResult.toLocaleString();
+
+          if (isCorrect) {
+            this.correctCount++;
+            this.step1Result = userResult;
+            const msg = window.i18n ? i18n.t('feedback.correct') || 'Correct!' : 'Correct!';
+            this.feedback.textContent = msg;
+            this.feedback.classList.remove('error');
+            this.lastFeedback = { type: 'correct' };
+          } else {
+            this.incorrectCount++;
+            this.step1Result = this.problemData.step1Result;
+            const opName = correctOp === '*' ? this.getTranslation('multiplication', 'multiplication (×)') : this.getTranslation('division', 'division (÷)');
+            const msg = this.getTranslation('incorrectOp1', 'The first operation is {op}').replace('{op}', opName);
+            this.feedback.textContent = msg;
+            this.feedback.classList.add('error');
+            this.eq1Op.textContent = this.formatOp(correctOp);
+            this.eq1Result.textContent = this.problemData.step1Result.toLocaleString();
+            this.lastFeedback = { type: 'incorrectOp1', op: correctOp };
+          }
+
+          this.feedback.classList.add('show');
+          this.step1Revealed = true;
+          this.renderModel();
+
+          this.setAdvanceTimeout(() => {
+            this.eq2Num1.textContent = this.problemData.step1Result.toLocaleString();
+            this.advanceToStep2();
+          });
+
+        } else if (step === 2) {
+          this.userOp2 = op;
+          const correctOp = this.problemData.op2;
+          const isCorrect = op === correctOp;
+
+          this.operationChoices2.querySelectorAll('.op-btn').forEach(btn => {
+            btn.disabled = true;
+            if (btn.dataset.op === op) {
+              btn.classList.add('selected');
+              btn.classList.add(isCorrect ? 'correct' : 'incorrect');
+            }
+            if (!isCorrect && btn.dataset.op === correctOp) {
+              btn.classList.add('correct');
+            }
+          });
+
+          this.eq2Op.textContent = this.formatOp(op);
+          const userResult = op === '*' ? this.problemData.step1Result * this.problemData.c : Math.round(this.problemData.step1Result / this.problemData.c);
+          this.eq2Result.textContent = userResult.toLocaleString();
+
+          if (isCorrect) {
+            this.correctCount++;
+            this.step2Result = userResult;
+            const msg = window.i18n ? i18n.t('feedback.correct') || 'Correct!' : 'Correct!';
+            this.feedback.textContent = msg;
+            this.feedback.classList.remove('error');
+            this.lastFeedback = { type: 'correct' };
+          } else {
+            this.incorrectCount++;
+            this.step2Result = this.problemData.finalResult;
+            const opName = correctOp === '*' ? this.getTranslation('multiplication', 'multiplication (×)') : this.getTranslation('division', 'division (÷)');
+            const msg = this.getTranslation('incorrectOp2', 'The second operation is {op}').replace('{op}', opName);
+            this.feedback.textContent = msg;
+            this.feedback.classList.add('error');
+            this.eq2Op.textContent = this.formatOp(correctOp);
+            this.eq2Result.textContent = this.problemData.finalResult.toLocaleString();
+            this.lastFeedback = { type: 'incorrectOp2', op: correctOp };
+          }
+
+          this.feedback.classList.add('show');
+          this.step2Revealed = true;
+          this.renderModel();
+
+          this.setAdvanceTimeout(() => {
+            this.advanceToStep3();
+          });
+        }
+      },
+
+      advanceToStep2() {
+        this.currentStep = 2;
+        this.feedback.classList.remove('show', 'error');
+        this.updateStepText();
+        this.updateStepVisibility();
+      },
+
+      advanceToStep3() {
+        this.currentStep = 3;
+        this.feedback.classList.remove('show', 'error');
+        this.updateStepText();
+        this.updateStepVisibility();
+
+        this.summaryEq1.textContent = `${this.problemData.a.toLocaleString()} ${this.formatOp(this.problemData.op1)} ${this.problemData.b.toLocaleString()} = ${this.problemData.step1Result.toLocaleString()}`;
+        this.summaryEq2.textContent = `${this.problemData.step1Result.toLocaleString()} ${this.formatOp(this.problemData.op2)} ${this.problemData.c.toLocaleString()} = ${this.problemData.finalResult.toLocaleString()}`;
+
+        this.generateAnswerChoices();
+      },
+
+      generateAnswerChoices() {
+        const correctAnswer = this.problemData.finalResult;
+        const choices = [correctAnswer];
+
+        const step1Only = this.problemData.step1Result;
+        if (step1Only > 0 && !choices.includes(step1Only)) choices.push(step1Only);
+
+        const wrongOp2 = this.problemData.op2 === '*' ?
+          Math.round(this.problemData.step1Result / this.problemData.c) :
+          this.problemData.step1Result * this.problemData.c;
+        if (wrongOp2 > 0 && Number.isInteger(wrongOp2) && !choices.includes(wrongOp2)) {
+          choices.push(wrongOp2);
+        }
+
+        const offBy = correctAnswer + (this.randomInt(2, 9) * (Math.random() > 0.5 ? 1 : -1));
+        if (offBy > 0 && !choices.includes(offBy)) choices.push(offBy);
+
+        while (choices.length < 4) {
+          const offset = this.randomInt(-20, 20);
+          const distractor = correctAnswer + offset;
+          if (distractor > 0 && !choices.includes(distractor)) {
+            choices.push(distractor);
+          }
+        }
+
+        this.shuffle(choices);
+        const finalChoices = choices.slice(0, 4);
+
+        let html = '';
+        finalChoices.forEach(choice => {
+          const displayValue = choice.toLocaleString();
+          html += `<button class="choice-btn" data-value="${choice}" aria-label="Select ${displayValue}">${displayValue}</button>`;
+        });
+        this.choiceContainer.innerHTML = html;
+
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.addEventListener('click', () => this.selectAnswer(parseInt(btn.dataset.value.replace(/,/g, ''))));
+        });
+
+        this.updateChoiceAriaLabels();
+      },
+
+      selectAnswer(value) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const correctValue = this.problemData.finalResult;
+        const isCorrect = value === correctValue;
+
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.disabled = true;
+          const btnValue = parseInt(btn.dataset.value.replace(/,/g, ''));
+          if (btnValue === correctValue) {
+            btn.classList.add('correct');
+          } else if (btnValue === value && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = window.i18n ? i18n.t('feedback.correct') || 'Correct!' : 'Correct!';
+          this.feedback.textContent = msg;
+          this.feedback.classList.remove('error');
+          this.lastFeedback = { type: 'correct' };
+        } else {
+          this.incorrectCount++;
+          const msg = this.getTranslation('incorrectAnswer', 'The answer is {answer}')
+            .replace('{answer}', correctValue.toLocaleString());
+          this.feedback.textContent = msg;
+          this.feedback.classList.add('error');
+          this.lastFeedback = { type: 'incorrectAnswer', answer: correctValue };
+        }
+        this.feedback.classList.add('show');
+
+        this.setAdvanceTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        });
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      updateStatsMessage() {
+        const totalOpportunities = this.totalQuestions * 3;
+        const percentage = (this.correctCount / totalOpportunities) * 100;
+
+        if (percentage >= 70) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation('perfect', 'Amazing problem-solving!');
+        } else if (percentage >= 40) {
+          this.statsIcon.textContent = '🧠';
+          this.statsMessage.textContent = this.getTranslation('great', 'Great thinking!');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation('keepPracticing', 'Keep practicing!');
+        }
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => MultiStepMultiplyDivide.init());
+      } else {
+        MultiStepMultiplyDivide.init();
+      }
+    });
+  </script>
+  <style>
+    /* Multi-Step Multiply/Divide specific styles */
+
+    .story-section {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .story-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-4) var(--space-5);
+      background: linear-gradient(135deg, #fef9c3, #fde047);
+      border: 3px solid #f59e0b;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #d97706;
+      max-width: 640px;
+      width: 100%;
+    }
+
+    .story-icon {
+      font-size: var(--text-4xl);
+    }
+
+    .story-text {
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .story-narrative {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-2);
+    }
+
+    .story-question {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      color: #92400e;
+    }
+
+    .model-section {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .model-card {
+      width: 100%;
+      max-width: 760px;
+      background: linear-gradient(135deg, #ecfeff, #dbeafe);
+      border: 3px solid #38bdf8;
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      box-shadow: 0 6px 18px rgba(14, 116, 144, 0.18);
+    }
+
+    .model-title {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #0c4a6e;
+      text-align: center;
+      margin-bottom: var(--space-3);
+    }
+
+    .model-rows {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .model-row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--space-3);
+      align-items: center;
+      padding: var(--space-3);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.65);
+      border: 2px dashed rgba(56, 189, 248, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .model-row.active {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+      border-color: rgba(56, 189, 248, 0.7);
+    }
+
+    .model-row.completed {
+      opacity: 0.8;
+    }
+
+    .model-step-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #0f172a;
+      min-width: 70px;
+    }
+
+    .model-bar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .bar-total {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: #0369a1;
+    }
+
+    .bar-track {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+
+    .bar-segment {
+      min-width: 64px;
+      min-height: 44px;
+      padding: var(--space-1) var(--space-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #0f172a;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border-radius: var(--radius-md);
+      border: 2px solid #38bdf8;
+      box-shadow: 0 2px 0 rgba(56, 189, 248, 0.4);
+    }
+
+    .bar-overflow {
+      min-width: 64px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #0f172a;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: var(--radius-md);
+      border: 2px dashed #38bdf8;
+    }
+
+    .bar-caption {
+      font-size: var(--text-sm);
+      color: var(--color-neutral-600);
+    }
+
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+      border: 2px solid #6366f1;
+      border-radius: var(--radius-lg);
+    }
+
+    .step-icon {
+      font-size: var(--text-xl);
+    }
+
+    .step-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #4338ca;
+    }
+
+    .operation-section {
+      margin-bottom: var(--space-4);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border: 2px solid var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      transition: opacity 0.3s ease;
+    }
+
+    .operation-section.hidden {
+      display: none;
+    }
+
+    .operation-section.completed {
+      opacity: 0.7;
+    }
+
+    .operation-prompt {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-2);
+    }
+
+    .prompt-icon {
+      font-size: var(--text-lg);
+    }
+
+    .prompt-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-medium);
+      color: var(--color-neutral-700);
+    }
+
+    .equation-preview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+      padding: var(--space-2) var(--space-4);
+      background: white;
+      border: 2px dashed var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      flex-wrap: wrap;
+    }
+
+    .eq-num,
+    .eq-result {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-800);
+      min-width: 60px;
+      text-align: center;
+    }
+
+    .eq-op {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      min-width: 32px;
+      text-align: center;
+    }
+
+    .eq-equals {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      color: var(--color-neutral-500);
+    }
+
+    .operation-choices {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .op-btn {
+      width: 86px;
+      height: 86px;
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      background: white;
+      border: 3px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 rgba(99, 102, 241, 0.3);
+    }
+
+    .op-btn:hover:not(:disabled) {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 6px 0 rgba(99, 102, 241, 0.35);
+    }
+
+    .op-btn:active:not(:disabled) {
+      transform: translateY(1px) scale(0.97);
+      box-shadow: 0 2px 0 rgba(99, 102, 241, 0.3);
+    }
+
+    .op-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.3), 0 4px 0 rgba(99, 102, 241, 0.3);
+    }
+
+    .op-btn.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #15803d;
+      box-shadow: 0 4px 0 #16a34a;
+    }
+
+    .op-btn.incorrect {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      border-color: #ef4444;
+      color: #b91c1c;
+      animation: shake 0.3s ease;
+    }
+
+    .op-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.75;
+    }
+
+    .answer-section {
+      margin-bottom: var(--space-4);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid #f59e0b;
+      border-radius: var(--radius-lg);
+    }
+
+    .answer-section.hidden {
+      display: none;
+    }
+
+    .answer-prompt {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+    }
+
+    .solution-summary {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+      background: rgba(255, 255, 255, 0.7);
+      padding: var(--space-2);
+      border-radius: var(--radius-lg);
+    }
+
+    .solution-step {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-base);
+      color: var(--color-neutral-700);
+    }
+
+    .step-label {
+      font-weight: var(--weight-semibold);
+      color: #92400e;
+    }
+
+    .step-equation {
+      font-family: var(--font-secondary);
+      font-weight: var(--weight-bold);
+      color: #0f172a;
+    }
+
+    .choice-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: var(--space-3);
+    }
+
+    .choice-btn {
+      min-height: 80px;
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      border: 3px solid var(--color-neutral-300);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 var(--color-neutral-400);
+      text-align: center;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 6px 0 var(--color-neutral-400);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 2px 0 var(--color-neutral-400);
+    }
+
+    .choice-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.4), 0 4px 0 var(--color-neutral-400);
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.75;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #16a34a;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      border-color: #ef4444;
+      color: #991b1b;
+      animation: shake 0.3s ease;
+    }
+
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 240px;
+      max-width: 90%;
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-lg);
+      font-weight: var(--weight-semibold);
+      text-align: center;
+      opacity: 0;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border: 2px solid #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+    }
+
+    .feedback-message.error {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      color: #92400e;
+    }
+
+    .feedback-message.show {
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .model-row {
+        grid-template-columns: 1fr;
+      }
+
+      .model-step-label {
+        text-align: center;
+      }
+
+      .bar-track {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .story-card {
+        padding: var(--space-3);
+      }
+
+      .operation-choices {
+        gap: var(--space-3);
+      }
+
+      .op-btn {
+        width: 72px;
+        height: 72px;
+      }
+
+      .choice-btn {
+        min-height: 72px;
+        font-size: var(--text-base);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

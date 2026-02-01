@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Expression Builder - Grade 5 Math Activity - Meadow Math">
+  <title>Expression Builder - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧠</span>
+            <span data-i18n="section.activities.expression-builder.title">Expression Builder</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.expression-builder.instruction">Build the expression from the words!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Word Problem Display -->
+          <div class="word-problem" id="word-problem">
+            <span class="problem-label" data-i18n="section.activities.expression-builder.buildExpression">Build this expression:</span>
+            <p class="problem-text" id="problem-text">"Add 8 and 7, then multiply by 2."</p>
+          </div>
+
+          <!-- Expression Build Area -->
+          <div class="expression-area">
+            <div class="expression-label" data-i18n="section.activities.expression-builder.yourExpression">Your expression:</div>
+            <div class="expression-slots" id="expression-slots" role="group" aria-label="Expression building area">
+              <!-- Slots will be generated here -->
+            </div>
+            <button class="clear-btn" id="btn-clear" data-i18n="section.activities.expression-builder.clear">Clear</button>
+          </div>
+
+          <!-- Token Bank -->
+          <div class="token-bank" id="token-bank">
+            <div class="token-label" data-i18n="section.activities.expression-builder.tokens">Tokens:</div>
+            <div class="tokens-container" id="tokens-container">
+              <!-- Tokens will be generated here -->
+            </div>
+          </div>
+
+          <!-- Evaluate Section (shows after building) -->
+          <div class="evaluate-section" id="evaluate-section">
+            <div class="evaluate-label" data-i18n="section.activities.expression-builder.evaluate">What does this equal?</div>
+            <div class="evaluate-choices" id="evaluate-choices">
+              <!-- Choices will be generated here -->
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.expression-builder.great">Great expression building!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Expression Builder Activity - Grade 5 Level 2
+    const ExpressionBuilder = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+      currentPhase: 'build', // 'build' or 'evaluate'
+      placedTokens: [],
+      availableTokens: [],
+
+      // DOM elements
+      problemText: null,
+      expressionSlots: null,
+      tokensContainer: null,
+      evaluateSection: null,
+      evaluateChoices: null,
+      feedback: null,
+      progress: null,
+      btnClear: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.problemText = document.getElementById('problem-text');
+        this.expressionSlots = document.getElementById('expression-slots');
+        this.tokensContainer = document.getElementById('tokens-container');
+        this.evaluateSection = document.getElementById('evaluate-section');
+        this.evaluateChoices = document.getElementById('evaluate-choices');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnClear = document.getElementById('btn-clear');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnClear.addEventListener('click', () => this.clearExpression());
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      generateQuestions() {
+        // Word problems that translate to expressions with parentheses
+        const problemTemplates = [
+          // Pattern: (a + b) × c
+          {
+            textKey: 'addThenMultiply',
+            textFallback: 'Add {a} and {b}, then multiply by {c}.',
+            getNumbers: () => {
+              const a = randomInt(2, 9);
+              const b = randomInt(2, 9);
+              const c = randomInt(2, 5);
+              return { a, b, c };
+            },
+            getExpression: (n) => `(${n.a} + ${n.b}) × ${n.c}`,
+            getTokens: (n) => [String(n.a), '+', String(n.b), '(', ')', '×', String(n.c)],
+            evaluate: (n) => (n.a + n.b) * n.c
+          },
+          // Pattern: c × (a + b)
+          {
+            textKey: 'multiplySum',
+            textFallback: 'Multiply {c} by the sum of {a} and {b}.',
+            getNumbers: () => {
+              const a = randomInt(3, 9);
+              const b = randomInt(2, 8);
+              const c = randomInt(2, 5);
+              return { a, b, c };
+            },
+            getExpression: (n) => `${n.c} × (${n.a} + ${n.b})`,
+            getTokens: (n) => [String(n.c), '×', String(n.a), '+', String(n.b), '(', ')'],
+            evaluate: (n) => n.c * (n.a + n.b)
+          },
+          // Pattern: (a - b) × c
+          {
+            textKey: 'subtractThenMultiply',
+            textFallback: 'Subtract {b} from {a}, then multiply by {c}.',
+            getNumbers: () => {
+              const a = randomInt(6, 15);
+              const b = randomInt(2, 5);
+              const c = randomInt(2, 4);
+              return { a, b, c };
+            },
+            getExpression: (n) => `(${n.a} - ${n.b}) × ${n.c}`,
+            getTokens: (n) => [String(n.a), '-', String(n.b), '(', ')', '×', String(n.c)],
+            evaluate: (n) => (n.a - n.b) * n.c
+          },
+          // Pattern: c × (a - b)
+          {
+            textKey: 'multiplyDifference',
+            textFallback: 'Multiply {c} by the difference of {a} and {b}.',
+            getNumbers: () => {
+              const a = randomInt(7, 12);
+              const b = randomInt(2, 5);
+              const c = randomInt(2, 5);
+              return { a, b, c };
+            },
+            getExpression: (n) => `${n.c} × (${n.a} - ${n.b})`,
+            getTokens: (n) => [String(n.c), '×', String(n.a), '-', String(n.b), '(', ')'],
+            evaluate: (n) => n.c * (n.a - n.b)
+          },
+          // Pattern: (a + b) + c
+          {
+            textKey: 'addThenAdd',
+            textFallback: 'Add {a} and {b}, then add {c}.',
+            getNumbers: () => {
+              const a = randomInt(5, 15);
+              const b = randomInt(3, 10);
+              const c = randomInt(2, 8);
+              return { a, b, c };
+            },
+            getExpression: (n) => `(${n.a} + ${n.b}) + ${n.c}`,
+            getTokens: (n) => [String(n.a), '+', String(n.b), '(', ')', '+', String(n.c)],
+            evaluate: (n) => (n.a + n.b) + n.c
+          },
+          // Pattern: a × (b + c)
+          {
+            textKey: 'timesGroupAdd',
+            textFallback: '{a} times the quantity {b} plus {c}.',
+            getNumbers: () => {
+              const a = randomInt(2, 6);
+              const b = randomInt(3, 8);
+              const c = randomInt(2, 6);
+              return { a, b, c };
+            },
+            getExpression: (n) => `${n.a} × (${n.b} + ${n.c})`,
+            getTokens: (n) => [String(n.a), '×', String(n.b), '+', String(n.c), '(', ')'],
+            evaluate: (n) => n.a * (n.b + n.c)
+          },
+          // Pattern: (a × b) + c
+          {
+            textKey: 'multiplyThenAdd',
+            textFallback: 'Multiply {a} by {b}, then add {c}.',
+            getNumbers: () => {
+              const a = randomInt(2, 6);
+              const b = randomInt(2, 6);
+              const c = randomInt(3, 10);
+              return { a, b, c };
+            },
+            getExpression: (n) => `(${n.a} × ${n.b}) + ${n.c}`,
+            getTokens: (n) => [String(n.a), '×', String(n.b), '(', ')', '+', String(n.c)],
+            evaluate: (n) => (n.a * n.b) + n.c
+          },
+          // Pattern: (a + b) ÷ c
+          {
+            textKey: 'addThenDivide',
+            textFallback: 'Add {a} and {b}, then divide by {c}.',
+            getNumbers: () => {
+              const c = randomInt(2, 5);
+              const sum = c * randomInt(3, 8);
+              const a = randomInt(Math.ceil(sum/2), sum - 1);
+              const b = sum - a;
+              return { a, b, c };
+            },
+            getExpression: (n) => `(${n.a} + ${n.b}) ÷ ${n.c}`,
+            getTokens: (n) => [String(n.a), '+', String(n.b), '(', ')', '÷', String(n.c)],
+            evaluate: (n) => (n.a + n.b) / n.c
+          },
+          // Pattern: a × b + c (no parentheses needed but test understanding)
+          {
+            textKey: 'multiplyAndAdd',
+            textFallback: '{a} times {b}, plus {c}.',
+            getNumbers: () => {
+              const a = randomInt(2, 5);
+              const b = randomInt(2, 6);
+              const c = randomInt(3, 10);
+              return { a, b, c };
+            },
+            getExpression: (n) => `${n.a} × ${n.b} + ${n.c}`,
+            getTokens: (n) => [String(n.a), '×', String(n.b), '+', String(n.c)],
+            evaluate: (n) => n.a * n.b + n.c
+          },
+          // Pattern: a + b × c (order of operations)
+          {
+            textKey: 'addAndMultiply',
+            textFallback: '{a} plus {b} times {c}.',
+            getNumbers: () => {
+              const a = randomInt(5, 15);
+              const b = randomInt(2, 5);
+              const c = randomInt(2, 5);
+              return { a, b, c };
+            },
+            getExpression: (n) => `${n.a} + ${n.b} × ${n.c}`,
+            getTokens: (n) => [String(n.a), '+', String(n.b), '×', String(n.c)],
+            evaluate: (n) => n.a + n.b * n.c
+          }
+        ];
+
+        // Shuffle templates and select 10
+        const shuffled = shuffle([...problemTemplates, ...problemTemplates]).slice(0, this.totalQuestions);
+
+        this.questions = shuffled.map(template => {
+          const numbers = template.getNumbers();
+          const text = template.textFallback
+            .replace('{a}', numbers.a)
+            .replace('{b}', numbers.b)
+            .replace('{c}', numbers.c);
+
+          return {
+            textKey: template.textKey,
+            text: text,
+            numbers: numbers,
+            expression: template.getExpression(numbers),
+            tokens: shuffle(template.getTokens(numbers)),
+            answer: template.evaluate(numbers)
+          };
+        });
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.currentPhase = 'build';
+        this.placedTokens = [];
+        this.feedback.classList.remove('show', 'error');
+        this.evaluateSection.classList.remove('show');
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        // Update problem text
+        this.problemText.textContent = `"${question.text}"`;
+
+        // Generate slots for the expression
+        this.renderExpressionSlots(question.expression);
+
+        // Generate token bank
+        this.availableTokens = [...question.tokens];
+        this.renderTokenBank();
+
+        this.renderProgress();
+      },
+
+      renderExpressionSlots(expression) {
+        this.expressionSlots.innerHTML = '';
+
+        // Parse the expression to create slots
+        // We need to create a slot for each token position
+        const tokens = this.parseExpression(expression);
+
+        tokens.forEach((token, index) => {
+          const slot = document.createElement('div');
+          slot.className = 'expression-slot';
+          slot.dataset.index = index;
+          slot.dataset.expected = token;
+          slot.setAttribute('role', 'button');
+          slot.setAttribute('tabindex', '0');
+          slot.setAttribute('aria-label', `Slot ${index + 1}`);
+
+          slot.addEventListener('click', () => this.removeTokenFromSlot(index));
+          slot.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.removeTokenFromSlot(index);
+            }
+          });
+
+          this.expressionSlots.appendChild(slot);
+        });
+      },
+
+      parseExpression(expression) {
+        // Parse expression into tokens
+        const tokens = [];
+        let current = '';
+
+        for (let i = 0; i < expression.length; i++) {
+          const char = expression[i];
+
+          if (char === ' ') {
+            if (current) {
+              tokens.push(current);
+              current = '';
+            }
+            continue;
+          }
+
+          if ('()+-×÷'.includes(char)) {
+            if (current) {
+              tokens.push(current);
+              current = '';
+            }
+            tokens.push(char);
+          } else {
+            current += char;
+          }
+        }
+
+        if (current) {
+          tokens.push(current);
+        }
+
+        return tokens;
+      },
+
+      renderTokenBank() {
+        this.tokensContainer.innerHTML = '';
+
+        this.availableTokens.forEach((token, index) => {
+          // Skip null tokens (already placed)
+          if (token === null) return;
+
+          const tokenEl = document.createElement('button');
+          tokenEl.className = 'token';
+          tokenEl.textContent = token;
+          tokenEl.dataset.token = token;
+          tokenEl.dataset.index = index;
+          tokenEl.setAttribute('aria-label', `Token: ${token}`);
+
+          tokenEl.addEventListener('click', () => this.placeToken(index));
+
+          this.tokensContainer.appendChild(tokenEl);
+        });
+      },
+
+      placeToken(tokenIndex) {
+        if (this.isAnswered || this.currentPhase !== 'build') return;
+
+        const token = this.availableTokens[tokenIndex];
+        if (token === null) return;
+
+        // Find first empty slot
+        const slots = this.expressionSlots.querySelectorAll('.expression-slot');
+        let placed = false;
+
+        for (let i = 0; i < slots.length; i++) {
+          if (!this.placedTokens[i]) {
+            this.placedTokens[i] = token;
+            slots[i].textContent = token;
+            slots[i].classList.add('filled');
+            this.availableTokens[tokenIndex] = null;
+            placed = true;
+            break;
+          }
+        }
+
+        if (placed) {
+          this.renderTokenBank();
+          this.checkIfComplete();
+        }
+      },
+
+      removeTokenFromSlot(slotIndex) {
+        if (this.isAnswered || this.currentPhase !== 'build') return;
+
+        const token = this.placedTokens[slotIndex];
+        if (!token) return;
+
+        // Return token to bank
+        const emptyIndex = this.availableTokens.findIndex(t => t === null);
+        if (emptyIndex !== -1) {
+          this.availableTokens[emptyIndex] = token;
+        } else {
+          this.availableTokens.push(token);
+        }
+
+        // Clear slot
+        this.placedTokens[slotIndex] = null;
+        const slots = this.expressionSlots.querySelectorAll('.expression-slot');
+        slots[slotIndex].textContent = '';
+        slots[slotIndex].classList.remove('filled');
+
+        this.renderTokenBank();
+        this.evaluateSection.classList.remove('show');
+      },
+
+      clearExpression() {
+        if (this.isAnswered) return;
+
+        const question = this.questions[this.currentQuestion];
+        this.placedTokens = [];
+        this.availableTokens = [...question.tokens];
+
+        const slots = this.expressionSlots.querySelectorAll('.expression-slot');
+        slots.forEach(slot => {
+          slot.textContent = '';
+          slot.classList.remove('filled');
+        });
+
+        this.renderTokenBank();
+        this.evaluateSection.classList.remove('show');
+        this.currentPhase = 'build';
+      },
+
+      checkIfComplete() {
+        const question = this.questions[this.currentQuestion];
+        const slots = this.expressionSlots.querySelectorAll('.expression-slot');
+
+        // Check if all slots are filled
+        const allFilled = this.placedTokens.length === slots.length &&
+          this.placedTokens.every(t => t !== null && t !== undefined);
+
+        if (allFilled) {
+          // Check if expression is correct
+          const builtExpression = this.placedTokens.join(' ')
+            .replace(/\( /g, '(')
+            .replace(/ \)/g, ')');
+
+          const expectedExpression = question.expression
+            .replace(/\( /g, '(')
+            .replace(/ \)/g, ')');
+
+          // Normalize both for comparison
+          const normalizeExpr = (expr) => expr.replace(/\s+/g, '');
+
+          if (normalizeExpr(builtExpression) === normalizeExpr(expectedExpression)) {
+            // Expression is correct, move to evaluate phase
+            this.currentPhase = 'evaluate';
+            this.showEvaluateSection();
+          } else {
+            // Expression is wrong, show feedback
+            this.showBuildFeedback(false);
+          }
+        }
+      },
+
+      showBuildFeedback(isCorrect) {
+        if (isCorrect) {
+          const feedbackText = this.getTranslation(
+            'section.activities.expression-builder.expressionCorrect',
+            'Expression correct!'
+          );
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.remove('error');
+        } else {
+          const tryAgainText = this.getTranslation(
+            'section.activities.expression-builder.tryAgain',
+            'Not quite right. Try rearranging!'
+          );
+          this.feedback.textContent = tryAgainText;
+          this.feedback.classList.add('error');
+
+          // Hide feedback after a moment and let student continue
+          setTimeout(() => {
+            this.feedback.classList.remove('show', 'error');
+          }, 2000);
+        }
+        this.feedback.classList.add('show');
+      },
+
+      showEvaluateSection() {
+        const question = this.questions[this.currentQuestion];
+        this.evaluateSection.classList.add('show');
+
+        // Generate answer choices
+        this.evaluateChoices.innerHTML = '';
+        const distractors = this.generateEvaluateDistractors(question.answer);
+        const choices = shuffle([question.answer, ...distractors]);
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'evaluate-btn';
+          btn.textContent = choice;
+          btn.setAttribute('aria-label', `Answer: ${choice}`);
+          btn.addEventListener('click', () => this.checkEvaluateAnswer(choice, btn));
+          this.evaluateChoices.appendChild(btn);
+        });
+      },
+
+      generateEvaluateDistractors(correct) {
+        const distractors = new Set();
+
+        // Common errors
+        distractors.add(correct + 10);
+        distractors.add(correct - 10);
+        distractors.add(correct + 5);
+        distractors.add(correct - 5);
+        distractors.add(correct * 2);
+        if (correct > 2) distractors.add(Math.floor(correct / 2));
+        distractors.add(correct + 1);
+        distractors.add(correct - 1);
+        distractors.add(correct + randomInt(2, 8));
+        distractors.add(correct - randomInt(2, 8));
+
+        // Filter valid distractors
+        const valid = [...distractors].filter(d =>
+          d > 0 && d !== correct && Number.isInteger(d)
+        );
+
+        return shuffle(valid).slice(0, 3);
+      },
+
+      checkEvaluateAnswer(selected, btn) {
+        if (this.isAnswered) return;
+
+        const question = this.questions[this.currentQuestion];
+        const isCorrect = selected === question.answer;
+
+        this.isAnswered = true;
+
+        // Disable all buttons
+        const allBtns = this.evaluateChoices.querySelectorAll('.evaluate-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        if (isCorrect) {
+          this.correctCount++;
+          btn.classList.add('correct');
+
+          const feedbackText = this.getTranslation(
+            'section.activities.expression-builder.correct',
+            'Correct! {expression} = {answer}'
+          ).replace('{expression}', question.expression)
+           .replace('{answer}', question.answer);
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          btn.classList.add('incorrect');
+
+          // Highlight correct answer
+          allBtns.forEach(b => {
+            if (parseInt(b.textContent) === question.answer) {
+              b.classList.add('correct');
+            }
+          });
+
+          const feedbackText = this.getTranslation(
+            'section.activities.expression-builder.wrong',
+            '{expression} = {answer}'
+          ).replace('{expression}', question.expression)
+           .replace('{answer}', question.answer);
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+
+        this.renderProgress();
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.currentPhase = 'build';
+        this.feedback.classList.remove('show', 'error');
+        this.evaluateSection.classList.remove('show');
+
+        const question = this.questions[this.currentQuestion];
+        if (question) {
+          this.placedTokens = [];
+          this.availableTokens = [...question.tokens];
+          this.renderExpressionSlots(question.expression);
+          this.renderTokenBank();
+        }
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.expression-builder.perfect',
+            'Perfect expression building!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.expression-builder.great',
+            'Great expression building!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.expression-builder.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.expression-builder.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => ExpressionBuilder.init());
+      } else {
+        ExpressionBuilder.init();
+      }
+    });
+  </script>
+  <style>
+    /* Expression Builder specific styles */
+
+    .word-problem {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      text-align: center;
+    }
+
+    .problem-label {
+      display: block;
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-medium);
+      color: #92400e;
+      margin-bottom: var(--space-2);
+    }
+
+    .problem-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #78350f;
+      font-style: italic;
+      margin: 0;
+    }
+
+    /* Expression Build Area */
+    .expression-area {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 2px solid #e5e7eb;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      text-align: center;
+    }
+
+    .expression-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-medium);
+      color: #374151;
+      margin-bottom: var(--space-3);
+    }
+
+    .expression-slots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      justify-content: center;
+      align-items: center;
+      min-height: 60px;
+      padding: var(--space-3);
+      background: #f9fafb;
+      border-radius: var(--radius-lg);
+      border: 2px dashed #d1d5db;
+      margin-bottom: var(--space-3);
+    }
+
+    .expression-slot {
+      min-width: 50px;
+      min-height: 50px;
+      padding: var(--space-2) var(--space-3);
+      background: white;
+      border: 2px dashed #9ca3af;
+      border-radius: var(--radius-md);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #374151;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .expression-slot:hover {
+      border-color: #6b7280;
+      background: #f3f4f6;
+    }
+
+    .expression-slot.filled {
+      border-style: solid;
+      border-color: #3b82f6;
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      color: #1e40af;
+    }
+
+    .expression-slot.filled:hover {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      transform: scale(1.02);
+    }
+
+    .clear-btn {
+      padding: var(--space-2) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: #6b7280;
+      background: #f3f4f6;
+      border: 2px solid #d1d5db;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .clear-btn:hover {
+      background: #e5e7eb;
+      border-color: #9ca3af;
+    }
+
+    /* Token Bank */
+    .token-bank {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border-radius: var(--radius-xl);
+      border: 2px solid #10b981;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .token-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-medium);
+      color: #065f46;
+      margin-bottom: var(--space-3);
+      text-align: center;
+    }
+
+    .tokens-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      justify-content: center;
+    }
+
+    .token {
+      min-width: 50px;
+      min-height: 50px;
+      padding: var(--space-2) var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #047857;
+      background: white;
+      border: 3px solid #10b981;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+    }
+
+    .token:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+    }
+
+    .token:active {
+      transform: scale(0.98);
+    }
+
+    /* Evaluate Section */
+    .evaluate-section {
+      display: none;
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border-radius: var(--radius-xl);
+      border: 2px solid #0ea5e9;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      text-align: center;
+      animation: slideIn 0.3s ease;
+    }
+
+    .evaluate-section.show {
+      display: block;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .evaluate-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #0369a1;
+      margin-bottom: var(--space-3);
+    }
+
+    .evaluate-choices {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .evaluate-btn {
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #1e3a5f;
+      background: linear-gradient(135deg, #ffffff, #f0f9ff);
+      border: 3px solid #0ea5e9;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 60px;
+    }
+
+    .evaluate-btn:hover:not(:disabled) {
+      transform: scale(1.02);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border-color: #0284c7;
+    }
+
+    .evaluate-btn:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .evaluate-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .evaluate-btn.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .evaluate-btn.incorrect {
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border-color: #ef4444;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+      20%, 40%, 60%, 80% { transform: translateX(4px); }
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .word-problem {
+        padding: var(--space-3);
+      }
+
+      .problem-text {
+        font-size: var(--text-lg);
+      }
+
+      .expression-area,
+      .token-bank,
+      .evaluate-section {
+        padding: var(--space-3);
+      }
+
+      .expression-slots {
+        padding: var(--space-2);
+        gap: var(--space-1);
+      }
+
+      .expression-slot,
+      .token {
+        min-width: 44px;
+        min-height: 44px;
+        padding: var(--space-1) var(--space-2);
+        font-size: var(--text-lg);
+      }
+
+      .evaluate-choices {
+        gap: var(--space-2);
+        max-width: 280px;
+      }
+
+      .evaluate-btn {
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--text-lg);
+        min-height: 50px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .problem-text {
+        font-size: var(--text-base);
+      }
+
+      .expression-slot,
+      .token {
+        min-width: 40px;
+        min-height: 40px;
+        font-size: var(--text-base);
+      }
+
+      .tokens-container {
+        gap: var(--space-1);
+      }
+
+      .evaluate-choices {
+        max-width: 240px;
+      }
+
+      .evaluate-btn {
+        font-size: var(--text-base);
+        min-height: 44px;
+        padding: var(--space-2);
+      }
+    }
+
+    @media (max-width: 360px) {
+      .evaluate-choices {
+        grid-template-columns: 1fr;
+        max-width: 160px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

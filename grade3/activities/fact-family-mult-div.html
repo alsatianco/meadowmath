@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fact Family Match - Grade 3 Math Activity - Meadow Math">
+  <title>Fact Family Match - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🔗</span>
+            <span data-i18n="section.activities.fact-family-mult-div.title">Fact Family Match</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.fact-family-mult-div.description">Multiplication and division are a family.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Family Numbers Display -->
+          <div class="family-section">
+            <div class="family-label" data-i18n="section.activities.fact-family-mult-div.familyNumbers">Family Numbers:</div>
+            <div class="family-numbers" id="family-numbers">
+              <span class="family-number" id="num-a">6</span>
+              <span class="family-number" id="num-b">4</span>
+              <span class="family-number" id="num-c">24</span>
+            </div>
+          </div>
+
+          <!-- Question -->
+          <div class="question-section">
+            <p class="question-text" data-i18n="section.activities.fact-family-mult-div.pickCorrect">Pick the correct equation from this fact family:</p>
+          </div>
+
+          <!-- Answer Choices (Equations) -->
+          <div class="choices-section" id="choices"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.fact-family-mult-div.great">Great fact family work!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Fact Family Match Activity - Grade 3 Level 3
+    const FactFamilyMatch = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      factorA: 0,
+      factorB: 0,
+      product: 0,
+      correctEquation: '',
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // DOM elements
+      numADisplay: null,
+      numBDisplay: null,
+      numCDisplay: null,
+      choices: null,
+      progress: null,
+      feedback: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        // Get DOM elements
+        this.numADisplay = document.getElementById('num-a');
+        this.numBDisplay = document.getElementById('num-b');
+        this.numCDisplay = document.getElementById('num-c');
+        this.choices = document.getElementById('choices');
+        this.progress = document.getElementById('progress');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up listeners
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Dynamic translations - will update on next question
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.fact-family-mult-div.${key}`);
+          return translated !== `section.activities.fact-family-mult-div.${key}` ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      shuffle(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      },
+
+      generateFactFamily() {
+        // Progressive difficulty
+        // Questions 0-2: Small factors (2-5)
+        // Questions 3-5: Medium factors (2-7)
+        // Questions 6-7: Larger factors (2-10)
+
+        let minFactor, maxFactor;
+        if (this.currentQuestion < 3) {
+          minFactor = 2;
+          maxFactor = 5;
+        } else if (this.currentQuestion < 6) {
+          minFactor = 2;
+          maxFactor = 7;
+        } else {
+          minFactor = 2;
+          maxFactor = 10;
+        }
+
+        this.factorA = this.randomInt(minFactor, maxFactor);
+        this.factorB = this.randomInt(minFactor, maxFactor);
+
+        // Ensure factorA <= factorB for consistent display
+        if (this.factorA > this.factorB) {
+          [this.factorA, this.factorB] = [this.factorB, this.factorA];
+        }
+
+        this.product = this.factorA * this.factorB;
+      },
+
+      getFactFamilyEquations() {
+        // All 4 valid equations in the fact family
+        return [
+          `${this.factorA} × ${this.factorB} = ${this.product}`,
+          `${this.factorB} × ${this.factorA} = ${this.product}`,
+          `${this.product} ÷ ${this.factorA} = ${this.factorB}`,
+          `${this.product} ÷ ${this.factorB} = ${this.factorA}`
+        ];
+      },
+
+      generateWrongEquations() {
+        // Generate plausible wrong equations (only ×/÷ equations with wrong answers)
+        const wrongEquations = [];
+
+        // Wrong multiplication results (off-by-one, off-by-two)
+        wrongEquations.push(`${this.factorA} × ${this.factorB} = ${this.product + 1}`);
+        wrongEquations.push(`${this.factorA} × ${this.factorB} = ${this.product - 1}`);
+        wrongEquations.push(`${this.factorB} × ${this.factorA} = ${this.product + 2}`);
+
+        // Wrong division results
+        wrongEquations.push(`${this.product} ÷ ${this.factorA} = ${this.factorB + 1}`);
+        wrongEquations.push(`${this.product} ÷ ${this.factorB} = ${this.factorA + 1}`);
+        wrongEquations.push(`${this.product} ÷ ${this.factorA} = ${this.factorB - 1}`);
+
+        // Wrong order of division (common mistake: dividing smaller by larger)
+        if (this.factorA !== this.factorB && this.factorA > 1) {
+          wrongEquations.push(`${this.factorA} ÷ ${this.product} = ${this.factorB}`);
+          wrongEquations.push(`${this.factorB} ÷ ${this.product} = ${this.factorA}`);
+        }
+
+        // Using wrong product (confusing with neighboring facts)
+        const wrongProduct1 = this.factorA * (this.factorB + 1);
+        const wrongProduct2 = (this.factorA + 1) * this.factorB;
+        wrongEquations.push(`${this.factorA} × ${this.factorB} = ${wrongProduct1}`);
+        wrongEquations.push(`${this.factorA} × ${this.factorB} = ${wrongProduct2}`);
+
+        // Filter out any that might accidentally be valid
+        const validSet = new Set(this.getFactFamilyEquations());
+        return wrongEquations.filter(eq => !validSet.has(eq));
+      },
+
+      startQuestion() {
+        this.generateFactFamily();
+        this.isAnswered = false;
+
+        // Update family numbers display
+        this.numADisplay.textContent = this.factorA;
+        this.numBDisplay.textContent = this.factorB;
+        this.numCDisplay.textContent = this.product;
+
+        // Get all valid equations and pick one as the correct answer
+        const validEquations = this.getFactFamilyEquations();
+        this.correctEquation = validEquations[this.randomInt(0, validEquations.length - 1)];
+
+        // Generate choices: 1 correct + 3 wrong
+        const wrongEquations = this.generateWrongEquations();
+        const shuffledWrong = this.shuffle(wrongEquations).slice(0, 3);
+
+        const allChoices = this.shuffle([this.correctEquation, ...shuffledWrong]);
+        this.renderChoices(allChoices);
+
+        // Reset UI
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      renderChoices(equations) {
+        this.choices.innerHTML = '';
+
+        equations.forEach(equation => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn equation-btn';
+          btn.textContent = equation;
+          btn.dataset.equation = equation;
+          btn.addEventListener('click', () => {
+            if (!this.isAnswered) {
+              this.checkAnswer(equation, btn);
+            }
+          });
+          this.choices.appendChild(btn);
+        });
+      },
+
+      checkAnswer(selectedEquation, btnElement) {
+        if (this.isAnswered) return;
+
+        this.isAnswered = true;
+        const isCorrect = selectedEquation === this.correctEquation;
+
+        // Disable all buttons and highlight correct answer
+        const allBtns = this.choices.querySelectorAll('.choice-btn');
+        allBtns.forEach(btn => {
+          btn.disabled = true;
+          if (btn.dataset.equation === this.correctEquation) {
+            btn.classList.add('correct');
+          }
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+          btnElement.classList.add('correct');
+          const correctMsg = window.i18n ? i18n.t('feedback.correct') : 'Correct!';
+          const familyText = this.getTranslation('belongsToFamily', 'belongs to the family!');
+          this.feedback.textContent = `${correctMsg} ${this.correctEquation} ${familyText}`;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          btnElement.classList.add('incorrect');
+          const tryAgainMsg = window.i18n ? i18n.t('feedback.tryAgain') : 'Try again!';
+          const theCorrectIs = this.getTranslation('theCorrectIs', 'The correct answer is:');
+          this.feedback.textContent = `${tryAgainMsg} ${theCorrectIs} ${this.correctEquation}`;
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation('perfect', 'Amazing fact family work!');
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🔗';
+          this.statsMessage.textContent = this.getTranslation('great', 'Great fact family work!');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation('keepPracticing', 'Keep practicing!');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => FactFamilyMatch.init());
+      } else {
+        FactFamilyMatch.init();
+      }
+    });
+  </script>
+  <style>
+    /* Fact Family Match specific styles */
+
+    /* Family Section */
+    .family-section {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid #f59e0b;
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      text-align: center;
+      box-shadow: 0 4px 0 #d97706;
+    }
+
+    .family-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #92400e;
+      margin-bottom: var(--space-2);
+    }
+
+    .family-numbers {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .family-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #b45309;
+      background: white;
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 3px solid #f59e0b;
+      min-width: 72px;
+      box-shadow: 0 2px 0 #d97706;
+    }
+
+    /* Question Section */
+    .question-section {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+    }
+
+    /* Choices Section - Vertical layout for equations */
+    .choices-section {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      max-width: 360px;
+      margin: 0 auto var(--space-4);
+    }
+
+    .choice-btn.equation-btn {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      border: 3px solid var(--color-neutral-300);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: var(--color-neutral-700);
+      box-shadow: 0 4px 0 var(--color-neutral-400);
+      min-height: 56px;
+      text-align: center;
+    }
+
+    .choice-btn.equation-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: var(--color-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn.equation-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 var(--color-neutral-400);
+    }
+
+    .choice-btn.equation-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .choice-btn.equation-btn.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #15803d;
+    }
+
+    .choice-btn.equation-btn.incorrect {
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border-color: #ef4444;
+      color: #991b1b;
+      box-shadow: 0 4px 0 #dc2626;
+      animation: wiggle 0.5s ease;
+    }
+
+    .choice-btn.equation-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 4px 0 var(--color-neutral-400), 0 0 0 3px rgba(59, 130, 246, 0.5);
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Wiggle animation */
+    @keyframes wiggle {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-6px); }
+      80% { transform: translateX(6px); }
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .family-section {
+        padding: var(--space-3);
+      }
+
+      .family-numbers {
+        gap: var(--space-3);
+      }
+
+      .family-number {
+        font-size: var(--text-3xl);
+        padding: var(--space-2) var(--space-3);
+        min-width: 60px;
+      }
+
+      .question-text {
+        font-size: var(--text-base);
+      }
+
+      .choices-section {
+        gap: var(--space-2);
+      }
+
+      .choice-btn.equation-btn {
+        font-size: var(--text-lg);
+        padding: var(--space-3);
+        min-height: 52px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .family-number {
+        font-size: var(--text-2xl);
+        padding: var(--space-2);
+        min-width: 52px;
+      }
+
+      .choice-btn.equation-btn {
+        font-size: var(--text-base);
+        padding: var(--space-3);
+        min-height: 52px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

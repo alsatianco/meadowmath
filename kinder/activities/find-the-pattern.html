@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Find the Pattern - Kindergarten Math Activity - Meadow Math">
+  <title>Find the Pattern - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🔄</span>
+            <span data-i18n="section.activities.find-the-pattern.title">Find the Pattern</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.find-the-pattern.instruction">What comes next in the pattern?</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Pattern Display -->
+          <div class="pattern-display" id="pattern-display">
+            <!-- Pattern items rendered by JS -->
+          </div>
+
+          <!-- Question -->
+          <p class="question-text" data-i18n="section.activities.find-the-pattern.question">What comes next?</p>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices">
+            <!-- Generated by JS -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🔄</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great pattern finding!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Find the Pattern Activity Styles */
+    .pattern-display {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 4px solid #86efac;
+      border-radius: var(--radius-2xl);
+      box-shadow: 0 6px 0 #22c55e;
+      margin-bottom: var(--space-4);
+      min-height: 100px;
+    }
+
+    .pattern-item {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      background: white;
+      border: 3px solid #d1d5db;
+      border-radius: var(--radius-lg);
+      transition: all 0.3s ease;
+    }
+
+    .pattern-item.mystery {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 4px dashed #f59e0b;
+      font-size: 28px;
+      font-weight: bold;
+      color: #d97706;
+      animation: pulse 1s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .pattern-item.revealed {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border: 4px solid #22c55e;
+      animation: popIn 0.5s ease;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0); }
+      70% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .answer-choices {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .answer-btn {
+      width: 85px;
+      height: 85px;
+      font-size: 40px;
+      border: 4px solid #e2e8f0;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, white, #f8fafc);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      border-color: #3b82f6;
+      box-shadow: 0 7px 0 #2563eb;
+    }
+
+    .answer-btn:focus {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .answer-btn:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .answer-btn:focus-visible {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .answer-btn:disabled {
+      cursor: not-allowed;
+    }
+
+    .answer-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPop 0.5s ease;
+    }
+
+    .answer-btn.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      box-shadow: 0 4px 0 #d97706;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .pattern-item {
+        width: 50px;
+        height: 50px;
+        font-size: 28px;
+      }
+
+      .pattern-item.mystery {
+        font-size: 24px;
+      }
+
+      .answer-btn {
+        width: 70px;
+        height: 70px;
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .pattern-display {
+        gap: var(--space-1);
+        padding: var(--space-3);
+      }
+
+      .pattern-item {
+        width: 45px;
+        height: 45px;
+        font-size: 24px;
+      }
+
+      .answer-btn {
+        width: 65px;
+        height: 65px;
+        font-size: 28px;
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Find the Pattern Activity
+    const FindThePattern = {
+      // Game state
+      round: 1,
+      maxRounds: 8,
+      currentPattern: null,
+      correctAnswer: null,
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+
+      // DOM elements
+      progress: null,
+      patternDisplay: null,
+      answerChoices: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Pattern templates (AB, AAB, ABB, ABC patterns)
+      patternSets: [
+        { elements: ['🔴', '🔵'], type: 'AB' },
+        { elements: ['⭐', '🌙'], type: 'AB' },
+        { elements: ['🍎', '🍊'], type: 'AB' },
+        { elements: ['🐱', '🐱', '🐶'], type: 'AAB' },
+        { elements: ['🌸', '🌸', '🌼'], type: 'AAB' },
+        { elements: ['🔺', '⬜', '⬜'], type: 'ABB' },
+        { elements: ['🍓', '🍇', '🍇'], type: 'ABB' },
+        { elements: ['❤️', '💙', '💚'], type: 'ABC' },
+        { elements: ['🌈', '☀️', '⭐'], type: 'ABC' }
+      ],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.patternDisplay = document.getElementById('pattern-display');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+
+        // Pick random pattern set
+        const patternSet = this.patternSets[randomInt(0, this.patternSets.length - 1)];
+        const elements = patternSet.elements;
+
+        // Generate pattern: 2 full cycles + partial of next cycle
+        this.currentPattern = [];
+        for (let cycle = 0; cycle < 2; cycle++) {
+          for (let i = 0; i < elements.length; i++) {
+            this.currentPattern.push(elements[i]);
+          }
+        }
+
+        // Add partial next cycle (random position in pattern)
+        const nextIndex = randomInt(0, elements.length - 1);
+        for (let i = 0; i < nextIndex; i++) {
+          this.currentPattern.push(elements[i]);
+        }
+
+        // The answer is the next element in the pattern
+        this.correctAnswer = elements[nextIndex];
+
+        // Reset UI
+        this.feedback.classList.remove('show', 'error');
+
+        // Render pattern and choices
+        this.renderPattern();
+        this.renderChoices(elements);
+        this.renderProgress();
+      },
+
+      /**
+       * Render the pattern display
+       */
+      renderPattern() {
+        this.patternDisplay.innerHTML = '';
+
+        // Add pattern items
+        this.currentPattern.forEach((item, index) => {
+          const el = document.createElement('div');
+          el.className = 'pattern-item';
+          el.textContent = item;
+          el.style.animationDelay = `${index * 0.05}s`;
+          this.patternDisplay.appendChild(el);
+        });
+
+        // Add mystery box at end
+        const mystery = document.createElement('div');
+        mystery.className = 'pattern-item mystery';
+        mystery.textContent = '?';
+        mystery.id = 'mystery-box';
+        this.patternDisplay.appendChild(mystery);
+      },
+
+      /**
+       * Render answer choices
+       */
+      renderChoices(elements) {
+        this.answerChoices.innerHTML = '';
+
+        // Get unique elements for choices
+        const uniqueElements = [...new Set(elements)];
+
+        // Add a distractor if we have less than 3 choices
+        const distractors = ['🟢', '🟡', '🟣', '💜', '🧡'];
+        while (uniqueElements.length < 3) {
+          const d = distractors[randomInt(0, distractors.length - 1)];
+          if (!uniqueElements.includes(d)) {
+            uniqueElements.push(d);
+          }
+        }
+
+        // Shuffle choices
+        const choices = shuffle([...uniqueElements]);
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'answer-btn';
+          btn.textContent = choice;
+          btn.addEventListener('click', () => this.selectAnswer(choice, btn));
+          this.answerChoices.appendChild(btn);
+        });
+      },
+
+      /**
+       * Select answer
+       */
+      selectAnswer(choice, btn) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        const allBtns = this.answerChoices.querySelectorAll('.answer-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        // Reveal mystery box
+        const mysteryBox = document.getElementById('mystery-box');
+        mysteryBox.textContent = this.correctAnswer;
+        mysteryBox.classList.remove('mystery');
+        mysteryBox.classList.add('revealed');
+
+        const isCorrect = choice === this.correctAnswer;
+
+        if (isCorrect) {
+          btn.classList.add('correct');
+          const msg = i18n.t('section.activities.find-the-pattern.correct') || 'Yes! The pattern continues!';
+          this.feedback.textContent = msg;
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          if (typeof celebrate === 'function') {
+            celebrate(btn);
+          }
+        } else {
+          btn.classList.add('incorrect');
+          allBtns.forEach(b => {
+            if (b.textContent === this.correctAnswer) {
+              b.classList.add('correct');
+            }
+          });
+          const msg = i18n.t('section.activities.find-the-pattern.incorrect') || 'Not quite! The next one is {{answer}}.';
+          this.feedback.textContent = msg.replace('{{answer}}', this.correctAnswer);
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🔄';
+          this.statsMessage.textContent = i18n.t('section.activities.find-the-pattern.perfect') || 'Pattern Master!';
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.find-the-pattern.great') || 'Great pattern finding!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.find-the-pattern.keepPracticing') || 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      FindThePattern.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

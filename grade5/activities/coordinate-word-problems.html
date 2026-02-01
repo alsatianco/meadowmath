@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Coordinate Word Problems - Grade 5 Math Activity - Meadow Math">
+  <title>Coordinate Word Problems - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🗺️</span>
+            <span data-i18n="section.activities.coordinate-word-problems.title">Coordinate Word Problems</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.coordinate-word-problems.instruction">Use coordinates to solve the problem!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Story Card -->
+          <div class="story-card" id="story-card">
+            <p class="story-text" id="story-text">Story will appear here...</p>
+          </div>
+
+          <!-- Map Grid -->
+          <div class="grid-container" id="grid-container">
+            <svg class="coordinate-grid" id="coordinate-grid" viewBox="0 0 340 340" preserveAspectRatio="xMidYMid meet">
+              <!-- Grid will be drawn here -->
+            </svg>
+          </div>
+
+          <!-- Question -->
+          <div class="question-card" id="question-card">
+            <span class="question-text" id="question-text">Question will appear here...</span>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <!-- Choices will be rendered here -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.coordinate-word-problems.great">Great map skills!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Coordinate Word Problems Activity - Grade 5 Level 5
+    const CoordinateWordProblems = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 2000,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+      gridSize: 10,
+      cellSize: 30,
+      padding: 40,
+
+      // DOM elements
+      storyCard: null,
+      storyText: null,
+      gridContainer: null,
+      gridSvg: null,
+      questionCard: null,
+      questionText: null,
+      choicesContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Location icons and names
+      locations: {
+        school: { icon: '🏫', name: 'School' },
+        park: { icon: '🏞️', name: 'Park' },
+        library: { icon: '📚', name: 'Library' },
+        store: { icon: '🏪', name: 'Store' },
+        home: { icon: '🏠', name: 'Home' },
+        hospital: { icon: '🏥', name: 'Hospital' },
+        bakery: { icon: '🥖', name: 'Bakery' },
+        pool: { icon: '🏊', name: 'Pool' },
+        cafe: { icon: '☕', name: 'Cafe' },
+        gym: { icon: '🏋️', name: 'Gym' }
+      },
+
+      init() {
+        this.storyCard = document.getElementById('story-card');
+        this.storyText = document.getElementById('story-text');
+        this.gridContainer = document.getElementById('grid-container');
+        this.gridSvg = document.getElementById('coordinate-grid');
+        this.questionCard = document.getElementById('question-card');
+        this.questionText = document.getElementById('question-text');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      drawGrid() {
+        const svg = this.gridSvg;
+        svg.innerHTML = '';
+
+        const gridGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+        // Draw grid lines
+        for (let i = 0; i <= this.gridSize; i++) {
+          const x = this.padding + i * this.cellSize;
+          const y = this.padding + (this.gridSize - i) * this.cellSize;
+
+          // Vertical lines
+          const vLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          vLine.setAttribute('x1', x);
+          vLine.setAttribute('y1', this.padding);
+          vLine.setAttribute('x2', x);
+          vLine.setAttribute('y2', this.padding + this.gridSize * this.cellSize);
+          vLine.setAttribute('stroke', i === 0 ? '#374151' : '#e5e7eb');
+          vLine.setAttribute('stroke-width', i === 0 ? '2' : '1');
+          gridGroup.appendChild(vLine);
+
+          // Horizontal lines
+          const hLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          hLine.setAttribute('x1', this.padding);
+          hLine.setAttribute('y1', y);
+          hLine.setAttribute('x2', this.padding + this.gridSize * this.cellSize);
+          hLine.setAttribute('y2', y);
+          hLine.setAttribute('stroke', i === 0 ? '#374151' : '#e5e7eb');
+          hLine.setAttribute('stroke-width', i === 0 ? '2' : '1');
+          gridGroup.appendChild(hLine);
+
+          // X-axis labels
+          const xLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          xLabel.setAttribute('x', this.padding + i * this.cellSize);
+          xLabel.setAttribute('y', this.padding + this.gridSize * this.cellSize + 18);
+          xLabel.setAttribute('text-anchor', 'middle');
+          xLabel.setAttribute('fill', '#6b7280');
+          xLabel.setAttribute('font-size', '11');
+          xLabel.setAttribute('font-family', 'var(--font-secondary)');
+          xLabel.textContent = i;
+          gridGroup.appendChild(xLabel);
+
+          // Y-axis labels
+          const yLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          yLabel.setAttribute('x', this.padding - 12);
+          yLabel.setAttribute('y', this.padding + (this.gridSize - i) * this.cellSize + 4);
+          yLabel.setAttribute('text-anchor', 'middle');
+          yLabel.setAttribute('fill', '#6b7280');
+          yLabel.setAttribute('font-size', '11');
+          yLabel.setAttribute('font-family', 'var(--font-secondary)');
+          yLabel.textContent = i;
+          gridGroup.appendChild(yLabel);
+        }
+
+        svg.appendChild(gridGroup);
+
+        // Create location group
+        this.locationGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        this.locationGroup.setAttribute('id', 'location-group');
+        svg.appendChild(this.locationGroup);
+      },
+
+      generateQuestions() {
+        const questions = [];
+        const questionTypes = ['findLocation', 'findCoords', 'distance', 'direction'];
+
+        while (questions.length < this.totalQuestions) {
+          const type = questionTypes[questions.length % questionTypes.length];
+          const q = this.createQuestion(type);
+          if (q) questions.push(q);
+        }
+
+        this.questions = shuffle(questions);
+      },
+
+      createQuestion(type) {
+        const locationKeys = Object.keys(this.locations);
+
+        // Generate 3-5 random locations on the map
+        const mapLocations = {};
+        const usedCoords = new Set();
+        const numLocations = 3 + Math.floor(Math.random() * 3);
+
+        const shuffledKeys = shuffle([...locationKeys]);
+        for (let i = 0; i < numLocations && i < shuffledKeys.length; i++) {
+          let x, y, key;
+          do {
+            x = 1 + Math.floor(Math.random() * 9);
+            y = 1 + Math.floor(Math.random() * 9);
+            key = `${x},${y}`;
+          } while (usedCoords.has(key));
+
+          usedCoords.add(key);
+          mapLocations[shuffledKeys[i]] = { x, y };
+        }
+
+        const locNames = Object.keys(mapLocations);
+        if (locNames.length < 2) return null;
+
+        if (type === 'findLocation') {
+          // "What is at (x, y)?"
+          const targetLoc = locNames[Math.floor(Math.random() * locNames.length)];
+          const coords = mapLocations[targetLoc];
+          const correctAnswer = targetLoc;
+
+          const distractors = locNames.filter(l => l !== targetLoc);
+          while (distractors.length < 3) {
+            const extra = locationKeys.find(k => !locNames.includes(k) && !distractors.includes(k));
+            if (extra) distractors.push(extra);
+            else break;
+          }
+
+          return {
+            type,
+            mapLocations,
+            story: 'storyFindLocation',
+            storyParams: { x: coords.x, y: coords.y },
+            question: 'questionFindLocation',
+            questionParams: { x: coords.x, y: coords.y },
+            answer: correctAnswer,
+            answerType: 'location',
+            distractors: shuffle(distractors).slice(0, 3)
+          };
+        }
+
+        if (type === 'findCoords') {
+          // "What are the coordinates of the school?"
+          const targetLoc = locNames[Math.floor(Math.random() * locNames.length)];
+          const coords = mapLocations[targetLoc];
+          const correctAnswer = `(${coords.x}, ${coords.y})`;
+
+          // Generate distractor coordinates
+          const distractors = [];
+          const usedDistractors = new Set([correctAnswer]);
+
+          // Swapped x/y
+          const swapped = `(${coords.y}, ${coords.x})`;
+          if (!usedDistractors.has(swapped) && coords.x !== coords.y) {
+            distractors.push(swapped);
+            usedDistractors.add(swapped);
+          }
+
+          // Off by one
+          const offByOne = [
+            `(${coords.x + 1}, ${coords.y})`,
+            `(${coords.x - 1}, ${coords.y})`,
+            `(${coords.x}, ${coords.y + 1})`,
+            `(${coords.x}, ${coords.y - 1})`
+          ];
+          for (const d of offByOne) {
+            if (distractors.length >= 3) break;
+            if (!usedDistractors.has(d)) {
+              distractors.push(d);
+              usedDistractors.add(d);
+            }
+          }
+
+          return {
+            type,
+            mapLocations,
+            story: 'storyFindCoords',
+            storyParams: { location: targetLoc },
+            question: 'questionFindCoords',
+            questionParams: { location: targetLoc },
+            answer: correctAnswer,
+            answerType: 'coords',
+            distractors: distractors.slice(0, 3)
+          };
+        }
+
+        if (type === 'distance') {
+          // Find distance between two places (horizontal or vertical only)
+          const loc1 = locNames[0];
+          const loc2 = locNames[1];
+          const c1 = mapLocations[loc1];
+          const c2 = mapLocations[loc2];
+
+          // Make them share x or y for simple distance
+          let distance;
+          if (Math.random() < 0.5) {
+            // Horizontal - same y
+            mapLocations[loc2].y = c1.y;
+            distance = Math.abs(c2.x - c1.x);
+          } else {
+            // Vertical - same x
+            mapLocations[loc2].x = c1.x;
+            distance = Math.abs(c2.y - c1.y);
+          }
+
+          if (distance < 2) distance = 2 + Math.floor(Math.random() * 5);
+
+          // Regenerate to ensure proper distance
+          const newC2 = mapLocations[loc2];
+          if (newC2.x === c1.x) {
+            // Vertical
+            newC2.y = c1.y + (Math.random() < 0.5 ? distance : -distance);
+            if (newC2.y < 1) newC2.y = c1.y + distance;
+            if (newC2.y > 9) newC2.y = c1.y - distance;
+            distance = Math.abs(newC2.y - c1.y);
+          } else {
+            // Horizontal
+            newC2.x = c1.x + (Math.random() < 0.5 ? distance : -distance);
+            if (newC2.x < 1) newC2.x = c1.x + distance;
+            if (newC2.x > 9) newC2.x = c1.x - distance;
+            distance = Math.abs(newC2.x - c1.x);
+          }
+
+          const distractors = [distance + 1, distance - 1, distance + 2].filter(d => d > 0);
+
+          return {
+            type,
+            mapLocations,
+            story: 'storyDistance',
+            storyParams: { location1: loc1, location2: loc2 },
+            question: 'questionDistance',
+            questionParams: { location1: loc1, location2: loc2 },
+            answer: distance,
+            answerType: 'number',
+            distractors: distractors.slice(0, 3),
+            highlightPath: [loc1, loc2]
+          };
+        }
+
+        if (type === 'direction') {
+          // Which direction to go from A to B?
+          const loc1 = locNames[0];
+          const loc2 = locNames[1];
+          const c1 = mapLocations[loc1];
+          const c2 = mapLocations[loc2];
+
+          // Determine primary direction
+          let direction;
+          const dx = c2.x - c1.x;
+          const dy = c2.y - c1.y;
+
+          if (Math.abs(dx) > Math.abs(dy)) {
+            direction = dx > 0 ? 'right' : 'left';
+          } else if (Math.abs(dy) > Math.abs(dx)) {
+            direction = dy > 0 ? 'up' : 'down';
+          } else {
+            // Equal - pick randomly
+            direction = dx > 0 ? 'right' : 'left';
+          }
+
+          const distractors = ['up', 'down', 'left', 'right'].filter(d => d !== direction);
+
+          return {
+            type,
+            mapLocations,
+            story: 'storyDirection',
+            storyParams: { location1: loc1, location2: loc2 },
+            question: 'questionDirection',
+            questionParams: { location1: loc1, location2: loc2 },
+            answer: direction,
+            answerType: 'direction',
+            distractors: distractors.slice(0, 3),
+            highlightPath: [loc1, loc2]
+          };
+        }
+
+        return null;
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      getLocationName(locKey) {
+        const key = `section.activities.coordinate-word-problems.loc${locKey.charAt(0).toUpperCase() + locKey.slice(1)}`;
+        return this.getTranslation(key, this.locations[locKey]?.name || locKey);
+      },
+
+      getDirectionName(dir) {
+        const key = `section.activities.coordinate-word-problems.dir${dir.charAt(0).toUpperCase() + dir.slice(1)}`;
+        const fallbacks = { up: 'Up', down: 'Down', left: 'Left', right: 'Right' };
+        return this.getTranslation(key, fallbacks[dir] || dir);
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        const q = this.questions[this.currentQuestion];
+        if (!q) {
+          this.showStats();
+          return;
+        }
+
+        // Draw map
+        this.drawGrid();
+        this.drawLocations(q);
+
+        // Update story
+        this.updateStoryText(q);
+
+        // Update question
+        this.updateQuestionText(q);
+
+        // Render choices
+        this.renderChoices(q);
+
+        this.renderProgress();
+      },
+
+      drawLocations(q) {
+        const group = document.getElementById('location-group');
+        group.innerHTML = '';
+
+        for (const [locKey, coords] of Object.entries(q.mapLocations)) {
+          const loc = this.locations[locKey];
+          if (!loc) continue;
+
+          const x = this.padding + coords.x * this.cellSize;
+          const y = this.padding + (this.gridSize - coords.y) * this.cellSize;
+
+          // Draw background circle
+          const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          circle.setAttribute('cx', x);
+          circle.setAttribute('cy', y);
+          circle.setAttribute('r', '12');
+          circle.setAttribute('fill', 'white');
+          circle.setAttribute('stroke', '#8b5cf6');
+          circle.setAttribute('stroke-width', '2');
+          group.appendChild(circle);
+
+          // Draw icon
+          const icon = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          icon.setAttribute('x', x);
+          icon.setAttribute('y', y + 5);
+          icon.setAttribute('text-anchor', 'middle');
+          icon.setAttribute('font-size', '14');
+          icon.textContent = loc.icon;
+          group.appendChild(icon);
+        }
+
+        // Draw path if needed
+        if (q.highlightPath && q.highlightPath.length === 2) {
+          const loc1 = q.mapLocations[q.highlightPath[0]];
+          const loc2 = q.mapLocations[q.highlightPath[1]];
+
+          const x1 = this.padding + loc1.x * this.cellSize;
+          const y1 = this.padding + (this.gridSize - loc1.y) * this.cellSize;
+          const x2 = this.padding + loc2.x * this.cellSize;
+          const y2 = this.padding + (this.gridSize - loc2.y) * this.cellSize;
+
+          const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          line.setAttribute('x1', x1);
+          line.setAttribute('y1', y1);
+          line.setAttribute('x2', x2);
+          line.setAttribute('y2', y2);
+          line.setAttribute('stroke', '#f59e0b');
+          line.setAttribute('stroke-width', '3');
+          line.setAttribute('stroke-dasharray', '5,5');
+          line.setAttribute('stroke-linecap', 'round');
+          // Insert behind location icons
+          group.insertBefore(line, group.firstChild);
+        }
+      },
+
+      updateStoryText(q) {
+        let text = this.getTranslation(
+          `section.activities.coordinate-word-problems.${q.story}`,
+          this.getDefaultStory(q.story)
+        );
+
+        // Replace parameters
+        if (q.storyParams) {
+          for (const [key, value] of Object.entries(q.storyParams)) {
+            if (key === 'location' || key === 'location1' || key === 'location2') {
+              text = text.replace(`{${key}}`, this.getLocationName(value));
+            } else {
+              text = text.replace(`{${key}}`, value);
+            }
+          }
+        }
+
+        this.storyText.textContent = text;
+      },
+
+      getDefaultStory(storyKey) {
+        const defaults = {
+          storyFindLocation: 'Look at the map. There is a place at ({x}, {y}).',
+          storyFindCoords: 'Look at the map. Find the {location}.',
+          storyDistance: 'Look at the map. Find the {location1} and the {location2}.',
+          storyDirection: 'You are at the {location1}. You want to go to the {location2}.'
+        };
+        return defaults[storyKey] || '';
+      },
+
+      updateQuestionText(q) {
+        let text = this.getTranslation(
+          `section.activities.coordinate-word-problems.${q.question}`,
+          this.getDefaultQuestion(q.question)
+        );
+
+        // Replace parameters
+        if (q.questionParams) {
+          for (const [key, value] of Object.entries(q.questionParams)) {
+            if (key === 'location' || key === 'location1' || key === 'location2') {
+              text = text.replace(`{${key}}`, this.getLocationName(value));
+            } else {
+              text = text.replace(`{${key}}`, value);
+            }
+          }
+        }
+
+        this.questionText.textContent = text;
+      },
+
+      getDefaultQuestion(questionKey) {
+        const defaults = {
+          questionFindLocation: 'What is at ({x}, {y})?',
+          questionFindCoords: 'What are the coordinates of the {location}?',
+          questionDistance: 'How many units apart are the {location1} and {location2}?',
+          questionDirection: 'Which direction should you go first?'
+        };
+        return defaults[questionKey] || '';
+      },
+
+      renderChoices(q) {
+        this.choicesContainer.innerHTML = '';
+
+        let choices = [q.answer, ...q.distractors];
+        choices = shuffle(choices);
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.setAttribute('tabindex', '0');
+
+          if (q.answerType === 'location') {
+            const loc = this.locations[choice];
+            btn.innerHTML = `<span class="choice-icon">${loc?.icon || ''}</span><span class="choice-label">${this.getLocationName(choice)}</span>`;
+          } else if (q.answerType === 'direction') {
+            const dirIcons = { up: '⬆️', down: '⬇️', left: '⬅️', right: '➡️' };
+            btn.innerHTML = `<span class="choice-icon">${dirIcons[choice] || ''}</span><span class="choice-label">${this.getDirectionName(choice)}</span>`;
+          } else if (q.answerType === 'number') {
+            const unitsLabel = this.getTranslation('section.activities.coordinate-word-problems.units', 'units');
+            btn.innerHTML = `<span class="choice-value">${choice}</span><span class="choice-unit">${unitsLabel}</span>`;
+          } else {
+            btn.textContent = choice;
+          }
+
+          btn.setAttribute('data-value', choice);
+
+          btn.addEventListener('click', () => this.checkAnswer(choice, q.answer, q.answerType));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.checkAnswer(choice, q.answer, q.answerType);
+            }
+          });
+
+          this.choicesContainer.appendChild(btn);
+        });
+      },
+
+      checkAnswer(selected, correct, answerType) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const buttons = this.choicesContainer.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => btn.disabled = true);
+
+        const isCorrect = String(selected) === String(correct);
+
+        buttons.forEach(btn => {
+          const btnValue = btn.getAttribute('data-value');
+          if (String(btnValue) === String(correct)) {
+            btn.classList.add('correct');
+          } else if (String(btnValue) === String(selected)) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        let correctDisplay = correct;
+        if (answerType === 'location') {
+          correctDisplay = this.getLocationName(correct);
+        } else if (answerType === 'direction') {
+          correctDisplay = this.getDirectionName(correct);
+        } else if (answerType === 'number') {
+          correctDisplay = `${correct} ${this.getTranslation('section.activities.coordinate-word-problems.units', 'units')}`;
+        }
+
+        if (isCorrect) {
+          this.correctCount++;
+          this.feedback.textContent = this.getTranslation(
+            'section.activities.coordinate-word-problems.correct',
+            'Correct!'
+          );
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          this.feedback.textContent = this.getTranslation(
+            'section.activities.coordinate-word-problems.wrong',
+            'The answer is {answer}.'
+          ).replace('{answer}', correctDisplay);
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+        this.scheduleAdvance();
+      },
+
+      scheduleAdvance() {
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+
+        // Re-render current question with new translations
+        const q = this.questions[this.currentQuestion];
+        if (q && !this.isAnswered) {
+          this.updateStoryText(q);
+          this.updateQuestionText(q);
+          this.renderChoices(q);
+        }
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.coordinate-word-problems.perfect',
+            'Perfect! You are a coordinate map master!'
+          );
+        } else if (percent >= 0.75) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.coordinate-word-problems.great',
+            'Great map skills!'
+          );
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.coordinate-word-problems.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.coordinate-word-problems.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => CoordinateWordProblems.init());
+      } else {
+        CoordinateWordProblems.init();
+      }
+    });
+  </script>
+  <style>
+    /* Coordinate Word Problems specific styles */
+
+    /* Story Card */
+    .story-card {
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border-radius: var(--radius-xl);
+      border: 3px solid #22c55e;
+      padding: var(--space-3);
+      margin-bottom: var(--space-2);
+    }
+
+    .story-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      color: #166534;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* Grid Container */
+    .grid-container {
+      background: #fffbeb;
+      border-radius: var(--radius-xl);
+      border: 2px solid #fbbf24;
+      padding: var(--space-2);
+      margin-bottom: var(--space-2);
+      display: flex;
+      justify-content: center;
+    }
+
+    .coordinate-grid {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+    }
+
+    /* Question Card */
+    .question-card {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #3b82f6;
+      padding: var(--space-3);
+      margin-bottom: var(--space-3);
+      text-align: center;
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #1e40af;
+    }
+
+    /* Choices Container */
+    .choices-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .choice-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-3);
+      font-family: var(--font-secondary);
+      color: #374151;
+      background: white;
+      border: 3px solid #d1d5db;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 60px;
+      gap: var(--space-1);
+    }
+
+    .choice-icon {
+      font-size: var(--text-xl);
+    }
+
+    .choice-label {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+    }
+
+    .choice-value {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+    }
+
+    .choice-unit {
+      font-size: var(--text-xs);
+      color: #6b7280;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: #f3f4f6;
+      border-color: #9ca3af;
+      transform: scale(1.02);
+    }
+
+    .choice-btn:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn.correct {
+      background: #dcfce7;
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: #fee2e2;
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    /* Feedback and layout */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .story-card,
+      .question-card {
+        padding: var(--space-2);
+      }
+
+      .story-text {
+        font-size: var(--text-xs);
+      }
+
+      .question-text {
+        font-size: var(--text-sm);
+      }
+
+      .coordinate-grid {
+        max-width: 300px;
+      }
+
+      .choices-container {
+        gap: var(--space-2);
+      }
+
+      .choice-btn {
+        padding: var(--space-2);
+        min-height: 50px;
+      }
+
+      .choice-icon {
+        font-size: var(--text-lg);
+      }
+
+      .choice-label {
+        font-size: var(--text-xs);
+      }
+
+      .choice-value {
+        font-size: var(--text-xl);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .coordinate-grid {
+        max-width: 280px;
+      }
+
+      .choice-btn {
+        min-height: 44px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

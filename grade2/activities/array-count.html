@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How Many in the Array? - Grade 2 Math Activity - Meadow Math">
+  <title>How Many in the Array? - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade2">Grade 2</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🔢</span>
+            <span data-i18n="section.activities.array-count.title">How Many in the Array?</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.array-count.description">Count faster using rows and columns.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Prompt Display -->
+          <div class="prompt-display" id="prompt-display">
+            <span class="prompt-label" data-i18n="section.activities.array-count.howMany">How many in all?</span>
+          </div>
+
+          <!-- Array Display -->
+          <div class="array-container" id="array-container">
+            <div class="array-grid" id="array-grid"></div>
+          </div>
+
+          <!-- Array Info -->
+          <div class="array-info" id="array-info">
+            <span class="array-size" id="array-size"></span>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container"></div>
+
+          <!-- Repeated Addition Display (shown after answer) -->
+          <div class="addition-display" id="addition-display" style="display: none;">
+            <span class="addition-label" data-i18n="section.activities.array-count.repeatedAddition">Repeated addition:</span>
+            <span class="addition-equation" id="addition-equation"></span>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great array counting!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // How Many in the Array? Activity - Grade 2
+    const ArrayCount = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      rows: 0,
+      cols: 0,
+      correctAnswer: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // DOM elements
+      arrayGrid: null,
+      arrayInfo: null,
+      arraySize: null,
+      choicesContainer: null,
+      additionDisplay: null,
+      additionEquation: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.arrayGrid = document.getElementById('array-grid');
+        this.arrayInfo = document.getElementById('array-info');
+        this.arraySize = document.getElementById('array-size');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.additionDisplay = document.getElementById('addition-display');
+        this.additionEquation = document.getElementById('addition-equation');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Update dynamic text
+        this.updateArrayInfo();
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      generateArray() {
+        // Progressive difficulty: smaller arrays first
+        let minDim, maxDim;
+        if (this.currentQuestion < 3) {
+          minDim = 2; maxDim = 3;
+        } else if (this.currentQuestion < 6) {
+          minDim = 2; maxDim = 4;
+        } else {
+          minDim = 3; maxDim = 5;
+        }
+
+        this.rows = this.randomInt(minDim, maxDim);
+        this.cols = this.randomInt(minDim, maxDim);
+        this.correctAnswer = this.rows * this.cols;
+        this.isAnswered = false;
+      },
+
+      updateArrayInfo() {
+        const rowsText = window.i18n ? i18n.t('section.activities.array-count.rows') : 'rows';
+        const colsText = window.i18n ? i18n.t('section.activities.array-count.columns') : 'columns';
+        this.arraySize.textContent = `${this.rows} ${rowsText} × ${this.cols} ${colsText}`;
+      },
+
+      startQuestion() {
+        this.generateArray();
+        this.renderArray();
+        this.renderChoices();
+        this.updateArrayInfo();
+        this.additionDisplay.style.display = 'none';
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      renderArray() {
+        this.arrayGrid.innerHTML = '';
+        this.arrayGrid.style.gridTemplateColumns = `repeat(${this.cols}, 1fr)`;
+        this.arrayGrid.style.gridTemplateRows = `repeat(${this.rows}, 1fr)`;
+
+        for (let row = 0; row < this.rows; row++) {
+          for (let col = 0; col < this.cols; col++) {
+            const cell = document.createElement('div');
+            cell.className = 'grid-cell filled';
+            cell.dataset.row = row;
+            cell.dataset.col = col;
+            cell.textContent = '🟦';
+            cell.setAttribute('aria-label', `Row ${row + 1}, Column ${col + 1}`);
+            this.arrayGrid.appendChild(cell);
+          }
+        }
+      },
+
+      generateDistractors() {
+        const distractors = new Set();
+        distractors.add(this.correctAnswer);
+
+        // Add nearby wrong answers
+        const offsets = [-2, -1, 1, 2, 3, -3];
+        for (const offset of offsets) {
+          const val = this.correctAnswer + offset;
+          if (val > 0 && val !== this.correctAnswer) {
+            distractors.add(val);
+          }
+          if (distractors.size >= 4) break;
+        }
+
+        // If still need more, add random values
+        while (distractors.size < 4) {
+          const val = this.randomInt(Math.max(1, this.correctAnswer - 5), this.correctAnswer + 5);
+          if (val > 0) {
+            distractors.add(val);
+          }
+        }
+
+        return this.shuffle(Array.from(distractors)).slice(0, 4);
+      },
+
+      shuffle(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      },
+
+      renderChoices() {
+        const choices = this.generateDistractors();
+        this.choicesContainer.innerHTML = '';
+
+        choices.forEach((value) => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.textContent = value;
+          btn.dataset.value = value;
+          btn.setAttribute('aria-label', `${value}`);
+          btn.addEventListener('click', () => this.checkAnswer(value, btn));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.checkAnswer(value, btn);
+            }
+          });
+          this.choicesContainer.appendChild(btn);
+        });
+      },
+
+      checkAnswer(value, btn) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        // Disable all buttons
+        const allBtns = this.choicesContainer.querySelectorAll('.choice-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        const isCorrect = value === this.correctAnswer;
+
+        // Show repeated addition
+        this.showRepeatedAddition(isCorrect);
+
+        if (isCorrect) {
+          this.correctCount++;
+          btn.classList.add('correct');
+          const feedbackText = window.i18n ? i18n.t('feedback.correct') : '✓ Correct!';
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.remove('error');
+
+          // Celebrate array cells
+          const cells = this.arrayGrid.querySelectorAll('.grid-cell');
+          cells.forEach((cell, index) => {
+            setTimeout(() => {
+              cell.classList.add('celebrate');
+            }, index * 30);
+          });
+        } else {
+          this.incorrectCount++;
+          btn.classList.add('incorrect');
+
+          // Highlight correct answer
+          allBtns.forEach(b => {
+            if (parseInt(b.dataset.value) === this.correctAnswer) {
+              b.classList.add('correct');
+            }
+          });
+
+          const feedbackText = window.i18n ? i18n.t('feedback.tryAgain') : '✗ Not quite!';
+          const answerText = window.i18n
+            ? i18n.t('section.activities.array-count.answerIs').replace('{answer}', this.correctAnswer)
+            : `The answer is ${this.correctAnswer}`;
+          this.feedback.textContent = `${feedbackText} ${answerText}`;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      showRepeatedAddition(isCorrect) {
+        // Build equation: cols + cols + ... (rows times)
+        const parts = [];
+        for (let i = 0; i < this.rows; i++) {
+          parts.push(this.cols);
+        }
+        const equation = parts.join(' + ') + ' = ' + this.correctAnswer;
+        this.additionEquation.textContent = equation;
+        this.additionDisplay.style.display = 'flex';
+        this.additionDisplay.classList.toggle('correct', isCorrect);
+        this.additionDisplay.classList.toggle('incorrect', !isCorrect);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        // Re-generate the same question with different choices
+        this.isAnswered = false;
+        this.renderChoices();
+        this.additionDisplay.style.display = 'none';
+        this.feedback.classList.remove('show', 'error');
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.array-count.perfect') : 'Amazing array counting!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🔢';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.array-count.great') : 'Great counting skills!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.array-count.keepPracticing') : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => ArrayCount.init());
+      } else {
+        ArrayCount.init();
+      }
+    });
+  </script>
+  <style>
+    /* How Many in the Array? specific styles */
+
+    /* Prompt Display */
+    .prompt-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .prompt-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      text-shadow: 0 2px 0 var(--color-primary-dark);
+    }
+
+    /* Array Container */
+    .array-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 350px;
+      margin: 0 auto var(--space-3);
+    }
+
+    .array-grid {
+      display: grid;
+      gap: 8px;
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border-radius: var(--radius-xl);
+      border: 3px solid #0284c7;
+    }
+
+    .grid-cell {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      border: 2px solid #1d4ed8;
+      border-radius: var(--radius-md);
+      font-size: 24px;
+      box-shadow: 0 2px 0 #1e40af;
+    }
+
+    .grid-cell.celebrate {
+      animation: cellCelebrate 0.5s ease;
+    }
+
+    @keyframes cellCelebrate {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.15) rotate(-5deg); }
+      75% { transform: scale(1.15) rotate(5deg); }
+    }
+
+    /* Array Info */
+    .array-info {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .array-size {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      color: var(--color-neutral-600);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 2px solid #7dd3fc;
+    }
+
+    /* Choices Container */
+    .choices-container {
+      display: grid;
+      grid-template-columns: repeat(2, 90px);
+      justify-content: center;
+      gap: var(--space-3);
+      margin: 0 auto var(--space-4);
+    }
+
+    .choice-btn {
+      width: 90px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: white;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      border: 3px solid #6d28d9;
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 #5b21b6;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #5b21b6;
+      background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+    }
+
+    .choice-btn:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.5), 0 4px 0 #5b21b6;
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #5b21b6;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border-color: #15803d;
+      box-shadow: 0 4px 0 #166534;
+      animation: correctPop 0.4s ease;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      border-color: #b91c1c;
+      box-shadow: 0 4px 0 #991b1b;
+      animation: incorrectShake 0.4s ease;
+    }
+
+    @keyframes correctPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes incorrectShake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Repeated Addition Display */
+    .addition-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--space-4);
+    }
+
+    .addition-display.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border: 2px solid #22c55e;
+    }
+
+    .addition-display.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid #f59e0b;
+    }
+
+    .addition-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      color: var(--color-neutral-600);
+    }
+
+    .addition-equation {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-800);
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .array-grid {
+        padding: var(--space-3);
+        gap: 6px;
+      }
+
+      .grid-cell {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+
+      .prompt-label {
+        font-size: var(--text-xl);
+      }
+
+      .choices-container {
+        grid-template-columns: repeat(2, 80px);
+        gap: var(--space-2);
+      }
+
+      .choice-btn {
+        width: 80px;
+        height: 80px;
+        font-size: var(--text-xl);
+      }
+
+      .addition-equation {
+        font-size: var(--text-lg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .array-grid {
+        gap: 4px;
+      }
+
+      .grid-cell {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+      }
+
+      .choices-container {
+        grid-template-columns: repeat(2, 70px);
+      }
+
+      .choice-btn {
+        width: 70px;
+        height: 70px;
+        font-size: var(--text-lg);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

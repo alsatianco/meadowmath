@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Toy Shop Role Play - Pre-K Math Activity - Meadow Math">
   <title>Toy Shop - Meadow Math</title>
-  
+
   <!-- CSS Files -->
   <link rel="stylesheet" href="../../css/reset.css">
   <link rel="stylesheet" href="../../css/variables.css">
@@ -45,7 +45,7 @@
           <span class="nav-item-icon">🪺</span>
           <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
         </a>
-        <a href="../../kindergarten/index.html" class="nav-item">
+        <a href="../../kinder/index.html" class="nav-item">
           <span class="nav-item-icon">🌱</span>
           <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
         </a>
@@ -68,6 +68,17 @@
         <a href="../../grade5/index.html" class="nav-item">
           <span class="nav-item-icon">➗</span>
           <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
         </a>
       </nav>
 
@@ -103,7 +114,7 @@
             <div class="shop-header">
               <span class="shop-sign">🏪 Toy Shop</span>
             </div>
-            
+
             <!-- Shop Shelves -->
             <div class="shop-shelves" id="shop-shelves">
               <!-- Toys will be generated -->
@@ -445,11 +456,11 @@
        */
       createNumberChoices() {
         this.numberChoices.innerHTML = '';
-        
+
         // Generate choices around the target
         const choices = new Set();
         choices.add(this.targetCount);
-        
+
         while (choices.size < 4) {
           const offset = randomInt(-2, 2);
           const choice = this.targetCount + offset;
@@ -480,7 +491,7 @@
 
         // Generate starting collection (0-3)
         this.collectionCount = randomInt(0, 3);
-        
+
         // Decide buy amount (1-2)
         this.buyAmount = randomInt(1, 2);
         this.targetCount = this.collectionCount + this.buyAmount;
@@ -490,7 +501,7 @@
 
         // Render shop
         this.renderShop();
-        
+
         // Render collection
         this.renderCollection();
 
@@ -512,11 +523,11 @@
        */
       renderShop() {
         this.shopShelves.innerHTML = '';
-        
+
         // Show 5-8 toys in shop
         const toyCount = randomInt(5, 8);
         const shuffledToys = [...this.toys].sort(() => Math.random() - 0.5);
-        
+
         for (let i = 0; i < toyCount; i++) {
           const toy = document.createElement('span');
           toy.className = 'shop-toy';
@@ -531,9 +542,9 @@
        */
       renderCollection() {
         this.collectionItems.innerHTML = '';
-        
+
         const shuffledToys = [...this.toys].sort(() => Math.random() - 0.5);
-        
+
         for (let i = 0; i < this.collectionCount; i++) {
           const toy = document.createElement('span');
           toy.className = 'collection-toy';
@@ -562,10 +573,10 @@
         if (number === this.targetCount) {
           // Correct!
           selectedBtn.classList.add('correct');
-          
+
           // Add bought toys to collection
           this.addToysToCollection();
-          
+
           this.feedback.textContent = `🎉 Yes! ${this.collectionCount} + ${this.buyAmount} = ${this.targetCount}!`;
           this.feedback.classList.remove('error');
           this.feedback.classList.add('show');
@@ -602,7 +613,7 @@
        */
       addToysToCollection() {
         const shuffledToys = [...this.toys].sort(() => Math.random() - 0.5);
-        
+
         for (let i = 0; i < this.buyAmount; i++) {
           setTimeout(() => {
             const toy = document.createElement('span');
@@ -620,7 +631,7 @@
       showStats() {
         this.statsCorrect.textContent = this.correctCount;
         this.statsWrong.textContent = this.wrongCount;
-        
+
         const percent = this.correctCount / this.maxRounds;
         if (percent >= 0.8) {
           this.statsIcon.textContent = '🌟';
@@ -632,7 +643,7 @@
           this.statsIcon.textContent = '👍';
           this.statsMessage.textContent = 'Good effort! Try again!';
         }
-        
+
         this.statsOverlay.classList.add('show');
       },
 

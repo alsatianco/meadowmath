@@ -242,14 +242,14 @@
         // 8 patterns distributed across 10 questions (some repeat)
         // Pattern order: 1, 5, 10, 15, 20, 25, 50, 100, then random from all
         const patterns = [1, 5, 10, 15, 20, 25, 50, 100];
-        
+
         if (this.currentQuestion < 8) {
           this.patternStep = patterns[this.currentQuestion];
         } else {
           // Last 2 questions: random from all patterns
           this.patternStep = patterns[this.randomInt(0, patterns.length - 1)];
         }
-        
+
         // Generate appropriate base and sequence length based on pattern
         let base;
         if (this.patternStep === 1) {
@@ -293,7 +293,7 @@
           sequenceLength = 5;
           numBlanks = 2;
         }
-        
+
         // Generate the sequence
         this.currentSequence = [];
         for (let i = 0; i < sequenceLength; i++) {
@@ -307,7 +307,7 @@
         }
         this.shuffleArray(possibleIndices);
         this.missingIndices = possibleIndices.slice(0, numBlanks).sort((a, b) => a - b);
-        
+
         this.missingNumbers = this.missingIndices.map(idx => this.currentSequence[idx]);
         this.userAnswers = new Array(sequenceLength).fill(null);
         this.currentBlankIndex = 0;
@@ -376,7 +376,7 @@
 
         const choices = [correctAnswer];
         const distractors = [];
-        
+
         // Generate distractors based on pattern
         for (let offset of [-2, -1, 1, 2, -3, 3]) {
           const d = correctAnswer + offset * this.patternStep;
@@ -393,7 +393,7 @@
             }
           }
         }
-        
+
         this.shuffleArray(distractors);
         choices.push(...distractors.slice(0, 3));
         this.shuffleArray(choices);
@@ -803,5 +803,5 @@
       }
     }
   </style>
-</body>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
 </html>

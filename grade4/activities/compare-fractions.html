@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Compare Fractions - Grade 4 Math Activity - Meadow Math">
+  <title>Compare Fractions - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade4">Grade 4</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">⚖️</span>
+            <span data-i18n="section.activities.compare-fractions.title">Compare Fractions</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.compare-fractions.instruction">Compare the fractions!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Comparison Display -->
+          <div class="comparison-container" id="comparison-container">
+            <!-- Left Fraction -->
+            <div class="fraction-side left">
+              <div class="fraction-bar-container" id="left-bar">
+                <!-- Fraction bar visual will be rendered here -->
+              </div>
+              <div class="fraction-display" id="left-fraction">
+                <span class="fraction-numerator" id="left-numerator">3</span>
+                <span class="fraction-denominator" id="left-denominator">8</span>
+              </div>
+            </div>
+
+            <!-- Symbol Placeholder -->
+            <div class="symbol-display" id="symbol-display">
+              <span class="symbol-placeholder">?</span>
+            </div>
+
+            <!-- Right Fraction -->
+            <div class="fraction-side right">
+              <div class="fraction-bar-container" id="right-bar">
+                <!-- Fraction bar visual will be rendered here -->
+              </div>
+              <div class="fraction-display" id="right-fraction">
+                <span class="fraction-numerator" id="right-numerator">5</span>
+                <span class="fraction-denominator" id="right-denominator">8</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hint Toggle -->
+          <div class="hint-toggle-container">
+            <button class="hint-toggle-btn" id="btn-hint" type="button" aria-pressed="false">
+              <span data-i18n="section.activities.compare-fractions.showHint">Show fraction bars</span>
+            </button>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <button class="choice-btn symbol-choice" type="button" data-symbol="<" aria-label="Less than">&lt;</button>
+            <button class="choice-btn symbol-choice" type="button" data-symbol="=" aria-label="Equal to">=</button>
+            <button class="choice-btn symbol-choice" type="button" data-symbol=">" aria-label="Greater than">&gt;</button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.compare-fractions.great">Great fraction work!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Compare Fractions Activity - Grade 4 Level 3
+    const CompareFractions = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      showHint: false,
+      revealBars: false,
+      isAnswered: false,
+      lastResult: null,
+      advanceTimeout: null,
+
+      leftNumerator: null,
+      leftDenominator: null,
+      rightNumerator: null,
+      rightDenominator: null,
+      leftBar: null,
+      rightBar: null,
+      symbolDisplay: null,
+      symbolPlaceholder: null,
+      choicesContainer: null,
+      choiceButtons: [],
+      btnHint: null,
+      btnReset: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.leftNumerator = document.getElementById('left-numerator');
+        this.leftDenominator = document.getElementById('left-denominator');
+        this.rightNumerator = document.getElementById('right-numerator');
+        this.rightDenominator = document.getElementById('right-denominator');
+        this.leftBar = document.getElementById('left-bar');
+        this.rightBar = document.getElementById('right-bar');
+        this.symbolDisplay = document.getElementById('symbol-display');
+        this.symbolPlaceholder = this.symbolDisplay.querySelector('.symbol-placeholder');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.choiceButtons = Array.from(this.choicesContainer.querySelectorAll('.symbol-choice'));
+        this.btnHint = document.getElementById('btn-hint');
+        this.btnReset = document.getElementById('btn-reset');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.choiceButtons.forEach((btn) => {
+          btn.addEventListener('click', () => this.selectAnswer(btn));
+        });
+
+        this.btnHint.addEventListener('click', () => this.toggleHint());
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      generateQuestions() {
+        const sameDenominator = [
+          { left: { num: 3, den: 8 }, right: { num: 5, den: 8 } },
+          { left: { num: 7, den: 12 }, right: { num: 5, den: 12 } },
+          { left: { num: 4, den: 10 }, right: { num: 4, den: 10 } },
+          { left: { num: 2, den: 6 }, right: { num: 5, den: 6 } },
+          { left: { num: 1, den: 4 }, right: { num: 3, den: 4 } }
+        ];
+
+        const sameNumerator = [
+          { left: { num: 3, den: 4 }, right: { num: 3, den: 8 } },
+          { left: { num: 2, den: 5 }, right: { num: 2, den: 3 } },
+          { left: { num: 1, den: 6 }, right: { num: 1, den: 2 } },
+          { left: { num: 5, den: 8 }, right: { num: 5, den: 10 } }
+        ];
+
+        const mixed = [
+          { left: { num: 2, den: 4 }, right: { num: 1, den: 2 } },
+          { left: { num: 3, den: 6 }, right: { num: 2, den: 3 } },
+          { left: { num: 5, den: 8 }, right: { num: 3, den: 4 } },
+          { left: { num: 7, den: 10 }, right: { num: 3, den: 5 } },
+          { left: { num: 4, den: 8 }, right: { num: 1, den: 2 } }
+        ];
+
+        this.questions = [
+          ...shuffle(sameDenominator).slice(0, 4),
+          ...shuffle(sameNumerator).slice(0, 3),
+          ...shuffle(mixed).slice(0, 3)
+        ];
+
+        if (this.questions.length < this.totalQuestions) {
+          const pool = shuffle([...sameDenominator, ...sameNumerator, ...mixed]);
+          while (this.questions.length < this.totalQuestions && pool.length) {
+            this.questions.push(pool.pop());
+          }
+        }
+
+        this.questions = this.questions.slice(0, this.totalQuestions);
+      },
+
+      getCorrectSymbol(left, right) {
+        const leftValue = left.num / left.den;
+        const rightValue = right.num / right.den;
+
+        if (Math.abs(leftValue - rightValue) < 0.0001) {
+          return '=';
+        }
+        return leftValue < rightValue ? '<' : '>';
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) {
+            return text;
+          }
+        }
+        return fallback;
+      },
+
+      updateHintButton() {
+        const hintVisible = this.showHint || this.revealBars;
+        const key = hintVisible ? 'hideHint' : 'showHint';
+        const fallback = hintVisible ? 'Hide fraction bars' : 'Show fraction bars';
+        const text = this.getTranslation(`section.activities.compare-fractions.${key}`, fallback);
+        this.btnHint.innerHTML = `<span data-i18n="section.activities.compare-fractions.${key}">${text}</span>`;
+        this.btnHint.setAttribute('aria-pressed', hintVisible);
+      },
+
+      updateTranslations() {
+        this.updateHintButton();
+
+        if (this.lastResult && this.feedback.classList.contains('show')) {
+          if (this.lastResult.isCorrect) {
+            this.feedback.textContent = this.getTranslation(
+              'section.activities.compare-fractions.correct',
+              'Correct!'
+            );
+            this.feedback.classList.remove('error');
+          } else {
+            const template = this.getTranslation(
+              'section.activities.compare-fractions.wrong',
+              'The answer is {symbol}'
+            );
+            this.feedback.textContent = template.replace('{symbol}', this.lastResult.correctSymbol);
+            this.feedback.classList.add('error');
+          }
+        }
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.revealBars = false;
+        this.lastResult = null;
+        this.feedback.classList.remove('show', 'error');
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        const { left, right } = question;
+
+        this.leftNumerator.textContent = left.num;
+        this.leftDenominator.textContent = left.den;
+        this.rightNumerator.textContent = right.num;
+        this.rightDenominator.textContent = right.den;
+
+        this.symbolPlaceholder.textContent = '?';
+        this.symbolDisplay.classList.remove('correct', 'incorrect');
+
+        this.renderFractionBar(this.leftBar, left.num, left.den);
+        this.renderFractionBar(this.rightBar, right.num, right.den);
+
+        if (this.showHint) {
+          this.leftBar.classList.add('show');
+          this.rightBar.classList.add('show');
+        } else {
+          this.leftBar.classList.remove('show');
+          this.rightBar.classList.remove('show');
+        }
+
+        this.choiceButtons.forEach((btn) => {
+          btn.disabled = false;
+          btn.classList.remove('selected', 'correct', 'incorrect');
+        });
+
+        this.updateHintButton();
+        this.renderProgress();
+      },
+
+      renderFractionBar(container, numerator, denominator) {
+        container.innerHTML = '';
+        for (let i = 0; i < denominator; i++) {
+          const part = document.createElement('div');
+          part.className = 'fraction-bar-part';
+          if (i < numerator) {
+            part.classList.add('shaded');
+          } else {
+            part.classList.add('unshaded');
+          }
+          container.appendChild(part);
+        }
+      },
+
+      toggleHint() {
+        const hintVisible = this.showHint || this.revealBars;
+        const nextVisible = !hintVisible;
+        this.showHint = nextVisible;
+        this.revealBars = false;
+
+        if (nextVisible) {
+          this.leftBar.classList.add('show');
+          this.rightBar.classList.add('show');
+        } else {
+          this.leftBar.classList.remove('show');
+          this.rightBar.classList.remove('show');
+        }
+
+        this.updateHintButton();
+      },
+
+      selectAnswer(btn) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+        this.clearAdvanceTimeout();
+
+        const selectedSymbol = btn.dataset.symbol;
+        const question = this.questions[this.currentQuestion];
+        const correctSymbol = this.getCorrectSymbol(question.left, question.right);
+
+        this.choiceButtons.forEach((button) => {
+          button.disabled = true;
+        });
+
+        btn.classList.add('selected');
+
+        if (selectedSymbol === correctSymbol) {
+          this.correctCount++;
+          btn.classList.add('correct');
+          this.symbolPlaceholder.textContent = correctSymbol;
+          this.symbolDisplay.classList.add('correct');
+
+          this.feedback.textContent = this.getTranslation(
+            'section.activities.compare-fractions.correct',
+            'Correct!'
+          );
+          this.feedback.classList.remove('error');
+
+          this.lastResult = { isCorrect: true, correctSymbol };
+        } else {
+          this.incorrectCount++;
+          btn.classList.add('incorrect');
+
+          this.choiceButtons.forEach((button) => {
+            if (button.dataset.symbol === correctSymbol) {
+              button.classList.add('correct');
+            }
+          });
+
+          this.symbolPlaceholder.textContent = correctSymbol;
+          this.symbolDisplay.classList.add('incorrect');
+
+          const template = this.getTranslation(
+            'section.activities.compare-fractions.wrong',
+            'The answer is {symbol}'
+          );
+          this.feedback.textContent = template.replace('{symbol}', correctSymbol);
+          this.feedback.classList.add('error');
+
+          this.lastResult = { isCorrect: false, correctSymbol };
+        }
+
+        this.feedback.classList.add('show');
+        this.leftBar.classList.add('show');
+        this.rightBar.classList.add('show');
+        this.revealBars = true;
+        this.updateHintButton();
+
+        this.renderProgress();
+
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.compare-fractions.perfect',
+            'Amazing comparison skills!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.compare-fractions.great',
+            'Great fraction work!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.compare-fractions.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.compare-fractions.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.showHint = false;
+        this.revealBars = false;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.updateHintButton();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => CompareFractions.init());
+      } else {
+        CompareFractions.init();
+      }
+    });
+  </script>
+  <style>
+    /* Compare Fractions specific styles */
+
+    .comparison-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .fraction-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 rgba(30, 64, 175, 0.25);
+      min-width: 150px;
+    }
+
+    .fraction-side.left {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border: 4px solid #3b82f6;
+    }
+
+    .fraction-side.right {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border: 4px solid #8b5cf6;
+      box-shadow: 0 4px 0 rgba(124, 58, 237, 0.35);
+    }
+
+    .fraction-bar-container {
+      width: 100%;
+      max-width: 130px;
+      height: 34px;
+      display: none;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 3px solid #1e3a8a;
+      background: #f8fafc;
+    }
+
+    .fraction-bar-container.show {
+      display: flex;
+    }
+
+    .fraction-bar-part {
+      flex: 1;
+      border-right: 1px solid rgba(30, 58, 138, 0.3);
+      transition: background-color 0.3s ease;
+    }
+
+    .fraction-bar-part:last-child {
+      border-right: none;
+    }
+
+    .fraction-bar-part.shaded {
+      background: linear-gradient(135deg, #38bdf8, #3b82f6);
+    }
+
+    .fraction-side.right .fraction-bar-part.shaded {
+      background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+    }
+
+    .fraction-bar-part.unshaded {
+      background: #f8fafc;
+    }
+
+    .fraction-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #1e3a8a;
+      line-height: 1;
+    }
+
+    .fraction-side.right .fraction-display {
+      color: #4c1d95;
+    }
+
+    .fraction-display .fraction-numerator {
+      border-bottom: 4px solid currentColor;
+      padding-bottom: 6px;
+      min-width: 42px;
+      text-align: center;
+    }
+
+    .fraction-display .fraction-denominator {
+      padding-top: 6px;
+      min-width: 42px;
+      text-align: center;
+    }
+
+    .symbol-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 4px solid #f59e0b;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #d97706;
+    }
+
+    .symbol-placeholder {
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+    }
+
+    .symbol-display.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+    }
+
+    .symbol-display.correct .symbol-placeholder {
+      color: #166534;
+    }
+
+    .symbol-display.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      box-shadow: 0 4px 0 #dc2626;
+    }
+
+    .symbol-display.incorrect .symbol-placeholder {
+      color: #991b1b;
+    }
+
+    .hint-toggle-container {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .hint-toggle-btn {
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 2px solid #0ea5e9;
+      border-radius: var(--radius-lg);
+      color: #0369a1;
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .hint-toggle-btn:hover {
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+      transform: translateY(-1px);
+    }
+
+    .hint-toggle-btn:active {
+      transform: translateY(0);
+    }
+
+    .hint-toggle-btn:focus-visible {
+      outline: 3px solid rgba(14, 165, 233, 0.4);
+      outline-offset: 2px;
+    }
+
+    .hint-toggle-btn[aria-pressed="true"] {
+      background: linear-gradient(135deg, #7dd3fc, #38bdf8);
+      color: #0c4a6e;
+    }
+
+    .choices-container {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .symbol-choice {
+      width: 80px;
+      height: 80px;
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 4px solid #0ea5e9;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #0284c7;
+      color: #0369a1;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .symbol-choice:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 #0284c7;
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+    }
+
+    .symbol-choice:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 #0284c7;
+    }
+
+    .symbol-choice:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.35), 0 4px 0 #0284c7;
+    }
+
+    .symbol-choice:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .symbol-choice.selected {
+      background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+      border-color: #8b5cf6;
+      box-shadow: 0 4px 0 #7c3aed;
+      color: #5b21b6;
+    }
+
+    .symbol-choice.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      color: #166534;
+    }
+
+    .symbol-choice.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      box-shadow: 0 4px 0 #dc2626;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 767px) {
+      .comparison-container {
+        gap: var(--space-3);
+      }
+
+      .fraction-side {
+        min-width: 120px;
+        padding: var(--space-3);
+      }
+
+      .fraction-display {
+        font-size: var(--text-3xl);
+      }
+
+      .symbol-display {
+        width: 60px;
+        height: 60px;
+      }
+
+      .symbol-placeholder {
+        font-size: var(--text-3xl);
+      }
+
+      .symbol-choice {
+        width: 70px;
+        height: 70px;
+        font-size: var(--text-3xl);
+      }
+
+      .fraction-bar-container {
+        max-width: 110px;
+        height: 26px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .fraction-side {
+        min-width: 100px;
+        padding: var(--space-2);
+      }
+
+      .fraction-display {
+        font-size: var(--text-2xl);
+      }
+
+      .fraction-display .fraction-numerator {
+        border-bottom-width: 3px;
+        padding-bottom: 4px;
+      }
+
+      .fraction-display .fraction-denominator {
+        padding-top: 4px;
+      }
+
+      .symbol-display {
+        width: 52px;
+        height: 52px;
+      }
+
+      .symbol-placeholder {
+        font-size: var(--text-2xl);
+      }
+
+      .symbol-choice {
+        width: 60px;
+        height: 60px;
+        font-size: var(--text-2xl);
+        border-width: 3px;
+      }
+
+      .fraction-bar-container {
+        max-width: 90px;
+        height: 22px;
+      }
+
+      .hint-toggle-btn {
+        font-size: var(--text-xs);
+        padding: var(--space-1) var(--space-3);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

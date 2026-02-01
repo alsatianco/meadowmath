@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Angle Types Zoo - Grade 4 Math Activity - Meadow Math">
+  <title>Angle Types Zoo - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link">
+            <span data-i18n="activity.backTo">← Back to</span>
+            <span data-i18n="nav.grade4">Grade 4</span>
+          </a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🦒</span>
+            <span data-i18n="section.activities.angle-types.title">Angle Types Zoo</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.angle-types.description">Sort angles into acute, right, or obtuse.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Angle Display -->
+          <div class="angle-display-card">
+            <div class="angle-prompt" data-i18n="section.activities.angle-types.prompt">What type of angle is this?</div>
+            <div class="angle-canvas" id="angle-canvas" aria-label="Angle diagram">
+              <svg id="angle-svg" viewBox="0 0 200 200" aria-hidden="true">
+                <!-- Angle will be drawn here -->
+              </svg>
+            </div>
+            <p class="angle-hint" id="angle-hint" data-i18n="section.activities.angle-types.hint">Look at how open the angle is!</p>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container">
+            <div class="choices-grid" id="choices-grid" role="group" aria-label="Angle type choices">
+              <button class="choice-btn" data-type="acute">
+                <span class="choice-icon" aria-hidden="true">📐</span>
+                <span class="choice-label" data-i18n="section.activities.angle-types.types.acute">Acute</span>
+                <span class="choice-desc" data-i18n="section.activities.angle-types.acuteDesc">Less than 90°</span>
+              </button>
+              <button class="choice-btn" data-type="right">
+                <span class="choice-icon" aria-hidden="true">📏</span>
+                <span class="choice-label" data-i18n="section.activities.angle-types.types.right">Right</span>
+                <span class="choice-desc" data-i18n="section.activities.angle-types.rightDesc">Exactly 90°</span>
+              </button>
+              <button class="choice-btn" data-type="obtuse">
+                <span class="choice-icon" aria-hidden="true">📊</span>
+                <span class="choice-label" data-i18n="section.activities.angle-types.types.obtuse">Obtuse</span>
+                <span class="choice-desc" data-i18n="section.activities.angle-types.obtuseDesc">More than 90°</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.angle-types.great">Great angle sorting!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Angle Types Zoo Activity - Grade 4 Level 5
+    const AngleTypes = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+      currentAngle: null,
+      currentType: null,
+      lastType: null,
+      advanceTimeout: null,
+
+      // Angle ranges for each type (with some buffer to make it clear)
+      angleRanges: {
+        acute: { min: 20, max: 75 },
+        right: { min: 90, max: 90 },
+        obtuse: { min: 105, max: 160 }
+      },
+
+      init() {
+        this.angleSvg = document.getElementById('angle-svg');
+        this.angleHint = document.getElementById('angle-hint');
+        this.choicesGrid = document.getElementById('choices-grid');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.choiceButtons = this.choicesGrid.querySelectorAll('.choice-btn');
+
+        this.choiceButtons.forEach(btn => {
+          btn.addEventListener('click', () => this.checkAnswer(btn.dataset.type));
+        });
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(key);
+          return translated !== key ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      getTypeLabel(type) {
+        return this.getTranslation(`section.activities.angle-types.types.${type}`, type);
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      generateAngle() {
+        // Pick a type, avoiding repeating the same type twice
+        const types = ['acute', 'right', 'obtuse'];
+        let availableTypes = types.filter(t => t !== this.lastType);
+        const type = availableTypes[this.randomInt(0, availableTypes.length - 1)];
+        this.lastType = type;
+        this.currentType = type;
+
+        // Generate angle degrees based on type
+        const range = this.angleRanges[type];
+        const degrees = this.randomInt(range.min, range.max);
+        this.currentAngle = degrees;
+
+        return { degrees, type };
+      },
+
+      drawAngle(degrees) {
+        const svg = this.angleSvg;
+        const cx = 100;
+        const cy = 130;
+        const rayLength = 80;
+
+        // Random rotation to avoid always showing angles in the same orientation
+        const rotation = this.randomInt(0, 359);
+
+        // Convert angle to radians
+        const rad = (degrees * Math.PI) / 180;
+
+        // Calculate second ray endpoint
+        const x2 = cx + rayLength * Math.cos(rad);
+        const y2 = cy - rayLength * Math.sin(rad);
+
+        // First ray is horizontal (pointing right before rotation)
+        const x1 = cx + rayLength;
+        const y1 = cy;
+
+        // Draw angle arc
+        const arcRadius = 25;
+        const arcX = cx + arcRadius * Math.cos(rad / 2);
+        const arcY = cy - arcRadius * Math.sin(rad / 2);
+        const largeArc = degrees > 180 ? 1 : 0;
+
+        // Create arc path
+        const arcStartX = cx + arcRadius;
+        const arcStartY = cy;
+        const arcEndX = cx + arcRadius * Math.cos(rad);
+        const arcEndY = cy - arcRadius * Math.sin(rad);
+
+        // Right angle square indicator
+        const isRight = degrees === 90;
+        const squareSize = 15;
+
+        svg.innerHTML = `
+          <g transform="rotate(${rotation}, ${cx}, ${cy})">
+            <!-- Angle arc -->
+            <path d="M ${arcStartX} ${arcStartY} A ${arcRadius} ${arcRadius} 0 ${largeArc} 0 ${arcEndX} ${arcEndY}"
+                  fill="none" stroke="#f59e0b" stroke-width="3" stroke-dasharray="${isRight ? '0' : '0'}" />
+
+            ${isRight ? `
+            <!-- Right angle square -->
+            <rect x="${cx}" y="${cy - squareSize}" width="${squareSize}" height="${squareSize}"
+                  fill="none" stroke="#f59e0b" stroke-width="2" />
+            ` : ''}
+
+            <!-- First ray (horizontal) -->
+            <line x1="${cx}" y1="${cy}" x2="${x1}" y2="${y1}" stroke="#6366f1" stroke-width="4" stroke-linecap="round" />
+
+            <!-- Second ray -->
+            <line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="#6366f1" stroke-width="4" stroke-linecap="round" />
+
+            <!-- Vertex point -->
+            <circle cx="${cx}" cy="${cy}" r="6" fill="#6366f1" />
+          </g>
+        `;
+      },
+
+      startQuestion() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        // Reset button states
+        this.choiceButtons.forEach(btn => {
+          btn.disabled = false;
+          btn.classList.remove('correct', 'wrong');
+        });
+
+        const { degrees, type } = this.generateAngle();
+        this.drawAngle(degrees);
+        this.renderProgress();
+      },
+
+      checkAnswer(selectedType) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const isCorrect = selectedType === this.currentType;
+
+        this.choiceButtons.forEach(btn => {
+          btn.disabled = true;
+          if (btn.dataset.type === this.currentType) {
+            btn.classList.add('correct');
+          } else if (btn.dataset.type === selectedType && !isCorrect) {
+            btn.classList.add('wrong');
+          }
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = this.getTranslation(
+            'section.activities.angle-types.correct',
+            'Correct! This is an {type} angle.'
+          );
+          this.feedback.textContent = msg.replace('{type}', this.getTypeLabel(this.currentType).toLowerCase());
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const msg = this.getTranslation(
+            'section.activities.angle-types.wrong',
+            'This is an {type} angle ({degrees}°).'
+          );
+          this.feedback.textContent = msg
+            .replace('{type}', this.getTypeLabel(this.currentType).toLowerCase())
+            .replace('{degrees}', this.currentAngle);
+          this.feedback.classList.add('error');
+
+          const wrongBtn = this.choicesGrid.querySelector(`[data-type="${selectedType}"]`);
+          if (wrongBtn && typeof wiggle === 'function') {
+            wiggle(wrongBtn);
+          }
+        }
+
+        this.feedback.classList.add('show');
+
+        this.advanceTimeout = setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.angle-types.perfect',
+            'Perfect angle sorting!'
+          );
+        } else if (percent >= 0.75) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.angle-types.great',
+            'Great angle sorting!'
+          );
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.angle-types.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.angle-types.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.lastType = null;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      },
+
+      updateTranslations() {
+        // Update choice button labels
+        this.choiceButtons.forEach(btn => {
+          const type = btn.dataset.type;
+          const labelEl = btn.querySelector('.choice-label');
+          if (labelEl) {
+            labelEl.textContent = this.getTypeLabel(type);
+          }
+        });
+
+        this.updateProgressLabel();
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => AngleTypes.init());
+      } else {
+        AngleTypes.init();
+      }
+    });
+  </script>
+  <style>
+    /* Angle Types Zoo specific styles */
+
+    .angle-display-card {
+      width: min(400px, 100%);
+      text-align: center;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid #f59e0b;
+      border-radius: var(--radius-2xl);
+      padding: var(--space-5);
+      margin-bottom: var(--space-5);
+      box-shadow: 0 6px 0 #d97706;
+    }
+
+    .angle-prompt {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+      margin-bottom: var(--space-4);
+    }
+
+    .angle-canvas {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 3px solid #fbbf24;
+      padding: var(--space-3);
+      margin-bottom: var(--space-3);
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #angle-svg {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+    }
+
+    .angle-hint {
+      font-size: var(--text-base);
+      color: #92400e;
+      font-style: italic;
+      margin: 0;
+    }
+
+    .choices-container {
+      width: min(560px, 100%);
+      margin-bottom: var(--space-4);
+    }
+
+    .choices-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+    }
+
+    .choice-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-4) var(--space-3);
+      min-height: 120px;
+      border-radius: var(--radius-xl);
+      border: 3px solid #c4b5fd;
+      background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+      color: #4c1d95;
+      font-family: var(--font-secondary);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      box-shadow: 0 4px 0 rgba(76, 29, 149, 0.2);
+    }
+
+    .choice-icon {
+      font-size: var(--text-2xl);
+    }
+
+    .choice-label {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+    }
+
+    .choice-desc {
+      font-size: var(--text-sm);
+      color: #6b7280;
+      font-weight: var(--weight-normal);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 rgba(76, 29, 149, 0.25);
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 rgba(76, 29, 149, 0.2);
+    }
+
+    .choice-btn:focus-visible {
+      outline: 3px solid rgba(139, 92, 246, 0.5);
+      outline-offset: 2px;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 rgba(22, 101, 52, 0.3);
+    }
+
+    .choice-btn.wrong {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      color: #991b1b;
+      box-shadow: 0 4px 0 rgba(153, 27, 27, 0.3);
+    }
+
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 560px) {
+      .choices-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-2);
+      }
+
+      .choice-btn {
+        flex-direction: row;
+        min-height: 70px;
+        padding: var(--space-3);
+        gap: var(--space-3);
+      }
+
+      .choice-icon {
+        font-size: var(--text-xl);
+      }
+
+      .choice-label {
+        font-size: var(--text-base);
+      }
+
+      .choice-desc {
+        display: none;
+      }
+
+      .angle-display-card {
+        padding: var(--space-4);
+      }
+
+      .angle-prompt {
+        font-size: var(--text-lg);
+      }
+
+      .angle-hint {
+        font-size: var(--text-sm);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

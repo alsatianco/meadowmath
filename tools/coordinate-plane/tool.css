@@ -1,0 +1,121 @@
+/* Coordinate Plane Tool Styles */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-size: var(--text-xl);
+  color: var(--color-neutral-600);
+  background: white;
+  border: 2px solid var(--color-neutral-200);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.back-link:hover {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+/* Coordinate SVG */
+.coordinate-svg {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  aspect-ratio: 1;
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.08), 0 6px 16px rgba(0, 0, 0, 0.08);
+  cursor: crosshair;
+}
+
+/* Grid lines */
+.grid-line {
+  stroke: #e2e8f0;
+  stroke-width: 1;
+}
+
+.axis-line {
+  stroke: var(--color-primary-dark);
+  stroke-width: 2;
+}
+
+/* Axis labels */
+.axis-label {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  fill: var(--color-neutral-600);
+  text-anchor: middle;
+}
+
+.axis-title {
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  font-weight: 700;
+  fill: var(--color-primary-dark);
+}
+
+/* Points */
+.point {
+  fill: var(--color-accent-pink);
+  stroke: white;
+  stroke-width: 2;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.point:hover {
+  r: 10;
+  fill: var(--color-accent-orange);
+}
+
+.point-label {
+  font-family: var(--font-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  fill: var(--color-primary-dark);
+  pointer-events: none;
+}
+
+/* Segments */
+.segment {
+  stroke: var(--color-secondary);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+/* Hover indicator */
+.hover-indicator {
+  fill: rgba(0, 201, 201, 0.3);
+  stroke: var(--color-secondary);
+  stroke-width: 2;
+  stroke-dasharray: 4, 4;
+  pointer-events: none;
+}
+
+.hover-coords {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--color-secondary);
+  pointer-events: none;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .coordinate-svg {
+    max-width: 100%;
+  }
+
+  .axis-label {
+    font-size: 10px;
+  }
+
+  .point-label {
+    font-size: 10px;
+  }
+}

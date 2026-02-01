@@ -1,52 +1,1142 @@
 {
   "title": "Grade 4 Activities",
-  "description": "Learning to share and divide equally",
+  "description": "Place value, operations, fractions, decimals, and geometry",
   "levels": {
     "level1": {
-      "title": "Level 1",
-      "description": "Multi-digit multiplication"
+      "title": "Place Value, Rounding & Add/Sub Algorithms",
+      "goal": "Represent, compare, and round numbers to 1,000,000 and add/subtract multi-digit numbers with meaning.",
+      "learnMore": {
+        "g4-l1-big-idea": {
+          "title": "Big idea",
+          "content": "Multi-digit numbers are built from place values. When kids can *see* a number as hundred-thousands, ten-thousands, thousands, hundreds, tens, and ones, comparing, rounding, and adding/subtracting become much calmer and more reliable."
+        },
+        "g4-l1-notice": {
+          "title": "What to notice",
+          "content": "* Compares by looking left first (biggest place value).\n* Uses zeros as \"empty places,\" not \"nothing to ignore.\"\n* Rounds by thinking \"which multiple is closer?\"\n* Checks an exact answer with an estimate."
+        },
+        "g4-l1-home": {
+          "title": "Try at home",
+          "content": "* **Game A: \"Build a Number\"** Write digits 0-9 on cards. Draw a place-value chart labeled hundred-thousands, ten-thousands, thousands, hundreds, tens, and ones. Draw six cards to build the biggest number, the smallest number, and a number close to 500,000.\n* **Game B: \"Estimate Then Check\"** Pick two prices or counts from real life (groceries, steps, views). Round each, add/subtract the rounded numbers, then compare to the exact total."
+        },
+        "g4-l1-videos": {
+          "title": "Optional videos",
+          "content": "**Search on YouTube:**\n* <a href=\"https://www.youtube.com/results?search_query=place+value+to+one+million+grade+4\" target=\"_blank\" rel=\"noopener noreferrer\">place value to one million (grade 4)</a>\n* <a href=\"https://www.youtube.com/results?search_query=rounding+multi+digit+numbers+to+any+place\" target=\"_blank\" rel=\"noopener noreferrer\">rounding multi-digit numbers to any place</a>\n* <a href=\"https://www.youtube.com/results?search_query=standard+algorithm+addition+subtraction+with+regrouping+grade+4\" target=\"_blank\" rel=\"noopener noreferrer\">addition & subtraction with regrouping (grade 4)</a>\n\n**Extra practice:**\n* <a href=\"https://www.khanacademy.org/math/cc-fourth-grade-math\" target=\"_blank\" rel=\"noopener noreferrer\">Khan Academy: 4th grade (Common Core)</a>"
+        }
+      }
     },
     "level2": {
-      "title": "Level 2",
-      "description": "Long division"
+      "title": "Factors, Multiples & Multi-Digit Multiply/Divide",
+      "goal": "Use structure (factors/multiples) and models to multiply and divide larger numbers, then connect to efficient methods.",
+      "learnMore": {
+        "g4-l2-big-idea": {
+          "title": "Big idea",
+          "content": "Multiplication and division are about *groups* and *arrays*. The area model and partial products show why the algorithms work, so \"carrying\" and \"bringing down\" don't feel like magic."
+        },
+        "g4-l2-notice": {
+          "title": "What to notice",
+          "content": "* Can find factor pairs by making rectangles.\n* Uses distributive thinking (20 x 14 plus 3 x 14).\n* In division, checks by multiplying the quotient back.\n* Treats remainders based on the story (leftovers or \"need another box\")."
+        },
+        "g4-l2-home": {
+          "title": "Try at home",
+          "content": "* **Game A: \"Rectangle Detective\"** Choose a number (24, 30, 36). Find all rectangles you can build with small objects or drawn grids. Each rectangle is a factor pair.\n* **Game B: \"Shopping Packs\"** Pretend you buy 128 stickers in packs of 6. How many full packs? How many left? Would you buy one extra pack?"
+        },
+        "g4-l2-videos": {
+          "title": "Optional videos",
+          "content": "**Search on YouTube:**\n* <a href=\"https://www.youtube.com/results?search_query=area+model+two+digit+by+two+digit+multiplication\" target=\"_blank\" rel=\"noopener noreferrer\">area model for 2-digit x 2-digit</a>\n* <a href=\"https://www.youtube.com/results?search_query=partial+quotients+division+grade+4\" target=\"_blank\" rel=\"noopener noreferrer\">partial quotients division (grade 4)</a>\n* <a href=\"https://www.youtube.com/results?search_query=factors+and+multiples+for+kids+grade+4\" target=\"_blank\" rel=\"noopener noreferrer\">factors and multiples (grade 4)</a>\n\n**Extra curriculum links:**\n* <a href=\"https://curriculum.illustrativemathematics.org/K5/teachers/grade-4/units.html\" target=\"_blank\" rel=\"noopener noreferrer\">Illustrative Mathematics: Grade 4 units</a>\n* <a href=\"https://resources.finalsite.net/images/v1727715667/issaquah/zzhjlpfaqluytiwngu3p/EurekaMathOverviewFourthGrade.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Eureka Math: Grade 4 module overview (PDF)</a>"
+        }
+      }
     },
     "level3": {
-      "title": "Level 3",
-      "description": "Equivalent fractions"
+      "title": "Fractions & Mixed Numbers",
+      "goal": "Understand fractions as numbers, find equivalent fractions, compare them, and add/subtract with like denominators.",
+      "learnMore": {
+        "g4-l3-big-idea": {
+          "title": "Big idea",
+          "content": "Fractions are numbers with a *location* (number line) and a *size*. Equivalent fractions are simply different names for the same size. When denominators match, adding and subtracting is about combining or removing equal parts."
+        },
+        "g4-l3-notice": {
+          "title": "What to notice",
+          "content": "* Places fractions correctly between 0 and 1 (or beyond 1).\n* Knows that multiplying top and bottom by the same number keeps the value the same.\n* Uses benchmarks (1/2, 1) instead of guessing.\n* With like denominators, add/subtract the numerators while keeping the denominator."
+        },
+        "g4-l3-home": {
+          "title": "Try at home",
+          "content": "* **Game A: \"Fraction Strip Race\"** Draw a strip for 1 whole. Fold it (or mark) into 2, 3, 4, 6, 8 equal parts. Find pairs that are equal sizes (1/2 = 2/4 = 4/8).\n* **Game B: \"Recipe Double\"** Pick a simple recipe step: \"Use 2/3 cup.\" Ask: \"What is 2 x 2/3?\" Use a measuring cup picture or draw the fraction."
+        },
+        "g4-l3-videos": {
+          "title": "Optional videos",
+          "content": "Search on YouTube:\n* <a href=\"https://www.youtube.com/results?search_query=equivalent+fractions+using+number+lines+and+models\" target=\"_blank\" rel=\"noopener noreferrer\">equivalent fractions with models</a>\n* <a href=\"https://www.youtube.com/results?search_query=add+and+subtract+fractions+with+like+denominators+grade+4\" target=\"_blank\" rel=\"noopener noreferrer\">add/sub fractions with like denominators</a>\n* <a href=\"https://www.youtube.com/results?search_query=mixed+numbers+and+improper+fractions+grade+4\" target=\"_blank\" rel=\"noopener noreferrer\">mixed numbers and improper fractions</a>\n\nProblem-solving extensions:\n* <a href=\"https://nrich.maths.org/articles/exploring-fractions\" target=\"_blank\" rel=\"noopener noreferrer\">NRICH: Exploring Fractions (tasks)</a>\n* <a href=\"https://www.youcubed.org/wim/fraction-puzzles-4-7/\" target=\"_blank\" rel=\"noopener noreferrer\">YouCubed: Fraction Puzzles</a>"
+        }
+      }
     },
     "level4": {
-      "title": "Level 4",
-      "description": "Decimals introduction"
+      "title": "Decimals, Measurement & Data",
+      "goal": "Connect fractions to decimals (tenths/hundredths), convert units within a system, and solve measurement/data problems.",
+      "learnMore": {
+        "g4-l4-big-idea": {
+          "title": "Big idea",
+          "content": "Decimals are another way to name fractions with denominators 10 and 100. Measurement problems get easier when kids keep track of *units* and use conversions as \"multiply or divide by a known factor.\""
+        },
+        "g4-l4-notice": {
+          "title": "What to notice",
+          "content": "* Reads 0.4 as \"four tenths,\" not \"zero point four.\"\n* Compares decimals by tenths first, then hundredths.\n* Writes units with answers (cm, in, m, ft).\n* Distinguishes area (square units) from perimeter (units)."
+        },
+        "g4-l4-home": {
+          "title": "Try at home",
+          "content": "* **Game A: \"Hundred Grid Art\"** Shade 0.36, 0.5, 0.08 on hundred grids (10x10). Write each as a fraction over 100, and over 10 when possible.\n* **Game B: \"Measure + Convert\"** Measure a table edge in inches. Convert to feet and inches. Then measure in centimeters and compare."
+        },
+        "g4-l4-videos": {
+          "title": "Optional videos",
+          "content": "Search on YouTube:\n* <a href=\"https://www.youtube.com/results?search_query=tenths+and+hundredths+decimals+for+kids\" target=\"_blank\" rel=\"noopener noreferrer\">tenths and hundredths decimals</a>\n* <a href=\"https://www.youtube.com/results?search_query=convert+units+grade+4+measurement\" target=\"_blank\" rel=\"noopener noreferrer\">unit conversions (grade 4)</a>\n* <a href=\"https://www.youtube.com/results?search_query=area+and+perimeter+grade+4\" target=\"_blank\" rel=\"noopener noreferrer\">area and perimeter (grade 4)</a>\n\nOptional programs:\n* <a href=\"https://www.hmhco.com/programs/math-in-focus\" target=\"_blank\" rel=\"noopener noreferrer\">Math in Focus (Singapore Math approach)</a>"
+        }
+      }
     },
     "level5": {
-      "title": "Level 5",
-      "description": "Geometry"
-    },
-    "level6": {
-      "title": "Level 6",
-      "description": "Word problems"
+      "title": "Angles & Shape Properties",
+      "goal": "Measure and draw angles, understand lines and symmetry, and classify shapes by properties.",
+      "learnMore": {
+        "g4-l5-big-idea": {
+          "title": "Big idea",
+          "content": "Geometry is about *relationships*: how lines meet, how angles measure \"turn,\" and how shapes can be sorted by properties. When students can name properties, they can explain *why* a shape belongs in a category."
+        },
+        "g4-l5-notice": {
+          "title": "What to notice",
+          "content": "* Recognizes right angles even when rotated.\n* Measures angles by aligning the baseline first.\n* Uses \"parallel\" as \"never meet\" and \"perpendicular\" as \"make right angles.\"\n* Classifies a square as a special rectangle (and a special rhombus)."
+        },
+        "g4-l5-home": {
+          "title": "Try at home",
+          "content": "* **Game A: \"Angle Hunt\"** Find 5 angles in your home (book corner, door hinge, table). Label each as acute/right/obtuse.\n* **Game B: \"Fold Symmetry\"** Cut out simple shapes from paper. Fold to test for symmetry lines. Draw the fold lines."
+        },
+        "g4-l5-videos": {
+          "title": "Optional videos",
+          "content": "Search on YouTube:\n* <a href=\"https://www.youtube.com/results?search_query=measuring+angles+with+a+protractor+grade+4\" target=\"_blank\" rel=\"noopener noreferrer\">measuring angles with a protractor</a>\n* <a href=\"https://www.youtube.com/results?search_query=parallel+and+perpendicular+lines+for+kids\" target=\"_blank\" rel=\"noopener noreferrer\">parallel and perpendicular lines</a>\n* <a href=\"https://www.youtube.com/results?search_query=classifying+quadrilaterals+grade+4\" target=\"_blank\" rel=\"noopener noreferrer\">classifying quadrilaterals</a>\n\nChallenge puzzles:\n* <a href=\"https://beastacademy.com/books/4A\" target=\"_blank\" rel=\"noopener noreferrer\">Beast Academy Level 4 (advanced/puzzle style)</a>"
+        }
+      }
     }
   },
   "activities": {
-    "multiDigitMultiply": {
+    "place-value-to-million": {
+      "title": "Place Value to 1,000,000 Telescope",
+      "description": "Build big numbers using a place-value chart.",
+      "instruction": "Build the number shown using the place-value chart!",
+      "prompt": "Build {number}",
+      "buildNumber": "Build this number:",
+      "hundredThousands": "Hundred Thousands",
+      "tenThousands": "Ten Thousands",
+      "thousands": "Thousands",
+      "hundreds": "Hundreds",
+      "tens": "Tens",
+      "ones": "Ones",
+      "perfect": "Amazing place value work!",
+      "great": "Great job building big numbers!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "expanded-form-million": {
+      "title": "Expanded Form Million Match",
+      "description": "Match a number to its expanded form.",
+      "instruction": "Match each number to its expanded form!",
+      "selectPair": "Select a number, then select its expanded form!",
+      "numbers": "Numbers",
+      "expandedForms": "Expanded Forms",
+      "matchesFound": "Matches found:",
+      "perfect": "Perfect matching skills!",
+      "great": "Great job matching expanded forms!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "compare-order-big": {
+      "title": "Compare & Order Big Numbers",
+      "description": "Compare and sort large numbers.",
+      "instruction": "Compare the numbers using >, <, or = then order them!",
+      "partA": "Part A: Compare",
+      "partB": "Part B: Order",
+      "whichSymbol": "Which symbol makes this true?",
+      "orderPrompt": "Put these numbers in order from least to greatest!",
+      "least": "Least",
+      "greatest": "Greatest",
+      "slot": "Slot",
+      "empty": "empty",
+      "clickToRemove": "click to remove",
+      "perfect": "Amazing comparison skills!",
+      "great": "Great job comparing and ordering numbers!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "round-any-place": {
+      "title": "Round Anywhere",
+      "description": "Round a number to the nearest 10, 100, 1,000, 10,000, or 100,000.",
+      "instruction": "Round the number to the place shown!",
+      "roundPrompt": "Round",
+      "toNearest": "to the nearest",
+      "hint": "Which multiple is closer?",
+      "ten": "ten",
+      "hundred": "hundred",
+      "thousand": "thousand",
+      "tenThousand": "ten thousand",
+      "hundredThousand": "hundred thousand",
+      "roundsTo": "rounds to",
+      "perfect": "Amazing rounding skills!",
+      "great": "Great rounding skills!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "add-sub-multi-digit": {
+      "title": "Add & Subtract Multi-Digit",
+      "description": "Add and subtract big numbers with regrouping.",
+      "instruction": "Solve the problem step by step!",
+      "whatIsAnswer": "What is the answer?",
+      "addition": "Addition",
+      "subtraction": "Subtraction",
+      "showHint": "Show hint",
+      "hideHint": "Hide hint",
+      "onesLabel": "O",
+      "tensLabel": "T",
+      "hundredsLabel": "H",
+      "thousandsLabel": "Th",
+      "ten thousandsLabel": "TTh",
+      "hundred thousandsLabel": "HTh",
+      "writeCarry": "Write {digit}, carry {carry}",
+      "writeDigit": "Write {digit}",
+      "borrowNote": "Borrow from next place",
+      "carryOver": "Carry",
+      "perfect": "Amazing calculation skills!",
+      "great": "Great work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "estimate-sum-diff": {
+      "title": "Estimate First",
+      "description": "Estimate by rounding, then solve exactly.",
+      "instruction": "Estimate by rounding, then solve exactly!",
+      "step1": "Step 1: Estimate first!",
+      "step2": "Step 2: Find the exact answer!",
+      "step3": "Step 3: Is the exact answer close to your estimate?",
+      "whatEstimate": "What is your estimate?",
+      "estimateLabel": "Estimate:",
+      "whatExact": "What is the exact answer?",
+      "closeToEstimate": "Is the exact answer close to the estimate?",
+      "roundToNearest": "Round to the nearest:",
+      "yes": "Yes, it's close!",
+      "no": "No, it's not close",
+      "incorrectEstimate": "The estimate is {answer}",
+      "incorrectExact": "The exact answer is {answer}",
+      "yesClose": "Yes! {estimate} is close to {exact} (difference: {diff})",
+      "noNotClose": "That's right! {estimate} and {exact} are {diff} apart.",
+      "actuallyClose": "Actually, {estimate} is close to {exact} (only {diff} apart)!",
+      "actuallyNotClose": "Actually, {estimate} and {exact} are {diff} apart - that's a bigger gap.",
+      "perfect": "Amazing estimation skills!",
+      "great": "Great work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "number-line-zoom": {
+      "title": "Number Line Zoom",
+      "description": "Place a number on a zoomed number line.",
+      "instruction": "Tap where the number belongs on the number line!",
+      "placeNumber": "Place this number:",
+      "checkAnswer": "Check My Answer",
+      "correctMsg": "Great placement!",
+      "incorrectMsg": "The correct spot is {target}",
+      "perfect": "Amazing number line skills!",
+      "great": "Great estimation!",
+      "keepPracticing": "Keep practicing!",
+      "sliderLabel": "Zoomed number line"
+    },
+    "add-sub-word-problems": {
+      "title": "Two-Step Add/Sub Stories",
+      "description": "Solve short stories with big numbers.",
+      "instruction": "Read the story and solve!",
+      "step1": "Step 1: Choose the first operation",
+      "step2": "Step 2: Choose the second operation",
+      "step3": "Step 3: About how much?",
+      "step4": "Step 4: What is the final answer?",
+      "whatOperation1": "What operation do we use first?",
+      "whatOperation2": "What operation do we use next?",
+      "aboutHowMuch": "About how much?",
+      "roundToNearest": "Round to the nearest:",
+      "whatAnswer": "What is the final answer?",
+      "stepLabel1": "Step 1:",
+      "stepLabel2": "Step 2:",
+      "operationChoicesLabel": "Operation choices",
+      "estimateChoicesLabel": "Estimate choices",
+      "answerChoicesLabel": "Answer choices",
+      "estimateChoiceLabel": "Estimate {value}",
+      "answerChoiceLabel": "Select {value}",
+      "loadingStory": "Loading story...",
+      "someone": "Someone",
+      "pronouns": {
+        "they": "They",
+        "theyLower": "they",
+        "he": "He",
+        "heLower": "he",
+        "she": "She",
+        "sheLower": "she"
+      },
+      "stories": {
+        "balloons": {
+          "template": "{name} has {a} balloons. {pronoun} buys {b} more, then gives {c} away.",
+          "question": "How many balloons does {name} have now?"
+        },
+        "library": {
+          "template": "A library has {a} books. They buy {b} new books, then donate {c} old books.",
+          "question": "How many books does the library have now?"
+        },
+        "fieldTrip": {
+          "template": "{name} has {a} tickets. {pronoun} sells {b} tickets, then sells {c} more.",
+          "question": "How many tickets are left?"
+        },
+        "stickers": {
+          "template": "{name} collects {a} stickers. {pronoun} trades away {b} stickers and then gets {c} new ones.",
+          "question": "How many stickers does {name} have now?"
+        },
+        "busStops": {
+          "template": "A bus has {a} passengers. At the first stop, {b} people get off. At the second stop, {c} people get on.",
+          "question": "How many passengers are on the bus now?"
+        },
+        "savings": {
+          "template": "{name} saves ${a}. {pronoun} spends ${b} on a project and then earns ${c} doing chores.",
+          "question": "How much money does {name} have now?"
+        },
+        "birds": {
+          "template": "There are {a} birds in a park. {b} birds fly away, then {c} more birds arrive.",
+          "question": "How many birds are in the park now?"
+        },
+        "candies": {
+          "template": "{name} has {a} candies. {pronoun} gets {b} more from a friend, then eats {c} candies.",
+          "question": "How many candies does {name} have now?"
+        }
+      },
+      "incorrectOp1": "The first operation is {op}",
+      "incorrectOp2": "The second operation is {op}",
+      "estimateCorrect": "Nice estimate!",
+      "incorrectEstimate": "A good estimate is {answer}",
+      "incorrectAnswer": "The answer is {answer}",
+      "addition": "addition (+)",
+      "subtraction": "subtraction (-)",
+      "perfect": "Amazing problem-solving!",
+      "great": "Great thinking!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "factor-pairs": {
+      "title": "Factor Pairs Garden",
+      "description": "Grow rectangles to find factor pairs.",
+      "instruction": "Find all the factor pairs by building rectangles!",
+      "targetNumber": "Target number",
+      "buildRectangle": "Build a rectangle",
+      "rows": "Rows",
+      "columns": "Columns",
+      "hint": "Rows × Columns = Total",
+      "checkPair": "Check Pair",
+      "gardenPlot": "Garden plot",
+      "pairsFound": "Pairs found",
+      "foundPair": "{rows} × {cols} is a factor pair.",
+      "notMatch": "That makes {product}, not {target}.",
+      "alreadyFound": "You already found {rows} × {cols}. Try a new pair!",
+      "allFound": "All pairs found for {target}!",
+      "perfect": "Perfect factor work!",
+      "great": "Great factor hunting!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "prime-composite": {
+      "title": "Prime or Composite Sort",
+      "description": "Sort numbers into prime or composite.",
+      "instruction": "Sort each number into prime or composite!",
+      "hint": "Try a rectangle: if it can make a non-1×N rectangle → composite.",
+      "primeLabel": "Prime",
+      "compositeLabel": "Composite",
+      "numbersLabel": "Numbers to sort",
+      "numberLabel": "Number {number}. Press 1 for Prime, 2 for Composite.",
+      "clickToRemove": "Click to remove",
+      "sortAll": "Sort all the numbers first!",
+      "correct": "Nice sorting!",
+      "tryAgain": "Not quite. Try again!",
+      "perfect": "Prime sorting superstar!",
+      "great": "Great prime/composite sorting!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "area-model-multiply": {
+      "title": "Area Model Multiply",
+      "description": "Multiply using a rectangle split into tens and ones.",
+      "instruction": "Fill in the area model to find the product!",
+      "problemLabel": "Multiply",
+      "breakdownLabel": "Break it apart",
+      "modelLabel": "Area model",
+      "totalLabel": "Total product",
+      "partialLabel": "Partial product for {a} × {b}",
+      "fillAll": "Fill in all the boxes first!",
+      "correct": "Nice area model!",
+      "tryAgain": "Not quite. Try again!",
+      "perfect": "Area model master!",
+      "great": "Great multiplication work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "partial-products": {
+      "title": "Partial Products Builder",
+      "description": "Build partial products and add them up.",
+      "instruction": "Break apart and multiply, then add!",
+      "problemLabel": "Multiply",
+      "breakdownLabel": "Break it apart",
+      "partialsLabel": "Partial products",
+      "sumLabel": "Add the partial products",
+      "totalLabel": "Total product",
+      "partialLabel": "Partial product for {a} × {b}",
+      "fillAll": "Fill in all the boxes first!",
+      "correct": "Nice partial products!",
+      "tryAgain": "Not quite. Try again!",
+      "perfect": "Partial products pro!",
+      "great": "Great multiplication work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "multiply-2x2": {
       "title": "Multi-Digit Multiplication",
-      "description": "Multiply larger numbers",
-      "instruction": "Find the product"
+      "description": "Practice 2-digit by 2-digit multiplication.",
+      "instruction": "Multiply the numbers!",
+      "problemLabel": "Multiply",
+      "scaffoldTitle": "Partial products view",
+      "scaffoldChip": "Use the parts",
+      "algorithmLabel": "Standard algorithm",
+      "onesRowLabel": "Ones row (× {digit})",
+      "finalLabel": "Final product",
+      "onesRowPrompt": "Find the ones row for × {digit}.",
+      "finalPrompt": "Find the final product.",
+      "answerLabel": "Your answer",
+      "answerAria": "Answer for {step}",
+      "enterAnswer": "Type an answer first!",
+      "correct": "Nice multiplication!",
+      "tryAgain": "Not quite. Try again!",
+      "perfect": "Multiplication master!",
+      "great": "Great work!",
+      "keepPracticing": "Keep practicing!"
     },
-    "longDivision": {
-      "title": "Long Division",
-      "description": "Divide step by step",
-      "instruction": "What is the quotient?"
+    "divide-place-value": {
+      "title": "Divide with Place Value",
+      "description": "Share a big number into equal groups.",
+      "instruction": "Divide by taking chunks at each place value!",
+      "problemLabel": "Divide",
+      "chunkTitle": "Place-value chunks",
+      "chunkHint": "Find how many groups are in each chunk.",
+      "divisorChip": "Divide by {divisor}",
+      "hundredsLabel": "Hundreds chunk",
+      "tensLabel": "Tens chunk",
+      "onesLabel": "Ones chunk",
+      "chunkEquation": "{chunk} ÷ {divisor} =",
+      "chunkInputLabel": "Groups for {chunk}",
+      "totalLabel": "Total quotient",
+      "remainderLabel": "Remainder",
+      "remainderNote": "Use 0 if none.",
+      "leftoverLabel": "Leftover blocks",
+      "leftoverNone": "No leftovers",
+      "fillAll": "Fill in all the boxes first!",
+      "correct": "Nice division!",
+      "tryAgain": "Not quite. Try again!",
+      "perfect": "Division champ!",
+      "great": "Great dividing!",
+      "keepPracticing": "Keep practicing!"
     },
-    "equivalentFractions": {
-      "title": "Equivalent Fractions",
-      "description": "Find fractions that are equal",
-      "instruction": "Which fractions are the same?"
+    "division-remainders": {
+      "title": "Remainder Stories",
+      "description": "Decide what the remainder means in a story.",
+      "instruction": "Read the story and decide what to do with the remainder!",
+      "loadingStory": "Loading story...",
+      "divisionTitle": "Solve the division:",
+      "divisionAriaLabel": "Division equation",
+      "remainderShort": "R",
+      "decisionTitle": "What does the remainder tell you?",
+      "choicesAriaLabel": "Remainder choices",
+      "choices": {
+        "leftover": "Remainder left over",
+        "extraGroup": "Need one more group",
+        "roundDown": "Round down to full groups"
+      },
+      "explain": {
+        "leftover": "The remainder shows items left over. That's {remainder} left.",
+        "extraGroup": "You need one more group because {remainder} are still left.",
+        "roundDown": "Count only full groups. {remainder} don't fit."
+      },
+      "perfect": "Remainder expert!",
+      "great": "Great remainder reasoning!",
+      "keepPracticing": "Keep practicing!",
+      "stories": {
+        "cupcakes": {
+          "template": "{total} cupcakes are packed into boxes of {group}.",
+          "question": "How many cupcakes are left over?"
+        },
+        "stickers": {
+          "template": "{total} stickers are packed into bundles of {group}.",
+          "question": "How many stickers are left over?"
+        },
+        "apples": {
+          "template": "{total} apples go into baskets of {group}.",
+          "question": "How many apples are left over?"
+        },
+        "buses": {
+          "template": "{total} students are going on a trip. Each bus holds {group} students.",
+          "question": "How many buses are needed?"
+        },
+        "tables": {
+          "template": "{total} guests sit at tables with {group} seats each.",
+          "question": "How many tables are needed?"
+        },
+        "gift-bags": {
+          "template": "{total} party favors go into bags of {group}.",
+          "question": "How many bags are needed?"
+        },
+        "teams": {
+          "template": "{total} players make teams of {group}.",
+          "question": "How many full teams can they make?"
+        },
+        "shelves": {
+          "template": "{total} books go on shelves that hold {group} books each.",
+          "question": "How many full shelves can be filled?"
+        }
+      }
     },
-    "decimalPlace": {
-      "title": "Decimal Place Value",
-      "description": "Learn tenths and hundredths",
-      "instruction": "What is the decimal?"
+    "multi-step-md": {
+      "title": "Multi-Step Multiply/Divide Problems",
+      "description": "Solve 1-2 step word problems with multiply and divide.",
+      "instruction": "Read carefully and solve step by step!",
+      "step1": "Step 1: Choose the first operation",
+      "step2": "Step 2: Choose the second operation",
+      "step3": "Step 3: What is the final answer?",
+      "whatOperation1": "What operation do we use first?",
+      "whatOperation2": "What operation do we use next?",
+      "whatAnswer": "What is the final answer?",
+      "stepLabel1": "Step 1:",
+      "stepLabel2": "Step 2:",
+      "loadingStory": "Loading story...",
+      "operationChoicesLabel": "Operation choices",
+      "answerChoicesLabel": "Answer choices",
+      "answerChoiceLabel": "Select {value}",
+      "barModelTitle": "Bar model",
+      "barGroupsOf": "{groups} groups of {each}",
+      "barDivideLabel": "Split into {groups} groups",
+      "barTotalLabel": "Total {total}",
+      "multiplication": "multiplication (×)",
+      "division": "division (÷)",
+      "incorrectOp1": "The first operation is {op}",
+      "incorrectOp2": "The second operation is {op}",
+      "incorrectAnswer": "The answer is {answer}",
+      "perfect": "Amazing problem-solving!",
+      "great": "Great thinking!",
+      "keepPracticing": "Keep practicing!",
+      "stories": {
+        "gardenPots": {
+          "template": "{name} grows {a} trays with {b} flowers each. The flowers are shared equally among {c} neighbors.",
+          "question": "How many flowers does each neighbor get?"
+        },
+        "classArtwork": {
+          "template": "A class has {a} drawings for one hallway. They place {b} drawings on each wall. They have {c} identical hallways.",
+          "question": "How many wall displays do they make in all?"
+        },
+        "sportsBottles": {
+          "template": "{name} coaches {a} teams with {b} players each. Each player gets {c} water bottles.",
+          "question": "How many water bottles are needed?"
+        },
+        "pizzaSlices": {
+          "template": "A pizza shop bakes {a} trays with {b} slices each. The slices are split into {c} boxes.",
+          "question": "How many slices go in each box?"
+        },
+        "museumTickets": {
+          "template": "A museum prints {a} tickets for one event day. They pack {b} tickets per bundle. There are {c} event days.",
+          "question": "How many bundles are there in all?"
+        },
+        "bookFair": {
+          "template": "The book fair sets up {a} shelves with {b} books on each shelf. The books are shared among {c} classrooms.",
+          "question": "How many books does each classroom get?"
+        },
+        "gardenFences": {
+          "template": "A gardener builds {a} rows with {b} fence posts each. They build {c} gardens like this.",
+          "question": "How many fence posts are needed?"
+        },
+        "marathonMedals": {
+          "template": "A race has {a} medals for one day. They place {b} medals in each case. There are {c} race days.",
+          "question": "How many medal cases are needed in all?"
+        }
+      }
+    },
+    "fraction-number-line": {
+      "title": "Fraction Number Line Walk",
+      "description": "Place fractions on number lines (0-1 and 0-2).",
+      "instruction": "Tap where the fraction belongs!",
+      "placeFraction": "Place this fraction:",
+      "checkAnswer": "Check My Answer",
+      "correctMsg": "Perfect placement!",
+      "incorrectMsg": "The correct spot is {fraction}",
+      "perfect": "Amazing fraction placement!",
+      "great": "Great number line work!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!",
+      "sliderLabel": "Number line from 0 to {max}"
+    },
+    "equivalent-fractions": {
+      "title": "Equivalent Fractions Builder",
+      "description": "Build equivalent fractions with strips.",
+      "instruction": "Build a fraction that equals the one shown!",
+      "targetLabel": "Target fraction",
+      "buildLabel": "Build an equivalent fraction",
+      "shadedLabel": "Shaded parts",
+      "hint": "Use + and − to shade parts.",
+      "addPartLabel": "Add one shaded part",
+      "removePartLabel": "Remove one shaded part",
+      "correctMsg": "Equivalent fraction built!",
+      "incorrectMsg": "Not quite. The equivalent fraction is {numerator}/{denominator}.",
+      "perfect": "Fantastic fraction building!",
+      "great": "Great job with equivalence!",
+      "good": "Nice work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "compare-fractions": {
+      "title": "Compare Fractions",
+      "description": "Choose >, <, or = using visual help.",
+      "instruction": "Which symbol makes the comparison true?",
+      "showHint": "Show fraction bars",
+      "hideHint": "Hide fraction bars",
+      "correct": "Correct!",
+      "wrong": "The answer is {symbol}",
+      "perfect": "Amazing comparison skills!",
+      "great": "Great fraction work!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "add-like-fractions": {
+      "title": "Add Like Fractions",
+      "description": "Add fractions with the same denominator.",
+      "instruction": "Add the fractions!",
+      "prompt": "Choose the sum.",
+      "firstFraction": "First fraction",
+      "secondFraction": "Second fraction",
+      "sumFraction": "Sum",
+      "answerChoicesLabel": "Answer choices",
+      "choiceLabel": "Fraction {numerator} over {denominator}",
+      "correct": "Correct!",
+      "incorrect": "The sum is {numerator}/{denominator}.",
+      "perfect": "Perfect fraction addition!",
+      "great": "Great adding!",
+      "good": "Nice work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "subtract-like-fractions": {
+      "title": "Subtract Like Fractions",
+      "description": "Subtract fractions with the same denominator.",
+      "instruction": "Subtract the fractions!",
+      "prompt": "Choose the difference.",
+      "firstFraction": "Starting fraction",
+      "secondFraction": "Subtract",
+      "differenceFraction": "Difference",
+      "answerChoicesLabel": "Answer choices",
+      "choiceLabel": "Fraction {numerator} over {denominator}",
+      "correct": "Correct!",
+      "incorrect": "The difference is {numerator}/{denominator}.",
+      "perfect": "Perfect fraction subtraction!",
+      "great": "Great subtracting!",
+      "good": "Nice work!",
+      "keepPracticing": "Keep practicing!",
+      "progressLabel": "Progress",
+      "progressItemLabel": "Question {current} of {total}: {status}",
+      "progressStatusCompleted": "completed",
+      "progressStatusCurrent": "current",
+      "progressStatusPending": "up next"
+    },
+    "mixed-numbers": {
+      "title": "Mixed Numbers Bridge",
+      "description": "Make and use mixed numbers and improper fractions.",
+      "instruction": "Convert between mixed numbers and improper fractions!",
+      "promptConvertMixed": "Convert to a mixed number.",
+      "promptConvertImproper": "Convert to an improper fraction.",
+      "promptAdd": "Add the mixed numbers.",
+      "promptSubtract": "Subtract the mixed numbers.",
+      "givenLabel": "Given",
+      "resultLabel": "Your answer",
+      "mixedLabel": "Mixed number",
+      "improperLabel": "Improper fraction",
+      "equationLabel": "Equation",
+      "answerChoicesLabel": "Answer choices",
+      "choiceMixedLabel": "Mixed number {whole} and {numerator} over {denominator}",
+      "choiceImproperLabel": "Fraction {numerator} over {denominator}",
+      "correct": "Correct!",
+      "incorrectMixed": "The mixed number is {whole} {numerator}/{denominator}.",
+      "incorrectImproper": "The improper fraction is {numerator}/{denominator}.",
+      "perfect": "Perfect mixed number work!",
+      "great": "Great conversions!",
+      "good": "Nice work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "fraction-times-whole": {
+      "title": "Fraction x Whole Number",
+      "description": "Multiply a fraction by a whole number as repeated addition.",
+      "instruction": "Multiply the fraction by the whole number!",
+      "prompt": "What is {whole} × {numerator}/{denominator}?",
+      "equationLabel": "Equation",
+      "groupsLabel": "Repeated addition groups",
+      "answerChoicesLabel": "Answer choices",
+      "choiceLabel": "Fraction {numerator} over {denominator}",
+      "correct": "Correct!",
+      "incorrect": "The product is {numerator}/{denominator}.",
+      "perfect": "Perfect multiplication!",
+      "great": "Great repeated addition!",
+      "good": "Nice work!",
+      "keepPracticing": "Keep practicing!",
+      "progressLabel": "Progress",
+      "progressItemLabel": "Question {current} of {total}: {status}",
+      "progressStatusCompleted": "completed",
+      "progressStatusCurrent": "current",
+      "progressStatusPending": "up next"
+    },
+    "fraction-word-problems": {
+      "title": "Fraction Word Problems",
+      "description": "Solve fraction stories (recipes, measuring, sharing).",
+      "instruction": "Read the story and solve with fractions!",
+      "prompt": "Choose the fraction that solves the story.",
+      "equationLabel": "Equation",
+      "answerChoicesLabel": "Answer choices",
+      "choiceLabel": "Fraction {numerator} over {denominator}",
+      "loadingStory": "Loading story...",
+      "correct": "Correct!",
+      "incorrect": "The answer is {numerator}/{denominator}.",
+      "perfect": "Perfect fraction stories!",
+      "great": "Great fraction thinking!",
+      "good": "Nice work!",
+      "keepPracticing": "Keep practicing!",
+      "stories": {
+        "recipe": {
+          "template": "You use {a} cup of flour. You add {b} cup more.",
+          "question": "How much flour is used?"
+        },
+        "garden": {
+          "template": "{a} of the garden is planted. You plant {b} more.",
+          "question": "What fraction is planted now?"
+        },
+        "pizza": {
+          "template": "You eat {a} of a pizza. You eat {b} more.",
+          "question": "How much pizza did you eat?"
+        },
+        "paint": {
+          "template": "A wall is {a} painted. You paint {b} more.",
+          "question": "What fraction is painted now?"
+        },
+        "ribbon": {
+          "template": "A ribbon is {a} meter long. You cut off {b} meter.",
+          "question": "How much ribbon is left?"
+        },
+        "trail": {
+          "template": "You walk {a} mile out and {b} mile back.",
+          "question": "How far from the start?"
+        },
+        "sand": {
+          "template": "A bucket is {a} full of sand. You use {b} of the sand.",
+          "question": "How much sand is left?"
+        },
+        "water": {
+          "template": "A pitcher is {a} full. You pour out {b}.",
+          "question": "How full is it now?"
+        }
+      }
+    },
+    "decimals-place-value": {
+      "title": "Tenths & Hundredths Aquarium",
+      "description": "Build decimals using a 10x10 grid.",
+      "instruction": "Shade the grid to show the decimal!",
+      "prompt": "Shade the grid to show:",
+      "fractionLabel": "Fraction:",
+      "hint": "Each column is 0.1. Each square is 0.01.",
+      "columnHint": "Tap a top label to shade a whole column (tenths).",
+      "shadedLabel": "Shaded:",
+      "squareUnit": "square",
+      "squareUnits": "squares",
+      "columnGroupLabel": "Tenths columns",
+      "columnLabel": "Toggle column {column}",
+      "cellLabel": "Grid square row {row}, column {column}",
+      "gridLabel": "Hundredths grid",
+      "checkAnswer": "Check My Answer",
+      "correct": "Great! You made {decimal}.",
+      "incorrect": "The target was {decimal} ({fraction}).",
+      "perfect": "Perfect decimal shading!",
+      "great": "Great decimal sense!",
+      "good": "Nice work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "compare-decimals": {
+      "title": "Compare Decimals",
+      "description": "Choose >, <, or = for decimals to hundredths.",
+      "instruction": "Compare the decimals!",
+      "prompt": "Which symbol makes the comparison true?",
+      "hint": "Compare tenths first, then hundredths.",
+      "onesLabel": "Ones",
+      "tenthsLabel": "Tenths",
+      "hundredthsLabel": "Hundredths",
+      "lessThanLabel": "Less than",
+      "equalLabel": "Equal to",
+      "greaterThanLabel": "Greater than",
+      "correct": "Correct!",
+      "wrong": "The answer is {symbol}.",
+      "perfect": "Perfect decimal comparisons!",
+      "great": "Great comparing!",
+      "good": "Nice work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "fraction-decimal-match": {
+      "title": "Fraction to Decimal Match",
+      "description": "Match tenths/hundredths fractions to decimals.",
+      "instruction": "Match each fraction to its decimal!",
+      "selectPair": "Select a fraction, then select its decimal.",
+      "fractionsLabel": "Fractions",
+      "decimalsLabel": "Decimals",
+      "matchesFound": "Matches found:",
+      "fractionCardLabel": "Fraction {numerator} over {denominator}",
+      "decimalCardLabel": "Decimal {decimal}",
+      "perfect": "Perfect matching!",
+      "great": "Great fraction-decimal matches!",
+      "good": "Nice work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "unit-conversion": {
+      "title": "Unit Conversion Trail",
+      "description": "Convert units (like feet to inches, kg to g).",
+      "instruction": "Convert to the new unit!",
+      "prompt": "Convert {value} {fromUnit} to {toUnit}.",
+      "mapTitle": "Conversion Map",
+      "mapHint": "Use the map to check the conversion factor.",
+      "trailTitle": "Conversion Trail",
+      "stepMultiply": "× {factor}",
+      "stepDivide": "÷ {factor}",
+      "choicesLabel": "Answer choices",
+      "choiceLabel": "{value} {unit}",
+      "mapEquation": "1 {fromUnit} = {factor} {toUnit}",
+      "correct": "Great! {value} {fromUnit} = {answer} {toUnit}.",
+      "wrong": "The correct answer is {answer} {toUnit}.",
+      "perfect": "Perfect conversions!",
+      "great": "Great conversion skills!",
+      "good": "Nice work!",
+      "keepPracticing": "Keep practicing!",
+      "units": {
+        "mm": "mm",
+        "cm": "cm",
+        "m": "m",
+        "km": "km",
+        "in": "in",
+        "ft": "ft",
+        "yd": "yd",
+        "g": "g",
+        "kg": "kg",
+        "mL": "mL",
+        "L": "L"
+      }
+    },
+    "area-perimeter": {
+      "title": "Area & Perimeter Builder",
+      "description": "Build rectangles and find area and perimeter.",
+      "instruction": "Build a rectangle, then choose the area or perimeter.",
+      "questionArea": "What is the area of this rectangle?",
+      "questionPerimeter": "What is the perimeter of this rectangle?",
+      "areaHint": "Area = length × width",
+      "perimeterHint": "Perimeter = 2 × (length + width)",
+      "widthLabel": "Width",
+      "heightLabel": "Height",
+      "gridLabel": "Rectangle grid",
+      "widthTag": "Width: {value} units",
+      "heightTag": "Height: {value} units",
+      "unitLabel": "units",
+      "squareUnitLabel": "square units",
+      "choiceGroupLabel": "Answer choices",
+      "choiceLabel": "{value} {unit}",
+      "gridAria": "Rectangle grid {width} by {height}",
+      "correctArea": "Correct! The area is {value} square units.",
+      "correctPerimeter": "Correct! The perimeter is {value} units.",
+      "wrongArea": "The area is {value} square units.",
+      "wrongPerimeter": "The perimeter is {value} units.",
+      "controls": {
+        "increaseWidth": "Increase width",
+        "decreaseWidth": "Decrease width",
+        "increaseHeight": "Increase height",
+        "decreaseHeight": "Decrease height"
+      },
+      "perfect": "Perfect building!",
+      "great": "Great measuring!",
+      "good": "Nice work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "missing-side": {
+      "title": "Find the Missing Side",
+      "description": "Find a missing side length from area or perimeter.",
+      "instruction": "Use what you know to find the missing side!",
+      "promptArea": "Area = {area} {squareUnits}. One side is {known} {units}. What is the missing side length?",
+      "promptPerimeter": "Perimeter = {perimeter} {units}. One side is {known} {units}. What is the missing side length?",
+      "areaHint": "Area = length × width",
+      "perimeterHint": "Perimeter = 2 × (length + width)",
+      "shapeTitle": "Mystery Rectangle",
+      "shapeHint": "Opposite sides are equal.",
+      "shapeAria": "Rectangle with one missing side and a known side of {known} {units}",
+      "unitsLabel": "units",
+      "squareUnitsLabel": "square units",
+      "choicesLabel": "Answer choices",
+      "choiceLabel": "{value} {units}",
+      "correct": "Correct! The missing side is {value} {units}.",
+      "wrong": "The missing side is {value} {units}.",
+      "perfect": "Perfect side-finding!",
+      "great": "Great reasoning!",
+      "good": "Nice work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "line-plot-fractions": {
+      "title": "Line Plot with Fractions",
+      "description": "Make and read a line plot with 1/2 and 1/4 units.",
+      "instruction": "Build the line plot and answer the questions!",
+      "dataTitle": "These are the measurements:",
+      "plotHint": "Each tick mark is 1/4.",
+      "buildInstruction": "Click on the line plot to add dots!",
+      "checkPlot": "Check Line Plot",
+      "plotCorrect": "✓ Great line plot! Now answer questions!",
+      "plotWrong": "Check the data and try again!",
+      "dotLabel": "Add dot at {value}",
+      "questionHowMany": "How many are at {value}?",
+      "questionMost": "Which value has the most dots?",
+      "questionLeast": "Which value has the least dots?",
+      "questionTotal": "How many dots are there in total?",
+      "correct": "✓ Correct! The answer is {answer}.",
+      "wrong": "The answer is {answer}.",
+      "perfect": "Amazing line plot skills!",
+      "great": "Great job with line plots!",
+      "good": "Nice work!",
+      "keepPracticing": "Keep practicing!",
+      "themes": {
+        "ribbonLengths": "Ribbon Lengths",
+        "frogJumps": "Frog Jumps",
+        "gardenPaths": "Garden Paths",
+        "paintCups": "Paint Cups"
+      },
+      "units": {
+        "in": "in",
+        "ft": "ft",
+        "cups": "cups"
+      }
+    },
+    "measurement-word-problems": {
+      "title": "Measurement Word Problems",
+      "description": "Solve multi-step measurement stories.",
+      "instruction": "Read the story and solve!",
+      "step1": "Step 1: Solve the first part",
+      "step2": "Step 2: Solve the question",
+      "step1Result": "Step 1 result:",
+      "loadingStory": "Loading story...",
+      "hintTitle": "Helpful hint",
+      "prompts": {
+        "convert": "Convert {value} {fromUnit} to {toUnit}.",
+        "total": "Find the total in {unit}.",
+        "left": "How much is left in {unit}?",
+        "perimeter": "Find the perimeter in {unit}.",
+        "area": "Find the area in {unit}.",
+        "uncovered": "How much area is uncovered in {unit}?",
+        "multiply": "Find the total length in {unit}."
+      },
+      "hints": {
+        "convert": "Use 1 {fromUnit} = {factor} {toUnit}.",
+        "perimeterConvert": "Perimeter = 2 × (length + width). Then use 1 {fromUnit} = {factor} {toUnit}.",
+        "areaSubtract": "Area = length × width. Then subtract the part covered.",
+        "multiplyConvert": "Total = groups × length. Then use 1 {fromUnit} = {factor} {toUnit}."
+      },
+      "choiceLabel": "Select {value} {unit}",
+      "stepChoicesLabel": "Step {step} choices",
+      "wrongAnswer": "The correct value is {value} {unit}.",
+      "perfect": "Fantastic measuring!",
+      "great": "Great measurement thinking!",
+      "keepPracticing": "Keep practicing!",
+      "stories": {
+        "ribbon": {
+          "template": "A ribbon is {a} {unit1} long. You add {b} {unit2}.",
+          "question": "What is the total length in {unit2}?"
+        },
+        "aquarium": {
+          "template": "An aquarium holds {a} {unit1}. You pour out {b} {unit2}.",
+          "question": "How much water is left in {unit2}?"
+        },
+        "backpack": {
+          "template": "A backpack weighs {a} {unit1}. You add {b} {unit2} of books.",
+          "question": "What is the total mass in {unit2}?"
+        },
+        "garden": {
+          "template": "A garden is {a} {unit1} by {b} {unit1}.",
+          "question": "What is the perimeter in {unit2}?"
+        },
+        "blanket": {
+          "template": "A picnic blanket is {a} {unit1} by {b} {unit1}. A mat covers {c} {unit2}.",
+          "question": "How much area is uncovered in {unit2}?"
+        },
+        "board": {
+          "template": "A board is {a} {unit1} long. You cut off {b} {unit2}.",
+          "question": "How long is the board now in {unit2}?"
+        },
+        "runner": {
+          "template": "A runner jogs {a} {unit1} and then {b} {unit2} more.",
+          "question": "How far in {unit2}?"
+        },
+        "ribbonGroup": {
+          "template": "{a} ribbons are each {b} {unit1} long.",
+          "question": "What is the total length in {unit2}?"
+        }
+      },
+      "units": {
+        "in": "in",
+        "ft": "ft",
+        "cm": "cm",
+        "m": "m",
+        "g": "g",
+        "kg": "kg",
+        "mL": "mL",
+        "L": "L",
+        "squareMeters": "square meters"
+      }
+    },
+    "points-lines-rays": {
+      "title": "Points, Lines, Rays Explorer",
+      "description": "Identify points, lines, segments, and rays.",
+      "instruction": "Name what you see!",
+      "prompt": "What is this?",
+      "types": {
+        "point": "Point",
+        "line": "Line",
+        "segment": "Line Segment",
+        "ray": "Ray"
+      },
+      "hintPoint": "A single location in space.",
+      "hintLine": "Goes on forever in both directions.",
+      "hintSegment": "Has two endpoints.",
+      "hintRay": "Has one endpoint and goes on forever in one direction.",
+      "correct": "Correct! This is a {type}.",
+      "wrong": "This is a {type}.",
+      "perfect": "Perfect geometry explorer!",
+      "great": "Great geometry skills!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "angle-types": {
+      "title": "Angle Types Zoo",
+      "description": "Sort angles into acute, right, or obtuse.",
+      "instruction": "Sort each angle by type!",
+      "prompt": "What type of angle is this?",
+      "hint": "Look at how open the angle is!",
+      "types": {
+        "acute": "Acute",
+        "right": "Right",
+        "obtuse": "Obtuse"
+      },
+      "acuteDesc": "Less than 90°",
+      "rightDesc": "Exactly 90°",
+      "obtuseDesc": "More than 90°",
+      "correct": "Correct! This is an {type} angle.",
+      "wrong": "This is an {type} angle ({degrees}°).",
+      "perfect": "Perfect angle sorting!",
+      "great": "Great angle sorting!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "measure-angles": {
+      "title": "Measure Angles",
+      "description": "Measure angles with a protractor tool.",
+      "instruction": "Align the protractor and measure!",
+      "prompt": "What is the measure of this angle?",
+      "hint": "Read the angle where the ray crosses the protractor scale.",
+      "correct": "Correct! The angle is {angle}°.",
+      "wrong": "The angle is {angle}°.",
+      "perfect": "Perfect measuring!",
+      "great": "Great measuring skills!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "draw-angles": {
+      "title": "Draw an Angle",
+      "description": "Make an angle of a given size.",
+      "instruction": "Drag to create the angle shown!",
+      "drawAngle": "Draw an angle of:",
+      "yourAngle": "Your angle:",
+      "dragToAdjust": "Drag to adjust the angle:",
+      "correct": "Great job! You drew {drawn}° (target was {target}°).",
+      "wrong": "The target was {target}°. You drew {drawn}°.",
+      "perfect": "Perfect angle drawing!",
+      "great": "Great angle drawing!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "parallel-perpendicular": {
+      "title": "Parallel & Perpendicular Streets",
+      "description": "Find parallel and perpendicular lines in a city map.",
+      "instruction": "Find the parallel and perpendicular streets!",
+      "findParallel": "Tap two PARALLEL streets!",
+      "findPerpendicular": "Tap two PERPENDICULAR streets!",
+      "selectTwo": "Select two streets",
+      "selected": "Selected: {name} St - now pick another!",
+      "parallelHint": "Parallel: Never meet",
+      "perpendicularHint": "Perpendicular: Meet at 90°",
+      "parallel": "parallel",
+      "perpendicular": "perpendicular",
+      "correctParallel": "Correct! {name1} St and {name2} St are parallel.",
+      "correctPerpendicular": "Correct! {name1} St and {name2} St are perpendicular.",
+      "wrong": "{name1} St and {name2} St are {actual}, not {expected}.",
+      "perfect": "Perfect street navigation!",
+      "great": "Great street navigation!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "classify-quads": {
+      "title": "Classify Quadrilaterals",
+      "description": "Classify squares, rectangles, rhombi, trapezoids, and kites.",
+      "instruction": "Sort the quadrilaterals by their properties!",
+      "whatShape": "What type of quadrilateral is this?",
+      "types": {
+        "square": "Square",
+        "rectangle": "Rectangle",
+        "rhombus": "Rhombus",
+        "trapezoid": "Trapezoid",
+        "parallelogram": "Parallelogram"
+      },
+      "hintSquare": "4 equal sides, 4 right angles",
+      "hintRectangle": "2 pairs of equal sides, 4 right angles",
+      "hintRhombus": "4 equal sides, opposite angles equal",
+      "hintTrapezoid": "Exactly 1 pair of parallel sides",
+      "hintParallelogram": "2 pairs of parallel sides",
+      "correct": "Correct! This is a {shape}.",
+      "wrong": "This is a {shape}.",
+      "perfect": "Perfect shape classification!",
+      "great": "Great shape classification!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "symmetry-lines": {
+      "title": "Symmetry Mirror",
+      "description": "Draw a line of symmetry (if it exists).",
+      "instruction": "Draw the line(s) of symmetry!",
+      "prompt": "Does this shape have a line of symmetry?",
+      "hint": "A line of symmetry divides a shape into two matching halves.",
+      "types": {
+        "vertical": "Vertical",
+        "horizontal": "Horizontal",
+        "both": "Both",
+        "none": "None"
+      },
+      "correct": "Correct! This shape has {type} symmetry.",
+      "wrong": "This shape has {type} symmetry.",
+      "perfect": "Perfect symmetry skills!",
+      "great": "Great symmetry skills!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "shape-attributes-g4": {
+      "title": "Build a Shape Challenge",
+      "description": "Choose a shape that matches the clues.",
+      "instruction": "Read the clues and pick the right shape!",
+      "mysteryShape": "Mystery Shape Clues:",
+      "whichShape": "Which shape am I?",
+      "shapes": {
+        "square": "Square",
+        "rectangle": "Rectangle",
+        "rhombus": "Rhombus",
+        "trapezoid": "Trapezoid",
+        "parallelogram": "Parallelogram",
+        "equilateral-triangle": "Equilateral Triangle",
+        "right-triangle": "Right Triangle",
+        "pentagon": "Pentagon",
+        "hexagon": "Hexagon",
+        "circle": "Circle"
+      },
+      "correct": "Correct! It was a {shape}!",
+      "wrong": "The answer was {shape}.",
+      "perfect": "Perfect shape detective!",
+      "great": "Great shape detective work!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!"
     }
   }
 }

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Snack Guess & Check - Pre-K Math Activity - Meadow Math">
   <title>Snack Guess & Check - Meadow Math</title>
-  
+
   <!-- CSS Files -->
   <link rel="stylesheet" href="../../css/reset.css">
   <link rel="stylesheet" href="../../css/variables.css">
@@ -45,7 +45,7 @@
           <span class="nav-item-icon">🪺</span>
           <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
         </a>
-        <a href="../../kindergarten/index.html" class="nav-item">
+        <a href="../../kinder/index.html" class="nav-item">
           <span class="nav-item-icon">🌱</span>
           <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
         </a>
@@ -68,6 +68,17 @@
         <a href="../../grade5/index.html" class="nav-item">
           <span class="nav-item-icon">➗</span>
           <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
         </a>
       </nav>
 
@@ -470,7 +481,7 @@
           // Lift cover briefly
           this.plateCover.classList.add('lifted');
           this.instruction.textContent = i18n.t('section.activities.snack-guess.lookQuick') || 'Look quick!';
-          
+
           setTimeout(() => {
             // Lower cover
             this.plateCover.classList.remove('lifted');
@@ -486,7 +497,7 @@
       generateSnacks() {
         this.snacksContainer.innerHTML = '';
         const snackEmoji = this.snacks[randomInt(0, this.snacks.length - 1)];
-        
+
         for (let i = 0; i < this.targetNumber; i++) {
           const snack = document.createElement('span');
           snack.className = 'snack-item';
@@ -588,7 +599,7 @@
       showStats() {
         this.statsCorrect.textContent = this.correctCount;
         this.statsWrong.textContent = this.wrongCount;
-        
+
         // Set message based on performance
         const percent = this.correctCount / this.maxRounds;
         if (percent >= 0.8) {
@@ -601,7 +612,7 @@
           this.statsIcon.textContent = '👍';
           this.statsMessage.textContent = i18n.t('stats.goodEffort') || 'Good effort! Try again to improve!';
         }
-        
+
         this.statsOverlay.classList.add('show');
       },
 

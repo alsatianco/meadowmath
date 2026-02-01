@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Measure with a Ruler - Grade 2 Math Activity - Meadow Math">
+  <title>Measure with a Ruler - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade2">Grade 2</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">📏</span>
+            <span data-i18n="section.activities.measure-ruler.title">Measure with a Ruler</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.measure-ruler.instruction">Read the ruler to find how long the object is!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Unit Toggle -->
+          <div class="unit-toggle" id="unit-toggle">
+            <span class="unit-label" data-i18n="section.activities.measure-ruler.unitSwitch">Unit:</span>
+            <div class="unit-buttons" role="group" aria-label="Unit selection">
+              <button class="unit-btn active" data-unit="inches" aria-pressed="true">in</button>
+              <button class="unit-btn" data-unit="cm" aria-pressed="false">cm</button>
+            </div>
+          </div>
+
+          <!-- Measurement Display -->
+          <div class="measurement-container" id="measurement-container">
+            <!-- Object to measure -->
+            <div class="object-to-measure" id="object-display">
+              <div class="measure-object" id="measure-object"></div>
+            </div>
+
+            <!-- Ruler -->
+            <div class="ruler-container" id="ruler-container">
+              <div class="ruler" id="ruler"></div>
+            </div>
+          </div>
+
+          <!-- Question -->
+          <div class="question-text" id="question-text">
+            <span data-i18n="section.activities.measure-ruler.howLong">How long is this object?</span>
+          </div>
+
+          <!-- Choice Buttons -->
+          <div class="choice-container" id="choice-container"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great measuring!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Measure with a Ruler Activity - Grade 2 Level 4
+    const MeasureRuler = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      currentUnit: 'inches',
+      currentLength: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // Objects to measure with emojis
+      objects: [
+        { emoji: '✏️', name: 'pencil' },
+        { emoji: '🖍️', name: 'crayon' },
+        { emoji: '📎', name: 'paperclip' },
+        { emoji: '🥕', name: 'carrot' },
+        { emoji: '🍌', name: 'banana' },
+        { emoji: '🌽', name: 'corn' },
+        { emoji: '🥒', name: 'cucumber' },
+        { emoji: '🦴', name: 'bone' },
+        { emoji: '🔑', name: 'key' },
+        { emoji: '🥄', name: 'spoon' },
+        { emoji: '📏', name: 'small ruler' },
+        { emoji: '🍫', name: 'chocolate' }
+      ],
+
+      // DOM elements
+      ruler: null,
+      measureObject: null,
+      choiceContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+      unitButtons: null,
+
+      init() {
+        this.ruler = document.getElementById('ruler');
+        this.measureObject = document.getElementById('measure-object');
+        this.choiceContainer = document.getElementById('choice-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+        this.unitButtons = document.querySelectorAll('.unit-btn');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Unit toggle
+        this.unitButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            if (this.isAnswered) return;
+            this.unitButtons.forEach(b => {
+              b.classList.remove('active');
+              b.setAttribute('aria-pressed', 'false');
+            });
+            btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
+            this.currentUnit = btn.dataset.unit;
+            this.renderRuler();
+            this.renderChoices();
+          });
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Dynamic translations handled via data-i18n
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      },
+
+      generateQuestion() {
+        // Generate length in inches (1-6 inches for Grade 2)
+        // Use whole numbers and halves for inches
+        const lengths = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6];
+        this.currentLength = lengths[this.randomInt(0, lengths.length - 1)];
+
+        // Pick a random object
+        this.currentObject = this.objects[this.randomInt(0, this.objects.length - 1)];
+
+        // Alternate between inches and cm
+        if (this.currentQuestion % 2 === 0) {
+          this.currentUnit = 'inches';
+        } else {
+          this.currentUnit = 'cm';
+        }
+
+        // Update unit toggle
+        this.unitButtons.forEach(btn => {
+          const isActive = btn.dataset.unit === this.currentUnit;
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+
+        this.isAnswered = false;
+      },
+
+      getDisplayLength() {
+        if (this.currentUnit === 'inches') {
+          return this.currentLength;
+        } else {
+          // Convert to cm (1 inch = 2.54 cm), round to whole or half
+          const cm = this.currentLength * 2.54;
+          return Math.round(cm * 2) / 2;
+        }
+      },
+
+      startQuestion() {
+        this.generateQuestion();
+        this.renderObject();
+        this.renderRuler();
+        this.renderChoices();
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      renderObject() {
+        const displayLength = this.getDisplayLength();
+
+        // Scale object width based on length (pixels per unit)
+        // For inches: ~50px per inch, for cm: ~20px per cm
+        const pixelsPerUnit = this.currentUnit === 'inches' ? 50 : 20;
+        const objectWidth = displayLength * pixelsPerUnit;
+
+        this.measureObject.innerHTML = `<span class="object-emoji">${this.currentObject.emoji}</span>`;
+        this.measureObject.style.width = `${objectWidth}px`;
+      },
+
+      renderRuler() {
+        const displayLength = this.getDisplayLength();
+
+        // Ruler shows a bit more than the object (max + 2 units)
+        const maxRuler = this.currentUnit === 'inches' ? 7 : 18;
+        const pixelsPerUnit = this.currentUnit === 'inches' ? 50 : 20;
+
+        let rulerHtml = '<div class="ruler-body">';
+
+        // Create ruler marks
+        for (let i = 0; i <= maxRuler; i++) {
+          const position = i * pixelsPerUnit;
+          rulerHtml += `<div class="ruler-mark major" style="left: ${position}px;">`;
+          rulerHtml += `<div class="mark-line major"></div>`;
+          rulerHtml += `<div class="mark-number">${i}</div>`;
+          rulerHtml += '</div>';
+
+          // Add half marks for inches
+          if (this.currentUnit === 'inches' && i < maxRuler) {
+            const halfPos = position + (pixelsPerUnit / 2);
+            rulerHtml += `<div class="ruler-mark half" style="left: ${halfPos}px;">`;
+            rulerHtml += `<div class="mark-line half"></div>`;
+            rulerHtml += '</div>';
+          }
+
+          // Add half marks for cm (every 5mm)
+          if (this.currentUnit === 'cm' && i < maxRuler) {
+            const halfPos = position + (pixelsPerUnit / 2);
+            rulerHtml += `<div class="ruler-mark half" style="left: ${halfPos}px;">`;
+            rulerHtml += `<div class="mark-line half"></div>`;
+            rulerHtml += '</div>';
+          }
+        }
+
+        // Add unit label
+        const unitLabel = this.currentUnit === 'inches'
+          ? (window.i18n ? i18n.t('section.activities.measure-ruler.inches') : 'inches')
+          : (window.i18n ? i18n.t('section.activities.measure-ruler.centimeters') : 'cm');
+
+        rulerHtml += `<div class="ruler-unit">${unitLabel}</div>`;
+        rulerHtml += '</div>';
+
+        this.ruler.innerHTML = rulerHtml;
+        this.ruler.style.width = `${(maxRuler + 0.5) * pixelsPerUnit}px`;
+      },
+
+      renderChoices() {
+        this.choiceContainer.innerHTML = '';
+
+        if (this.isAnswered) return;
+
+        const displayLength = this.getDisplayLength();
+        const choices = [displayLength];
+
+        // Generate distractors
+        const distractors = new Set();
+
+        // Off by 0.5 or 1
+        [-1, -0.5, 0.5, 1, 1.5, -1.5].forEach(offset => {
+          const d = displayLength + offset;
+          if (d > 0 && d <= (this.currentUnit === 'inches' ? 7 : 18)) {
+            distractors.add(d);
+          }
+        });
+
+        // Convert to array and pick 3
+        const distractorArray = Array.from(distractors).filter(d => d !== displayLength);
+        this.shuffleArray(distractorArray);
+        choices.push(...distractorArray.slice(0, 3));
+
+        // Ensure we have 4 choices
+        while (choices.length < 4) {
+          const extra = this.randomInt(1, this.currentUnit === 'inches' ? 6 : 15);
+          if (!choices.includes(extra)) {
+            choices.push(extra);
+          }
+        }
+
+        this.shuffleArray(choices);
+
+        const unitLabel = this.currentUnit === 'inches'
+          ? (window.i18n ? i18n.t('section.activities.measure-ruler.inches') : 'in')
+          : (window.i18n ? i18n.t('section.activities.measure-ruler.centimeters') : 'cm');
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          // Format: show half as fraction for inches
+          let displayText;
+          if (choice % 1 === 0.5 && this.currentUnit === 'inches') {
+            displayText = `${Math.floor(choice)}½ ${unitLabel}`;
+          } else {
+            displayText = `${choice} ${unitLabel}`;
+          }
+          btn.textContent = displayText;
+          btn.dataset.value = choice;
+          btn.addEventListener('click', () => this.selectChoice(choice));
+          this.choiceContainer.appendChild(btn);
+        });
+      },
+
+      selectChoice(value) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const displayLength = this.getDisplayLength();
+        const isCorrect = Math.abs(value - displayLength) < 0.01;
+
+        const unitLabel = this.currentUnit === 'inches'
+          ? (window.i18n ? i18n.t('section.activities.measure-ruler.inches') : 'inches')
+          : (window.i18n ? i18n.t('section.activities.measure-ruler.centimeters') : 'cm');
+
+        // Format length for display
+        let lengthDisplay;
+        if (displayLength % 1 === 0.5 && this.currentUnit === 'inches') {
+          lengthDisplay = `${Math.floor(displayLength)}½`;
+        } else {
+          lengthDisplay = displayLength;
+        }
+
+        // Highlight buttons
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          const btnValue = parseFloat(btn.dataset.value);
+          if (Math.abs(btnValue - displayLength) < 0.01) {
+            btn.classList.add('correct');
+          } else if (Math.abs(btnValue - value) < 0.01 && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+          btn.disabled = true;
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = window.i18n
+            ? i18n.t('section.activities.measure-ruler.correct')
+                .replace('{length}', lengthDisplay)
+                .replace('{unit}', unitLabel)
+            : `✓ Correct! It's ${lengthDisplay} ${unitLabel}.`;
+          this.feedback.textContent = msg;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const msg = window.i18n
+            ? i18n.t('section.activities.measure-ruler.wrong')
+                .replace('{length}', lengthDisplay)
+                .replace('{unit}', unitLabel)
+            : `The length is ${lengthDisplay} ${unitLabel}.`;
+          this.feedback.textContent = msg;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.isAnswered = false;
+        this.renderChoices();
+        this.feedback.classList.remove('show', 'error');
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.measure-ruler.perfect')
+            : 'Amazing measurement skills!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '📏';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.measure-ruler.great')
+            : 'Great measuring!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.measure-ruler.keepPracticing')
+            : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => MeasureRuler.init());
+      } else {
+        MeasureRuler.init();
+      }
+    });
+  </script>
+  <style>
+    /* Measure with a Ruler specific styles */
+
+    .unit-toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .unit-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+    }
+
+    .unit-buttons {
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    .unit-btn {
+      padding: var(--space-2) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      border: 2px solid var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      background: white;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .unit-btn:hover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-light);
+    }
+
+    .unit-btn:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+    }
+
+    .unit-btn.active {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      border-color: #2563eb;
+      color: white;
+    }
+
+    /* Measurement Container */
+    .measurement-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-2);
+      margin: var(--space-6) auto;
+      padding: var(--space-4);
+      background: #fefce8;
+      border-radius: var(--radius-xl);
+      border: 3px solid #fde047;
+      overflow-x: auto;
+      max-width: 100%;
+    }
+
+    /* Object to measure */
+    .object-to-measure {
+      display: flex;
+      align-items: flex-end;
+      padding-left: 10px;
+      min-height: 60px;
+    }
+
+    .measure-object {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      height: 50px;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid #f59e0b;
+      border-radius: var(--radius-md);
+      padding: 0 var(--space-2);
+      transition: width 0.3s ease;
+      position: relative;
+    }
+
+    /* Visual guide lines at start and end of object */
+    .measure-object::before,
+    .measure-object::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      width: 2px;
+      height: 10px;
+      background: #f59e0b;
+    }
+
+    .measure-object::before {
+      left: 0;
+    }
+
+    .measure-object::after {
+      right: 0;
+    }
+
+    .object-emoji {
+      font-size: 36px;
+    }
+
+    /* Ruler styles */
+    .ruler-container {
+      overflow-x: auto;
+      padding-bottom: var(--space-2);
+    }
+
+    .ruler {
+      position: relative;
+      height: 70px;
+      background: linear-gradient(180deg, #fef9c3 0%, #fef08a 100%);
+      border: 2px solid #ca8a04;
+      border-radius: var(--radius-md);
+      margin-top: var(--space-2);
+    }
+
+    .ruler-body {
+      position: relative;
+      height: 100%;
+      padding-left: 10px;
+    }
+
+    .ruler-mark {
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .mark-line {
+      width: 2px;
+      background: #92400e;
+    }
+
+    .mark-line.major {
+      height: 25px;
+    }
+
+    .mark-line.half {
+      height: 15px;
+    }
+
+    .mark-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+      margin-top: var(--space-1);
+    }
+
+    .ruler-unit {
+      position: absolute;
+      right: var(--space-2);
+      top: var(--space-1);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      color: #92400e;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Question text */
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      margin: var(--space-4) 0;
+      text-align: center;
+    }
+
+    /* Choice Container */
+    .choice-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      margin: var(--space-4) auto;
+      max-width: 360px;
+    }
+
+    .choice-btn {
+      padding: var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #ffffff, #f8fafc);
+      border: 3px solid var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 0 var(--color-neutral-300);
+      min-height: 80px;
+      aspect-ratio: 1.2 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: #3b82f6;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 #2563eb;
+    }
+
+    .choice-btn:focus:not(:disabled) {
+      outline: none;
+      box-shadow: 0 3px 0 var(--color-neutral-300), 0 0 0 3px rgba(59, 130, 246, 0.4);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 1px 0 var(--color-neutral-300);
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      box-shadow: 0 3px 0 #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      box-shadow: 0 3px 0 #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    .choice-btn:disabled {
+      cursor: default;
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback positioning */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .measurement-container {
+        padding: var(--space-2);
+      }
+
+      .measure-object {
+        height: 40px;
+      }
+
+      .object-emoji {
+        font-size: 28px;
+      }
+
+      .ruler {
+        height: 60px;
+      }
+
+      .mark-line.major {
+        height: 20px;
+      }
+
+      .mark-line.half {
+        height: 12px;
+      }
+
+      .mark-number {
+        font-size: var(--text-xs);
+      }
+
+      .choice-container {
+        gap: var(--space-2);
+        max-width: 320px;
+      }
+
+      .choice-btn {
+        padding: var(--space-3);
+        font-size: var(--text-lg);
+        min-height: 70px;
+      }
+
+      .question-text {
+        font-size: var(--text-lg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .choice-container {
+        max-width: 280px;
+      }
+
+      .choice-btn {
+        font-size: var(--text-base);
+        min-height: 64px;
+        padding: var(--space-2);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

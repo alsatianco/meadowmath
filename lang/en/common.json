@@ -10,7 +10,9 @@
     "grade2": "Grade 2",
     "grade3": "Grade 3",
     "grade4": "Grade 4",
-    "grade5": "Grade 5"
+    "grade5": "Grade 5",
+    "tools": "Tools",
+    "about": "About"
   },
   "home": {
     "title": "Welcome to Meadow Math",
@@ -39,7 +41,7 @@
     },
     "grade4": {
       "title": "Grade 4",
-      "desc": "Learning to share and divide equally"
+      "desc": "Big numbers, fractions, and shapes"
     },
     "grade5": {
       "title": "Grade 5",
@@ -98,7 +100,10 @@
     "stars": "stars",
     "completedRounds": "You completed all the rounds!",
     "numbers": "Numbers",
-    "groups": "Groups"
+    "groups": "Groups",
+    "clickToRemove": "Click to remove",
+    "vs": "vs",
+    "vsUpper": "VS"
   },
   "stats": {
     "title": "Activity Complete!",
@@ -122,5 +127,50 @@
     "peach": "peach",
     "pear": "pear",
     "kiwi": "kiwi"
+  },
+  "utilities": {
+    "title": "Utilities",
+    "tools": {
+      "title": "Tools",
+      "desc": "Interactive math manipulatives and playgrounds"
+    },
+    "about": {
+      "title": "About",
+      "desc": "Learn about Meadow Math and our mission"
+    }
+  },
+  "footer": {
+    "about": "About",
+    "privacy": "Privacy & Terms",
+    "madeWith": "Made with",
+    "forLearners": "for young learners"
+  },
+  "privacy": {
+    "title": "Privacy & Terms",
+    "intro": "We believe in keeping things simple and respecting your family's privacy.",
+    "noAccounts": {
+      "title": "No Accounts Required",
+      "content": "Meadow Math doesn't require you to create an account. There's no sign-up, no login, and no passwords to remember."
+    },
+    "noData": {
+      "title": "No Personal Data Collection",
+      "content": "We don't collect, store, or share any personal information about you or your children. No names, no emails."
+    },
+    "localStorage": {
+      "title": "Local Storage Only",
+      "content": "If any progress or preferences are saved, they're stored only in your browser's local storage on your device. This data never leaves your computer."
+    },
+    "cloudflare": {
+      "title": "Cloudflare Analytics on Every Page",
+      "content": "We use Cloudflare Web Analytics across all pages to understand basic traffic (like how many people visit and which pages are popular). This data is privacy-focused, anonymous, and reported in aggregated form. We do not use this to identify you, and we do not sell your data."
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "content": "Meadow Math is provided as a free educational resource. While we strive to create accurate and helpful content, we make no guarantees about learning outcomes. This tool is meant to supplement, not replace, quality instruction. We recommend parental supervision for young children."
+    },
+    "openSource": {
+      "title": "Open Source",
+      "content": "Meadow Math is open source software. You can view, copy, and modify the code according to the project's license."
+    }
   }
 }

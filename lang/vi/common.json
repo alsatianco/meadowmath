@@ -10,7 +10,9 @@
     "grade2": "Lớp 2",
     "grade3": "Lớp 3",
     "grade4": "Lớp 4",
-    "grade5": "Lớp 5"
+    "grade5": "Lớp 5",
+    "tools": "Công cụ",
+    "about": "Giới thiệu"
   },
   "home": {
     "title": "Chào mừng đến Meadow Math",
@@ -39,7 +41,7 @@
     },
     "grade4": {
       "title": "Lớp 4",
-      "desc": "Học cách chia đều và phân chia"
+      "desc": "Số lớn, phân số và hình học"
     },
     "grade5": {
       "title": "Lớp 5",
@@ -98,7 +100,10 @@
     "stars": "ngôi sao",
     "completedRounds": "Bạn đã hoàn thành tất cả các lượt!",
     "numbers": "Số",
-    "groups": "Nhóm"
+    "groups": "Nhóm",
+    "clickToRemove": "Nhấn để xóa",
+    "vs": "vs",
+    "vsUpper": "VS"
   },
   "stats": {
     "title": "Hoàn thành!",
@@ -122,5 +127,50 @@
     "peach": "đào",
     "pear": "lê",
     "kiwi": "kiwi"
+  },
+  "utilities": {
+    "title": "Tiện ích",
+    "tools": {
+      "title": "Công cụ",
+      "desc": "Đồ dùng học toán tương tác và sân chơi"
+    },
+    "about": {
+      "title": "Giới thiệu",
+      "desc": "Tìm hiểu về Meadow Math và sứ mệnh của chúng tôi"
+    }
+  },
+  "footer": {
+    "about": "Giới thiệu",
+    "privacy": "Quyền riêng tư & Điều khoản",
+    "madeWith": "Được tạo với",
+    "forLearners": "cho các bé yêu học toán"
+  },
+  "privacy": {
+    "title": "Quyền riêng tư & Điều khoản",
+    "intro": "Chúng tôi tin vào việc giữ mọi thứ đơn giản và tôn trọng quyền riêng tư của gia đình bạn.",
+    "noAccounts": {
+      "title": "Không cần tạo tài khoản",
+      "content": "Meadow Math không yêu cầu bạn tạo tài khoản. Không đăng ký, không đăng nhập, không có mật khẩu cần nhớ."
+    },
+    "noData": {
+      "title": "Không thu thập dữ liệu cá nhân",
+      "content": "Chúng tôi không thu thập, lưu trữ hoặc chia sẻ bất kỳ thông tin cá nhân nào về bạn hoặc con bạn. Không tên, không email."
+    },
+    "localStorage": {
+      "title": "Chỉ lưu trên thiết bị (Local Storage)",
+      "content": "Nếu có lưu tiến độ hoặc tuỳ chọn, dữ liệu đó chỉ được lưu trong bộ nhớ cục bộ (local storage) của trình duyệt trên thiết bị của bạn. Dữ liệu này không rời khỏi máy tính của bạn."
+    },
+    "cloudflare": {
+      "title": "Cloudflare Analytics trên mọi trang",
+      "content": "Chúng tôi sử dụng Cloudflare Web Analytics trên tất cả các trang để hiểu lưu lượng truy cập cơ bản (ví dụ: có bao nhiêu người ghé thăm và trang nào được xem nhiều). Dữ liệu này tập trung vào quyền riêng tư, ẩn danh và được báo cáo ở dạng tổng hợp. Chúng tôi không sử dụng dữ liệu này để nhận dạng bạn và không bán dữ liệu của bạn."
+    },
+    "disclaimer": {
+      "title": "Tuyên bố miễn trừ trách nhiệm",
+      "content": "Meadow Math được cung cấp như một tài nguyên giáo dục miễn phí. Dù chúng tôi cố gắng tạo nội dung chính xác và hữu ích, chúng tôi không đảm bảo về kết quả học tập. Công cụ này nhằm bổ trợ, không thay thế việc dạy học chất lượng. Chúng tôi khuyến nghị có sự giám sát của phụ huynh đối với trẻ nhỏ."
+    },
+    "openSource": {
+      "title": "Mã nguồn mở",
+      "content": "Meadow Math là phần mềm mã nguồn mở. Bạn có thể xem, sao chép và chỉnh sửa mã nguồn theo giấy phép của dự án."
+    }
   }
 }

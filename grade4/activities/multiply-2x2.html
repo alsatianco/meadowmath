@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Multi-Digit Multiplication - Grade 4 Math Activity - Meadow Math">
+  <title>Multi-Digit Multiplication - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade4">Grade 4</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🐝</span>
+            <span data-i18n="section.activities.multiply-2x2.title">Multi-Digit Multiplication</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.multiply-2x2.description">Practice 2-digit by 2-digit multiplication.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <div class="problem-banner">
+            <span class="problem-label" data-i18n="section.activities.multiply-2x2.problemLabel">Multiply</span>
+            <span class="problem-value" id="problem-value">46 × 27</span>
+          </div>
+
+          <div class="instruction-card" data-i18n="section.activities.multiply-2x2.instruction">Multiply the numbers!</div>
+
+          <div class="scaffold-panel" id="scaffold-panel">
+            <div class="scaffold-header">
+              <span class="scaffold-title" data-i18n="section.activities.multiply-2x2.scaffoldTitle">Partial products view</span>
+              <span class="scaffold-chip" data-i18n="section.activities.multiply-2x2.scaffoldChip">Use the parts</span>
+            </div>
+            <div class="decomp-items">
+              <div class="decomp-item" id="decomp-a">46 = 40 + 6</div>
+              <div class="decomp-item" id="decomp-b">27 = 20 + 7</div>
+            </div>
+            <div class="scaffold-grid">
+              <div class="scaffold-card" id="scaffold-tt">40 × 20</div>
+              <div class="scaffold-card" id="scaffold-to">40 × 7</div>
+              <div class="scaffold-card" id="scaffold-ot">6 × 20</div>
+              <div class="scaffold-card" id="scaffold-oo">6 × 7</div>
+            </div>
+          </div>
+
+          <div class="algorithm-card" id="algorithm-card">
+            <div class="algorithm-header">
+              <span class="algorithm-title" data-i18n="section.activities.multiply-2x2.algorithmLabel">Standard algorithm</span>
+              <span class="step-badge" id="step-badge">Ones row (× 7)</span>
+            </div>
+
+            <div class="algorithm-display">
+              <div class="alg-row">
+                <span class="alg-cell spacer"></span>
+                <span class="alg-cell spacer"></span>
+                <span class="alg-cell digit" id="top-tens">4</span>
+                <span class="alg-cell digit" id="top-ones">6</span>
+              </div>
+              <div class="alg-row">
+                <span class="alg-cell spacer"></span>
+                <span class="alg-cell operator">×</span>
+                <span class="alg-cell digit" id="bottom-tens">2</span>
+                <span class="alg-cell digit" id="bottom-ones">7</span>
+              </div>
+              <div class="alg-line"></div>
+              <div class="alg-row ghost-row" aria-hidden="true">
+                <span class="alg-cell ghost">•</span>
+                <span class="alg-cell ghost">•</span>
+                <span class="alg-cell ghost">•</span>
+                <span class="alg-cell ghost">•</span>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <span class="step-icon" aria-hidden="true">🧮</span>
+              <span class="step-text" id="step-text">Find the ones row for × 7.</span>
+            </div>
+
+            <div class="answer-section">
+              <label class="answer-label" for="answer-input" data-i18n="section.activities.multiply-2x2.answerLabel">Your answer</label>
+              <input type="number" class="answer-input" id="answer-input" min="0" step="1" inputmode="numeric" autocomplete="off">
+            </div>
+
+            <div class="check-section">
+              <button class="btn-activity btn-primary" id="btn-check" data-i18n="buttons.check">Check</button>
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" aria-live="assertive" aria-atomic="true"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.multiply-2x2.great">Great work!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Multi-Digit Multiplication Activity - Grade 4 Level 2
+    const Multiply2x2 = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      scaffoldRounds: 4,
+      correctCount: 0,
+      incorrectCount: 0,
+      multiplicand: 0,
+      multiplier: 0,
+      tensA: 0,
+      onesA: 0,
+      tensB: 0,
+      onesB: 0,
+      onesRowAnswer: 0,
+      finalAnswer: 0,
+      stepType: 'ones',
+      autoAdvanceDelay: 1500,
+      advanceTimeout: null,
+      isAnswered: false,
+      lastFeedbackKey: null,
+      lastStatsKey: null,
+
+      progress: null,
+      problemValue: null,
+      scaffoldPanel: null,
+      decompA: null,
+      decompB: null,
+      scaffoldTt: null,
+      scaffoldTo: null,
+      scaffoldOt: null,
+      scaffoldOo: null,
+      topTens: null,
+      topOnes: null,
+      bottomTens: null,
+      bottomOnes: null,
+      stepBadge: null,
+      stepText: null,
+      answerInput: null,
+      btnCheck: null,
+      btnReset: null,
+      feedback: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.progress = document.getElementById('progress');
+        this.problemValue = document.getElementById('problem-value');
+        this.scaffoldPanel = document.getElementById('scaffold-panel');
+        this.decompA = document.getElementById('decomp-a');
+        this.decompB = document.getElementById('decomp-b');
+        this.scaffoldTt = document.getElementById('scaffold-tt');
+        this.scaffoldTo = document.getElementById('scaffold-to');
+        this.scaffoldOt = document.getElementById('scaffold-ot');
+        this.scaffoldOo = document.getElementById('scaffold-oo');
+        this.topTens = document.getElementById('top-tens');
+        this.topOnes = document.getElementById('top-ones');
+        this.bottomTens = document.getElementById('bottom-tens');
+        this.bottomOnes = document.getElementById('bottom-ones');
+        this.stepBadge = document.getElementById('step-badge');
+        this.stepText = document.getElementById('step-text');
+        this.answerInput = document.getElementById('answer-input');
+        this.btnCheck = document.getElementById('btn-check');
+        this.btnReset = document.getElementById('btn-reset');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.answerInput.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            this.checkAnswer();
+          }
+        });
+
+        this.btnCheck.addEventListener('click', () => this.checkAnswer());
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        this.updateStepPrompt();
+        this.updateAriaLabel();
+
+        if (this.feedback.classList.contains('show') && this.lastFeedbackKey) {
+          this.feedback.textContent = this.getFeedbackText(this.lastFeedbackKey);
+        }
+
+        if (this.statsOverlay.classList.contains('show') && this.lastStatsKey) {
+          const fallbackMap = {
+            perfect: 'Multiplication master!',
+            great: 'Great work!',
+            keepPracticing: 'Keep practicing!'
+          };
+          this.statsMessage.textContent = this.getTranslation(this.lastStatsKey, fallbackMap[this.lastStatsKey]);
+        }
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.multiply-2x2.${key}`);
+          return translated !== `section.activities.multiply-2x2.${key}` ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      getFeedbackText(key) {
+        const fallbackMap = {
+          enterAnswer: 'Type an answer first!',
+          correct: 'Nice multiplication!',
+          tryAgain: 'Not quite. Try again!'
+        };
+        return this.getTranslation(key, fallbackMap[key] || '');
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      generateNumber(difficulty) {
+        let tensMin = 1;
+        let tensMax = 4;
+
+        if (difficulty >= 4 && difficulty < 7) {
+          tensMax = 7;
+        } else if (difficulty >= 7) {
+          tensMin = 3;
+          tensMax = 9;
+        }
+
+        const tens = this.randomInt(tensMin, tensMax);
+        const ones = this.randomInt(1, 9);
+        return tens * 10 + ones;
+      },
+
+      determineStepType() {
+        if (this.currentQuestion < 4) {
+          return 'ones';
+        }
+        if (this.currentQuestion < 7) {
+          return Math.random() < 0.5 ? 'ones' : 'final';
+        }
+        return 'final';
+      },
+
+      generateProblem() {
+        const difficulty = this.currentQuestion;
+
+        this.multiplicand = this.generateNumber(difficulty);
+        this.multiplier = this.generateNumber(difficulty);
+        this.tensA = Math.floor(this.multiplicand / 10) * 10;
+        this.onesA = this.multiplicand % 10;
+        this.tensB = Math.floor(this.multiplier / 10) * 10;
+        this.onesB = this.multiplier % 10;
+        this.onesRowAnswer = this.multiplicand * this.onesB;
+        this.finalAnswer = this.multiplicand * this.multiplier;
+        this.stepType = this.determineStepType();
+
+        this.updateProblemText();
+        this.updateScaffold();
+        this.updateAlgorithm();
+        this.updateStepPrompt();
+        this.updateAriaLabel();
+        this.updateScaffoldVisibility();
+      },
+
+      updateProblemText() {
+        this.problemValue.textContent = `${this.multiplicand} × ${this.multiplier}`;
+        this.decompA.textContent = `${this.multiplicand} = ${this.tensA} + ${this.onesA}`;
+        this.decompB.textContent = `${this.multiplier} = ${this.tensB} + ${this.onesB}`;
+      },
+
+      updateScaffold() {
+        this.scaffoldTt.textContent = `${this.tensA} × ${this.tensB}`;
+        this.scaffoldTo.textContent = `${this.tensA} × ${this.onesB}`;
+        this.scaffoldOt.textContent = `${this.onesA} × ${this.tensB}`;
+        this.scaffoldOo.textContent = `${this.onesA} × ${this.onesB}`;
+      },
+
+      updateAlgorithm() {
+        this.topTens.textContent = Math.floor(this.multiplicand / 10);
+        this.topOnes.textContent = this.multiplicand % 10;
+        this.bottomTens.textContent = Math.floor(this.multiplier / 10);
+        this.bottomOnes.textContent = this.multiplier % 10;
+        this.bottomOnes.classList.toggle('highlight', this.stepType === 'ones');
+      },
+
+      updateStepPrompt() {
+        const onesLabel = this.getTranslation('onesRowLabel', 'Ones row (× {digit})').replace('{digit}', this.onesB);
+        const finalLabel = this.getTranslation('finalLabel', 'Final product');
+        const onesPrompt = this.getTranslation('onesRowPrompt', 'Find the ones row for × {digit}.').replace('{digit}', this.onesB);
+        const finalPrompt = this.getTranslation('finalPrompt', 'Find the final product.');
+
+        if (this.stepType === 'ones') {
+          this.stepBadge.textContent = onesLabel;
+          this.stepText.textContent = onesPrompt;
+        } else {
+          this.stepBadge.textContent = finalLabel;
+          this.stepText.textContent = finalPrompt;
+        }
+      },
+
+      updateAriaLabel() {
+        const onesLabel = this.getTranslation('onesRowLabel', 'Ones row (× {digit})').replace('{digit}', this.onesB);
+        const finalLabel = this.getTranslation('finalLabel', 'Final product');
+        const stepLabel = this.stepType === 'ones' ? onesLabel : finalLabel;
+        const ariaTemplate = this.getTranslation('answerAria', 'Answer for {step}');
+        this.answerInput.setAttribute('aria-label', ariaTemplate.replace('{step}', stepLabel));
+      },
+
+      updateScaffoldVisibility() {
+        const shouldShow = this.currentQuestion < this.scaffoldRounds;
+        this.scaffoldPanel.classList.toggle('compact', !shouldShow);
+        this.scaffoldPanel.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+      },
+
+      clearInput() {
+        this.answerInput.value = '';
+        this.answerInput.classList.remove('correct', 'incorrect');
+      },
+
+      enableInput(enabled) {
+        this.answerInput.disabled = !enabled;
+      },
+
+      checkAnswer() {
+        if (this.isAnswered) return;
+
+        const value = Number.parseInt(this.answerInput.value, 10);
+        if (!Number.isFinite(value)) {
+          this.feedback.textContent = this.getFeedbackText('enterAnswer');
+          this.feedback.classList.add('show', 'error');
+          this.lastFeedbackKey = 'enterAnswer';
+          setTimeout(() => {
+            this.feedback.classList.remove('show', 'error');
+          }, 1500);
+          return;
+        }
+
+        this.isAnswered = true;
+        this.btnCheck.disabled = true;
+        this.enableInput(false);
+        this.feedback.classList.remove('error');
+
+        const expected = this.stepType === 'ones' ? this.onesRowAnswer : this.finalAnswer;
+        const isCorrect = value === expected;
+
+        this.answerInput.classList.add(isCorrect ? 'correct' : 'incorrect');
+
+        if (isCorrect) {
+          this.feedback.textContent = this.getFeedbackText('correct');
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+          this.lastFeedbackKey = 'correct';
+        } else {
+          this.feedback.textContent = this.getFeedbackText('tryAgain');
+          this.feedback.classList.add('show', 'error');
+          this.incorrectCount++;
+          this.lastFeedbackKey = 'tryAgain';
+        }
+
+        this.renderProgress();
+        this.clearAdvanceTimeout();
+
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.currentQuestion++;
+            this.startQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      startQuestion() {
+        this.generateProblem();
+        this.clearInput();
+        this.enableInput(true);
+        this.btnCheck.disabled = false;
+        this.feedback.classList.remove('show', 'error');
+        this.isAnswered = false;
+        this.lastFeedbackKey = null;
+        this.renderProgress();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.clearInput();
+        this.enableInput(true);
+        this.btnCheck.disabled = false;
+        this.feedback.classList.remove('show', 'error');
+        this.isAnswered = false;
+        this.lastFeedbackKey = null;
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const score = this.correctCount / this.totalQuestions;
+
+        if (score >= 0.8) {
+          this.statsIcon.textContent = '🏆';
+          this.lastStatsKey = 'perfect';
+          this.statsMessage.textContent = this.getTranslation(this.lastStatsKey, 'Multiplication master!');
+        } else if (score >= 0.5) {
+          this.statsIcon.textContent = '🌟';
+          this.lastStatsKey = 'great';
+          this.statsMessage.textContent = this.getTranslation(this.lastStatsKey, 'Great work!');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.lastStatsKey = 'keepPracticing';
+          this.statsMessage.textContent = this.getTranslation(this.lastStatsKey, 'Keep practicing!');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.lastStatsKey = null;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => Multiply2x2.init());
+      } else {
+        Multiply2x2.init();
+      }
+    });
+  </script>
+  <style>
+    /* Multi-Digit Multiplication specific styles */
+    .problem-banner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      padding: var(--space-3) var(--space-5);
+      border: 2px solid #f59e0b;
+      margin-bottom: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .problem-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #92400e;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .problem-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: #78350f;
+      background: rgba(255, 255, 255, 0.7);
+      padding: var(--space-1) var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 2px solid rgba(146, 64, 14, 0.2);
+    }
+
+    .instruction-card {
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3) var(--space-4);
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #1e3a8a;
+      border: 2px solid #93c5fd;
+      margin-bottom: var(--space-4);
+    }
+
+    .scaffold-panel {
+      background: linear-gradient(135deg, #fff7ed, #ffedd5);
+      border-radius: var(--radius-xl);
+      border: 2px dashed #fb923c;
+      padding: var(--space-4);
+      margin-bottom: var(--space-5);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .scaffold-panel.compact {
+      max-height: 0;
+      padding: 0;
+      margin-bottom: 0;
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+    }
+
+    .scaffold-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-3);
+    }
+
+    .scaffold-title {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #9a3412;
+    }
+
+    .scaffold-chip {
+      background: #fed7aa;
+      color: #9a3412;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      border: 2px solid #fdba74;
+    }
+
+    .decomp-items {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: var(--space-3);
+    }
+
+    .decomp-item {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--space-2) var(--space-4);
+      border: 2px solid #fed7aa;
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+    }
+
+    .scaffold-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: var(--space-3);
+    }
+
+    .scaffold-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 2px solid #fdba74;
+      padding: var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #7c2d12;
+      text-align: center;
+      box-shadow: 0 4px 0 rgba(234, 88, 12, 0.2);
+    }
+
+    .algorithm-card {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 3px solid #fcd34d;
+      box-shadow: 0 6px 0 rgba(217, 119, 6, 0.4);
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .algorithm-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-4);
+    }
+
+    .algorithm-title {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #78350f;
+    }
+
+    .step-badge {
+      background: linear-gradient(135deg, #93c5fd, #60a5fa);
+      color: white;
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      box-shadow: 0 3px 0 #1d4ed8;
+      text-align: center;
+    }
+
+    .algorithm-display {
+      max-width: 320px;
+      margin: 0 auto var(--space-4);
+      display: grid;
+      gap: var(--space-2);
+      justify-items: center;
+    }
+
+    .alg-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(40px, 56px));
+      align-items: center;
+      justify-items: center;
+      width: 100%;
+    }
+
+    .alg-cell {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      text-align: center;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .alg-cell.digit {
+      background: #fff7ed;
+      border: 2px solid #fdba74;
+      border-radius: var(--radius-md);
+      width: 100%;
+      box-shadow: 0 3px 0 rgba(234, 88, 12, 0.2);
+    }
+
+    .alg-cell.operator {
+      color: #92400e;
+    }
+
+    .alg-cell.highlight {
+      background: #fef3c7;
+      border-color: #f59e0b;
+      box-shadow: 0 3px 0 rgba(217, 119, 6, 0.4);
+    }
+
+    .alg-line {
+      width: 100%;
+      border-bottom: 3px solid #fbbf24;
+      margin-top: -4px;
+    }
+
+    .ghost-row .alg-cell {
+      min-height: 24px;
+    }
+
+    .alg-cell.ghost {
+      color: #f59e0b;
+      font-size: var(--text-xl);
+      opacity: 0.6;
+    }
+
+    .step-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3) var(--space-4);
+      margin-bottom: var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #1e3a8a;
+      border: 2px solid #93c5fd;
+      text-align: center;
+      flex-wrap: wrap;
+    }
+
+    .answer-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .answer-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+    }
+
+    .answer-input {
+      width: 200px;
+      height: 64px;
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      text-align: center;
+      color: var(--color-primary);
+      background: white;
+      border: 4px solid var(--color-neutral-300);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 5px 0 var(--color-neutral-300);
+      transition: all 0.2s ease;
+      -webkit-appearance: none;
+      -moz-appearance: textfield;
+    }
+
+    .answer-input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 5px 0 var(--color-primary), 0 10px 24px rgba(59, 130, 246, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .answer-input:disabled {
+      background: #f1f5f9;
+      color: var(--color-neutral-400);
+      border-color: var(--color-neutral-200);
+      box-shadow: none;
+    }
+
+    .answer-input.correct {
+      border-color: #22c55e;
+      box-shadow: 0 5px 0 #16a34a;
+      color: #166534;
+    }
+
+    .answer-input.incorrect {
+      border-color: #f59e0b;
+      box-shadow: 0 5px 0 #d97706;
+      color: #b45309;
+    }
+
+    .answer-input::-webkit-inner-spin-button,
+    .answer-input::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .check-section {
+      display: flex;
+      justify-content: center;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 768px) {
+      .algorithm-display {
+        max-width: 280px;
+      }
+
+      .alg-row {
+        grid-template-columns: repeat(4, minmax(36px, 48px));
+      }
+
+      .alg-cell {
+        font-size: var(--text-xl);
+      }
+
+      .answer-input {
+        width: 180px;
+        height: 58px;
+        font-size: var(--text-xl);
+      }
+
+      .problem-value {
+        font-size: var(--text-2xl);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .scaffold-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .algorithm-card {
+        padding: var(--space-3);
+      }
+
+      .answer-input {
+        width: 160px;
+        height: 54px;
+      }
+
+      .step-card {
+        font-size: var(--text-base);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,272 @@
+/* About Page Styles - Meadow Math */
+
+/* ========== PAGE LAYOUT ========== */
+
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-6) 0;
+}
+
+/* ========== PAGE HEADER ========== */
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
+}
+
+.page-icon {
+  font-size: 64px;
+  line-height: 1;
+}
+
+.page-header-text {
+  flex: 1;
+}
+
+.page-title {
+  font-family: var(--font-secondary);
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-extrabold);
+  color: var(--color-primary-dark);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.page-description {
+  font-size: var(--text-lg);
+  color: var(--color-neutral-600);
+  margin: 0;
+}
+
+/* ========== TABS ========== */
+
+.tabs-container {
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.06), 0 8px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.tabs-nav {
+  display: flex;
+  background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: var(--space-4) var(--space-6);
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-neutral-600);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  position: relative;
+}
+
+.tab-btn:hover {
+  color: var(--color-primary-dark);
+  background: rgba(0, 201, 201, 0.05);
+}
+
+.tab-btn.active {
+  color: var(--color-secondary);
+  background: white;
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-secondary);
+  border-radius: var(--radius-full) var(--radius-full) 0 0;
+}
+
+.tab-content {
+  display: none;
+  padding: var(--space-8);
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* ========== CONTENT SECTIONS ========== */
+
+.content-section {
+  margin-bottom: var(--space-8);
+}
+
+.content-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-family: var(--font-secondary);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary-dark);
+  margin: 0 0 var(--space-4) 0;
+}
+
+.subsection-title {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary-dark);
+  margin: 0 0 var(--space-3) 0;
+}
+
+.section-text {
+  font-size: var(--text-base);
+  color: var(--color-neutral-700);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ========== PRINCIPLES GRID ========== */
+
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.principle-card {
+  background: linear-gradient(135deg, rgba(0, 201, 201, 0.05), rgba(0, 201, 201, 0.1));
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  text-align: center;
+}
+
+.principle-icon {
+  font-size: 40px;
+  line-height: 1;
+  margin-bottom: var(--space-3);
+}
+
+.principle-title {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary-dark);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.principle-text {
+  font-size: var(--text-sm);
+  color: var(--color-neutral-600);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ========== CONTRIBUTE LIST ========== */
+
+.contribute-list {
+  margin: var(--space-4) 0;
+  padding-left: var(--space-6);
+  color: var(--color-neutral-700);
+  line-height: 1.8;
+}
+
+.contribute-list li {
+  margin-bottom: var(--space-2);
+}
+
+/* ========== GITHUB LINK ========== */
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  background: linear-gradient(to bottom, #33E5E5, #00C9C9);
+  color: white;
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  border-radius: var(--radius-full);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  text-shadow: 1px 1px 0 #00A3A3;
+  margin-top: var(--space-4);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 3px 0 #00A3A3, 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.github-link:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 5px 0 #00A3A3, 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.github-link:active {
+  transform: translateY(2px) scale(1);
+  box-shadow: 0 1px 0 #00A3A3;
+}
+
+/* ========== MOBILE RESPONSIVE ========== */
+
+@media (max-width: 767px) {
+  .about-container {
+    padding: var(--space-4) 0;
+  }
+
+  .page-header {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-3);
+  }
+
+  .page-icon {
+    font-size: 48px;
+  }
+
+  .page-title {
+    font-size: var(--text-2xl);
+  }
+
+  .page-description {
+    font-size: var(--text-base);
+  }
+
+  .tabs-nav {
+    flex-direction: column;
+  }
+
+  .tab-btn {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .tab-btn:last-child {
+    border-bottom: none;
+  }
+
+  .tab-btn.active::after {
+    display: none;
+  }
+
+  .tab-content {
+    padding: var(--space-5);
+  }
+
+  .section-title {
+    font-size: var(--text-xl);
+  }
+
+  .subsection-title {
+    font-size: var(--text-lg);
+  }
+
+  .principles-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Division Sharing Game - Grade 3 Math Activity - Meadow Math">
+  <title>Division Sharing Game - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🍪</span>
+            <span data-i18n="section.activities.division-sharing.title">Division Sharing Game</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.division-sharing.description">Share items equally and see how many in each group.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Story Section -->
+          <div class="story-section">
+            <p class="story-text" id="story-text"></p>
+          </div>
+
+          <!-- Visual Sharing Section -->
+          <div class="sharing-visual">
+            <!-- Items to share -->
+            <div class="items-pool" id="items-pool"></div>
+
+            <!-- Groups/Plates to share into -->
+            <div class="groups-container" id="groups-container"></div>
+          </div>
+
+          <!-- Question Section -->
+          <div class="question-section">
+            <p class="question-text" id="question-text"></p>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-section" id="choices"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.division-sharing.great">Great sharing skills!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Division Sharing Game Activity - Grade 3 Level 3
+    const DivisionSharing = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      totalItems: 0,
+      numGroups: 0,
+      itemsPerGroup: 0,
+      correctAnswer: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // Story templates with items and containers
+      storyTemplates: [
+        { container: 'plate', containerPlural: 'plates', item: 'cookie', itemPlural: 'cookies', emoji: '🍪', containerEmoji: '🍽️' },
+        { container: 'bag', containerPlural: 'bags', item: 'marble', itemPlural: 'marbles', emoji: '🔮', containerEmoji: '👜' },
+        { container: 'box', containerPlural: 'boxes', item: 'crayon', itemPlural: 'crayons', emoji: '🖍️', containerEmoji: '📦' },
+        { container: 'basket', containerPlural: 'baskets', item: 'apple', itemPlural: 'apples', emoji: '🍎', containerEmoji: '🧺' },
+        { container: 'bowl', containerPlural: 'bowls', item: 'grape', itemPlural: 'grapes', emoji: '🍇', containerEmoji: '🥣' },
+        { container: 'nest', containerPlural: 'nests', item: 'egg', itemPlural: 'eggs', emoji: '🥚', containerEmoji: '🪺' },
+        { container: 'vase', containerPlural: 'vases', item: 'flower', itemPlural: 'flowers', emoji: '🌸', containerEmoji: '🏺' },
+        { container: 'shelf', containerPlural: 'shelves', item: 'book', itemPlural: 'books', emoji: '📕', containerEmoji: '📚' },
+        { container: 'jar', containerPlural: 'jars', item: 'candy', itemPlural: 'candies', emoji: '🍬', containerEmoji: '🫙' },
+        { container: 'tray', containerPlural: 'trays', item: 'cupcake', itemPlural: 'cupcakes', emoji: '🧁', containerEmoji: '🍽️' }
+      ],
+
+      currentStory: null,
+
+      // DOM elements
+      storyText: null,
+      itemsPool: null,
+      groupsContainer: null,
+      questionText: null,
+      choices: null,
+      progress: null,
+      feedback: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        // Get DOM elements
+        this.storyText = document.getElementById('story-text');
+        this.itemsPool = document.getElementById('items-pool');
+        this.groupsContainer = document.getElementById('groups-container');
+        this.questionText = document.getElementById('question-text');
+        this.choices = document.getElementById('choices');
+        this.progress = document.getElementById('progress');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up listeners
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Dynamic translations - will update on next question
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.division-sharing.${key}`);
+          return translated !== `section.activities.division-sharing.${key}` ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      shuffle(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      },
+
+      // Generate divisible problems (no remainders)
+      generateProblem() {
+        // Progressive difficulty
+        // Questions 0-2: Small (2-4 groups, 2-4 per group, total <= 16)
+        // Questions 3-5: Medium (3-6 groups, 2-6 per group, total <= 36)
+        // Questions 6-7: Larger (4-8 groups, 3-8 per group, total <= 64)
+
+        let minGroups, maxGroups, minPerGroup, maxPerGroup;
+        if (this.currentQuestion < 3) {
+          minGroups = 2;
+          maxGroups = 4;
+          minPerGroup = 2;
+          maxPerGroup = 4;
+        } else if (this.currentQuestion < 6) {
+          minGroups = 3;
+          maxGroups = 6;
+          minPerGroup = 2;
+          maxPerGroup = 6;
+        } else {
+          minGroups = 4;
+          maxGroups = 8;
+          minPerGroup = 3;
+          maxPerGroup = 8;
+        }
+
+        // Generate numbers ensuring divisible result
+        this.numGroups = this.randomInt(minGroups, maxGroups);
+        this.itemsPerGroup = this.randomInt(minPerGroup, maxPerGroup);
+        this.totalItems = this.numGroups * this.itemsPerGroup;
+        this.correctAnswer = this.itemsPerGroup;
+
+        // Limit total for visual display
+        while (this.totalItems > 48) {
+          this.itemsPerGroup = this.randomInt(minPerGroup, Math.min(maxPerGroup, 6));
+          this.totalItems = this.numGroups * this.itemsPerGroup;
+        }
+        this.correctAnswer = this.itemsPerGroup;
+
+        // Pick a random story template
+        this.currentStory = this.storyTemplates[this.randomInt(0, this.storyTemplates.length - 1)];
+      },
+
+      // Get translated container/item names
+      getContainerName(key) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.division-sharing.containers.${key}`);
+          return translated !== `section.activities.division-sharing.containers.${key}` ? translated : key;
+        }
+        return key;
+      },
+
+      getItemName(key) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.division-sharing.items.${key}`);
+          return translated !== `section.activities.division-sharing.items.${key}` ? translated : key;
+        }
+        return key;
+      },
+
+      buildStoryText() {
+        const story = this.currentStory;
+        const containerKey = this.numGroups === 1 ? story.container : story.containerPlural;
+        const itemKey = this.totalItems === 1 ? story.item : story.itemPlural;
+
+        // Get translated names
+        const containerWord = this.getContainerName(containerKey);
+        const itemWord = this.getItemName(itemKey);
+        const itemPluralWord = this.getItemName(story.itemPlural);
+        const containerSingular = this.getContainerName(story.container);
+
+        // Build story text using translation pattern
+        const storyPattern = this.getTranslation('storyPattern', 'Share {total} {items} equally among {groups} {containers}. How many {itemPlural} in each {container}?');
+
+        return storyPattern
+          .replace('{total}', this.totalItems)
+          .replace('{items}', itemWord)
+          .replace('{groups}', this.numGroups)
+          .replace('{containers}', containerWord)
+          .replace('{itemPlural}', itemPluralWord)
+          .replace('{container}', containerSingular);
+      },
+
+      buildItemsPool() {
+        const story = this.currentStory;
+        let html = '<div class="pool-label">' + this.getTranslation('itemsToShare', 'Items to share:') + '</div>';
+        html += '<div class="pool-items">';
+        for (let i = 0; i < this.totalItems; i++) {
+          html += `<span class="pool-item">${story.emoji}</span>`;
+        }
+        html += '</div>';
+        return html;
+      },
+
+      buildGroupsVisual() {
+        const story = this.currentStory;
+        const containerKey = this.numGroups === 1 ? story.container : story.containerPlural;
+        const containerWord = this.getContainerName(containerKey);
+        let html = '<div class="groups-label">' + this.getTranslation('shareAmong', 'Share among {n} {containers}:')
+          .replace('{n}', this.numGroups)
+          .replace('{containers}', containerWord) + '</div>';
+        html += '<div class="groups-grid">';
+
+        for (let g = 0; g < this.numGroups; g++) {
+          html += '<div class="group-plate">';
+          html += `<div class="plate-icon">${story.containerEmoji}</div>`;
+          html += '<div class="plate-items">';
+          // Show items after answer is revealed
+          html += '</div>';
+          html += '</div>';
+        }
+
+        html += '</div>';
+        return html;
+      },
+
+      showDistribution() {
+        const story = this.currentStory;
+        const plates = this.groupsContainer.querySelectorAll('.plate-items');
+        plates.forEach(plate => {
+          let itemsHtml = '';
+          for (let i = 0; i < this.itemsPerGroup; i++) {
+            itemsHtml += `<span class="distributed-item">${story.emoji}</span>`;
+          }
+          plate.innerHTML = itemsHtml;
+        });
+        // Add animation class to items pool
+        this.itemsPool.classList.add('distributed');
+      },
+
+      generateChoices() {
+        const choices = new Set();
+        choices.add(this.correctAnswer);
+
+        // Generate plausible wrong answers
+        const wrongStrategies = [
+          () => this.correctAnswer + 1,
+          () => this.correctAnswer - 1,
+          () => this.correctAnswer + 2,
+          () => Math.max(1, this.correctAnswer - 2),
+          () => this.numGroups,                          // Confusing groups with per-group
+          () => this.totalItems,                          // Total instead of per-group
+          () => Math.ceil(this.totalItems / (this.numGroups + 1)),  // Off by one group
+          () => Math.ceil(this.totalItems / (this.numGroups - 1))   // Off by one group other way
+        ];
+
+        let attempts = 0;
+        while (choices.size < 4 && attempts < 20) {
+          const strategy = wrongStrategies[this.randomInt(0, wrongStrategies.length - 1)];
+          const wrongAnswer = strategy();
+          if (wrongAnswer > 0 && wrongAnswer !== this.correctAnswer && wrongAnswer <= 20) {
+            choices.add(wrongAnswer);
+          }
+          attempts++;
+        }
+
+        // Fill remaining with nearby values
+        while (choices.size < 4) {
+          const offset = this.randomInt(-3, 3);
+          const newChoice = Math.max(1, this.correctAnswer + offset);
+          if (!choices.has(newChoice)) {
+            choices.add(newChoice);
+          }
+        }
+
+        return this.shuffle(Array.from(choices));
+      },
+
+      startQuestion() {
+        this.generateProblem();
+        this.isAnswered = false;
+
+        // Update story text
+        this.storyText.textContent = this.buildStoryText();
+
+        // Build visual representation
+        this.itemsPool.innerHTML = this.buildItemsPool();
+        this.itemsPool.classList.remove('distributed');
+        this.groupsContainer.innerHTML = this.buildGroupsVisual();
+
+        // Update question
+        const questionPattern = this.getTranslation('howManyEach', 'How many {items} in each {container}?');
+        this.questionText.textContent = questionPattern
+          .replace('{items}', this.getItemName(this.currentStory.itemPlural))
+          .replace('{container}', this.getContainerName(this.currentStory.container));
+
+        // Generate and render choices
+        const choiceValues = this.generateChoices();
+        this.renderChoices(choiceValues);
+
+        // Reset UI
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      renderChoices(choiceValues) {
+        this.choices.innerHTML = '';
+
+        choiceValues.forEach(value => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.textContent = value;
+          btn.dataset.value = value;
+          btn.addEventListener('click', () => {
+            if (!this.isAnswered) {
+              this.checkAnswer(value, btn);
+            }
+          });
+          this.choices.appendChild(btn);
+        });
+      },
+
+      checkAnswer(selectedValue, btnElement) {
+        if (this.isAnswered) return;
+
+        this.isAnswered = true;
+        const isCorrect = selectedValue === this.correctAnswer;
+
+        // Disable all buttons and show correct answer
+        const allBtns = this.choices.querySelectorAll('.choice-btn');
+        allBtns.forEach(btn => {
+          btn.disabled = true;
+          if (parseInt(btn.dataset.value) === this.correctAnswer) {
+            btn.classList.add('correct');
+          }
+        });
+
+        // Show the distribution visually
+        this.showDistribution();
+
+        if (isCorrect) {
+          this.correctCount++;
+          btnElement.classList.add('correct');
+          const correctMsg = window.i18n ? i18n.t('feedback.correct') : 'Correct!';
+          // Show the division equation
+          this.feedback.textContent = `${correctMsg} ${this.totalItems} ÷ ${this.numGroups} = ${this.correctAnswer}`;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          btnElement.classList.add('incorrect');
+          const tryAgainMsg = window.i18n ? i18n.t('feedback.tryAgain') : 'Try again!';
+          this.feedback.textContent = `${tryAgainMsg} ${this.totalItems} ÷ ${this.numGroups} = ${this.correctAnswer}`;
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation('perfect', 'Amazing sharing skills!');
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🍪';
+          this.statsMessage.textContent = this.getTranslation('great', 'Great sharing skills!');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation('keepPracticing', 'Keep practicing!');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => DivisionSharing.init());
+      } else {
+        DivisionSharing.init();
+      }
+    });
+  </script>
+  <style>
+    /* Division Sharing Game specific styles */
+
+    /* Story Section */
+    .story-section {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid #f59e0b;
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      text-align: center;
+    }
+
+    .story-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-medium);
+      color: var(--color-neutral-700);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Sharing Visual */
+    .sharing-visual {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Items Pool */
+    .items-pool {
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 2px solid #0ea5e9;
+      border-radius: var(--radius-xl);
+      padding: var(--space-3);
+      text-align: center;
+      transition: all 0.5s ease;
+    }
+
+    .items-pool.distributed {
+      opacity: 0.4;
+      transform: scale(0.95);
+    }
+
+    .pool-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #0369a1;
+      margin-bottom: var(--space-2);
+    }
+
+    .pool-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .pool-item {
+      font-size: var(--text-xl);
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    /* Groups Container */
+    .groups-container {
+      text-align: center;
+    }
+
+    .groups-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      margin-bottom: var(--space-2);
+    }
+
+    .groups-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-3);
+    }
+
+    .group-plate {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-2);
+      background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+      border: 2px solid #a855f7;
+      border-radius: var(--radius-lg);
+      min-width: 70px;
+      min-height: 70px;
+    }
+
+    .plate-icon {
+      font-size: var(--text-2xl);
+    }
+
+    .plate-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2px;
+      max-width: 80px;
+      min-height: 24px;
+    }
+
+    .distributed-item {
+      font-size: var(--text-base);
+      display: inline-block;
+      animation: item-appear 0.4s ease-out forwards;
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    @keyframes item-appear {
+      0% {
+        opacity: 0;
+        transform: scale(0) translateY(-20px);
+      }
+      60% {
+        transform: scale(1.2) translateY(0);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .distributed-item:nth-child(1) { animation-delay: 0s; }
+    .distributed-item:nth-child(2) { animation-delay: 0.05s; }
+    .distributed-item:nth-child(3) { animation-delay: 0.1s; }
+    .distributed-item:nth-child(4) { animation-delay: 0.15s; }
+    .distributed-item:nth-child(5) { animation-delay: 0.2s; }
+    .distributed-item:nth-child(6) { animation-delay: 0.25s; }
+    .distributed-item:nth-child(7) { animation-delay: 0.3s; }
+    .distributed-item:nth-child(8) { animation-delay: 0.35s; }
+
+    /* Question Section */
+    .question-section {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      margin: 0;
+    }
+
+    /* Choices Section */
+    .choices-section {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      max-width: 400px;
+      margin: 0 auto var(--space-4);
+    }
+
+    .choice-btn {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      padding: var(--space-4) var(--space-3);
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      border: 3px solid var(--color-neutral-300);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: var(--color-neutral-700);
+      box-shadow: 0 4px 0 var(--color-neutral-400);
+      min-height: 72px;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: var(--color-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 var(--color-neutral-400);
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #15803d;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border-color: #ef4444;
+      color: #991b1b;
+      box-shadow: 0 4px 0 #dc2626;
+      animation: wiggle 0.5s ease;
+    }
+
+    .choice-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 4px 0 var(--color-neutral-400), 0 0 0 3px rgba(59, 130, 246, 0.5);
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Wiggle animation */
+    @keyframes wiggle {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-6px); }
+      80% { transform: translateX(6px); }
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .story-text {
+        font-size: var(--text-base);
+      }
+
+      .pool-items {
+        gap: 2px;
+      }
+
+      .pool-item {
+        font-size: var(--text-lg);
+      }
+
+      .groups-grid {
+        gap: var(--space-2);
+      }
+
+      .group-plate {
+        padding: var(--space-1);
+        min-width: 56px;
+        min-height: 56px;
+      }
+
+      .plate-icon {
+        font-size: var(--text-xl);
+      }
+
+      .plate-items {
+        max-width: 64px;
+      }
+
+      .distributed-item {
+        font-size: var(--text-sm);
+      }
+
+      .question-text {
+        font-size: var(--text-lg);
+      }
+
+      .choices-section {
+        gap: var(--space-2);
+      }
+
+      .choice-btn {
+        font-size: var(--text-xl);
+        padding: var(--space-3) var(--space-2);
+        min-height: 64px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .story-section {
+        padding: var(--space-3);
+      }
+
+      .story-text {
+        font-size: var(--text-base);
+      }
+
+      .items-pool {
+        padding: var(--space-2);
+      }
+
+      .pool-item {
+        font-size: var(--text-base);
+      }
+
+      .group-plate {
+        min-width: 48px;
+        min-height: 48px;
+        padding: var(--space-1);
+      }
+
+      .plate-icon {
+        font-size: var(--text-lg);
+      }
+
+      .plate-items {
+        max-width: 56px;
+      }
+
+      .distributed-item {
+        font-size: var(--text-xs);
+      }
+
+      .choice-btn {
+        font-size: var(--text-lg);
+        padding: var(--space-3);
+        min-height: 60px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

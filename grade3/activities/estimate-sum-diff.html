@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Estimate, Then Check - Grade 3 Math Activity - Meadow Math">
+  <title>Estimate, Then Check - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🔎</span>
+            <span data-i18n="section.activities.estimate-sum-diff.title">Estimate, Then Check</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.estimate-sum-diff.description">Estimate first, then solve exactly.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Problem Display -->
+          <div class="problem-section">
+            <div class="problem-display" id="problem-display">
+              <span class="number" id="first-number">0</span>
+              <span class="operator" id="operator">+</span>
+              <span class="number" id="second-number">0</span>
+              <span class="equals">=</span>
+              <span class="result" id="result-placeholder">?</span>
+            </div>
+          </div>
+
+          <!-- Step Indicator -->
+          <div class="step-indicator" id="step-indicator">
+            <span class="step-icon" aria-hidden="true">1️⃣</span>
+            <span class="step-text" id="step-text" data-i18n="section.activities.estimate-sum-diff.step1">Step 1: Estimate first!</span>
+          </div>
+
+          <!-- Rounding Help (Step 1) -->
+          <div class="rounding-help" id="rounding-help">
+            <div class="round-label" id="round-label" data-i18n="section.activities.estimate-sum-diff.roundToNearest">Round to the nearest:</div>
+            <div class="round-target" id="round-target">100</div>
+          </div>
+
+          <!-- Estimation Display (shows rounded numbers) -->
+          <div class="estimation-display" id="estimation-display">
+            <div class="estimate-row">
+              <span class="original" id="est-first-orig">0</span>
+              <span class="arrow">→</span>
+              <span class="rounded" id="est-first-rounded">?</span>
+            </div>
+            <div class="estimate-row">
+              <span class="original" id="est-second-orig">0</span>
+              <span class="arrow">→</span>
+              <span class="rounded" id="est-second-rounded">?</span>
+            </div>
+            <div class="estimate-result" id="estimate-result">
+              <span class="label" id="estimate-label" data-i18n="section.activities.estimate-sum-diff.estimateLabel">Estimate:</span>
+              <span class="value" id="estimate-value">?</span>
+            </div>
+          </div>
+
+          <!-- Question Prompt -->
+          <div class="question-prompt" id="question-prompt">
+            <span class="prompt-icon" aria-hidden="true">🤔</span>
+            <span class="prompt-text" id="prompt-text" data-i18n="section.activities.estimate-sum-diff.whatEstimate">What is your estimate?</span>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choice-container" id="choice-container" role="group" aria-label="Answer choices">
+            <!-- Choices will be dynamically inserted -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.estimate-sum-diff.great">Great estimation skills!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Estimate, Then Check Activity - Grade 3 Level 2
+    const EstimateSumDiff = {
+      currentQuestion: 0,
+      totalQuestions: 6,
+      correctCount: 0,
+      incorrectCount: 0,
+      numberFirst: 0,
+      numberSecond: 0,
+      isAddition: true,
+      roundTo: 100, // 10 or 100
+      correctAnswer: 0,
+      estimatedAnswer: 0,
+      currentStep: 1, // 1 = estimate, 2 = exact, 3 = check
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // DOM elements
+      problemDisplay: null,
+      firstNumber: null,
+      secondNumber: null,
+      operator: null,
+      resultPlaceholder: null,
+      stepIndicator: null,
+      stepText: null,
+      roundingHelp: null,
+      roundLabel: null,
+      roundTarget: null,
+      estimationDisplay: null,
+      estFirstOrig: null,
+      estFirstRounded: null,
+      estSecondOrig: null,
+      estSecondRounded: null,
+      estimateResult: null,
+      estimateLabel: null,
+      estimateValue: null,
+      questionPrompt: null,
+      promptText: null,
+      choiceContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        // Get DOM elements
+        this.problemDisplay = document.getElementById('problem-display');
+        this.firstNumber = document.getElementById('first-number');
+        this.secondNumber = document.getElementById('second-number');
+        this.operator = document.getElementById('operator');
+        this.resultPlaceholder = document.getElementById('result-placeholder');
+        this.stepIndicator = document.getElementById('step-indicator');
+        this.stepText = document.getElementById('step-text');
+        this.roundingHelp = document.getElementById('rounding-help');
+        this.roundLabel = document.getElementById('round-label');
+        this.roundTarget = document.getElementById('round-target');
+        this.estimationDisplay = document.getElementById('estimation-display');
+        this.estFirstOrig = document.getElementById('est-first-orig');
+        this.estFirstRounded = document.getElementById('est-first-rounded');
+        this.estSecondOrig = document.getElementById('est-second-orig');
+        this.estSecondRounded = document.getElementById('est-second-rounded');
+        this.estimateResult = document.getElementById('estimate-result');
+        this.estimateLabel = document.getElementById('estimate-label');
+        this.estimateValue = document.getElementById('estimate-value');
+        this.questionPrompt = document.getElementById('question-prompt');
+        this.promptText = document.getElementById('prompt-text');
+        this.choiceContainer = document.getElementById('choice-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Event listeners
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        this.updateStepText();
+        this.updatePromptText();
+        // Update round label
+        this.roundLabel.textContent = this.getTranslation('roundToNearest', 'Round to the nearest:');
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      roundNumber(num, roundTo) {
+        return Math.round(num / roundTo) * roundTo;
+      },
+
+      generateProblem() {
+        // Progressive difficulty
+        // Questions 0-1: Round to nearest 10, addition
+        // Questions 2-3: Round to nearest 100, addition
+        // Questions 4-5: Round to nearest 100, subtraction
+
+        if (this.currentQuestion < 2) {
+          // Round to nearest 10, 2-digit numbers, addition
+          this.roundTo = 10;
+          this.isAddition = true;
+          this.numberFirst = this.randomInt(23, 78);
+          this.numberSecond = this.randomInt(15, 67);
+        } else if (this.currentQuestion < 4) {
+          // Round to nearest 100, 3-digit numbers, addition
+          this.roundTo = 100;
+          this.isAddition = true;
+          this.numberFirst = this.randomInt(150, 550);
+          this.numberSecond = this.randomInt(120, 450);
+        } else {
+          // Round to nearest 100, 3-digit numbers, subtraction
+          this.roundTo = 100;
+          this.isAddition = false;
+          this.numberFirst = this.randomInt(450, 850);
+          this.numberSecond = this.randomInt(120, 400);
+          // Ensure first > second for subtraction
+          if (this.numberFirst <= this.numberSecond) {
+            this.numberFirst = this.numberSecond + this.randomInt(100, 300);
+          }
+        }
+
+        // Calculate answers
+        if (this.isAddition) {
+          this.correctAnswer = this.numberFirst + this.numberSecond;
+          const rounded1 = this.roundNumber(this.numberFirst, this.roundTo);
+          const rounded2 = this.roundNumber(this.numberSecond, this.roundTo);
+          this.estimatedAnswer = rounded1 + rounded2;
+        } else {
+          this.correctAnswer = this.numberFirst - this.numberSecond;
+          const rounded1 = this.roundNumber(this.numberFirst, this.roundTo);
+          const rounded2 = this.roundNumber(this.numberSecond, this.roundTo);
+          this.estimatedAnswer = rounded1 - rounded2;
+        }
+
+        this.currentStep = 1;
+        this.isAnswered = false;
+      },
+
+      startQuestion() {
+        this.generateProblem();
+        this.displayProblem();
+        this.updateStepText();
+        this.updatePromptText();
+        this.generateChoices();
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      displayProblem() {
+        this.firstNumber.textContent = this.numberFirst.toLocaleString();
+        this.secondNumber.textContent = this.numberSecond.toLocaleString();
+        this.operator.textContent = this.isAddition ? '+' : '−';
+        this.resultPlaceholder.textContent = '?';
+
+        // Show rounding help for step 1
+        this.roundTarget.textContent = this.roundTo.toLocaleString();
+
+        // Setup estimation display
+        this.estFirstOrig.textContent = this.numberFirst.toLocaleString();
+        this.estSecondOrig.textContent = this.numberSecond.toLocaleString();
+        this.estFirstRounded.textContent = '?';
+        this.estSecondRounded.textContent = '?';
+        this.estimateValue.textContent = '?';
+
+        // Show/hide elements based on step
+        this.updateStepVisibility();
+      },
+
+      updateStepVisibility() {
+        if (this.currentStep === 1) {
+          // Step 1: Estimate
+          this.roundingHelp.classList.add('show');
+          this.estimationDisplay.classList.add('show');
+          this.estimationDisplay.classList.remove('revealed');
+          this.estimateResult.classList.remove('show');
+        } else if (this.currentStep === 2) {
+          // Step 2: Exact answer
+          this.roundingHelp.classList.remove('show');
+          this.estimationDisplay.classList.add('show', 'revealed');
+          this.estimateResult.classList.add('show');
+        } else {
+          // Step 3: Check
+          this.roundingHelp.classList.remove('show');
+          this.estimationDisplay.classList.add('show', 'revealed');
+          this.estimateResult.classList.add('show');
+        }
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.estimate-sum-diff.${key}`);
+          return translated !== `section.activities.estimate-sum-diff.${key}` ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      updateStepText() {
+        const stepIcon = this.stepIndicator.querySelector('.step-icon');
+        let text = '';
+        let icon = '';
+
+        if (this.currentStep === 1) {
+          icon = '1️⃣';
+          text = this.getTranslation('step1', 'Step 1: Estimate first!');
+        } else if (this.currentStep === 2) {
+          icon = '2️⃣';
+          text = this.getTranslation('step2', 'Step 2: Find the exact answer!');
+        } else {
+          icon = '3️⃣';
+          text = this.getTranslation('step3', 'Step 3: Is it close to your estimate?');
+        }
+
+        stepIcon.textContent = icon;
+        this.stepText.textContent = text;
+      },
+
+      updatePromptText() {
+        let prompt = '';
+        if (this.currentStep === 1) {
+          prompt = this.getTranslation('whatEstimate', 'What is your estimate?');
+        } else if (this.currentStep === 2) {
+          prompt = this.getTranslation('whatExact', 'What is the exact answer?');
+        } else {
+          prompt = this.getTranslation('closeToEstimate', 'Is your answer close to the estimate?');
+        }
+        this.promptText.textContent = prompt;
+      },
+
+      generateChoices() {
+        const choices = [];
+        let correctValue;
+
+        if (this.currentStep === 1) {
+          // Estimate choices
+          correctValue = this.estimatedAnswer;
+          choices.push(correctValue);
+
+          // Generate distractors
+          // Wrong rounding errors
+          const wrongRound1 = correctValue + this.roundTo;
+          const wrongRound2 = correctValue - this.roundTo;
+          const wrongRound3 = correctValue + (this.roundTo * 2);
+
+          if (wrongRound1 > 0 && !choices.includes(wrongRound1)) choices.push(wrongRound1);
+          if (wrongRound2 > 0 && !choices.includes(wrongRound2)) choices.push(wrongRound2);
+          if (wrongRound3 > 0 && !choices.includes(wrongRound3)) choices.push(wrongRound3);
+
+          // Fill remaining
+          while (choices.length < 4) {
+            const offset = this.randomInt(-3, 3) * this.roundTo;
+            const distractor = correctValue + offset;
+            if (distractor > 0 && !choices.includes(distractor)) {
+              choices.push(distractor);
+            }
+          }
+        } else if (this.currentStep === 2) {
+          // Exact answer choices
+          correctValue = this.correctAnswer;
+          choices.push(correctValue);
+
+          // Estimate as distractor (common mistake)
+          if (!choices.includes(this.estimatedAnswer)) {
+            choices.push(this.estimatedAnswer);
+          }
+
+          // Off by small amount
+          const wrong1 = correctValue + this.randomInt(1, 15);
+          const wrong2 = correctValue - this.randomInt(1, 15);
+          const wrong3 = correctValue + this.randomInt(10, 30);
+
+          if (wrong1 > 0 && !choices.includes(wrong1)) choices.push(wrong1);
+          if (wrong2 > 0 && !choices.includes(wrong2)) choices.push(wrong2);
+          if (wrong3 > 0 && !choices.includes(wrong3)) choices.push(wrong3);
+
+          // Fill remaining
+          while (choices.length < 4) {
+            const offset = this.randomInt(-30, 30);
+            const distractor = correctValue + offset;
+            if (distractor > 0 && !choices.includes(distractor)) {
+              choices.push(distractor);
+            }
+          }
+        } else {
+          // Step 3: Yes/No check
+          this.renderYesNoChoices();
+          return;
+        }
+
+        // Shuffle and limit to 4
+        this.shuffle(choices);
+        const finalChoices = choices.slice(0, 4);
+
+        // Render buttons
+        let html = '';
+        finalChoices.forEach(choice => {
+          const displayValue = choice.toLocaleString();
+          html += `<button class="choice-btn" data-value="${choice}" aria-label="Select ${displayValue}">${displayValue}</button>`;
+        });
+        this.choiceContainer.innerHTML = html;
+
+        // Attach event listeners
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.addEventListener('click', () => this.selectChoice(parseInt(btn.dataset.value)));
+        });
+      },
+
+      renderYesNoChoices() {
+        const yesText = this.getTranslation('yes', 'Yes, it\'s close!');
+        const noText = this.getTranslation('no', 'No, it\'s not close');
+
+        // Check if the estimate is "close" (within 10% of exact answer)
+        const difference = Math.abs(this.correctAnswer - this.estimatedAnswer);
+        const threshold = Math.max(this.correctAnswer * 0.15, this.roundTo); // 15% or roundTo, whichever is larger
+        const isClose = difference <= threshold;
+
+        let html = '';
+        html += `<button class="choice-btn yes-btn" data-value="yes" aria-label="${yesText}">✓ ${yesText}</button>`;
+        html += `<button class="choice-btn no-btn" data-value="no" aria-label="${noText}">✗ ${noText}</button>`;
+        this.choiceContainer.innerHTML = html;
+        this.choiceContainer.classList.add('yes-no-mode');
+
+        // Attach event listeners
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.addEventListener('click', () => this.selectYesNo(btn.dataset.value, isClose));
+        });
+      },
+
+      shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      },
+
+      selectChoice(value) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        let correctValue;
+        if (this.currentStep === 1) {
+          correctValue = this.estimatedAnswer;
+        } else {
+          correctValue = this.correctAnswer;
+        }
+
+        const isCorrect = value === correctValue;
+
+        // Highlight correct and incorrect choices
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.disabled = true;
+          if (parseInt(btn.dataset.value) === correctValue) {
+            btn.classList.add('correct');
+          } else if (parseInt(btn.dataset.value) === value && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        // Show feedback
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = window.i18n ? i18n.t('feedback.correct') || 'Correct!' : 'Correct!';
+          this.feedback.textContent = msg;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          let incorrectMsg;
+          if (this.currentStep === 1) {
+            incorrectMsg = this.getTranslation('incorrectEstimate', 'The estimate is {answer}').replace('{answer}', correctValue.toLocaleString());
+          } else {
+            incorrectMsg = this.getTranslation('incorrectExact', 'The exact answer is {answer}').replace('{answer}', correctValue.toLocaleString());
+          }
+          this.feedback.textContent = incorrectMsg;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        // Update display based on step
+        if (this.currentStep === 1) {
+          // Reveal rounded numbers
+          const rounded1 = this.roundNumber(this.numberFirst, this.roundTo);
+          const rounded2 = this.roundNumber(this.numberSecond, this.roundTo);
+          this.estFirstRounded.textContent = rounded1.toLocaleString();
+          this.estSecondRounded.textContent = rounded2.toLocaleString();
+          this.estimateValue.textContent = this.estimatedAnswer.toLocaleString();
+        } else if (this.currentStep === 2) {
+          // Show the exact answer
+          this.resultPlaceholder.textContent = this.correctAnswer.toLocaleString();
+        }
+
+        // Auto-advance after delay
+        setTimeout(() => {
+          if (this.currentStep === 1) {
+            this.advanceToStep2();
+          } else if (this.currentStep === 2) {
+            this.advanceToStep3();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      selectYesNo(value, isClose) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        // Both "Yes" and "No" are acceptable - estimation is about reasoning
+        // The answer is "close" if within threshold
+        const userSaidYes = value === 'yes';
+        const isCorrect = userSaidYes === isClose;
+
+        // Highlight the selected choice
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.disabled = true;
+          if (btn.dataset.value === value) {
+            btn.classList.add(isCorrect ? 'correct' : 'incorrect');
+          }
+        });
+
+        // Show feedback
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = window.i18n ? i18n.t('feedback.correct') || 'Correct!' : 'Correct!';
+          const difference = Math.abs(this.correctAnswer - this.estimatedAnswer);
+          let explanation;
+          if (isClose) {
+            explanation = this.getTranslation('yesClose', 'Yes! {estimate} is close to {exact} (difference: {diff})').replace('{estimate}', this.estimatedAnswer.toLocaleString()).replace('{exact}', this.correctAnswer.toLocaleString()).replace('{diff}', difference.toLocaleString());
+          } else {
+            explanation = this.getTranslation('noNotClose', 'That\'s right! {estimate} and {exact} are {diff} apart.').replace('{estimate}', this.estimatedAnswer.toLocaleString()).replace('{exact}', this.correctAnswer.toLocaleString()).replace('{diff}', difference.toLocaleString());
+          }
+          this.feedback.textContent = `${msg} ${explanation}`;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const difference = Math.abs(this.correctAnswer - this.estimatedAnswer);
+          let explanation;
+          if (isClose) {
+            explanation = this.getTranslation('actuallyClose', 'Actually, {estimate} is close to {exact} (only {diff} apart)!').replace('{estimate}', this.estimatedAnswer.toLocaleString()).replace('{exact}', this.correctAnswer.toLocaleString()).replace('{diff}', difference.toLocaleString());
+          } else {
+            explanation = this.getTranslation('actuallyNotClose', 'Actually, {estimate} and {exact} are {diff} apart - that\'s a bigger gap.').replace('{estimate}', this.estimatedAnswer.toLocaleString()).replace('{exact}', this.correctAnswer.toLocaleString()).replace('{diff}', difference.toLocaleString());
+          }
+          this.feedback.textContent = explanation;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        // Auto-advance to next question
+        setTimeout(() => {
+          this.choiceContainer.classList.remove('yes-no-mode');
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      advanceToStep2() {
+        this.currentStep = 2;
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+        this.updateStepText();
+        this.updatePromptText();
+        this.updateStepVisibility();
+        this.generateChoices();
+      },
+
+      advanceToStep3() {
+        this.currentStep = 3;
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+        this.updateStepText();
+        this.updatePromptText();
+        this.updateStepVisibility();
+        this.generateChoices();
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / (this.totalQuestions * 3)) * 100; // 3 steps per question
+        if (percentage >= 70) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation('perfect', 'Amazing estimation skills!');
+        } else if (percentage >= 40) {
+          this.statsIcon.textContent = '🔎';
+          this.statsMessage.textContent = this.getTranslation('great', 'Great work!');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation('keepPracticing', 'Keep practicing!');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.choiceContainer.classList.remove('yes-no-mode');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => EstimateSumDiff.init());
+      } else {
+        EstimateSumDiff.init();
+      }
+    });
+  </script>
+  <style>
+    /* Estimate, Then Check specific styles */
+
+    /* Problem Section */
+    .problem-section {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .problem-display {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-4) var(--space-6);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border: 3px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 var(--color-primary-dark);
+    }
+
+    .problem-display .number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-800);
+    }
+
+    .problem-display .operator {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+    }
+
+    .problem-display .equals {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-600);
+    }
+
+    .problem-display .result {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      min-width: 80px;
+      text-align: center;
+    }
+
+    /* Step Indicator */
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid #f59e0b;
+      border-radius: var(--radius-lg);
+    }
+
+    .step-icon {
+      font-size: var(--text-xl);
+    }
+
+    .step-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #92400e;
+    }
+
+    /* Rounding Help */
+    .rounding-help {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-1);
+      margin-bottom: var(--space-3);
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #10b981;
+      border-radius: var(--radius-lg);
+    }
+
+    .rounding-help.show {
+      display: flex;
+    }
+
+    .round-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      color: #065f46;
+    }
+
+    .round-target {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #047857;
+    }
+
+    /* Estimation Display */
+    .estimation-display {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border: 2px solid var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+    }
+
+    .estimation-display.show {
+      display: flex;
+    }
+
+    .estimate-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .estimate-row .original {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      color: var(--color-neutral-600);
+    }
+
+    .estimate-row .arrow {
+      font-size: var(--text-lg);
+      color: var(--color-neutral-400);
+    }
+
+    .estimate-row .rounded {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      min-width: 60px;
+      text-align: center;
+    }
+
+    .estimation-display.revealed .estimate-row .rounded {
+      color: #059669;
+    }
+
+    .estimate-result {
+      display: none;
+      align-items: center;
+      gap: var(--space-2);
+      margin-top: var(--space-2);
+      padding-top: var(--space-2);
+      border-top: 1px dashed var(--color-neutral-300);
+    }
+
+    .estimate-result.show {
+      display: flex;
+    }
+
+    .estimate-result .label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      color: var(--color-neutral-600);
+    }
+
+    .estimate-result .value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #059669;
+    }
+
+    /* Question Prompt */
+    .question-prompt {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+      border: 2px solid #6366f1;
+      border-radius: var(--radius-lg);
+    }
+
+    .prompt-icon {
+      font-size: var(--text-xl);
+    }
+
+    .prompt-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #4338ca;
+    }
+
+    /* Choice Container */
+    .choice-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+      max-width: 400px;
+      margin: 0 auto;
+      padding: var(--space-2);
+    }
+
+    .choice-container.yes-no-mode {
+      grid-template-columns: 1fr;
+      max-width: 320px;
+    }
+
+    .choice-btn {
+      min-height: 70px;
+      min-width: 110px;
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 4px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4), 0 4px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn.yes-btn {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border-color: #10b981;
+      box-shadow: 0 4px 0 #059669;
+      color: #065f46;
+      font-size: var(--text-lg);
+    }
+
+    .choice-btn.yes-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+      box-shadow: 0 7px 0 #059669;
+    }
+
+    .choice-btn.no-btn {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      box-shadow: 0 4px 0 #d97706;
+      color: #92400e;
+      font-size: var(--text-lg);
+    }
+
+    .choice-btn.no-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #fde68a, #fcd34d);
+      box-shadow: 0 7px 0 #d97706;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      box-shadow: 0 4px 0 #15803d;
+      color: #166534;
+      animation: pulse-correct 0.5s ease;
+    }
+
+    @keyframes pulse-correct {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      box-shadow: 0 4px 0 #b91c1c;
+      color: #991b1b;
+      animation: wiggle 0.3s ease;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-3deg); }
+      75% { transform: rotate(3deg); }
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .problem-display {
+        padding: var(--space-3) var(--space-4);
+        gap: var(--space-2);
+      }
+
+      .problem-display .number,
+      .problem-display .operator {
+        font-size: var(--text-2xl);
+      }
+
+      .problem-display .result {
+        font-size: var(--text-2xl);
+        min-width: 60px;
+      }
+
+      .choice-container {
+        gap: var(--space-3);
+      }
+
+      .choice-btn {
+        min-height: 64px;
+        font-size: var(--text-lg);
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .choice-btn.yes-btn,
+      .choice-btn.no-btn {
+        font-size: var(--text-base);
+      }
+
+      .step-indicator {
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .step-text {
+        font-size: var(--text-sm);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .problem-display .number,
+      .problem-display .operator {
+        font-size: var(--text-xl);
+      }
+
+      .problem-display .result {
+        font-size: var(--text-xl);
+        min-width: 50px;
+      }
+
+      .choice-container {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+        max-width: 300px;
+      }
+
+      .choice-btn {
+        min-height: 60px;
+        font-size: var(--text-lg);
+      }
+
+      .question-prompt {
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .prompt-text {
+        font-size: var(--text-sm);
+      }
+
+      .estimate-row .original,
+      .estimate-row .rounded {
+        font-size: var(--text-base);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -35,7 +35,7 @@ function generateSet(count, maxValue) {
     console.warn('Count exceeds maxValue, returning all values from 1 to maxValue');
     count = maxValue;
   }
-  
+
   const set = new Set();
   while (set.size < count) {
     set.add(randomInt(1, maxValue));
@@ -50,9 +50,9 @@ function generateSet(count, maxValue) {
  */
 function celebrate(element, callback) {
   if (!element) return;
-  
+
   element.classList.add('animate-celebrate');
-  
+
   // Remove animation class after it completes
   setTimeout(() => {
     element.classList.remove('animate-celebrate');
@@ -68,9 +68,9 @@ function celebrate(element, callback) {
  */
 function wiggle(element) {
   if (!element) return;
-  
+
   element.classList.add('animate-wiggle');
-  
+
   // Remove animation class after it completes
   setTimeout(() => {
     element.classList.remove('animate-wiggle');
@@ -83,9 +83,9 @@ function wiggle(element) {
  */
 function pop(element) {
   if (!element) return;
-  
+
   element.classList.add('animate-pop');
-  
+
   setTimeout(() => {
     element.classList.remove('animate-pop');
   }, 400);
@@ -97,9 +97,9 @@ function pop(element) {
  */
 function bounce(element) {
   if (!element) return;
-  
+
   element.classList.add('animate-bounce');
-  
+
   setTimeout(() => {
     element.classList.remove('animate-bounce');
   }, 600);
@@ -112,7 +112,7 @@ function bounce(element) {
  */
 function createConfetti(container, count = 20) {
   if (!container) return;
-  
+
   const colors = [
     '#FFB6D9', // pink
     '#FFEB99', // yellow
@@ -121,7 +121,7 @@ function createConfetti(container, count = 20) {
     '#D4A5FF', // purple
     '#FFCC99'  // orange
   ];
-  
+
   for (let i = 0; i < count; i++) {
     const confetti = document.createElement('div');
     confetti.style.position = 'absolute';
@@ -132,9 +132,9 @@ function createConfetti(container, count = 20) {
     confetti.style.top = '50%';
     confetti.style.borderRadius = randomInt(0, 1) ? '50%' : '0';
     confetti.classList.add('confetti');
-    
+
     container.appendChild(confetti);
-    
+
     // Remove confetti after animation
     setTimeout(() => {
       confetti.remove();

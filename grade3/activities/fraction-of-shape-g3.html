@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fraction of a Shape - Grade 3 Math Activity - Meadow Math">
+  <title>Fraction of a Shape - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🎨</span>
+            <span data-i18n="section.activities.fraction-of-shape-g3.title">Fraction of a Shape</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.fraction-of-shape-g3.instruction">What fraction of the shape is shaded?</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Question Display -->
+          <div class="question-display" id="question-display">
+            <span data-i18n="section.activities.fraction-of-shape-g3.howMuchShaded">What fraction is shaded?</span>
+          </div>
+
+          <!-- Shape Display -->
+          <div class="shape-display" id="shape-display">
+            <!-- Shape with shaded parts will be shown here -->
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices">
+            <!-- Answer buttons will be dynamically generated here -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.fraction-of-shape-g3.great">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Fraction of Shape specific styles */
+    .question-display {
+      text-align: center;
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--space-6);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 4px solid #f59e0b;
+    }
+
+    .shape-display {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: var(--space-6);
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 4px solid #e2e8f0;
+      margin-bottom: var(--space-6);
+      min-height: 220px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .shape-display svg {
+      width: 200px;
+      height: 200px;
+      max-width: 100%;
+    }
+
+    .answer-choices {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
+      max-width: 600px;
+      margin: 0 auto var(--space-6);
+    }
+
+    .choice-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-4);
+      min-height: 90px;
+      background: white;
+      border: 4px solid #e2e8f0;
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.08);
+      font-family: inherit;
+    }
+
+    .choice-btn:hover {
+      transform: translateY(-3px);
+      border-color: var(--color-primary);
+      box-shadow: 0 6px 0 rgba(59, 130, 246, 0.2), 0 8px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .choice-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .choice-btn:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3), 0 4px 0 rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .choice-btn.correct {
+      border-color: var(--color-success);
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      box-shadow: 0 4px 0 rgba(34, 197, 94, 0.3), 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .choice-btn.incorrect {
+      border-color: var(--color-error);
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      animation: wiggle 0.5s ease;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .fraction-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-text);
+      line-height: 1;
+    }
+
+    .fraction-numerator {
+      border-bottom: 3px solid currentColor;
+      padding-bottom: 4px;
+      min-width: 28px;
+      text-align: center;
+    }
+
+    .fraction-denominator {
+      padding-top: 4px;
+      min-width: 28px;
+      text-align: center;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    @media (max-width: 767px) {
+      .question-display {
+        font-size: var(--text-xl);
+        padding: var(--space-3);
+        margin-bottom: var(--space-4);
+      }
+
+      .shape-display {
+        padding: var(--space-4);
+        margin-bottom: var(--space-4);
+        min-height: 180px;
+      }
+
+      .shape-display svg {
+        width: 160px;
+        height: 160px;
+      }
+
+      .answer-choices {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-3);
+      }
+
+      .choice-btn {
+        padding: var(--space-3);
+        min-height: 75px;
+      }
+
+      .fraction-display {
+        font-size: var(--text-xl);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .answer-choices {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-3);
+      }
+
+      .shape-display svg {
+        width: 140px;
+        height: 140px;
+      }
+
+      .choice-btn {
+        min-height: 70px;
+      }
+    }
+
+    /* Activity area needs padding for feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    /* Feedback at bottom */
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Fraction of Shape Activity - Grade 3
+    const FractionOfShapeG3 = {
+      // Game state
+      currentRound: 1,
+      maxRounds: 10,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1500,
+      currentQuestion: null,
+      questions: [],
+
+      // DOM elements
+      shapeDisplay: null,
+      answerChoices: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Shape colors
+      colors: {
+        shaded: ['#fecaca', '#fed7aa', '#fef08a', '#bbf7d0', '#bae6fd', '#ddd6fe', '#fbcfe8'],
+        stroke: ['#ef4444', '#f97316', '#eab308', '#22c55e', '#0ea5e9', '#8b5cf6', '#ec4899'],
+        unshaded: '#f8fafc'
+      },
+
+      /**
+       * Fraction options for the activity
+       * Grade 3 uses denominators 2, 3, 4, 6, 8 (per content-g3.md)
+       */
+      fractions: [
+        { numerator: 1, denominator: 2, label: '1/2' },
+        { numerator: 1, denominator: 3, label: '1/3' },
+        { numerator: 2, denominator: 3, label: '2/3' },
+        { numerator: 1, denominator: 4, label: '1/4' },
+        { numerator: 2, denominator: 4, label: '2/4' },
+        { numerator: 3, denominator: 4, label: '3/4' },
+        { numerator: 1, denominator: 6, label: '1/6' },
+        { numerator: 5, denominator: 6, label: '5/6' },
+        { numerator: 1, denominator: 8, label: '1/8' },
+        { numerator: 3, denominator: 8, label: '3/8' },
+        { numerator: 5, denominator: 8, label: '5/8' },
+        { numerator: 7, denominator: 8, label: '7/8' }
+      ],
+
+      /**
+       * Generate a rectangle divided into parts
+       */
+      generateRectangle(shadedParts, totalParts, fill, stroke) {
+        const width = 160;
+        const height = 100;
+        const x = 20;
+        const y = 50;
+        const partWidth = width / totalParts;
+
+        let svg = `<svg viewBox="0 0 200 200">`;
+
+        // Draw each part
+        for (let i = 0; i < totalParts; i++) {
+          const partFill = i < shadedParts ? fill : this.colors.unshaded;
+          svg += `<rect x="${x + i * partWidth}" y="${y}" width="${partWidth}" height="${height}" fill="${partFill}" stroke="${stroke}" stroke-width="2"/>`;
+        }
+
+        svg += `</svg>`;
+        return svg;
+      },
+
+      /**
+       * Generate a circle divided into pie slices
+       */
+      generateCircle(shadedParts, totalParts, fill, stroke) {
+        const cx = 100;
+        const cy = 100;
+        const r = 70;
+
+        let svg = `<svg viewBox="0 0 200 200">`;
+
+        const angleStep = 360 / totalParts;
+        for (let i = 0; i < totalParts; i++) {
+          const startAngle = i * angleStep - 90;
+          const endAngle = startAngle + angleStep;
+          const partFill = i < shadedParts ? fill : this.colors.unshaded;
+
+          const startRad = startAngle * Math.PI / 180;
+          const endRad = endAngle * Math.PI / 180;
+
+          const x1 = cx + r * Math.cos(startRad);
+          const y1 = cy + r * Math.sin(startRad);
+          const x2 = cx + r * Math.cos(endRad);
+          const y2 = cy + r * Math.sin(endRad);
+
+          // For large arcs (>180 degrees), we need the large-arc-flag
+          const largeArcFlag = angleStep > 180 ? 1 : 0;
+
+          svg += `<path d="M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 ${largeArcFlag} 1 ${x2} ${y2} Z" fill="${partFill}" stroke="${stroke}" stroke-width="2"/>`;
+        }
+
+        svg += `</svg>`;
+        return svg;
+      },
+
+      /**
+       * Generate a square divided into parts (grid style for larger denominators)
+       */
+      generateSquare(shadedParts, totalParts, fill, stroke) {
+        const size = 140;
+        const x = 30;
+        const y = 30;
+
+        let svg = `<svg viewBox="0 0 200 200">`;
+
+        if (totalParts === 2) {
+          // Split vertically
+          const leftFill = shadedParts >= 1 ? fill : this.colors.unshaded;
+          const rightFill = shadedParts >= 2 ? fill : this.colors.unshaded;
+          svg += `<rect x="${x}" y="${y}" width="${size / 2}" height="${size}" fill="${leftFill}" stroke="${stroke}" stroke-width="2"/>`;
+          svg += `<rect x="${x + size / 2}" y="${y}" width="${size / 2}" height="${size}" fill="${rightFill}" stroke="${stroke}" stroke-width="2"/>`;
+        } else if (totalParts === 3) {
+          // Split into 3 horizontal rows
+          const partHeight = size / 3;
+          for (let i = 0; i < 3; i++) {
+            const partFill = i < shadedParts ? fill : this.colors.unshaded;
+            svg += `<rect x="${x}" y="${y + i * partHeight}" width="${size}" height="${partHeight}" fill="${partFill}" stroke="${stroke}" stroke-width="2"/>`;
+          }
+        } else if (totalParts === 4) {
+          // 2x2 grid
+          const halfSize = size / 2;
+          const positions = [
+            { px: x, py: y },
+            { px: x + halfSize, py: y },
+            { px: x, py: y + halfSize },
+            { px: x + halfSize, py: y + halfSize }
+          ];
+          for (let i = 0; i < 4; i++) {
+            const partFill = i < shadedParts ? fill : this.colors.unshaded;
+            svg += `<rect x="${positions[i].px}" y="${positions[i].py}" width="${halfSize}" height="${halfSize}" fill="${partFill}" stroke="${stroke}" stroke-width="2"/>`;
+          }
+        } else if (totalParts === 6) {
+          // 2x3 grid
+          const partWidth = size / 3;
+          const partHeight = size / 2;
+          let index = 0;
+          for (let row = 0; row < 2; row++) {
+            for (let col = 0; col < 3; col++) {
+              const partFill = index < shadedParts ? fill : this.colors.unshaded;
+              svg += `<rect x="${x + col * partWidth}" y="${y + row * partHeight}" width="${partWidth}" height="${partHeight}" fill="${partFill}" stroke="${stroke}" stroke-width="2"/>`;
+              index++;
+            }
+          }
+        } else if (totalParts === 8) {
+          // 2x4 grid
+          const partWidth = size / 4;
+          const partHeight = size / 2;
+          let index = 0;
+          for (let row = 0; row < 2; row++) {
+            for (let col = 0; col < 4; col++) {
+              const partFill = index < shadedParts ? fill : this.colors.unshaded;
+              svg += `<rect x="${x + col * partWidth}" y="${y + row * partHeight}" width="${partWidth}" height="${partHeight}" fill="${partFill}" stroke="${stroke}" stroke-width="2"/>`;
+              index++;
+            }
+          }
+        }
+
+        svg += `</svg>`;
+        return svg;
+      },
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        // Get DOM elements
+        this.shapeDisplay = document.getElementById('shape-display');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up event listeners
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        // Generate question sequence
+        this.generateSequence();
+
+        // Start first round
+        this.generateRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Generate a random sequence of questions
+       */
+      generateSequence() {
+        this.questions = [];
+        const shapeTypes = ['rectangle', 'circle', 'square'];
+
+        for (let i = 0; i < this.maxRounds; i++) {
+          // Pick a random fraction
+          const fraction = this.fractions[i % this.fractions.length];
+          const shapeType = shapeTypes[i % shapeTypes.length];
+          const colorIndex = randomInt(0, this.colors.shaded.length - 1);
+
+          // Generate wrong options (different fractions with same or different denominators)
+          const wrongOptions = this.fractions
+            .filter(f => !(f.numerator === fraction.numerator && f.denominator === fraction.denominator))
+            .sort(() => Math.random() - 0.5)
+            .slice(0, 3);
+
+          // Combine correct and wrong options, then shuffle
+          const allOptions = [fraction, ...wrongOptions];
+          const shuffledOptions = shuffle(allOptions);
+
+          this.questions.push({
+            fraction,
+            shapeType,
+            colorIndex,
+            options: shuffledOptions
+          });
+        }
+
+        // Shuffle questions for variety
+        this.questions = shuffle(this.questions);
+      },
+
+      /**
+       * Update translations when language changes
+       */
+      updateTranslations() {
+        // Update feedback message if showing
+        if (this.feedback.classList.contains('show')) {
+          const isError = this.feedback.classList.contains('error');
+          if (isError) {
+            const { fraction } = this.currentQuestion;
+            const fractionText = `${fraction.numerator}/${fraction.denominator}`;
+            this.feedback.textContent = i18n.t('section.activities.fraction-of-shape-g3.wrong')
+              .replace('{fraction}', fractionText);
+          } else {
+            this.feedback.textContent = i18n.t('section.activities.fraction-of-shape-g3.correct');
+          }
+        }
+      },
+
+      /**
+       * Generate a new round
+       */
+      generateRound() {
+        this.feedback.classList.remove('show');
+        this.currentQuestion = this.questions[this.currentRound - 1];
+
+        this.renderShape();
+        this.renderChoices();
+      },
+
+      /**
+       * Render the current shape
+       */
+      renderShape() {
+        const { fraction, shapeType, colorIndex } = this.currentQuestion;
+        const fill = this.colors.shaded[colorIndex];
+        const stroke = this.colors.stroke[colorIndex];
+        const { numerator, denominator } = fraction;
+
+        let svg;
+        switch (shapeType) {
+          case 'rectangle':
+            svg = this.generateRectangle(numerator, denominator, fill, stroke);
+            break;
+          case 'circle':
+            svg = this.generateCircle(numerator, denominator, fill, stroke);
+            break;
+          case 'square':
+            svg = this.generateSquare(numerator, denominator, fill, stroke);
+            break;
+        }
+
+        this.shapeDisplay.innerHTML = svg;
+      },
+
+      /**
+       * Render answer choices
+       */
+      renderChoices() {
+        const { options } = this.currentQuestion;
+
+        let html = '';
+        options.forEach(option => {
+          html += `
+            <button class="choice-btn" data-numerator="${option.numerator}" data-denominator="${option.denominator}" tabindex="0" aria-label="${option.numerator} out of ${option.denominator}">
+              <div class="fraction-display">
+                <span class="fraction-numerator">${option.numerator}</span>
+                <span class="fraction-denominator">${option.denominator}</span>
+              </div>
+            </button>
+          `;
+        });
+
+        this.answerChoices.innerHTML = html;
+
+        // Add click and keyboard handlers
+        const buttons = this.answerChoices.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const num = parseInt(btn.dataset.numerator);
+            const den = parseInt(btn.dataset.denominator);
+            this.checkAnswer(num, den, btn);
+          });
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              const num = parseInt(btn.dataset.numerator);
+              const den = parseInt(btn.dataset.denominator);
+              this.checkAnswer(num, den, btn);
+            }
+          });
+        });
+      },
+
+      /**
+       * Check the selected answer
+       */
+      checkAnswer(selectedNumerator, selectedDenominator, selectedBtn) {
+        // Disable all buttons
+        const buttons = this.answerChoices.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => btn.disabled = true);
+
+        const { fraction } = this.currentQuestion;
+        const isCorrect = selectedNumerator === fraction.numerator && selectedDenominator === fraction.denominator;
+
+        if (isCorrect) {
+          selectedBtn.classList.add('correct');
+          this.feedback.textContent = i18n.t('section.activities.fraction-of-shape-g3.correct');
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+        } else {
+          selectedBtn.classList.add('incorrect');
+          // Show correct answer
+          buttons.forEach(btn => {
+            const num = parseInt(btn.dataset.numerator);
+            const den = parseInt(btn.dataset.denominator);
+            if (num === fraction.numerator && den === fraction.denominator) {
+              btn.classList.add('correct');
+            }
+          });
+          const fractionText = `${fraction.numerator}/${fraction.denominator}`;
+          this.feedback.textContent = i18n.t('section.activities.fraction-of-shape-g3.wrong')
+            .replace('{fraction}', fractionText);
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        // Auto-advance after delay
+        setTimeout(() => {
+          if (this.currentRound < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show completion stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = i18n.t('section.activities.fraction-of-shape-g3.perfect');
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.fraction-of-shape-g3.great');
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.fraction-of-shape-g3.good');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = i18n.t('section.activities.fraction-of-shape-g3.keepPracticing');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart the entire activity
+       */
+      restartActivity() {
+        this.currentRound = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateSequence();
+        this.generateRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Go to next round
+       */
+      nextRound() {
+        this.currentRound++;
+        this.generateRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Render progress indicator
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      FractionOfShapeG3.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

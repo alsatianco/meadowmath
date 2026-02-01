@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Elapsed Time Stories - Grade 3 Math Activity - Meadow Math">
+  <title>Elapsed Time Stories - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">⏳</span>
+            <span data-i18n="section.activities.elapsed-time.title">Elapsed Time Stories</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.elapsed-time.instruction">Find how much time passed!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Story Card -->
+          <div class="story-card" id="story-card">
+            <div class="story-icon" id="story-icon" aria-hidden="true">🎬</div>
+            <div class="story-text" id="story-text"></div>
+          </div>
+
+          <!-- Time Strip -->
+          <div class="time-strip-card" id="time-strip-card">
+            <div class="strip-header">
+              <span class="strip-title" data-i18n="section.activities.elapsed-time.timeStripLabel">Time strip</span>
+              <span class="strip-step" id="strip-step"></span>
+            </div>
+            <div class="time-strip">
+              <div class="time-endpoint">
+                <span class="endpoint-label" data-i18n="section.activities.elapsed-time.startLabel">Start</span>
+                <span class="endpoint-time" id="start-time">8:00</span>
+              </div>
+              <div class="strip-track" aria-hidden="true">
+                <div class="strip-line"></div>
+                <div class="strip-ticks" id="strip-ticks"></div>
+              </div>
+              <div class="time-endpoint">
+                <span class="endpoint-label" data-i18n="section.activities.elapsed-time.endLabel">End</span>
+                <span class="endpoint-time" id="end-time">9:15</span>
+              </div>
+            </div>
+            <p class="strip-hint" data-i18n="section.activities.elapsed-time.timeStripHint">Count the ticks to find the elapsed time.</p>
+          </div>
+
+          <!-- Question -->
+          <div class="question-card">
+            <span class="question-text" data-i18n="section.activities.elapsed-time.question">How much time passed?</span>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices" role="group"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.elapsed-time.great">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Elapsed Time Stories specific styles */
+    .story-card {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
+      border: 4px solid #14b8a6;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #0d9488;
+      padding: var(--space-4);
+      margin: 0 auto var(--space-4);
+      max-width: 720px;
+    }
+
+    .story-icon {
+      font-size: 2.6rem;
+    }
+
+    .story-text {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-800);
+      line-height: 1.4;
+    }
+
+    .time-strip-card {
+      background: #ffffff;
+      border: 4px solid #38bdf8;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #0ea5e9;
+      padding: var(--space-4);
+      margin: 0 auto var(--space-4);
+      max-width: 780px;
+    }
+
+    .strip-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-3);
+    }
+
+    .strip-title {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #0369a1;
+    }
+
+    .strip-step {
+      font-size: var(--text-sm);
+      color: var(--color-neutral-600);
+      background: #e0f2fe;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      border: 2px solid #bae6fd;
+    }
+
+    .time-strip {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .time-endpoint {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 3px solid #0ea5e9;
+      border-radius: var(--radius-lg);
+      padding: var(--space-2) var(--space-3);
+      min-width: 96px;
+    }
+
+    .endpoint-label {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #0369a1;
+    }
+
+    .endpoint-time {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #0f172a;
+    }
+
+    .strip-track {
+      position: relative;
+      flex: 1;
+      height: 40px;
+      min-width: 140px;
+    }
+
+    .strip-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 8px;
+      transform: translateY(-50%);
+      background: linear-gradient(90deg, #38bdf8, #22d3ee);
+      border-radius: var(--radius-full);
+    }
+
+    .strip-ticks {
+      position: absolute;
+      inset: 0;
+    }
+
+    .strip-tick {
+      position: absolute;
+      top: 50%;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid #0ea5e9;
+      background: #ffffff;
+      transform: translate(-50%, -50%);
+    }
+
+    .strip-hint {
+      margin-top: var(--space-3);
+      font-size: var(--text-sm);
+      color: var(--color-neutral-600);
+      text-align: center;
+    }
+
+    .question-card {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid #f59e0b;
+      border-radius: var(--radius-lg);
+      padding: var(--space-3);
+      text-align: center;
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+      margin: 0 auto var(--space-4);
+      max-width: 560px;
+    }
+
+    .answer-choices {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .choice-btn {
+      min-height: 76px;
+      padding: var(--space-3);
+      border-radius: var(--radius-xl);
+      border: 4px solid #0ea5e9;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      box-shadow: 0 4px 0 #0284c7;
+      color: #0f172a;
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .choice-value {
+      display: block;
+      line-height: 1.2;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #bfdbfe, #93c5fd);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 0 #0284c7;
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 #0284c7;
+    }
+
+    .choice-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.4), 0 4px 0 #0284c7;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      box-shadow: 0 4px 0 #15803d;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      box-shadow: 0 4px 0 #b91c1c;
+      color: #991b1b;
+    }
+
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: var(--color-success);
+    }
+
+    @media (max-width: 768px) {
+      .story-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .time-strip {
+        flex-direction: column;
+        gap: var(--space-2);
+      }
+
+      .strip-track {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .choice-btn {
+        min-height: 70px;
+        font-size: var(--text-base);
+      }
+
+      .endpoint-time {
+        font-size: var(--text-lg);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Elapsed Time Stories Activity - Grade 3 Level 5
+    const ElapsedTime = {
+      currentRound: 1,
+      maxRounds: 8,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1500,
+      currentQuestion: null,
+      isAnswered: false,
+      lastResult: null,
+      lastSignature: null,
+
+      stories: [
+        { key: 'movie', icon: '🎬', template: 'The movie starts at {start} and ends at {end}.' },
+        { key: 'soccer', icon: '⚽', template: 'Soccer practice starts at {start} and ends at {end}.' },
+        { key: 'bus', icon: '🚌', template: 'The bus leaves at {start} and arrives at {end}.' },
+        { key: 'reading', icon: '📚', template: 'Reading time starts at {start} and ends at {end}.' },
+        { key: 'museum', icon: '🏛️', template: 'The museum visit begins at {start} and finishes at {end}.' },
+        { key: 'baking', icon: '🧁', template: 'Baking starts at {start} and ends at {end}.' }
+      ],
+
+      durationsByRound: {
+        easy: [15, 20, 30, 40, 45, 60],
+        medium: [25, 30, 35, 45, 50, 60, 70, 75, 80, 90],
+        hard: [60, 75, 80, 90, 100, 105, 120, 135, 150, 180]
+      },
+
+      minuteOptions: {
+        easy: [0, 15, 30, 45],
+        full: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]
+      },
+
+      // DOM elements
+      progress: null,
+      storyIcon: null,
+      storyText: null,
+      startTimeEl: null,
+      endTimeEl: null,
+      stripTicks: null,
+      stripStep: null,
+      answerChoices: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.progress = document.getElementById('progress');
+        this.storyIcon = document.getElementById('story-icon');
+        this.storyText = document.getElementById('story-text');
+        this.startTimeEl = document.getElementById('start-time');
+        this.endTimeEl = document.getElementById('end-time');
+        this.stripTicks = document.getElementById('strip-ticks');
+        this.stripStep = document.getElementById('strip-step');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.elapsed-time.${key}`);
+          return translated !== `section.activities.elapsed-time.${key}` ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      getStoryText(story, startTime, endTime) {
+        const key = `section.activities.elapsed-time.stories.${story.key}`;
+        let template = story.template;
+        if (window.i18n) {
+          const translated = i18n.t(key);
+          template = translated !== key ? translated : story.template;
+        }
+        return template.replace('{start}', startTime).replace('{end}', endTime);
+      },
+
+      getUnitLabel(value, singularKey, pluralKey) {
+        const singular = this.getTranslation(singularKey, singularKey);
+        const plural = this.getTranslation(pluralKey, pluralKey);
+        return value === 1 ? singular : plural;
+      },
+
+      formatTime(hour, minute) {
+        const displayHour = hour % 12 === 0 ? 12 : hour % 12;
+        const minuteStr = minute.toString().padStart(2, '0');
+        return `${displayHour}:${minuteStr}`;
+      },
+
+      formatDuration(totalMinutes) {
+        const hours = Math.floor(totalMinutes / 60);
+        const minutes = totalMinutes % 60;
+        const parts = [];
+
+        if (hours > 0) {
+          const hourLabel = this.getUnitLabel(hours, 'hour', 'hours');
+          parts.push(`${hours} ${hourLabel}`);
+        }
+
+        if (minutes > 0 || hours === 0) {
+          const minuteLabel = this.getUnitLabel(minutes, 'minute', 'minutes');
+          parts.push(`${minutes} ${minuteLabel}`);
+        }
+
+        return parts.join(' ');
+      },
+
+      pickDurationOptions() {
+        if (this.currentRound <= 3) {
+          return this.durationsByRound.easy;
+        }
+        if (this.currentRound <= 6) {
+          return this.durationsByRound.medium;
+        }
+        return this.durationsByRound.hard;
+      },
+
+      pickMinuteOptions() {
+        return this.currentRound <= 4 ? this.minuteOptions.easy : this.minuteOptions.full;
+      },
+
+      generateQuestion() {
+        const durations = this.pickDurationOptions();
+        const minuteChoices = this.pickMinuteOptions();
+        let attempts = 0;
+        let startHour = 8;
+        let startMinute = 0;
+        let elapsed = 30;
+        let endTotal = 0;
+        let signature = '';
+
+        do {
+          elapsed = durations[randomInt(0, durations.length - 1)];
+          startHour = randomInt(7, 11);
+          startMinute = minuteChoices[randomInt(0, minuteChoices.length - 1)];
+          const startTotal = startHour * 60 + startMinute;
+          endTotal = startTotal + elapsed;
+          signature = `${startHour}:${startMinute}-${endTotal}`;
+          attempts++;
+        } while ((endTotal > 12 * 60 + 55 || signature === this.lastSignature) && attempts < 40);
+
+        const endHour = Math.floor(endTotal / 60);
+        const endMinute = endTotal % 60;
+        const story = this.stories[randomInt(0, this.stories.length - 1)];
+        this.lastSignature = signature;
+
+        return {
+          startHour,
+          startMinute,
+          endHour,
+          endMinute,
+          elapsed,
+          story
+        };
+      },
+
+      chooseTickStep(elapsed) {
+        const steps = [30, 15, 10, 5];
+        for (const step of steps) {
+          if (elapsed % step === 0 && elapsed / step <= 10) {
+            return step;
+          }
+        }
+        return 15;
+      },
+
+      startRound() {
+        this.currentQuestion = this.generateQuestion();
+        this.isAnswered = false;
+        this.lastResult = null;
+
+        const startTime = this.formatTime(this.currentQuestion.startHour, this.currentQuestion.startMinute);
+        const endTime = this.formatTime(this.currentQuestion.endHour, this.currentQuestion.endMinute);
+
+        this.storyIcon.textContent = this.currentQuestion.story.icon;
+        this.storyText.textContent = this.getStoryText(this.currentQuestion.story, startTime, endTime);
+        this.startTimeEl.textContent = startTime;
+        this.endTimeEl.textContent = endTime;
+
+        this.renderTimeStrip();
+        this.renderChoices();
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      renderTimeStrip() {
+        const elapsed = this.currentQuestion.elapsed;
+        const step = this.chooseTickStep(elapsed);
+        const tickCount = Math.floor(elapsed / step);
+        const unitLabel = this.getUnitLabel(step, 'minute', 'minutes');
+        const stepTemplate = this.getTranslation('tickLabel', 'Each tick = {step} {unit}');
+
+        this.stripStep.textContent = stepTemplate
+          .replace('{step}', step)
+          .replace('{unit}', unitLabel);
+
+        let ticksHtml = '';
+        for (let i = 1; i <= tickCount; i++) {
+          const left = (i / tickCount) * 100;
+          ticksHtml += `<span class="strip-tick" style="left: ${left}%"></span>`;
+        }
+        this.stripTicks.innerHTML = ticksHtml;
+      },
+
+      buildChoices(correct) {
+        const choices = new Set([correct]);
+        const offsets = [-30, -20, -15, -10, -5, 5, 10, 15, 20, 30];
+        const roundedDown = Math.floor(correct / 60) * 60;
+        const roundedUp = Math.ceil(correct / 60) * 60;
+        const candidates = [roundedDown, roundedUp];
+
+        candidates.forEach(value => {
+          if (value !== correct && value >= 15 && value <= 180) {
+            choices.add(value);
+          }
+        });
+
+        let attempts = 0;
+        while (choices.size < 4 && attempts < 40) {
+          const offset = offsets[randomInt(0, offsets.length - 1)];
+          const value = correct + offset;
+          if (value >= 15 && value <= 180 && value % 5 === 0) {
+            choices.add(value);
+          }
+          attempts++;
+        }
+
+        const fallbackPool = [15, 20, 25, 30, 35, 40, 45, 50, 60, 70, 75, 80, 90, 100, 105, 120, 135, 150, 180];
+        while (choices.size < 4) {
+          const value = fallbackPool[randomInt(0, fallbackPool.length - 1)];
+          if (value !== correct) {
+            choices.add(value);
+          }
+        }
+
+        return shuffle(Array.from(choices));
+      },
+
+      renderChoices() {
+        const correct = this.currentQuestion.elapsed;
+        const choices = this.buildChoices(correct);
+        const choiceLabelTemplate = this.getTranslation('choiceLabel', 'Elapsed time: {duration}');
+
+        this.answerChoices.innerHTML = choices.map(value => {
+          const durationText = this.formatDuration(value);
+          const ariaLabel = choiceLabelTemplate.replace('{duration}', durationText);
+          return `
+            <button class="choice-btn" type="button" data-value="${value}" aria-label="${ariaLabel}">
+              <span class="choice-value">${durationText}</span>
+            </button>
+          `;
+        }).join('');
+
+        const choicesLabel = this.getTranslation('choicesLabel', 'Answer choices');
+        this.answerChoices.setAttribute('aria-label', choicesLabel);
+
+        const buttons = this.answerChoices.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const value = parseInt(btn.dataset.value, 10);
+            this.handleAnswer(value, btn);
+          });
+        });
+      },
+
+      handleAnswer(value, selectedBtn) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const correct = this.currentQuestion.elapsed;
+        const buttons = this.answerChoices.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => {
+          btn.disabled = true;
+        });
+
+        const durationText = this.formatDuration(correct);
+        if (value === correct) {
+          selectedBtn.classList.add('correct');
+          const correctText = this.getTranslation('correct', 'Correct! {duration} passed.');
+          this.feedback.textContent = correctText.replace('{duration}', durationText);
+          this.feedback.classList.remove('error');
+          this.correctCount++;
+          this.lastResult = { isCorrect: true, minutes: correct };
+        } else {
+          selectedBtn.classList.add('incorrect');
+          buttons.forEach(btn => {
+            if (parseInt(btn.dataset.value, 10) === correct) {
+              btn.classList.add('correct');
+            }
+          });
+          const wrongText = this.getTranslation('wrong', 'The elapsed time is {duration}.');
+          this.feedback.textContent = wrongText.replace('{duration}', durationText);
+          this.feedback.classList.add('error');
+          this.wrongCount++;
+          this.lastResult = { isCorrect: false, minutes: correct };
+        }
+
+        this.feedback.classList.add('show');
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.currentRound < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      updateTranslations() {
+        if (!this.currentQuestion) return;
+
+        const startTime = this.formatTime(this.currentQuestion.startHour, this.currentQuestion.startMinute);
+        const endTime = this.formatTime(this.currentQuestion.endHour, this.currentQuestion.endMinute);
+
+        this.storyText.textContent = this.getStoryText(this.currentQuestion.story, startTime, endTime);
+        this.startTimeEl.textContent = startTime;
+        this.endTimeEl.textContent = endTime;
+
+        this.renderTimeStrip();
+
+        const choiceLabelTemplate = this.getTranslation('choiceLabel', 'Elapsed time: {duration}');
+        const choicesLabel = this.getTranslation('choicesLabel', 'Answer choices');
+        this.answerChoices.setAttribute('aria-label', choicesLabel);
+
+        const buttons = this.answerChoices.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => {
+          const value = parseInt(btn.dataset.value, 10);
+          const durationText = this.formatDuration(value);
+          const textEl = btn.querySelector('.choice-value');
+          if (textEl) {
+            textEl.textContent = durationText;
+          }
+          btn.setAttribute('aria-label', choiceLabelTemplate.replace('{duration}', durationText));
+        });
+
+        if (this.feedback.classList.contains('show') && this.lastResult) {
+          const durationText = this.formatDuration(this.lastResult.minutes);
+          if (this.lastResult.isCorrect) {
+            const correctText = this.getTranslation('correct', 'Correct! {duration} passed.');
+            this.feedback.textContent = correctText.replace('{duration}', durationText);
+            this.feedback.classList.remove('error');
+          } else {
+            const wrongText = this.getTranslation('wrong', 'The elapsed time is {duration}.');
+            this.feedback.textContent = wrongText.replace('{duration}', durationText);
+            this.feedback.classList.add('error');
+          }
+        }
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.showStats();
+        }
+      },
+
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation('perfect', 'Perfect time sense!');
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation('great', 'Great elapsed time work!');
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation('good', 'Good job!');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation('keepPracticing', 'Keep practicing!');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentRound = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      nextRound() {
+        this.currentRound++;
+        this.startRound();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => ElapsedTime.init());
+      } else {
+        ElapsedTime.init();
+      }
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

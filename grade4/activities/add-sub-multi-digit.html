@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Add & Subtract Multi-Digit - Grade 4 Math Activity - Meadow Math">
+  <title>Add & Subtract Multi-Digit - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade4">Grade 4</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧮</span>
+            <span data-i18n="section.activities.add-sub-multi-digit.title">Add & Subtract Multi-Digit</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.add-sub-multi-digit.description">Add and subtract big numbers with regrouping.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Operation Type Display -->
+          <div class="operation-badge" id="operation-badge">
+            <span class="operation-icon" id="operation-icon">➕</span>
+            <span class="operation-text" id="operation-text">Addition</span>
+          </div>
+
+          <!-- Column Work Section -->
+          <div class="column-work-section">
+            <div class="column-work" id="column-work">
+              <!-- Place labels row -->
+              <div class="place-labels" id="place-labels">
+                <span class="place-label" data-place="hundred-thousands">HTh</span>
+                <span class="place-label" data-place="ten-thousands">TTh</span>
+                <span class="place-label" data-place="thousands">Th</span>
+                <span class="place-label" data-place="hundreds">H</span>
+                <span class="place-label" data-place="tens">T</span>
+                <span class="place-label" data-place="ones">O</span>
+              </div>
+              <!-- Carry/Borrow row -->
+              <div class="carry-row" id="carry-row"></div>
+              <!-- First number -->
+              <div class="number-row first-number" id="first-row"></div>
+              <!-- Second number with operator -->
+              <div class="number-row second-number" id="second-row">
+                <span class="operator" id="operator">+</span>
+              </div>
+              <!-- Line -->
+              <div class="work-line"></div>
+              <!-- Result row -->
+              <div class="result-row" id="result-row"></div>
+            </div>
+          </div>
+
+          <!-- Question Prompt -->
+          <div class="question-prompt" id="question-prompt">
+            <span class="prompt-icon" aria-hidden="true">🤔</span>
+            <span class="prompt-text" id="prompt-text" data-i18n="section.activities.add-sub-multi-digit.whatIsAnswer">What is the answer?</span>
+          </div>
+
+          <!-- Hint Toggle -->
+          <button class="hint-toggle" id="hint-toggle">
+            <span class="hint-icon" aria-hidden="true">💡</span>
+            <span class="hint-label" id="hint-label" data-i18n="section.activities.add-sub-multi-digit.showHint">Show hint</span>
+          </button>
+
+          <!-- Hint Panel -->
+          <div class="hint-panel" id="hint-panel">
+            <div class="hint-content" id="hint-content"></div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choice-container" id="choice-container" role="group" aria-label="Answer choices"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.add-sub-multi-digit.great">Great calculation work!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Add & Subtract Multi-Digit Activity - Grade 4 Level 1
+    const AddSubMultiDigit = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      numberFirst: 0,
+      numberSecond: 0,
+      correctAnswer: 0,
+      isAddition: true,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+      hintVisible: false,
+      numDigits: 4, // Will vary based on question
+
+      // DOM elements
+      operationBadge: null,
+      operationIcon: null,
+      operationText: null,
+      placeLabels: null,
+      carryRow: null,
+      firstRow: null,
+      secondRow: null,
+      operator: null,
+      resultRow: null,
+      questionPrompt: null,
+      promptText: null,
+      hintToggle: null,
+      hintLabel: null,
+      hintPanel: null,
+      hintContent: null,
+      choiceContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        // Get DOM elements
+        this.operationBadge = document.getElementById('operation-badge');
+        this.operationIcon = document.getElementById('operation-icon');
+        this.operationText = document.getElementById('operation-text');
+        this.placeLabels = document.getElementById('place-labels');
+        this.carryRow = document.getElementById('carry-row');
+        this.firstRow = document.getElementById('first-row');
+        this.secondRow = document.getElementById('second-row');
+        this.operator = document.getElementById('operator');
+        this.resultRow = document.getElementById('result-row');
+        this.questionPrompt = document.getElementById('question-prompt');
+        this.promptText = document.getElementById('prompt-text');
+        this.hintToggle = document.getElementById('hint-toggle');
+        this.hintLabel = document.getElementById('hint-label');
+        this.hintPanel = document.getElementById('hint-panel');
+        this.hintContent = document.getElementById('hint-content');
+        this.choiceContainer = document.getElementById('choice-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Event listeners
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+        this.hintToggle.addEventListener('click', () => this.toggleHint());
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        this.updateOperationText();
+        this.updateHintLabel();
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      generateProblem() {
+        // Progressive difficulty
+        // Q0-2: 4-digit + 3-digit or 4-digit - 3-digit
+        // Q3-5: 5-digit + 4-digit or 5-digit - 4-digit
+        // Q6-7: 5-digit + 5-digit or 5-digit - 4-digit with multiple regrouping
+        // Q8-9: 6-digit + 5-digit or 6-digit - 5-digit
+
+        // Alternate between addition and subtraction
+        this.isAddition = this.currentQuestion % 2 === 0;
+
+        let first, second;
+
+        if (this.currentQuestion < 3) {
+          // 4-digit numbers
+          this.numDigits = 4;
+          first = this.randomInt(2000, 9999);
+          second = this.randomInt(100, 999);
+          // For subtraction, ensure first > second
+          if (!this.isAddition && second > first) {
+            [first, second] = [second, first];
+            first = this.randomInt(5000, 9999);
+          }
+        } else if (this.currentQuestion < 6) {
+          // 5-digit numbers
+          this.numDigits = 5;
+          first = this.randomInt(20000, 99999);
+          second = this.randomInt(1000, 9999);
+          if (!this.isAddition && second > first) {
+            first = this.randomInt(50000, 99999);
+          }
+        } else if (this.currentQuestion < 8) {
+          // 5-digit with regrouping
+          this.numDigits = 5;
+          if (this.isAddition) {
+            // Ensure regrouping occurs
+            first = this.randomInt(30000, 60000);
+            second = this.randomInt(20000, 40000);
+          } else {
+            first = this.randomInt(50000, 99999);
+            second = this.randomInt(10000, first - 10000);
+          }
+        } else {
+          // 6-digit numbers
+          this.numDigits = 6;
+          first = this.randomInt(200000, 800000);
+          second = this.randomInt(50000, 199999);
+          if (!this.isAddition && second > first) {
+            first = this.randomInt(500000, 999999);
+          }
+        }
+
+        // Make sure we have enough digits for display
+        const maxNum = Math.max(first, second);
+        this.numDigits = Math.max(this.numDigits, maxNum.toString().length);
+
+        this.numberFirst = first;
+        this.numberSecond = second;
+        this.correctAnswer = this.isAddition ? first + second : first - second;
+
+        // Update numDigits if result has more digits
+        if (this.correctAnswer.toString().length > this.numDigits) {
+          this.numDigits = this.correctAnswer.toString().length;
+        }
+
+        this.isAnswered = false;
+        this.hintVisible = false;
+      },
+
+      startQuestion() {
+        this.generateProblem();
+        this.displayProblem();
+        this.generateChoices();
+        this.feedback.classList.remove('show', 'error');
+        this.hintPanel.classList.remove('show');
+        this.hintToggle.classList.remove('active');
+        this.updateHintLabel();
+        this.renderProgress();
+      },
+
+      updateOperationText() {
+        if (this.isAddition) {
+          this.operationIcon.textContent = '➕';
+          this.operationText.textContent = this.getTranslation('addition', 'Addition');
+          this.operationBadge.className = 'operation-badge addition';
+        } else {
+          this.operationIcon.textContent = '➖';
+          this.operationText.textContent = this.getTranslation('subtraction', 'Subtraction');
+          this.operationBadge.className = 'operation-badge subtraction';
+        }
+      },
+
+      displayProblem() {
+        // Update operation badge
+        this.updateOperationText();
+        this.operator.textContent = this.isAddition ? '+' : '−';
+
+        // Create digit arrays (right-aligned, padded with empty strings)
+        const first = this.numberFirst.toString().padStart(this.numDigits, ' ').split('');
+        const second = this.numberSecond.toString().padStart(this.numDigits, ' ').split('');
+
+        // Update place labels visibility
+        this.updatePlaceLabels();
+
+        // Clear and rebuild rows
+        this.carryRow.innerHTML = '';
+        this.firstRow.innerHTML = '';
+        // Keep operator in second row
+        const operatorEl = this.operator;
+        this.secondRow.innerHTML = '';
+        this.secondRow.appendChild(operatorEl);
+        this.resultRow.innerHTML = '';
+
+        // Place names for labels
+        const placeNames = ['hundred-thousands', 'ten-thousands', 'thousands', 'hundreds', 'tens', 'ones'];
+        const startIndex = 6 - this.numDigits;
+
+        // Create digit cells
+        for (let i = 0; i < this.numDigits; i++) {
+          const placeName = placeNames[startIndex + i];
+
+          // Carry/Borrow cell
+          const carryCell = document.createElement('span');
+          carryCell.className = 'carry-digit';
+          carryCell.dataset.place = placeName;
+          this.carryRow.appendChild(carryCell);
+
+          // First number digit
+          const firstDigit = document.createElement('span');
+          firstDigit.className = 'digit';
+          firstDigit.textContent = first[i].trim() || '';
+          this.firstRow.appendChild(firstDigit);
+
+          // Second number digit
+          const secondDigit = document.createElement('span');
+          secondDigit.className = 'digit';
+          secondDigit.textContent = second[i].trim() || '';
+          this.secondRow.appendChild(secondDigit);
+
+          // Result digit
+          const resultDigit = document.createElement('span');
+          resultDigit.className = 'result-digit';
+          resultDigit.textContent = '?';
+          this.resultRow.appendChild(resultDigit);
+        }
+
+        // Generate hint
+        this.generateHint();
+      },
+
+      updatePlaceLabels() {
+        const labels = this.placeLabels.querySelectorAll('.place-label');
+        const placeNames = ['hundred-thousands', 'ten-thousands', 'thousands', 'hundreds', 'tens', 'ones'];
+        const startIndex = 6 - this.numDigits;
+
+        labels.forEach((label, index) => {
+          if (index >= startIndex) {
+            label.style.display = 'flex';
+          } else {
+            label.style.display = 'none';
+          }
+        });
+      },
+
+      generateHint() {
+        let hintHtml = '<div class="hint-steps">';
+
+        const first = this.numberFirst;
+        const second = this.numberSecond;
+        const places = ['ones', 'tens', 'hundreds', 'thousands', 'ten thousands', 'hundred thousands'];
+        const placeLabels = ['O', 'T', 'H', 'Th', 'TTh', 'HTh'];
+
+        if (this.isAddition) {
+          // Addition hints - column by column from right to left
+          let carry = 0;
+          for (let i = 0; i < this.numDigits; i++) {
+            const divisor = Math.pow(10, i);
+            const firstDigit = Math.floor((first / divisor) % 10);
+            const secondDigit = Math.floor((second / divisor) % 10);
+            const sum = firstDigit + secondDigit + carry;
+            const resultDigit = sum % 10;
+            const newCarry = Math.floor(sum / 10);
+
+            hintHtml += '<div class="hint-step">';
+            hintHtml += `<span class="step-label">${this.getTranslation(places[i] + 'Label', placeLabels[i])}: </span>`;
+
+            if (carry > 0) {
+              hintHtml += `<span class="step-calc">${firstDigit} + ${secondDigit} + ${carry} = ${sum}</span>`;
+            } else {
+              hintHtml += `<span class="step-calc">${firstDigit} + ${secondDigit} = ${sum}</span>`;
+            }
+
+            if (newCarry > 0) {
+              hintHtml += `<span class="step-note">${this.getTranslation('writeCarry', 'Write {digit}, carry {carry}').replace('{digit}', resultDigit).replace('{carry}', newCarry)}</span>`;
+            }
+
+            hintHtml += '</div>';
+            carry = newCarry;
+          }
+
+          if (carry > 0) {
+            hintHtml += '<div class="hint-step">';
+            hintHtml += `<span class="step-label">${this.getTranslation('carryOver', 'Carry')}: </span>`;
+            hintHtml += `<span class="step-calc">${this.getTranslation('writeDigit', 'Write {digit}').replace('{digit}', carry)}</span>`;
+            hintHtml += '</div>';
+          }
+        } else {
+          // Subtraction hints - column by column from right to left
+          let borrow = 0;
+          for (let i = 0; i < this.numDigits; i++) {
+            const divisor = Math.pow(10, i);
+            const originalFirstDigit = Math.floor((first / divisor) % 10);
+            let firstDigit = originalFirstDigit - borrow;
+            const secondDigit = Math.floor((second / divisor) % 10);
+
+            hintHtml += '<div class="hint-step">';
+            hintHtml += `<span class="step-label">${this.getTranslation(places[i] + 'Label', placeLabels[i])}: </span>`;
+
+            if (firstDigit < secondDigit) {
+              // Need to borrow
+              const borrowedFirst = firstDigit + 10;
+              const result = borrowedFirst - secondDigit;
+              if (borrow > 0) {
+                hintHtml += `<span class="step-calc">${originalFirstDigit} − 1 = ${firstDigit}, then ${firstDigit} + 10 = ${borrowedFirst}, ${borrowedFirst} − ${secondDigit} = ${result}</span>`;
+              } else {
+                hintHtml += `<span class="step-calc">${firstDigit} + 10 = ${borrowedFirst}, ${borrowedFirst} − ${secondDigit} = ${result}</span>`;
+              }
+              hintHtml += `<span class="step-note">${this.getTranslation('borrowNote', 'Borrow from next place')}</span>`;
+              borrow = 1;
+            } else {
+              const result = firstDigit - secondDigit;
+              if (borrow > 0) {
+                hintHtml += `<span class="step-calc">${originalFirstDigit} − 1 = ${firstDigit}, then ${firstDigit} − ${secondDigit} = ${result}</span>`;
+              } else {
+                hintHtml += `<span class="step-calc">${firstDigit} − ${secondDigit} = ${result}</span>`;
+              }
+              borrow = 0;
+            }
+
+            hintHtml += '</div>';
+          }
+        }
+
+        hintHtml += '</div>';
+        this.hintContent.innerHTML = hintHtml;
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.add-sub-multi-digit.${key}`);
+          return translated !== `section.activities.add-sub-multi-digit.${key}` ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      toggleHint() {
+        this.hintVisible = !this.hintVisible;
+        if (this.hintVisible) {
+          this.hintPanel.classList.add('show');
+          this.hintToggle.classList.add('active');
+        } else {
+          this.hintPanel.classList.remove('show');
+          this.hintToggle.classList.remove('active');
+        }
+        this.updateHintLabel();
+      },
+
+      updateHintLabel() {
+        const showText = this.getTranslation('showHint', 'Show hint');
+        const hideText = this.getTranslation('hideHint', 'Hide hint');
+        this.hintLabel.textContent = this.hintVisible ? hideText : showText;
+      },
+
+      generateChoices() {
+        const choices = [this.correctAnswer];
+        const correct = this.correctAnswer;
+
+        // Generate meaningful distractors
+        // Distractor 1: Off by a power of 10 (common regrouping error)
+        const magnitude = Math.pow(10, Math.floor(Math.log10(Math.max(this.numberFirst, this.numberSecond))));
+        let d1 = correct + (Math.random() < 0.5 ? magnitude : -magnitude);
+        if (d1 > 0 && !choices.includes(d1)) choices.push(d1);
+
+        // Distractor 2: Off by 10 or 100
+        let d2 = correct + (Math.random() < 0.5 ? 1 : -1) * (Math.random() < 0.5 ? 10 : 100);
+        if (d2 > 0 && !choices.includes(d2)) choices.push(d2);
+
+        // Distractor 3: Swapped operation (common mistake)
+        let d3 = this.isAddition ?
+          Math.abs(this.numberFirst - this.numberSecond) :
+          this.numberFirst + this.numberSecond;
+        if (d3 > 0 && d3 !== correct && !choices.includes(d3)) choices.push(d3);
+
+        // Distractor 4: Digit reversal or nearby
+        let d4 = correct + this.randomInt(-500, 500);
+        while (d4 <= 0 || choices.includes(d4)) {
+          d4 = correct + this.randomInt(-500, 500);
+        }
+        if (!choices.includes(d4)) choices.push(d4);
+
+        // Fill remaining slots with nearby values
+        while (choices.length < 4) {
+          const offset = this.randomInt(-1000, 1000);
+          const distractor = correct + offset;
+          if (distractor > 0 && distractor !== correct && !choices.includes(distractor)) {
+            choices.push(distractor);
+          }
+        }
+
+        // Shuffle
+        this.shuffle(choices);
+
+        // Render buttons
+        let html = '';
+        choices.forEach(choice => {
+          const displayValue = choice.toLocaleString();
+          html += `<button class="choice-btn" data-value="${choice}" aria-label="Select ${displayValue}">${displayValue}</button>`;
+        });
+        this.choiceContainer.innerHTML = html;
+
+        // Attach event listeners
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.addEventListener('click', () => this.selectChoice(parseInt(btn.dataset.value)));
+        });
+      },
+
+      shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      },
+
+      selectChoice(value) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const isCorrect = value === this.correctAnswer;
+
+        // Highlight correct and incorrect choices
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.disabled = true;
+          if (parseInt(btn.dataset.value) === this.correctAnswer) {
+            btn.classList.add('correct');
+          } else if (parseInt(btn.dataset.value) === value && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        // Show the complete answer
+        this.showAnswer();
+
+        // Show feedback
+        const opSymbol = this.isAddition ? '+' : '−';
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = window.i18n ? i18n.t('feedback.correct') || 'Correct!' : 'Correct!';
+          this.feedback.textContent = `${msg} ${this.numberFirst.toLocaleString()} ${opSymbol} ${this.numberSecond.toLocaleString()} = ${this.correctAnswer.toLocaleString()}`;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const tryAgain = window.i18n ? i18n.t('feedback.tryAgain') || 'Not quite.' : 'Not quite.';
+          this.feedback.textContent = `${tryAgain} ${this.numberFirst.toLocaleString()} ${opSymbol} ${this.numberSecond.toLocaleString()} = ${this.correctAnswer.toLocaleString()}`;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        // Auto-advance
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      showAnswer() {
+        const answer = this.correctAnswer.toString().padStart(this.numDigits, ' ').split('');
+        const resultDigits = this.resultRow.querySelectorAll('.result-digit');
+
+        // Calculate and show carry/borrow
+        if (this.isAddition) {
+          this.showCarries();
+        } else {
+          this.showBorrows();
+        }
+
+        // Show result digits
+        resultDigits.forEach((digit, index) => {
+          digit.textContent = answer[index].trim() || '';
+          digit.classList.add('revealed');
+        });
+      },
+
+      showCarries() {
+        const first = this.numberFirst;
+        const second = this.numberSecond;
+        const carryDigits = this.carryRow.querySelectorAll('.carry-digit');
+
+        let carry = 0;
+        for (let i = 0; i < this.numDigits; i++) {
+          const divisor = Math.pow(10, i);
+          const firstDigit = Math.floor((first / divisor) % 10);
+          const secondDigit = Math.floor((second / divisor) % 10);
+          const sum = firstDigit + secondDigit + carry;
+          carry = Math.floor(sum / 10);
+
+          // Show carry in the next position (to the left)
+          if (carry > 0 && i < this.numDigits - 1) {
+            const carryIndex = this.numDigits - 2 - i;
+            if (carryIndex >= 0 && carryDigits[carryIndex]) {
+              carryDigits[carryIndex].textContent = carry;
+              carryDigits[carryIndex].classList.add('show');
+            }
+          }
+        }
+
+        this.carryRow.classList.add('show');
+      },
+
+      showBorrows() {
+        // For subtraction, show borrow indicators
+        const first = this.numberFirst;
+        const second = this.numberSecond;
+        const carryDigits = this.carryRow.querySelectorAll('.carry-digit');
+
+        let borrow = 0;
+        for (let i = 0; i < this.numDigits; i++) {
+          const divisor = Math.pow(10, i);
+          const firstDigit = Math.floor((first / divisor) % 10) - borrow;
+          const secondDigit = Math.floor((second / divisor) % 10);
+
+          if (firstDigit < secondDigit) {
+            // Need to borrow from next position
+            const borrowIndex = this.numDigits - 2 - i;
+            if (borrowIndex >= 0 && carryDigits[borrowIndex]) {
+              carryDigits[borrowIndex].textContent = '−1';
+              carryDigits[borrowIndex].classList.add('show', 'borrow');
+            }
+            borrow = 1;
+          } else {
+            borrow = 0;
+          }
+        }
+
+        this.carryRow.classList.add('show');
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation('perfect', 'Amazing calculation skills!');
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🧮';
+          this.statsMessage.textContent = this.getTranslation('great', 'Great work!');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation('keepPracticing', 'Keep practicing!');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => AddSubMultiDigit.init());
+      } else {
+        AddSubMultiDigit.init();
+      }
+    });
+  </script>
+  <style>
+    /* Add & Subtract Multi-Digit specific styles */
+
+    /* Operation Badge */
+    .operation-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin: 0 auto var(--space-4);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      width: fit-content;
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+    }
+
+    .operation-badge.addition {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border: 2px solid #22c55e;
+      color: #166534;
+    }
+
+    .operation-badge.subtraction {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid #f59e0b;
+      color: #92400e;
+    }
+
+    .operation-icon {
+      font-size: var(--text-lg);
+    }
+
+    /* Column Work Section */
+    .column-work-section {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+      overflow-x: auto;
+      padding: var(--space-2);
+    }
+
+    .column-work {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      padding: var(--space-4) var(--space-5);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 3px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 var(--color-primary-dark);
+      min-width: max-content;
+    }
+
+    /* Place Labels */
+    .place-labels {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--space-1);
+      margin-bottom: var(--space-2);
+      padding-left: 28px;
+    }
+
+    .place-label {
+      width: 36px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-500);
+      background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+      border-radius: var(--radius-sm);
+    }
+
+    /* Carry Row */
+    .carry-row {
+      display: none;
+      justify-content: flex-end;
+      gap: var(--space-1);
+      margin-bottom: var(--space-1);
+      padding-left: 28px;
+    }
+
+    .carry-row.show {
+      display: flex;
+    }
+
+    .carry-digit {
+      width: 36px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      color: #dc2626;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .carry-digit.show {
+      opacity: 1;
+    }
+
+    .carry-digit.borrow {
+      color: #f59e0b;
+    }
+
+    /* Number Rows */
+    .number-row {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--space-1);
+    }
+
+    .number-row.first-number {
+      margin-bottom: var(--space-1);
+      padding-left: 28px;
+    }
+
+    .number-row.second-number {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: var(--space-2);
+    }
+
+    .number-row.second-number .operator {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      width: 24px;
+      text-align: center;
+    }
+
+    .digit {
+      width: 36px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-800);
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: var(--radius-sm);
+    }
+
+    /* Work Line */
+    .work-line {
+      width: 100%;
+      height: 3px;
+      background: var(--color-neutral-800);
+      margin: var(--space-2) 0;
+      border-radius: 2px;
+    }
+
+    /* Result Row */
+    .result-row {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--space-1);
+      padding-left: 28px;
+    }
+
+    .result-digit {
+      width: 36px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: var(--radius-sm);
+      transition: all 0.3s ease;
+    }
+
+    .result-digit.revealed {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border: 2px solid var(--color-primary);
+    }
+
+    /* Question Prompt */
+    .question-prompt {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+      border: 2px solid #a78bfa;
+      border-radius: var(--radius-lg);
+    }
+
+    .prompt-icon {
+      font-size: var(--text-xl);
+    }
+
+    .prompt-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #6b21a8;
+    }
+
+    /* Hint Toggle */
+    .hint-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin: 0 auto var(--space-3);
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border: 2px solid var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .hint-toggle:hover {
+      background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+      border-color: var(--color-neutral-400);
+    }
+
+    .hint-toggle:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
+    .hint-toggle.active {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: var(--color-primary);
+    }
+
+    .hint-icon {
+      font-size: var(--text-lg);
+    }
+
+    .hint-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+    }
+
+    .hint-toggle.active .hint-label {
+      color: var(--color-primary-dark);
+    }
+
+    .hint-toggle:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+    }
+
+    /* Hint Panel */
+    .hint-panel {
+      display: none;
+      margin-bottom: var(--space-4);
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #10b981;
+      border-radius: var(--radius-lg);
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .hint-panel.show {
+      display: block;
+      animation: slideDown 0.2s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hint-steps {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .hint-step {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .step-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      color: #065f46;
+      min-width: 50px;
+    }
+
+    .step-calc {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      color: var(--color-neutral-700);
+    }
+
+    .step-note {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xs);
+      color: #dc2626;
+      font-style: italic;
+    }
+
+    /* Choice Container */
+    .choice-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+      max-width: 440px;
+      margin: 0 auto;
+      padding: var(--space-2);
+    }
+
+    .choice-btn {
+      min-height: 70px;
+      min-width: 120px;
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 4px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4), 0 4px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      box-shadow: 0 4px 0 #15803d;
+      color: #166534;
+      animation: pulse-correct 0.5s ease;
+    }
+
+    @keyframes pulse-correct {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      box-shadow: 0 4px 0 #b91c1c;
+      color: #991b1b;
+      animation: wiggle 0.3s ease;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-3deg); }
+      75% { transform: rotate(3deg); }
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive - Tablet */
+    @media (max-width: 900px) {
+      .column-work {
+        padding: var(--space-3) var(--space-4);
+      }
+
+      .place-label {
+        width: 32px;
+        font-size: 10px;
+      }
+
+      .digit, .result-digit {
+        width: 32px;
+        height: 40px;
+        font-size: var(--text-xl);
+      }
+
+      .carry-digit {
+        width: 32px;
+        font-size: 10px;
+      }
+
+      .choice-btn {
+        font-size: var(--text-lg);
+        min-height: 64px;
+      }
+    }
+
+    /* Responsive - Mobile */
+    @media (max-width: 767px) {
+      .column-work {
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .place-labels {
+        padding-left: 24px;
+      }
+
+      .place-label {
+        width: 28px;
+        height: 20px;
+        font-size: 9px;
+      }
+
+      .number-row.first-number,
+      .number-row.second-number,
+      .result-row,
+      .carry-row {
+        padding-left: 24px;
+      }
+
+      .number-row.second-number .operator {
+        font-size: var(--text-xl);
+        width: 20px;
+      }
+
+      .digit, .result-digit {
+        width: 28px;
+        height: 36px;
+        font-size: var(--text-lg);
+      }
+
+      .carry-digit {
+        width: 28px;
+        height: 18px;
+        font-size: 9px;
+      }
+
+      .choice-container {
+        gap: var(--space-3);
+      }
+
+      .choice-btn {
+        min-height: 64px;
+        min-width: 140px;
+        font-size: var(--text-lg);
+        padding: var(--space-3) var(--space-4);
+      }
+
+      .step-label {
+        min-width: 40px;
+        font-size: var(--text-xs);
+      }
+
+      .step-calc, .step-note {
+        font-size: var(--text-xs);
+      }
+    }
+
+    /* Responsive - Small Mobile */
+    @media (max-width: 480px) {
+      .column-work {
+        padding: var(--space-2);
+      }
+
+      .place-labels {
+        padding-left: 20px;
+      }
+
+      .place-label {
+        width: 24px;
+        height: 18px;
+        font-size: 8px;
+      }
+
+      .number-row.first-number,
+      .number-row.second-number,
+      .result-row,
+      .carry-row {
+        padding-left: 20px;
+        gap: 2px;
+      }
+
+      .place-labels, .carry-row {
+        gap: 2px;
+      }
+
+      .number-row.second-number .operator {
+        font-size: var(--text-lg);
+        width: 18px;
+      }
+
+      .digit, .result-digit {
+        width: 24px;
+        height: 32px;
+        font-size: var(--text-base);
+      }
+
+      .carry-digit {
+        width: 24px;
+        height: 16px;
+        font-size: 8px;
+      }
+
+      .choice-container {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+        max-width: 100%;
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .choice-btn {
+        min-height: 60px;
+        min-width: 100%;
+        font-size: var(--text-lg);
+        padding: var(--space-3) var(--space-4);
+      }
+
+      .question-prompt {
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .prompt-text {
+        font-size: var(--text-sm);
+      }
+
+      .operation-badge {
+        font-size: var(--text-sm);
+        padding: var(--space-1) var(--space-3);
+      }
+
+      .hint-panel {
+        padding: var(--space-2) var(--space-3);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Multiply Fractions Area - Grade 5 Math Activity - Meadow Math">
+  <title>Multiply Fractions Area - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🟩</span>
+            <span data-i18n="section.activities.multiply-fractions-area.title">Multiply Fractions Area</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.multiply-fractions-area.instruction">Shade the area to multiply fractions!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Problem Display -->
+          <div class="problem-container" id="problem-container">
+            <div class="problem-label" id="problem-label">
+              <span data-i18n="section.activities.multiply-fractions-area.find">Find:</span>
+            </div>
+            <div class="fractions-row" id="fractions-row">
+              <div class="fraction-card" id="fraction-1">
+                <div class="fraction-part">
+                  <span class="numerator" id="num1">2</span>
+                  <span class="fraction-bar"></span>
+                  <span class="denominator" id="den1">3</span>
+                </div>
+              </div>
+              <span class="operator-label">×</span>
+              <div class="fraction-card" id="fraction-2">
+                <div class="fraction-part">
+                  <span class="numerator" id="num2">3</span>
+                  <span class="fraction-bar"></span>
+                  <span class="denominator" id="den2">5</span>
+                </div>
+              </div>
+              <span class="operator-label">=</span>
+              <span class="answer-placeholder" id="answer-placeholder">?</span>
+            </div>
+          </div>
+
+          <!-- Area Model Grid -->
+          <div class="area-model-container" id="area-model-container">
+            <div class="area-model-labels">
+              <div class="horizontal-label" id="horizontal-label">
+                <span id="horiz-frac">3/5</span>
+              </div>
+            </div>
+            <div class="area-model-wrapper">
+              <div class="vertical-label" id="vertical-label">
+                <span id="vert-frac">2/3</span>
+              </div>
+              <div class="area-grid" id="area-grid" role="grid" aria-label="Area model grid">
+                <!-- Grid cells will be generated here -->
+              </div>
+            </div>
+            <div class="area-legend">
+              <div class="legend-item">
+                <div class="legend-color horizontal-shade"></div>
+                <span class="legend-label" id="legend-horiz"></span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color vertical-shade"></div>
+                <span class="legend-label" id="legend-vert"></span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color overlap-shade"></div>
+                <span class="legend-label" id="legend-overlap" data-i18n="section.activities.multiply-fractions-area.overlap">Overlap = Product</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result Display -->
+          <div class="result-display" id="result-display">
+            <div class="result-equation" id="result-equation">
+              <span id="result-shaded">?</span>
+              <span data-i18n="section.activities.multiply-fractions-area.outOf"> out of </span>
+              <span id="result-total">?</span>
+              <span> = </span>
+              <span id="result-fraction">?</span>
+            </div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <!-- Choices will be generated here -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.multiply-fractions-area.great">Great work with fraction multiplication!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Multiply Fractions Area Activity - Grade 5 Level 3
+    const MultiplyFractionsArea = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+
+      // DOM elements
+      problemLabel: null,
+      num1: null,
+      den1: null,
+      num2: null,
+      den2: null,
+      answerPlaceholder: null,
+      horizFrac: null,
+      vertFrac: null,
+      areaGrid: null,
+      legendHoriz: null,
+      legendVert: null,
+      resultShaded: null,
+      resultTotal: null,
+      resultFraction: null,
+      resultDisplay: null,
+      choicesContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.problemLabel = document.getElementById('problem-label');
+        this.num1 = document.getElementById('num1');
+        this.den1 = document.getElementById('den1');
+        this.num2 = document.getElementById('num2');
+        this.den2 = document.getElementById('den2');
+        this.answerPlaceholder = document.getElementById('answer-placeholder');
+        this.horizFrac = document.getElementById('horiz-frac');
+        this.vertFrac = document.getElementById('vert-frac');
+        this.areaGrid = document.getElementById('area-grid');
+        this.legendHoriz = document.getElementById('legend-horiz');
+        this.legendVert = document.getElementById('legend-vert');
+        this.resultShaded = document.getElementById('result-shaded');
+        this.resultTotal = document.getElementById('result-total');
+        this.resultFraction = document.getElementById('result-fraction');
+        this.resultDisplay = document.getElementById('result-display');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      // Calculate GCD using Euclidean algorithm
+      gcd(a, b) {
+        return b === 0 ? a : this.gcd(b, a % b);
+      },
+
+      // Simplify a fraction
+      simplify(num, den) {
+        const g = this.gcd(num, den);
+        return { num: num / g, den: den / g };
+      },
+
+      // Format fraction for display
+      formatFraction(num, den) {
+        if (num === 0) return '0';
+        const simplified = this.simplify(num, den);
+        if (simplified.den === 1) return `${simplified.num}`;
+        return `${simplified.num}/${simplified.den}`;
+      },
+
+      generateQuestions() {
+        // Fraction × Fraction problems (area model friendly)
+        const fractionProblems = [
+          { num1: 1, den1: 2, num2: 1, den2: 2 },  // 1/4
+          { num1: 1, den1: 2, num2: 1, den2: 3 },  // 1/6
+          { num1: 1, den1: 2, num2: 2, den2: 3 },  // 2/6 = 1/3
+          { num1: 2, den1: 3, num2: 3, den2: 4 },  // 6/12 = 1/2
+          { num1: 1, den1: 3, num2: 1, den2: 4 },  // 1/12
+          { num1: 2, den1: 3, num2: 1, den2: 2 },  // 2/6 = 1/3
+          { num1: 3, den1: 4, num2: 1, den2: 2 },  // 3/8
+          { num1: 2, den1: 5, num2: 1, den2: 2 },  // 2/10 = 1/5
+          { num1: 3, den1: 4, num2: 2, den2: 3 },  // 6/12 = 1/2
+          { num1: 1, den1: 4, num2: 2, den2: 3 },  // 2/12 = 1/6
+          { num1: 2, den1: 3, num2: 2, den2: 5 },  // 4/15
+          { num1: 3, den1: 5, num2: 1, den2: 3 },  // 3/15 = 1/5
+          { num1: 1, den1: 2, num2: 3, den2: 4 },  // 3/8
+          { num1: 2, den1: 5, num2: 3, den2: 4 },  // 6/20 = 3/10
+          { num1: 1, den1: 3, num2: 3, den2: 5 },  // 3/15 = 1/5
+        ];
+
+        // Shuffle and pick questions
+        const shuffled = shuffle(fractionProblems);
+        this.questions = shuffled.slice(0, this.totalQuestions).map(p => {
+          const productNum = p.num1 * p.num2;
+          const productDen = p.den1 * p.den2;
+          const simplified = this.simplify(productNum, productDen);
+          return {
+            ...p,
+            productNum,
+            productDen,
+            simplifiedNum: simplified.num,
+            simplifiedDen: simplified.den
+          };
+        });
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+        this.answerPlaceholder.textContent = '?';
+        this.resultDisplay.classList.remove('revealed');
+        this.resultShaded.textContent = '?';
+        this.resultTotal.textContent = '?';
+        this.resultFraction.textContent = '?';
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        // Update fraction displays
+        this.num1.textContent = question.num1;
+        this.den1.textContent = question.den1;
+        this.num2.textContent = question.num2;
+        this.den2.textContent = question.den2;
+
+        // Update grid labels
+        this.horizFrac.textContent = `${question.num2}/${question.den2}`;
+        this.vertFrac.textContent = `${question.num1}/${question.den1}`;
+
+        // Update legend
+        this.legendHoriz.textContent = `${question.num2}/${question.den2}`;
+        this.legendVert.textContent = `${question.num1}/${question.den1}`;
+
+        // Build the area model grid
+        this.buildAreaGrid(question);
+
+        // Generate answer choices
+        this.renderChoices(question);
+
+        this.renderProgress();
+      },
+
+      buildAreaGrid(question) {
+        this.areaGrid.innerHTML = '';
+
+        const rows = question.den1;
+        const cols = question.den2;
+
+        // Set grid template
+        this.areaGrid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+        this.areaGrid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const cell = document.createElement('div');
+            cell.className = 'grid-cell';
+            cell.setAttribute('data-row', r);
+            cell.setAttribute('data-col', c);
+
+            // Determine shading based on fractions
+            // Horizontal shading: columns 0 to (num2-1) represent num2/den2
+            // Vertical shading: rows 0 to (num1-1) represent num1/den1
+            const inHorizontal = c < question.num2;
+            const inVertical = r < question.num1;
+
+            if (inHorizontal && inVertical) {
+              cell.classList.add('overlap'); // Both fractions cover this cell
+            } else if (inHorizontal) {
+              cell.classList.add('horizontal-only');
+            } else if (inVertical) {
+              cell.classList.add('vertical-only');
+            }
+
+            // Add animation delay for visual effect
+            cell.style.animationDelay = `${(r * cols + c) * 30}ms`;
+
+            this.areaGrid.appendChild(cell);
+          }
+        }
+      },
+
+      renderChoices(question) {
+        this.choicesContainer.innerHTML = '';
+
+        // Correct answer (simplified)
+        const correctAnswer = this.formatFraction(question.simplifiedNum, question.simplifiedDen);
+
+        // Generate distractors
+        const distractors = this.generateDistractors(question, correctAnswer);
+        const allChoices = shuffle([correctAnswer, ...distractors]);
+
+        allChoices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.innerHTML = this.formatFractionDisplay(choice);
+          btn.setAttribute('data-value', choice);
+          btn.addEventListener('click', () => this.checkAnswer(choice, btn, correctAnswer, question));
+          this.choicesContainer.appendChild(btn);
+        });
+      },
+
+      formatFractionDisplay(fraction) {
+        // Handle whole numbers
+        if (!fraction.includes('/')) {
+          return `<span class="whole-number">${fraction}</span>`;
+        }
+        // Handle fractions
+        const [num, den] = fraction.split('/');
+        return `<span class="frac-display"><span class="frac-num">${num}</span><span class="frac-bar"></span><span class="frac-den">${den}</span></span>`;
+      },
+
+      generateDistractors(question, correctAnswer) {
+        const distractors = new Set();
+        const { num1, den1, num2, den2, productNum, productDen, simplifiedNum, simplifiedDen } = question;
+
+        // Common mistakes:
+        // 1. Adding numerators instead of multiplying
+        const addNum = num1 + num2;
+        const addDen = den1 + den2;
+        if (addDen > 0) {
+          const addFrac = this.formatFraction(addNum, addDen);
+          if (addFrac !== correctAnswer) distractors.add(addFrac);
+        }
+
+        // 2. Multiplied only numerators, kept one denominator
+        const wrongDen1 = this.formatFraction(productNum, den1);
+        const wrongDen2 = this.formatFraction(productNum, den2);
+        if (wrongDen1 !== correctAnswer) distractors.add(wrongDen1);
+        if (wrongDen2 !== correctAnswer) distractors.add(wrongDen2);
+
+        // 3. Off by one in numerator
+        if (simplifiedNum > 1) {
+          const offNum = this.formatFraction(simplifiedNum - 1, simplifiedDen);
+          if (offNum !== correctAnswer) distractors.add(offNum);
+        }
+        const offNumPlus = this.formatFraction(simplifiedNum + 1, simplifiedDen);
+        if (offNumPlus !== correctAnswer) distractors.add(offNumPlus);
+
+        // 4. Unsimplified form (if different from simplified)
+        const unsimplified = `${productNum}/${productDen}`;
+        if (unsimplified !== correctAnswer) distractors.add(unsimplified);
+
+        // 5. Swapped numerator and denominator
+        if (simplifiedNum !== simplifiedDen) {
+          const swapped = this.formatFraction(simplifiedDen, simplifiedNum);
+          if (swapped !== correctAnswer) distractors.add(swapped);
+        }
+
+        // 6. Wrong simplification
+        if (productNum > 1 && productDen > productNum) {
+          const wrongSimp = this.formatFraction(productNum - 1, productDen);
+          if (wrongSimp !== correctAnswer) distractors.add(wrongSimp);
+        }
+
+        // Ensure we have at least 3 distractors
+        const possibleFracs = ['1/2', '1/3', '1/4', '1/5', '1/6', '2/3', '2/5', '3/4', '3/5', '3/8', '1/8', '1/10'];
+        for (const frac of possibleFracs) {
+          if (distractors.size >= 3) break;
+          if (frac !== correctAnswer && !distractors.has(frac)) {
+            distractors.add(frac);
+          }
+        }
+
+        return [...distractors].slice(0, 3);
+      },
+
+      checkAnswer(selected, btn, correctAnswer, question) {
+        if (this.isAnswered) return;
+
+        this.isAnswered = true;
+        const isCorrect = selected === correctAnswer;
+
+        // Disable all buttons
+        const allBtns = this.choicesContainer.querySelectorAll('.choice-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        // Reveal the result
+        this.resultDisplay.classList.add('revealed');
+        this.resultShaded.textContent = question.productNum;
+        this.resultTotal.textContent = question.productDen;
+        this.resultFraction.textContent = correctAnswer;
+        this.answerPlaceholder.innerHTML = this.formatFractionDisplay(correctAnswer);
+
+        // Highlight overlap cells
+        const overlapCells = this.areaGrid.querySelectorAll('.overlap');
+        overlapCells.forEach(cell => cell.classList.add('highlight'));
+
+        if (isCorrect) {
+          this.correctCount++;
+          btn.classList.add('correct');
+
+          const feedbackText = this.getTranslation(
+            'section.activities.multiply-fractions-area.correct',
+            '{frac1} × {frac2} = {answer}'
+          ).replace('{frac1}', `${question.num1}/${question.den1}`)
+           .replace('{frac2}', `${question.num2}/${question.den2}`)
+           .replace('{answer}', correctAnswer);
+
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          btn.classList.add('incorrect');
+
+          // Highlight correct answer
+          allBtns.forEach(b => {
+            if (b.getAttribute('data-value') === correctAnswer) {
+              b.classList.add('correct');
+            }
+          });
+
+          const feedbackText = this.getTranslation(
+            'section.activities.multiply-fractions-area.wrong',
+            'The answer is {answer}'
+          ).replace('{answer}', correctAnswer);
+
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+        this.scheduleAdvance();
+      },
+
+      scheduleAdvance() {
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+        // Refresh legend overlap text
+        const overlapText = this.getTranslation('section.activities.multiply-fractions-area.overlap', 'Overlap = Product');
+        document.getElementById('legend-overlap').textContent = overlapText;
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.multiply-fractions-area.perfect',
+            'Perfect! You mastered fraction multiplication!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.multiply-fractions-area.great',
+            'Great work with fraction multiplication!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.multiply-fractions-area.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.multiply-fractions-area.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => MultiplyFractionsArea.init());
+      } else {
+        MultiplyFractionsArea.init();
+      }
+    });
+  </script>
+  <style>
+    /* Multiply Fractions Area specific styles */
+
+    .problem-container {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .problem-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-medium);
+      color: #374151;
+      margin-bottom: var(--space-3);
+    }
+
+    .fractions-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .fraction-card {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #8b5cf6;
+      padding: var(--space-2) var(--space-4);
+    }
+
+    .fraction-part {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .fraction-card .numerator,
+    .fraction-card .denominator {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #5b21b6;
+      line-height: 1.2;
+    }
+
+    .fraction-card .fraction-bar {
+      width: 40px;
+      height: 3px;
+      background: #7c3aed;
+      border-radius: 2px;
+      margin: 2px 0;
+    }
+
+    .operator-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #6b7280;
+    }
+
+    .answer-placeholder {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #059669;
+      background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 3px solid #10b981;
+      min-width: 70px;
+      text-align: center;
+    }
+
+    .answer-placeholder .frac-display {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .answer-placeholder .frac-num,
+    .answer-placeholder .frac-den {
+      font-size: 0.8em;
+    }
+
+    .answer-placeholder .frac-bar {
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      margin: 2px 0;
+    }
+
+    /* Area Model Container */
+    .area-model-container {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 2px solid #e5e7eb;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .area-model-labels {
+      text-align: center;
+      margin-bottom: var(--space-2);
+    }
+
+    .horizontal-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #2563eb;
+    }
+
+    .area-model-wrapper {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .vertical-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #dc2626;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+    }
+
+    .area-grid {
+      flex: 1;
+      display: grid;
+      gap: 2px;
+      background: #d1d5db;
+      border: 3px solid #374151;
+      border-radius: var(--radius-md);
+      padding: 2px;
+      aspect-ratio: 1;
+      max-width: 280px;
+    }
+
+    .grid-cell {
+      background: #f9fafb;
+      border-radius: 2px;
+      animation: cellAppear 0.3s ease forwards;
+      opacity: 0;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    @keyframes cellAppear {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Horizontal shading (fraction 2) */
+    .grid-cell.horizontal-only {
+      background: linear-gradient(180deg, #93c5fd, #60a5fa);
+    }
+
+    /* Vertical shading (fraction 1) */
+    .grid-cell.vertical-only {
+      background: linear-gradient(180deg, #fca5a5, #f87171);
+    }
+
+    /* Overlap = product */
+    .grid-cell.overlap {
+      background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+    }
+
+    .grid-cell.overlap.highlight {
+      animation: overlapPulse 0.5s ease;
+      box-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+    }
+
+    @keyframes overlapPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Legend */
+    .area-legend {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+      padding-top: var(--space-3);
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .legend-color {
+      width: 20px;
+      height: 20px;
+      border-radius: var(--radius-sm);
+      border: 2px solid #374151;
+    }
+
+    .legend-color.horizontal-shade {
+      background: linear-gradient(180deg, #93c5fd, #60a5fa);
+    }
+
+    .legend-color.vertical-shade {
+      background: linear-gradient(180deg, #fca5a5, #f87171);
+    }
+
+    .legend-color.overlap-shade {
+      background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+    }
+
+    .legend-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: #374151;
+    }
+
+    /* Result Display */
+    .result-display {
+      text-align: center;
+      margin-bottom: var(--space-4);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+
+    .result-display.revealed {
+      opacity: 1;
+    }
+
+    .result-equation {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+    }
+
+    #result-shaded {
+      color: #7c3aed;
+    }
+
+    #result-total {
+      color: #374151;
+    }
+
+    #result-fraction {
+      color: #059669;
+    }
+
+    /* Answer Choices */
+    .choices-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      max-width: 400px;
+      margin: 0 auto var(--space-4);
+    }
+
+    .choice-btn {
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #1e3a5f;
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 3px solid #22c55e;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: scale(1.02);
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #16a34a;
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .choice-btn:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .choice-btn:focus-visible {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border-color: #ef4444;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    /* Fraction display in choice buttons */
+    .choice-btn .frac-display {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .choice-btn .frac-num,
+    .choice-btn .frac-den {
+      font-size: 0.7em;
+    }
+
+    .choice-btn .frac-bar {
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      margin: 2px 0;
+    }
+
+    .whole-number {
+      vertical-align: middle;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+      20%, 40%, 60%, 80% { transform: translateX(4px); }
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .fraction-card .numerator,
+      .fraction-card .denominator {
+        font-size: var(--text-xl);
+      }
+
+      .fraction-card .fraction-bar {
+        width: 30px;
+      }
+
+      .fraction-card {
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .fractions-row {
+        gap: var(--space-2);
+      }
+
+      .operator-label {
+        font-size: var(--text-xl);
+      }
+
+      .answer-placeholder {
+        font-size: var(--text-xl);
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .area-model-container {
+        padding: var(--space-3);
+        max-width: 340px;
+      }
+
+      .area-grid {
+        max-width: 240px;
+      }
+
+      .horizontal-label,
+      .vertical-label {
+        font-size: var(--text-base);
+      }
+
+      .area-legend {
+        gap: var(--space-2);
+      }
+
+      .legend-color {
+        width: 16px;
+        height: 16px;
+      }
+
+      .legend-label {
+        font-size: var(--text-xs);
+      }
+
+      .result-display {
+        padding: var(--space-2);
+      }
+
+      .result-equation {
+        font-size: var(--text-base);
+      }
+
+      .choices-container {
+        gap: var(--space-2);
+        max-width: 320px;
+      }
+
+      .choice-btn {
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--text-lg);
+        min-height: 60px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .problem-label {
+        font-size: var(--text-base);
+      }
+
+      .fraction-card .numerator,
+      .fraction-card .denominator {
+        font-size: var(--text-lg);
+      }
+
+      .fraction-card .fraction-bar {
+        width: 25px;
+        height: 2px;
+      }
+
+      .fraction-card {
+        padding: var(--space-1) var(--space-2);
+      }
+
+      .operator-label {
+        font-size: var(--text-lg);
+      }
+
+      .answer-placeholder {
+        font-size: var(--text-lg);
+        min-width: 50px;
+      }
+
+      .area-model-container {
+        padding: var(--space-2);
+        max-width: 300px;
+      }
+
+      .area-grid {
+        max-width: 200px;
+      }
+
+      .area-model-wrapper {
+        gap: var(--space-2);
+      }
+
+      .horizontal-label,
+      .vertical-label {
+        font-size: var(--text-sm);
+      }
+
+      .result-equation {
+        font-size: var(--text-sm);
+      }
+
+      .choice-btn {
+        font-size: var(--text-base);
+        min-height: 55px;
+        padding: var(--space-2);
+      }
+    }
+
+    @media (max-width: 360px) {
+      .choices-container {
+        grid-template-columns: 1fr;
+        max-width: 200px;
+      }
+
+      .choice-btn {
+        min-height: 50px;
+      }
+
+      .area-grid {
+        max-width: 180px;
+      }
+
+      .area-legend {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

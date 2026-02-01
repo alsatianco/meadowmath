@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Decimal Compare Duel - Grade 5 Math Activity - Meadow Math">
+  <title>Decimal Compare Duel - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">⚖️</span>
+            <span data-i18n="section.activities.compare-decimals.title">Decimal Compare Duel</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.compare-decimals.instruction">Compare the two decimals!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <div class="comparison-prompt" data-i18n="section.activities.compare-decimals.prompt">Which symbol makes the comparison true?</div>
+          <p class="comparison-hint" data-i18n="section.activities.compare-decimals.hint">Compare place by place: ones, tenths, hundredths, thousandths.</p>
+
+          <!-- Comparison Display -->
+          <div class="comparison-container" id="comparison-container">
+            <!-- Left Decimal -->
+            <div class="decimal-card left">
+              <div class="decimal-display" aria-live="polite">
+                <span class="decimal-text" id="left-decimal">0.457</span>
+              </div>
+              <div class="place-value-row">
+                <div class="place-value-box">
+                  <span class="place-value-digit" id="left-ones">0</span>
+                  <span class="place-value-label" data-i18n="section.activities.compare-decimals.onesLabel">Ones</span>
+                </div>
+                <div class="place-value-box">
+                  <span class="place-value-digit" id="left-tenths">4</span>
+                  <span class="place-value-label" data-i18n="section.activities.compare-decimals.tenthsLabel">Tenths</span>
+                </div>
+                <div class="place-value-box">
+                  <span class="place-value-digit" id="left-hundredths">5</span>
+                  <span class="place-value-label" data-i18n="section.activities.compare-decimals.hundredthsLabel">Hundredths</span>
+                </div>
+                <div class="place-value-box">
+                  <span class="place-value-digit" id="left-thousandths">7</span>
+                  <span class="place-value-label" data-i18n="section.activities.compare-decimals.thousandthsLabel">Thousandths</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Symbol Placeholder -->
+            <div class="symbol-display" id="symbol-display">
+              <span class="symbol-placeholder">?</span>
+            </div>
+
+            <!-- Right Decimal -->
+            <div class="decimal-card right">
+              <div class="decimal-display" aria-live="polite">
+                <span class="decimal-text" id="right-decimal">0.52</span>
+              </div>
+              <div class="place-value-row">
+                <div class="place-value-box">
+                  <span class="place-value-digit" id="right-ones">0</span>
+                  <span class="place-value-label" data-i18n="section.activities.compare-decimals.onesLabel">Ones</span>
+                </div>
+                <div class="place-value-box">
+                  <span class="place-value-digit" id="right-tenths">5</span>
+                  <span class="place-value-label" data-i18n="section.activities.compare-decimals.tenthsLabel">Tenths</span>
+                </div>
+                <div class="place-value-box">
+                  <span class="place-value-digit" id="right-hundredths">2</span>
+                  <span class="place-value-label" data-i18n="section.activities.compare-decimals.hundredthsLabel">Hundredths</span>
+                </div>
+                <div class="place-value-box">
+                  <span class="place-value-digit" id="right-thousandths">0</span>
+                  <span class="place-value-label" data-i18n="section.activities.compare-decimals.thousandthsLabel">Thousandths</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <button class="choice-btn symbol-choice" type="button" data-symbol="<" aria-label="Less than" aria-pressed="false" data-i18n-title="section.activities.compare-decimals.lessThanLabel">&lt;</button>
+            <button class="choice-btn symbol-choice" type="button" data-symbol="=" aria-label="Equal to" aria-pressed="false" data-i18n-title="section.activities.compare-decimals.equalLabel">=</button>
+            <button class="choice-btn symbol-choice" type="button" data-symbol=">" aria-label="Greater than" aria-pressed="false" data-i18n-title="section.activities.compare-decimals.greaterThanLabel">&gt;</button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.compare-decimals.great">Great comparing!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Decimal Compare Duel Activity - Grade 5 Level 1
+    const CompareDecimals = {
+      currentQuestion: 0,
+      totalQuestions: 12,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      lastResult: null,
+      lastStatsKey: null,
+      advanceTimeout: null,
+
+      // DOM elements
+      leftDecimal: null,
+      rightDecimal: null,
+      leftOnes: null,
+      leftTenths: null,
+      leftHundredths: null,
+      leftThousandths: null,
+      rightOnes: null,
+      rightTenths: null,
+      rightHundredths: null,
+      rightThousandths: null,
+      symbolDisplay: null,
+      symbolPlaceholder: null,
+      choicesContainer: null,
+      choiceButtons: [],
+      btnReset: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.leftDecimal = document.getElementById('left-decimal');
+        this.rightDecimal = document.getElementById('right-decimal');
+        this.leftOnes = document.getElementById('left-ones');
+        this.leftTenths = document.getElementById('left-tenths');
+        this.leftHundredths = document.getElementById('left-hundredths');
+        this.leftThousandths = document.getElementById('left-thousandths');
+        this.rightOnes = document.getElementById('right-ones');
+        this.rightTenths = document.getElementById('right-tenths');
+        this.rightHundredths = document.getElementById('right-hundredths');
+        this.rightThousandths = document.getElementById('right-thousandths');
+        this.symbolDisplay = document.getElementById('symbol-display');
+        this.symbolPlaceholder = this.symbolDisplay.querySelector('.symbol-placeholder');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.choiceButtons = Array.from(this.choicesContainer.querySelectorAll('.symbol-choice'));
+        this.btnReset = document.getElementById('btn-reset');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.choiceButtons.forEach((btn) => {
+          btn.addEventListener('click', () => this.selectAnswer(btn));
+        });
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      // Format decimal for display (handles thousandths)
+      formatDecimal(value) {
+        // Value is stored as integer (thousandths)
+        const num = value / 1000;
+        if (value % 1000 === 0) {
+          return num.toFixed(0);
+        } else if (value % 100 === 0) {
+          return num.toFixed(1);
+        } else if (value % 10 === 0) {
+          return num.toFixed(2);
+        }
+        return num.toFixed(3);
+      },
+
+      getDigits(value) {
+        // Value is stored as integer (thousandths)
+        const ones = Math.floor(value / 1000);
+        const tenths = Math.floor((value % 1000) / 100);
+        const hundredths = Math.floor((value % 100) / 10);
+        const thousandths = value % 10;
+        return { ones, tenths, hundredths, thousandths };
+      },
+
+      generateQuestions() {
+        const questions = [];
+        const usedKeys = new Set();
+
+        const addQuestion = (leftValue, rightValue) => {
+          const key = `${leftValue}-${rightValue}`;
+          if (usedKeys.has(key)) return false;
+          usedKeys.add(key);
+          questions.push({
+            left: leftValue,
+            right: rightValue
+          });
+          return true;
+        };
+
+        // Equal pairs (trailing zeros - like 0.5 vs 0.500)
+        const addEqualPair = () => {
+          const baseValues = [500, 250, 750, 100, 200, 300, 400, 600, 700, 800, 900];
+          const base = baseValues[randomInt(0, baseValues.length - 1)];
+          return addQuestion(base, base);
+        };
+
+        // Same tenths, different hundredths or thousandths
+        const addSameTenthsPair = () => {
+          const tenths = randomInt(1, 9);
+          const left = tenths * 100 + randomInt(0, 99);
+          const right = tenths * 100 + randomInt(0, 99);
+          if (left === right) return false;
+          return addQuestion(left, right);
+        };
+
+        // Same tenths and hundredths, different thousandths
+        const addSameHundredthsPair = () => {
+          const tenths = randomInt(1, 9);
+          const hundredths = randomInt(0, 9);
+          const left = tenths * 100 + hundredths * 10 + randomInt(0, 9);
+          const right = tenths * 100 + hundredths * 10 + randomInt(0, 9);
+          if (left === right) return false;
+          return addQuestion(left, right);
+        };
+
+        // Different tenths
+        const addDifferentTenthsPair = () => {
+          const leftTenths = randomInt(1, 9);
+          let rightTenths = randomInt(1, 9);
+          if (leftTenths === rightTenths) {
+            rightTenths = (leftTenths % 9) + 1;
+          }
+          const left = leftTenths * 100 + randomInt(0, 99);
+          const right = rightTenths * 100 + randomInt(0, 99);
+          return addQuestion(left, right);
+        };
+
+        // Tricky comparisons (e.g., 0.507 vs 0.57)
+        const addTrickyPair = () => {
+          const trickyPairs = [
+            [507, 570],  // 0.507 vs 0.57
+            [409, 490],  // 0.409 vs 0.49
+            [305, 350],  // 0.305 vs 0.35
+            [608, 680],  // 0.608 vs 0.68
+            [701, 710],  // 0.701 vs 0.71
+            [999, 990],  // 0.999 vs 0.99
+          ];
+          const pair = trickyPairs[randomInt(0, trickyPairs.length - 1)];
+          return addQuestion(pair[0], pair[1]);
+        };
+
+        // Include whole numbers too
+        const addWholeNumberPair = () => {
+          const left = randomInt(1, 5) * 1000 + randomInt(0, 999);
+          const right = randomInt(1, 5) * 1000 + randomInt(0, 999);
+          if (left === right) return false;
+          return addQuestion(left, right);
+        };
+
+        const fillWith = (count, generator) => {
+          let added = 0;
+          let attempts = 0;
+          while (added < count && attempts < 100) {
+            if (generator()) added++;
+            attempts++;
+          }
+        };
+
+        fillWith(2, addEqualPair);
+        fillWith(2, addTrickyPair);
+        fillWith(2, addSameHundredthsPair);
+        fillWith(2, addSameTenthsPair);
+        fillWith(2, addDifferentTenthsPair);
+        fillWith(2, addWholeNumberPair);
+
+        // Fill remaining with random
+        let attempts = 0;
+        while (questions.length < this.totalQuestions && attempts < 200) {
+          const left = randomInt(1, 4999);
+          const right = randomInt(1, 4999);
+          if (left !== right || Math.random() < 0.1) {
+            addQuestion(left, right);
+          }
+          attempts++;
+        }
+
+        this.questions = shuffle(questions).slice(0, this.totalQuestions);
+      },
+
+      getCorrectSymbol(leftValue, rightValue) {
+        if (leftValue === rightValue) return '=';
+        return leftValue < rightValue ? '<' : '>';
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      renderDecimal(value, decimalEl, onesEl, tenthsEl, hundredthsEl, thousandthsEl) {
+        const display = this.formatDecimal(value);
+        const digits = this.getDigits(value);
+
+        decimalEl.textContent = display;
+        decimalEl.setAttribute('aria-label', display);
+        onesEl.textContent = digits.ones;
+        tenthsEl.textContent = digits.tenths;
+        hundredthsEl.textContent = digits.hundredths;
+        thousandthsEl.textContent = digits.thousandths;
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.lastResult = null;
+        this.feedback.classList.remove('show', 'error');
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        this.renderDecimal(question.left, this.leftDecimal, this.leftOnes, this.leftTenths, this.leftHundredths, this.leftThousandths);
+        this.renderDecimal(question.right, this.rightDecimal, this.rightOnes, this.rightTenths, this.rightHundredths, this.rightThousandths);
+
+        this.symbolPlaceholder.textContent = '?';
+        this.symbolDisplay.classList.remove('correct', 'incorrect');
+
+        this.choiceButtons.forEach((btn) => {
+          btn.disabled = false;
+          btn.classList.remove('selected', 'correct', 'incorrect');
+          btn.setAttribute('aria-pressed', 'false');
+        });
+
+        this.renderProgress();
+      },
+
+      selectAnswer(btn) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+        this.clearAdvanceTimeout();
+
+        const selectedSymbol = btn.dataset.symbol;
+        const question = this.questions[this.currentQuestion];
+        const correctSymbol = this.getCorrectSymbol(question.left, question.right);
+
+        this.choiceButtons.forEach((button) => {
+          button.disabled = true;
+          button.setAttribute('aria-pressed', button === btn ? 'true' : 'false');
+        });
+
+        btn.classList.add('selected');
+
+        if (selectedSymbol === correctSymbol) {
+          this.correctCount++;
+          btn.classList.add('correct');
+          this.symbolPlaceholder.textContent = correctSymbol;
+          this.symbolDisplay.classList.add('correct');
+
+          this.feedback.textContent = this.getTranslation(
+            'section.activities.compare-decimals.correct',
+            'Correct!'
+          );
+          this.feedback.classList.remove('error');
+
+          this.lastResult = { isCorrect: true, correctSymbol };
+        } else {
+          this.incorrectCount++;
+          btn.classList.add('incorrect');
+
+          this.choiceButtons.forEach((button) => {
+            if (button.dataset.symbol === correctSymbol) {
+              button.classList.add('correct');
+            }
+          });
+
+          this.symbolPlaceholder.textContent = correctSymbol;
+          this.symbolDisplay.classList.add('incorrect');
+
+          const template = this.getTranslation(
+            'section.activities.compare-decimals.wrong',
+            'The answer is {symbol}.'
+          );
+          this.feedback.textContent = template.replace('{symbol}', correctSymbol);
+          this.feedback.classList.add('error');
+
+          this.lastResult = { isCorrect: false, correctSymbol };
+        }
+
+        this.feedback.classList.add('show');
+        this.renderProgress();
+
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      updateTranslations() {
+        if (this.lastResult && this.feedback.classList.contains('show')) {
+          if (this.lastResult.isCorrect) {
+            this.feedback.textContent = this.getTranslation(
+              'section.activities.compare-decimals.correct',
+              'Correct!'
+            );
+            this.feedback.classList.remove('error');
+          } else {
+            const template = this.getTranslation(
+              'section.activities.compare-decimals.wrong',
+              'The answer is {symbol}.'
+            );
+            this.feedback.textContent = template.replace('{symbol}', this.lastResult.correctSymbol);
+            this.feedback.classList.add('error');
+          }
+        }
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+
+        this.updateProgressLabel();
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.lastStatsKey = 'perfect';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.compare-decimals.perfect',
+            'Perfect decimal comparisons!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.lastStatsKey = 'great';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.compare-decimals.great',
+            'Great comparing!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.lastStatsKey = 'good';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.compare-decimals.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.lastStatsKey = 'keepPracticing';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.compare-decimals.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.lastStatsKey = null;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => CompareDecimals.init());
+      } else {
+        CompareDecimals.init();
+      }
+    });
+  </script>
+  <style>
+    /* Decimal Compare Duel specific styles */
+
+    .comparison-prompt {
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-2);
+    }
+
+    .comparison-hint {
+      text-align: center;
+      font-size: var(--text-base);
+      color: var(--color-neutral-500);
+      margin: 0 0 var(--space-5);
+    }
+
+    .comparison-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .decimal-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      border-radius: var(--radius-2xl);
+      min-width: 200px;
+    }
+
+    .decimal-card.left {
+      background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+      border: 4px solid #14b8a6;
+      box-shadow: 0 4px 0 rgba(13, 148, 136, 0.4);
+    }
+
+    .decimal-card.right {
+      background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+      border: 4px solid #a855f7;
+      box-shadow: 0 4px 0 rgba(168, 85, 247, 0.35);
+    }
+
+    .decimal-display {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .decimal-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #0f766e;
+      background: #ffffff;
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 3px solid #14b8a6;
+      box-shadow: 0 3px 0 rgba(13, 148, 136, 0.35);
+      min-width: 140px;
+      text-align: center;
+    }
+
+    .decimal-card.right .decimal-text {
+      color: #6b21a8;
+      border-color: #a855f7;
+      box-shadow: 0 3px 0 rgba(168, 85, 247, 0.35);
+    }
+
+    .place-value-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-2);
+      width: 100%;
+    }
+
+    .place-value-box {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: var(--radius-lg);
+      border: 2px solid rgba(15, 118, 110, 0.25);
+      padding: var(--space-2);
+      text-align: center;
+    }
+
+    .decimal-card.right .place-value-box {
+      border-color: rgba(107, 33, 168, 0.25);
+    }
+
+    .place-value-digit {
+      display: block;
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #0f766e;
+      margin-bottom: var(--space-1);
+    }
+
+    .decimal-card.right .place-value-digit {
+      color: #6b21a8;
+    }
+
+    .place-value-label {
+      font-size: var(--text-xs);
+      color: var(--color-neutral-500);
+      font-weight: var(--weight-semibold);
+    }
+
+    .symbol-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 4px solid #f59e0b;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #d97706;
+    }
+
+    .symbol-placeholder {
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+    }
+
+    .symbol-display.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+    }
+
+    .symbol-display.correct .symbol-placeholder {
+      color: #166534;
+    }
+
+    .symbol-display.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      box-shadow: 0 4px 0 #dc2626;
+    }
+
+    .symbol-display.incorrect .symbol-placeholder {
+      color: #991b1b;
+    }
+
+    .choices-container {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .symbol-choice {
+      width: 80px;
+      height: 80px;
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 4px solid #0ea5e9;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #0284c7;
+      color: #0369a1;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .symbol-choice:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 #0284c7;
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+    }
+
+    .symbol-choice:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 #0284c7;
+    }
+
+    .symbol-choice:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.35), 0 4px 0 #0284c7;
+    }
+
+    .symbol-choice:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .symbol-choice.selected {
+      background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+      border-color: #8b5cf6;
+      box-shadow: 0 4px 0 #7c3aed;
+      color: #5b21b6;
+    }
+
+    .symbol-choice.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      color: #166534;
+    }
+
+    .symbol-choice.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      box-shadow: 0 4px 0 #dc2626;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 767px) {
+      .comparison-container {
+        gap: var(--space-3);
+      }
+
+      .decimal-card {
+        min-width: 170px;
+        padding: var(--space-3);
+      }
+
+      .decimal-text {
+        font-size: var(--text-3xl);
+        min-width: 120px;
+      }
+
+      .place-value-digit {
+        font-size: var(--text-lg);
+      }
+
+      .place-value-label {
+        font-size: 9px;
+      }
+
+      .symbol-display {
+        width: 60px;
+        height: 60px;
+      }
+
+      .symbol-placeholder {
+        font-size: var(--text-3xl);
+      }
+
+      .symbol-choice {
+        width: 70px;
+        height: 70px;
+        font-size: var(--text-3xl);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .decimal-card {
+        min-width: 150px;
+        padding: var(--space-2);
+      }
+
+      .decimal-text {
+        font-size: var(--text-2xl);
+        min-width: 100px;
+      }
+
+      .place-value-digit {
+        font-size: var(--text-base);
+      }
+
+      .place-value-label {
+        font-size: 8px;
+      }
+
+      .symbol-display {
+        width: 52px;
+        height: 52px;
+      }
+
+      .symbol-placeholder {
+        font-size: var(--text-2xl);
+      }
+
+      .symbol-choice {
+        width: 60px;
+        height: 60px;
+        font-size: var(--text-2xl);
+        border-width: 3px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shape Detective - Kindergarten Math Activity - Meadow Math">
+  <title>Shape Detective - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🔎</span>
+            <span data-i18n="section.activities.shape-detective.title">Shape Detective</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.shape-detective.instruction">Find the one that doesn't belong!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Detective Hint -->
+          <div class="detective-hint" id="detective-hint">
+            <span class="detective-icon">🔍</span>
+            <span class="detective-text" data-i18n="section.activities.shape-detective.question">Which one is different?</span>
+          </div>
+
+          <!-- Shape Choices -->
+          <div class="shape-choices" id="shape-choices">
+            <!-- Shapes will be generated by JS -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🔎</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Shape Detective Activity Styles */
+    .detective-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+    }
+
+    .detective-icon {
+      font-size: var(--text-2xl);
+    }
+
+    .detective-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #92400e;
+    }
+
+    .shape-choices {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+      max-width: 400px;
+      margin: 0 auto;
+      padding: var(--space-2);
+    }
+
+    .shape-card {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      border: 4px solid #d1d5db;
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 0 #9ca3af, 0 6px 15px rgba(0, 0, 0, 0.1);
+      min-height: 120px;
+      padding: var(--space-3);
+    }
+
+    .shape-card:hover:not(:disabled):not(.answered) {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 8px 0 #9ca3af, 0 12px 25px rgba(0, 0, 0, 0.15);
+      border-color: #6366f1;
+    }
+
+    .shape-card:focus {
+      outline: 3px solid #6366f1;
+      outline-offset: 2px;
+    }
+
+    .shape-card:focus-visible {
+      outline: 3px solid #6366f1;
+      outline-offset: 2px;
+    }
+
+    .shape-card.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPulse 0.5s ease;
+    }
+
+    .shape-card.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      box-shadow: 0 4px 0 #dc2626;
+      animation: shake 0.5s ease;
+    }
+
+    .shape-card.belongs {
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border-color: #0ea5e9;
+      box-shadow: 0 4px 0 #0284c7;
+    }
+
+    .shape-card.answered {
+      cursor: default;
+    }
+
+    @keyframes correctPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Shape SVGs */
+    .shape-svg {
+      width: 70px;
+      height: 70px;
+    }
+
+    /* Color variations */
+    .shape-red { fill: #ef4444; stroke: #b91c1c; }
+    .shape-blue { fill: #3b82f6; stroke: #1d4ed8; }
+    .shape-green { fill: #22c55e; stroke: #16a34a; }
+    .shape-yellow { fill: #eab308; stroke: #ca8a04; }
+    .shape-purple { fill: #a855f7; stroke: #7e22ce; }
+    .shape-orange { fill: #f97316; stroke: #ea580c; }
+
+    /* Size variations */
+    .shape-small { width: 40px; height: 40px; }
+    .shape-medium { width: 60px; height: 60px; }
+    .shape-large { width: 80px; height: 80px; }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .shape-choices {
+        gap: var(--space-3);
+        max-width: 320px;
+      }
+
+      .shape-card {
+        min-height: 100px;
+      }
+
+      .shape-svg {
+        width: 55px;
+        height: 55px;
+      }
+
+      .shape-small { width: 30px; height: 30px; }
+      .shape-medium { width: 45px; height: 45px; }
+      .shape-large { width: 60px; height: 60px; }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Shape Detective Activity
+    const ShapeDetective = {
+      // Game state
+      round: 1,
+      maxRounds: 8,
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+      oddOneIndex: -1,
+      currentReason: '',
+
+      // DOM elements
+      progress: null,
+      shapeChoices: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Shape definitions
+      shapes: {
+        circle: (color) => `<svg class="shape-svg shape-${color}" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" stroke-width="4"/></svg>`,
+        square: (color) => `<svg class="shape-svg shape-${color}" viewBox="0 0 100 100"><rect x="15" y="15" width="70" height="70" stroke-width="4"/></svg>`,
+        triangle: (color) => `<svg class="shape-svg shape-${color}" viewBox="0 0 100 100"><polygon points="50,10 90,90 10,90" stroke-width="4"/></svg>`,
+        rectangle: (color) => `<svg class="shape-svg shape-${color}" viewBox="0 0 100 100"><rect x="10" y="25" width="80" height="50" stroke-width="4"/></svg>`,
+        star: (color) => `<svg class="shape-svg shape-${color}" viewBox="0 0 100 100"><polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40" stroke-width="3"/></svg>`,
+        heart: (color) => `<svg class="shape-svg shape-${color}" viewBox="0 0 100 100"><path d="M50,88 C25,65 5,50 5,30 C5,15 17,5 30,5 C40,5 47,12 50,20 C53,12 60,5 70,5 C83,5 95,15 95,30 C95,50 75,65 50,88Z" stroke-width="3"/></svg>`,
+        hexagon: (color) => `<svg class="shape-svg shape-${color}" viewBox="0 0 100 100"><polygon points="50,5 90,27 90,73 50,95 10,73 10,27" stroke-width="4"/></svg>`,
+        diamond: (color) => `<svg class="shape-svg shape-${color}" viewBox="0 0 100 100"><polygon points="50,5 95,50 50,95 5,50" stroke-width="4"/></svg>`
+      },
+
+      colors: ['red', 'blue', 'green', 'yellow', 'purple', 'orange'],
+
+      // Puzzle types: what attribute differs
+      puzzleTypes: [
+        { type: 'shape', generate: 'generateShapePuzzle' },
+        { type: 'color', generate: 'generateColorPuzzle' },
+        { type: 'size', generate: 'generateSizePuzzle' }
+      ],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.shapeChoices = document.getElementById('shape-choices');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        // Pick random puzzle type
+        const puzzleType = this.puzzleTypes[Math.floor(Math.random() * this.puzzleTypes.length)];
+        const puzzle = this[puzzleType.generate]();
+
+        this.oddOneIndex = puzzle.oddIndex;
+        this.currentReason = puzzle.reason;
+
+        this.renderShapes(puzzle.items);
+        this.renderProgress();
+      },
+
+      /**
+       * Generate shape-based puzzle (3 same shape, 1 different)
+       */
+      generateShapePuzzle() {
+        const shapeKeys = Object.keys(this.shapes);
+        const mainShape = shapeKeys[Math.floor(Math.random() * shapeKeys.length)];
+        let oddShape = shapeKeys[Math.floor(Math.random() * shapeKeys.length)];
+        while (oddShape === mainShape) {
+          oddShape = shapeKeys[Math.floor(Math.random() * shapeKeys.length)];
+        }
+
+        const color = this.colors[Math.floor(Math.random() * this.colors.length)];
+        const oddIndex = Math.floor(Math.random() * 4);
+
+        const items = [];
+        for (let i = 0; i < 4; i++) {
+          const shape = i === oddIndex ? oddShape : mainShape;
+          items.push({ shape, color, size: 'medium' });
+        }
+
+        return {
+          items,
+          oddIndex,
+          reason: i18n.t('section.activities.shape-detective.reasonShape') || 'It has a different shape!'
+        };
+      },
+
+      /**
+       * Generate color-based puzzle (3 same color, 1 different)
+       */
+      generateColorPuzzle() {
+        const shapeKeys = Object.keys(this.shapes);
+        const shape = shapeKeys[Math.floor(Math.random() * shapeKeys.length)];
+        const mainColor = this.colors[Math.floor(Math.random() * this.colors.length)];
+        let oddColor = this.colors[Math.floor(Math.random() * this.colors.length)];
+        while (oddColor === mainColor) {
+          oddColor = this.colors[Math.floor(Math.random() * this.colors.length)];
+        }
+
+        const oddIndex = Math.floor(Math.random() * 4);
+
+        const items = [];
+        for (let i = 0; i < 4; i++) {
+          const color = i === oddIndex ? oddColor : mainColor;
+          items.push({ shape, color, size: 'medium' });
+        }
+
+        return {
+          items,
+          oddIndex,
+          reason: i18n.t('section.activities.shape-detective.reasonColor') || 'It has a different color!'
+        };
+      },
+
+      /**
+       * Generate size-based puzzle (3 same size, 1 different)
+       */
+      generateSizePuzzle() {
+        const shapeKeys = Object.keys(this.shapes);
+        const shape = shapeKeys[Math.floor(Math.random() * shapeKeys.length)];
+        const color = this.colors[Math.floor(Math.random() * this.colors.length)];
+        const sizes = ['small', 'medium', 'large'];
+        const mainSize = sizes[Math.floor(Math.random() * sizes.length)];
+        let oddSize = sizes[Math.floor(Math.random() * sizes.length)];
+        while (oddSize === mainSize) {
+          oddSize = sizes[Math.floor(Math.random() * sizes.length)];
+        }
+
+        const oddIndex = Math.floor(Math.random() * 4);
+
+        const items = [];
+        for (let i = 0; i < 4; i++) {
+          const size = i === oddIndex ? oddSize : mainSize;
+          items.push({ shape, color, size });
+        }
+
+        return {
+          items,
+          oddIndex,
+          reason: i18n.t('section.activities.shape-detective.reasonSize') || 'It has a different size!'
+        };
+      },
+
+      /**
+       * Render shape cards
+       */
+      renderShapes(items) {
+        this.shapeChoices.innerHTML = '';
+
+        items.forEach((item, index) => {
+          const card = document.createElement('button');
+          card.className = 'shape-card';
+          card.setAttribute('aria-label', `Shape ${index + 1}`);
+
+          // Create SVG with size class
+          const svgHtml = this.shapes[item.shape](item.color);
+          card.innerHTML = svgHtml;
+
+          // Apply size class
+          const svg = card.querySelector('svg');
+          svg.classList.remove('shape-svg');
+          svg.classList.add('shape-svg', `shape-${item.size}`);
+
+          card.addEventListener('click', () => this.checkAnswer(index, card));
+          card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.checkAnswer(index, card);
+            }
+          });
+
+          this.shapeChoices.appendChild(card);
+        });
+      },
+
+      /**
+       * Check the answer
+       */
+      checkAnswer(selectedIndex, card) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        const cards = this.shapeChoices.querySelectorAll('.shape-card');
+        cards.forEach(c => c.classList.add('answered'));
+
+        if (selectedIndex === this.oddOneIndex) {
+          // Correct!
+          card.classList.add('correct');
+          this.correctCount++;
+
+          // Mark others as "belongs"
+          cards.forEach((c, i) => {
+            if (i !== this.oddOneIndex) {
+              c.classList.add('belongs');
+            }
+          });
+
+          const msg = i18n.t('section.activities.shape-detective.correct') || 'Great detective work!';
+          this.feedback.textContent = msg + ' ' + this.currentReason;
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+
+          if (typeof celebrate === 'function') {
+            celebrate(card);
+          }
+        } else {
+          // Incorrect
+          card.classList.add('incorrect');
+          cards[this.oddOneIndex].classList.add('correct');
+          this.wrongCount++;
+
+          const msg = i18n.t('section.activities.shape-detective.incorrect') || 'Not quite!';
+          this.feedback.textContent = msg + ' ' + this.currentReason;
+          this.feedback.classList.add('show', 'error');
+        }
+
+        this.renderProgress();
+
+        // Auto-advance
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🔎';
+          this.statsMessage.textContent = i18n.t('section.activities.shape-detective.perfect') || 'Super Detective!';
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.shape-detective.great') || 'Great observing!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.shape-detective.keepPracticing') || 'Keep looking!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      ShapeDetective.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

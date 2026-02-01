@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Compare Fractions - Grade 3 Math Activity - Meadow Math">
+  <title>Compare Fractions - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">⚖️</span>
+            <span data-i18n="section.activities.compare-fractions.title">Compare Fractions</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.compare-fractions.instruction">Which symbol makes the comparison true?</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Comparison Display -->
+          <div class="comparison-container" id="comparison-container">
+            <!-- Left Fraction -->
+            <div class="fraction-side left">
+              <div class="fraction-bar-container" id="left-bar">
+                <!-- Fraction bar visual will be rendered here -->
+              </div>
+              <div class="fraction-display" id="left-fraction">
+                <span class="fraction-numerator" id="left-numerator">3</span>
+                <span class="fraction-denominator" id="left-denominator">8</span>
+              </div>
+            </div>
+
+            <!-- Symbol Placeholder -->
+            <div class="symbol-display" id="symbol-display">
+              <span class="symbol-placeholder">?</span>
+            </div>
+
+            <!-- Right Fraction -->
+            <div class="fraction-side right">
+              <div class="fraction-bar-container" id="right-bar">
+                <!-- Fraction bar visual will be rendered here -->
+              </div>
+              <div class="fraction-display" id="right-fraction">
+                <span class="fraction-numerator" id="right-numerator">5</span>
+                <span class="fraction-denominator" id="right-denominator">8</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hint Toggle -->
+          <div class="hint-toggle-container">
+            <button class="hint-toggle-btn" id="btn-hint" aria-pressed="false">
+              <span data-i18n="section.activities.compare-fractions.showHint">Show fraction bars</span>
+            </button>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <button class="choice-btn symbol-choice" data-symbol="<" aria-label="Less than">&lt;</button>
+            <button class="choice-btn symbol-choice" data-symbol="=" aria-label="Equal to">=</button>
+            <button class="choice-btn symbol-choice" data-symbol=">" aria-label="Greater than">&gt;</button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.compare-fractions.great">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Compare Fractions specific styles */
+
+    .comparison-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .fraction-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 4px solid #f59e0b;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #d97706;
+      min-width: 140px;
+    }
+
+    .fraction-bar-container {
+      width: 100%;
+      max-width: 120px;
+      height: 32px;
+      display: none;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 3px solid #92400e;
+      background: #f8fafc;
+    }
+
+    .fraction-bar-container.show {
+      display: flex;
+    }
+
+    .fraction-bar-part {
+      flex: 1;
+      border-right: 1px solid #d97706;
+      transition: background-color 0.3s ease;
+    }
+
+    .fraction-bar-part:last-child {
+      border-right: none;
+    }
+
+    .fraction-bar-part.shaded {
+      background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    }
+
+    .fraction-bar-part.unshaded {
+      background: #f8fafc;
+    }
+
+    .fraction-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #78350f;
+      line-height: 1;
+    }
+
+    .fraction-display .fraction-numerator {
+      border-bottom: 4px solid currentColor;
+      padding-bottom: 6px;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .fraction-display .fraction-denominator {
+      padding-top: 6px;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .symbol-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+      border: 4px solid #8b5cf6;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #7c3aed;
+    }
+
+    .symbol-placeholder {
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #5b21b6;
+    }
+
+    .symbol-display.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+    }
+
+    .symbol-display.correct .symbol-placeholder {
+      color: #166534;
+    }
+
+    .symbol-display.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      box-shadow: 0 4px 0 #dc2626;
+    }
+
+    .symbol-display.incorrect .symbol-placeholder {
+      color: #991b1b;
+    }
+
+    /* Hint Toggle */
+    .hint-toggle-container {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .hint-toggle-btn {
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 2px solid #0ea5e9;
+      border-radius: var(--radius-lg);
+      color: #0369a1;
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .hint-toggle-btn:hover {
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+      transform: translateY(-1px);
+    }
+
+    .hint-toggle-btn:active {
+      transform: translateY(0);
+    }
+
+    .hint-toggle-btn[aria-pressed="true"] {
+      background: linear-gradient(135deg, #7dd3fc, #38bdf8);
+      color: #0c4a6e;
+    }
+
+    /* Choices Container */
+    .choices-container {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .symbol-choice {
+      width: 80px;
+      height: 80px;
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 4px solid #0ea5e9;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #0284c7;
+      color: #0369a1;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .symbol-choice:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 #0284c7;
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+    }
+
+    .symbol-choice:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 #0284c7;
+    }
+
+    .symbol-choice:focus {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .symbol-choice:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .symbol-choice.selected {
+      background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+      border-color: #8b5cf6;
+      box-shadow: 0 4px 0 #7c3aed;
+      color: #5b21b6;
+    }
+
+    .symbol-choice.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      color: #166534;
+    }
+
+    .symbol-choice.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      box-shadow: 0 4px 0 #dc2626;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    /* Activity area needs padding for feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    /* Feedback at bottom */
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .comparison-container {
+        gap: var(--space-3);
+      }
+
+      .fraction-side {
+        min-width: 110px;
+        padding: var(--space-3);
+      }
+
+      .fraction-display {
+        font-size: var(--text-3xl);
+      }
+
+      .fraction-display .fraction-numerator,
+      .fraction-display .fraction-denominator {
+        min-width: 32px;
+      }
+
+      .symbol-display {
+        width: 56px;
+        height: 56px;
+      }
+
+      .symbol-placeholder {
+        font-size: var(--text-3xl);
+      }
+
+      .symbol-choice {
+        width: 70px;
+        height: 70px;
+        font-size: var(--text-3xl);
+      }
+
+      .fraction-bar-container {
+        max-width: 100px;
+        height: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .fraction-side {
+        min-width: 90px;
+        padding: var(--space-2);
+      }
+
+      .fraction-display {
+        font-size: var(--text-2xl);
+      }
+
+      .fraction-display .fraction-numerator {
+        border-bottom-width: 3px;
+        padding-bottom: 4px;
+      }
+
+      .fraction-display .fraction-denominator {
+        padding-top: 4px;
+      }
+
+      .symbol-display {
+        width: 48px;
+        height: 48px;
+      }
+
+      .symbol-placeholder {
+        font-size: var(--text-2xl);
+      }
+
+      .symbol-choice {
+        width: 60px;
+        height: 60px;
+        font-size: var(--text-2xl);
+        border-width: 3px;
+      }
+
+      .fraction-bar-container {
+        max-width: 80px;
+        height: 20px;
+      }
+
+      .hint-toggle-btn {
+        font-size: var(--text-xs);
+        padding: var(--space-1) var(--space-3);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Compare Fractions Activity - Grade 3 Level 4
+    const CompareFractions = {
+      // Game state
+      currentRound: 1,
+      maxRounds: 10,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1500,
+      currentQuestion: null,
+      questions: [],
+      showHint: false,
+      isAnswered: false,
+
+      // DOM elements
+      leftNumerator: null,
+      leftDenominator: null,
+      rightNumerator: null,
+      rightDenominator: null,
+      leftBar: null,
+      rightBar: null,
+      symbolDisplay: null,
+      symbolPlaceholder: null,
+      choicesContainer: null,
+      btnHint: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      /**
+       * Generate questions with progressive difficulty
+       * First questions: same denominator (easier)
+       * Later questions: same numerator (harder - bigger pieces vs smaller pieces)
+       * Some questions: completely different (requires reasoning)
+       */
+      generateQuestions() {
+        this.questions = [];
+
+        // Same denominator questions (rounds 1-4): compare numerators
+        const sameDenominatorQuestions = [
+          { left: { num: 3, den: 8 }, right: { num: 5, den: 8 } },  // <
+          { left: { num: 5, den: 6 }, right: { num: 2, den: 6 } },  // >
+          { left: { num: 2, den: 4 }, right: { num: 2, den: 4 } },  // =
+          { left: { num: 1, den: 3 }, right: { num: 2, den: 3 } },  // <
+        ];
+
+        // Same numerator questions (rounds 5-7): larger denominator = smaller pieces
+        const sameNumeratorQuestions = [
+          { left: { num: 3, den: 4 }, right: { num: 3, den: 8 } },  // > (fourths are bigger)
+          { left: { num: 2, den: 6 }, right: { num: 2, den: 3 } },  // < (thirds are bigger)
+          { left: { num: 1, den: 2 }, right: { num: 1, den: 4 } },  // > (halves are bigger)
+        ];
+
+        // Mixed / equivalent questions (rounds 8-10)
+        const mixedQuestions = [
+          { left: { num: 2, den: 4 }, right: { num: 1, den: 2 } },  // = (equivalent)
+          { left: { num: 3, den: 6 }, right: { num: 2, den: 4 } },  // = (both = 1/2)
+          { left: { num: 4, den: 6 }, right: { num: 5, den: 8 } },  // > (4/6 ≈ 0.67, 5/8 = 0.625)
+        ];
+
+        // Combine and shuffle within difficulty bands
+        this.questions = [
+          ...shuffle(sameDenominatorQuestions),
+          ...shuffle(sameNumeratorQuestions),
+          ...shuffle(mixedQuestions)
+        ];
+      },
+
+      /**
+       * Get the correct comparison symbol
+       */
+      getCorrectSymbol(left, right) {
+        const leftValue = left.num / left.den;
+        const rightValue = right.num / right.den;
+
+        if (Math.abs(leftValue - rightValue) < 0.0001) {
+          return '=';
+        } else if (leftValue < rightValue) {
+          return '<';
+        } else {
+          return '>';
+        }
+      },
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        // Get DOM elements
+        this.leftNumerator = document.getElementById('left-numerator');
+        this.leftDenominator = document.getElementById('left-denominator');
+        this.rightNumerator = document.getElementById('right-numerator');
+        this.rightDenominator = document.getElementById('right-denominator');
+        this.leftBar = document.getElementById('left-bar');
+        this.rightBar = document.getElementById('right-bar');
+        this.symbolDisplay = document.getElementById('symbol-display');
+        this.symbolPlaceholder = this.symbolDisplay.querySelector('.symbol-placeholder');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.btnHint = document.getElementById('btn-hint');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Event listeners for choice buttons
+        const choiceButtons = this.choicesContainer.querySelectorAll('.symbol-choice');
+        choiceButtons.forEach(btn => {
+          btn.addEventListener('click', () => this.selectAnswer(btn));
+        });
+
+        // Hint toggle
+        this.btnHint.addEventListener('click', () => this.toggleHint());
+
+        // Play again
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        // Generate questions and start
+        this.generateQuestions();
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Update translations when language changes
+       */
+      updateTranslations() {
+        // Update hint button text
+        if (this.showHint) {
+          this.btnHint.innerHTML = `<span data-i18n="section.activities.compare-fractions.hideHint">${i18n.t('section.activities.compare-fractions.hideHint')}</span>`;
+        } else {
+          this.btnHint.innerHTML = `<span data-i18n="section.activities.compare-fractions.showHint">${i18n.t('section.activities.compare-fractions.showHint')}</span>`;
+        }
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.currentQuestion = this.questions[this.currentRound - 1];
+        this.isAnswered = false;
+
+        const { left, right } = this.currentQuestion;
+
+        // Update fraction displays
+        this.leftNumerator.textContent = left.num;
+        this.leftDenominator.textContent = left.den;
+        this.rightNumerator.textContent = right.num;
+        this.rightDenominator.textContent = right.den;
+
+        // Reset symbol display
+        this.symbolPlaceholder.textContent = '?';
+        this.symbolDisplay.classList.remove('correct', 'incorrect');
+
+        // Render fraction bars
+        this.renderFractionBar(this.leftBar, left.num, left.den);
+        this.renderFractionBar(this.rightBar, right.num, right.den);
+
+        // Reset UI
+        this.feedback.classList.remove('show', 'error');
+        const choiceButtons = this.choicesContainer.querySelectorAll('.symbol-choice');
+        choiceButtons.forEach(btn => {
+          btn.disabled = false;
+          btn.classList.remove('selected', 'correct', 'incorrect');
+        });
+
+        this.renderProgress();
+      },
+
+      /**
+       * Render a fraction bar visual
+       */
+      renderFractionBar(container, numerator, denominator) {
+        container.innerHTML = '';
+        for (let i = 0; i < denominator; i++) {
+          const part = document.createElement('div');
+          part.className = 'fraction-bar-part';
+          if (i < numerator) {
+            part.classList.add('shaded');
+          } else {
+            part.classList.add('unshaded');
+          }
+          container.appendChild(part);
+        }
+      },
+
+      /**
+       * Toggle hint visibility
+       */
+      toggleHint() {
+        this.showHint = !this.showHint;
+        this.btnHint.setAttribute('aria-pressed', this.showHint);
+
+        if (this.showHint) {
+          this.leftBar.classList.add('show');
+          this.rightBar.classList.add('show');
+          this.btnHint.innerHTML = `<span data-i18n="section.activities.compare-fractions.hideHint">${i18n.t('section.activities.compare-fractions.hideHint')}</span>`;
+        } else {
+          this.leftBar.classList.remove('show');
+          this.rightBar.classList.remove('show');
+          this.btnHint.innerHTML = `<span data-i18n="section.activities.compare-fractions.showHint">${i18n.t('section.activities.compare-fractions.showHint')}</span>`;
+        }
+      },
+
+      /**
+       * Handle answer selection
+       */
+      selectAnswer(btn) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const selectedSymbol = btn.dataset.symbol;
+        const { left, right } = this.currentQuestion;
+        const correctSymbol = this.getCorrectSymbol(left, right);
+
+        // Disable all buttons
+        const choiceButtons = this.choicesContainer.querySelectorAll('.symbol-choice');
+        choiceButtons.forEach(b => b.disabled = true);
+
+        // Show selected state
+        btn.classList.add('selected');
+
+        if (selectedSymbol === correctSymbol) {
+          // Correct!
+          this.correctCount++;
+          btn.classList.add('correct');
+          this.symbolPlaceholder.textContent = correctSymbol;
+          this.symbolDisplay.classList.add('correct');
+
+          this.feedback.textContent = i18n.t('section.activities.compare-fractions.correct');
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+        } else {
+          // Incorrect
+          this.wrongCount++;
+          btn.classList.add('incorrect');
+
+          // Show the correct answer
+          choiceButtons.forEach(b => {
+            if (b.dataset.symbol === correctSymbol) {
+              b.classList.add('correct');
+            }
+          });
+
+          this.symbolPlaceholder.textContent = correctSymbol;
+          this.symbolDisplay.classList.add('incorrect');
+
+          const msg = i18n.t('section.activities.compare-fractions.wrong')
+            .replace('{symbol}', correctSymbol);
+          this.feedback.textContent = msg;
+          this.feedback.classList.add('show', 'error');
+        }
+
+        // Show fraction bars after answering
+        this.leftBar.classList.add('show');
+        this.rightBar.classList.add('show');
+
+        this.renderProgress();
+
+        // Auto-advance after delay
+        setTimeout(() => {
+          if (this.currentRound < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Go to next round
+       */
+      nextRound() {
+        this.currentRound++;
+        // Reset hint state for new round
+        if (!this.showHint) {
+          this.leftBar.classList.remove('show');
+          this.rightBar.classList.remove('show');
+        }
+        this.startRound();
+      },
+
+      /**
+       * Show completion stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = i18n.t('section.activities.compare-fractions.perfect');
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.compare-fractions.great');
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.compare-fractions.good');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = i18n.t('section.activities.compare-fractions.keepPracticing');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart the activity
+       */
+      restartActivity() {
+        this.currentRound = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.showHint = false;
+        this.btnHint.setAttribute('aria-pressed', 'false');
+        this.btnHint.innerHTML = `<span data-i18n="section.activities.compare-fractions.showHint">${i18n.t('section.activities.compare-fractions.showHint')}</span>`;
+        this.leftBar.classList.remove('show');
+        this.rightBar.classList.remove('show');
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Render progress indicator
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      CompareFractions.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,11 @@
+/**
+ * Grade 4 Activity Styles
+ *
+ * This file imports the shared activity styles from the central CSS folder.
+ * Add any Grade 4 specific overrides below the import.
+ */
+
+@import url('../../css/activity.css');
+
+/* ========== GRADE 4 SPECIFIC OVERRIDES ========== */
+/* Add Grade 4 specific styles here if needed */

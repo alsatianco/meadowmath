@@ -1,0 +1,37 @@
+/**
+ * Grade 3 Activity Styles
+ *
+ * This file imports the shared activity styles from the central CSS folder.
+ * Add any Grade 3 specific overrides below the import.
+ */
+
+@import url('../../css/activity.css');
+
+/* ========== GRADE 3 SPECIFIC OVERRIDES ========== */
+/* Keep feedback banners anchored to the bottom of the activity area */
+.activity-area {
+  padding-bottom: calc(var(--space-8) + 60px);
+}
+
+.feedback-message {
+  position: absolute;
+  bottom: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0;
+  max-width: 90%;
+}
+
+/* ========== GRADE 3 INTERACTION OVERRIDES ========== */
+.activity-wrapper .choice-btn:active:not(:disabled),
+.activity-wrapper .choice-btn.symbol-btn:active:not(:disabled),
+.activity-wrapper .choice-btn.equation-btn:active:not(:disabled),
+.activity-wrapper .number-btn:active,
+.activity-wrapper .control-btn:active:not(:disabled),
+.activity-wrapper .op-btn:active:not(:disabled),
+.activity-wrapper .symbol-choice:active:not(:disabled),
+.activity-wrapper .hint-toggle-btn:active,
+.activity-wrapper .btn-activity:active,
+.stats-overlay .btn-activity:active {
+  transform: translateY(1px) scale(0.97);
+}

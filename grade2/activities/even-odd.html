@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Even or Odd Pairs - Grade 2 Math Activity - Meadow Math">
+  <title>Even or Odd Pairs - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade2">Grade 2</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🧦</span>
+            <span data-i18n="section.activities.even-odd.title">Even or Odd Pairs</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.even-odd.description">Make pairs to see if the number is even or odd.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Target Number Display -->
+          <div class="target-display" id="target-display">
+            <span class="target-label" data-i18n="section.activities.even-odd.howMany">How many socks?</span>
+            <span class="target-number" id="target-number">12</span>
+          </div>
+
+          <!-- Pairing Area -->
+          <div class="pairing-container" id="pairing-container">
+            <!-- Objects to pair -->
+            <div class="objects-area" id="objects-area"></div>
+
+            <!-- Pairs zone -->
+            <div class="pairs-zone" id="pairs-zone">
+              <div class="pairs-label" data-i18n="section.activities.even-odd.pairsArea">Pairs</div>
+              <div class="pairs-grid" id="pairs-grid"></div>
+              <div class="leftover-area" id="leftover-area">
+                <span class="leftover-label" data-i18n="section.activities.even-odd.leftover">Leftover:</span>
+                <span class="leftover-slot" id="leftover-slot"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Answer Buttons -->
+          <div class="answer-container" id="answer-container" style="display: none;">
+            <div class="answer-prompt" data-i18n="section.activities.even-odd.isItEvenOrOdd">Is this number even or odd?</div>
+            <div class="answer-buttons">
+              <button class="answer-btn even-btn" data-answer="even">
+                <span class="answer-icon">✓✓</span>
+                <span data-i18n="section.activities.even-odd.even">Even</span>
+              </button>
+              <button class="answer-btn odd-btn" data-answer="odd">
+                <span class="answer-icon">✓🚫</span>
+                <span data-i18n="section.activities.even-odd.odd">Odd</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great pairing!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Even or Odd Pairs Activity - Grade 2
+    const EvenOddPairs = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      targetNumber: 0,
+      isEven: true,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+      selectedObjects: [],
+      pairedCount: 0,
+
+      // DOM elements
+      targetDisplay: null,
+      targetNumberEl: null,
+      objectsArea: null,
+      pairsGrid: null,
+      leftoverSlot: null,
+      leftoverArea: null,
+      answerContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.targetDisplay = document.getElementById('target-display');
+        this.targetNumberEl = document.getElementById('target-number');
+        this.objectsArea = document.getElementById('objects-area');
+        this.pairsGrid = document.getElementById('pairs-grid');
+        this.leftoverSlot = document.getElementById('leftover-slot');
+        this.leftoverArea = document.getElementById('leftover-area');
+        this.answerContainer = document.getElementById('answer-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up answer buttons
+        document.querySelectorAll('.answer-btn').forEach(btn => {
+          btn.addEventListener('click', () => this.submitAnswer(btn.dataset.answer));
+        });
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Update any dynamic text that needs refreshing
+        // The data-i18n elements are automatically updated by i18n.js
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      generateNumber() {
+        // Generate numbers between 4-20 for reasonable pairing
+        // Progressive difficulty: smaller numbers first
+        let min, max;
+        if (this.currentQuestion < 3) {
+          min = 4; max = 10;
+        } else if (this.currentQuestion < 6) {
+          min = 8; max = 16;
+        } else {
+          min = 10; max = 20;
+        }
+
+        this.targetNumber = this.randomInt(min, max);
+        this.isEven = this.targetNumber % 2 === 0;
+        this.isAnswered = false;
+        this.selectedObjects = [];
+        this.pairedCount = 0;
+      },
+
+      startQuestion() {
+        this.generateNumber();
+        this.targetNumberEl.textContent = this.targetNumber;
+        this.renderObjects();
+        this.pairsGrid.innerHTML = '';
+        this.leftoverSlot.innerHTML = '';
+        this.leftoverArea.classList.remove('has-leftover');
+        this.answerContainer.style.display = 'none';
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      renderObjects() {
+        this.objectsArea.innerHTML = '';
+        const sockEmojis = ['🧦'];
+        const emoji = sockEmojis[0];
+
+        for (let i = 0; i < this.targetNumber; i++) {
+          const obj = document.createElement('button');
+          obj.className = 'pair-object';
+          obj.textContent = emoji;
+          obj.dataset.index = i;
+          obj.addEventListener('click', () => this.selectObject(obj, i));
+          this.objectsArea.appendChild(obj);
+        }
+      },
+
+      selectObject(obj, index) {
+        if (this.isAnswered || obj.classList.contains('paired')) return;
+
+        if (obj.classList.contains('selected')) {
+          // Deselect
+          obj.classList.remove('selected');
+          this.selectedObjects = this.selectedObjects.filter(i => i !== index);
+        } else {
+          // Select
+          obj.classList.add('selected');
+          this.selectedObjects.push(index);
+
+          // If two are selected, make a pair
+          if (this.selectedObjects.length === 2) {
+            this.makePair();
+          }
+        }
+      },
+
+      makePair() {
+        const [idx1, idx2] = this.selectedObjects;
+        const objects = this.objectsArea.querySelectorAll('.pair-object');
+
+        // Mark as paired
+        objects[idx1].classList.remove('selected');
+        objects[idx2].classList.remove('selected');
+        objects[idx1].classList.add('paired');
+        objects[idx2].classList.add('paired');
+
+        // Add to pairs grid
+        const pairDiv = document.createElement('div');
+        pairDiv.className = 'pair-item';
+        pairDiv.innerHTML = `<span>🧦</span><span>🧦</span>`;
+        this.pairsGrid.appendChild(pairDiv);
+
+        this.pairedCount += 2;
+        this.selectedObjects = [];
+
+        // Check if all are paired or one left
+        this.checkPairingComplete();
+      },
+
+      checkPairingComplete() {
+        const remaining = this.targetNumber - this.pairedCount;
+
+        if (remaining === 0) {
+          // All paired - even!
+          this.showAnswerButtons();
+        } else if (remaining === 1) {
+          // One leftover - odd!
+          this.leftoverSlot.innerHTML = '🧦';
+          this.leftoverArea.classList.add('has-leftover');
+
+          // Mark last object as paired (moved to leftover)
+          const objects = this.objectsArea.querySelectorAll('.pair-object:not(.paired)');
+          if (objects.length > 0) {
+            objects[0].classList.add('paired');
+          }
+
+          this.showAnswerButtons();
+        }
+      },
+
+      showAnswerButtons() {
+        this.answerContainer.style.display = 'block';
+        this.answerContainer.classList.add('show');
+      },
+
+      submitAnswer(answer) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const correctAnswer = this.isEven ? 'even' : 'odd';
+        const isCorrect = answer === correctAnswer;
+
+        // Highlight buttons
+        document.querySelectorAll('.answer-btn').forEach(btn => {
+          btn.disabled = true;
+          if (btn.dataset.answer === correctAnswer) {
+            btn.classList.add('correct');
+          } else if (btn.dataset.answer === answer && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+          const feedbackText = window.i18n ? i18n.t('feedback.correct') : '✓ Correct!';
+          const evenOddText = this.isEven
+            ? (window.i18n ? i18n.t('section.activities.even-odd.evenExplanation') : 'All socks have pairs!')
+            : (window.i18n ? i18n.t('section.activities.even-odd.oddExplanation') : 'One sock is left over!');
+          this.feedback.textContent = `${feedbackText} ${this.targetNumber} - ${evenOddText}`;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const feedbackText = window.i18n ? i18n.t('feedback.tryAgain') : '✗ Try again!';
+          const explanation = this.isEven
+            ? (window.i18n ? i18n.t('section.activities.even-odd.wasEven') : `${this.targetNumber} is even - all socks pair up!`)
+            : (window.i18n ? i18n.t('section.activities.even-odd.wasOdd') : `${this.targetNumber} is odd - one sock left over!`);
+          this.feedback.textContent = `${feedbackText} ${explanation}`;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        // Reset button states
+        document.querySelectorAll('.answer-btn').forEach(btn => {
+          btn.disabled = false;
+          btn.classList.remove('correct', 'incorrect');
+        });
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        // Reset button states
+        document.querySelectorAll('.answer-btn').forEach(btn => {
+          btn.disabled = false;
+          btn.classList.remove('correct', 'incorrect');
+        });
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n ? i18n.t('stats.amazing') : 'Amazing pairing!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🧦';
+          this.statsMessage.textContent = window.i18n ? i18n.t('stats.great') : 'Great work with pairs!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n ? i18n.t('stats.goodEffort') : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        // Reset button states
+        document.querySelectorAll('.answer-btn').forEach(btn => {
+          btn.disabled = false;
+          btn.classList.remove('correct', 'incorrect');
+        });
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => EvenOddPairs.init());
+      } else {
+        EvenOddPairs.init();
+      }
+    });
+  </script>
+  <style>
+    /* Even or Odd Pairs specific styles */
+
+    /* Target Display */
+    .target-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .target-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      color: var(--color-neutral-600);
+    }
+
+    .target-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-5xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      text-shadow: 0 3px 0 var(--color-primary-dark);
+    }
+
+    /* Pairing Container */
+    .pairing-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+      width: 100%;
+      max-width: 600px;
+    }
+
+    /* Objects Area */
+    .objects-area {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+      min-height: 100px;
+    }
+
+    .pair-object {
+      width: 56px;
+      height: 56px;
+      font-size: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      border: 3px solid var(--color-neutral-200);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 0 var(--color-neutral-300);
+    }
+
+    .pair-object:hover:not(.paired) {
+      transform: translateY(-3px) scale(1.1);
+      border-color: var(--color-primary);
+      box-shadow: 0 6px 0 var(--color-primary-dark);
+    }
+
+    .pair-object:active:not(.paired) {
+      transform: translateY(1px);
+      box-shadow: 0 1px 0 var(--color-neutral-300);
+    }
+
+    .pair-object.selected {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: #3b82f6;
+      transform: scale(1.1);
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+    }
+
+    .pair-object.paired {
+      opacity: 0.3;
+      transform: scale(0.8);
+      cursor: default;
+      pointer-events: none;
+    }
+
+    /* Pairs Zone */
+    .pairs-zone {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-radius: var(--radius-xl);
+      border: 3px solid #22c55e;
+      padding: var(--space-4);
+    }
+
+    .pairs-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #166534;
+      text-align: center;
+      margin-bottom: var(--space-3);
+    }
+
+    .pairs-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-3);
+      min-height: 60px;
+    }
+
+    .pair-item {
+      display: flex;
+      gap: 4px;
+      background: white;
+      padding: var(--space-2);
+      border-radius: var(--radius-lg);
+      border: 2px solid #86efac;
+      font-size: 24px;
+      animation: pairPop 0.3s ease;
+    }
+
+    @keyframes pairPop {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Leftover Area */
+    .leftover-area {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-top: var(--space-3);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border-radius: var(--radius-lg);
+      border: 2px dashed #ef4444;
+      opacity: 0.5;
+      transition: all 0.3s ease;
+    }
+
+    .leftover-area.has-leftover {
+      opacity: 1;
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-style: solid;
+    }
+
+    .leftover-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      color: #991b1b;
+    }
+
+    .leftover-slot {
+      font-size: 28px;
+      min-width: 40px;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Answer Container */
+    .answer-container {
+      margin-top: var(--space-6);
+      text-align: center;
+    }
+
+    .answer-container.show {
+      animation: fadeInUp 0.3s ease;
+    }
+
+    @keyframes fadeInUp {
+      0% { transform: translateY(20px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .answer-prompt {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-4);
+    }
+
+    .answer-buttons {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+    }
+
+    .answer-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      border: 4px solid;
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 130px;
+      min-height: 110px;
+      aspect-ratio: 1.2;
+    }
+
+    .answer-icon {
+      font-size: var(--text-2xl);
+    }
+
+    .even-btn {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: #3b82f6;
+      color: #1e40af;
+      box-shadow: 0 4px 0 #1d4ed8;
+    }
+
+    .even-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #bfdbfe, #93c5fd);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 0 #1d4ed8;
+    }
+
+    .odd-btn {
+      background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+      border-color: #ec4899;
+      color: #9d174d;
+      box-shadow: 0 4px 0 #be185d;
+    }
+
+    .odd-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #fbcfe8, #f9a8d4);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 0 #be185d;
+    }
+
+    .answer-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 currentColor;
+    }
+
+    .answer-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80) !important;
+      border-color: #22c55e !important;
+      color: #166534 !important;
+      box-shadow: 0 4px 0 #16a34a !important;
+    }
+
+    .answer-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5) !important;
+      border-color: #ef4444 !important;
+      color: #991b1b !important;
+      box-shadow: 0 4px 0 #dc2626 !important;
+      animation: shake 0.5s ease;
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .pair-object {
+        width: 48px;
+        height: 48px;
+        font-size: 26px;
+      }
+
+      .objects-area {
+        gap: var(--space-2);
+        padding: var(--space-3);
+      }
+
+      .pairs-grid {
+        gap: var(--space-2);
+      }
+
+      .pair-item {
+        font-size: 20px;
+        padding: var(--space-1);
+      }
+
+      .answer-btn {
+        padding: var(--space-3);
+        font-size: var(--text-lg);
+        min-width: 110px;
+        min-height: 90px;
+      }
+
+      .answer-icon {
+        font-size: var(--text-xl);
+      }
+
+      .target-number {
+        font-size: var(--text-4xl);
+      }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sort & Count - Kindergarten Math Activity - Meadow Math">
+  <title>Sort & Count - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🧺</span>
+            <span data-i18n="section.activities.sort-and-count.title">Sort & Count</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.sort-and-count.instruction">Sort the items into baskets, then count!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Phase indicator -->
+          <p class="phase-text" id="phase-text" data-i18n="section.activities.sort-and-count.sortPhase">Tap each item to sort it!</p>
+
+          <!-- Items to sort -->
+          <div class="items-pool" id="items-pool">
+            <!-- Generated by JS -->
+          </div>
+
+          <!-- Sort Baskets -->
+          <div class="baskets-area" id="baskets-area">
+            <!-- Generated by JS -->
+          </div>
+
+          <!-- Counting Question (after sorting) -->
+          <div class="count-question hidden" id="count-question">
+            <p class="question-text" id="question-text"></p>
+            <div class="count-choices" id="count-choices">
+              <!-- Generated by JS -->
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🧺</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great sorting!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Sort & Count Styles */
+    .phase-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      text-align: center;
+      margin-bottom: var(--space-3);
+    }
+
+    /* Items Pool */
+    .items-pool {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border: 3px dashed #cbd5e1;
+      border-radius: var(--radius-xl);
+      min-height: 80px;
+      margin-bottom: var(--space-4);
+    }
+
+    .sort-item {
+      font-size: 36px;
+      padding: var(--space-1);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border-radius: var(--radius-lg);
+      background: white;
+      border: 3px solid transparent;
+      box-shadow: 0 2px 0 #e2e8f0;
+    }
+
+    .sort-item:hover {
+      transform: scale(1.15);
+      border-color: #3b82f6;
+      box-shadow: 0 4px 0 #2563eb;
+    }
+
+    .sort-item:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .sort-item:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .sort-item:focus-visible {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .sort-item.selected {
+      border-color: #8b5cf6;
+      background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+      animation: itemBounce 0.3s ease;
+    }
+
+    @keyframes itemBounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    /* Baskets Area */
+    .baskets-area {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-4);
+    }
+
+    .basket {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 4px solid #f59e0b;
+      border-radius: var(--radius-xl);
+      min-width: 120px;
+      min-height: 120px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 #d97706;
+    }
+
+    .basket:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #d97706;
+    }
+
+    .basket:focus {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .basket:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .basket:focus-visible {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .basket.highlight {
+      border-color: #3b82f6;
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      box-shadow: 0 4px 0 #2563eb;
+    }
+
+    .basket-label {
+      font-size: 28px;
+    }
+
+    .basket-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px;
+      min-height: 40px;
+    }
+
+    .basket-item {
+      font-size: 24px;
+      animation: popIn 0.3s ease;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+
+    .basket-count {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+      background: white;
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-md);
+      min-width: 30px;
+      text-align: center;
+    }
+
+    /* Count Question */
+    .count-question {
+      text-align: center;
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--space-4);
+    }
+
+    .count-question.hidden {
+      display: none;
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-3);
+    }
+
+    .count-choices {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .count-btn {
+      width: 65px;
+      height: 65px;
+      border: 4px solid #e2e8f0;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, white, #f8fafc);
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 #cbd5e1;
+    }
+
+    .count-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      border-color: #3b82f6;
+      box-shadow: 0 6px 0 #2563eb;
+    }
+
+    .count-btn:focus {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .count-btn:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .count-btn:focus-visible {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .count-btn:disabled {
+      cursor: not-allowed;
+    }
+
+    .count-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPop 0.5s ease;
+    }
+
+    .count-btn.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      box-shadow: 0 4px 0 #d97706;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .sort-item {
+        font-size: 30px;
+      }
+
+      .basket {
+        min-width: 100px;
+        min-height: 100px;
+        padding: var(--space-2);
+      }
+
+      .basket-label {
+        font-size: 24px;
+      }
+
+      .basket-item {
+        font-size: 20px;
+      }
+
+      .count-btn {
+        width: 55px;
+        height: 55px;
+        font-size: var(--text-xl);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Sort & Count Activity
+    const SortAndCount = {
+      // Game state
+      round: 1,
+      maxRounds: 6,
+      phase: 'sort', // 'sort' or 'count'
+      items: [],
+      baskets: [],
+      selectedItem: null,
+      correctAnswer: 0,
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+
+      // DOM elements
+      progress: null,
+      phaseText: null,
+      itemsPool: null,
+      basketsArea: null,
+      countQuestion: null,
+      questionText: null,
+      countChoices: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Categories for sorting
+      categories: [
+        { emoji: '🍎', items: ['🍎', '🍎', '🍎'], name: 'apples' },
+        { emoji: '🍊', items: ['🍊', '🍊'], name: 'oranges' },
+        { emoji: '🍌', items: ['🍌', '🍌', '🍌', '🍌'], name: 'bananas' },
+        { emoji: '🍇', items: ['🍇', '🍇'], name: 'grapes' },
+        { emoji: '🐱', items: ['🐱', '🐱'], name: 'cats' },
+        { emoji: '🐶', items: ['🐶', '🐶', '🐶'], name: 'dogs' },
+        { emoji: '🐦', items: ['🐦', '🐦', '🐦', '🐦'], name: 'birds' },
+        { emoji: '🌸', items: ['🌸', '🌸', '🌸'], name: 'flowers' },
+        { emoji: '⭐', items: ['⭐', '⭐', '⭐', '⭐', '⭐'], name: 'stars' },
+        { emoji: '🔵', items: ['🔵', '🔵', '🔵'], name: 'blue' },
+        { emoji: '🔴', items: ['🔴', '🔴', '🔴', '🔴'], name: 'red' }
+      ],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.phaseText = document.getElementById('phase-text');
+        this.itemsPool = document.getElementById('items-pool');
+        this.basketsArea = document.getElementById('baskets-area');
+        this.countQuestion = document.getElementById('count-question');
+        this.questionText = document.getElementById('question-text');
+        this.countChoices = document.getElementById('count-choices');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.phase = 'sort';
+        this.hasAnswered = false;
+        this.selectedItem = null;
+
+        // Update phase text
+        this.phaseText.textContent = i18n.t('section.activities.sort-and-count.sortPhase') || 'Tap each item to sort it!';
+
+        // Pick 2 random categories
+        const shuffled = [...this.categories].sort(() => Math.random() - 0.5);
+        const cat1 = shuffled[0];
+        const cat2 = shuffled[1];
+
+        // Create baskets
+        this.baskets = [
+          { emoji: cat1.emoji, items: [], targetItems: [...cat1.items], name: cat1.name },
+          { emoji: cat2.emoji, items: [], targetItems: [...cat2.items], name: cat2.name }
+        ];
+
+        // Create items pool (shuffled mix of both categories)
+        this.items = [...cat1.items, ...cat2.items].sort(() => Math.random() - 0.5);
+
+        // Reset UI
+        this.countQuestion.classList.add('hidden');
+        this.feedback.classList.remove('show', 'error');
+
+        // Render
+        this.renderItemsPool();
+        this.renderBaskets();
+        this.renderProgress();
+      },
+
+      /**
+       * Render items pool
+       */
+      renderItemsPool() {
+        this.itemsPool.innerHTML = '';
+        this.items.forEach((item, idx) => {
+          const btn = document.createElement('button');
+          btn.className = 'sort-item';
+          btn.textContent = item;
+          btn.dataset.index = idx;
+          btn.addEventListener('click', () => this.selectItem(idx));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.selectItem(idx);
+            }
+          });
+          this.itemsPool.appendChild(btn);
+        });
+      },
+
+      /**
+       * Render baskets
+       */
+      renderBaskets() {
+        this.basketsArea.innerHTML = '';
+        this.baskets.forEach((basket, idx) => {
+          const div = document.createElement('button');
+          div.className = 'basket';
+          div.innerHTML = `
+            <span class="basket-label">${basket.emoji}</span>
+            <div class="basket-items" id="basket-items-${idx}"></div>
+            <span class="basket-count">${basket.items.length}</span>
+          `;
+          div.addEventListener('click', () => this.sortToBasket(idx));
+          div.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.sortToBasket(idx);
+            }
+          });
+          this.basketsArea.appendChild(div);
+        });
+      },
+
+      /**
+       * Select an item
+       */
+      selectItem(idx) {
+        if (this.phase !== 'sort') return;
+
+        // Deselect previous
+        const allItems = this.itemsPool.querySelectorAll('.sort-item');
+        allItems.forEach(i => i.classList.remove('selected'));
+
+        // Select new
+        this.selectedItem = idx;
+        allItems[idx].classList.add('selected');
+
+        // Highlight baskets
+        const allBaskets = this.basketsArea.querySelectorAll('.basket');
+        allBaskets.forEach(b => b.classList.add('highlight'));
+      },
+
+      /**
+       * Sort item to basket
+       */
+      sortToBasket(basketIdx) {
+        if (this.phase !== 'sort' || this.selectedItem === null) return;
+
+        const item = this.items[this.selectedItem];
+        const basket = this.baskets[basketIdx];
+
+        // Check if item belongs to this basket
+        const belongsHere = item === basket.emoji;
+
+        if (belongsHere) {
+          // Add to basket
+          basket.items.push(item);
+
+          // Update basket display
+          const basketItems = document.getElementById(`basket-items-${basketIdx}`);
+          const span = document.createElement('span');
+          span.className = 'basket-item';
+          span.textContent = item;
+          basketItems.appendChild(span);
+
+          // Update count
+          const basketEl = this.basketsArea.querySelectorAll('.basket')[basketIdx];
+          basketEl.querySelector('.basket-count').textContent = basket.items.length;
+
+          // Remove from pool
+          this.items.splice(this.selectedItem, 1);
+          this.renderItemsPool();
+        }
+
+        // Deselect
+        this.selectedItem = null;
+        const allBaskets = this.basketsArea.querySelectorAll('.basket');
+        allBaskets.forEach(b => b.classList.remove('highlight'));
+
+        // Check if all items sorted
+        if (this.items.length === 0) {
+          this.startCountPhase();
+        }
+      },
+
+      /**
+       * Start counting phase
+       */
+      startCountPhase() {
+        this.phase = 'count';
+
+        // Update phase text
+        this.phaseText.textContent = i18n.t('section.activities.sort-and-count.countPhase') || 'Now count! How many in each basket?';
+
+        // Pick a basket to ask about
+        const basketIdx = randomInt(0, this.baskets.length - 1);
+        const basket = this.baskets[basketIdx];
+        this.correctAnswer = basket.items.length;
+
+        // Show question
+        const questionTemplate = i18n.t('section.activities.sort-and-count.question') || 'How many {{emoji}}?';
+        this.questionText.textContent = questionTemplate.replace('{{emoji}}', basket.emoji);
+        this.countQuestion.classList.remove('hidden');
+
+        // Generate choices
+        this.renderCountChoices();
+      },
+
+      /**
+       * Render count choices
+       */
+      renderCountChoices() {
+        this.countChoices.innerHTML = '';
+
+        const choices = new Set([this.correctAnswer]);
+        while (choices.size < 4) {
+          const distractor = this.correctAnswer + randomInt(-2, 2);
+          if (distractor >= 1 && distractor <= 10 && distractor !== this.correctAnswer) {
+            choices.add(distractor);
+          }
+        }
+
+        const choicesArray = Array.from(choices).sort(() => Math.random() - 0.5);
+
+        choicesArray.forEach(num => {
+          const btn = document.createElement('button');
+          btn.className = 'count-btn';
+          btn.textContent = num;
+          btn.addEventListener('click', () => this.selectCount(num, btn));
+          this.countChoices.appendChild(btn);
+        });
+      },
+
+      /**
+       * Select count answer
+       */
+      selectCount(num, btn) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        const allBtns = this.countChoices.querySelectorAll('.count-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        const isCorrect = num === this.correctAnswer;
+
+        if (isCorrect) {
+          btn.classList.add('correct');
+          const msg = i18n.t('section.activities.sort-and-count.correct') || 'Yes! There are {{count}}!';
+          this.feedback.textContent = msg.replace('{{count}}', this.correctAnswer);
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          if (typeof celebrate === 'function') {
+            celebrate(btn);
+          }
+        } else {
+          btn.classList.add('incorrect');
+          allBtns.forEach(b => {
+            if (parseInt(b.textContent) === this.correctAnswer) {
+              b.classList.add('correct');
+            }
+          });
+          const msg = i18n.t('section.activities.sort-and-count.incorrect') || 'Not quite! There are {{count}}.';
+          this.feedback.textContent = msg.replace('{{count}}', this.correctAnswer);
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🧺';
+          this.statsMessage.textContent = i18n.t('section.activities.sort-and-count.perfect') || 'Sorting Star!';
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.sort-and-count.great') || 'Great sorting!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.sort-and-count.keepPracticing') || 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      SortAndCount.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

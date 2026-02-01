@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Divide with Place Value - Grade 4 Math Activity - Meadow Math">
+  <title>Divide with Place Value - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade4">Grade 4</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧺</span>
+            <span data-i18n="section.activities.divide-place-value.title">Divide with Place Value</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.divide-place-value.description">Share a big number into equal groups.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <div class="problem-banner">
+            <span class="problem-label" data-i18n="section.activities.divide-place-value.problemLabel">Divide</span>
+            <span class="problem-value" id="problem-value">936 ÷ 3</span>
+          </div>
+
+          <div class="instruction-card" data-i18n="section.activities.divide-place-value.instruction">Divide by taking chunks at each place value!</div>
+
+          <div class="chunk-board">
+            <div class="chunk-header">
+              <span class="chunk-title" data-i18n="section.activities.divide-place-value.chunkTitle">Place-value chunks</span>
+              <span class="chunk-chip" id="divisor-chip">Divide by 3</span>
+            </div>
+            <p class="chunk-hint" data-i18n="section.activities.divide-place-value.chunkHint">Find how many groups are in each chunk.</p>
+
+            <div class="chunk-grid">
+              <div class="chunk-card" data-place="hundreds">
+                <div class="chunk-place" data-i18n="section.activities.divide-place-value.hundredsLabel">Hundreds chunk</div>
+                <div class="chunk-value" id="chunk-hundreds">900</div>
+                <div class="chunk-equation" id="eq-hundreds">900 ÷ 3 =</div>
+                <input type="number" class="chunk-input" id="input-hundreds" min="0" step="1" inputmode="numeric" autocomplete="off">
+              </div>
+              <div class="chunk-card" data-place="tens">
+                <div class="chunk-place" data-i18n="section.activities.divide-place-value.tensLabel">Tens chunk</div>
+                <div class="chunk-value" id="chunk-tens">30</div>
+                <div class="chunk-equation" id="eq-tens">30 ÷ 3 =</div>
+                <input type="number" class="chunk-input" id="input-tens" min="0" step="1" inputmode="numeric" autocomplete="off">
+              </div>
+              <div class="chunk-card" data-place="ones">
+                <div class="chunk-place" data-i18n="section.activities.divide-place-value.onesLabel">Ones chunk</div>
+                <div class="chunk-value" id="chunk-ones">6</div>
+                <div class="chunk-equation" id="eq-ones">6 ÷ 3 =</div>
+                <input type="number" class="chunk-input" id="input-ones" min="0" step="1" inputmode="numeric" autocomplete="off">
+              </div>
+            </div>
+
+            <div class="remainder-strip">
+              <span class="remainder-label" data-i18n="section.activities.divide-place-value.leftoverLabel">Leftover blocks</span>
+              <div class="remainder-visual" id="remainder-visual" aria-hidden="true"></div>
+              <span class="remainder-zero" id="remainder-zero" data-i18n="section.activities.divide-place-value.leftoverNone">No leftovers</span>
+            </div>
+          </div>
+
+          <div class="summary-panel">
+            <div class="summary-card">
+              <label class="summary-label" for="total-input" data-i18n="section.activities.divide-place-value.totalLabel">Total quotient</label>
+              <input type="number" class="summary-input" id="total-input" min="0" step="1" inputmode="numeric" autocomplete="off">
+            </div>
+            <div class="summary-card remainder">
+              <label class="summary-label" for="remainder-input" data-i18n="section.activities.divide-place-value.remainderLabel">Remainder</label>
+              <input type="number" class="summary-input" id="remainder-input" min="0" step="1" inputmode="numeric" autocomplete="off">
+              <span class="summary-note" data-i18n="section.activities.divide-place-value.remainderNote">Use 0 if none.</span>
+            </div>
+          </div>
+
+          <div class="check-section">
+            <button class="btn-activity btn-primary" id="btn-check" data-i18n="buttons.check">Check</button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" aria-live="assertive" aria-atomic="true"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.divide-place-value.great">Great dividing!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Divide with Place Value Activity - Grade 4 Level 2
+    const DividePlaceValue = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      divisor: 0,
+      dividend: 0,
+      quotient: 0,
+      remainder: 0,
+      chunks: [],
+      targets: {},
+      autoAdvanceDelay: 1500,
+      advanceTimeout: null,
+      isAnswered: false,
+      lastFeedbackKey: null,
+
+      progress: null,
+      problemValue: null,
+      divisorChip: null,
+      chunkCards: null,
+      totalInput: null,
+      remainderInput: null,
+      remainderVisual: null,
+      remainderZero: null,
+      btnCheck: null,
+      btnReset: null,
+      feedback: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.progress = document.getElementById('progress');
+        this.problemValue = document.getElementById('problem-value');
+        this.divisorChip = document.getElementById('divisor-chip');
+        this.chunkCards = [
+          {
+            valueEl: document.getElementById('chunk-hundreds'),
+            equationEl: document.getElementById('eq-hundreds'),
+            inputEl: document.getElementById('input-hundreds')
+          },
+          {
+            valueEl: document.getElementById('chunk-tens'),
+            equationEl: document.getElementById('eq-tens'),
+            inputEl: document.getElementById('input-tens')
+          },
+          {
+            valueEl: document.getElementById('chunk-ones'),
+            equationEl: document.getElementById('eq-ones'),
+            inputEl: document.getElementById('input-ones')
+          }
+        ];
+        this.totalInput = document.getElementById('total-input');
+        this.remainderInput = document.getElementById('remainder-input');
+        this.remainderVisual = document.getElementById('remainder-visual');
+        this.remainderZero = document.getElementById('remainder-zero');
+        this.btnCheck = document.getElementById('btn-check');
+        this.btnReset = document.getElementById('btn-reset');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnCheck.addEventListener('click', () => this.checkAnswer());
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        [...this.chunkCards.map(card => card.inputEl), this.totalInput, this.remainderInput].forEach((input) => {
+          input.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+              this.checkAnswer();
+            }
+          });
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        this.updateProblemDisplay();
+        this.updateAriaLabels();
+
+        if (this.feedback.classList.contains('show') && this.lastFeedbackKey) {
+          this.feedback.textContent = this.getFeedbackText(this.lastFeedbackKey);
+        }
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.divide-place-value.${key}`);
+          return translated !== `section.activities.divide-place-value.${key}` ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      getFeedbackText(key) {
+        const fallbackMap = {
+          fillAll: 'Fill in all the boxes first!',
+          correct: 'Nice division!',
+          tryAgain: 'Not quite. Try again!'
+        };
+        return this.getTranslation(key, fallbackMap[key] || '');
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      generateProblem() {
+        const allowRemainder = this.currentQuestion >= 4;
+        const divisor = this.randomInt(2, 9);
+        const hundreds = this.randomInt(1, 9);
+        const tens = this.randomInt(1, 9);
+        const ones = this.randomInt(1, 9);
+        const quotient = hundreds * 100 + tens * 10 + ones;
+        const shouldHaveRemainder = allowRemainder && Math.random() < 0.6;
+        const remainder = shouldHaveRemainder ? this.randomInt(1, divisor - 1) : 0;
+        const dividend = divisor * quotient + remainder;
+
+        this.divisor = divisor;
+        this.quotient = quotient;
+        this.remainder = remainder;
+        this.dividend = dividend;
+        this.chunks = [
+          {
+            value: divisor * hundreds * 100,
+            quotientPart: hundreds * 100
+          },
+          {
+            value: divisor * tens * 10,
+            quotientPart: tens * 10
+          },
+          {
+            value: divisor * ones,
+            quotientPart: ones
+          }
+        ];
+
+        this.targets = {
+          hundreds: hundreds * 100,
+          tens: tens * 10,
+          ones,
+          total: quotient,
+          remainder
+        };
+
+        this.updateProblemDisplay();
+        this.renderRemainderVisual();
+      },
+
+      updateProblemDisplay() {
+        if (!this.problemValue) return;
+        this.problemValue.textContent = `${this.dividend.toLocaleString()} ÷ ${this.divisor}`;
+
+        const divisorChip = this.getTranslation('divisorChip', 'Divide by {divisor}');
+        this.divisorChip.textContent = divisorChip.replace('{divisor}', this.divisor);
+
+        const equationTemplate = this.getTranslation('chunkEquation', '{chunk} ÷ {divisor} =');
+        this.chunkCards.forEach((card, index) => {
+          const chunk = this.chunks[index];
+          if (!chunk) return;
+          card.valueEl.textContent = chunk.value.toLocaleString();
+          card.equationEl.textContent = equationTemplate
+            .replace('{chunk}', chunk.value.toLocaleString())
+            .replace('{divisor}', this.divisor);
+        });
+
+        this.remainderInput.max = Math.max(this.divisor - 1, 0);
+      },
+
+      renderRemainderVisual() {
+        if (!this.remainderVisual || !this.remainderZero) return;
+
+        this.remainderVisual.innerHTML = '';
+        if (this.remainder > 0) {
+          this.remainderZero.hidden = true;
+          for (let i = 0; i < this.remainder; i++) {
+            const dot = document.createElement('span');
+            dot.className = 'remainder-dot';
+            dot.setAttribute('aria-hidden', 'true');
+            this.remainderVisual.appendChild(dot);
+          }
+        } else {
+          this.remainderZero.hidden = false;
+        }
+      },
+
+      updateAriaLabels() {
+        const chunkLabel = this.getTranslation('chunkInputLabel', 'Groups for {chunk}');
+        this.chunkCards.forEach((card) => {
+          card.inputEl.setAttribute('aria-label', chunkLabel.replace('{chunk}', card.valueEl.textContent));
+        });
+
+        const totalLabel = this.getTranslation('totalLabel', 'Total quotient');
+        const remainderLabel = this.getTranslation('remainderLabel', 'Remainder');
+        this.totalInput.setAttribute('aria-label', totalLabel);
+        this.remainderInput.setAttribute('aria-label', remainderLabel);
+      },
+
+      clearInputs() {
+        this.chunkCards.forEach((card) => {
+          card.inputEl.value = '';
+          card.inputEl.classList.remove('correct', 'incorrect');
+        });
+        [this.totalInput, this.remainderInput].forEach((input) => {
+          input.value = '';
+          input.classList.remove('correct', 'incorrect');
+        });
+      },
+
+      enableInputs(enabled) {
+        this.chunkCards.forEach((card) => {
+          card.inputEl.disabled = !enabled;
+        });
+        this.totalInput.disabled = !enabled;
+        this.remainderInput.disabled = !enabled;
+      },
+
+      getInputValue(input) {
+        const value = Number.parseInt(input.value, 10);
+        return Number.isFinite(value) ? value : null;
+      },
+
+      checkAnswer() {
+        if (this.isAnswered) return;
+
+        const values = {
+          hundreds: this.getInputValue(this.chunkCards[0].inputEl),
+          tens: this.getInputValue(this.chunkCards[1].inputEl),
+          ones: this.getInputValue(this.chunkCards[2].inputEl),
+          total: this.getInputValue(this.totalInput),
+          remainder: this.getInputValue(this.remainderInput)
+        };
+
+        if (Object.values(values).some((value) => value === null)) {
+          this.feedback.textContent = this.getFeedbackText('fillAll');
+          this.feedback.classList.add('show', 'error');
+          this.lastFeedbackKey = 'fillAll';
+          setTimeout(() => {
+            this.feedback.classList.remove('show', 'error');
+          }, 1500);
+          return;
+        }
+
+        this.isAnswered = true;
+        this.btnCheck.disabled = true;
+        this.enableInputs(false);
+        this.feedback.classList.remove('error');
+
+        const checks = {
+          hundreds: values.hundreds === this.targets.hundreds,
+          tens: values.tens === this.targets.tens,
+          ones: values.ones === this.targets.ones,
+          total: values.total === this.targets.total,
+          remainder: values.remainder === this.targets.remainder
+        };
+
+        this.chunkCards[0].inputEl.classList.add(checks.hundreds ? 'correct' : 'incorrect');
+        this.chunkCards[1].inputEl.classList.add(checks.tens ? 'correct' : 'incorrect');
+        this.chunkCards[2].inputEl.classList.add(checks.ones ? 'correct' : 'incorrect');
+        this.totalInput.classList.add(checks.total ? 'correct' : 'incorrect');
+        this.remainderInput.classList.add(checks.remainder ? 'correct' : 'incorrect');
+
+        const allCorrect = Object.values(checks).every(Boolean);
+
+        if (allCorrect) {
+          this.feedback.textContent = this.getFeedbackText('correct');
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+          this.lastFeedbackKey = 'correct';
+        } else {
+          this.feedback.textContent = this.getFeedbackText('tryAgain');
+          this.feedback.classList.add('show', 'error');
+          this.incorrectCount++;
+          this.lastFeedbackKey = 'tryAgain';
+        }
+
+        this.renderProgress();
+        this.clearAdvanceTimeout();
+
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.currentQuestion++;
+            this.startQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      startQuestion() {
+        this.generateProblem();
+        this.clearInputs();
+        this.enableInputs(true);
+        this.btnCheck.disabled = false;
+        this.feedback.classList.remove('show', 'error');
+        this.isAnswered = false;
+        this.lastFeedbackKey = null;
+        this.updateAriaLabels();
+        this.renderProgress();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.clearInputs();
+        this.enableInputs(true);
+        this.btnCheck.disabled = false;
+        this.feedback.classList.remove('show', 'error');
+        this.isAnswered = false;
+        this.lastFeedbackKey = null;
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const score = this.correctCount / this.totalQuestions;
+
+        if (score >= 0.8) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation('perfect', 'Division champ!');
+        } else if (score >= 0.5) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation('great', 'Great dividing!');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation('keepPracticing', 'Keep practicing!');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => DividePlaceValue.init());
+      } else {
+        DividePlaceValue.init();
+      }
+    });
+  </script>
+  <style>
+    /* Divide with Place Value specific styles */
+    .problem-banner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      padding: var(--space-3) var(--space-5);
+      border: 2px solid #f59e0b;
+      margin-bottom: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .problem-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #92400e;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .problem-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: #78350f;
+      background: rgba(255, 255, 255, 0.7);
+      padding: var(--space-1) var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 2px solid rgba(146, 64, 14, 0.2);
+    }
+
+    .instruction-card {
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3) var(--space-4);
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #1e3a8a;
+      border: 2px solid #93c5fd;
+      margin-bottom: var(--space-4);
+    }
+
+    .chunk-board {
+      background: linear-gradient(135deg, #fff7ed, #ffedd5);
+      border-radius: var(--radius-xl);
+      border: 2px dashed #fdba74;
+      padding: var(--space-4);
+      margin-bottom: var(--space-5);
+    }
+
+    .chunk-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-2);
+    }
+
+    .chunk-title {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #9a3412;
+    }
+
+    .chunk-chip {
+      background: #fde68a;
+      color: #92400e;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      border: 2px solid #f59e0b;
+      box-shadow: 0 3px 0 rgba(234, 179, 8, 0.5);
+    }
+
+    .chunk-hint {
+      margin: 0 0 var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      color: #7c2d12;
+    }
+
+    .chunk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .remainder-strip {
+      margin-top: var(--space-4);
+      padding: var(--space-3);
+      border-radius: var(--radius-lg);
+      border: 2px solid #fdba74;
+      background: #fff7ed;
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .remainder-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #9a3412;
+    }
+
+    .remainder-visual {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      min-height: 24px;
+      flex-wrap: wrap;
+    }
+
+    .remainder-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 8px;
+      background: #fb923c;
+      box-shadow: 0 3px 0 rgba(194, 65, 12, 0.6);
+      border: 2px solid #f97316;
+    }
+
+    .remainder-zero {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      color: var(--color-neutral-500);
+    }
+
+    .chunk-card {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 3px solid #fcd34d;
+      box-shadow: 0 5px 0 rgba(217, 119, 6, 0.35);
+      padding: var(--space-3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      min-height: 170px;
+    }
+
+    .chunk-place {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-neutral-500);
+    }
+
+    .chunk-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #78350f;
+    }
+
+    .chunk-equation {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+    }
+
+    .chunk-input {
+      width: 130px;
+      height: 60px;
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      text-align: center;
+      color: var(--color-primary);
+      background: white;
+      border: 3px solid var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 0 var(--color-neutral-300);
+      transition: all 0.2s ease;
+      -webkit-appearance: none;
+      -moz-appearance: textfield;
+    }
+
+    .chunk-input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 4px 0 var(--color-primary), 0 10px 20px rgba(59, 130, 246, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .chunk-input:disabled {
+      background: #f1f5f9;
+      color: var(--color-neutral-400);
+      border-color: var(--color-neutral-200);
+      box-shadow: none;
+    }
+
+    .chunk-input.correct {
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      color: #166534;
+    }
+
+    .chunk-input.incorrect {
+      border-color: #f59e0b;
+      box-shadow: 0 4px 0 #d97706;
+      color: #b45309;
+    }
+
+    .chunk-input::-webkit-inner-spin-button,
+    .chunk-input::-webkit-outer-spin-button,
+    .summary-input::-webkit-inner-spin-button,
+    .summary-input::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .summary-panel {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .summary-card {
+      background: linear-gradient(135deg, #fef9c3, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #facc15;
+      box-shadow: 0 5px 0 rgba(202, 138, 4, 0.35);
+      padding: var(--space-3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .summary-card.remainder {
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border-color: #93c5fd;
+      box-shadow: 0 5px 0 rgba(59, 130, 246, 0.25);
+    }
+
+    .summary-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #78350f;
+    }
+
+    .summary-card.remainder .summary-label {
+      color: #1e3a8a;
+    }
+
+    .summary-input {
+      width: 160px;
+      height: 64px;
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      text-align: center;
+      color: var(--color-primary);
+      background: white;
+      border: 4px solid var(--color-neutral-300);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 5px 0 var(--color-neutral-300);
+      transition: all 0.2s ease;
+      -webkit-appearance: none;
+      -moz-appearance: textfield;
+    }
+
+    .summary-input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 5px 0 var(--color-primary), 0 10px 24px rgba(59, 130, 246, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .summary-input.correct {
+      border-color: #22c55e;
+      box-shadow: 0 5px 0 #16a34a;
+      color: #166534;
+    }
+
+    .summary-input.incorrect {
+      border-color: #f59e0b;
+      box-shadow: 0 5px 0 #d97706;
+      color: #b45309;
+    }
+
+    .summary-input:disabled {
+      background: #f1f5f9;
+      color: var(--color-neutral-400);
+      border-color: var(--color-neutral-200);
+      box-shadow: none;
+    }
+
+    .summary-note {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      color: var(--color-neutral-500);
+      text-align: center;
+    }
+
+    .check-section {
+      display: flex;
+      justify-content: center;
+    }
+
+    @media (max-width: 640px) {
+      .chunk-card {
+        min-height: 0;
+      }
+
+      .chunk-input,
+      .summary-input {
+        width: 100%;
+        max-width: 200px;
+      }
+
+      .remainder-strip {
+        justify-content: center;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

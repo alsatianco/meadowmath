@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Roll and Count - Pre-K Math Activity - Meadow Math">
   <title>Roll & Count - Meadow Math</title>
-  
+
   <!-- CSS Files -->
   <link rel="stylesheet" href="../../css/reset.css">
   <link rel="stylesheet" href="../../css/variables.css">
@@ -45,7 +45,7 @@
           <span class="nav-item-icon">🪺</span>
           <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
         </a>
-        <a href="../../kindergarten/index.html" class="nav-item">
+        <a href="../../kinder/index.html" class="nav-item">
           <span class="nav-item-icon">🌱</span>
           <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
         </a>
@@ -68,6 +68,17 @@
         <a href="../../grade5/index.html" class="nav-item">
           <span class="nav-item-icon">➗</span>
           <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
         </a>
       </nav>
 
@@ -352,7 +363,7 @@
         this.answerChoices.style.display = 'none';
         this.answerChoices.innerHTML = '';
         this.feedback.classList.remove('show');
-        
+
         // Only show start button on round 1
         if (this.round === 1) {
           this.btnRoll.classList.add('show');
@@ -390,12 +401,12 @@
 
           // Switch to answer phase
           this.phase = 'answer';
-          
+
           // Show question and choices
           this.questionDisplay.style.display = 'block';
           this.answerChoices.style.display = 'flex';
           this.questionText.textContent = i18n.t('section.activities.roll-and-count.howMany') || 'How many dots are on the dice?';
-          
+
           // Generate answer choices
           this.generateChoices();
 
@@ -414,7 +425,7 @@
 
         // Create choices: correct answer and 2-3 distractors
         const choices = [this.targetNumber];
-        
+
         // Add nearby distractors
         const possibleDistractors = [];
         for (let i = 1; i <= 6; i++) {
@@ -422,15 +433,15 @@
             possibleDistractors.push(i);
           }
         }
-        
+
         // Shuffle and pick 3 distractors
         for (let i = possibleDistractors.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
           [possibleDistractors[i], possibleDistractors[j]] = [possibleDistractors[j], possibleDistractors[i]];
         }
-        
+
         choices.push(...possibleDistractors.slice(0, 3));
-        
+
         // Sort choices in order
         choices.sort((a, b) => a - b);
 
@@ -527,7 +538,7 @@
         // Update stat counts
         document.getElementById('correct-count').textContent = this.correctCount;
         document.getElementById('incorrect-count').textContent = this.incorrectCount;
-        
+
         const completeMsg = i18n.t('section.activities.roll-and-count.complete') || 'You got {correct} out of {total} correct!';
         this.statsMessage.textContent = completeMsg
           .replace('{correct}', this.correctCount)

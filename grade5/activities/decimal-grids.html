@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Decimal Grids Lab - Grade 5 Math Activity - Meadow Math">
+  <title>Decimal Grids Lab - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🟦</span>
+            <span data-i18n="section.activities.decimal-grids.title">Decimal Grids Lab</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.decimal-grids.instruction">Shade the grid to show the decimal!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Prompt Section -->
+          <div class="prompt-section" id="prompt-section">
+            <div class="prompt-label" data-i18n="section.activities.decimal-grids.show">Show:</div>
+            <div class="prompt-decimal" id="prompt-decimal">0.37</div>
+          </div>
+
+          <!-- Grids Container -->
+          <div class="grids-container" id="grids-container">
+            <!-- Grids will be rendered here -->
+          </div>
+
+          <!-- Status Display -->
+          <div class="status-display" id="status-display">
+            <div class="status-item">
+              <span class="status-label" data-i18n="section.activities.decimal-grids.shaded">Shaded:</span>
+              <span class="status-value" id="shaded-count">0</span>
+              <span class="status-unit" data-i18n="section.activities.decimal-grids.squares">squares</span>
+            </div>
+            <div class="status-item">
+              <span class="status-label" data-i18n="section.activities.decimal-grids.decimal">Decimal:</span>
+              <span class="status-value" id="decimal-display">0.00</span>
+            </div>
+            <div class="status-item">
+              <span class="status-label" data-i18n="section.activities.decimal-grids.fraction">Fraction:</span>
+              <span class="status-value" id="fraction-display">0/100</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="grid-actions">
+            <button class="btn-activity btn-secondary" id="btn-clear" data-i18n="section.activities.decimal-grids.clear">Clear Grid</button>
+            <button class="btn-activity btn-primary" id="btn-check" data-i18n="buttons.check">Check</button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.decimal-grids.great">Great grid work!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Decimal Grids Lab Activity - Grade 5 Level 1
+    const DecimalGrids = {
+      currentRound: 0,
+      totalRounds: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      shadedSquares: 0,
+      targetHundredths: 0,
+      targetWholes: 0,
+      questions: [],
+      isProcessing: false,
+      advanceTimeout: null,
+
+      // DOM elements
+      promptDecimal: null,
+      gridsContainer: null,
+      shadedCountEl: null,
+      decimalDisplay: null,
+      fractionDisplay: null,
+      btnClear: null,
+      btnCheck: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Question bank: mix of hundredths only and numbers > 1
+      questionBank: [
+        // Hundredths only (less than 1)
+        { value: 0.37 },
+        { value: 0.45 },
+        { value: 0.72 },
+        { value: 0.19 },
+        { value: 0.50 },
+        { value: 0.83 },
+        { value: 0.25 },
+        { value: 0.68 },
+        { value: 0.91 },
+        { value: 0.04 },
+        // Numbers greater than 1 (whole + hundredths)
+        { value: 1.23 },
+        { value: 1.50 },
+        { value: 1.75 },
+        { value: 2.08 },
+        { value: 1.40 },
+        { value: 2.15 }
+      ],
+
+      init() {
+        this.promptDecimal = document.getElementById('prompt-decimal');
+        this.gridsContainer = document.getElementById('grids-container');
+        this.shadedCountEl = document.getElementById('shaded-count');
+        this.decimalDisplay = document.getElementById('decimal-display');
+        this.fractionDisplay = document.getElementById('fraction-display');
+        this.btnClear = document.getElementById('btn-clear');
+        this.btnCheck = document.getElementById('btn-check');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnClear.addEventListener('click', () => this.clearGrids());
+        this.btnCheck.addEventListener('click', () => this.checkAnswer());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startRound();
+        this.renderProgress();
+      },
+
+      generateQuestions() {
+        // Shuffle and select questions for all rounds
+        const shuffled = shuffle([...this.questionBank]);
+        this.questions = shuffled.slice(0, this.totalRounds);
+
+        // If we need more questions, cycle
+        while (this.questions.length < this.totalRounds) {
+          const more = shuffle([...this.questionBank]);
+          this.questions.push(...more.slice(0, this.totalRounds - this.questions.length));
+        }
+      },
+
+      startRound() {
+        this.clearAdvanceTimeout();
+        this.isProcessing = false;
+        this.feedback.classList.remove('show', 'error');
+
+        const question = this.questions[this.currentRound];
+        const value = question.value;
+
+        // Parse whole and hundredths parts
+        this.targetWholes = Math.floor(value);
+        this.targetHundredths = Math.round((value - this.targetWholes) * 100);
+
+        // Display the target decimal
+        this.promptDecimal.textContent = value.toFixed(2);
+
+        // Reset shaded count
+        this.shadedSquares = 0;
+        this.updateStatusDisplay();
+
+        // Render grids
+        this.renderGrids();
+        this.renderProgress();
+      },
+
+      renderGrids() {
+        this.gridsContainer.innerHTML = '';
+
+        // Determine how many grids we need
+        const totalGrids = this.targetWholes + 1;
+
+        for (let gridIndex = 0; gridIndex < totalGrids; gridIndex++) {
+          const gridWrapper = document.createElement('div');
+          gridWrapper.className = 'grid-wrapper';
+
+          // Grid label
+          const gridLabel = document.createElement('div');
+          gridLabel.className = 'grid-label';
+          if (totalGrids > 1) {
+            gridLabel.textContent = this.getTranslation('section.activities.decimal-grids.gridN', 'Grid {n}').replace('{n}', gridIndex + 1);
+          } else {
+            gridLabel.textContent = this.getTranslation('section.activities.decimal-grids.oneWhole', '1 whole = 100 squares');
+          }
+          gridWrapper.appendChild(gridLabel);
+
+          // Create 10x10 grid
+          const grid = document.createElement('div');
+          grid.className = 'decimal-grid';
+          grid.dataset.gridIndex = gridIndex;
+
+          for (let i = 0; i < 100; i++) {
+            const cell = document.createElement('button');
+            cell.className = 'grid-cell';
+            cell.type = 'button';
+            cell.dataset.cellIndex = i;
+            cell.dataset.gridIndex = gridIndex;
+            cell.setAttribute('aria-pressed', 'false');
+            cell.setAttribute('aria-label', `Cell ${i + 1}`);
+            cell.addEventListener('click', () => this.toggleCell(cell));
+            grid.appendChild(cell);
+          }
+
+          gridWrapper.appendChild(grid);
+          this.gridsContainer.appendChild(gridWrapper);
+        }
+      },
+
+      toggleCell(cell) {
+        if (this.isProcessing) return;
+
+        const isShaded = cell.classList.contains('shaded');
+
+        if (isShaded) {
+          cell.classList.remove('shaded');
+          cell.setAttribute('aria-pressed', 'false');
+          this.shadedSquares--;
+        } else {
+          cell.classList.add('shaded');
+          cell.setAttribute('aria-pressed', 'true');
+          this.shadedSquares++;
+        }
+
+        this.updateStatusDisplay();
+      },
+
+      updateStatusDisplay() {
+        this.shadedCountEl.textContent = this.shadedSquares;
+
+        // Calculate decimal value
+        const decimalValue = this.shadedSquares / 100;
+        this.decimalDisplay.textContent = decimalValue.toFixed(2);
+
+        // Calculate fraction display
+        // Show simplified form for the hundredths part only for values < 1
+        // For values >= 1, show as mixed number or fraction over 100
+        if (this.shadedSquares === 0) {
+          this.fractionDisplay.textContent = '0/100';
+        } else if (this.shadedSquares % 100 === 0) {
+          // Whole number (e.g., 100 squares = 1 whole)
+          this.fractionDisplay.textContent = (this.shadedSquares / 100).toString();
+        } else if (this.shadedSquares < 100) {
+          // Less than 1: show as fraction over 100
+          this.fractionDisplay.textContent = `${this.shadedSquares}/100`;
+        } else {
+          // Greater than 1: show as mixed number
+          const wholes = Math.floor(this.shadedSquares / 100);
+          const remainder = this.shadedSquares % 100;
+          this.fractionDisplay.textContent = `${wholes} ${remainder}/100`;
+        }
+      },
+
+      gcd(a, b) {
+        return b === 0 ? a : this.gcd(b, a % b);
+      },
+
+      clearGrids() {
+        if (this.isProcessing) return;
+
+        const cells = this.gridsContainer.querySelectorAll('.grid-cell');
+        cells.forEach(cell => {
+          cell.classList.remove('shaded');
+          cell.setAttribute('aria-pressed', 'false');
+        });
+        this.shadedSquares = 0;
+        this.updateStatusDisplay();
+      },
+
+      checkAnswer() {
+        if (this.isProcessing) return;
+        this.isProcessing = true;
+
+        const targetTotal = this.targetWholes * 100 + this.targetHundredths;
+        const isCorrect = this.shadedSquares === targetTotal;
+
+        if (isCorrect) {
+          this.correctCount++;
+          this.showFeedback(true);
+          this.highlightCorrect();
+        } else {
+          this.incorrectCount++;
+          this.showFeedback(false, targetTotal);
+          this.highlightIncorrect();
+        }
+
+        // Auto-advance
+        this.clearAdvanceTimeout();
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentRound < this.totalRounds - 1) {
+            this.currentRound++;
+            this.startRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      highlightCorrect() {
+        const cells = this.gridsContainer.querySelectorAll('.grid-cell.shaded');
+        cells.forEach(cell => {
+          cell.classList.add('correct');
+        });
+      },
+
+      highlightIncorrect() {
+        const cells = this.gridsContainer.querySelectorAll('.grid-cell.shaded');
+        cells.forEach(cell => {
+          cell.classList.add('incorrect');
+        });
+      },
+
+      showFeedback(isCorrect, targetTotal = null) {
+        this.feedback.classList.remove('show', 'error');
+
+        if (isCorrect) {
+          const targetValue = this.questions[this.currentRound].value;
+          // For values < 1, use "hundredths" terminology
+          // For values >= 1, use "squares" to avoid confusion
+          if (targetValue < 1) {
+            this.feedback.textContent = this.getTranslation(
+              'section.activities.decimal-grids.correct',
+              'Correct! {value} = {squares} hundredths'
+            ).replace('{value}', targetValue.toFixed(2)).replace('{squares}', this.shadedSquares);
+          } else {
+            this.feedback.textContent = this.getTranslation(
+              'section.activities.decimal-grids.correctMulti',
+              'Correct! {value} = {squares} squares'
+            ).replace('{value}', targetValue.toFixed(2)).replace('{squares}', this.shadedSquares);
+          }
+        } else {
+          this.feedback.textContent = this.getTranslation(
+            'section.activities.decimal-grids.wrong',
+            'The answer needs {squares} squares.'
+          ).replace('{squares}', targetTotal);
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalRounds;
+
+        if (percent >= 0.9) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.decimal-grids.perfect',
+            'Perfect grid work!'
+          );
+        } else if (percent >= 0.7) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.decimal-grids.great',
+            'Great grid work!'
+          );
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.decimal-grids.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.decimal-grids.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentRound = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startRound();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      updateTranslations() {
+        // Update any dynamic text that might be visible
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentRound + 1, this.totalRounds);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalRounds}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => DecimalGrids.init());
+      } else {
+        DecimalGrids.init();
+      }
+    });
+  </script>
+  <style>
+    /* Decimal Grids Lab specific styles */
+
+    .prompt-section {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .prompt-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      margin-bottom: var(--space-2);
+    }
+
+    .prompt-decimal {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #0ea5e9;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      padding: var(--space-3) var(--space-6);
+      border-radius: var(--radius-xl);
+      border: 3px solid #0ea5e9;
+      display: inline-block;
+    }
+
+    .grids-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-6);
+      margin-bottom: var(--space-4);
+    }
+
+    .grid-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .grid-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      text-align: center;
+    }
+
+    .decimal-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 2px;
+      padding: var(--space-2);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 3px solid #0ea5e9;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 0 #0284c7;
+    }
+
+    .grid-cell {
+      width: 36px;
+      height: 36px;
+      background: white;
+      border: 1px solid #bae6fd;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .grid-cell:hover {
+      background: #dbeafe;
+      transform: scale(1.05);
+    }
+
+    .grid-cell:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px #0ea5e9;
+    }
+
+    .grid-cell.shaded {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      border-color: #1d4ed8;
+    }
+
+    .grid-cell.shaded:hover {
+      background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    }
+
+    .grid-cell.correct {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border-color: #15803d;
+      animation: pulse 0.3s ease;
+    }
+
+    .grid-cell.incorrect {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      border-color: #b91c1c;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+      20%, 40%, 60%, 80% { transform: translateX(2px); }
+    }
+
+    .status-display {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-6);
+      margin-bottom: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .status-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: white;
+      border: 2px solid var(--color-neutral-200);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 2px 0 var(--color-neutral-100);
+    }
+
+    .status-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+    }
+
+    .status-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #7c3aed;
+    }
+
+    .status-unit {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      color: var(--color-neutral-500);
+    }
+
+    .grid-actions {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 600px) {
+      .prompt-decimal {
+        font-size: var(--text-3xl);
+        padding: var(--space-2) var(--space-4);
+      }
+
+      .decimal-grid {
+        gap: 1px;
+        padding: var(--space-1);
+      }
+
+      .grid-cell {
+        width: 32px;
+        height: 32px;
+      }
+
+      .status-display {
+        gap: var(--space-3);
+      }
+
+      .status-item {
+        padding: var(--space-1) var(--space-2);
+      }
+
+      .status-label {
+        font-size: var(--text-xs);
+      }
+
+      .status-value {
+        font-size: var(--text-lg);
+      }
+
+      .status-unit {
+        font-size: var(--text-xs);
+      }
+
+      .grids-container {
+        gap: var(--space-4);
+      }
+    }
+
+    @media (max-width: 400px) {
+      .grid-cell {
+        width: 28px;
+        height: 28px;
+      }
+
+      .status-display {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-2);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

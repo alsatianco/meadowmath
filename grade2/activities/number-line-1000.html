@@ -108,11 +108,11 @@
             <svg id="numberline-svg" viewBox="0 0 800 200" preserveAspectRatio="xMidYMid meet">
               <!-- Main line -->
               <line x1="50" y1="100" x2="750" y2="100" stroke="#3b82f6" stroke-width="4" stroke-linecap="round"/>
-              
+
               <!-- Tick marks and labels will be added by JavaScript -->
               <g id="ticks-group"></g>
               <g id="labels-group"></g>
-              
+
               <!-- Arrow marker pointing to mystery number -->
               <g id="arrow-marker">
                 <polygon points="0,-15 -10,0 10,0" fill="#ef4444" stroke="#991b1b" stroke-width="2"/>
@@ -173,13 +173,13 @@
       totalQuestions: 10,
       correctCount: 0,
       incorrectCount: 0,
-      
+
       rangeStart: 0,
       rangeEnd: 100,
       interval: 10,
       targetNumber: 0,
       answered: false,
-      
+
       SVG_WIDTH: 800,
       SVG_HEIGHT: 200,
       LINE_Y: 100,
@@ -313,12 +313,12 @@
 
       renderChoices() {
         this.choicesContainer.innerHTML = '';
-        
+
         const choices = [this.targetNumber];
-        
+
         // Generate distractors
         const distractors = new Set();
-        
+
         // Adjacent numbers
         if (this.targetNumber - this.interval >= this.rangeStart) {
           distractors.add(this.targetNumber - this.interval);
@@ -326,7 +326,7 @@
         if (this.targetNumber + this.interval <= this.rangeEnd) {
           distractors.add(this.targetNumber + this.interval);
         }
-        
+
         // Two steps away
         if (this.targetNumber - 2 * this.interval >= this.rangeStart) {
           distractors.add(this.targetNumber - 2 * this.interval);
@@ -334,7 +334,7 @@
         if (this.targetNumber + 2 * this.interval <= this.rangeEnd) {
           distractors.add(this.targetNumber + 2 * this.interval);
         }
-        
+
         // Half steps (if integer)
         const half = this.interval / 2;
         if (Number.isInteger(half)) {
@@ -478,7 +478,7 @@
 
   <style>
     /* Number Line Game Styles */
-    
+
     .question-container {
       text-align: center;
       margin: var(--space-4) 0;
@@ -623,5 +623,5 @@
       }
     }
   </style>
-</body>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
 </html>

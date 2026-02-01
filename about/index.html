@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Meadow Math - Learn about our mission and values">
+  <title>About - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/sidebar.css">
+  <link rel="stylesheet" href="../css/navigation.css">
+  <link rel="stylesheet" href="about.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../kinder/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+
+        <div class="nav-divider"></div>
+
+        <a href="../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../about/index.html" class="nav-item active">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="about-container">
+        <!-- Page Header -->
+        <header class="page-header">
+          <span class="page-icon">ℹ️</span>
+          <div class="page-header-text">
+            <h1 class="page-title" data-i18n="section.title">About Meadow Math</h1>
+            <p class="page-description" data-i18n="section.description">Learn about our mission and values</p>
+          </div>
+        </header>
+
+        <!-- Tab Navigation -->
+        <div class="tabs-container">
+          <div class="tabs-nav">
+            <button class="tab-btn active" data-tab="about">
+              <span data-i18n="section.tabs.about">About</span>
+            </button>
+            <button class="tab-btn" data-tab="privacy">
+              <span data-i18n="section.tabs.privacy">Privacy & Terms</span>
+            </button>
+          </div>
+
+          <!-- About Tab Content -->
+          <div class="tab-content active" id="about-tab">
+            <section class="content-section">
+              <h2 class="section-title" data-i18n="section.about.title">What is Meadow Math?</h2>
+              <p class="section-text" data-i18n="section.about.intro">Meadow Math is a free, gentle, and joyful space for children to explore mathematics from Pre-K through Grade 5.</p>
+            </section>
+
+            <section class="content-section">
+              <h2 class="section-title" data-i18n="section.about.mission.title">Our Mission</h2>
+              <p class="section-text" data-i18n="section.about.mission.content">We believe every child can develop a love for math when learning feels like play. Meadow Math provides a calm, no-pressure environment where children can explore mathematical concepts at their own pace through interactive activities and hands-on tools.</p>
+            </section>
+
+            <section class="content-section">
+              <h2 class="section-title" data-i18n="section.about.philosophy.title">Our Philosophy</h2>
+              <div class="principles-grid">
+                <div class="principle-card">
+                  <div class="principle-icon">🖐️</div>
+                  <h3 class="principle-title" data-i18n="section.about.philosophy.principles.handson.title">Hands-on Learning</h3>
+                  <p class="principle-text" data-i18n="section.about.philosophy.principles.handson.content">Children learn best when they can touch, move, and manipulate. Our tools and activities let kids explore math concepts through direct interaction.</p>
+                </div>
+                <div class="principle-card">
+                  <div class="principle-icon">🧘</div>
+                  <h3 class="principle-title" data-i18n="section.about.philosophy.principles.calm.title">Calm & No-Pressure</h3>
+                  <p class="principle-text" data-i18n="section.about.philosophy.principles.calm.content">No timers, no scores, no competition. Just gentle encouragement and the freedom to learn at your own pace.</p>
+                </div>
+                <div class="principle-card">
+                  <div class="principle-icon">✨</div>
+                  <h3 class="principle-title" data-i18n="section.about.philosophy.principles.joyful.title">Joyful Discovery</h3>
+                  <p class="principle-text" data-i18n="section.about.philosophy.principles.joyful.content">Math should spark curiosity and wonder. Every activity is designed to create those magical 'aha!' moments.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="content-section">
+              <h2 class="section-title" data-i18n="section.about.team.title">Who Built This?</h2>
+              <p class="section-text" data-i18n="section.about.team.content">Meadow Math is a family project built with love. We created it for our own children and decided to share it with the world.</p>
+            </section>
+
+            <section class="content-section">
+              <h2 class="section-title" data-i18n="section.about.contribute.title">How to Contribute</h2>
+              <p class="section-text" data-i18n="section.about.contribute.content">Meadow Math is open source! You can contribute by:</p>
+              <ul class="contribute-list">
+                <li data-i18n="section.about.contribute.items.issues">Reporting bugs or suggesting features on GitHub</li>
+                <li data-i18n="section.about.contribute.items.code">Contributing code improvements</li>
+                <li data-i18n="section.about.contribute.items.translate">Helping translate to more languages</li>
+                <li data-i18n="section.about.contribute.items.spread">Sharing with other families and educators</li>
+              </ul>
+              <a href="https://github.com/meadowmath/meadowmath.github.io" target="_blank" rel="noopener noreferrer" class="github-link">
+                <span data-i18n="section.about.contribute.github">Visit our GitHub</span>
+                <span>→</span>
+              </a>
+            </section>
+          </div>
+
+          <!-- Privacy Tab Content -->
+          <div class="tab-content" id="privacy-tab">
+            <section class="content-section">
+              <h2 class="section-title" data-i18n="section.privacy.title">Privacy & Terms</h2>
+              <p class="section-text" data-i18n="section.privacy.intro">We believe in keeping things simple and respecting your family's privacy.</p>
+            </section>
+
+            <section class="content-section">
+              <h3 class="subsection-title" data-i18n="section.privacy.noAccounts.title">No Accounts Required</h3>
+              <p class="section-text" data-i18n="section.privacy.noAccounts.content">Meadow Math doesn't require you to create an account. There's no sign-up, no login, and no passwords to remember.</p>
+            </section>
+
+            <section class="content-section">
+              <h3 class="subsection-title" data-i18n="section.privacy.noData.title">No Personal Data Collection</h3>
+              <p class="section-text" data-i18n="section.privacy.noData.content">We don't collect, store, or share any personal information about you or your children. No names, no emails.</p>
+            </section>
+
+            <section class="content-section">
+              <h3 class="subsection-title" data-i18n="section.privacy.localStorage.title">Local Storage Only</h3>
+              <p class="section-text" data-i18n="section.privacy.localStorage.content">If any progress or preferences are saved, they're stored only in your browser's local storage on your device. This data never leaves your computer.</p>
+            </section>
+
+            <section class="content-section">
+              <h3 class="subsection-title" data-i18n="section.privacy.cloudflare.title">Cloudflare Analytics on Every Page</h3>
+              <p class="section-text" data-i18n="section.privacy.cloudflare.content">We use Cloudflare Web Analytics across all pages to understand basic traffic (like how many people visit and which pages are popular). This data is privacy-focused, anonymous, and reported in aggregated form. We do not use this to identify you, and we do not sell your data.</p>
+            </section>
+
+            <section class="content-section">
+              <h3 class="subsection-title" data-i18n="section.privacy.disclaimer.title">Disclaimer</h3>
+              <p class="section-text" data-i18n="section.privacy.disclaimer.content">Meadow Math is provided as a free educational resource. While we strive to create accurate and helpful content, we make no guarantees about learning outcomes. This tool is meant to supplement, not replace, quality instruction. We recommend parental supervision for young children.</p>
+            </section>
+
+            <section class="content-section">
+              <h3 class="subsection-title" data-i18n="section.privacy.openSource.title">Open Source</h3>
+              <p class="section-text" data-i18n="section.privacy.openSource.content">Meadow Math is open source software. You can view, copy, and modify the code according to the project's license.</p>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="footer-content">
+          <div class="footer-links">
+            <a href="../about/index.html" class="footer-link" data-i18n="footer.about">About</a>
+            <span class="footer-divider">•</span>
+            <a href="../about/index.html#privacy" class="footer-link" data-i18n="footer.privacy">Privacy & Terms</a>
+          </div>
+
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../js/utils.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/animations.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="about.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

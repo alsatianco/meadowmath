@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Add Within 1,000 (Base-Ten) - Grade 3 Math Activity - Meadow Math">
+  <title>Add Within 1,000 (Base-Ten) - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">➕</span>
+            <span data-i18n="section.activities.add-within-1000.title">Add Within 1,000 (Base-Ten)</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.add-within-1000.description">Use blocks to add three-digit numbers.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Problem Display -->
+          <div class="problem-section">
+            <div class="problem-display">
+              <span class="number-first" id="number-first">348</span>
+              <span class="operator">+</span>
+              <span class="number-second" id="number-second">276</span>
+              <span class="equals">=</span>
+              <span class="number-result">?</span>
+            </div>
+          </div>
+
+          <!-- Block Visualization -->
+          <div class="blocks-visualization">
+            <!-- First Number Blocks -->
+            <div class="addend-blocks">
+              <div class="addend-label" id="addend-label-1" data-i18n="section.activities.add-within-1000.firstNumber">First number</div>
+              <div class="addend-row">
+                <div class="block-group" data-place="hundreds">
+                  <div class="blocks-container" id="blocks-first-hundreds"></div>
+                  <div class="block-count" id="count-first-hundreds">0</div>
+                </div>
+                <div class="block-group" data-place="tens">
+                  <div class="blocks-container" id="blocks-first-tens"></div>
+                  <div class="block-count" id="count-first-tens">0</div>
+                </div>
+                <div class="block-group" data-place="ones">
+                  <div class="blocks-container" id="blocks-first-ones"></div>
+                  <div class="block-count" id="count-first-ones">0</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Plus Sign -->
+            <div class="blocks-operator">+</div>
+
+            <!-- Second Number Blocks -->
+            <div class="addend-blocks">
+              <div class="addend-label" id="addend-label-2" data-i18n="section.activities.add-within-1000.secondNumber">Second number</div>
+              <div class="addend-row">
+                <div class="block-group" data-place="hundreds">
+                  <div class="blocks-container" id="blocks-second-hundreds"></div>
+                  <div class="block-count" id="count-second-hundreds">0</div>
+                </div>
+                <div class="block-group" data-place="tens">
+                  <div class="blocks-container" id="blocks-second-tens"></div>
+                  <div class="block-count" id="count-second-tens">0</div>
+                </div>
+                <div class="block-group" data-place="ones">
+                  <div class="blocks-container" id="blocks-second-ones"></div>
+                  <div class="block-count" id="count-second-ones">0</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Regrouping Hint (optional) -->
+          <div class="regroup-hint" id="regroup-hint" role="note" aria-label="Regrouping hint">
+            <span class="hint-icon" aria-hidden="true">💡</span>
+            <span class="hint-text" id="hint-text"></span>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choice-container" id="choice-container" role="group" aria-label="Answer choices">
+            <!-- Choices will be dynamically inserted -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.add-within-1000.great">Great addition work!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Add Within 1,000 Activity - Grade 3 Level 2
+    const AddWithin1000 = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      numberFirst: 0,
+      numberSecond: 0,
+      correctAnswer: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // DOM elements
+      numberFirstEl: null,
+      numberSecondEl: null,
+      choiceContainer: null,
+      feedback: null,
+      progress: null,
+      regroupHint: null,
+      hintText: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.numberFirstEl = document.getElementById('number-first');
+        this.numberSecondEl = document.getElementById('number-second');
+        this.choiceContainer = document.getElementById('choice-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.regroupHint = document.getElementById('regroup-hint');
+        this.hintText = document.getElementById('hint-text');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Event listeners
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Dynamic translations are now handled via data-i18n attributes
+        // This method is kept for any future dynamic text needs
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      generateProblem() {
+        // Progressive difficulty
+        // Questions 0-2: Two 2-digit numbers (no regrouping or simple regrouping)
+        // Questions 3-5: 3-digit + 2-digit, some regrouping
+        // Questions 6-9: Two 3-digit numbers, likely regrouping
+
+        let first, second;
+
+        if (this.currentQuestion < 3) {
+          // Two 2-digit numbers, sum under 200
+          first = this.randomInt(20, 80);
+          second = this.randomInt(20, 80);
+        } else if (this.currentQuestion < 6) {
+          // 3-digit + 2-digit
+          first = this.randomInt(100, 500);
+          second = this.randomInt(50, 200);
+        } else {
+          // Two 3-digit numbers (sum under 1000)
+          first = this.randomInt(100, 500);
+          second = this.randomInt(100, 499);
+          // Ensure sum stays under 1000
+          if (first + second >= 1000) {
+            second = 999 - first - this.randomInt(1, 50);
+          }
+        }
+
+        this.numberFirst = first;
+        this.numberSecond = second;
+        this.correctAnswer = first + second;
+        this.isAnswered = false;
+      },
+
+      startQuestion() {
+        this.generateProblem();
+        this.displayProblem();
+        this.displayBlocks();
+        this.displayRegroupHint();
+        this.generateChoices();
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      displayProblem() {
+        this.numberFirstEl.textContent = this.numberFirst.toLocaleString();
+        this.numberSecondEl.textContent = this.numberSecond.toLocaleString();
+      },
+
+      displayBlocks() {
+        // Parse digits for first number
+        const first = this.numberFirst;
+        const firstH = Math.floor(first / 100);
+        const firstT = Math.floor((first % 100) / 10);
+        const firstO = first % 10;
+
+        // Parse digits for second number
+        const second = this.numberSecond;
+        const secondH = Math.floor(second / 100);
+        const secondT = Math.floor((second % 100) / 10);
+        const secondO = second % 10;
+
+        // Render first number blocks
+        this.renderBlockGroup('blocks-first-hundreds', firstH, 'hundreds');
+        this.renderBlockGroup('blocks-first-tens', firstT, 'tens');
+        this.renderBlockGroup('blocks-first-ones', firstO, 'ones');
+
+        document.getElementById('count-first-hundreds').textContent = firstH;
+        document.getElementById('count-first-tens').textContent = firstT;
+        document.getElementById('count-first-ones').textContent = firstO;
+
+        // Render second number blocks
+        this.renderBlockGroup('blocks-second-hundreds', secondH, 'hundreds');
+        this.renderBlockGroup('blocks-second-tens', secondT, 'tens');
+        this.renderBlockGroup('blocks-second-ones', secondO, 'ones');
+
+        document.getElementById('count-second-hundreds').textContent = secondH;
+        document.getElementById('count-second-tens').textContent = secondT;
+        document.getElementById('count-second-ones').textContent = secondO;
+      },
+
+      renderBlockGroup(containerId, count, type) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = '';
+
+        for (let i = 0; i < count; i++) {
+          const block = document.createElement('div');
+          block.className = `block block-${type}`;
+
+          if (type === 'hundreds') {
+            // Hundred flat - simplified 10x10 grid representation
+            block.innerHTML = '<div class="flat-grid"></div>';
+          } else if (type === 'tens') {
+            // Ten rod - vertical bar
+            block.innerHTML = '<div class="rod-bar"></div>';
+          } else {
+            // One unit - small cube
+            block.classList.add('unit-cube');
+          }
+
+          container.appendChild(block);
+        }
+      },
+
+      displayRegroupHint() {
+        // Check if regrouping is needed
+        const first = this.numberFirst;
+        const second = this.numberSecond;
+
+        const firstO = first % 10;
+        const secondO = second % 10;
+        const firstT = Math.floor((first % 100) / 10);
+        const secondT = Math.floor((second % 100) / 10);
+
+        const onesSum = firstO + secondO;
+        const tensSum = firstT + secondT + (onesSum >= 10 ? 1 : 0);
+
+        const needsRegroupOnes = onesSum >= 10;
+        const needsRegroupTens = tensSum >= 10;
+
+        if (needsRegroupOnes || needsRegroupTens) {
+          this.regroupHint.classList.add('show');
+          let hintMsg = '';
+
+          if (window.i18n) {
+            if (needsRegroupOnes && needsRegroupTens) {
+              hintMsg = i18n.t('section.activities.add-within-1000.regroupBoth') || 'Regroup: 10 ones → 1 ten, 10 tens → 1 hundred';
+            } else if (needsRegroupOnes) {
+              hintMsg = i18n.t('section.activities.add-within-1000.regroupOnes') || 'Regroup: 10 ones → 1 ten';
+            } else {
+              hintMsg = i18n.t('section.activities.add-within-1000.regroupTens') || 'Regroup: 10 tens → 1 hundred';
+            }
+          } else {
+            if (needsRegroupOnes && needsRegroupTens) {
+              hintMsg = 'Regroup: 10 ones → 1 ten, 10 tens → 1 hundred';
+            } else if (needsRegroupOnes) {
+              hintMsg = 'Regroup: 10 ones → 1 ten';
+            } else {
+              hintMsg = 'Regroup: 10 tens → 1 hundred';
+            }
+          }
+
+          this.hintText.textContent = hintMsg;
+        } else {
+          this.regroupHint.classList.remove('show');
+        }
+      },
+
+      generateChoices() {
+        const choices = [];
+        choices.push(this.correctAnswer);
+
+        // Generate distractors
+        // Distractor 1: Off by 10
+        let d1 = this.correctAnswer + (Math.random() < 0.5 ? 10 : -10);
+        if (d1 > 0 && !choices.includes(d1)) choices.push(d1);
+
+        // Distractor 2: Off by 1
+        let d2 = this.correctAnswer + (Math.random() < 0.5 ? 1 : -1);
+        if (d2 > 0 && !choices.includes(d2)) choices.push(d2);
+
+        // Distractor 3: Forgetting to regroup (common error)
+        const first = this.numberFirst;
+        const second = this.numberSecond;
+        const d3 = (first % 10) + (second % 10) +
+                   ((Math.floor(first / 10) % 10) + (Math.floor(second / 10) % 10)) * 10 +
+                   (Math.floor(first / 100) + Math.floor(second / 100)) * 100;
+        if (d3 !== this.correctAnswer && d3 > 0 && !choices.includes(d3)) {
+          choices.push(d3);
+        }
+
+        // Fill remaining with random nearby values
+        while (choices.length < 4) {
+          const offset = this.randomInt(-20, 20);
+          const distractor = this.correctAnswer + offset;
+          if (distractor > 0 && distractor !== this.correctAnswer && !choices.includes(distractor)) {
+            choices.push(distractor);
+          }
+        }
+
+        // Shuffle
+        this.shuffle(choices);
+
+        // Render buttons
+        let html = '';
+        choices.forEach(choice => {
+          html += `<button class="choice-btn" data-value="${choice}" aria-label="Select ${choice.toLocaleString()}">${choice.toLocaleString()}</button>`;
+        });
+        this.choiceContainer.innerHTML = html;
+
+        // Attach event listeners
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.addEventListener('click', () => this.selectChoice(parseInt(btn.dataset.value)));
+        });
+      },
+
+      shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      },
+
+      selectChoice(value) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const isCorrect = value === this.correctAnswer;
+
+        // Highlight correct and incorrect choices
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.disabled = true;
+          if (parseInt(btn.dataset.value) === this.correctAnswer) {
+            btn.classList.add('correct');
+          } else if (parseInt(btn.dataset.value) === value && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        // Show feedback
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = window.i18n ? i18n.t('feedback.correct') || 'Correct!' : 'Correct!';
+          this.feedback.textContent = `${msg} ${this.numberFirst} + ${this.numberSecond} = ${this.correctAnswer}`;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const incorrectMsg = window.i18n
+            ? (i18n.t('section.activities.add-within-1000.incorrectMsg') || 'The sum is {answer}').replace('{answer}', this.correctAnswer.toLocaleString())
+            : `The sum is ${this.correctAnswer.toLocaleString()}`;
+          this.feedback.textContent = incorrectMsg;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        // Auto-advance
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.add-within-1000.perfect') || 'Amazing addition skills!'
+            : 'Amazing addition skills!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '➕';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.add-within-1000.great') || 'Great work!'
+            : 'Great work!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.add-within-1000.keepPracticing') || 'Keep practicing!'
+            : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => AddWithin1000.init());
+      } else {
+        AddWithin1000.init();
+      }
+    });
+  </script>
+  <style>
+    /* Add Within 1,000 specific styles */
+
+    /* Problem Display */
+    .problem-section {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .problem-display {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-5);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border: 3px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 var(--color-primary-dark);
+    }
+
+    .number-first, .number-second, .number-result {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-800);
+    }
+
+    .operator, .equals {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+    }
+
+    .number-result {
+      color: var(--color-primary);
+      min-width: 60px;
+    }
+
+    /* Block Visualization */
+    .blocks-visualization {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--space-4);
+    }
+
+    .addend-blocks {
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border: 2px solid var(--color-neutral-200);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3);
+    }
+
+    .addend-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      text-align: center;
+      margin-bottom: var(--space-2);
+    }
+
+    .addend-row {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+    }
+
+    .block-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-1);
+    }
+
+    .blocks-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+      justify-content: center;
+      min-height: 50px;
+      max-width: 200px;
+    }
+
+    .block-count {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-600);
+      background: white;
+      padding: 2px 8px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-neutral-200);
+    }
+
+    /* Blocks Operator */
+    .blocks-operator {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      text-align: center;
+      padding: var(--space-1) 0;
+    }
+
+    /* Block Styles */
+    .block {
+      transition: all 0.2s ease;
+    }
+
+    /* Hundred flat */
+    .block-hundreds {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 2px 0 #1d4ed8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .flat-grid {
+      width: 28px;
+      height: 28px;
+      background:
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.3), rgba(255,255,255,0.3) 2px, transparent 2px, transparent 3px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.3) 2px, transparent 2px, transparent 3px);
+      border-radius: 2px;
+    }
+
+    /* Ten rod */
+    .block-tens {
+      width: 12px;
+      height: 40px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 2px 0 #15803d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rod-bar {
+      width: 6px;
+      height: 34px;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.3),
+        rgba(255,255,255,0.3) 3px,
+        transparent 3px,
+        transparent 4px
+      );
+      border-radius: 2px;
+    }
+
+    /* One unit */
+    .block-ones {
+      width: 16px;
+      height: 16px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 2px 0 #b45309;
+    }
+
+    .block-ones.unit-cube {
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    /* Regroup Hint */
+    .regroup-hint {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid #f59e0b;
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--space-4);
+    }
+
+    .regroup-hint.show {
+      display: flex;
+    }
+
+    .hint-icon {
+      font-size: var(--text-xl);
+    }
+
+    .hint-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: #92400e;
+    }
+
+    /* Choice Container */
+    .choice-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+      max-width: 500px;
+      margin: 0 auto;
+      padding: var(--space-2);
+    }
+
+    .choice-btn {
+      min-height: 70px;
+      min-width: 120px;
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 4px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4), 0 4px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      box-shadow: 0 4px 0 #15803d;
+      color: #166534;
+      animation: pulse-correct 0.5s ease;
+    }
+
+    @keyframes pulse-correct {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      box-shadow: 0 4px 0 #b91c1c;
+      color: #991b1b;
+      animation: wiggle 0.3s ease;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-3deg); }
+      75% { transform: rotate(3deg); }
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .problem-display {
+        padding: var(--space-2) var(--space-3);
+        gap: var(--space-2);
+      }
+
+      .number-first, .number-second, .number-result {
+        font-size: var(--text-2xl);
+      }
+
+      .operator, .equals {
+        font-size: var(--text-xl);
+      }
+
+      .addend-row {
+        gap: var(--space-2);
+      }
+
+      .block-hundreds {
+        width: 28px;
+        height: 28px;
+      }
+
+      .flat-grid {
+        width: 22px;
+        height: 22px;
+      }
+
+      .block-tens {
+        width: 10px;
+        height: 32px;
+      }
+
+      .rod-bar {
+        width: 5px;
+        height: 26px;
+      }
+
+      .block-ones {
+        width: 12px;
+        height: 12px;
+      }
+
+      .blocks-container {
+        min-height: 40px;
+        max-width: 120px;
+      }
+
+      .choice-container {
+        gap: var(--space-3);
+      }
+
+      .choice-btn {
+        min-height: 64px;
+        font-size: var(--text-lg);
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .blocks-operator {
+        font-size: var(--text-2xl);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .problem-display {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .number-first, .number-second, .number-result {
+        font-size: var(--text-xl);
+      }
+
+      .addend-row {
+        flex-wrap: wrap;
+        gap: var(--space-3);
+      }
+
+      .block-group {
+        min-width: 60px;
+      }
+
+      .choice-container {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+      }
+
+      .choice-btn {
+        min-height: 60px;
+        font-size: var(--text-lg);
+      }
+
+      .hint-text {
+        font-size: var(--text-sm);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

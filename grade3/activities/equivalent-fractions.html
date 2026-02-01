@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Equivalent Fractions Match - Grade 3 Math Activity - Meadow Math">
+  <title>Equivalent Fractions Match - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">♻️</span>
+            <span data-i18n="section.activities.equivalent-fractions.title">Equivalent Fractions Match</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.equivalent-fractions.instruction">Match equivalent fractions!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Matching Game Grid -->
+          <div class="matching-grid" id="matching-grid">
+            <!-- Will be populated by JS -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.equivalent-fractions.great">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Equivalent Fractions Match specific styles */
+
+    /* Matching Grid - Card layout */
+    .matching-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--space-4);
+      padding: var(--space-4);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Fraction Card */
+    .fraction-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 4px solid #f59e0b;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #d97706;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 140px;
+      position: relative;
+    }
+
+    .fraction-card:hover:not(.matched):not(.disabled) {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 6px 0 #d97706;
+    }
+
+    .fraction-card:active:not(.matched):not(.disabled) {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 2px 0 #d97706;
+    }
+
+    .fraction-card:focus {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .fraction-card.selected {
+      background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+      border-color: #8b5cf6;
+      box-shadow: 0 4px 0 #7c3aed;
+      transform: translateY(-2px);
+    }
+
+    .fraction-card.matched {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .fraction-card.matched::after {
+      content: '✓';
+      position: absolute;
+      top: 6px;
+      right: 10px;
+      font-size: 1.2rem;
+      color: #166534;
+    }
+
+    .fraction-card.wrong {
+      animation: shake 0.5s ease;
+    }
+
+    .fraction-card.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    /* Fraction Bar Visual */
+    .fraction-bar {
+      width: 100%;
+      height: 24px;
+      display: flex;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 2px solid #92400e;
+    }
+
+    .fraction-bar-part {
+      flex: 1;
+      border-right: 1px solid #d97706;
+    }
+
+    .fraction-bar-part:last-child {
+      border-right: none;
+    }
+
+    .fraction-bar-part.shaded {
+      background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    }
+
+    .fraction-bar-part.unshaded {
+      background: #f8fafc;
+    }
+
+    /* Fraction Text */
+    .fraction-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #78350f;
+      line-height: 1;
+    }
+
+    .fraction-numerator {
+      border-bottom: 3px solid currentColor;
+      padding-bottom: 4px;
+      min-width: 30px;
+      text-align: center;
+    }
+
+    .fraction-denominator {
+      padding-top: 4px;
+      min-width: 30px;
+      text-align: center;
+    }
+
+    .fraction-card.selected .fraction-text {
+      color: #5b21b6;
+    }
+
+    .fraction-card.matched .fraction-text {
+      color: #166534;
+    }
+
+    /* Shake animation */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    /* Activity area needs padding for feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    /* Feedback at bottom */
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .matching-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-3);
+        padding: var(--space-3);
+      }
+
+      .fraction-card {
+        min-height: 120px;
+        padding: var(--space-2);
+        border-width: 3px;
+      }
+
+      .fraction-bar {
+        height: 20px;
+      }
+
+      .fraction-text {
+        font-size: var(--text-xl);
+      }
+
+      .fraction-numerator,
+      .fraction-denominator {
+        min-width: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .matching-grid {
+        gap: var(--space-2);
+        padding: var(--space-2);
+      }
+
+      .fraction-card {
+        min-height: 100px;
+        gap: var(--space-1);
+      }
+
+      .fraction-bar {
+        height: 16px;
+      }
+
+      .fraction-text {
+        font-size: var(--text-lg);
+      }
+
+      .fraction-numerator {
+        border-bottom-width: 2px;
+        padding-bottom: 2px;
+      }
+
+      .fraction-denominator {
+        padding-top: 2px;
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Equivalent Fractions Match Activity - Grade 3 Level 4
+    const EquivalentFractions = {
+      // Game state
+      currentRound: 1,
+      maxRounds: 8,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1500,
+      roundData: [],
+      selectedCard: null,
+      matchedPairs: 0,
+      isProcessing: false,
+
+      // DOM elements
+      matchingGrid: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      /**
+       * Equivalent fraction families
+       * Each family contains fractions that are equivalent
+       */
+      fractionFamilies: [
+        // 1/2 family
+        [
+          { num: 1, den: 2 },
+          { num: 2, den: 4 },
+          { num: 3, den: 6 },
+          { num: 4, den: 8 }
+        ],
+        // 1/3 family
+        [
+          { num: 1, den: 3 },
+          { num: 2, den: 6 }
+        ],
+        // 2/3 family
+        [
+          { num: 2, den: 3 },
+          { num: 4, den: 6 }
+        ],
+        // 1/4 family
+        [
+          { num: 1, den: 4 },
+          { num: 2, den: 8 }
+        ],
+        // 3/4 family
+        [
+          { num: 3, den: 4 },
+          { num: 6, den: 8 }
+        ]
+      ],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        // Get DOM elements
+        this.matchingGrid = document.getElementById('matching-grid');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Event listeners
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        // Generate rounds and start
+        this.generateRounds();
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Generate all rounds
+       */
+      generateRounds() {
+        this.roundData = [];
+
+        for (let i = 0; i < this.maxRounds; i++) {
+          // Pick 2-3 families for this round
+          const pairCount = (i < 4) ? 2 : 3;
+          const shuffledFamilies = shuffle([...this.fractionFamilies]);
+          const selectedFamilies = shuffledFamilies.slice(0, pairCount);
+
+          const pairs = [];
+          selectedFamilies.forEach((family, familyIndex) => {
+            // Pick 2 equivalent fractions from this family
+            const shuffledFamily = shuffle([...family]);
+            const fraction1 = shuffledFamily[0];
+            const fraction2 = shuffledFamily[1];
+
+            pairs.push({
+              familyId: familyIndex,
+              fraction: fraction1
+            });
+            pairs.push({
+              familyId: familyIndex,
+              fraction: fraction2
+            });
+          });
+
+          this.roundData.push({
+            pairs: shuffle(pairs),
+            pairCount: pairCount
+          });
+        }
+      },
+
+      /**
+       * Update translations when language changes
+       */
+      updateTranslations() {
+        // Re-render progress with new translations if needed
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.selectedCard = null;
+        this.matchedPairs = 0;
+        this.isProcessing = false;
+
+        const round = this.roundData[this.currentRound - 1];
+
+        // Clear and render grid
+        this.matchingGrid.innerHTML = '';
+        this.feedback.classList.remove('show', 'error');
+
+        round.pairs.forEach((item, index) => {
+          const card = this.createFractionCard(item, index);
+          this.matchingGrid.appendChild(card);
+        });
+
+        this.renderProgress();
+      },
+
+      /**
+       * Create a fraction card element
+       */
+      createFractionCard(item, index) {
+        const card = document.createElement('div');
+        card.className = 'fraction-card';
+        card.dataset.familyId = item.familyId;
+        card.dataset.index = index;
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', `${item.fraction.num} over ${item.fraction.den}`);
+
+        // Create fraction bar visual
+        const bar = document.createElement('div');
+        bar.className = 'fraction-bar';
+        for (let i = 0; i < item.fraction.den; i++) {
+          const part = document.createElement('div');
+          part.className = 'fraction-bar-part';
+          if (i < item.fraction.num) {
+            part.classList.add('shaded');
+          } else {
+            part.classList.add('unshaded');
+          }
+          bar.appendChild(part);
+        }
+        card.appendChild(bar);
+
+        // Create fraction text
+        const text = document.createElement('div');
+        text.className = 'fraction-text';
+        text.innerHTML = `
+          <span class="fraction-numerator">${item.fraction.num}</span>
+          <span class="fraction-denominator">${item.fraction.den}</span>
+        `;
+        card.appendChild(text);
+
+        // Event listeners
+        card.addEventListener('click', () => this.selectCard(card));
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.selectCard(card);
+          }
+        });
+
+        return card;
+      },
+
+      /**
+       * Handle card selection
+       */
+      selectCard(card) {
+        if (this.isProcessing) return;
+        if (card.classList.contains('matched')) return;
+
+        // If no card is selected, select this one
+        if (!this.selectedCard) {
+          card.classList.add('selected');
+          this.selectedCard = card;
+          return;
+        }
+
+        // If clicking the same card, deselect it
+        if (this.selectedCard === card) {
+          card.classList.remove('selected');
+          this.selectedCard = null;
+          return;
+        }
+
+        // Two cards selected - check for match
+        this.isProcessing = true;
+        const firstFamilyId = this.selectedCard.dataset.familyId;
+        const secondFamilyId = card.dataset.familyId;
+
+        if (firstFamilyId === secondFamilyId) {
+          // Correct match!
+          this.correctCount++;
+          this.matchedPairs++;
+
+          this.selectedCard.classList.remove('selected');
+          this.selectedCard.classList.add('matched');
+          card.classList.add('matched');
+
+          this.showFeedback(i18n.t('section.activities.equivalent-fractions.correct'), false);
+
+          this.selectedCard = null;
+          this.isProcessing = false;
+
+          // Check if round is complete
+          const round = this.roundData[this.currentRound - 1];
+          if (this.matchedPairs === round.pairCount) {
+            setTimeout(() => {
+              if (this.currentRound < this.maxRounds) {
+                this.nextRound();
+              } else {
+                this.showStats();
+              }
+            }, this.autoAdvanceDelay);
+          }
+        } else {
+          // Wrong match
+          this.wrongCount++;
+
+          card.classList.add('wrong');
+          this.selectedCard.classList.add('wrong');
+
+          this.showFeedback(i18n.t('section.activities.equivalent-fractions.wrong'), true);
+
+          setTimeout(() => {
+            card.classList.remove('wrong');
+            this.selectedCard.classList.remove('selected', 'wrong');
+            this.selectedCard = null;
+            this.isProcessing = false;
+          }, 600);
+        }
+
+        this.renderProgress();
+      },
+
+      /**
+       * Show feedback message
+       */
+      showFeedback(message, isError) {
+        this.feedback.textContent = message;
+        this.feedback.classList.remove('error');
+        if (isError) {
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        // Auto-hide feedback after a short time (unless completing round)
+        setTimeout(() => {
+          const round = this.roundData[this.currentRound - 1];
+          if (this.matchedPairs < round.pairCount) {
+            this.feedback.classList.remove('show');
+          }
+        }, 1000);
+      },
+
+      /**
+       * Go to next round
+       */
+      nextRound() {
+        this.currentRound++;
+        this.startRound();
+      },
+
+      /**
+       * Show completion stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const totalAttempts = this.correctCount + this.wrongCount;
+        const percent = totalAttempts > 0 ? (this.correctCount / totalAttempts) : 0;
+
+        if (percent >= 0.9) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = i18n.t('section.activities.equivalent-fractions.perfect');
+        } else if (percent >= 0.7) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.equivalent-fractions.great');
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.equivalent-fractions.good');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = i18n.t('section.activities.equivalent-fractions.keepPracticing');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart the activity
+       */
+      restartActivity() {
+        this.currentRound = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateRounds();
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Render progress indicator
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      EquivalentFractions.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

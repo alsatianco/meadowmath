@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Faces, Edges, Vertices - Grade 2 Math Activity - Meadow Math">
+  <title>Faces, Edges, Vertices - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="../../prek/activities/activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade2">Grade 2</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🧊</span>
+            <span data-i18n="section.activities.3d-attributes.title">Faces, Edges, Vertices</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.3d-attributes.instruction">Count the faces, edges, and vertices!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Shape Display -->
+          <div class="shape-display-container">
+            <svg class="shape-display" id="shape-display" viewBox="0 0 300 300">
+              <!-- 3D Shape will be rendered here -->
+            </svg>
+            <div class="shape-name" id="shape-name"></div>
+          </div>
+
+          <!-- Question Display -->
+          <div class="question-display" id="question-display">
+            <!-- Question text will be shown here -->
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices">
+            <!-- Choices will be dynamically generated here -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* 3D Attributes specific styles */
+    .shape-display-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: var(--space-8);
+      padding: var(--space-8);
+      background: white;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      min-height: 340px;
+    }
+
+    .shape-display {
+      width: 100%;
+      max-width: 280px;
+      height: 280px;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    }
+
+    .shape-display.celebrate {
+      animation: celebrateShape 0.6s ease;
+    }
+
+    @keyframes celebrateShape {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      25% { transform: scale(1.1) rotate(-3deg); }
+      50% { transform: scale(1.15) rotate(3deg); }
+      75% { transform: scale(1.1) rotate(-2deg); }
+    }
+
+    .shape-name {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-text);
+      margin-top: var(--space-4);
+      text-transform: capitalize;
+    }
+
+    .question-display {
+      text-align: center;
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--space-6);
+      padding: var(--space-5);
+      background: linear-gradient(135deg, #fff7ed, #fed7aa);
+      border-radius: var(--radius-xl);
+      border: 4px solid #f97316;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .answer-choices {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
+      max-width: 600px;
+      margin: 0 auto var(--space-6);
+    }
+
+    .choice-btn {
+      min-width: 100px;
+      min-height: 100px;
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      padding: var(--space-5) var(--space-4);
+      background: white;
+      border: 4px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      color: var(--color-primary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 rgba(59, 130, 246, 0.3), 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .choice-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 rgba(59, 130, 246, 0.3), 0 8px 16px rgba(0, 0, 0, 0.15);
+      background: var(--color-primary-light);
+    }
+
+    .choice-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 rgba(59, 130, 246, 0.3), 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .choice-btn.correct {
+      background: var(--color-success);
+      border-color: var(--color-success-dark);
+      color: white;
+    }
+
+    .choice-btn.incorrect {
+      background: var(--color-error);
+      border-color: var(--color-error-dark);
+      color: white;
+      animation: wiggle 0.5s ease;
+    }
+
+    .choice-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-10px); }
+      75% { transform: translateX(10px); }
+    }
+
+    /* Highlight styles for 3D shapes */
+    .shape-display .face-highlight {
+      fill-opacity: 0.9;
+      animation: faceGlow 1.5s ease-in-out infinite;
+    }
+
+    .shape-display .edge-highlight {
+      stroke-width: 6;
+      stroke-dasharray: 8, 4;
+      animation: dash 1s linear infinite;
+    }
+
+    .shape-display .vertex-highlight {
+      fill: #f97316;
+      animation: pulse 1s ease-in-out infinite;
+    }
+
+    @keyframes faceGlow {
+      0%, 100% { fill-opacity: 0.9; }
+      50% { fill-opacity: 0.6; }
+    }
+
+    @keyframes dash {
+      to {
+        stroke-dashoffset: -12;
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; r: 8; }
+      50% { opacity: 0.7; r: 10; }
+    }
+
+    @media (max-width: 767px) {
+      .shape-display-container {
+        padding: var(--space-4);
+        min-height: 280px;
+      }
+
+      .shape-display {
+        max-width: 220px;
+        height: 220px;
+      }
+
+      .shape-name {
+        font-size: var(--text-lg);
+        margin-top: var(--space-3);
+      }
+
+      .question-display {
+        font-size: var(--text-xl);
+        padding: var(--space-4);
+        min-height: 50px;
+      }
+
+      .answer-choices {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-3);
+      }
+
+      .choice-btn {
+        min-height: 90px;
+        font-size: var(--text-2xl);
+        padding: var(--space-5) var(--space-4);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Faces, Edges, Vertices Activity - Grade 2
+    const ThreeDAttributes = {
+      // Game state
+      currentRound: 1,
+      maxRounds: 8,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1500,
+      currentShape: null,
+      currentQuestion: null, // 'faces', 'edges', or 'vertices'
+      questions: [],
+
+      // DOM elements
+      shapeDisplay: null,
+      shapeName: null,
+      questionDisplay: null,
+      answerChoices: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      /**
+       * 3D Shape definitions with attributes and SVG drawing functions
+       */
+      shapeDefinitions: {
+        cube: {
+          name: 'cube',
+          faces: 6,
+          edges: 12,
+          vertices: 8,
+          colors: ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6'],
+          draw: (svg, color, highlightType) => {
+            const frontColor = color;
+            const topColor = ThreeDAttributes.lightenColor(color, 20);
+            const rightColor = ThreeDAttributes.darkenColor(color, 15);
+
+            let faceClass = highlightType === 'faces' ? 'face-highlight' : '';
+            let edgeClass = highlightType === 'edges' ? 'edge-highlight' : '';
+            let edgeStroke = highlightType === 'edges' ? '#f97316' : '#1f2937';
+
+            svg.innerHTML = `
+              <!-- Front face -->
+              <polygon class="${faceClass}" points="80,110 200,110 200,250 80,250" fill="${frontColor}" stroke="${edgeStroke}" stroke-width="3"/>
+              <!-- Top face -->
+              <polygon class="${faceClass}" points="80,110 200,110 260,65 140,65" fill="${topColor}" stroke="${edgeStroke}" stroke-width="3"/>
+              <!-- Right face -->
+              <polygon class="${faceClass}" points="200,110 260,65 260,205 200,250" fill="${rightColor}" stroke="${edgeStroke}" stroke-width="3"/>
+              ${highlightType === 'vertices' ? ThreeDAttributes.drawVertices([
+                [80, 110], [200, 110], [200, 250], [80, 250],
+                [140, 65], [260, 65], [260, 205]
+              ]) : ''}
+            `;
+          }
+        },
+        rectangularPrism: {
+          name: 'rectangularPrism',
+          faces: 6,
+          edges: 12,
+          vertices: 8,
+          colors: ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6'],
+          draw: (svg, color, highlightType) => {
+            const frontColor = color;
+            const topColor = ThreeDAttributes.lightenColor(color, 20);
+            const rightColor = ThreeDAttributes.darkenColor(color, 15);
+
+            let faceClass = highlightType === 'faces' ? 'face-highlight' : '';
+            let edgeStroke = highlightType === 'edges' ? '#f97316' : '#1f2937';
+
+            svg.innerHTML = `
+              <!-- Front face -->
+              <polygon class="${faceClass}" points="50,120 220,120 220,250 50,250" fill="${frontColor}" stroke="${edgeStroke}" stroke-width="3"/>
+              <!-- Top face -->
+              <polygon class="${faceClass}" points="50,120 220,120 270,80 100,80" fill="${topColor}" stroke="${edgeStroke}" stroke-width="3"/>
+              <!-- Right face -->
+              <polygon class="${faceClass}" points="220,120 270,80 270,210 220,250" fill="${rightColor}" stroke="${edgeStroke}" stroke-width="3"/>
+              ${highlightType === 'vertices' ? ThreeDAttributes.drawVertices([
+                [50, 120], [220, 120], [220, 250], [50, 250],
+                [100, 80], [270, 80], [270, 210]
+              ]) : ''}
+            `;
+          }
+        },
+        sphere: {
+          name: 'sphere',
+          faces: 0,
+          edges: 0,
+          vertices: 0,
+          colors: ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6'],
+          draw: (svg, color, highlightType) => {
+            const gradientId = 'sphereGradient' + Date.now();
+            let faceClass = highlightType === 'faces' ? 'face-highlight' : '';
+
+            svg.innerHTML = `
+              <defs>
+                <radialGradient id="${gradientId}" cx="35%" cy="35%" r="60%" fx="35%" fy="35%">
+                  <stop offset="0%" stop-color="${ThreeDAttributes.lightenColor(color, 40)}"/>
+                  <stop offset="40%" stop-color="${color}"/>
+                  <stop offset="100%" stop-color="${ThreeDAttributes.darkenColor(color, 30)}"/>
+                </radialGradient>
+              </defs>
+              <circle class="${faceClass}" cx="150" cy="155" r="110" fill="url(#${gradientId})" stroke="#1f2937" stroke-width="3"/>
+              <ellipse cx="150" cy="155" rx="110" ry="28" fill="none" stroke="#1f2937" stroke-width="2" stroke-dasharray="8,6" opacity="0.5"/>
+            `;
+          }
+        },
+        cone: {
+          name: 'cone',
+          faces: 2,
+          edges: 1,
+          vertices: 1,
+          colors: ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6'],
+          draw: (svg, color, highlightType) => {
+            const frontColor = color;
+            const darkColor = ThreeDAttributes.darkenColor(color, 20);
+            let faceClass = highlightType === 'faces' ? 'face-highlight' : '';
+            let edgeStroke = highlightType === 'edges' ? '#f97316' : '#1f2937';
+
+            svg.innerHTML = `
+              <!-- Cone body -->
+              <polygon class="${faceClass}" points="150,50 260,230 40,230" fill="${frontColor}" stroke="${edgeStroke}" stroke-width="3"/>
+              <!-- Base ellipse -->
+              <ellipse class="${faceClass}" cx="150" cy="230" rx="110" ry="35" fill="${darkColor}" stroke="${edgeStroke}" stroke-width="3"/>
+              <!-- Highlight line -->
+              <line x1="150" y1="50" x2="150" y2="230" stroke="${ThreeDAttributes.lightenColor(color, 30)}" stroke-width="3" opacity="0.4"/>
+              ${highlightType === 'vertices' ? ThreeDAttributes.drawVertices([[150, 50]]) : ''}
+            `;
+          }
+        },
+        cylinder: {
+          name: 'cylinder',
+          faces: 3,
+          edges: 2,
+          vertices: 0,
+          colors: ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6'],
+          draw: (svg, color, highlightType) => {
+            const frontColor = color;
+            const topColor = ThreeDAttributes.lightenColor(color, 20);
+            let faceClass = highlightType === 'faces' ? 'face-highlight' : '';
+            let edgeStroke = highlightType === 'edges' ? '#f97316' : '#1f2937';
+
+            svg.innerHTML = `
+              <!-- Body -->
+              <rect class="${faceClass}" x="60" y="95" width="180" height="140" fill="${frontColor}" stroke="${edgeStroke}" stroke-width="3"/>
+              <!-- Top ellipse -->
+              <ellipse class="${faceClass}" cx="150" cy="95" rx="90" ry="32" fill="${topColor}" stroke="${edgeStroke}" stroke-width="3"/>
+              <!-- Bottom ellipse (partial) -->
+              <path d="M60,235 Q150,275 240,235" fill="none" stroke="${edgeStroke}" stroke-width="3"/>
+              <!-- Side lines -->
+              <line x1="60" y1="95" x2="60" y2="235" stroke="${edgeStroke}" stroke-width="3"/>
+              <line x1="240" y1="95" x2="240" y2="235" stroke="${edgeStroke}" stroke-width="3"/>
+            `;
+          }
+        },
+        triangularPrism: {
+          name: 'triangularPrism',
+          faces: 5,
+          edges: 9,
+          vertices: 6,
+          colors: ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6'],
+          draw: (svg, color, highlightType) => {
+            const frontColor = color;
+            const topColor = ThreeDAttributes.lightenColor(color, 15);
+            const rightColor = ThreeDAttributes.darkenColor(color, 15);
+            const bottomColor = ThreeDAttributes.darkenColor(color, 25);
+            let faceClass = highlightType === 'faces' ? 'face-highlight' : '';
+            let edgeStroke = highlightType === 'edges' ? '#f97316' : '#1f2937';
+
+            // A triangular prism lying on its side
+            // Front triangle: left face
+            // Back triangle: right face (partially visible)
+            // Three rectangular faces: top, bottom, back
+            svg.innerHTML = `
+              <!-- Bottom rectangular face (visible) -->
+              <polygon class="${faceClass}" points="60,250 240,250 280,210 100,210" fill="${bottomColor}" stroke="${edgeStroke}" stroke-width="3"/>
+              <!-- Front triangular face -->
+              <polygon class="${faceClass}" points="60,250 150,80 240,250" fill="${frontColor}" stroke="${edgeStroke}" stroke-width="3"/>
+              <!-- Top rectangular face (slanted, visible) -->
+              <polygon class="${faceClass}" points="150,80 190,40 280,210 240,250" fill="${topColor}" stroke="${edgeStroke}" stroke-width="3"/>
+              <!-- Back edge visible (dashed line for hidden back triangle) -->
+              <line x1="100" y1="210" x2="190" y2="40" stroke="${edgeStroke}" stroke-width="2" stroke-dasharray="5,5" opacity="0.6"/>
+              ${highlightType === 'vertices' ? ThreeDAttributes.drawVertices([
+                [60, 250], [150, 80], [240, 250],
+                [100, 210], [190, 40], [280, 210]
+              ]) : ''}
+            `;
+          }
+        }
+      },
+
+      /**
+       * Helper to draw vertex highlights
+       */
+      drawVertices(points) {
+        return points.map(p =>
+          `<circle class="vertex-highlight" cx="${p[0]}" cy="${p[1]}" r="8"/>`
+        ).join('');
+      },
+
+      /**
+       * Helper to lighten a color
+       */
+      lightenColor(hex, percent) {
+        const num = parseInt(hex.replace('#', ''), 16);
+        const r = Math.min(255, (num >> 16) + Math.round(2.55 * percent));
+        const g = Math.min(255, ((num >> 8) & 0x00FF) + Math.round(2.55 * percent));
+        const b = Math.min(255, (num & 0x0000FF) + Math.round(2.55 * percent));
+        return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+      },
+
+      /**
+       * Helper to darken a color
+       */
+      darkenColor(hex, percent) {
+        const num = parseInt(hex.replace('#', ''), 16);
+        const r = Math.max(0, (num >> 16) - Math.round(2.55 * percent));
+        const g = Math.max(0, ((num >> 8) & 0x00FF) - Math.round(2.55 * percent));
+        const b = Math.max(0, (num & 0x0000FF) - Math.round(2.55 * percent));
+        return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+      },
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        // Get DOM elements
+        this.shapeDisplay = document.getElementById('shape-display');
+        this.shapeName = document.getElementById('shape-name');
+        this.questionDisplay = document.getElementById('question-display');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up event listeners
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        // Generate question sequence
+        this.generateSequence();
+
+        // Start first round
+        this.generateRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Generate a random sequence of shapes and questions for the game
+       */
+      generateSequence() {
+        this.questions = [];
+        const shapeNames = Object.keys(this.shapeDefinitions);
+        const questionTypes = ['faces', 'edges', 'vertices'];
+
+        // Create varied questions - mix shapes and question types
+        // Ensure good coverage: each shape appears at least once
+        const shapesUsed = new Set();
+        const questionsUsed = new Set();
+
+        for (let i = 0; i < this.maxRounds; i++) {
+          let shapeName;
+          let questionType;
+
+          // First ensure all shapes are used at least once
+          if (i < shapeNames.length) {
+            shapeName = shapeNames[i];
+          } else {
+            shapeName = shapeNames[randomInt(0, shapeNames.length - 1)];
+          }
+
+          // Alternate question types, but vary them
+          questionType = questionTypes[i % 3];
+
+          this.questions.push({
+            shapeName,
+            questionType
+          });
+        }
+
+        // Shuffle to mix up
+        this.questions = shuffle(this.questions);
+      },
+
+      /**
+       * Update translations when language changes
+       */
+      updateTranslations() {
+        // Re-render current question and choices with new translations
+        if (this.currentShape) {
+          this.renderShapeName();
+          this.renderQuestion();
+          this.renderChoices();
+        }
+
+        // Update feedback message if showing
+        if (this.feedback.classList.contains('show')) {
+          const isError = this.feedback.classList.contains('error');
+          if (isError) {
+            this.feedback.textContent = i18n.t('section.activities.3d-attributes.wrong')
+              .replace('{answer}', this.getCorrectAnswer());
+          } else {
+            this.feedback.textContent = i18n.t('section.activities.3d-attributes.correct');
+          }
+        }
+      },
+
+      /**
+       * Get the correct answer for the current question
+       */
+      getCorrectAnswer() {
+        const shapeDef = this.shapeDefinitions[this.currentShape.shapeName];
+        return shapeDef[this.currentQuestion];
+      },
+
+      /**
+       * Generate a new round
+       */
+      generateRound() {
+        this.feedback.classList.remove('show');
+
+        // Get current question data from sequence
+        const questionData = this.questions[this.currentRound - 1];
+        const shapeDef = this.shapeDefinitions[questionData.shapeName];
+
+        this.currentShape = {
+          shapeName: questionData.shapeName,
+          color: shapeDef.colors[randomInt(0, shapeDef.colors.length - 1)]
+        };
+        this.currentQuestion = questionData.questionType;
+
+        this.renderShape();
+        this.renderShapeName();
+        this.renderQuestion();
+        this.renderChoices();
+      },
+
+      /**
+       * Render the 3D shape with optional highlights
+       */
+      renderShape() {
+        const shapeDef = this.shapeDefinitions[this.currentShape.shapeName];
+        shapeDef.draw(this.shapeDisplay, this.currentShape.color, this.currentQuestion);
+      },
+
+      /**
+       * Render the shape name
+       */
+      renderShapeName() {
+        const translatedName = i18n.t(`section.activities.3d-attributes.shapes.${this.currentShape.shapeName}`);
+        this.shapeName.textContent = translatedName;
+      },
+
+      /**
+       * Render the question text
+       */
+      renderQuestion() {
+        const shapeName = i18n.t(`section.activities.3d-attributes.shapes.${this.currentShape.shapeName}`);
+        let questionKey;
+
+        switch (this.currentQuestion) {
+          case 'faces':
+            questionKey = 'howManyFaces';
+            break;
+          case 'edges':
+            questionKey = 'howManyEdges';
+            break;
+          case 'vertices':
+            questionKey = 'howManyVertices';
+            break;
+        }
+
+        this.questionDisplay.textContent = i18n.t(`section.activities.3d-attributes.${questionKey}`)
+          .replace('{shape}', shapeName);
+      },
+
+      /**
+       * Render answer choices
+       */
+      renderChoices() {
+        const correctAnswer = this.getCorrectAnswer();
+
+        // Generate distractor answers based on question type
+        let choices = [correctAnswer];
+        let possibleDistractors = [];
+
+        // For sphere (0, 0, 0), provide nearby small numbers
+        if (correctAnswer === 0) {
+          possibleDistractors = [1, 2, 3];
+        } else {
+          // Generate distractors: numbers within a reasonable range
+          for (let i = Math.max(0, correctAnswer - 3); i <= correctAnswer + 3; i++) {
+            if (i !== correctAnswer) {
+              possibleDistractors.push(i);
+            }
+          }
+        }
+
+        // Shuffle and pick 3 distractors
+        const distractors = shuffle(possibleDistractors).slice(0, 3);
+        choices = shuffle([...choices, ...distractors]);
+
+        let html = '';
+        choices.forEach(num => {
+          html += `<button class="choice-btn" data-answer="${num}">${num}</button>`;
+        });
+
+        this.answerChoices.innerHTML = html;
+
+        // Add click and keyboard handlers
+        const buttons = this.answerChoices.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => {
+          btn.addEventListener('click', () => this.checkAnswer(parseInt(btn.dataset.answer)));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.checkAnswer(parseInt(btn.dataset.answer));
+            }
+          });
+        });
+      },
+
+      /**
+       * Check the selected answer
+       */
+      checkAnswer(selectedAnswer) {
+        // Disable all buttons
+        const buttons = this.answerChoices.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => btn.disabled = true);
+
+        const correctAnswer = this.getCorrectAnswer();
+        const isCorrect = selectedAnswer === correctAnswer;
+
+        // Highlight selected button
+        buttons.forEach(btn => {
+          const btnAnswer = parseInt(btn.dataset.answer);
+          if (btnAnswer === selectedAnswer) {
+            if (isCorrect) {
+              btn.classList.add('correct');
+            } else {
+              btn.classList.add('incorrect');
+            }
+          }
+          // Show correct answer if wrong
+          if (!isCorrect && btnAnswer === correctAnswer) {
+            btn.classList.add('correct');
+          }
+        });
+
+        if (isCorrect) {
+          // Correct!
+          this.feedback.textContent = i18n.t('section.activities.3d-attributes.correct');
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          // Celebrate with shape animation
+          this.shapeDisplay.classList.add('celebrate');
+          setTimeout(() => {
+            this.shapeDisplay.classList.remove('celebrate');
+          }, 600);
+        } else {
+          // Incorrect
+          this.feedback.textContent = i18n.t('section.activities.3d-attributes.wrong')
+            .replace('{answer}', correctAnswer);
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        // Auto-advance after delay
+        setTimeout(() => {
+          if (this.currentRound < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show completion stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = i18n.t('section.activities.3d-attributes.perfect');
+        } else if (percent >= 0.75) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.3d-attributes.great');
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.3d-attributes.good');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = i18n.t('section.activities.3d-attributes.keepPracticing');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart the entire activity
+       */
+      restartActivity() {
+        this.currentRound = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateSequence();
+        this.generateRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Go to next round
+       */
+      nextRound() {
+        this.currentRound++;
+        this.generateRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Render progress indicator
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      ThreeDAttributes.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

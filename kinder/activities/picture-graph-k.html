@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Build a Picture Graph - Kindergarten Math Activity - Meadow Math">
+  <title>Build a Picture Graph - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">📊</span>
+            <span data-i18n="section.activities.picture-graph-k.title">Build a Picture Graph</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.picture-graph-k.instruction">Look at the graph and answer!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Picture Graph -->
+          <div class="graph-container">
+            <div class="graph-title" id="graph-title">Favorite Fruits</div>
+            <div class="graph-area" id="graph-area">
+              <!-- Generated by JS -->
+            </div>
+            <div class="graph-numbers">
+              <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            </div>
+          </div>
+
+          <!-- Question -->
+          <div class="question-section">
+            <p class="question-text" id="question-text"></p>
+            <div class="answer-choices" id="answer-choices">
+              <!-- Generated by JS -->
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">📊</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great graphing!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Picture Graph Styles */
+    .graph-container {
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border: 4px solid #e2e8f0;
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .graph-title {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      text-align: center;
+      margin-bottom: var(--space-3);
+    }
+
+    .graph-area {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      padding: var(--space-3);
+      background: white;
+      border-radius: var(--radius-lg);
+      min-height: 200px;
+    }
+
+    .graph-column {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 4px;
+      min-width: 50px;
+    }
+
+    .column-label {
+      font-size: 28px;
+      padding: var(--space-1);
+      background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+      border-radius: var(--radius-md);
+      margin-top: var(--space-2);
+    }
+
+    .column-bar {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 2px;
+      min-height: 150px;
+    }
+
+    .bar-unit {
+      width: 40px;
+      height: 28px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      animation: barGrow 0.3s ease backwards;
+    }
+
+    @keyframes barGrow {
+      0% { transform: scaleY(0); opacity: 0; }
+      100% { transform: scaleY(1); opacity: 1; }
+    }
+
+    .graph-numbers {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-top: var(--space-2);
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      color: var(--color-neutral-500);
+    }
+
+    /* Question Section */
+    .question-section {
+      text-align: center;
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-3);
+    }
+
+    .answer-choices {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .answer-btn {
+      min-width: 70px;
+      min-height: 70px;
+      padding: var(--space-2);
+      border: 4px solid #e2e8f0;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, white, #f8fafc);
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 #cbd5e1;
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      border-color: #3b82f6;
+      box-shadow: 0 6px 0 #2563eb;
+    }
+
+    .answer-btn:focus {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .answer-btn:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .answer-btn:focus-visible {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .answer-btn:disabled {
+      cursor: not-allowed;
+    }
+
+    .answer-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPop 0.5s ease;
+    }
+
+    .answer-btn.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      box-shadow: 0 4px 0 #d97706;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .graph-area {
+        gap: var(--space-2);
+        padding: var(--space-2);
+      }
+
+      .column-label {
+        font-size: 24px;
+      }
+
+      .bar-unit {
+        width: 35px;
+        height: 24px;
+        font-size: 16px;
+      }
+
+      .answer-btn {
+        min-width: 60px;
+        min-height: 60px;
+        font-size: var(--text-xl);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Picture Graph Activity
+    const PictureGraphK = {
+      // Game state
+      round: 1,
+      maxRounds: 8,
+      data: [],
+      questionType: 'count', // 'count', 'more', 'less'
+      correctAnswer: null,
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+
+      // DOM elements
+      progress: null,
+      graphTitle: null,
+      graphArea: null,
+      questionText: null,
+      answerChoices: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Graph themes
+      themes: [
+        {
+          title: 'Favorite Fruits',
+          items: [
+            { emoji: '🍎', color: '#fecaca', name: 'apples' },
+            { emoji: '🍌', color: '#fef3c7', name: 'bananas' },
+            { emoji: '🍇', color: '#e9d5ff', name: 'grapes' }
+          ]
+        },
+        {
+          title: 'Animals We Saw',
+          items: [
+            { emoji: '🐱', color: '#fed7aa', name: 'cats' },
+            { emoji: '🐶', color: '#d1fae5', name: 'dogs' },
+            { emoji: '🐦', color: '#bfdbfe', name: 'birds' }
+          ]
+        },
+        {
+          title: 'Favorite Colors',
+          items: [
+            { emoji: '🔴', color: '#fecaca', name: 'red' },
+            { emoji: '🔵', color: '#bfdbfe', name: 'blue' },
+            { emoji: '🟡', color: '#fef3c7', name: 'yellow' }
+          ]
+        },
+        {
+          title: 'Things in the Sky',
+          items: [
+            { emoji: '☀️', color: '#fef3c7', name: 'suns' },
+            { emoji: '☁️', color: '#e5e7eb', name: 'clouds' },
+            { emoji: '⭐', color: '#fef3c7', name: 'stars' }
+          ]
+        }
+      ],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.graphTitle = document.getElementById('graph-title');
+        this.graphArea = document.getElementById('graph-area');
+        this.questionText = document.getElementById('question-text');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+
+        // Pick random theme
+        const theme = this.themes[randomInt(0, this.themes.length - 1)];
+        this.graphTitle.textContent = theme.title;
+
+        // Generate random data for each item (1-5)
+        this.data = theme.items.map(item => ({
+          ...item,
+          count: randomInt(1, 5)
+        }));
+
+        // Decide question type
+        const types = ['count', 'more', 'less'];
+        this.questionType = types[randomInt(0, types.length - 1)];
+
+        // Render graph
+        this.renderGraph();
+
+        // Generate question
+        this.generateQuestion();
+
+        // Reset UI
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      /**
+       * Render graph
+       */
+      renderGraph() {
+        this.graphArea.innerHTML = '';
+
+        this.data.forEach((item, idx) => {
+          const column = document.createElement('div');
+          column.className = 'graph-column';
+
+          // Label
+          const label = document.createElement('div');
+          label.className = 'column-label';
+          label.textContent = item.emoji;
+          column.appendChild(label);
+
+          // Bar
+          const bar = document.createElement('div');
+          bar.className = 'column-bar';
+
+          for (let i = 0; i < item.count; i++) {
+            const unit = document.createElement('div');
+            unit.className = 'bar-unit';
+            unit.style.background = item.color;
+            unit.style.animationDelay = `${i * 0.1}s`;
+            unit.textContent = item.emoji;
+            bar.appendChild(unit);
+          }
+
+          column.appendChild(bar);
+          this.graphArea.appendChild(column);
+        });
+      },
+
+      /**
+       * Generate question
+       */
+      generateQuestion() {
+        this.answerChoices.innerHTML = '';
+
+        if (this.questionType === 'count') {
+          // "How many [emoji]?"
+          const targetIdx = randomInt(0, this.data.length - 1);
+          const target = this.data[targetIdx];
+          this.correctAnswer = target.count;
+
+          const template = i18n.t('section.activities.picture-graph-k.howMany') || 'How many {{emoji}}?';
+          this.questionText.textContent = template.replace('{{emoji}}', target.emoji);
+
+          this.renderNumberChoices();
+
+        } else if (this.questionType === 'more') {
+          // "Which has the most?"
+          this.questionText.textContent = i18n.t('section.activities.picture-graph-k.whichMost') || 'Which has the most?';
+
+          const maxCount = Math.max(...this.data.map(d => d.count));
+          const winners = this.data.filter(d => d.count === maxCount);
+          this.correctAnswer = winners[0].emoji;
+
+          this.renderEmojiChoices();
+
+        } else {
+          // "Which has the least?"
+          this.questionText.textContent = i18n.t('section.activities.picture-graph-k.whichLeast') || 'Which has the least?';
+
+          const minCount = Math.min(...this.data.map(d => d.count));
+          const winners = this.data.filter(d => d.count === minCount);
+          this.correctAnswer = winners[0].emoji;
+
+          this.renderEmojiChoices();
+        }
+      },
+
+      /**
+       * Render number choices
+       */
+      renderNumberChoices() {
+        const choices = new Set([this.correctAnswer]);
+        while (choices.size < 4) {
+          const distractor = this.correctAnswer + randomInt(-2, 3);
+          if (distractor >= 0 && distractor <= 6 && distractor !== this.correctAnswer) {
+            choices.add(distractor);
+          }
+        }
+
+        const choicesArray = Array.from(choices).sort(() => Math.random() - 0.5);
+
+        choicesArray.forEach(num => {
+          const btn = document.createElement('button');
+          btn.className = 'answer-btn';
+          btn.textContent = num;
+          btn.addEventListener('click', () => this.selectAnswer(num, btn));
+          this.answerChoices.appendChild(btn);
+        });
+      },
+
+      /**
+       * Render emoji choices
+       */
+      renderEmojiChoices() {
+        this.data.forEach(item => {
+          const btn = document.createElement('button');
+          btn.className = 'answer-btn';
+          btn.textContent = item.emoji;
+          btn.addEventListener('click', () => this.selectAnswer(item.emoji, btn));
+          this.answerChoices.appendChild(btn);
+        });
+      },
+
+      /**
+       * Select answer
+       */
+      selectAnswer(answer, btn) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        const allBtns = this.answerChoices.querySelectorAll('.answer-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        const isCorrect = answer === this.correctAnswer;
+
+        if (isCorrect) {
+          btn.classList.add('correct');
+          this.feedback.textContent = i18n.t('section.activities.picture-graph-k.correct') || 'Yes! Great graph reading!';
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          if (typeof celebrate === 'function') {
+            celebrate(btn);
+          }
+        } else {
+          btn.classList.add('incorrect');
+          allBtns.forEach(b => {
+            if (b.textContent == this.correctAnswer) {
+              b.classList.add('correct');
+            }
+          });
+          const msg = i18n.t('section.activities.picture-graph-k.incorrect') || 'Not quite! The answer is {{answer}}.';
+          this.feedback.textContent = msg.replace('{{answer}}', this.correctAnswer);
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '📊';
+          this.statsMessage.textContent = i18n.t('section.activities.picture-graph-k.perfect') || 'Graph Master!';
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.picture-graph-k.great') || 'Great graphing!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.picture-graph-k.keepPracticing') || 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      PictureGraphK.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

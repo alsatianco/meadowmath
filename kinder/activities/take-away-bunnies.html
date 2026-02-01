@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Take Away Bunnies - Kindergarten Math Activity - Meadow Math">
+  <title>Take Away Bunnies - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🐰</span>
+            <span data-i18n="section.activities.take-away-bunnies.title">Take Away Bunnies</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.take-away-bunnies.instruction">Some bunnies hop away! How many stay?</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Bunny Meadow -->
+          <div class="bunny-meadow">
+            <div class="meadow-grass">
+              <div class="bunny-area" id="bunny-area">
+                <!-- Bunnies will be generated -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Equation Display -->
+          <div class="equation-display">
+            <span class="equation-start" id="eq-start">5</span>
+            <span class="equation-sign">−</span>
+            <span class="equation-take" id="eq-take">2</span>
+            <span class="equation-sign">=</span>
+            <span class="equation-answer" id="eq-answer">?</span>
+          </div>
+
+          <!-- Story Text -->
+          <div class="story-text" id="story-text">
+            5 bunnies in the meadow. 2 hop away. How many stay?
+          </div>
+
+          <!-- Question -->
+          <p class="question-text" data-i18n="section.activities.take-away-bunnies.question">How many bunnies stay?</p>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices">
+            <!-- Generated by JS -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🐰</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great counting!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Take Away Bunnies Styles */
+    .bunny-meadow {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .meadow-grass {
+      position: relative;
+      padding: var(--space-4);
+      background: linear-gradient(180deg, #ecfccb 0%, #bef264 50%, #84cc16 100%);
+      border: 4px solid #65a30d;
+      border-radius: var(--radius-2xl);
+      box-shadow: 0 6px 0 #4d7c0f, 0 10px 20px rgba(0, 0, 0, 0.1);
+      min-width: 280px;
+      min-height: 120px;
+    }
+
+    .meadow-grass::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 20px;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 5px,
+        rgba(101, 163, 13, 0.3) 5px,
+        rgba(101, 163, 13, 0.3) 7px
+      );
+      border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+    }
+
+    .bunny-area {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .bunny-item {
+      font-size: 40px;
+      transition: all 0.5s ease;
+      animation: bunnyBounce 0.5s ease;
+    }
+
+    @keyframes bunnyBounce {
+      0% { transform: scale(0) translateY(20px); }
+      60% { transform: scale(1.1) translateY(-5px); }
+      100% { transform: scale(1) translateY(0); }
+    }
+
+    .bunny-item.hopping-away {
+      animation: hopAway 0.8s ease forwards;
+    }
+
+    @keyframes hopAway {
+      0% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      25% {
+        transform: translateX(15px) translateY(-30px) rotate(10deg);
+      }
+      50% {
+        transform: translateX(40px) translateY(-15px) rotate(-5deg);
+      }
+      75% {
+        transform: translateX(70px) translateY(-40px) rotate(15deg);
+      }
+      100% {
+        transform: translateX(100px) translateY(-60px) rotate(20deg);
+        opacity: 0;
+      }
+    }
+
+    .bunny-item.staying {
+      animation: happyBunny 0.5s ease;
+    }
+
+    @keyframes happyBunny {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    /* Equation display */
+    .equation-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-3);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+    }
+
+    .equation-start, .equation-take {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+    }
+
+    .equation-sign {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-500);
+    }
+
+    .equation-answer {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: #65a30d;
+      background: white;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-lg);
+      border: 3px dashed #84cc16;
+      min-width: 50px;
+      text-align: center;
+    }
+
+    .equation-answer.revealed {
+      color: #166534;
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border: 3px solid #22c55e;
+    }
+
+    /* Story text */
+    .story-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-medium);
+      color: var(--color-neutral-600);
+      text-align: center;
+      margin-bottom: var(--space-3);
+      padding: var(--space-2) var(--space-3);
+      background: linear-gradient(135deg, #fef7ed, #ffedd5);
+      border-radius: var(--radius-lg);
+      border: 2px solid #fed7aa;
+    }
+
+    /* Question */
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    /* Answer choices */
+    .answer-choices {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .answer-btn {
+      width: 75px;
+      height: 75px;
+      border: 4px solid #a3e635;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, #ecfccb, #d9f99d);
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: #3f6212;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 0 #65a30d, 0 6px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      transform: translateY(-4px) scale(1.05);
+      border-color: #84cc16;
+      box-shadow: 0 8px 0 #4d7c0f, 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .answer-btn:focus {
+      outline: 4px solid #84cc16;
+      outline-offset: 2px;
+    }
+
+    .answer-btn:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .answer-btn:focus-visible {
+      outline: 4px solid #84cc16;
+      outline-offset: 2px;
+    }
+
+    .answer-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #65a30d;
+    }
+
+    .answer-btn:disabled {
+      cursor: not-allowed;
+    }
+
+    .answer-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPop 0.5s ease;
+    }
+
+    .answer-btn.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      color: #92400e;
+      box-shadow: 0 4px 0 #d97706;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .meadow-grass {
+        min-width: 220px;
+        min-height: 100px;
+        padding: var(--space-3);
+      }
+
+      .bunny-item {
+        font-size: 32px;
+      }
+
+      .answer-btn {
+        width: 65px;
+        height: 65px;
+        font-size: var(--text-2xl);
+      }
+
+      .equation-start, .equation-take {
+        font-size: var(--text-2xl);
+      }
+
+      .equation-answer {
+        font-size: var(--text-2xl);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Take Away Bunnies Activity
+    const TakeAwayBunnies = {
+      // Game state
+      round: 1,
+      maxRounds: 8,
+      startCount: 0,
+      takeCount: 0,
+      leftCount: 0,
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+
+      // DOM elements
+      progress: null,
+      bunnyArea: null,
+      eqStart: null,
+      eqTake: null,
+      eqAnswer: null,
+      storyText: null,
+      answerChoices: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.bunnyArea = document.getElementById('bunny-area');
+        this.eqStart = document.getElementById('eq-start');
+        this.eqTake = document.getElementById('eq-take');
+        this.eqAnswer = document.getElementById('eq-answer');
+        this.storyText = document.getElementById('story-text');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Get range based on round
+       */
+      getRange() {
+        // Progressive: 3-5, then 5-7, then 6-10
+        if (this.round <= 3) return { min: 3, max: 5 };
+        if (this.round <= 5) return { min: 5, max: 7 };
+        return { min: 6, max: 10 };
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+
+        const range = this.getRange();
+        this.startCount = randomInt(range.min, range.max);
+        this.takeCount = randomInt(1, this.startCount - 1);
+        this.leftCount = this.startCount - this.takeCount;
+
+        // Update equation
+        this.eqStart.textContent = this.startCount;
+        this.eqTake.textContent = this.takeCount;
+        this.eqAnswer.textContent = '?';
+        this.eqAnswer.classList.remove('revealed');
+
+        // Update story
+        const storyTemplate = i18n.t('section.activities.take-away-bunnies.story') ||
+          '{{start}} bunnies in the meadow. {{take}} hop away. How many stay?';
+        this.storyText.textContent = storyTemplate
+          .replace('{{start}}', this.startCount)
+          .replace('{{take}}', this.takeCount);
+
+        // Render bunnies
+        this.renderBunnies();
+
+        // Reset UI
+        this.feedback.classList.remove('show', 'error');
+
+        // Animate hop away after delay
+        setTimeout(() => {
+          this.animateHopAway();
+        }, 600);
+
+        this.renderProgress();
+      },
+
+      /**
+       * Render bunnies
+       */
+      renderBunnies() {
+        this.bunnyArea.innerHTML = '';
+        for (let i = 0; i < this.startCount; i++) {
+          const bunny = document.createElement('span');
+          bunny.className = 'bunny-item';
+          bunny.textContent = '🐰';
+          bunny.dataset.index = i;
+          bunny.style.animationDelay = `${i * 0.08}s`;
+          this.bunnyArea.appendChild(bunny);
+        }
+      },
+
+      /**
+       * Animate bunnies hopping away
+       */
+      animateHopAway() {
+        const bunnies = this.bunnyArea.querySelectorAll('.bunny-item');
+
+        // Mark bunnies to hop away (from the end)
+        for (let i = this.startCount - this.takeCount; i < this.startCount; i++) {
+          if (bunnies[i]) {
+            bunnies[i].classList.add('hopping-away');
+          }
+        }
+
+        // Show choices after animation
+        setTimeout(() => {
+          // Mark remaining bunnies
+          for (let i = 0; i < this.leftCount; i++) {
+            if (bunnies[i]) {
+              bunnies[i].classList.add('staying');
+            }
+          }
+          this.renderChoices();
+        }, 900);
+      },
+
+      /**
+       * Render answer choices
+       */
+      renderChoices() {
+        this.answerChoices.innerHTML = '';
+
+        // Generate choices including the correct answer
+        const choices = new Set([this.leftCount]);
+
+        // Add distractors
+        while (choices.size < 4) {
+          const distractor = randomInt(0, this.startCount);
+          if (distractor !== this.leftCount) {
+            choices.add(distractor);
+          }
+        }
+
+        // Convert to array and shuffle
+        const choicesArray = Array.from(choices);
+        this.shuffleArray(choicesArray);
+
+        // Create buttons
+        choicesArray.forEach(num => {
+          const btn = document.createElement('button');
+          btn.className = 'answer-btn';
+          btn.textContent = num;
+          btn.addEventListener('click', () => this.selectAnswer(num, btn));
+          this.answerChoices.appendChild(btn);
+        });
+      },
+
+      /**
+       * Shuffle array
+       */
+      shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      },
+
+      /**
+       * Select answer
+       */
+      selectAnswer(num, btn) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        // Disable all buttons
+        const allBtns = this.answerChoices.querySelectorAll('.answer-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        // Reveal answer
+        this.eqAnswer.textContent = this.leftCount;
+        this.eqAnswer.classList.add('revealed');
+
+        const isCorrect = num === this.leftCount;
+
+        if (isCorrect) {
+          btn.classList.add('correct');
+          const msg = i18n.t('section.activities.take-away-bunnies.correct') || '{{start}} - {{take}} = {{left}} bunnies!';
+          this.feedback.textContent = msg
+            .replace('{{start}}', this.startCount)
+            .replace('{{take}}', this.takeCount)
+            .replace('{{left}}', this.leftCount);
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          if (typeof celebrate === 'function') {
+            celebrate(btn);
+          }
+        } else {
+          btn.classList.add('incorrect');
+          // Highlight correct answer
+          allBtns.forEach(b => {
+            if (parseInt(b.textContent) === this.leftCount) {
+              b.classList.add('correct');
+            }
+          });
+          const msg = i18n.t('section.activities.take-away-bunnies.incorrect') || '{{start}} - {{take}} = {{left}}';
+          this.feedback.textContent = msg
+            .replace('{{start}}', this.startCount)
+            .replace('{{take}}', this.takeCount)
+            .replace('{{left}}', this.leftCount);
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🐰';
+          this.statsMessage.textContent = i18n.t('section.activities.take-away-bunnies.perfect') || 'Bunny Math Star!';
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.take-away-bunnies.great') || 'Great bunny counting!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.take-away-bunnies.keepPracticing') || 'Keep counting bunnies!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      TakeAwayBunnies.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

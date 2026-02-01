@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Number Hunt - Pre-K Math Activity - Meadow Math">
   <title>Number Hunt - Meadow Math</title>
-  
+
   <!-- CSS Files -->
   <link rel="stylesheet" href="../../css/reset.css">
   <link rel="stylesheet" href="../../css/variables.css">
@@ -45,7 +45,7 @@
           <span class="nav-item-icon">🪺</span>
           <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
         </a>
-        <a href="../../kindergarten/index.html" class="nav-item">
+        <a href="../../kinder/index.html" class="nav-item">
           <span class="nav-item-icon">🌱</span>
           <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
         </a>
@@ -68,6 +68,17 @@
         <a href="../../grade5/index.html" class="nav-item">
           <span class="nav-item-icon">➗</span>
           <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
         </a>
       </nav>
 
@@ -304,7 +315,7 @@
       .hunt-grid {
         grid-template-columns: repeat(3, 1fr);
       }
-      
+
       .hunt-item {
         width: 60px;
         height: 60px;
@@ -432,14 +443,14 @@
         const dice = document.createElement('div');
         dice.className = 'dice-visual';
         dice.dataset.value = value;
-        
+
         // Create 9 dot positions (3x3 grid)
         for (let i = 0; i < 9; i++) {
           const dot = document.createElement('div');
           dot.className = 'dot';
           dice.appendChild(dot);
         }
-        
+
         return dice;
       },
 
@@ -454,7 +465,7 @@
 
         // Create array of numbers
         const numbers = [];
-        
+
         // Add target numbers
         for (let i = 0; i < this.targetCount; i++) {
           numbers.push(this.targetNumber);
@@ -463,7 +474,7 @@
         // Fill remaining slots with other numbers (1-9, excluding target)
         const gridSize = 12;
         const otherNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9].filter(n => n !== this.targetNumber);
-        
+
         while (numbers.length < gridSize) {
           numbers.push(otherNumbers[randomInt(0, otherNumbers.length - 1)]);
         }

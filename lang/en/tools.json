@@ -1,0 +1,218 @@
+{
+  "title": "Math Tools & Playgrounds",
+  "description": "Interactive manipulatives for hands-on learning",
+  "modes": {
+    "explore": "Explore",
+    "challenges": "Challenges"
+  },
+  "common": {
+    "reset": "Reset",
+    "completed": "Completed",
+    "tryAgain": "Try Again",
+    "nextChallenge": "Next Challenge",
+    "challengeComplete": "Challenge Complete!",
+    "allChallengesComplete": "All Challenges Complete!",
+    "greatJob": "Great job!"
+  },
+  "tools": {
+    "numberLine": {
+      "title": "Number Line Explorer",
+      "description": "Explore numbers, hops, and distances on the number line",
+      "range": "Range",
+      "position": "Position",
+      "hop": "Hop",
+      "distance": "Distance",
+      "challenges": {
+        "place13": {
+          "prompt": "Place the point at 13"
+        },
+        "jump5": {
+          "prompt": "Start at 6. Jump +5. Where are you?"
+        },
+        "compare": {
+          "prompt": "Which is farther from 0: -7 or 5?"
+        },
+        "missing": {
+          "prompt": "Find the missing number between 14 and 16"
+        },
+        "makeHops": {
+          "prompt": "Make 20 using hops: +10, +5, +5"
+        },
+        "place17": {
+          "prompt": "Start at 7 and jump +10"
+        }
+      }
+    },
+    "fractionBars": {
+      "title": "Fraction Bars",
+      "description": "Build, compare, and explore fractions visually",
+      "denominator": "Denominator",
+      "numerator": "Numerator",
+      "whole": "Whole",
+      "equivalent": "Equivalent",
+      "compare": "Compare",
+      "trayFull": "The tray is full!",
+      "clickToAdd": "Click a fraction to add pieces",
+      "challenges": {
+        "build1": {
+          "prompt": "Build 1 using 1/4 pieces"
+        },
+        "compare": {
+          "prompt": "Which is bigger: 2/6 or 1/3?"
+        },
+        "makeHalf": {
+          "prompt": "Make something equal to 1/2"
+        },
+        "fill8": {
+          "prompt": "Fill: __/8 to make 1"
+        },
+        "add": {
+          "prompt": "Add: 1/4 + 2/4"
+        },
+        "equivalent": {
+          "prompt": "Find an equivalent to 3/6"
+        }
+      }
+    },
+    "base10Blocks": {
+      "title": "Base-10 Blocks",
+      "description": "Build numbers with ones, tens, and hundreds",
+      "ones": "Ones",
+      "tens": "Tens",
+      "hundreds": "Hundreds",
+      "trade": "Trade",
+      "total": "Total",
+      "challenges": {
+        "build47": {
+          "prompt": "Build 47"
+        },
+        "make30": {
+          "prompt": "Show 3 different ways to make 30"
+        },
+        "add": {
+          "prompt": "Add 28 + 15 using blocks"
+        },
+        "subtract": {
+          "prompt": "Subtract 52 - 18 using trades"
+        },
+        "compare": {
+          "prompt": "Which is bigger: 406 or 460?"
+        },
+        "build123": {
+          "prompt": "Build 123"
+        }
+      }
+    },
+    "arrayBuilder": {
+      "title": "Array Builder",
+      "description": "Build arrays to explore multiplication and area",
+      "rows": "Rows",
+      "columns": "Columns",
+      "area": "Area",
+      "factors": "Factors",
+      "challenges": {
+        "build3x6": {
+          "prompt": "Build an array for 3 x 6"
+        },
+        "factors24": {
+          "prompt": "Find two factor pairs for 24"
+        },
+        "compare": {
+          "prompt": "Which is bigger: 4 x 7 or 5 x 5?"
+        },
+        "area18": {
+          "prompt": "Make area 18 in two different ways"
+        },
+        "build4x5": {
+          "prompt": "Build an array for 4 x 5"
+        },
+        "factors12": {
+          "prompt": "Find all factor pairs for 12"
+        }
+      }
+    },
+    "clock": {
+      "title": "Clock Playground",
+      "description": "Learn to tell time and explore time jumps",
+      "hour": "Hour",
+      "minute": "Minute",
+      "digital": "Digital",
+      "analog": "Analog",
+      "challenges": {
+        "set3": {
+          "prompt": "Set the clock to 3:00"
+        },
+        "set730": {
+          "prompt": "Set the clock to 7:30"
+        },
+        "jump30": {
+          "prompt": "Start at 2:15. Jump +30 minutes."
+        },
+        "elapsed": {
+          "prompt": "How many minutes from 1:10 to 1:40?"
+        },
+        "set945": {
+          "prompt": "Set the clock to 9:45"
+        },
+        "jump1h": {
+          "prompt": "Start at 4:00. Jump +1 hour."
+        }
+      }
+    },
+    "geoboard": {
+      "title": "Geoboard",
+      "description": "Create shapes with pegs and bands",
+      "gridSize": "Grid Size",
+      "perimeter": "Perimeter",
+      "area": "Area",
+      "challenges": {
+        "triangle": {
+          "prompt": "Make a triangle"
+        },
+        "rectangle12": {
+          "prompt": "Make a rectangle with perimeter 12"
+        },
+        "square": {
+          "prompt": "Make a square"
+        },
+        "symmetry": {
+          "prompt": "Make a shape with 1 line of symmetry"
+        },
+        "pentagon": {
+          "prompt": "Make a pentagon (5 sides)"
+        },
+        "samePerimeter": {
+          "prompt": "Make two different shapes with the same perimeter"
+        }
+      }
+    },
+    "coordinatePlane": {
+      "title": "Coordinate Plane",
+      "description": "Plot points and draw on the coordinate grid",
+      "xAxis": "X-Axis",
+      "yAxis": "Y-Axis",
+      "point": "Point",
+      "segment": "Segment",
+      "challenges": {
+        "plot32": {
+          "prompt": "Plot (3, 2)"
+        },
+        "plotLine": {
+          "prompt": "Plot A(1, 4) and B(4, 4). Draw segment AB."
+        },
+        "plot05": {
+          "prompt": "Plot (0, 5)"
+        },
+        "plotSquare": {
+          "prompt": "Plot points to make a square"
+        },
+        "reflect": {
+          "prompt": "Reflect (2, 3) across the y-axis"
+        },
+        "distance": {
+          "prompt": "Find the distance between (1, 1) and (4, 1)"
+        }
+      }
+    }
+  }
+}

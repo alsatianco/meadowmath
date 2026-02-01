@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fraction to Decimal Match - Grade 4 Math Activity - Meadow Math">
+  <title>Fraction to Decimal Match - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade4">Grade 4</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🔁</span>
+            <span data-i18n="section.activities.fraction-decimal-match.title">Fraction to Decimal Match</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.fraction-decimal-match.instruction">Match each fraction to its decimal!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <div class="match-instruction" data-i18n="section.activities.fraction-decimal-match.selectPair">Select a fraction, then select its decimal.</div>
+
+          <!-- Matching Game Area -->
+          <div class="matching-container">
+            <div class="match-column">
+              <div class="column-header" data-i18n="section.activities.fraction-decimal-match.fractionsLabel">Fractions</div>
+              <div class="match-cards" id="fraction-cards"></div>
+            </div>
+            <div class="match-column">
+              <div class="column-header" data-i18n="section.activities.fraction-decimal-match.decimalsLabel">Decimals</div>
+              <div class="match-cards" id="decimal-cards"></div>
+            </div>
+          </div>
+
+          <!-- Matches Found Counter -->
+          <div class="matches-counter">
+            <span data-i18n="section.activities.fraction-decimal-match.matchesFound">Matches found:</span>
+            <span id="matches-count">0</span> / <span id="total-matches">4</span>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.fraction-decimal-match.great">Great fraction-decimal matches!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Fraction to Decimal Match Activity - Grade 4 Level 4
+    const FractionDecimalMatch = {
+      currentRound: 0,
+      totalRounds: 6,
+      roundMatchCounts: [3, 4, 4, 4, 5, 5],
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      pairs: [],
+      matchedCount: 0,
+      selectedFraction: null,
+      selectedDecimal: null,
+      lastResult: null,
+      advanceTimeout: null,
+      feedbackTimeout: null,
+
+      fractionPool: [
+        { numerator: 1, denominator: 10 },
+        { numerator: 2, denominator: 10 },
+        { numerator: 3, denominator: 10 },
+        { numerator: 4, denominator: 10 },
+        { numerator: 5, denominator: 10 },
+        { numerator: 6, denominator: 10 },
+        { numerator: 7, denominator: 10 },
+        { numerator: 8, denominator: 10 },
+        { numerator: 9, denominator: 10 },
+        { numerator: 1, denominator: 100 },
+        { numerator: 4, denominator: 100 },
+        { numerator: 12, denominator: 100 },
+        { numerator: 15, denominator: 100 },
+        { numerator: 18, denominator: 100 },
+        { numerator: 22, denominator: 100 },
+        { numerator: 25, denominator: 100 },
+        { numerator: 33, denominator: 100 },
+        { numerator: 37, denominator: 100 },
+        { numerator: 42, denominator: 100 },
+        { numerator: 58, denominator: 100 },
+        { numerator: 64, denominator: 100 },
+        { numerator: 75, denominator: 100 },
+        { numerator: 83, denominator: 100 },
+        { numerator: 96, denominator: 100 }
+      ],
+
+      init() {
+        this.progress = document.getElementById('progress');
+        this.feedback = document.getElementById('feedback');
+        this.fractionCards = document.getElementById('fraction-cards');
+        this.decimalCards = document.getElementById('decimal-cards');
+        this.matchesCount = document.getElementById('matches-count');
+        this.totalMatches = document.getElementById('total-matches');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentRound());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) {
+            return text;
+          }
+        }
+        return fallback;
+      },
+
+      getMatchCountForRound() {
+        return this.roundMatchCounts[this.currentRound] || 4;
+      },
+
+      formatDecimal(numerator, denominator) {
+        const value = numerator / denominator;
+        return denominator === 10 ? value.toFixed(1) : value.toFixed(2);
+      },
+
+      generatePairs() {
+        const matchCount = this.getMatchCountForRound();
+        const selected = shuffle(this.fractionPool).slice(0, matchCount);
+        return selected.map((item, index) => ({
+          id: index,
+          numerator: item.numerator,
+          denominator: item.denominator,
+          decimal: this.formatDecimal(item.numerator, item.denominator)
+        }));
+      },
+
+      startRound() {
+        this.clearTimers();
+        this.pairs = this.generatePairs();
+        this.matchedCount = 0;
+        this.selectedFraction = null;
+        this.selectedDecimal = null;
+        this.lastResult = null;
+
+        this.totalMatches.textContent = this.pairs.length;
+        this.matchesCount.textContent = '0';
+
+        this.renderCards();
+        this.renderProgress();
+        this.feedback.classList.remove('show', 'error');
+      },
+
+      renderCards() {
+        const shuffledFractions = shuffle([...this.pairs]);
+        const shuffledDecimals = shuffle([...this.pairs]);
+
+        this.fractionCards.innerHTML = shuffledFractions.map(pair => `
+          <button class="match-card fraction-card" type="button" data-id="${pair.id}" data-type="fraction" aria-pressed="false">
+            <span class="fraction-display" aria-hidden="true">
+              <span class="fraction-numerator">${pair.numerator}</span>
+              <span class="fraction-denominator">${pair.denominator}</span>
+            </span>
+          </button>
+        `).join('');
+
+        this.decimalCards.innerHTML = shuffledDecimals.map(pair => `
+          <button class="match-card decimal-card" type="button" data-id="${pair.id}" data-type="decimal" aria-pressed="false">
+            ${pair.decimal}
+          </button>
+        `).join('');
+
+        this.fractionCards.querySelectorAll('.match-card').forEach(card => {
+          card.addEventListener('click', () => this.handleCardClick(card, 'fraction'));
+        });
+
+        this.decimalCards.querySelectorAll('.match-card').forEach(card => {
+          card.addEventListener('click', () => this.handleCardClick(card, 'decimal'));
+        });
+
+        this.updateCardLabels();
+      },
+
+      updateCardLabels() {
+        const fractionTemplate = this.getTranslation(
+          'section.activities.fraction-decimal-match.fractionCardLabel',
+          'Fraction {numerator} over {denominator}'
+        );
+        const decimalTemplate = this.getTranslation(
+          'section.activities.fraction-decimal-match.decimalCardLabel',
+          'Decimal {decimal}'
+        );
+
+        this.fractionCards.querySelectorAll('.match-card').forEach(card => {
+          const id = Number(card.dataset.id);
+          const pair = this.pairs.find(item => item.id === id);
+          if (!pair) return;
+          const label = fractionTemplate
+            .replace('{numerator}', pair.numerator)
+            .replace('{denominator}', pair.denominator);
+          card.setAttribute('aria-label', label);
+        });
+
+        this.decimalCards.querySelectorAll('.match-card').forEach(card => {
+          const id = Number(card.dataset.id);
+          const pair = this.pairs.find(item => item.id === id);
+          if (!pair) return;
+          const label = decimalTemplate.replace('{decimal}', pair.decimal);
+          card.setAttribute('aria-label', label);
+        });
+      },
+
+      handleCardClick(card, type) {
+        if (card.classList.contains('matched') || card.classList.contains('disabled')) {
+          return;
+        }
+
+        const id = Number(card.dataset.id);
+
+        if (type === 'fraction') {
+          this.fractionCards.querySelectorAll('.match-card').forEach((item) => {
+            item.classList.remove('selected');
+            item.setAttribute('aria-pressed', 'false');
+          });
+          card.classList.add('selected');
+          card.setAttribute('aria-pressed', 'true');
+          this.selectedFraction = { id, element: card };
+        } else {
+          this.decimalCards.querySelectorAll('.match-card').forEach((item) => {
+            item.classList.remove('selected');
+            item.setAttribute('aria-pressed', 'false');
+          });
+          card.classList.add('selected');
+          card.setAttribute('aria-pressed', 'true');
+          this.selectedDecimal = { id, element: card };
+        }
+
+        if (this.selectedFraction && this.selectedDecimal) {
+          this.checkMatch();
+        }
+      },
+
+      checkMatch() {
+        const isMatch = this.selectedFraction.id === this.selectedDecimal.id;
+
+        if (isMatch) {
+          this.correctCount++;
+          this.matchedCount++;
+
+          this.selectedFraction.element.classList.add('matched');
+          this.selectedDecimal.element.classList.add('matched');
+          this.selectedFraction.element.classList.remove('selected');
+          this.selectedDecimal.element.classList.remove('selected');
+
+          this.selectedFraction.element.setAttribute('aria-pressed', 'false');
+          this.selectedDecimal.element.setAttribute('aria-pressed', 'false');
+
+          this.matchesCount.textContent = this.matchedCount;
+
+          const correctMsg = this.getTranslation('feedback.correct', 'Great job!');
+          this.feedback.textContent = correctMsg;
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.lastResult = { type: 'correct' };
+
+          this.clearFeedbackTimeout();
+
+          if (this.matchedCount === this.pairs.length) {
+            this.advanceTimeout = setTimeout(() => {
+              this.advanceTimeout = null;
+              if (this.currentRound < this.totalRounds - 1) {
+                this.nextRound();
+              } else {
+                this.showStats();
+              }
+            }, this.autoAdvanceDelay);
+          } else {
+            this.feedbackTimeout = setTimeout(() => {
+              this.feedback.classList.remove('show');
+            }, 1000);
+          }
+        } else {
+          this.incorrectCount++;
+
+          const fractionElement = this.selectedFraction.element;
+          const decimalElement = this.selectedDecimal.element;
+
+          fractionElement.classList.add('incorrect');
+          decimalElement.classList.add('incorrect');
+
+          const tryAgainMsg = this.getTranslation('feedback.tryAgain', 'Try again!');
+          this.feedback.textContent = tryAgainMsg;
+          this.feedback.classList.add('error', 'show');
+          this.lastResult = { type: 'incorrect' };
+
+          this.clearFeedbackTimeout();
+
+          this.feedbackTimeout = setTimeout(() => {
+            fractionElement.classList.remove('selected', 'incorrect');
+            decimalElement.classList.remove('selected', 'incorrect');
+            fractionElement.setAttribute('aria-pressed', 'false');
+            decimalElement.setAttribute('aria-pressed', 'false');
+            this.feedback.classList.remove('show', 'error');
+          }, 900);
+        }
+
+        this.selectedFraction = null;
+        this.selectedDecimal = null;
+      },
+
+      nextRound() {
+        this.currentRound++;
+        this.startRound();
+      },
+
+      resetCurrentRound() {
+        this.clearTimers();
+        this.selectedFraction = null;
+        this.selectedDecimal = null;
+        this.matchedCount = 0;
+        this.matchesCount.textContent = '0';
+
+        this.fractionCards.querySelectorAll('.match-card').forEach(card => {
+          card.classList.remove('selected', 'matched', 'incorrect');
+          card.setAttribute('aria-pressed', 'false');
+        });
+        this.decimalCards.querySelectorAll('.match-card').forEach(card => {
+          card.classList.remove('selected', 'matched', 'incorrect');
+          card.setAttribute('aria-pressed', 'false');
+        });
+
+        this.feedback.classList.remove('show', 'error');
+        this.lastResult = null;
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const totalAttempts = this.correctCount + this.incorrectCount;
+        const percent = totalAttempts > 0 ? this.correctCount / totalAttempts : 0;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.fraction-decimal-match.perfect',
+            'Perfect matching!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.fraction-decimal-match.great',
+            'Great fraction-decimal matches!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.fraction-decimal-match.good',
+            'Nice work!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.fraction-decimal-match.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateTranslations() {
+        this.updateCardLabels();
+        this.updateProgressLabel();
+
+        if (this.lastResult && this.feedback.classList.contains('show')) {
+          if (this.lastResult.type === 'correct') {
+            this.feedback.textContent = this.getTranslation('feedback.correct', 'Great job!');
+            this.feedback.classList.remove('error');
+          } else {
+            this.feedback.textContent = this.getTranslation('feedback.tryAgain', 'Try again!');
+            this.feedback.classList.add('error');
+          }
+        }
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+      },
+
+      updateStatsMessage() {
+        const totalAttempts = this.correctCount + this.incorrectCount;
+        const percent = totalAttempts > 0 ? this.correctCount / totalAttempts : 0;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.fraction-decimal-match.perfect',
+            'Perfect matching!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.fraction-decimal-match.great',
+            'Great fraction-decimal matches!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.fraction-decimal-match.good',
+            'Nice work!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.fraction-decimal-match.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearTimers();
+        this.currentRound = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+        this.renderProgress();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentRound + 1, this.totalRounds);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalRounds}`);
+      },
+
+      clearTimers() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+        this.clearFeedbackTimeout();
+      },
+
+      clearFeedbackTimeout() {
+        if (this.feedbackTimeout) {
+          clearTimeout(this.feedbackTimeout);
+          this.feedbackTimeout = null;
+        }
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => FractionDecimalMatch.init());
+      } else {
+        FractionDecimalMatch.init();
+      }
+    });
+  </script>
+  <style>
+    /* Fraction to Decimal Match specific styles */
+
+    .match-instruction {
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      margin-bottom: var(--space-4);
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border-radius: var(--radius-lg);
+    }
+
+    .matching-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+      margin-bottom: var(--space-4);
+    }
+
+    .match-column {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .column-header {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-600);
+      text-align: center;
+      padding: var(--space-2);
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border-radius: var(--radius-md);
+      border: 2px solid var(--color-neutral-200);
+    }
+
+    .match-cards {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .match-card {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 3px solid var(--color-neutral-300);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+      min-height: 64px;
+      min-width: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fraction-card {
+      background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+      color: #0f766e;
+      border-color: #14b8a6;
+      box-shadow: 0 3px 0 rgba(13, 148, 136, 0.45);
+    }
+
+    .decimal-card {
+      background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+      color: #6b21a8;
+      border-color: #a855f7;
+      box-shadow: 0 3px 0 rgba(168, 85, 247, 0.35);
+      font-size: var(--text-2xl);
+    }
+
+    .fraction-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .fraction-numerator {
+      border-bottom: 3px solid currentColor;
+      padding-bottom: 4px;
+      min-width: 42px;
+    }
+
+    .fraction-denominator {
+      padding-top: 4px;
+      min-width: 42px;
+    }
+
+    .match-card:hover:not(.matched):not(.disabled) {
+      transform: translateY(-2px);
+    }
+
+    .fraction-card:hover:not(.matched):not(.disabled) {
+      box-shadow: 0 5px 0 rgba(13, 148, 136, 0.45);
+    }
+
+    .decimal-card:hover:not(.matched):not(.disabled) {
+      box-shadow: 0 5px 0 rgba(168, 85, 247, 0.4);
+    }
+
+    .match-card:active:not(.matched):not(.disabled) {
+      transform: translateY(1px);
+    }
+
+    .fraction-card:active:not(.matched):not(.disabled) {
+      box-shadow: 0 2px 0 rgba(13, 148, 136, 0.45);
+    }
+
+    .decimal-card:active:not(.matched):not(.disabled) {
+      box-shadow: 0 2px 0 rgba(168, 85, 247, 0.4);
+    }
+
+    .match-card.selected {
+      transform: scale(1.02);
+      border-color: #8b5cf6;
+      box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.3), 0 3px 0 #7c3aed;
+    }
+
+    .match-card.matched {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+      cursor: default;
+      opacity: 0.85;
+      box-shadow: 0 2px 0 #16a34a;
+      position: relative;
+    }
+
+    .match-card.matched::after {
+      content: '✓';
+      position: absolute;
+      top: 4px;
+      right: 8px;
+      font-size: 1rem;
+      color: #166534;
+      font-weight: bold;
+    }
+
+    .match-card.incorrect {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      border-color: #ef4444;
+      animation: shake 0.3s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      75% { transform: translateX(4px); }
+    }
+
+    .matches-counter {
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      padding: var(--space-2) var(--space-4);
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: var(--radius-md);
+      display: inline-block;
+      margin: 0 auto var(--space-4);
+      width: fit-content;
+    }
+
+    .matches-counter #matches-count {
+      color: var(--color-primary);
+      font-weight: var(--weight-bold);
+    }
+
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    .match-card:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4), 0 3px 0 rgba(37, 99, 235, 0.4);
+    }
+
+    @media (max-width: 900px) {
+      .matching-container {
+        gap: var(--space-4);
+      }
+
+      .match-card {
+        padding: var(--space-2) var(--space-3);
+        min-height: 56px;
+        font-size: var(--text-lg);
+      }
+
+      .decimal-card {
+        font-size: var(--text-xl);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .matching-container {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+
+      .match-column {
+        gap: var(--space-2);
+      }
+
+      .match-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-2);
+      }
+
+      .match-card {
+        padding: var(--space-2);
+        min-height: 52px;
+        font-size: var(--text-base);
+      }
+
+      .decimal-card {
+        font-size: var(--text-lg);
+      }
+
+      .fraction-numerator,
+      .fraction-denominator {
+        min-width: 36px;
+      }
+
+      .match-instruction {
+        font-size: var(--text-base);
+        padding: var(--space-2);
+      }
+
+      .column-header {
+        font-size: var(--text-sm);
+      }
+
+      .matches-counter {
+        font-size: var(--text-base);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .match-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .match-card {
+        padding: var(--space-3);
+        min-height: 56px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

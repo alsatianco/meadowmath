@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Build an Array - Grade 2 Math Activity - Meadow Math">
+  <title>Build an Array - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade2">Grade 2</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🟦</span>
+            <span data-i18n="section.activities.build-array.title">Build an Array</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.build-array.description">Build an array with rows and columns.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Prompt Display -->
+          <div class="prompt-display" id="prompt-display">
+            <span class="prompt-label" data-i18n="section.activities.build-array.makeArray">Make an array:</span>
+            <span class="prompt-text" id="prompt-text">3 rows of 4</span>
+          </div>
+
+          <!-- Array Grid -->
+          <div class="array-container" id="array-container">
+            <div class="array-grid" id="array-grid"></div>
+          </div>
+
+          <!-- Repeated Addition Display -->
+          <div class="addition-display" id="addition-display" style="display: none;">
+            <span class="addition-label" data-i18n="section.activities.build-array.repeatedAddition">Repeated addition:</span>
+            <span class="addition-equation" id="addition-equation"></span>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="submit-container" id="submit-container">
+            <button class="btn-activity btn-primary" id="btn-check" data-i18n="section.activities.build-array.checkArray">Check Array</button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great array building!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Build an Array Activity - Grade 2
+    const BuildArray = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      targetRows: 0,
+      targetCols: 0,
+      gridSize: 5, // 5x5 max grid
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // DOM elements
+      promptText: null,
+      arrayGrid: null,
+      additionDisplay: null,
+      additionEquation: null,
+      submitContainer: null,
+      btnCheck: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.promptText = document.getElementById('prompt-text');
+        this.arrayGrid = document.getElementById('array-grid');
+        this.additionDisplay = document.getElementById('addition-display');
+        this.additionEquation = document.getElementById('addition-equation');
+        this.submitContainer = document.getElementById('submit-container');
+        this.btnCheck = document.getElementById('btn-check');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnCheck.addEventListener('click', () => this.checkAnswer());
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Update dynamic prompt text
+        this.updatePrompt();
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      generateTarget() {
+        // Progressive difficulty: smaller arrays first
+        let minDim, maxDim;
+        if (this.currentQuestion < 3) {
+          minDim = 2; maxDim = 3;
+        } else if (this.currentQuestion < 6) {
+          minDim = 2; maxDim = 4;
+        } else {
+          minDim = 3; maxDim = 5;
+        }
+
+        this.targetRows = this.randomInt(minDim, maxDim);
+        this.targetCols = this.randomInt(minDim, maxDim);
+        this.isAnswered = false;
+      },
+
+      updatePrompt() {
+        const rowsText = window.i18n ? i18n.t('section.activities.build-array.rows') : 'rows';
+        const ofText = window.i18n ? i18n.t('section.activities.build-array.of') : 'of';
+        this.promptText.textContent = `${this.targetRows} ${rowsText} ${ofText} ${this.targetCols}`;
+      },
+
+      startQuestion() {
+        this.generateTarget();
+        this.updatePrompt();
+        this.renderGrid();
+        this.additionDisplay.style.display = 'none';
+        this.submitContainer.style.display = 'flex';
+        this.btnCheck.disabled = false;
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      renderGrid() {
+        this.arrayGrid.innerHTML = '';
+        this.arrayGrid.style.gridTemplateColumns = `repeat(${this.gridSize}, 1fr)`;
+        this.arrayGrid.style.gridTemplateRows = `repeat(${this.gridSize}, 1fr)`;
+
+        for (let row = 0; row < this.gridSize; row++) {
+          for (let col = 0; col < this.gridSize; col++) {
+            const cell = document.createElement('button');
+            cell.className = 'grid-cell';
+            cell.dataset.row = row;
+            cell.dataset.col = col;
+            cell.setAttribute('aria-label', `Row ${row + 1}, Column ${col + 1}`);
+            cell.setAttribute('aria-pressed', 'false');
+            cell.addEventListener('click', () => this.toggleCell(cell, row, col));
+            cell.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.toggleCell(cell, row, col);
+              }
+            });
+            this.arrayGrid.appendChild(cell);
+          }
+        }
+      },
+
+      toggleCell(cell, row, col) {
+        if (this.isAnswered) return;
+
+        cell.classList.toggle('filled');
+        const isFilled = cell.classList.contains('filled');
+        cell.setAttribute('aria-pressed', isFilled ? 'true' : 'false');
+        if (isFilled) {
+          cell.textContent = '🟦';
+        } else {
+          cell.textContent = '';
+        }
+      },
+
+      getFilledCells() {
+        const cells = this.arrayGrid.querySelectorAll('.grid-cell.filled');
+        const positions = [];
+        cells.forEach(cell => {
+          positions.push({
+            row: parseInt(cell.dataset.row),
+            col: parseInt(cell.dataset.col)
+          });
+        });
+        return positions;
+      },
+
+      isValidArray(positions) {
+        if (positions.length === 0) return { valid: false, rows: 0, cols: 0 };
+
+        // Find bounding box
+        const rows = positions.map(p => p.row);
+        const cols = positions.map(p => p.col);
+        const minRow = Math.min(...rows);
+        const maxRow = Math.max(...rows);
+        const minCol = Math.min(...cols);
+        const maxCol = Math.max(...cols);
+
+        const numRows = maxRow - minRow + 1;
+        const numCols = maxCol - minCol + 1;
+
+        // Check if all cells in bounding box are filled
+        const expectedCount = numRows * numCols;
+        if (positions.length !== expectedCount) {
+          return { valid: false, rows: numRows, cols: numCols };
+        }
+
+        // Check for rectangular completeness
+        for (let r = minRow; r <= maxRow; r++) {
+          for (let c = minCol; c <= maxCol; c++) {
+            const found = positions.some(p => p.row === r && p.col === c);
+            if (!found) {
+              return { valid: false, rows: numRows, cols: numCols };
+            }
+          }
+        }
+
+        return { valid: true, rows: numRows, cols: numCols };
+      },
+
+      checkAnswer() {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+        this.btnCheck.disabled = true;
+
+        const positions = this.getFilledCells();
+        const arrayInfo = this.isValidArray(positions);
+
+        const isCorrect = arrayInfo.valid &&
+                          arrayInfo.rows === this.targetRows &&
+                          arrayInfo.cols === this.targetCols;
+
+        // Show repeated addition
+        this.showRepeatedAddition(arrayInfo.rows, arrayInfo.cols, isCorrect);
+
+        if (isCorrect) {
+          this.correctCount++;
+          const total = this.targetRows * this.targetCols;
+          const feedbackText = window.i18n ? i18n.t('feedback.correct') : '✓ Correct!';
+          const totalText = window.i18n
+            ? i18n.t('section.activities.build-array.totalIs').replace('{total}', total)
+            : `Total: ${total}`;
+          this.feedback.textContent = `${feedbackText} ${totalText}`;
+          this.feedback.classList.remove('error');
+
+          // Celebrate filled cells
+          const filledCells = this.arrayGrid.querySelectorAll('.grid-cell.filled');
+          filledCells.forEach((cell, index) => {
+            setTimeout(() => {
+              cell.classList.add('celebrate');
+            }, index * 50);
+          });
+        } else {
+          this.incorrectCount++;
+          const feedbackText = window.i18n ? i18n.t('feedback.tryAgain') : '✗ Not quite!';
+          let explanation;
+          if (!arrayInfo.valid) {
+            explanation = window.i18n
+              ? i18n.t('section.activities.build-array.notRectangle')
+              : 'Make sure to fill a complete rectangle!';
+          } else {
+            const expectedText = window.i18n
+              ? i18n.t('section.activities.build-array.expected')
+                  .replace('{rows}', this.targetRows)
+                  .replace('{cols}', this.targetCols)
+              : `Expected ${this.targetRows} rows of ${this.targetCols}.`;
+            explanation = expectedText;
+          }
+          this.feedback.textContent = `${feedbackText} ${explanation}`;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      showRepeatedAddition(rows, cols, isCorrect) {
+        if (rows > 0 && cols > 0) {
+          // Build equation: cols + cols + ... (rows times)
+          const parts = [];
+          for (let i = 0; i < rows; i++) {
+            parts.push(cols);
+          }
+          const total = rows * cols;
+          const equation = parts.join(' + ') + ' = ' + total;
+          this.additionEquation.textContent = equation;
+          this.additionDisplay.style.display = 'flex';
+          this.additionDisplay.classList.toggle('correct', isCorrect);
+          this.additionDisplay.classList.toggle('incorrect', !isCorrect);
+        }
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        // Clear the grid but keep the same target
+        const cells = this.arrayGrid.querySelectorAll('.grid-cell');
+        cells.forEach(cell => {
+          cell.classList.remove('filled', 'celebrate');
+          cell.textContent = '';
+          cell.setAttribute('aria-pressed', 'false');
+        });
+        this.isAnswered = false;
+        this.btnCheck.disabled = false;
+        this.additionDisplay.style.display = 'none';
+        this.feedback.classList.remove('show', 'error');
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.build-array.perfect') : 'Amazing array building!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🟦';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.build-array.great') : 'Great work with arrays!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.build-array.keepPracticing') : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => BuildArray.init());
+      } else {
+        BuildArray.init();
+      }
+    });
+  </script>
+  <style>
+    /* Build an Array specific styles */
+
+    /* Prompt Display */
+    .prompt-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .prompt-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      color: var(--color-neutral-600);
+    }
+
+    .prompt-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      text-shadow: 0 2px 0 var(--color-primary-dark);
+    }
+
+    /* Array Container */
+    .array-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto var(--space-4);
+    }
+
+    .array-grid {
+      display: grid;
+      gap: 6px;
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border-radius: var(--radius-xl);
+      border: 3px solid #0284c7;
+      width: 100%;
+      aspect-ratio: 1;
+      max-width: 320px;
+    }
+
+    .grid-cell {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      border: 2px solid var(--color-neutral-300);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 24px;
+      box-shadow: 0 2px 0 var(--color-neutral-200);
+    }
+
+    .grid-cell:hover:not(.filled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: #3b82f6;
+      transform: scale(1.05);
+    }
+
+    .grid-cell:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+      border-color: #3b82f6;
+    }
+
+    .grid-cell:focus:not(.filled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    }
+
+    .grid-cell:active {
+      transform: scale(0.95);
+    }
+
+    .grid-cell.filled {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      border-color: #1d4ed8;
+      box-shadow: 0 2px 0 #1e40af;
+      animation: fillPop 0.3s ease;
+    }
+
+    @keyframes fillPop {
+      0% { transform: scale(0.8); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .grid-cell.celebrate {
+      animation: cellCelebrate 0.5s ease;
+    }
+
+    @keyframes cellCelebrate {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.15) rotate(-5deg); }
+      75% { transform: scale(1.15) rotate(5deg); }
+    }
+
+    /* Repeated Addition Display */
+    .addition-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--space-4);
+    }
+
+    .addition-display.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border: 2px solid #22c55e;
+    }
+
+    .addition-display.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid #f59e0b;
+    }
+
+    .addition-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      color: var(--color-neutral-600);
+    }
+
+    .addition-equation {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-800);
+    }
+
+    /* Submit Container */
+    .submit-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+
+    #btn-check {
+      min-width: 180px;
+      padding: var(--space-3) var(--space-6);
+      font-size: var(--text-lg);
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .array-grid {
+        max-width: 280px;
+        padding: var(--space-3);
+        gap: 4px;
+      }
+
+      .grid-cell {
+        font-size: 18px;
+      }
+
+      .prompt-text {
+        font-size: var(--text-2xl);
+      }
+
+      .addition-equation {
+        font-size: var(--text-lg);
+      }
+
+      #btn-check {
+        min-width: 150px;
+        padding: var(--space-2) var(--space-4);
+        font-size: var(--text-base);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .array-grid {
+        max-width: 260px;
+        gap: 3px;
+      }
+
+      .grid-cell {
+        font-size: 16px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

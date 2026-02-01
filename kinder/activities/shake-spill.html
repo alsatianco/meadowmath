@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shake & Spill Counters - Kindergarten Math Activity - Meadow Math">
+  <title>Shake & Spill - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🟥🟨</span>
+            <span data-i18n="section.activities.shake-spill.title">Shake & Spill</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.shake-spill.instruction">Tap to shake and spill the counters!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Total counters display -->
+          <div class="total-display">
+            <span class="total-label" data-i18n="section.activities.shake-spill.total">Total:</span>
+            <span class="total-number" id="total-number">5</span>
+            <span class="total-word" data-i18n="section.activities.shake-spill.counters">counters</span>
+          </div>
+
+          <!-- Cup/Shake area -->
+          <div class="shake-area">
+            <button class="shake-cup" id="shake-cup" tabindex="0">
+              <span class="cup-emoji">🥤</span>
+              <span class="shake-text" data-i18n="section.activities.shake-spill.tapToShake">Tap to shake!</span>
+            </button>
+          </div>
+
+          <!-- Spill area - shows counters after shake -->
+          <div class="spill-area" id="spill-area">
+            <!-- Counters will appear here -->
+          </div>
+
+          <!-- Question - how many of each? -->
+          <div class="question-area hidden" id="question-area">
+            <p class="question-text" data-i18n="section.activities.shake-spill.howMany">How many of each color?</p>
+
+            <div class="color-counts">
+              <div class="color-group red-group">
+                <span class="color-dot red-dot">🔴</span>
+                <div class="count-choices" id="red-choices">
+                  <!-- Buttons generated by JS -->
+                </div>
+              </div>
+
+              <span class="plus-sign">+</span>
+
+              <div class="color-group yellow-group">
+                <span class="color-dot yellow-dot">🟡</span>
+                <div class="count-choices" id="yellow-choices">
+                  <!-- Buttons generated by JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Equation result -->
+          <div class="equation-display hidden" id="equation-display"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Shake & Spill Styles */
+    .total-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .total-label, .total-word {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+    }
+
+    .total-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #7c3aed;
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      padding: var(--space-1) var(--space-4);
+      border-radius: var(--radius-xl);
+      border: 3px solid #a78bfa;
+    }
+
+    /* Shake cup */
+    .shake-area {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .shake-cup {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 4px solid #f59e0b;
+      border-radius: var(--radius-2xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 #d97706, 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .shake-cup:hover:not(:disabled) {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 0 #d97706, 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .shake-cup:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .shake-cup.shaking {
+      animation: shake 0.5s ease-in-out;
+    }
+
+    .shake-cup:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .cup-emoji {
+      font-size: 64px;
+    }
+
+    .shake-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #92400e;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-15deg); }
+      75% { transform: rotate(15deg); }
+    }
+
+    /* Spill area */
+    .spill-area {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-2);
+      min-height: 60px;
+      margin-bottom: var(--space-4);
+      padding: var(--space-3);
+      background: #f8fafc;
+      border-radius: var(--radius-xl);
+      border: 2px dashed #e2e8f0;
+    }
+
+    .spilled-counter {
+      font-size: 32px;
+      animation: spill 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+    }
+
+    @keyframes spill {
+      from {
+        opacity: 0;
+        transform: translateY(-30px) rotate(180deg);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) rotate(0);
+      }
+    }
+
+    /* Question area */
+    .question-area {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .question-area.hidden {
+      display: none;
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-4);
+    }
+
+    .color-counts {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .color-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .color-dot {
+      font-size: 36px;
+    }
+
+    .plus-sign {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-400);
+    }
+
+    .count-choices {
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    .count-btn {
+      width: 55px;
+      height: 55px;
+      border: 3px solid #e2e8f0;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 0 #cbd5e1;
+    }
+
+    .count-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      border-color: #3b82f6;
+    }
+
+    .count-btn:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .count-btn.selected {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: #3b82f6;
+      color: #1d4ed8;
+    }
+
+    .count-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      color: #166534;
+      animation: correctPop 0.3s ease;
+    }
+
+    .count-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      color: #991b1b;
+      animation: shake 0.3s ease;
+    }
+
+    .count-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    @keyframes correctPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    /* Equation display */
+    .equation-display {
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary-600);
+      margin-bottom: var(--space-3);
+    }
+
+    .equation-display.hidden {
+      display: none;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .cup-emoji {
+        font-size: 48px;
+      }
+
+      .spilled-counter {
+        font-size: 28px;
+      }
+
+      .count-btn {
+        width: 48px;
+        height: 48px;
+        font-size: var(--text-lg);
+      }
+
+      .color-dot {
+        font-size: 28px;
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Shake & Spill Activity
+    const ShakeSpill = {
+      // Game state
+      round: 1,
+      maxRounds: 8,
+      total: 5,
+      redCount: 0,
+      yellowCount: 0,
+      selectedRed: null,
+      selectedYellow: null,
+      hasSpilled: false,
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+
+      // DOM elements
+      progress: null,
+      totalNumber: null,
+      shakeCup: null,
+      spillArea: null,
+      questionArea: null,
+      redChoices: null,
+      yellowChoices: null,
+      equationDisplay: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.totalNumber = document.getElementById('total-number');
+        this.shakeCup = document.getElementById('shake-cup');
+        this.spillArea = document.getElementById('spill-area');
+        this.questionArea = document.getElementById('question-area');
+        this.redChoices = document.getElementById('red-choices');
+        this.yellowChoices = document.getElementById('yellow-choices');
+        this.equationDisplay = document.getElementById('equation-display');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.shakeCup.addEventListener('click', () => this.shake());
+        this.shakeCup.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.shake();
+          }
+        });
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Get total based on round
+       */
+      getTotal() {
+        // Progressive: 5, then 6-7, then 8-10
+        if (this.round <= 3) {
+          return 5;
+        } else if (this.round <= 5) {
+          return randomInt(6, 7);
+        } else {
+          return randomInt(8, 10);
+        }
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasSpilled = false;
+        this.hasAnswered = false;
+        this.selectedRed = null;
+        this.selectedYellow = null;
+
+        this.total = this.getTotal();
+        this.totalNumber.textContent = this.total;
+
+        // Reset UI
+        this.shakeCup.disabled = false;
+        this.shakeCup.classList.remove('shaking');
+        this.spillArea.innerHTML = '';
+        this.questionArea.classList.add('hidden');
+        this.equationDisplay.classList.add('hidden');
+        this.feedback.classList.remove('show', 'error');
+
+        this.renderProgress();
+      },
+
+      /**
+       * Shake and spill
+       */
+      shake() {
+        if (this.hasSpilled) return;
+        this.hasSpilled = true;
+        this.shakeCup.disabled = true;
+
+        // Animate shake
+        this.shakeCup.classList.add('shaking');
+
+        // Determine random split
+        this.redCount = randomInt(0, this.total);
+        this.yellowCount = this.total - this.redCount;
+
+        // Spill after animation
+        setTimeout(() => {
+          this.shakeCup.classList.remove('shaking');
+          this.spillCounters();
+        }, 500);
+      },
+
+      /**
+       * Spill counters visually
+       */
+      spillCounters() {
+        this.spillArea.innerHTML = '';
+
+        // Create red counters
+        for (let i = 0; i < this.redCount; i++) {
+          const counter = document.createElement('span');
+          counter.className = 'spilled-counter';
+          counter.textContent = '🔴';
+          counter.style.animationDelay = `${i * 0.05}s`;
+          this.spillArea.appendChild(counter);
+        }
+
+        // Create yellow counters
+        for (let i = 0; i < this.yellowCount; i++) {
+          const counter = document.createElement('span');
+          counter.className = 'spilled-counter';
+          counter.textContent = '🟡';
+          counter.style.animationDelay = `${(this.redCount + i) * 0.05}s`;
+          this.spillArea.appendChild(counter);
+        }
+
+        // Show question after spill animation
+        setTimeout(() => {
+          this.showQuestion();
+        }, this.total * 50 + 300);
+      },
+
+      /**
+       * Show question area
+       */
+      showQuestion() {
+        this.questionArea.classList.remove('hidden');
+        this.renderChoices();
+      },
+
+      /**
+       * Render choice buttons
+       */
+      renderChoices() {
+        this.redChoices.innerHTML = '';
+        this.yellowChoices.innerHTML = '';
+
+        // Create buttons 0 to total for each color
+        for (let i = 0; i <= this.total; i++) {
+          // Red button
+          const redBtn = document.createElement('button');
+          redBtn.className = 'count-btn';
+          redBtn.textContent = i;
+          redBtn.dataset.value = i;
+          redBtn.setAttribute('tabindex', '0');
+          redBtn.addEventListener('click', () => this.selectRed(i, redBtn));
+          redBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.selectRed(i, redBtn);
+            }
+          });
+          this.redChoices.appendChild(redBtn);
+
+          // Yellow button
+          const yellowBtn = document.createElement('button');
+          yellowBtn.className = 'count-btn';
+          yellowBtn.textContent = i;
+          yellowBtn.dataset.value = i;
+          yellowBtn.setAttribute('tabindex', '0');
+          yellowBtn.addEventListener('click', () => this.selectYellow(i, yellowBtn));
+          yellowBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.selectYellow(i, yellowBtn);
+            }
+          });
+          this.yellowChoices.appendChild(yellowBtn);
+        }
+      },
+
+      /**
+       * Select red count
+       */
+      selectRed(value, btn) {
+        if (this.hasAnswered) return;
+
+        // Deselect previous
+        this.redChoices.querySelectorAll('.count-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        this.selectedRed = value;
+
+        this.checkIfBothSelected();
+      },
+
+      /**
+       * Select yellow count
+       */
+      selectYellow(value, btn) {
+        if (this.hasAnswered) return;
+
+        // Deselect previous
+        this.yellowChoices.querySelectorAll('.count-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        this.selectedYellow = value;
+
+        this.checkIfBothSelected();
+      },
+
+      /**
+       * Check if both colors selected
+       */
+      checkIfBothSelected() {
+        if (this.selectedRed === null || this.selectedYellow === null) return;
+        this.checkAnswer();
+      },
+
+      /**
+       * Check the answer
+       */
+      checkAnswer() {
+        this.hasAnswered = true;
+
+        // Disable all buttons
+        this.redChoices.querySelectorAll('.count-btn').forEach(b => b.disabled = true);
+        this.yellowChoices.querySelectorAll('.count-btn').forEach(b => b.disabled = true);
+
+        const isCorrect = this.selectedRed === this.redCount && this.selectedYellow === this.yellowCount;
+
+        // Show equation
+        this.equationDisplay.textContent = `🔴 ${this.redCount} + 🟡 ${this.yellowCount} = ${this.total}`;
+        this.equationDisplay.classList.remove('hidden');
+
+        // Mark buttons
+        this.redChoices.querySelectorAll('.count-btn').forEach(b => {
+          if (parseInt(b.dataset.value) === this.redCount) {
+            b.classList.add('correct');
+          } else if (b.classList.contains('selected')) {
+            b.classList.add('incorrect');
+          }
+        });
+
+        this.yellowChoices.querySelectorAll('.count-btn').forEach(b => {
+          if (parseInt(b.dataset.value) === this.yellowCount) {
+            b.classList.add('correct');
+          } else if (b.classList.contains('selected')) {
+            b.classList.add('incorrect');
+          }
+        });
+
+        if (isCorrect) {
+          const msg = i18n.t('section.activities.shake-spill.correct') || '{{red}} and {{yellow}} make {{total}}!';
+          this.feedback.textContent = msg
+            .replace('{{red}}', this.redCount)
+            .replace('{{yellow}}', this.yellowCount)
+            .replace('{{total}}', this.total);
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          if (typeof celebrate === 'function') {
+            celebrate(this.spillArea);
+          }
+        } else {
+          const msg = i18n.t('section.activities.shake-spill.incorrect') || 'Look! {{red}} red + {{yellow}} yellow = {{total}}';
+          this.feedback.textContent = msg
+            .replace('{{red}}', this.redCount)
+            .replace('{{yellow}}', this.yellowCount)
+            .replace('{{total}}', this.total);
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.shake-spill.perfect') || "Shake & Spill Star!";
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.shake-spill.great') || 'Great counting!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.shake-spill.keepPracticing') || 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      ShakeSpill.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

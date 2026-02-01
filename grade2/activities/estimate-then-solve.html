@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Estimate then Solve - Grade 2 Math Activity - Meadow Math">
+  <title>Estimate then Solve - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade2">Grade 2</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🔎</span>
+            <span data-i18n="section.activities.estimate-then-solve.title">Estimate then Solve</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.estimate-then-solve.description">Round to estimate, then solve the exact answer.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Problem Display -->
+          <div class="problem-card" id="problem-card">
+            <div class="problem-equation">
+              <span class="num1" id="num1-display">47</span>
+              <span class="operator" id="operator-display">+</span>
+              <span class="num2" id="num2-display">36</span>
+            </div>
+          </div>
+
+          <!-- Step 1: Estimate -->
+          <div class="step-section" id="step-estimate">
+            <div class="step-header">
+              <span class="step-badge">1</span>
+              <span class="step-title" data-i18n="section.activities.estimate-then-solve.step1">First, estimate!</span>
+            </div>
+            <p class="step-instruction" id="estimate-instruction">
+              <span data-i18n="section.activities.estimate-then-solve.roundToNearest">Round to the nearest 10:</span>
+            </p>
+            <div class="rounding-display" id="rounding-display">
+              <span class="rounded-num" id="rounded1">50</span>
+              <span class="operator">+</span>
+              <span class="rounded-num" id="rounded2">40</span>
+              <span class="equals">=</span>
+              <span class="estimate-placeholder">?</span>
+            </div>
+            <p class="step-question" data-i18n="section.activities.estimate-then-solve.whatEstimate">What is your estimate?</p>
+            <div class="choice-container" id="estimate-choices"></div>
+          </div>
+
+          <!-- Step 2: Exact Answer -->
+          <div class="step-section hidden" id="step-exact">
+            <div class="step-header">
+              <span class="step-badge">2</span>
+              <span class="step-title" data-i18n="section.activities.estimate-then-solve.step2">Now, find the exact answer!</span>
+            </div>
+            <div class="estimate-reminder" id="estimate-reminder">
+              <span data-i18n="section.activities.estimate-then-solve.yourEstimate">Your estimate:</span>
+              <span class="estimate-value" id="estimate-value">90</span>
+            </div>
+            <p class="step-question" data-i18n="section.activities.estimate-then-solve.whatExact">What is the exact answer?</p>
+            <div class="choice-container" id="exact-choices"></div>
+          </div>
+
+          <!-- Comparison Result -->
+          <div class="comparison-section hidden" id="comparison-section">
+            <div class="comparison-card">
+              <div class="comparison-row">
+                <span class="comparison-label" data-i18n="section.activities.estimate-then-solve.estimate">Estimate:</span>
+                <span class="comparison-value" id="final-estimate">90</span>
+              </div>
+              <div class="comparison-row">
+                <span class="comparison-label" data-i18n="section.activities.estimate-then-solve.exact">Exact:</span>
+                <span class="comparison-value highlight" id="final-exact">83</span>
+              </div>
+              <div class="comparison-message" id="comparison-message"></div>
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Estimate then Solve Activity - Grade 2
+    const EstimateThenSolve = {
+      currentQuestion: 0,
+      totalQuestions: 6,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+
+      // Current problem state
+      num1: 0,
+      num2: 0,
+      isAddition: true,
+      rounded1: 0,
+      rounded2: 0,
+      correctEstimate: 0,
+      correctExact: 0,
+      userEstimate: null,
+      currentStep: 'estimate', // 'estimate' or 'exact'
+
+      // DOM elements
+      num1Display: null,
+      num2Display: null,
+      operatorDisplay: null,
+      rounded1El: null,
+      rounded2El: null,
+      roundingDisplay: null,
+      stepEstimate: null,
+      stepExact: null,
+      estimateChoices: null,
+      exactChoices: null,
+      estimateValue: null,
+      estimateReminder: null,
+      comparisonSection: null,
+      finalEstimate: null,
+      finalExact: null,
+      comparisonMessage: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.num1Display = document.getElementById('num1-display');
+        this.num2Display = document.getElementById('num2-display');
+        this.operatorDisplay = document.getElementById('operator-display');
+        this.rounded1El = document.getElementById('rounded1');
+        this.rounded2El = document.getElementById('rounded2');
+        this.roundingDisplay = document.getElementById('rounding-display');
+        this.stepEstimate = document.getElementById('step-estimate');
+        this.stepExact = document.getElementById('step-exact');
+        this.estimateChoices = document.getElementById('estimate-choices');
+        this.exactChoices = document.getElementById('exact-choices');
+        this.estimateValue = document.getElementById('estimate-value');
+        this.estimateReminder = document.getElementById('estimate-reminder');
+        this.comparisonSection = document.getElementById('comparison-section');
+        this.finalEstimate = document.getElementById('final-estimate');
+        this.finalExact = document.getElementById('final-exact');
+        this.comparisonMessage = document.getElementById('comparison-message');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      },
+
+      roundToNearest10(n) {
+        return Math.round(n / 10) * 10;
+      },
+
+      updateTranslations() {
+        // Refresh comparison message if visible
+        if (!this.comparisonSection.classList.contains('hidden')) {
+          this.showComparisonMessage();
+        }
+      },
+
+      generateProblem() {
+        // Mix of addition and subtraction (more addition)
+        this.isAddition = this.currentQuestion < 4 || Math.random() < 0.7;
+
+        // Generate numbers that will have interesting rounding
+        // We want numbers that round to different values
+        if (this.isAddition) {
+          // Addition: numbers that sum within 100
+          this.num1 = this.randomInt(22, 58);
+          this.num2 = this.randomInt(15, 45);
+          // Ensure sum is within 99
+          if (this.num1 + this.num2 > 99) {
+            this.num2 = 99 - this.num1 - this.randomInt(0, 10);
+          }
+          this.correctExact = this.num1 + this.num2;
+        } else {
+          // Subtraction: ensure result is positive
+          this.num1 = this.randomInt(45, 85);
+          this.num2 = this.randomInt(15, 40);
+          // Ensure result is positive
+          if (this.num2 >= this.num1) {
+            this.num2 = this.randomInt(10, this.num1 - 10);
+          }
+          this.correctExact = this.num1 - this.num2;
+        }
+
+        // Calculate rounded values and estimate
+        this.rounded1 = this.roundToNearest10(this.num1);
+        this.rounded2 = this.roundToNearest10(this.num2);
+        this.correctEstimate = this.isAddition
+          ? this.rounded1 + this.rounded2
+          : this.rounded1 - this.rounded2;
+
+        this.userEstimate = null;
+        this.currentStep = 'estimate';
+      },
+
+      startQuestion() {
+        this.generateProblem();
+        this.renderProblem();
+        this.resetUI();
+        this.renderEstimateChoices();
+        this.renderProgress();
+      },
+
+      renderProblem() {
+        this.num1Display.textContent = this.num1;
+        this.num2Display.textContent = this.num2;
+        this.operatorDisplay.textContent = this.isAddition ? '+' : '−';
+
+        // Show rounded values
+        this.rounded1El.textContent = this.rounded1;
+        this.rounded2El.textContent = this.rounded2;
+
+        // Update operator in rounding display
+        const roundingOperator = this.roundingDisplay.querySelector('.operator');
+        if (roundingOperator) {
+          roundingOperator.textContent = this.isAddition ? '+' : '−';
+        }
+      },
+
+      resetUI() {
+        // Show estimate step, hide exact step
+        this.stepEstimate.classList.remove('hidden');
+        this.stepExact.classList.add('hidden');
+        this.comparisonSection.classList.add('hidden');
+
+        // Reset choices
+        this.estimateChoices.innerHTML = '';
+        this.exactChoices.innerHTML = '';
+
+        // Hide feedback
+        this.feedback.classList.remove('show', 'error');
+
+        // Reset placeholder
+        const placeholder = this.roundingDisplay.querySelector('.estimate-placeholder');
+        if (placeholder) {
+          placeholder.textContent = '?';
+          placeholder.classList.remove('answered');
+        }
+      },
+
+      renderEstimateChoices() {
+        this.estimateChoices.innerHTML = '';
+
+        const choices = [this.correctEstimate];
+
+        // Generate distractors for estimate
+        const distractors = [];
+
+        // Wrong rounding (one number not rounded)
+        distractors.push(this.isAddition ? this.num1 + this.rounded2 : this.num1 - this.rounded2);
+        distractors.push(this.isAddition ? this.rounded1 + this.num2 : this.rounded1 - this.num2);
+
+        // Off by 10
+        distractors.push(this.correctEstimate + 10);
+        if (this.correctEstimate > 10) distractors.push(this.correctEstimate - 10);
+
+        // Round to wrong tens
+        const wrongRound1 = this.rounded1 + (Math.random() < 0.5 ? 10 : -10);
+        if (wrongRound1 > 0) {
+          distractors.push(this.isAddition ? wrongRound1 + this.rounded2 : wrongRound1 - this.rounded2);
+        }
+
+        // Filter valid unique distractors
+        const validDistractors = distractors.filter(d =>
+          d > 0 && d <= 150 && !choices.includes(d) && d !== this.correctEstimate
+        );
+        this.shuffleArray(validDistractors);
+        choices.push(...validDistractors.slice(0, 3));
+
+        // Fill remaining with nearby values
+        while (choices.length < 4) {
+          const d = this.randomInt(
+            Math.max(10, this.correctEstimate - 30),
+            Math.min(150, this.correctEstimate + 30)
+          );
+          // Estimates should be multiples of 10
+          const rounded = Math.round(d / 10) * 10;
+          if (!choices.includes(rounded) && rounded > 0) {
+            choices.push(rounded);
+          }
+        }
+
+        this.shuffleArray(choices);
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.textContent = choice;
+          btn.dataset.value = choice;
+          btn.setAttribute('aria-label', `Estimate: ${choice}`);
+          btn.addEventListener('click', () => this.selectEstimate(choice));
+          this.estimateChoices.appendChild(btn);
+        });
+      },
+
+      selectEstimate(value) {
+        if (this.currentStep !== 'estimate') return;
+
+        this.userEstimate = value;
+        const isCorrect = value === this.correctEstimate;
+
+        // Highlight selection
+        const buttons = this.estimateChoices.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => {
+          btn.disabled = true;
+          const btnValue = parseInt(btn.dataset.value);
+          if (btnValue === this.correctEstimate) {
+            btn.classList.add('correct');
+          } else if (btnValue === value && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        // Update placeholder with answer
+        const placeholder = this.roundingDisplay.querySelector('.estimate-placeholder');
+        if (placeholder) {
+          placeholder.textContent = this.correctEstimate;
+          placeholder.classList.add('answered');
+        }
+
+        // Show brief feedback
+        if (isCorrect) {
+          const msg = window.i18n
+            ? i18n.t('section.activities.estimate-then-solve.estimateCorrect')
+            : 'Great estimate!';
+          this.feedback.textContent = '✓ ' + msg;
+          this.feedback.classList.remove('error');
+        } else {
+          const opSymbol = this.isAddition ? '+' : '−';
+          const msg = window.i18n
+            ? i18n.t('section.activities.estimate-then-solve.estimateWrong')
+                .replace('{r1}', this.rounded1)
+                .replace('{op}', opSymbol)
+                .replace('{r2}', this.rounded2)
+                .replace('{estimate}', this.correctEstimate)
+            : `${this.rounded1} ${opSymbol} ${this.rounded2} = ${this.correctEstimate}`;
+          this.feedback.textContent = msg;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        // Move to exact step after delay
+        setTimeout(() => {
+          this.currentStep = 'exact';
+          this.showExactStep();
+        }, 1200);
+      },
+
+      showExactStep() {
+        this.stepEstimate.classList.add('completed');
+        this.stepExact.classList.remove('hidden');
+        this.estimateValue.textContent = this.userEstimate;
+        this.feedback.classList.remove('show');
+        this.renderExactChoices();
+      },
+
+      renderExactChoices() {
+        this.exactChoices.innerHTML = '';
+
+        const choices = [this.correctExact];
+
+        // Generate distractors for exact answer
+        const distractors = [];
+
+        // The estimate itself (if different from exact)
+        if (this.correctEstimate !== this.correctExact) {
+          distractors.push(this.correctEstimate);
+        }
+
+        // Off by 1
+        distractors.push(this.correctExact + 1);
+        if (this.correctExact > 1) distractors.push(this.correctExact - 1);
+
+        // Off by 10
+        distractors.push(this.correctExact + 10);
+        if (this.correctExact > 10) distractors.push(this.correctExact - 10);
+
+        // Common mistakes: forgot to carry/borrow
+        if (this.isAddition) {
+          const o1 = this.num1 % 10;
+          const o2 = this.num2 % 10;
+          if (o1 + o2 >= 10) {
+            distractors.push(this.correctExact - 10); // Forgot to carry
+          }
+        } else {
+          const o1 = this.num1 % 10;
+          const o2 = this.num2 % 10;
+          if (o1 < o2) {
+            distractors.push(this.correctExact + 10); // Forgot to borrow
+          }
+        }
+
+        // Digit swap
+        const tens = Math.floor(this.correctExact / 10);
+        const ones = this.correctExact % 10;
+        if (tens !== ones && ones * 10 + tens > 0) {
+          distractors.push(ones * 10 + tens);
+        }
+
+        // Filter valid unique distractors
+        const validDistractors = distractors.filter(d =>
+          d > 0 && d <= 99 && !choices.includes(d)
+        );
+        this.shuffleArray(validDistractors);
+        choices.push(...validDistractors.slice(0, 3));
+
+        // Fill remaining
+        while (choices.length < 4) {
+          const d = this.randomInt(
+            Math.max(1, this.correctExact - 15),
+            Math.min(99, this.correctExact + 15)
+          );
+          if (!choices.includes(d) && d > 0) choices.push(d);
+        }
+
+        this.shuffleArray(choices);
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.textContent = choice;
+          btn.dataset.value = choice;
+          btn.setAttribute('aria-label', `Answer: ${choice}`);
+          btn.addEventListener('click', () => this.selectExact(choice));
+          this.exactChoices.appendChild(btn);
+        });
+
+        // Focus first choice
+        const firstBtn = this.exactChoices.querySelector('.choice-btn');
+        if (firstBtn) {
+          requestAnimationFrame(() => firstBtn.focus());
+        }
+      },
+
+      selectExact(value) {
+        if (this.currentStep !== 'exact') return;
+        this.currentStep = 'done';
+
+        const isCorrect = value === this.correctExact;
+
+        // Highlight selection
+        const buttons = this.exactChoices.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => {
+          btn.disabled = true;
+          const btnValue = parseInt(btn.dataset.value);
+          if (btnValue === this.correctExact) {
+            btn.classList.add('correct');
+          } else if (btnValue === value && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        // Update scores
+        if (isCorrect) {
+          this.correctCount++;
+        } else {
+          this.incorrectCount++;
+        }
+
+        // Show comparison
+        this.showComparison(isCorrect);
+
+        // Auto-advance
+        setTimeout(() => {
+          this.advanceQuestion();
+        }, this.autoAdvanceDelay + 500);
+      },
+
+      showComparison(isCorrect) {
+        this.stepExact.classList.add('completed');
+        this.comparisonSection.classList.remove('hidden');
+        this.finalEstimate.textContent = this.userEstimate;
+        this.finalExact.textContent = this.correctExact;
+
+        this.showComparisonMessage();
+
+        // Show feedback
+        const opSymbol = this.isAddition ? '+' : '−';
+        if (isCorrect) {
+          const msg = window.i18n
+            ? i18n.t('section.activities.estimate-then-solve.correct')
+                .replace('{a}', this.num1)
+                .replace('{op}', opSymbol)
+                .replace('{b}', this.num2)
+                .replace('{result}', this.correctExact)
+            : `✓ ${this.num1} ${opSymbol} ${this.num2} = ${this.correctExact}`;
+          this.feedback.textContent = msg;
+          this.feedback.classList.remove('error');
+        } else {
+          const msg = window.i18n
+            ? i18n.t('section.activities.estimate-then-solve.wrong')
+                .replace('{a}', this.num1)
+                .replace('{op}', opSymbol)
+                .replace('{b}', this.num2)
+                .replace('{result}', this.correctExact)
+            : `The answer is ${this.num1} ${opSymbol} ${this.num2} = ${this.correctExact}`;
+          this.feedback.textContent = msg;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+      },
+
+      showComparisonMessage() {
+        const diff = Math.abs(this.userEstimate - this.correctExact);
+        let messageKey, fallback;
+
+        if (diff <= 5) {
+          messageKey = 'veryClose';
+          fallback = 'Your estimate was very close!';
+        } else if (diff <= 15) {
+          messageKey = 'prettyClose';
+          fallback = 'Your estimate was pretty close!';
+        } else {
+          messageKey = 'offBy';
+          fallback = `Your estimate was off by ${diff}.`;
+        }
+
+        let msg = window.i18n
+          ? i18n.t(`section.activities.estimate-then-solve.${messageKey}`)
+          : fallback;
+
+        if (messageKey === 'offBy') {
+          msg = msg.replace('{diff}', diff);
+        }
+
+        this.comparisonMessage.textContent = msg;
+
+        // Add appropriate icon
+        if (diff <= 5) {
+          this.comparisonMessage.innerHTML = '🎯 ' + msg;
+        } else if (diff <= 15) {
+          this.comparisonMessage.innerHTML = '👍 ' + msg;
+        } else {
+          this.comparisonMessage.innerHTML = '💡 ' + msg;
+        }
+      },
+
+      advanceQuestion() {
+        if (this.currentQuestion < this.totalQuestions - 1) {
+          this.currentQuestion++;
+          this.startQuestion();
+        } else {
+          this.showStats();
+        }
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.estimate-then-solve.perfect')
+            : 'Amazing estimation skills!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🔎';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.estimate-then-solve.great')
+            : 'Great estimating and solving!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.estimate-then-solve.keepPracticing')
+            : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          let status = 'pending';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+            status = 'completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+            status = 'current';
+          }
+          html += `<div class="${className}" role="listitem" aria-label="Question ${i + 1} of ${this.totalQuestions}: ${status}"></div>`;
+        }
+        this.progress.setAttribute('role', 'list');
+        this.progress.setAttribute('aria-label', 'Progress');
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => EstimateThenSolve.init());
+      } else {
+        EstimateThenSolve.init();
+      }
+    });
+  </script>
+  <style>
+    /* Estimate then Solve specific styles */
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Problem Card */
+    .problem-card {
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 3px solid #0ea5e9;
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      margin: var(--space-3) auto;
+      max-width: 350px;
+      box-shadow: 0 4px 0 #0284c7;
+      text-align: center;
+    }
+
+    .problem-equation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+    }
+
+    .problem-equation .num1,
+    .problem-equation .num2 {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      padding: var(--space-2) var(--space-4);
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--color-neutral-300);
+      min-width: 70px;
+    }
+
+    .problem-equation .operator {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+    }
+
+    /* Step Sections */
+    .step-section {
+      margin: var(--space-4) auto;
+      max-width: 450px;
+      text-align: center;
+      transition: opacity 0.3s ease;
+    }
+
+    .step-section.hidden {
+      display: none;
+    }
+
+    .step-section.completed {
+      opacity: 0.7;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+    }
+
+    .step-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--color-primary), #2563eb);
+      color: white;
+      border-radius: 50%;
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+    }
+
+    .step-title {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+    }
+
+    .step-instruction {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      color: var(--color-neutral-600);
+      margin-bottom: var(--space-2);
+    }
+
+    .step-question {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      margin: var(--space-3) 0;
+    }
+
+    /* Rounding Display */
+    .rounding-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid #f59e0b;
+      border-radius: var(--radius-xl);
+      margin: var(--space-3) auto;
+      max-width: 380px;
+    }
+
+    .rounded-num {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+      padding: var(--space-1) var(--space-3);
+      background: white;
+      border-radius: var(--radius-md);
+      border: 2px solid #f59e0b;
+      min-width: 50px;
+      text-align: center;
+    }
+
+    .rounding-display .operator,
+    .rounding-display .equals {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #b45309;
+    }
+
+    .estimate-placeholder {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+      padding: var(--space-1) var(--space-3);
+      background: linear-gradient(135deg, #fed7aa, #fdba74);
+      border: 3px dashed #ea580c;
+      border-radius: var(--radius-md);
+      min-width: 50px;
+      text-align: center;
+    }
+
+    .estimate-placeholder.answered {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border: 3px solid #16a34a;
+      color: #166534;
+    }
+
+    /* Estimate Reminder */
+    .estimate-reminder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border: 2px solid #3b82f6;
+      border-radius: var(--radius-lg);
+      margin: var(--space-2) auto var(--space-3);
+      max-width: 200px;
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      color: var(--color-neutral-600);
+    }
+
+    .estimate-value {
+      font-weight: var(--weight-bold);
+      color: #1d4ed8;
+      font-size: var(--text-lg);
+    }
+
+    /* Choice Container */
+    .choice-container {
+      display: grid;
+      grid-template-columns: repeat(2, 80px);
+      justify-content: center;
+      gap: var(--space-4);
+      margin: var(--space-3) auto;
+    }
+
+    .choice-btn {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 3px solid var(--color-primary-light);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 var(--color-primary-light);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--color-primary-light);
+    }
+
+    .choice-btn:focus {
+      outline: none;
+      box-shadow: 0 4px 0 var(--color-primary-light), 0 0 0 4px rgba(59, 130, 246, 0.5);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 var(--color-primary-light);
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      color: #166534;
+      animation: pop 0.4s ease;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    /* Comparison Section */
+    .comparison-section {
+      margin: var(--space-4) auto;
+      max-width: 300px;
+    }
+
+    .comparison-card {
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 3px solid #22c55e;
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      box-shadow: 0 4px 0 #16a34a;
+    }
+
+    .comparison-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-2);
+      margin-bottom: var(--space-2);
+    }
+
+    .comparison-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      color: var(--color-neutral-600);
+    }
+
+    .comparison-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      padding: var(--space-1) var(--space-3);
+      background: white;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--color-neutral-300);
+    }
+
+    .comparison-value.highlight {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      color: #166534;
+    }
+
+    .comparison-message {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-medium);
+      color: #166534;
+      text-align: center;
+      margin-top: var(--space-2);
+      padding: var(--space-2);
+      background: white;
+      border-radius: var(--radius-md);
+    }
+
+    /* Feedback at bottom */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .problem-card {
+        padding: var(--space-3);
+        max-width: 300px;
+      }
+
+      .problem-equation .num1,
+      .problem-equation .num2 {
+        font-size: var(--text-3xl);
+        padding: var(--space-1) var(--space-3);
+        min-width: 55px;
+      }
+
+      .problem-equation .operator {
+        font-size: var(--text-3xl);
+      }
+
+      .step-title {
+        font-size: var(--text-lg);
+      }
+
+      .rounding-display {
+        gap: var(--space-1);
+        padding: var(--space-2);
+        max-width: 320px;
+      }
+
+      .rounded-num {
+        font-size: var(--text-xl);
+        padding: var(--space-1) var(--space-2);
+        min-width: 40px;
+      }
+
+      .rounding-display .operator,
+      .rounding-display .equals {
+        font-size: var(--text-xl);
+      }
+
+      .estimate-placeholder {
+        font-size: var(--text-xl);
+        min-width: 40px;
+      }
+
+      .choice-container {
+        grid-template-columns: repeat(2, 70px);
+        gap: var(--space-3);
+      }
+
+      .choice-btn {
+        width: 70px;
+        height: 70px;
+        font-size: var(--text-xl);
+      }
+    }
+
+    @media (max-width: 400px) {
+      .problem-card {
+        padding: var(--space-2);
+        max-width: 280px;
+      }
+
+      .problem-equation .num1,
+      .problem-equation .num2 {
+        font-size: var(--text-2xl);
+        min-width: 45px;
+      }
+
+      .problem-equation .operator {
+        font-size: var(--text-2xl);
+      }
+
+      .problem-equation {
+        gap: var(--space-2);
+      }
+
+      .rounding-display {
+        max-width: 280px;
+      }
+
+      .rounded-num {
+        font-size: var(--text-lg);
+        min-width: 35px;
+      }
+
+      .rounding-display .operator,
+      .rounding-display .equals {
+        font-size: var(--text-lg);
+      }
+
+      .estimate-placeholder {
+        font-size: var(--text-lg);
+        min-width: 35px;
+      }
+
+      .choice-container {
+        grid-template-columns: repeat(2, 60px);
+      }
+
+      .choice-btn {
+        width: 60px;
+        height: 60px;
+        font-size: var(--text-lg);
+      }
+
+      .step-badge {
+        width: 28px;
+        height: 28px;
+        font-size: var(--text-base);
+      }
+
+      .step-title {
+        font-size: var(--text-base);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Build and Break Towers - Pre-K Math Activity - Meadow Math">
   <title>Build & Break Towers - Meadow Math</title>
-  
+
   <!-- CSS Files -->
   <link rel="stylesheet" href="../../css/reset.css">
   <link rel="stylesheet" href="../../css/variables.css">
@@ -45,7 +45,7 @@
           <span class="nav-item-icon">🪺</span>
           <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
         </a>
-        <a href="../../kindergarten/index.html" class="nav-item">
+        <a href="../../kinder/index.html" class="nav-item">
           <span class="nav-item-icon">🌱</span>
           <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
         </a>
@@ -68,6 +68,17 @@
         <a href="../../grade5/index.html" class="nav-item">
           <span class="nav-item-icon">➗</span>
           <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
         </a>
       </nav>
 
@@ -103,7 +114,7 @@
             <div class="build-instruction" id="build-instruction">
               <span id="build-instruction-text" data-i18n="section.activities.build-and-break.buildTower">Build a tower with {n} blocks!</span>
             </div>
-            
+
             <div class="tower-container" id="tower-container">
               <div class="tower-area" id="tower-area">
                 <!-- Blocks will stack here -->
@@ -785,7 +796,7 @@
         // Check if tower is complete
         if (this.currentBlocks >= this.targetTotal) {
           this.btnAddBlock.disabled = true;
-          
+
           // Show banner after short delay
           setTimeout(() => {
             this.showCompleteBanner();
@@ -820,7 +831,7 @@
 
         // Create blocks in backlog
         this.createBlocksBacklog();
-        
+
         this.btnReset.style.display = 'flex';
         this.hintInstruction.style.display = 'flex';
         this.btnAddLeft.disabled = false;
@@ -850,7 +861,7 @@
         // Get color from backlog
         const backlogBlocks = this.blocksBacklog.querySelectorAll('.backlog-block');
         if (backlogBlocks.length === 0) return;
-        
+
         const color = backlogBlocks[backlogBlocks.length - 1].style.backgroundColor;
         backlogBlocks[backlogBlocks.length - 1].remove();
 
@@ -858,7 +869,7 @@
         const tower = side === 'left' ? 
           this.towerLeft.querySelector('.mini-tower') : 
           this.towerRight.querySelector('.mini-tower');
-        
+
         const block = document.createElement('div');
         block.className = 'mini-block';
         block.style.backgroundColor = color;
@@ -891,7 +902,7 @@
        */
       returnFromTower(side) {
         if (this.isChecking) return;
-        
+
         const count = side === 'left' ? this.currentLeftCount : this.currentRightCount;
         if (count === 0) return;
 
@@ -1043,7 +1054,7 @@
       showStats() {
         this.statsCorrect.textContent = this.correctCount;
         this.statsTotal.textContent = this.totalTries;
-        
+
         const percent = this.correctCount / this.totalTries;
         if (percent >= 0.8) {
           this.statsIcon.textContent = '🌟';
@@ -1055,7 +1066,7 @@
           this.statsIcon.textContent = '👍';
           this.statsMessage.textContent = 'Good effort! Try again to improve!';
         }
-        
+
         this.statsOverlay.classList.add('show');
       },
 

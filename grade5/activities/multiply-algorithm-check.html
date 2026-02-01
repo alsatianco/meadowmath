@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Algorithm Check - Grade 5 Math Activity - Meadow Math">
+  <title>Algorithm Check - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">✅</span>
+            <span data-i18n="section.activities.multiply-algorithm-check.title">Algorithm Check</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.multiply-algorithm-check.instruction">Find the correct solution!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Problem Display -->
+          <div class="problem-prompt" id="problem-prompt">
+            <span data-i18n="section.activities.multiply-algorithm-check.whichCorrect">Which solution is correct?</span>
+            <span class="problem-text" id="problem-text">34 × 26 = ?</span>
+          </div>
+
+          <!-- Solutions Container -->
+          <div class="solutions-container" id="solutions-container">
+            <!-- Solution cards will be generated dynamically -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.multiply-algorithm-check.great">Great error-spotting!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Algorithm Check Activity - Grade 5 Level 2
+    const AlgorithmCheck = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+
+      // DOM elements
+      problemPrompt: null,
+      problemText: null,
+      solutionsContainer: null,
+      btnReset: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.problemPrompt = document.getElementById('problem-prompt');
+        this.problemText = document.getElementById('problem-text');
+        this.solutionsContainer = document.getElementById('solutions-container');
+        this.btnReset = document.getElementById('btn-reset');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      // Generate multiplication problems with correct and incorrect solutions
+      generateQuestions() {
+        const problems = [
+          { a: 23, b: 14 },
+          { a: 34, b: 26 },
+          { a: 45, b: 32 },
+          { a: 56, b: 17 },
+          { a: 28, b: 43 },
+          { a: 37, b: 25 },
+          { a: 64, b: 18 },
+          { a: 53, b: 29 },
+          { a: 42, b: 36 },
+          { a: 75, b: 24 }
+        ];
+
+        this.questions = shuffle(problems).slice(0, this.totalQuestions).map(p => {
+          return this.createQuestion(p.a, p.b);
+        });
+      },
+
+      createQuestion(a, b) {
+        // Standard algorithm: a × b
+        // Row 1: a × (b ones)
+        // Row 2: a × (b tens) shifted left (with trailing 0)
+        const bOnes = b % 10;
+        const bTens = Math.floor(b / 10);
+
+        const row1 = a * bOnes;           // First partial product
+        const row2 = a * bTens * 10;      // Second partial product (already shifted)
+        const correctTotal = a * b;
+
+        // Create correct solution
+        const correctSolution = {
+          a: a,
+          b: b,
+          row1: row1,
+          row2Display: a * bTens,  // Display without the trailing zero
+          row2Shifted: true,       // Indicates proper shift
+          total: correctTotal,
+          isCorrect: true,
+          errorType: null
+        };
+
+        // Create error solutions
+        const errorSolutions = [];
+
+        // Error 1: Missing zero (no shift) - adds row1 + row2 without shift
+        const missingZeroTotal = row1 + (a * bTens);
+        if (missingZeroTotal !== correctTotal) {
+          errorSolutions.push({
+            a: a,
+            b: b,
+            row1: row1,
+            row2Display: a * bTens,
+            row2Shifted: false,  // Not shifted - error!
+            total: missingZeroTotal,
+            isCorrect: false,
+            errorType: 'missingZero'
+          });
+        }
+
+        // Error 2: Wrong row1 (calculation error in ones multiplication)
+        const wrongRow1 = row1 + (bOnes > 5 ? -bOnes : bOnes);
+        if (wrongRow1 !== row1 && wrongRow1 > 0) {
+          errorSolutions.push({
+            a: a,
+            b: b,
+            row1: wrongRow1,
+            row2Display: a * bTens,
+            row2Shifted: true,
+            total: wrongRow1 + row2,
+            isCorrect: false,
+            errorType: 'wrongOnes'
+          });
+        }
+
+        // Error 3: Wrong row2 (calculation error in tens multiplication)
+        const wrongRow2Display = (a * bTens) + bTens;
+        if (wrongRow2Display !== a * bTens) {
+          errorSolutions.push({
+            a: a,
+            b: b,
+            row1: row1,
+            row2Display: wrongRow2Display,
+            row2Shifted: true,
+            total: row1 + (wrongRow2Display * 10),
+            isCorrect: false,
+            errorType: 'wrongTens'
+          });
+        }
+
+        // Pick 1-2 error solutions
+        const selectedErrors = shuffle(errorSolutions).slice(0, Math.min(2, errorSolutions.length));
+
+        // Combine and shuffle all solutions
+        const allSolutions = shuffle([correctSolution, ...selectedErrors]);
+
+        return {
+          a: a,
+          b: b,
+          correctTotal: correctTotal,
+          solutions: allSolutions
+        };
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      formatNumber(n) {
+        return n.toLocaleString();
+      },
+
+      // Render a single solution card showing vertical multiplication
+      renderSolutionCard(solution, index) {
+        const card = document.createElement('button');
+        card.className = 'solution-card';
+        card.type = 'button';
+        card.dataset.index = index;
+        card.dataset.correct = solution.isCorrect;
+        card.dataset.errorType = solution.errorType || '';
+        card.setAttribute('aria-label', `Solution ${index + 1}`);
+
+        // Build vertical multiplication display
+        const aStr = solution.a.toString();
+        const bStr = solution.b.toString();
+        const row1Str = solution.row1.toString();
+        const row2Str = solution.row2Display.toString();
+        const totalStr = solution.total.toString();
+
+        // Calculate max width for alignment
+        const maxLen = Math.max(aStr.length, bStr.length, row1Str.length, row2Str.length + 1, totalStr.length);
+
+        let html = '<div class="algorithm-display">';
+
+        // First number (right-aligned)
+        html += `<div class="algo-row">${this.padLeft(aStr, maxLen)}</div>`;
+
+        // Second number with × (right-aligned)
+        html += `<div class="algo-row algo-multiplier"><span class="algo-symbol">×</span>${this.padLeft(bStr, maxLen - 1)}</div>`;
+
+        // Line
+        html += '<div class="algo-line"></div>';
+
+        // Row 1: multiply by ones
+        html += `<div class="algo-row algo-partial">${this.padLeft(row1Str, maxLen)}</div>`;
+
+        // Row 2: multiply by tens (shifted or not)
+        if (solution.row2Shifted) {
+          // Correct: show with trailing 0 position (shifted left)
+          html += `<div class="algo-row algo-partial algo-shifted">${this.padLeft(row2Str, maxLen - 1)}0</div>`;
+        } else {
+          // Error: no shift, aligned with row1
+          html += `<div class="algo-row algo-partial algo-not-shifted">${this.padLeft(row2Str, maxLen)}</div>`;
+        }
+
+        // Line
+        html += '<div class="algo-line"></div>';
+
+        // Total
+        html += `<div class="algo-row algo-total">${this.padLeft(totalStr, maxLen)}</div>`;
+
+        html += '</div>';
+
+        card.innerHTML = html;
+        card.addEventListener('click', () => this.selectSolution(card, solution));
+
+        return card;
+      },
+
+      padLeft(str, len) {
+        const spaces = len - str.length;
+        let result = '';
+        for (let i = 0; i < spaces; i++) {
+          result += '<span class="algo-space">&nbsp;</span>';
+        }
+        return result + str.split('').map(c => `<span class="algo-digit">${c}</span>`).join('');
+      },
+
+      renderSolutions(question) {
+        this.solutionsContainer.innerHTML = '';
+
+        question.solutions.forEach((solution, index) => {
+          const card = this.renderSolutionCard(solution, index);
+          this.solutionsContainer.appendChild(card);
+        });
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        // Update problem display
+        this.problemText.textContent = `${question.a} × ${question.b} = ?`;
+
+        // Render solutions
+        this.renderSolutions(question);
+
+        this.renderProgress();
+      },
+
+      selectSolution(card, solution) {
+        if (this.isAnswered) return;
+
+        this.isAnswered = true;
+
+        // Disable all cards
+        const cards = this.solutionsContainer.querySelectorAll('.solution-card');
+        cards.forEach(c => {
+          c.disabled = true;
+        });
+
+        card.classList.add('selected');
+
+        if (solution.isCorrect) {
+          this.correctCount++;
+          card.classList.add('correct');
+
+          const question = this.questions[this.currentQuestion];
+          const template = this.getTranslation(
+            'section.activities.multiply-algorithm-check.correct',
+            'Correct! {a} × {b} = {total}'
+          );
+          this.feedback.textContent = template
+            .replace('{a}', question.a)
+            .replace('{b}', question.b)
+            .replace('{total}', this.formatNumber(question.correctTotal));
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+        } else {
+          this.incorrectCount++;
+          card.classList.add('incorrect');
+
+          // Highlight correct answer
+          cards.forEach(c => {
+            if (c.dataset.correct === 'true') {
+              c.classList.add('correct');
+            }
+          });
+
+          // Show hint based on error type
+          let hintKey, hintFallback;
+          switch (solution.errorType) {
+            case 'missingZero':
+              hintKey = 'section.activities.multiply-algorithm-check.hintMissingZero';
+              hintFallback = 'Look at the tens row - it needs to shift left!';
+              break;
+            case 'wrongOnes':
+              hintKey = 'section.activities.multiply-algorithm-check.hintWrongOnes';
+              hintFallback = 'Check the multiplication by ones.';
+              break;
+            case 'wrongTens':
+              hintKey = 'section.activities.multiply-algorithm-check.hintWrongTens';
+              hintFallback = 'Check the multiplication by tens.';
+              break;
+            default:
+              hintKey = 'section.activities.multiply-algorithm-check.wrong';
+              hintFallback = 'That solution has an error.';
+          }
+
+          this.feedback.textContent = this.getTranslation(hintKey, hintFallback);
+          this.feedback.classList.add('error');
+          this.feedback.classList.add('show');
+        }
+
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.multiply-algorithm-check.perfect',
+            'Perfect error-spotting!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.multiply-algorithm-check.great',
+            'Great error-spotting!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.multiply-algorithm-check.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.multiply-algorithm-check.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => AlgorithmCheck.init());
+      } else {
+        AlgorithmCheck.init();
+      }
+    });
+  </script>
+  <style>
+    /* Algorithm Check specific styles */
+
+    .problem-prompt {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .problem-prompt span[data-i18n] {
+      display: block;
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      margin-bottom: var(--space-2);
+    }
+
+    .problem-text {
+      display: block;
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #5b21b6;
+    }
+
+    .solutions-container {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-6);
+    }
+
+    .solution-card {
+      min-width: 140px;
+      padding: var(--space-4);
+      background: white;
+      border: 4px solid #d1d5db;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #9ca3af;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .solution-card:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 #9ca3af;
+      border-color: #0ea5e9;
+    }
+
+    .solution-card:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 #9ca3af;
+    }
+
+    .solution-card:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.35), 0 4px 0 #9ca3af;
+    }
+
+    .solution-card:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .solution-card:disabled.selected {
+      opacity: 1;
+    }
+
+    .solution-card.selected {
+      border-color: #8b5cf6;
+      box-shadow: 0 4px 0 #7c3aed;
+    }
+
+    .solution-card.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+    }
+
+    .solution-card.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      box-shadow: 0 4px 0 #dc2626;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    .algorithm-display {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      text-align: right;
+      line-height: 1.4;
+    }
+
+    .algo-row {
+      white-space: nowrap;
+    }
+
+    .algo-digit {
+      display: inline-block;
+      width: 0.7em;
+      text-align: center;
+    }
+
+    .algo-space {
+      display: inline-block;
+      width: 0.7em;
+    }
+
+    .algo-symbol {
+      color: #6b7280;
+      margin-right: 0.2em;
+    }
+
+    .algo-multiplier {
+      color: #374151;
+    }
+
+    .algo-line {
+      height: 2px;
+      background: #374151;
+      margin: var(--space-1) 0;
+    }
+
+    .algo-partial {
+      color: #0369a1;
+    }
+
+    .algo-shifted {
+      /* Visual indicator that this row is properly shifted */
+    }
+
+    .algo-not-shifted {
+      /* This row should be shifted but isn't - the error */
+      /* Color same as shifted - don't reveal the error before answering */
+      color: #0369a1;
+    }
+
+    .algo-total {
+      color: #166534;
+      font-size: var(--text-xl);
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 767px) {
+      .problem-text {
+        font-size: var(--text-xl);
+      }
+
+      .solutions-container {
+        gap: var(--space-3);
+      }
+
+      .solution-card {
+        min-width: 120px;
+        padding: var(--space-3);
+      }
+
+      .algorithm-display {
+        font-size: var(--text-base);
+      }
+
+      .algo-total {
+        font-size: var(--text-lg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .problem-prompt span[data-i18n] {
+        font-size: var(--text-base);
+      }
+
+      .problem-text {
+        font-size: var(--text-lg);
+      }
+
+      .solutions-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .solution-card {
+        min-width: 140px;
+        width: auto;
+      }
+
+      .algorithm-display {
+        font-size: var(--text-sm);
+      }
+
+      .algo-digit, .algo-space {
+        width: 0.65em;
+      }
+
+      .algo-total {
+        font-size: var(--text-base);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

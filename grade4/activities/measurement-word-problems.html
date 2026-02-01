@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Measurement Word Problems - Grade 4 Math Activity - Meadow Math">
+  <title>Measurement Word Problems - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link">
+            <span data-i18n="activity.backTo">← Back to</span>
+            <span data-i18n="nav.grade4">Grade 4</span>
+          </a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧰</span>
+            <span data-i18n="section.activities.measurement-word-problems.title">Measurement Word Problems</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.measurement-word-problems.description">Solve multi-step measurement stories.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Story Display -->
+          <div class="story-section">
+            <div class="story-card" id="story-card">
+              <div class="story-icon" id="story-icon" aria-hidden="true">📖</div>
+              <div class="story-text" id="story-text" data-i18n="section.activities.measurement-word-problems.loadingStory" aria-live="polite" aria-atomic="true">Loading story...</div>
+            </div>
+          </div>
+
+          <!-- Hint Card -->
+          <div class="hint-card" id="hint-card" aria-live="polite">
+            <div class="hint-title">
+              <span class="hint-icon" aria-hidden="true">💡</span>
+              <span data-i18n="section.activities.measurement-word-problems.hintTitle">Helpful hint</span>
+            </div>
+            <div class="hint-text" id="hint-text"></div>
+          </div>
+
+          <!-- Step Indicator -->
+          <div class="step-indicator" id="step-indicator">
+            <span class="step-icon" id="step-icon" aria-hidden="true">1️⃣</span>
+            <span class="step-text" id="step-text" data-i18n="section.activities.measurement-word-problems.step1">Step 1: Solve the first part</span>
+          </div>
+
+          <!-- Step 1 -->
+          <section class="step-section" id="step-1">
+            <div class="step-prompt">
+              <span class="prompt-icon" aria-hidden="true">🧭</span>
+              <span class="prompt-text" id="step1-prompt"></span>
+            </div>
+            <div class="choice-container" id="step1-choices" role="group"></div>
+          </section>
+
+          <!-- Step 2 -->
+          <section class="step-section secondary hidden" id="step-2">
+            <div class="step-prompt">
+              <span class="prompt-icon" aria-hidden="true">🧮</span>
+              <span class="prompt-text" id="step2-prompt"></span>
+            </div>
+            <div class="summary-card" id="summary-card">
+              <span class="summary-label" data-i18n="section.activities.measurement-word-problems.step1Result">Step 1 result:</span>
+              <span class="summary-value" id="summary-value">?</span>
+            </div>
+            <div class="choice-container" id="step2-choices" role="group"></div>
+          </section>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.measurement-word-problems.great">Great measurement thinking!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Measurement Word Problems Activity - Grade 4 Level 4
+    const MeasurementWordProblems = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      currentStep: 1,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+      lastResult: null,
+      advanceTimeout: null,
+      lastQuestionKey: null,
+      problemData: null,
+      unitKeys: null,
+      problemGenerators: null,
+
+      init() {
+        this.storyIcon = document.getElementById('story-icon');
+        this.storyText = document.getElementById('story-text');
+        this.hintText = document.getElementById('hint-text');
+        this.stepIcon = document.getElementById('step-icon');
+        this.stepText = document.getElementById('step-text');
+        this.step1Prompt = document.getElementById('step1-prompt');
+        this.step2Prompt = document.getElementById('step2-prompt');
+        this.step1Section = document.getElementById('step-1');
+        this.step2Section = document.getElementById('step-2');
+        this.step1Choices = document.getElementById('step1-choices');
+        this.step2Choices = document.getElementById('step2-choices');
+        this.summaryValue = document.getElementById('summary-value');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.unitKeys = new Set(['in', 'ft', 'cm', 'm', 'g', 'kg', 'mL', 'L', 'squareMeters']);
+        this.problemGenerators = [
+          this.buildRibbonProblem.bind(this),
+          this.buildAquariumProblem.bind(this),
+          this.buildBackpackProblem.bind(this),
+          this.buildGardenProblem.bind(this),
+          this.buildBlanketProblem.bind(this),
+          this.buildBoardProblem.bind(this),
+          this.buildRunnerProblem.bind(this),
+          this.buildRibbonGroupProblem.bind(this)
+        ];
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) {
+            return text;
+          }
+        }
+        return fallback;
+      },
+
+      getUnitLabel(unitKey) {
+        const key = `section.activities.measurement-word-problems.units.${unitKey}`;
+        return this.getTranslation(key, unitKey);
+      },
+
+      formatValue(value) {
+        if (!Number.isFinite(value)) return value;
+        const rounded = Math.round(value * 100) / 100;
+        if (Number.isInteger(rounded)) {
+          return typeof formatNumber === 'function' ? formatNumber(rounded) : rounded.toString();
+        }
+        const trimmed = rounded.toFixed(2).replace(/\.0+$/, '').replace(/(\.\d*[1-9])0+$/, '$1');
+        const parts = trimmed.split('.');
+        const integerPart = typeof formatNumber === 'function' ? formatNumber(parseInt(parts[0], 10)) : parts[0];
+        return parts.length > 1 ? `${integerPart}.${parts[1]}` : integerPart;
+      },
+
+      resolveTokens(tokens = {}) {
+        const resolved = {};
+        Object.entries(tokens).forEach(([key, value]) => {
+          if (typeof value === 'number') {
+            resolved[key] = this.formatValue(value);
+          } else if (this.unitKeys.has(value)) {
+            resolved[key] = this.getUnitLabel(value);
+          } else {
+            resolved[key] = value;
+          }
+        });
+        return resolved;
+      },
+
+      fillTemplate(template, tokens) {
+        let text = template;
+        Object.entries(tokens).forEach(([key, value]) => {
+          text = text.replace(new RegExp(`\\{${key}\\}`, 'g'), value);
+        });
+        return text;
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      shuffle(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      },
+
+      cleanDistractors(list, correctValue) {
+        return list
+          .map(value => Math.round(value))
+          .filter(value => Number.isFinite(value) && value > 0 && value !== correctValue);
+      },
+
+      buildRibbonProblem() {
+        const feet = this.randomInt(2, 8);
+        const inches = this.randomInt(6, 22);
+        const step1Value = feet * 12;
+        const step2Value = step1Value + inches;
+
+        return {
+          storyKey: 'ribbon',
+          icon: '🎀',
+          storyTokens: { a: feet, b: inches, unit1: 'ft', unit2: 'in' },
+          questionTokens: { unit2: 'in' },
+          hintKey: 'convert',
+          hintTokens: { fromUnit: 'ft', toUnit: 'in', factor: 12 },
+          step1: {
+            promptKey: 'convert',
+            promptTokens: { value: feet, fromUnit: 'ft', toUnit: 'in' },
+            value: step1Value,
+            unitKey: 'in',
+            distractors: this.cleanDistractors([feet, feet * 10, step1Value + 12], step1Value)
+          },
+          step2: {
+            promptKey: 'total',
+            promptTokens: { unit: 'in' },
+            value: step2Value,
+            unitKey: 'in',
+            distractors: this.cleanDistractors([step1Value, step1Value - inches, step2Value + 12], step2Value)
+          }
+        };
+      },
+
+      buildAquariumProblem() {
+        const liters = this.randomInt(2, 6);
+        let pour = this.randomInt(250, 850);
+        const step1Value = liters * 1000;
+        if (pour > step1Value - 200) {
+          pour = step1Value - 200;
+        }
+        const step2Value = step1Value - pour;
+
+        return {
+          storyKey: 'aquarium',
+          icon: '🐠',
+          storyTokens: { a: liters, b: pour, unit1: 'L', unit2: 'mL' },
+          questionTokens: { unit2: 'mL' },
+          hintKey: 'convert',
+          hintTokens: { fromUnit: 'L', toUnit: 'mL', factor: 1000 },
+          step1: {
+            promptKey: 'convert',
+            promptTokens: { value: liters, fromUnit: 'L', toUnit: 'mL' },
+            value: step1Value,
+            unitKey: 'mL',
+            distractors: this.cleanDistractors([liters, liters * 10, liters * 100], step1Value)
+          },
+          step2: {
+            promptKey: 'left',
+            promptTokens: { unit: 'mL' },
+            value: step2Value,
+            unitKey: 'mL',
+            distractors: this.cleanDistractors([step1Value, step1Value + pour, step2Value + 200], step2Value)
+          }
+        };
+      },
+
+      buildBackpackProblem() {
+        const kilos = this.randomInt(2, 7);
+        const grams = this.randomInt(250, 900);
+        const step1Value = kilos * 1000;
+        const step2Value = step1Value + grams;
+
+        return {
+          storyKey: 'backpack',
+          icon: '🎒',
+          storyTokens: { a: kilos, b: grams, unit1: 'kg', unit2: 'g' },
+          questionTokens: { unit2: 'g' },
+          hintKey: 'convert',
+          hintTokens: { fromUnit: 'kg', toUnit: 'g', factor: 1000 },
+          step1: {
+            promptKey: 'convert',
+            promptTokens: { value: kilos, fromUnit: 'kg', toUnit: 'g' },
+            value: step1Value,
+            unitKey: 'g',
+            distractors: this.cleanDistractors([kilos, kilos * 10, kilos * 100], step1Value)
+          },
+          step2: {
+            promptKey: 'total',
+            promptTokens: { unit: 'g' },
+            value: step2Value,
+            unitKey: 'g',
+            distractors: this.cleanDistractors([step1Value, step1Value - grams, step2Value + 200], step2Value)
+          }
+        };
+      },
+
+      buildGardenProblem() {
+        const length = this.randomInt(6, 12);
+        const width = this.randomInt(4, 9);
+        const step1Value = 2 * (length + width);
+        const step2Value = step1Value * 100;
+
+        return {
+          storyKey: 'garden',
+          icon: '🌿',
+          storyTokens: { a: length, b: width, unit1: 'm', unit2: 'cm' },
+          questionTokens: { unit2: 'cm' },
+          hintKey: 'perimeterConvert',
+          hintTokens: { fromUnit: 'm', toUnit: 'cm', factor: 100 },
+          step1: {
+            promptKey: 'perimeter',
+            promptTokens: { unit: 'm' },
+            value: step1Value,
+            unitKey: 'm',
+            distractors: this.cleanDistractors([length + width, length * width, (length * 2) + width], step1Value)
+          },
+          step2: {
+            promptKey: 'convert',
+            promptTokens: { value: step1Value, fromUnit: 'm', toUnit: 'cm' },
+            value: step2Value,
+            unitKey: 'cm',
+            distractors: this.cleanDistractors([step1Value, step1Value * 10, step1Value * 1000], step2Value)
+          }
+        };
+      },
+
+      buildBlanketProblem() {
+        const length = this.randomInt(4, 8);
+        const width = this.randomInt(3, 6);
+        const area = length * width;
+        let cover = this.randomInt(4, 12);
+        if (cover >= area) {
+          cover = Math.max(2, area - 4);
+        }
+        const step2Value = area - cover;
+
+        return {
+          storyKey: 'blanket',
+          icon: '🧺',
+          storyTokens: { a: length, b: width, c: cover, unit1: 'm', unit2: 'squareMeters' },
+          questionTokens: { unit2: 'squareMeters' },
+          hintKey: 'areaSubtract',
+          hintTokens: {},
+          step1: {
+            promptKey: 'area',
+            promptTokens: { unit: 'squareMeters' },
+            value: area,
+            unitKey: 'squareMeters',
+            distractors: this.cleanDistractors([2 * (length + width), length + width, area + length], area)
+          },
+          step2: {
+            promptKey: 'uncovered',
+            promptTokens: { unit: 'squareMeters' },
+            value: step2Value,
+            unitKey: 'squareMeters',
+            distractors: this.cleanDistractors([area, area + cover, step2Value + 4], step2Value)
+          }
+        };
+      },
+
+      buildBoardProblem() {
+        const feet = this.randomInt(4, 10);
+        let cut = this.randomInt(8, 36);
+        const step1Value = feet * 12;
+        if (cut > step1Value - 12) {
+          cut = step1Value - 12;
+        }
+        const step2Value = step1Value - cut;
+
+        return {
+          storyKey: 'board',
+          icon: '📏',
+          storyTokens: { a: feet, b: cut, unit1: 'ft', unit2: 'in' },
+          questionTokens: { unit2: 'in' },
+          hintKey: 'convert',
+          hintTokens: { fromUnit: 'ft', toUnit: 'in', factor: 12 },
+          step1: {
+            promptKey: 'convert',
+            promptTokens: { value: feet, fromUnit: 'ft', toUnit: 'in' },
+            value: step1Value,
+            unitKey: 'in',
+            distractors: this.cleanDistractors([feet, feet * 10, step1Value - 12], step1Value)
+          },
+          step2: {
+            promptKey: 'left',
+            promptTokens: { unit: 'in' },
+            value: step2Value,
+            unitKey: 'in',
+            distractors: this.cleanDistractors([step1Value, step1Value + cut, step2Value - 6], step2Value)
+          }
+        };
+      },
+
+      buildRunnerProblem() {
+        const meters = this.randomInt(1, 6);
+        const extra = this.randomInt(30, 160);
+        const step1Value = meters * 100;
+        const step2Value = step1Value + extra;
+
+        return {
+          storyKey: 'runner',
+          icon: '🏃',
+          storyTokens: { a: meters, b: extra, unit1: 'm', unit2: 'cm' },
+          questionTokens: { unit2: 'cm' },
+          hintKey: 'convert',
+          hintTokens: { fromUnit: 'm', toUnit: 'cm', factor: 100 },
+          step1: {
+            promptKey: 'convert',
+            promptTokens: { value: meters, fromUnit: 'm', toUnit: 'cm' },
+            value: step1Value,
+            unitKey: 'cm',
+            distractors: this.cleanDistractors([meters, meters * 10, meters * 1000], step1Value)
+          },
+          step2: {
+            promptKey: 'total',
+            promptTokens: { unit: 'cm' },
+            value: step2Value,
+            unitKey: 'cm',
+            distractors: this.cleanDistractors([step1Value, step1Value - extra, step2Value + 50], step2Value)
+          }
+        };
+      },
+
+      buildRibbonGroupProblem() {
+        const count = this.randomInt(3, 8);
+        const each = this.randomInt(2, 5);
+        const step1Value = count * each;
+        const step2Value = step1Value * 12;
+
+        return {
+          storyKey: 'ribbonGroup',
+          icon: '🎗️',
+          storyTokens: { a: count, b: each, unit1: 'ft', unit2: 'in' },
+          questionTokens: { unit2: 'in' },
+          hintKey: 'multiplyConvert',
+          hintTokens: { fromUnit: 'ft', toUnit: 'in', factor: 12 },
+          step1: {
+            promptKey: 'multiply',
+            promptTokens: { unit: 'ft' },
+            value: step1Value,
+            unitKey: 'ft',
+            distractors: this.cleanDistractors([count * (each + 1), (count + 1) * each, count + each], step1Value)
+          },
+          step2: {
+            promptKey: 'convert',
+            promptTokens: { value: step1Value, fromUnit: 'ft', toUnit: 'in' },
+            value: step2Value,
+            unitKey: 'in',
+            distractors: this.cleanDistractors([step1Value, step1Value * 10, step2Value + 12], step2Value)
+          }
+        };
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.currentStep = 1;
+        this.lastResult = null;
+        this.feedback.classList.remove('show', 'error');
+        this.feedback.textContent = '';
+
+        const generator = this.problemGenerators[this.currentQuestion % this.problemGenerators.length];
+        this.problemData = generator();
+
+        this.renderStory();
+        this.renderHint();
+        this.updateStepIndicator();
+        this.renderStep();
+        this.renderProgress();
+      },
+
+      renderStory() {
+        const key = `section.activities.measurement-word-problems.stories.${this.problemData.storyKey}`;
+        const template = this.getTranslation(`${key}.template`, '');
+        const questionTemplate = this.getTranslation(`${key}.question`, '');
+        const storyTokens = this.resolveTokens(this.problemData.storyTokens);
+        const questionTokens = this.resolveTokens(this.problemData.questionTokens || this.problemData.storyTokens);
+        const narrative = this.fillTemplate(template, storyTokens);
+        const question = this.fillTemplate(questionTemplate, questionTokens);
+
+        this.storyIcon.textContent = this.problemData.icon;
+        this.storyText.innerHTML = `
+          <div class="story-narrative">${narrative}</div>
+          <div class="story-question">${question}</div>
+        `;
+      },
+
+      renderHint() {
+        const key = `section.activities.measurement-word-problems.hints.${this.problemData.hintKey}`;
+        const template = this.getTranslation(key, '');
+        const tokens = this.resolveTokens(this.problemData.hintTokens);
+        this.hintText.textContent = this.fillTemplate(template, tokens);
+      },
+
+      updateStepIndicator() {
+        const stepKey = this.currentStep === 1 ? 'step1' : 'step2';
+        const fallback = this.currentStep === 1 ? 'Step 1: Solve the first part' : 'Step 2: Solve the question';
+        this.stepIcon.textContent = this.currentStep === 1 ? '1️⃣' : '2️⃣';
+        this.stepText.textContent = this.getTranslation(`section.activities.measurement-word-problems.${stepKey}`, fallback);
+      },
+
+      renderStep() {
+        const isStep1 = this.currentStep === 1;
+        this.step1Section.classList.toggle('hidden', !isStep1);
+        this.step2Section.classList.toggle('hidden', isStep1);
+
+        if (isStep1) {
+          this.renderStepPrompt(this.problemData.step1, this.step1Prompt);
+          this.renderChoices(this.step1Choices, this.problemData.step1, 1);
+        } else {
+          this.renderStepPrompt(this.problemData.step2, this.step2Prompt);
+          const summaryLabel = `${this.formatValue(this.problemData.step1.value)} ${this.getUnitLabel(this.problemData.step1.unitKey)}`;
+          this.summaryValue.textContent = summaryLabel;
+          this.renderChoices(this.step2Choices, this.problemData.step2, 2);
+        }
+      },
+
+      renderStepPrompt(stepData, target) {
+        const key = `section.activities.measurement-word-problems.prompts.${stepData.promptKey}`;
+        const template = this.getTranslation(key, '');
+        const tokens = this.resolveTokens(stepData.promptTokens);
+        target.textContent = this.fillTemplate(template, tokens);
+      },
+
+      renderChoices(container, stepData, stepNumber) {
+        const choices = this.buildChoices(stepData.value, stepData.distractors);
+        const unitLabel = this.getUnitLabel(stepData.unitKey);
+        const choiceTemplate = this.getTranslation(
+          'section.activities.measurement-word-problems.choiceLabel',
+          'Select {value} {unit}'
+        );
+
+        container.innerHTML = choices.map(choice => {
+          const displayValue = this.formatValue(choice);
+          const ariaLabel = choiceTemplate
+            .replace('{value}', displayValue)
+            .replace('{unit}', unitLabel);
+          return `
+            <button class="choice-btn" type="button" data-value="${choice}" aria-label="${ariaLabel}">
+              <span class="choice-value">${displayValue}</span>
+              <span class="choice-unit">${unitLabel}</span>
+            </button>
+          `;
+        }).join('');
+
+        const buttons = Array.from(container.querySelectorAll('.choice-btn'));
+        buttons.forEach(btn => {
+          btn.addEventListener('click', () => this.selectChoice(stepNumber, parseFloat(btn.dataset.value), btn));
+        });
+
+        if (stepNumber === 1) {
+          this.step1Buttons = buttons;
+        } else {
+          this.step2Buttons = buttons;
+        }
+
+        const labelTemplate = this.getTranslation(
+          'section.activities.measurement-word-problems.stepChoicesLabel',
+          'Step {step} choices'
+        );
+        container.setAttribute('aria-label', labelTemplate.replace('{step}', stepNumber));
+      },
+
+      buildChoices(correctValue, distractors = []) {
+        const choices = new Set([correctValue]);
+        distractors.forEach(value => {
+          if (Number.isFinite(value) && value > 0) {
+            choices.add(value);
+          }
+        });
+
+        const base = Math.max(2, Math.round(Math.abs(correctValue) * 0.1));
+        let attempts = 0;
+        while (choices.size < 4 && attempts < 12) {
+          const delta = this.randomInt(1, base + 4);
+          const candidate = correctValue + delta * (Math.random() < 0.5 ? -1 : 1);
+          if (candidate > 0) {
+            choices.add(Math.round(candidate));
+          }
+          attempts++;
+        }
+
+        const pool = Array.from(choices).filter(value => value !== correctValue);
+        const selected = this.shuffle(pool).slice(0, 3);
+        return this.shuffle([correctValue, ...selected]);
+      },
+
+      selectChoice(stepNumber, value, button) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+        this.clearAdvanceTimeout();
+
+        const stepData = stepNumber === 1 ? this.problemData.step1 : this.problemData.step2;
+        const correctValue = stepData.value;
+        const unitLabel = this.getUnitLabel(stepData.unitKey);
+        const isCorrect = value === correctValue;
+        const buttons = stepNumber === 1 ? this.step1Buttons : this.step2Buttons;
+
+        buttons.forEach(btn => {
+          btn.disabled = true;
+          const btnValue = parseFloat(btn.dataset.value);
+          if (btnValue === correctValue) {
+            btn.classList.add('correct');
+          } else if (btnValue === value && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = window.i18n ? i18n.t('feedback.correct') || 'Correct!' : 'Correct!';
+          this.feedback.textContent = msg;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const template = this.getTranslation(
+            'section.activities.measurement-word-problems.wrongAnswer',
+            'The correct value is {value} {unit}.'
+          );
+          this.feedback.textContent = template
+            .replace('{value}', this.formatValue(correctValue))
+            .replace('{unit}', unitLabel);
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+        this.lastResult = { step: stepNumber, isCorrect, correctValue, unitKey: stepData.unitKey };
+
+        if (stepNumber === 1) {
+          this.summaryValue.textContent = `${this.formatValue(correctValue)} ${unitLabel}`;
+          this.advanceTimeout = setTimeout(() => {
+            this.advanceToStep2();
+          }, this.autoAdvanceDelay);
+        } else {
+          this.advanceTimeout = setTimeout(() => {
+            if (this.currentQuestion < this.totalQuestions - 1) {
+              this.nextQuestion();
+            } else {
+              this.showStats();
+            }
+          }, this.autoAdvanceDelay);
+        }
+      },
+
+      advanceToStep2() {
+        this.currentStep = 2;
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+        this.updateStepIndicator();
+        this.renderStep();
+      },
+
+      updateTranslations() {
+        this.renderStory();
+        this.renderHint();
+        this.updateStepIndicator();
+        this.renderStepPrompt(this.problemData.step1, this.step1Prompt);
+        if (this.currentStep === 2) {
+          this.renderStepPrompt(this.problemData.step2, this.step2Prompt);
+          this.summaryValue.textContent = `${this.formatValue(this.problemData.step1.value)} ${this.getUnitLabel(this.problemData.step1.unitKey)}`;
+        }
+
+        this.updateChoiceLabels(this.step1Buttons, this.problemData.step1);
+        if (this.step2Buttons) {
+          this.updateChoiceLabels(this.step2Buttons, this.problemData.step2);
+        }
+
+        this.updateFeedbackMessage();
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+      },
+
+      updateChoiceLabels(buttons, stepData) {
+        if (!buttons || !stepData) return;
+        const unitLabel = this.getUnitLabel(stepData.unitKey);
+        const choiceTemplate = this.getTranslation(
+          'section.activities.measurement-word-problems.choiceLabel',
+          'Select {value} {unit}'
+        );
+
+        buttons.forEach(button => {
+          const value = parseFloat(button.dataset.value);
+          const displayValue = this.formatValue(value);
+          const valueEl = button.querySelector('.choice-value');
+          const unitEl = button.querySelector('.choice-unit');
+          if (valueEl) valueEl.textContent = displayValue;
+          if (unitEl) unitEl.textContent = unitLabel;
+          const ariaLabel = choiceTemplate
+            .replace('{value}', displayValue)
+            .replace('{unit}', unitLabel);
+          button.setAttribute('aria-label', ariaLabel);
+        });
+      },
+
+      updateFeedbackMessage() {
+        if (!this.lastResult || !this.feedback.classList.contains('show')) return;
+        const unitLabel = this.getUnitLabel(this.lastResult.unitKey);
+        if (this.lastResult.isCorrect) {
+          const msg = window.i18n ? i18n.t('feedback.correct') || 'Correct!' : 'Correct!';
+          this.feedback.textContent = msg;
+          this.feedback.classList.remove('error');
+        } else {
+          const template = this.getTranslation(
+            'section.activities.measurement-word-problems.wrongAnswer',
+            'The correct value is {value} {unit}.'
+          );
+          this.feedback.textContent = template
+            .replace('{value}', this.formatValue(this.lastResult.correctValue))
+            .replace('{unit}', unitLabel);
+          this.feedback.classList.add('error');
+        }
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const totalAttempts = this.totalQuestions * 2;
+        const percent = this.correctCount / totalAttempts;
+        if (percent >= 0.75) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.measurement-word-problems.perfect',
+            'Fantastic measuring!'
+          );
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.measurement-word-problems.great',
+            'Great measurement thinking!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.measurement-word-problems.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => MeasurementWordProblems.init());
+      } else {
+        MeasurementWordProblems.init();
+      }
+    });
+  </script>
+  <style>
+    /* Measurement Word Problems specific styles */
+
+    .story-section {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .story-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-4) var(--space-5);
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border: 3px solid #a78bfa;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #8b5cf6;
+      max-width: 640px;
+      width: 100%;
+    }
+
+    .story-icon {
+      font-size: var(--text-4xl);
+    }
+
+    .story-text {
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .story-narrative {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-2);
+    }
+
+    .story-question {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      color: #4c1d95;
+    }
+
+    .hint-card {
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto var(--space-4);
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, #ecfccb, #bbf7d0);
+      border: 2px solid #22c55e;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #16a34a;
+      text-align: center;
+    }
+
+    .hint-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #166534;
+      margin-bottom: var(--space-1);
+    }
+
+    .hint-icon {
+      font-size: var(--text-lg);
+    }
+
+    .hint-text {
+      font-size: var(--text-sm);
+      color: #14532d;
+    }
+
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+      border: 2px solid #6366f1;
+      border-radius: var(--radius-lg);
+    }
+
+    .step-icon {
+      font-size: var(--text-xl);
+    }
+
+    .step-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #4338ca;
+    }
+
+    .step-section {
+      margin-bottom: var(--space-4);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #f8fafc, #eef2ff);
+      border: 2px solid #c7d2fe;
+      border-radius: var(--radius-lg);
+      transition: opacity 0.3s ease;
+    }
+
+    .step-section.secondary {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+    }
+
+    .step-section.hidden {
+      display: none;
+    }
+
+    .step-prompt {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+      text-align: center;
+    }
+
+    .prompt-icon {
+      font-size: var(--text-lg);
+    }
+
+    .prompt-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-medium);
+      color: var(--color-neutral-700);
+    }
+
+    .summary-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      background: rgba(255, 255, 255, 0.8);
+      border: 2px dashed #f59e0b;
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .summary-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: #92400e;
+    }
+
+    .summary-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #b45309;
+    }
+
+    .choice-container {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(140px, 1fr));
+      gap: var(--space-4);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .choice-btn {
+      min-height: 76px;
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 4px solid #38bdf8;
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 #0ea5e9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-1);
+      text-align: center;
+    }
+
+    #step-2 .choice-btn {
+      background: linear-gradient(135deg, #fff7ed, #ffedd5);
+      border-color: #f59e0b;
+      box-shadow: 0 4px 0 #d97706;
+    }
+
+    .choice-value {
+      font-size: var(--text-xl);
+    }
+
+    .choice-unit {
+      font-size: var(--text-sm);
+      color: var(--color-neutral-600);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 7px 0 #0ea5e9;
+    }
+
+    #step-2 .choice-btn:hover:not(:disabled) {
+      box-shadow: 0 7px 0 #d97706;
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 2px 0 #0ea5e9;
+    }
+
+    #step-2 .choice-btn:active:not(:disabled) {
+      box-shadow: 0 2px 0 #d97706;
+    }
+
+    .choice-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.35), 0 4px 0 #0ea5e9;
+    }
+
+    #step-2 .choice-btn:focus-visible {
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.35), 0 4px 0 #d97706;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      box-shadow: 0 4px 0 #dc2626;
+      color: #991b1b;
+      animation: shake 0.3s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 240px;
+      max-width: 90%;
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-lg);
+      font-weight: var(--weight-semibold);
+      text-align: center;
+      opacity: 0;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border: 2px solid #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+    }
+
+    .feedback-message.error {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      color: #92400e;
+    }
+
+    .feedback-message.show {
+      opacity: 1;
+    }
+
+    @media (max-width: 720px) {
+      .choice-container {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+      }
+
+      .choice-btn {
+        min-height: 68px;
+        font-size: var(--text-lg);
+      }
+
+      .story-card {
+        padding: var(--space-3) var(--space-4);
+      }
+
+      .story-icon {
+        font-size: var(--text-3xl);
+      }
+
+      .story-narrative {
+        font-size: var(--text-base);
+      }
+
+      .story-question {
+        font-size: var(--text-base);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .step-text {
+        font-size: var(--text-sm);
+      }
+
+      .choice-btn {
+        min-height: 60px;
+      }
+
+      .hint-card {
+        padding: var(--space-2) var(--space-3);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

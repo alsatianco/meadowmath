@@ -1,0 +1,123 @@
+/* Clock Playground Tool Styles */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-size: var(--text-xl);
+  color: var(--color-neutral-600);
+  background: white;
+  border: 2px solid var(--color-neutral-200);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.back-link:hover {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+/* Clock Container */
+.clock-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.clock-svg {
+  width: 280px;
+  height: 280px;
+  cursor: pointer;
+}
+
+/* Clock Face */
+.clock-face {
+  fill: white;
+  stroke: var(--color-primary-dark);
+  stroke-width: 4;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+.clock-center {
+  fill: var(--color-primary-dark);
+}
+
+/* Clock Numbers */
+.clock-number {
+  font-family: var(--font-secondary);
+  font-size: 16px;
+  font-weight: 700;
+  fill: var(--color-primary-dark);
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+/* Hour markers */
+.hour-marker {
+  stroke: var(--color-neutral-400);
+  stroke-width: 2;
+}
+
+.hour-marker.major {
+  stroke: var(--color-primary-dark);
+  stroke-width: 3;
+}
+
+/* Clock Hands */
+.hour-hand {
+  stroke: var(--color-primary-dark);
+  stroke-width: 6;
+  stroke-linecap: round;
+  cursor: grab;
+  transition: stroke 0.2s;
+}
+
+.hour-hand:hover {
+  stroke: var(--color-secondary);
+}
+
+.minute-hand {
+  stroke: var(--color-accent-pink);
+  stroke-width: 4;
+  stroke-linecap: round;
+  cursor: grab;
+  transition: stroke 0.2s;
+}
+
+.minute-hand:hover {
+  stroke: var(--color-accent-orange);
+}
+
+/* Digital Time */
+.digital-time {
+  font-family: var(--font-secondary);
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-extrabold);
+  color: var(--color-primary-dark);
+  background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-lg);
+  border: 3px solid var(--color-neutral-300);
+  letter-spacing: 2px;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .clock-svg {
+    width: 220px;
+    height: 220px;
+  }
+
+  .clock-number {
+    font-size: 14px;
+  }
+
+  .digital-time {
+    font-size: var(--text-2xl);
+    padding: var(--space-2) var(--space-4);
+  }
+}

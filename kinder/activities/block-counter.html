@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Block Counter - Kindergarten Math Activity - Meadow Math">
+  <title>Block Counter - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🧊</span>
+            <span data-i18n="section.activities.block-counter.title">Block Counter</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.block-counter.instruction">Count all the blocks!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Question -->
+          <div class="block-question" id="question-area">
+            <span class="question-icon">🤔</span>
+            <span class="question-text" id="question-text" data-i18n="section.activities.block-counter.question">How many blocks?</span>
+          </div>
+
+          <!-- Block Display -->
+          <div class="block-display" id="block-display">
+            <!-- Block stacks generated by JS -->
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices">
+            <!-- Number buttons -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🧊</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Block Counter Activity Styles */
+    .block-question {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #3b82f6;
+    }
+
+    .question-icon {
+      font-size: var(--text-2xl);
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #1e40af;
+    }
+
+    .block-display {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+      padding: var(--space-4);
+      min-height: 200px;
+      background: linear-gradient(180deg, #f0fdf4 0%, #dcfce7 100%);
+      border-radius: var(--radius-xl);
+      border: 4px solid #22c55e;
+    }
+
+    .block-stack {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .block {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #60a5fa, #3b82f6);
+      border: 3px solid #1d4ed8;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-xl);
+      box-shadow:
+        inset 2px 2px 4px rgba(255, 255, 255, 0.3),
+        inset -2px -2px 4px rgba(0, 0, 0, 0.1),
+        3px 3px 0 #1e40af;
+      transition: all 0.3s ease;
+    }
+
+    .block:hover {
+      transform: scale(1.05);
+    }
+
+    /* Different block colors for variety */
+    .block.red {
+      background: linear-gradient(135deg, #f87171, #ef4444);
+      border-color: #dc2626;
+      box-shadow:
+        inset 2px 2px 4px rgba(255, 255, 255, 0.3),
+        inset -2px -2px 4px rgba(0, 0, 0, 0.1),
+        3px 3px 0 #b91c1c;
+    }
+
+    .block.green {
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+      border-color: #16a34a;
+      box-shadow:
+        inset 2px 2px 4px rgba(255, 255, 255, 0.3),
+        inset -2px -2px 4px rgba(0, 0, 0, 0.1),
+        3px 3px 0 #15803d;
+    }
+
+    .block.yellow {
+      background: linear-gradient(135deg, #fde047, #eab308);
+      border-color: #ca8a04;
+      box-shadow:
+        inset 2px 2px 4px rgba(255, 255, 255, 0.3),
+        inset -2px -2px 4px rgba(0, 0, 0, 0.1),
+        3px 3px 0 #a16207;
+    }
+
+    .block.purple {
+      background: linear-gradient(135deg, #c084fc, #a855f7);
+      border-color: #7e22ce;
+      box-shadow:
+        inset 2px 2px 4px rgba(255, 255, 255, 0.3),
+        inset -2px -2px 4px rgba(0, 0, 0, 0.1),
+        3px 3px 0 #6b21a8;
+    }
+
+    .answer-choices {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-2);
+    }
+
+    .answer-btn {
+      width: 70px;
+      height: 70px;
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 4px solid #22c55e;
+      border-radius: var(--radius-xl);
+      color: #166534;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 0 #16a34a, 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 0 #16a34a, 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .answer-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #16a34a;
+    }
+
+    .answer-btn:focus {
+      outline: 3px solid #22c55e;
+      outline-offset: 2px;
+    }
+
+    .answer-btn:focus-visible {
+      outline: 3px solid #22c55e;
+      outline-offset: 2px;
+    }
+
+    .answer-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPulse 0.5s ease;
+    }
+
+    .answer-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      color: #b91c1c;
+      box-shadow: 0 4px 0 #dc2626;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .block {
+        width: 40px;
+        height: 40px;
+        font-size: var(--text-lg);
+      }
+
+      .answer-btn {
+        width: 60px;
+        height: 60px;
+        font-size: var(--text-2xl);
+      }
+
+      .block-display {
+        min-height: 160px;
+        padding: var(--space-3);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Block Counter Activity
+    const BlockCounter = {
+      // Game state
+      round: 1,
+      maxRounds: 8,
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+      currentTotal: 0,
+
+      // DOM elements
+      progress: null,
+      questionText: null,
+      blockDisplay: null,
+      answerChoices: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Block colors
+      colors: ['', 'red', 'green', 'yellow', 'purple'],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.questionText = document.getElementById('question-text');
+        this.blockDisplay = document.getElementById('block-display');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        // Generate block configuration
+        // Target: 3-10 blocks total, 1-4 stacks
+        const minBlocks = 3;
+        const maxBlocks = Math.min(10, 3 + this.round);
+        this.currentTotal = minBlocks + Math.floor(Math.random() * (maxBlocks - minBlocks + 1));
+
+        // Distribute blocks into stacks
+        const numStacks = Math.min(4, 1 + Math.floor(Math.random() * Math.min(3, this.currentTotal)));
+        const stacks = this.distributeBlocks(this.currentTotal, numStacks);
+
+        this.renderBlocks(stacks);
+        this.renderChoices();
+        this.renderProgress();
+      },
+
+      /**
+       * Distribute blocks into stacks
+       */
+      distributeBlocks(total, numStacks) {
+        const stacks = [];
+        let remaining = total;
+
+        for (let i = 0; i < numStacks - 1; i++) {
+          const maxForStack = remaining - (numStacks - i - 1);
+          const stackSize = 1 + Math.floor(Math.random() * Math.min(4, maxForStack));
+          stacks.push(stackSize);
+          remaining -= stackSize;
+        }
+        stacks.push(remaining);
+
+        return shuffle(stacks);
+      },
+
+      /**
+       * Render blocks display
+       */
+      renderBlocks(stacks) {
+        this.blockDisplay.innerHTML = '';
+
+        stacks.forEach((stackHeight, stackIndex) => {
+          const stackEl = document.createElement('div');
+          stackEl.className = 'block-stack';
+
+          const stackColor = this.colors[stackIndex % this.colors.length];
+
+          for (let i = 0; i < stackHeight; i++) {
+            const block = document.createElement('div');
+            block.className = `block ${stackColor}`;
+            block.textContent = '🧊';
+            stackEl.appendChild(block);
+          }
+
+          this.blockDisplay.appendChild(stackEl);
+        });
+      },
+
+      /**
+       * Render answer choices
+       */
+      renderChoices() {
+        this.answerChoices.innerHTML = '';
+
+        // Generate choices: correct answer + nearby wrong answers
+        const choices = [this.currentTotal];
+
+        // Add 3 wrong answers
+        const possibleWrong = [];
+        for (let i = Math.max(1, this.currentTotal - 3); i <= this.currentTotal + 3; i++) {
+          if (i !== this.currentTotal && i > 0 && i <= 12) {
+            possibleWrong.push(i);
+          }
+        }
+
+        shuffle(possibleWrong);
+        choices.push(...possibleWrong.slice(0, 3));
+
+        // Shuffle all choices
+        const shuffledChoices = shuffle(choices);
+
+        shuffledChoices.forEach(num => {
+          const btn = document.createElement('button');
+          btn.className = 'answer-btn';
+          btn.textContent = num;
+          btn.setAttribute('aria-label', `${num} blocks`);
+          btn.addEventListener('click', () => this.checkAnswer(num, btn));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.checkAnswer(num, btn);
+            }
+          });
+          this.answerChoices.appendChild(btn);
+        });
+      },
+
+      /**
+       * Check the answer
+       */
+      checkAnswer(selected, button) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        const buttons = this.answerChoices.querySelectorAll('.answer-btn');
+        buttons.forEach(btn => btn.disabled = true);
+
+        if (selected === this.currentTotal) {
+          // Correct!
+          button.classList.add('correct');
+          this.correctCount++;
+
+          const msg = i18n.t('section.activities.block-counter.correct') || 'Yes! There are {{count}} blocks!';
+          this.feedback.textContent = msg.replace('{{count}}', this.currentTotal);
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+
+          if (typeof celebrate === 'function') {
+            celebrate(this.blockDisplay);
+          }
+        } else {
+          // Incorrect
+          button.classList.add('incorrect');
+          buttons.forEach(btn => {
+            if (parseInt(btn.textContent) === this.currentTotal) {
+              btn.classList.add('correct');
+            }
+          });
+          this.wrongCount++;
+
+          const msg = i18n.t('section.activities.block-counter.incorrect') || 'Not quite! There are {{count}} blocks.';
+          this.feedback.textContent = msg.replace('{{count}}', this.currentTotal);
+          this.feedback.classList.add('show', 'error');
+        }
+
+        this.renderProgress();
+
+        // Auto-advance
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🧊';
+          this.statsMessage.textContent = i18n.t('section.activities.block-counter.perfect') || 'Block Counting Champion!';
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.block-counter.great') || 'Great counting!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.block-counter.keepPracticing') || 'Keep building!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      BlockCounter.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

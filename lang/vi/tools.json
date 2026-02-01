@@ -1,0 +1,218 @@
+{
+  "title": "Công cụ & Sân chơi Toán học",
+  "description": "Đồ dùng học toán tương tác cho việc học thực hành",
+  "modes": {
+    "explore": "Khám phá",
+    "challenges": "Thử thách"
+  },
+  "common": {
+    "reset": "Đặt lại",
+    "completed": "Hoàn thành",
+    "tryAgain": "Thử lại",
+    "nextChallenge": "Thử thách tiếp",
+    "challengeComplete": "Hoàn thành thử thách!",
+    "allChallengesComplete": "Hoàn thành tất cả thử thách!",
+    "greatJob": "Giỏi lắm!"
+  },
+  "tools": {
+    "numberLine": {
+      "title": "Khám phá Trục số",
+      "description": "Khám phá các số, bước nhảy và khoảng cách trên trục số",
+      "range": "Phạm vi",
+      "position": "Vị trí",
+      "hop": "Nhảy",
+      "distance": "Khoảng cách",
+      "challenges": {
+        "place13": {
+          "prompt": "Đặt điểm tại số 13"
+        },
+        "jump5": {
+          "prompt": "Bắt đầu từ 6. Nhảy +5. Bạn ở đâu?"
+        },
+        "compare": {
+          "prompt": "Số nào xa 0 hơn: -7 hay 5?"
+        },
+        "missing": {
+          "prompt": "Tìm số còn thiếu giữa 14 và 16"
+        },
+        "makeHops": {
+          "prompt": "Tạo 20 bằng các bước nhảy: +10, +5, +5"
+        },
+        "place17": {
+          "prompt": "Bắt đầu từ 7 và nhảy +10"
+        }
+      }
+    },
+    "fractionBars": {
+      "title": "Thanh Phân số",
+      "description": "Xây dựng, so sánh và khám phá phân số trực quan",
+      "denominator": "Mẫu số",
+      "numerator": "Tử số",
+      "whole": "Số nguyên",
+      "equivalent": "Tương đương",
+      "compare": "So sánh",
+      "trayFull": "Khay đã đầy!",
+      "clickToAdd": "Nhấn vào phân số để thêm mảnh",
+      "challenges": {
+        "build1": {
+          "prompt": "Xây dựng 1 bằng các mảnh 1/4"
+        },
+        "compare": {
+          "prompt": "Số nào lớn hơn: 2/6 hay 1/3?"
+        },
+        "makeHalf": {
+          "prompt": "Tạo một phân số bằng 1/2"
+        },
+        "fill8": {
+          "prompt": "Điền: __/8 để tạo thành 1"
+        },
+        "add": {
+          "prompt": "Cộng: 1/4 + 2/4"
+        },
+        "equivalent": {
+          "prompt": "Tìm phân số tương đương với 3/6"
+        }
+      }
+    },
+    "base10Blocks": {
+      "title": "Khối Cơ số 10",
+      "description": "Xây dựng số với đơn vị, chục và trăm",
+      "ones": "Đơn vị",
+      "tens": "Chục",
+      "hundreds": "Trăm",
+      "trade": "Đổi",
+      "total": "Tổng",
+      "challenges": {
+        "build47": {
+          "prompt": "Xây dựng số 47"
+        },
+        "make30": {
+          "prompt": "Cho thấy 3 cách khác nhau để tạo số 30"
+        },
+        "add": {
+          "prompt": "Cộng 28 + 15 bằng các khối"
+        },
+        "subtract": {
+          "prompt": "Trừ 52 - 18 bằng cách đổi"
+        },
+        "compare": {
+          "prompt": "Số nào lớn hơn: 406 hay 460?"
+        },
+        "build123": {
+          "prompt": "Xây dựng số 123"
+        }
+      }
+    },
+    "arrayBuilder": {
+      "title": "Xây dựng Mảng",
+      "description": "Xây dựng mảng để khám phá phép nhân và diện tích",
+      "rows": "Hàng",
+      "columns": "Cột",
+      "area": "Diện tích",
+      "factors": "Thừa số",
+      "challenges": {
+        "build3x6": {
+          "prompt": "Xây dựng mảng cho 3 x 6"
+        },
+        "factors24": {
+          "prompt": "Tìm hai cặp thừa số cho 24"
+        },
+        "compare": {
+          "prompt": "Số nào lớn hơn: 4 x 7 hay 5 x 5?"
+        },
+        "area18": {
+          "prompt": "Tạo diện tích 18 bằng hai cách khác nhau"
+        },
+        "build4x5": {
+          "prompt": "Xây dựng mảng cho 4 x 5"
+        },
+        "factors12": {
+          "prompt": "Tìm tất cả cặp thừa số cho 12"
+        }
+      }
+    },
+    "clock": {
+      "title": "Sân chơi Đồng hồ",
+      "description": "Học xem giờ và khám phá các bước nhảy thời gian",
+      "hour": "Giờ",
+      "minute": "Phút",
+      "digital": "Số",
+      "analog": "Kim",
+      "challenges": {
+        "set3": {
+          "prompt": "Đặt đồng hồ lúc 3:00"
+        },
+        "set730": {
+          "prompt": "Đặt đồng hồ lúc 7:30"
+        },
+        "jump30": {
+          "prompt": "Bắt đầu lúc 2:15. Nhảy +30 phút."
+        },
+        "elapsed": {
+          "prompt": "Có bao nhiêu phút từ 1:10 đến 1:40?"
+        },
+        "set945": {
+          "prompt": "Đặt đồng hồ lúc 9:45"
+        },
+        "jump1h": {
+          "prompt": "Bắt đầu lúc 4:00. Nhảy +1 giờ."
+        }
+      }
+    },
+    "geoboard": {
+      "title": "Bảng Hình học",
+      "description": "Tạo hình với đinh và dây thun",
+      "gridSize": "Kích thước lưới",
+      "perimeter": "Chu vi",
+      "area": "Diện tích",
+      "challenges": {
+        "triangle": {
+          "prompt": "Tạo một hình tam giác"
+        },
+        "rectangle12": {
+          "prompt": "Tạo hình chữ nhật có chu vi 12"
+        },
+        "square": {
+          "prompt": "Tạo một hình vuông"
+        },
+        "symmetry": {
+          "prompt": "Tạo hình có 1 trục đối xứng"
+        },
+        "pentagon": {
+          "prompt": "Tạo hình ngũ giác (5 cạnh)"
+        },
+        "samePerimeter": {
+          "prompt": "Tạo hai hình khác nhau có cùng chu vi"
+        }
+      }
+    },
+    "coordinatePlane": {
+      "title": "Mặt phẳng Tọa độ",
+      "description": "Vẽ điểm và đường trên lưới tọa độ",
+      "xAxis": "Trục X",
+      "yAxis": "Trục Y",
+      "point": "Điểm",
+      "segment": "Đoạn thẳng",
+      "challenges": {
+        "plot32": {
+          "prompt": "Vẽ điểm (3, 2)"
+        },
+        "plotLine": {
+          "prompt": "Vẽ A(1, 4) và B(4, 4). Vẽ đoạn AB."
+        },
+        "plot05": {
+          "prompt": "Vẽ điểm (0, 5)"
+        },
+        "plotSquare": {
+          "prompt": "Vẽ các điểm để tạo hình vuông"
+        },
+        "reflect": {
+          "prompt": "Đối xứng (2, 3) qua trục y"
+        },
+        "distance": {
+          "prompt": "Tìm khoảng cách giữa (1, 1) và (4, 1)"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Round Anywhere - Grade 4 Math Activity - Meadow Math">
+  <title>Round Anywhere - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade4">Grade 4</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🎯</span>
+            <span data-i18n="section.activities.round-any-place.title">Round Anywhere</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.round-any-place.description">Round a number to the nearest 10, 100, 1,000, 10,000, or 100,000.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Question Section -->
+          <div class="question-section">
+            <div class="question-prompt" id="question-prompt">
+              <span data-i18n="section.activities.round-any-place.roundPrompt">Round</span>
+              <span class="number-to-round" id="number-to-round">0</span>
+              <span data-i18n="section.activities.round-any-place.toNearest">to the nearest</span>
+              <span class="rounding-place" id="rounding-place">10</span>
+            </div>
+          </div>
+
+          <!-- Number Line Section -->
+          <div class="number-line-section">
+            <div class="number-line-container">
+              <div class="number-line">
+                <div class="number-line-track"></div>
+                <div class="number-marker" id="number-marker"></div>
+                <div class="tick-marks" id="tick-marks"></div>
+              </div>
+              <div class="number-line-labels">
+                <span class="label-left" id="label-left">0</span>
+                <span class="label-right" id="label-right">10</span>
+              </div>
+            </div>
+            <div class="number-line-hint" id="number-line-hint">
+              <span data-i18n="section.activities.round-any-place.hint">Which multiple is closer?</span>
+            </div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="answer-section">
+            <div class="answer-choices" id="answer-choices"></div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" aria-live="assertive" aria-atomic="true"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.round-any-place.great">Great rounding skills!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Round Anywhere Activity - Grade 4 Level 1
+    const RoundAnyPlace = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // Current question state
+      numberToRound: 0,
+      roundingPlace: 10,
+      correctAnswer: 0,
+      lowerBound: 0,
+      upperBound: 0,
+
+      // Rounding places with their names
+      roundingPlaces: [
+        { value: 10, name: 'ten', nameKey: 'ten' },
+        { value: 100, name: 'hundred', nameKey: 'hundred' },
+        { value: 1000, name: 'thousand', nameKey: 'thousand' },
+        { value: 10000, name: 'ten thousand', nameKey: 'tenThousand' },
+        { value: 100000, name: 'hundred thousand', nameKey: 'hundredThousand' }
+      ],
+
+      // DOM elements
+      progress: null,
+      numberToRoundEl: null,
+      roundingPlaceEl: null,
+      numberMarker: null,
+      tickMarks: null,
+      labelLeft: null,
+      labelRight: null,
+      answerChoices: null,
+      feedback: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        // Get DOM elements
+        this.progress = document.getElementById('progress');
+        this.numberToRoundEl = document.getElementById('number-to-round');
+        this.roundingPlaceEl = document.getElementById('rounding-place');
+        this.numberMarker = document.getElementById('number-marker');
+        this.tickMarks = document.getElementById('tick-marks');
+        this.labelLeft = document.getElementById('label-left');
+        this.labelRight = document.getElementById('label-right');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up listeners
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Update rounding place text
+        this.updateRoundingPlaceText();
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      // Get rounding place based on question difficulty
+      getRoundingPlaceForQuestion() {
+        // Progressive difficulty
+        // Q0-1: round to nearest 10
+        // Q2-3: round to nearest 100
+        // Q4-5: round to nearest 1,000
+        // Q6-7: round to nearest 10,000
+        // Q8-9: round to nearest 100,000 (or mix)
+
+        if (this.currentQuestion < 2) {
+          return this.roundingPlaces[0]; // 10
+        } else if (this.currentQuestion < 4) {
+          return this.roundingPlaces[1]; // 100
+        } else if (this.currentQuestion < 6) {
+          return this.roundingPlaces[2]; // 1,000
+        } else if (this.currentQuestion < 8) {
+          return this.roundingPlaces[3]; // 10,000
+        } else {
+          return this.roundingPlaces[4]; // 100,000
+        }
+      },
+
+      // Generate a number appropriate for the rounding place
+      generateNumber(roundingPlace) {
+        let minDigits, maxDigits;
+
+        switch (roundingPlace.value) {
+          case 10:
+            // 2-3 digit numbers (10-999)
+            return this.randomInt(10, 999);
+          case 100:
+            // 3-4 digit numbers (100-9,999)
+            return this.randomInt(100, 9999);
+          case 1000:
+            // 4-5 digit numbers (1,000-99,999)
+            return this.randomInt(1000, 99999);
+          case 10000:
+            // 5-6 digit numbers (10,000-999,999)
+            return this.randomInt(10000, 999999);
+          case 100000:
+            // 6 digit numbers (100,000-999,999)
+            return this.randomInt(100000, 999999);
+          default:
+            return this.randomInt(10, 999);
+        }
+      },
+
+      // Calculate the correct rounded answer
+      roundToNearest(number, place) {
+        return Math.round(number / place) * place;
+      },
+
+      // Get lower and upper bounds for the number line
+      getBounds(number, place) {
+        const lower = Math.floor(number / place) * place;
+        const upper = lower + place;
+        return { lower, upper };
+      },
+
+      startQuestion() {
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        // Get rounding place for this question
+        const placeInfo = this.getRoundingPlaceForQuestion();
+        this.roundingPlace = placeInfo.value;
+
+        // Generate number to round
+        this.numberToRound = this.generateNumber(placeInfo);
+
+        // Calculate correct answer and bounds
+        this.correctAnswer = this.roundToNearest(this.numberToRound, this.roundingPlace);
+        const bounds = this.getBounds(this.numberToRound, this.roundingPlace);
+        this.lowerBound = bounds.lower;
+        this.upperBound = bounds.upper;
+
+        // Update UI
+        this.numberToRoundEl.textContent = this.numberToRound.toLocaleString();
+        this.updateRoundingPlaceText();
+
+        // Update number line
+        this.updateNumberLine();
+
+        // Generate answer choices
+        this.generateAnswerChoices();
+
+        this.renderProgress();
+      },
+
+      updateRoundingPlaceText() {
+        const placeInfo = this.roundingPlaces.find(p => p.value === this.roundingPlace);
+        if (placeInfo) {
+          const key = `section.activities.round-any-place.${placeInfo.nameKey}`;
+          const text = window.i18n ? i18n.t(key) : placeInfo.name;
+          this.roundingPlaceEl.textContent = text || this.roundingPlace.toLocaleString();
+        }
+      },
+
+      updateNumberLine() {
+        // Update labels
+        this.labelLeft.textContent = this.lowerBound.toLocaleString();
+        this.labelRight.textContent = this.upperBound.toLocaleString();
+
+        // Calculate marker position (0-100%)
+        const range = this.upperBound - this.lowerBound;
+        const position = ((this.numberToRound - this.lowerBound) / range) * 100;
+        this.numberMarker.style.left = `${position}%`;
+        this.numberMarker.textContent = this.numberToRound.toLocaleString();
+
+        // Generate tick marks (show midpoint)
+        const midpoint = this.lowerBound + (range / 2);
+        this.tickMarks.innerHTML = `
+          <div class="tick" style="left: 0%"><span class="tick-line"></span></div>
+          <div class="tick midpoint" style="left: 50%"><span class="tick-line"></span><span class="tick-label">${midpoint.toLocaleString()}</span></div>
+          <div class="tick" style="left: 100%"><span class="tick-line"></span></div>
+        `;
+      },
+
+      generateAnswerChoices() {
+        // Generate 2 choices: lower bound and upper bound
+        const choices = [this.lowerBound, this.upperBound];
+
+        this.answerChoices.innerHTML = choices.map(choice => `
+          <button class="answer-btn" data-answer="${choice}" aria-label="${choice.toLocaleString()}">
+            ${choice.toLocaleString()}
+          </button>
+        `).join('');
+
+        // Add click handlers
+        this.answerChoices.querySelectorAll('.answer-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            if (this.isAnswered) return;
+            this.checkAnswer(parseInt(btn.dataset.answer));
+          });
+        });
+      },
+
+      checkAnswer(selectedAnswer) {
+        if (this.isAnswered) return;
+
+        this.isAnswered = true;
+        const isCorrect = selectedAnswer === this.correctAnswer;
+
+        // Disable all buttons and mark correct/incorrect
+        this.answerChoices.querySelectorAll('.answer-btn').forEach(btn => {
+          btn.disabled = true;
+          const btnAnswer = parseInt(btn.dataset.answer);
+          if (btnAnswer === this.correctAnswer) {
+            btn.classList.add('correct');
+          }
+          if (btnAnswer === selectedAnswer && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+          const correctMsg = window.i18n ? i18n.t('feedback.correct') : 'Correct!';
+          this.feedback.textContent = `${correctMsg} 🎯`;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const tryAgainMsg = window.i18n ? i18n.t('feedback.tryAgain') : 'Try again!';
+          const roundsTo = window.i18n ? i18n.t('section.activities.round-any-place.roundsTo') : 'rounds to';
+          this.feedback.textContent = `${tryAgainMsg} ${this.numberToRound.toLocaleString()} ${roundsTo} ${this.correctAnswer.toLocaleString()}`;
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+
+        // Highlight the number's position relative to midpoint
+        this.highlightPosition(isCorrect);
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      highlightPosition(isCorrect) {
+        // Add visual indication on the number line
+        const midpoint = (this.lowerBound + this.upperBound) / 2;
+        const isCloserToLower = this.numberToRound < midpoint;
+
+        // Highlight the correct side
+        const markerEl = this.numberMarker;
+        if (isCorrect) {
+          markerEl.classList.add('correct');
+        } else {
+          markerEl.classList.add('incorrect');
+        }
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.numberMarker.classList.remove('correct', 'incorrect');
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+        this.numberMarker.classList.remove('correct', 'incorrect');
+
+        // Re-enable and reset buttons
+        this.answerChoices.querySelectorAll('.answer-btn').forEach(btn => {
+          btn.disabled = false;
+          btn.classList.remove('correct', 'incorrect');
+        });
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.round-any-place.perfect') : 'Amazing rounding skills!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🎯';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.round-any-place.great') : 'Great rounding skills!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.round-any-place.keepPracticing') : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.numberMarker.classList.remove('correct', 'incorrect');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => RoundAnyPlace.init());
+      } else {
+        RoundAnyPlace.init();
+      }
+    });
+  </script>
+  <style>
+    /* Round Anywhere specific styles */
+
+    /* Question Section */
+    .question-section {
+      text-align: center;
+      margin-bottom: var(--space-6);
+    }
+
+    .question-prompt {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      line-height: 1.6;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .number-to-round {
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 3px solid var(--color-primary);
+      box-shadow: 0 3px 0 var(--color-primary-dark);
+    }
+
+    .rounding-place {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #7c3aed;
+      background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-md);
+      border: 2px solid #a78bfa;
+    }
+
+    /* Number Line Section */
+    .number-line-section {
+      margin-bottom: var(--space-6);
+      padding: var(--space-4);
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: var(--radius-xl);
+    }
+
+    .number-line-container {
+      position: relative;
+      padding: var(--space-8) var(--space-4) var(--space-4);
+    }
+
+    .number-line {
+      position: relative;
+      height: 60px;
+    }
+
+    .number-line-track {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(to right, #22c55e 0%, #22c55e 50%, #f59e0b 50%, #f59e0b 100%);
+      border-radius: var(--radius-full);
+      transform: translateY(-50%);
+    }
+
+    .number-marker {
+      position: absolute;
+      top: -35px;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: white;
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-md);
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .number-marker::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid #2563eb;
+    }
+
+    .number-marker.correct {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      box-shadow: 0 2px 8px rgba(34, 197, 94, 0.4);
+    }
+
+    .number-marker.correct::after {
+      border-top-color: #16a34a;
+    }
+
+    .number-marker.incorrect {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+    }
+
+    .number-marker.incorrect::after {
+      border-top-color: #dc2626;
+    }
+
+    /* Tick Marks */
+    .tick-marks {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 100%;
+      transform: translateY(-50%);
+    }
+
+    .tick {
+      position: absolute;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tick-line {
+      width: 3px;
+      height: 20px;
+      background: var(--color-neutral-400);
+      border-radius: var(--radius-full);
+    }
+
+    .tick.midpoint .tick-line {
+      height: 30px;
+      background: var(--color-neutral-500);
+      width: 4px;
+    }
+
+    .tick-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-500);
+      margin-top: var(--space-1);
+    }
+
+    /* Number Line Labels */
+    .number-line-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: var(--space-2);
+    }
+
+    .number-line-labels span {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-md);
+    }
+
+    .label-left {
+      color: #166534;
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border: 2px solid #22c55e;
+    }
+
+    .label-right {
+      color: #92400e;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid #f59e0b;
+    }
+
+    .number-line-hint {
+      text-align: center;
+      margin-top: var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      color: var(--color-neutral-500);
+      font-style: italic;
+    }
+
+    /* Answer Section */
+    .answer-section {
+      text-align: center;
+    }
+
+    .answer-choices {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .answer-btn {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      padding: var(--space-4) var(--space-6);
+      min-width: 140px;
+      min-height: 64px;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      border: 3px solid var(--color-neutral-300);
+      color: var(--color-neutral-700);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 var(--color-neutral-400);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .answer-btn:first-child {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #16a34a;
+    }
+
+    .answer-btn:last-child {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      color: #92400e;
+      box-shadow: 0 4px 0 #d97706;
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+    }
+
+    .answer-btn:first-child:hover:not(:disabled) {
+      box-shadow: 0 6px 0 #16a34a;
+    }
+
+    .answer-btn:last-child:hover:not(:disabled) {
+      box-shadow: 0 6px 0 #d97706;
+    }
+
+    .answer-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 var(--color-neutral-400);
+    }
+
+    .answer-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .answer-btn.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0) !important;
+      border-color: #22c55e !important;
+      color: #166534 !important;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.3), 0 4px 0 #16a34a !important;
+    }
+
+    .answer-btn.incorrect {
+      background: linear-gradient(135deg, #fee2e2, #fecaca) !important;
+      border-color: #ef4444 !important;
+      color: #991b1b !important;
+      animation: shake 0.3s ease;
+    }
+
+    .answer-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4), 0 4px 0 var(--color-neutral-400);
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      75% { transform: translateX(4px); }
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive - Tablet */
+    @media (max-width: 900px) {
+      .question-prompt {
+        font-size: var(--text-lg);
+      }
+
+      .number-to-round {
+        font-size: var(--text-2xl);
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .rounding-place {
+        font-size: var(--text-lg);
+      }
+
+      .answer-btn {
+        font-size: var(--text-xl);
+        padding: var(--space-3) var(--space-5);
+        min-width: 120px;
+        min-height: 56px;
+      }
+
+      .number-marker {
+        font-size: var(--text-xs);
+        padding: var(--space-1);
+      }
+    }
+
+    /* Responsive - Mobile */
+    @media (max-width: 767px) {
+      .question-prompt {
+        font-size: var(--text-base);
+        gap: var(--space-1);
+      }
+
+      .number-to-round {
+        font-size: var(--text-xl);
+        padding: var(--space-1) var(--space-2);
+      }
+
+      .rounding-place {
+        font-size: var(--text-base);
+        padding: var(--space-1) var(--space-2);
+      }
+
+      .number-line-section {
+        padding: var(--space-3);
+      }
+
+      .number-line-container {
+        padding: var(--space-6) var(--space-2) var(--space-2);
+      }
+
+      .number-line-labels span {
+        font-size: var(--text-base);
+        padding: var(--space-1) var(--space-2);
+      }
+
+      .answer-choices {
+        gap: var(--space-3);
+      }
+
+      .answer-btn {
+        font-size: var(--text-lg);
+        padding: var(--space-3) var(--space-4);
+        min-width: 100px;
+        min-height: 52px;
+      }
+
+      .tick-label {
+        font-size: var(--text-xs);
+      }
+    }
+
+    /* Responsive - Small Mobile */
+    @media (max-width: 480px) {
+      .question-prompt {
+        font-size: var(--text-sm);
+      }
+
+      .number-to-round {
+        font-size: var(--text-lg);
+      }
+
+      .rounding-place {
+        font-size: var(--text-sm);
+      }
+
+      .number-line-labels span {
+        font-size: var(--text-sm);
+      }
+
+      .answer-btn {
+        font-size: var(--text-base);
+        padding: var(--space-3) var(--space-4);
+        min-width: 90px;
+        min-height: 48px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Decimal Add/Sub Align - Grade 5 Math Activity - Meadow Math">
+  <title>Decimal Add/Sub Align - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">➕➖</span>
+            <span data-i18n="section.activities.decimal-add-sub.title">Decimal Add/Sub Align</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.decimal-add-sub.instruction">Line up the decimal points and solve!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Vertical Problem Display -->
+          <div class="vertical-problem" id="vertical-problem">
+            <div class="problem-row first-number">
+              <span class="number-display" id="first-number">12.45</span>
+            </div>
+            <div class="problem-row operator-row">
+              <span class="operator" id="operator">+</span>
+              <span class="number-display" id="second-number">3.78</span>
+            </div>
+            <div class="problem-line"></div>
+            <div class="problem-row answer-row">
+              <input type="text" class="answer-input" id="answer-input" inputmode="decimal" autocomplete="off" placeholder="?" aria-label="Your answer">
+            </div>
+          </div>
+
+          <!-- Hint: Decimal alignment -->
+          <div class="align-hint" id="align-hint">
+            <span class="hint-icon">💡</span>
+            <span class="hint-text" data-i18n="section.activities.decimal-add-sub.hint">Line up the decimal points!</span>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="submit-container">
+            <button class="btn-activity btn-primary" id="btn-check" data-i18n="buttons.check">Check</button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.decimal-add-sub.great">Great decimal work!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Decimal Add/Sub Align Activity - Grade 5 Level 2
+    const DecimalAddSub = {
+      currentQuestion: 0,
+      totalQuestions: 12,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+
+      // DOM elements
+      firstNumber: null,
+      secondNumber: null,
+      operator: null,
+      answerInput: null,
+      alignHint: null,
+      btnCheck: null,
+      btnReset: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.firstNumber = document.getElementById('first-number');
+        this.secondNumber = document.getElementById('second-number');
+        this.operator = document.getElementById('operator');
+        this.answerInput = document.getElementById('answer-input');
+        this.alignHint = document.getElementById('align-hint');
+        this.btnCheck = document.getElementById('btn-check');
+        this.btnReset = document.getElementById('btn-reset');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnCheck.addEventListener('click', () => this.checkAnswer());
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Allow Enter key to submit
+        this.answerInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' && !this.isAnswered) {
+            this.checkAnswer();
+          }
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      generateQuestions() {
+        // Mix of addition and subtraction with decimals to hundredths
+        const problems = [];
+
+        // Addition problems (mix of difficulties)
+        const additionProblems = [
+          { a: 12.45, b: 3.78 },     // Simple, no borrowing
+          { a: 8.56, b: 4.27 },      // Tenths carry
+          { a: 15.39, b: 7.84 },     // Multiple carries
+          { a: 6.05, b: 2.98 },      // Zero in tenths
+          { a: 24.67, b: 8.45 },     // Larger numbers
+          { a: 3.9, b: 2.15 },       // Different decimal places
+          { a: 45.08, b: 6.95 },     // Tenths carry into ones
+          { a: 0.87, b: 0.56 },      // Less than 1
+        ];
+
+        // Subtraction problems (mix of difficulties)
+        const subtractionProblems = [
+          { a: 15.83, b: 4.21 },     // Simple, no borrowing
+          { a: 12.45, b: 3.78 },     // Borrowing in hundredths
+          { a: 20.05, b: 8.67 },     // Borrowing across zero
+          { a: 9.34, b: 5.89 },      // Multiple borrowing
+          { a: 18.2, b: 6.75 },      // Different decimal places
+          { a: 7.06, b: 2.58 },      // Borrowing from ones
+          { a: 25.4, b: 9.85 },      // Mixed complexity
+          { a: 14.03, b: 7.56 },     // Borrowing across zero
+        ];
+
+        // Shuffle and pick problems
+        const shuffledAdd = shuffle(additionProblems);
+        const shuffledSub = shuffle(subtractionProblems);
+
+        // Interleave addition and subtraction
+        for (let i = 0; i < 6; i++) {
+          if (shuffledAdd[i]) {
+            problems.push({
+              a: shuffledAdd[i].a,
+              b: shuffledAdd[i].b,
+              operation: '+',
+              answer: this.formatDecimal(shuffledAdd[i].a + shuffledAdd[i].b)
+            });
+          }
+          if (shuffledSub[i]) {
+            problems.push({
+              a: shuffledSub[i].a,
+              b: shuffledSub[i].b,
+              operation: '-',
+              answer: this.formatDecimal(shuffledSub[i].a - shuffledSub[i].b)
+            });
+          }
+        }
+
+        this.questions = shuffle(problems).slice(0, this.totalQuestions);
+      },
+
+      formatDecimal(num) {
+        // Format to avoid floating point errors and ensure proper decimal display
+        // Round to 2 decimal places
+        const rounded = Math.round(num * 100) / 100;
+        // Format to show minimal necessary decimal places
+        if (rounded === Math.floor(rounded)) {
+          // Whole number result
+          return rounded.toString();
+        }
+        // Check if one decimal place is enough
+        if (rounded * 10 === Math.floor(rounded * 10)) {
+          return rounded.toFixed(1);
+        }
+        return rounded.toFixed(2);
+      },
+
+      formatDisplayNumber(num) {
+        // Format number for display, padding to hundredths if needed
+        const str = num.toString();
+        if (!str.includes('.')) {
+          return str + '.00';
+        }
+        const parts = str.split('.');
+        if (parts[1].length === 1) {
+          return str + '0';
+        }
+        return str;
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+        this.answerInput.value = '';
+        this.answerInput.disabled = false;
+        this.btnCheck.disabled = false;
+        this.alignHint.classList.remove('hidden');
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        // Update display
+        this.firstNumber.textContent = this.formatDisplayNumber(question.a);
+        this.operator.textContent = question.operation;
+        this.secondNumber.textContent = this.formatDisplayNumber(question.b);
+
+        // Focus on input
+        setTimeout(() => {
+          this.answerInput.focus();
+        }, 100);
+
+        this.renderProgress();
+      },
+
+      normalizeAnswer(input) {
+        // Normalize user input for comparison
+        let str = input.trim();
+
+        // Handle empty input
+        if (!str) return null;
+
+        // Remove leading zeros except before decimal
+        str = str.replace(/^0+(\d)/, '$1');
+
+        // Parse as float and format consistently
+        const num = parseFloat(str);
+        if (isNaN(num)) return null;
+
+        return this.formatDecimal(num);
+      },
+
+      checkAnswer() {
+        if (this.isAnswered) return;
+
+        const userAnswer = this.normalizeAnswer(this.answerInput.value);
+        const question = this.questions[this.currentQuestion];
+        const correctAnswer = question.answer;
+
+        if (userAnswer === null) {
+          // Empty or invalid input
+          this.answerInput.classList.add('shake');
+          setTimeout(() => this.answerInput.classList.remove('shake'), 500);
+          return;
+        }
+
+        this.isAnswered = true;
+        this.answerInput.disabled = true;
+        this.btnCheck.disabled = true;
+        this.alignHint.classList.add('hidden');
+
+        const isCorrect = userAnswer === correctAnswer;
+
+        if (isCorrect) {
+          this.correctCount++;
+          this.answerInput.classList.add('correct');
+
+          const feedbackText = this.getTranslation(
+            'section.activities.decimal-add-sub.correct',
+            'Correct!'
+          );
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          this.answerInput.classList.add('incorrect');
+
+          const feedbackText = this.getTranslation(
+            'section.activities.decimal-add-sub.wrong',
+            'The answer is {answer}.'
+          ).replace('{answer}', correctAnswer);
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          this.answerInput.classList.remove('correct', 'incorrect');
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.answerInput.disabled = false;
+        this.btnCheck.disabled = false;
+        this.answerInput.value = '';
+        this.answerInput.classList.remove('correct', 'incorrect');
+        this.feedback.classList.remove('show', 'error');
+        this.alignHint.classList.remove('hidden');
+        this.answerInput.focus();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.decimal-add-sub.perfect',
+            'Perfect decimal work!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.decimal-add-sub.great',
+            'Great decimal work!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.decimal-add-sub.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.decimal-add-sub.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => DecimalAddSub.init());
+      } else {
+        DecimalAddSub.init();
+      }
+    });
+  </script>
+  <style>
+    /* Decimal Add/Sub Align specific styles */
+
+    .vertical-problem {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: var(--space-2);
+      padding: var(--space-5);
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 3px solid #e5e7eb;
+      margin: 0 auto var(--space-4);
+      max-width: 280px;
+    }
+
+    .problem-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: var(--space-2);
+      width: 100%;
+    }
+
+    .number-display {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: #1e3a5f;
+      letter-spacing: 0.05em;
+      min-width: 120px;
+      text-align: right;
+    }
+
+    .operator-row {
+      position: relative;
+    }
+
+    .operator {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: #7c3aed;
+      position: absolute;
+      left: 0;
+    }
+
+    .problem-line {
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+      border-radius: 2px;
+      margin: var(--space-1) 0;
+    }
+
+    .answer-row {
+      padding-top: var(--space-2);
+    }
+
+    .answer-input {
+      width: 140px;
+      padding: var(--space-2) var(--space-3);
+      font-family: 'Courier New', Courier, monospace;
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      text-align: right;
+      color: #1e3a5f;
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 3px solid #0ea5e9;
+      border-radius: var(--radius-lg);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .answer-input::placeholder {
+      color: #94a3b8;
+    }
+
+    .answer-input:focus {
+      border-color: #0284c7;
+      box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .answer-input.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .answer-input.incorrect {
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+
+    .answer-input.shake {
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+      20%, 40%, 60%, 80% { transform: translateX(4px); }
+    }
+
+    .align-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+      padding: var(--space-2) var(--space-3);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-lg);
+      border: 2px solid #f59e0b;
+      max-width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      transition: opacity 0.3s ease;
+    }
+
+    .align-hint.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .hint-icon {
+      font-size: var(--text-lg);
+    }
+
+    .hint-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: #92400e;
+    }
+
+    .submit-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .submit-container .btn-activity {
+      min-width: 140px;
+      padding: var(--space-3) var(--space-5);
+      font-size: var(--text-lg);
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 767px) {
+      .vertical-problem {
+        padding: var(--space-4);
+        max-width: 240px;
+      }
+
+      .number-display {
+        font-size: var(--text-2xl);
+        min-width: 100px;
+      }
+
+      .operator {
+        font-size: var(--text-2xl);
+      }
+
+      .answer-input {
+        width: 120px;
+        font-size: var(--text-2xl);
+        padding: var(--space-2);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .vertical-problem {
+        padding: var(--space-3);
+        max-width: 220px;
+      }
+
+      .number-display {
+        font-size: var(--text-xl);
+        min-width: 90px;
+      }
+
+      .operator {
+        font-size: var(--text-xl);
+      }
+
+      .answer-input {
+        width: 110px;
+        font-size: var(--text-xl);
+        padding: var(--space-2);
+        border-width: 2px;
+      }
+
+      .align-hint {
+        padding: var(--space-1) var(--space-2);
+      }
+
+      .hint-text {
+        font-size: var(--text-xs);
+      }
+
+      .submit-container .btn-activity {
+        min-width: 120px;
+        padding: var(--space-2) var(--space-4);
+        font-size: var(--text-base);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

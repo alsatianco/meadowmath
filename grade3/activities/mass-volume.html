@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mass & Volume Compare - Grade 3 Math Activity - Meadow Math">
+  <title>Mass & Volume Compare - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">⚖️</span>
+            <span data-i18n="section.activities.mass-volume.title">Mass & Volume Compare</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.mass-volume.instruction">Pick the right unit and compare!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Prompt -->
+          <div class="prompt-card" id="prompt-card">
+            <div class="prompt-icon" id="prompt-icon" aria-hidden="true">⚖️</div>
+            <div class="prompt-text-group">
+              <div class="prompt-text" id="prompt-text"></div>
+              <div class="prompt-hint" id="prompt-hint"></div>
+            </div>
+            <div class="category-badge" id="category-badge" data-i18n="section.activities.mass-volume.categoryMass">Mass</div>
+          </div>
+
+          <!-- Scene -->
+          <div class="scene-card">
+            <div class="unit-stage" id="unit-stage">
+              <div class="item-card" id="item-card" role="img" aria-label="">
+                <div class="item-icon" id="item-icon" aria-hidden="true">🍉</div>
+                <div class="item-name" id="item-name" data-i18n="section.activities.mass-volume.items.watermelon">watermelon</div>
+              </div>
+            </div>
+
+            <div class="compare-stage" id="compare-stage" hidden>
+              <div class="compare-card left" id="compare-left">
+                <div class="compare-label" id="left-label" data-i18n="section.activities.mass-volume.choiceLeft">Container A</div>
+                <div class="compare-icon" aria-hidden="true">🅰️</div>
+                <div class="compare-value" id="left-value">2</div>
+                <div class="compare-unit" id="left-unit" data-i18n="section.activities.mass-volume.units.kg">kg</div>
+              </div>
+              <div class="compare-vs" aria-hidden="true" data-i18n="activity.vsUpper">VS</div>
+              <div class="compare-card right" id="compare-right">
+                <div class="compare-label" id="right-label" data-i18n="section.activities.mass-volume.choiceRight">Container B</div>
+                <div class="compare-icon" aria-hidden="true">🅱️</div>
+                <div class="compare-value" id="right-value">1500</div>
+                <div class="compare-unit" id="right-unit" data-i18n="section.activities.mass-volume.units.g">g</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices" role="group" aria-label="Answer choices"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.mass-volume.great">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Mass & Volume Compare specific styles */
+    .prompt-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid #f59e0b;
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .prompt-icon {
+      font-size: 2.6rem;
+    }
+
+    .prompt-text-group {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .prompt-text {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+    }
+
+    .prompt-hint {
+      font-size: var(--text-sm);
+      color: #92400e;
+      opacity: 0.85;
+      margin-top: var(--space-1);
+    }
+
+    .category-badge {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      border: 2px solid #60a5fa;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      color: #0f172a;
+    }
+
+    .category-badge.mass {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      border-color: #f87171;
+      color: #991b1b;
+    }
+
+    .category-badge.volume {
+      background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+      border-color: #2dd4bf;
+      color: #0f766e;
+    }
+
+    .scene-card {
+      background: #ffffff;
+      border-radius: var(--radius-2xl);
+      border: 4px solid #e2e8f0;
+      padding: var(--space-5);
+      margin-bottom: var(--space-4);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .unit-stage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .item-card {
+      min-width: 220px;
+      min-height: 170px;
+      padding: var(--space-4);
+      border-radius: var(--radius-xl);
+      border: 3px solid #38bdf8;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      box-shadow: 0 4px 0 #0ea5e9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      text-align: center;
+    }
+
+    .item-icon {
+      font-size: 3rem;
+    }
+
+    .item-name {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #0f172a;
+    }
+
+    .compare-stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .compare-card {
+      min-width: 180px;
+      padding: var(--space-3);
+      border-radius: var(--radius-xl);
+      border: 3px solid #a78bfa;
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      box-shadow: 0 4px 0 #8b5cf6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-1);
+      text-align: center;
+    }
+
+    .compare-card.right {
+      border-color: #60a5fa;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      box-shadow: 0 4px 0 #38bdf8;
+    }
+
+    .compare-label {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #4c1d95;
+    }
+
+    .compare-card.right .compare-label {
+      color: #1e3a8a;
+    }
+
+    .compare-icon {
+      font-size: 1.8rem;
+    }
+
+    .compare-value {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #312e81;
+    }
+
+    .compare-card.right .compare-value {
+      color: #0f172a;
+    }
+
+    .compare-unit {
+      font-size: var(--text-base);
+      color: var(--color-neutral-600);
+    }
+
+    .compare-vs {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #0f172a;
+      background: linear-gradient(135deg, #fef9c3, #fde68a);
+      border: 2px solid #f59e0b;
+      border-radius: 50%;
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 0 #d97706;
+    }
+
+    .answer-choices {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .choice-btn {
+      min-height: 78px;
+      padding: var(--space-3);
+      border-radius: var(--radius-xl);
+      border: 4px solid #38bdf8;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      box-shadow: 0 4px 0 #0ea5e9;
+      color: #0f172a;
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #bfdbfe, #93c5fd);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 0 #0284c7;
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 #0284c7;
+    }
+
+    .choice-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.4), 0 4px 0 #0ea5e9;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      box-shadow: 0 4px 0 #15803d;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      box-shadow: 0 4px 0 #b91c1c;
+      color: #991b1b;
+    }
+
+    .choice-icon {
+      font-size: 1.6rem;
+    }
+
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: var(--color-success);
+    }
+
+    /* Feedback at bottom */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 768px) {
+      .prompt-card {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .prompt-text-group {
+        min-width: 100%;
+      }
+
+      .compare-stage {
+        flex-direction: column;
+      }
+
+      .compare-vs {
+        order: 2;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .choice-btn {
+        min-height: 72px;
+        font-size: var(--text-base);
+      }
+
+      .item-card {
+        min-width: 180px;
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Mass & Volume Compare Activity - Grade 3 Level 5
+    const MassVolume = {
+      currentRound: 1,
+      maxRounds: 10,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+      lastAnswerCorrect: null,
+      lastCorrectChoice: null,
+      currentQuestion: null,
+      questionBag: [],
+      questionIndex: 0,
+
+      unitQuestions: [
+        { id: 'unit-watermelon', type: 'unit', category: 'mass', itemKey: 'watermelon', icon: '🍉', choices: ['g', 'kg'], correct: 'kg' },
+        { id: 'unit-backpack', type: 'unit', category: 'mass', itemKey: 'backpack', icon: '🎒', choices: ['g', 'kg'], correct: 'kg' },
+        { id: 'unit-apple', type: 'unit', category: 'mass', itemKey: 'apple', icon: '🍎', choices: ['g', 'kg'], correct: 'g' },
+        { id: 'unit-paperclip', type: 'unit', category: 'mass', itemKey: 'paperclip', icon: '📎', choices: ['g', 'kg'], correct: 'g' },
+        { id: 'unit-bathtub', type: 'unit', category: 'volume', itemKey: 'bathtub', icon: '🛁', choices: ['mL', 'L'], correct: 'L' },
+        { id: 'unit-juice-box', type: 'unit', category: 'volume', itemKey: 'juiceBox', icon: '🧃', choices: ['mL', 'L'], correct: 'mL' },
+        { id: 'unit-bucket', type: 'unit', category: 'volume', itemKey: 'bucket', icon: '🪣', choices: ['mL', 'L'], correct: 'L' },
+        { id: 'unit-eyedropper', type: 'unit', category: 'volume', itemKey: 'eyedropper', icon: '💧', choices: ['mL', 'L'], correct: 'mL' }
+      ],
+
+      compareQuestions: [
+        { id: 'compare-mass-1', type: 'compare', category: 'mass', left: { value: 2, unit: 'kg' }, right: { value: 1500, unit: 'g' }, correct: 'left' },
+        { id: 'compare-mass-2', type: 'compare', category: 'mass', left: { value: 600, unit: 'g' }, right: { value: 1, unit: 'kg' }, correct: 'right' },
+        { id: 'compare-mass-3', type: 'compare', category: 'mass', left: { value: 3, unit: 'kg' }, right: { value: 2500, unit: 'g' }, correct: 'left' },
+        { id: 'compare-volume-1', type: 'compare', category: 'volume', left: { value: 1, unit: 'L' }, right: { value: 800, unit: 'mL' }, correct: 'left' },
+        { id: 'compare-volume-2', type: 'compare', category: 'volume', left: { value: 750, unit: 'mL' }, right: { value: 1, unit: 'L' }, correct: 'right' },
+        { id: 'compare-volume-3', type: 'compare', category: 'volume', left: { value: 2, unit: 'L' }, right: { value: 1500, unit: 'mL' }, correct: 'left' }
+      ],
+
+      progress: null,
+      promptIcon: null,
+      promptText: null,
+      promptHint: null,
+      categoryBadge: null,
+      unitStage: null,
+      compareStage: null,
+      itemCard: null,
+      itemIcon: null,
+      itemName: null,
+      leftLabel: null,
+      rightLabel: null,
+      leftValue: null,
+      rightValue: null,
+      leftUnit: null,
+      rightUnit: null,
+      answerChoices: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.progress = document.getElementById('progress');
+        this.promptIcon = document.getElementById('prompt-icon');
+        this.promptText = document.getElementById('prompt-text');
+        this.promptHint = document.getElementById('prompt-hint');
+        this.categoryBadge = document.getElementById('category-badge');
+        this.unitStage = document.getElementById('unit-stage');
+        this.compareStage = document.getElementById('compare-stage');
+        this.itemCard = document.getElementById('item-card');
+        this.itemIcon = document.getElementById('item-icon');
+        this.itemName = document.getElementById('item-name');
+        this.leftLabel = document.getElementById('left-label');
+        this.rightLabel = document.getElementById('right-label');
+        this.leftValue = document.getElementById('left-value');
+        this.rightValue = document.getElementById('right-value');
+        this.leftUnit = document.getElementById('left-unit');
+        this.rightUnit = document.getElementById('right-unit');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.resetQuestionBag();
+        this.startRound();
+      },
+
+      resetQuestionBag() {
+        this.questionBag = shuffle([...this.unitQuestions, ...this.compareQuestions]);
+        this.questionIndex = 0;
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.mass-volume.${key}`);
+          return translated !== `section.activities.mass-volume.${key}` ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      getItemLabel(itemKey) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.mass-volume.items.${itemKey}`);
+          if (translated !== `section.activities.mass-volume.items.${itemKey}`) {
+            return translated;
+          }
+        }
+        return itemKey;
+      },
+
+      getUnitLabel(unitKey) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.mass-volume.units.${unitKey}`);
+          if (translated !== `section.activities.mass-volume.units.${unitKey}`) {
+            return translated;
+          }
+        }
+        return unitKey;
+      },
+
+      getChoiceLabel(choiceKey) {
+        if (choiceKey === 'left') {
+          return this.getTranslation('choiceLeft', 'Container A');
+        }
+        return this.getTranslation('choiceRight', 'Container B');
+      },
+
+      getCategoryLabel(category) {
+        return category === 'mass'
+          ? this.getTranslation('categoryMass', 'Mass')
+          : this.getTranslation('categoryVolume', 'Volume');
+      },
+
+      getHintText(category) {
+        return category === 'mass'
+          ? this.getTranslation('hintMass', 'Remember: 1 kilogram = 1,000 grams.')
+          : this.getTranslation('hintVolume', 'Remember: 1 liter = 1,000 milliliters.');
+      },
+
+      getNextQuestion() {
+        if (this.questionIndex >= this.questionBag.length) {
+          this.resetQuestionBag();
+        }
+        const question = this.questionBag[this.questionIndex];
+        this.questionIndex += 1;
+        return question;
+      },
+
+      startRound() {
+        this.isAnswered = false;
+        this.lastAnswerCorrect = null;
+        this.lastCorrectChoice = null;
+        this.feedback.classList.remove('show', 'error');
+        this.feedback.textContent = '';
+        this.currentQuestion = this.getNextQuestion();
+        this.renderQuestion();
+        this.renderChoices();
+        this.renderProgress();
+      },
+
+      renderQuestion() {
+        const question = this.currentQuestion;
+        const categoryLabel = this.getCategoryLabel(question.category);
+
+        this.categoryBadge.textContent = categoryLabel;
+        this.categoryBadge.classList.toggle('mass', question.category === 'mass');
+        this.categoryBadge.classList.toggle('volume', question.category === 'volume');
+        this.promptIcon.textContent = question.category === 'mass' ? '⚖️' : '🧪';
+        this.promptHint.textContent = this.getHintText(question.category);
+
+        if (question.type === 'unit') {
+          const itemLabel = this.getItemLabel(question.itemKey);
+          const promptTemplate = this.getTranslation('promptUnit', 'Which unit is best for {item}?');
+          this.promptText.textContent = promptTemplate.replace('{item}', itemLabel);
+          this.unitStage.hidden = false;
+          this.compareStage.hidden = true;
+          this.itemIcon.textContent = question.icon;
+          this.itemName.textContent = itemLabel;
+          this.itemCard.setAttribute('aria-label', itemLabel);
+        } else {
+          const promptKey = question.category === 'mass' ? 'promptCompareMass' : 'promptCompareVolume';
+          this.promptText.textContent = this.getTranslation(promptKey, 'Which is bigger?');
+          this.unitStage.hidden = true;
+          this.compareStage.hidden = false;
+          this.leftLabel.textContent = this.getChoiceLabel('left');
+          this.rightLabel.textContent = this.getChoiceLabel('right');
+          this.leftValue.textContent = question.left.value;
+          this.rightValue.textContent = question.right.value;
+          this.leftUnit.textContent = this.getUnitLabel(question.left.unit);
+          this.rightUnit.textContent = this.getUnitLabel(question.right.unit);
+        }
+      },
+
+      renderChoices() {
+        const question = this.currentQuestion;
+        let choices = [];
+
+        if (question.type === 'unit') {
+          choices = question.choices.map(choice => ({
+            value: choice,
+            label: this.getUnitLabel(choice)
+          }));
+        } else {
+          choices = [
+            { value: 'left', label: this.getChoiceLabel('left'), icon: '🅰️' },
+            { value: 'right', label: this.getChoiceLabel('right'), icon: '🅱️' }
+          ];
+        }
+
+        this.answerChoices.innerHTML = choices.map(choice => {
+          const iconHtml = choice.icon ? `<span class="choice-icon" aria-hidden="true">${choice.icon}</span>` : '';
+          return `
+            <button class="choice-btn" type="button" data-choice="${choice.value}" aria-label="${choice.label}">
+              ${iconHtml}
+              <span class="choice-label">${choice.label}</span>
+            </button>
+          `;
+        }).join('');
+
+        const choicesLabel = this.getTranslation('choicesLabel', 'Answer choices');
+        this.answerChoices.setAttribute('aria-label', choicesLabel);
+
+        const buttons = this.answerChoices.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            this.handleChoice(btn.dataset.choice, btn);
+          });
+        });
+      },
+
+      handleChoice(choice, selectedBtn) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const question = this.currentQuestion;
+        const correctChoice = question.correct;
+        const buttons = this.answerChoices.querySelectorAll('.choice-btn');
+
+        buttons.forEach(btn => {
+          btn.disabled = true;
+        });
+
+        const isCorrect = choice === correctChoice;
+        this.lastAnswerCorrect = isCorrect;
+        this.lastCorrectChoice = correctChoice;
+        if (isCorrect) {
+          selectedBtn.classList.add('correct');
+          this.feedback.classList.remove('error');
+          this.correctCount++;
+        } else {
+          selectedBtn.classList.add('incorrect');
+          buttons.forEach(btn => {
+            if (btn.dataset.choice === correctChoice) {
+              btn.classList.add('correct');
+            }
+          });
+          this.feedback.classList.add('error');
+          this.wrongCount++;
+        }
+
+        this.feedback.textContent = this.getFeedbackText(isCorrect, correctChoice);
+        this.feedback.classList.add('show');
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.currentRound < this.maxRounds) {
+            this.currentRound++;
+            this.startRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      getFeedbackText(isCorrect, correctChoice) {
+        const question = this.currentQuestion;
+
+        if (question.type === 'unit') {
+          const itemLabel = this.getItemLabel(question.itemKey);
+          const unitLabel = this.getUnitLabel(question.correct);
+          const key = isCorrect ? 'correctUnit' : 'wrongUnit';
+          const template = this.getTranslation(key, 'Use {unit} for {item}.');
+          return template.replace('{unit}', unitLabel).replace('{item}', itemLabel);
+        }
+
+        const choiceLabel = this.getChoiceLabel(correctChoice);
+        const keyBase = question.category === 'mass' ? 'CompareMass' : 'CompareVolume';
+        const key = isCorrect ? `correct${keyBase}` : `wrong${keyBase}`;
+        const template = this.getTranslation(key, '{choice} is bigger.');
+        return template.replace('{choice}', choiceLabel);
+      },
+
+      updateStatsMessage() {
+        const accuracy = this.correctCount / this.maxRounds;
+        if (this.correctCount === this.maxRounds) {
+          this.statsMessage.textContent = this.getTranslation('perfect', 'Perfect measuring!');
+          this.statsIcon.textContent = '🏆';
+        } else if (accuracy >= 0.8) {
+          this.statsMessage.textContent = this.getTranslation('great', 'Great comparisons!');
+          this.statsIcon.textContent = '🌟';
+        } else if (accuracy >= 0.6) {
+          this.statsMessage.textContent = this.getTranslation('good', 'Nice work!');
+          this.statsIcon.textContent = '👍';
+        } else {
+          this.statsMessage.textContent = this.getTranslation('keepPracticing', 'Keep practicing!');
+          this.statsIcon.textContent = '💪';
+        }
+      },
+
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+        this.updateStatsMessage();
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentRound = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.resetQuestionBag();
+        this.startRound();
+      },
+
+      updateTranslations() {
+        if (!this.currentQuestion) return;
+
+        this.renderQuestion();
+
+        const buttons = this.answerChoices.querySelectorAll('.choice-btn');
+        const question = this.currentQuestion;
+        buttons.forEach(btn => {
+          const labelEl = btn.querySelector('.choice-label');
+          if (!labelEl) return;
+          if (question.type === 'unit') {
+            labelEl.textContent = this.getUnitLabel(btn.dataset.choice);
+            btn.setAttribute('aria-label', labelEl.textContent);
+          } else {
+            labelEl.textContent = this.getChoiceLabel(btn.dataset.choice);
+            btn.setAttribute('aria-label', labelEl.textContent);
+          }
+        });
+
+        const choicesLabel = this.getTranslation('choicesLabel', 'Answer choices');
+        this.answerChoices.setAttribute('aria-label', choicesLabel);
+
+        if (this.isAnswered && this.lastAnswerCorrect !== null) {
+          this.feedback.textContent = this.getFeedbackText(this.lastAnswerCorrect, this.lastCorrectChoice);
+        }
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => MassVolume.init());
+      } else {
+        MassVolume.init();
+      }
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

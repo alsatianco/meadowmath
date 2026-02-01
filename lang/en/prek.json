@@ -360,7 +360,7 @@
       "title": "Box & Lid Game",
       "description": "Hide some objects, show the rest",
       "start": "📦 Click here to start!",
-      "totalIn": "There are {total} items in the box",
+      "totalIn": "Total in box:",
       "canSee": "You can see {visible}...",
       "howManyHidden": "How many are hidden under the lid?",
       "correct": "🎉 Yes! {visible} showing + {hidden} hidden = {total}",

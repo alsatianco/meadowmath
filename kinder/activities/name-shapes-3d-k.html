@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Solid Shapes Finder - Kindergarten Math Activity - Meadow Math">
+  <title>Solid Shapes Finder - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🧱</span>
+            <span data-i18n="section.activities.name-shapes-3d-k.title">Solid Shapes Finder</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.name-shapes-3d-k.instruction">What solid shape is this?</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Shape Display -->
+          <div class="shape-display" id="shape-display">
+            <!-- Shape rendered here -->
+          </div>
+
+          <!-- Real World Example -->
+          <div class="real-world" id="real-world">
+            <span class="real-world-label" data-i18n="section.activities.name-shapes-3d-k.realWorld">Like a:</span>
+            <span class="real-world-example" id="real-example">🎁</span>
+          </div>
+
+          <!-- Question -->
+          <p class="question-text" data-i18n="section.activities.name-shapes-3d-k.question">What shape is this?</p>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices">
+            <!-- Generated by JS -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🧱</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great shape finding!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Solid Shapes Finder Styles */
+    .shape-display {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 150px;
+      margin-bottom: var(--space-3);
+    }
+
+    /* 3D Shape Styles using CSS */
+    .shape-3d {
+      position: relative;
+      transform-style: preserve-3d;
+      animation: rotate3d 4s ease-in-out infinite;
+    }
+
+    @keyframes rotate3d {
+      0%, 100% { transform: rotateY(-15deg) rotateX(10deg); }
+      50% { transform: rotateY(15deg) rotateX(10deg); }
+    }
+
+    /* Cube */
+    .shape-cube {
+      width: 100px;
+      height: 100px;
+      position: relative;
+    }
+
+    .cube-face {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 3px solid #475569;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+
+    .cube-front { background: linear-gradient(135deg, #60a5fa, #3b82f6); transform: translateZ(50px); }
+    .cube-back { background: linear-gradient(135deg, #3b82f6, #2563eb); transform: translateZ(-50px) rotateY(180deg); }
+    .cube-top { background: linear-gradient(135deg, #93c5fd, #60a5fa); transform: translateY(-50px) rotateX(90deg); }
+    .cube-bottom { background: linear-gradient(135deg, #2563eb, #1d4ed8); transform: translateY(50px) rotateX(-90deg); }
+    .cube-left { background: linear-gradient(135deg, #3b82f6, #2563eb); transform: translateX(-50px) rotateY(-90deg); }
+    .cube-right { background: linear-gradient(135deg, #60a5fa, #3b82f6); transform: translateX(50px) rotateY(90deg); }
+
+    /* Sphere (using gradients) */
+    .shape-sphere {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fbbf24, #f59e0b 40%, #d97706 70%, #b45309);
+      box-shadow: inset -10px -10px 20px rgba(0,0,0,0.2), 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Cylinder */
+    .shape-cylinder {
+      width: 90px;
+      height: 130px;
+      position: relative;
+    }
+
+    .cylinder-body {
+      position: absolute;
+      top: 12px;
+      left: 0;
+      width: 90px;
+      height: 106px;
+      background: linear-gradient(90deg, #16a34a 0%, #22c55e 15%, #4ade80 35%, #86efac 50%, #4ade80 65%, #22c55e 85%, #16a34a 100%);
+      border-left: 3px solid #166534;
+      border-right: 3px solid #166534;
+      z-index: 1;
+    }
+
+    .cylinder-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 90px;
+      height: 28px;
+      background: linear-gradient(180deg, #86efac 0%, #4ade80 100%);
+      border: 3px solid #166534;
+      border-radius: 50%;
+      z-index: 3;
+    }
+
+    .cylinder-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 90px;
+      height: 28px;
+      background: linear-gradient(180deg, #22c55e 0%, #166534 100%);
+      border: 3px solid #166534;
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    /* Cone */
+    .shape-cone {
+      width: 120px;
+      height: 140px;
+      position: relative;
+    }
+
+    .cone-body {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(90deg, #7c3aed 0%, #a855f7 25%, #c084fc 50%, #a855f7 75%, #7c3aed 100%);
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    }
+
+    .cone-base {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 120px;
+      height: 30px;
+      background: linear-gradient(180deg, #a855f7 0%, #7c3aed 100%);
+      border-radius: 50%;
+      border: 3px solid #6d28d9;
+      box-sizing: border-box;
+    }
+
+    /* Rectangular Prism */
+    .shape-prism {
+      width: 120px;
+      height: 80px;
+      position: relative;
+    }
+
+    .prism-face {
+      position: absolute;
+      border: 3px solid #b45309;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .prism-front { width: 120px; height: 80px; background: linear-gradient(135deg, #fbbf24, #f59e0b); transform: translateZ(30px); }
+    .prism-top { width: 120px; height: 60px; background: linear-gradient(135deg, #fcd34d, #fbbf24); transform: translateY(-40px) rotateX(90deg); }
+    .prism-right { width: 60px; height: 80px; background: linear-gradient(135deg, #f59e0b, #d97706); transform: translateX(60px) rotateY(90deg); }
+
+    /* Real World Example */
+    .real-world {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+      padding: var(--space-2);
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border-radius: var(--radius-lg);
+    }
+
+    .real-world-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      color: var(--color-neutral-600);
+    }
+
+    .real-world-example {
+      font-size: 40px;
+    }
+
+    /* Question */
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    /* Answer choices */
+    .answer-choices {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .answer-btn {
+      min-width: 100px;
+      padding: var(--space-3) var(--space-4);
+      border: 4px solid #e2e8f0;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, white, #f8fafc);
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 #cbd5e1;
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      border-color: #3b82f6;
+      box-shadow: 0 6px 0 #2563eb;
+    }
+
+    .answer-btn:focus {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .answer-btn:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .answer-btn:focus-visible {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .answer-btn:disabled {
+      cursor: not-allowed;
+    }
+
+    .answer-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPop 0.5s ease;
+    }
+
+    .answer-btn.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      box-shadow: 0 4px 0 #d97706;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .shape-cube, .cube-face {
+        width: 80px;
+        height: 80px;
+      }
+
+      .cube-front { transform: translateZ(40px); }
+      .cube-back { transform: translateZ(-40px) rotateY(180deg); }
+      .cube-top { transform: translateY(-40px) rotateX(90deg); }
+      .cube-bottom { transform: translateY(40px) rotateX(-90deg); }
+      .cube-left { transform: translateX(-40px) rotateY(-90deg); }
+      .cube-right { transform: translateX(40px) rotateY(90deg); }
+
+      .shape-sphere {
+        width: 100px;
+        height: 100px;
+      }
+
+      .answer-btn {
+        min-width: 90px;
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--text-base);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Solid Shapes Finder Activity
+    const NameShapes3DK = {
+      // Game state
+      round: 1,
+      maxRounds: 8,
+      currentShape: null,
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+
+      // DOM elements
+      progress: null,
+      shapeDisplay: null,
+      realExample: null,
+      answerChoices: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // 3D Shapes
+      shapes: [
+        {
+          id: 'cube',
+          name: 'Cube',
+          examples: ['🎁', '🧊', '🎲'],
+          html: `<div class="shape-3d shape-cube">
+            <div class="cube-face cube-front"></div>
+            <div class="cube-face cube-back"></div>
+            <div class="cube-face cube-top"></div>
+            <div class="cube-face cube-bottom"></div>
+            <div class="cube-face cube-left"></div>
+            <div class="cube-face cube-right"></div>
+          </div>`
+        },
+        {
+          id: 'sphere',
+          name: 'Sphere',
+          examples: ['⚽', '🏀', '🌍'],
+          html: `<div class="shape-sphere"></div>`
+        },
+        {
+          id: 'cylinder',
+          name: 'Cylinder',
+          examples: ['🥫', '🧴', '🔋'],
+          html: `<div class="shape-cylinder">
+            <div class="cylinder-top"></div>
+            <div class="cylinder-body"></div>
+            <div class="cylinder-bottom"></div>
+          </div>`
+        },
+        {
+          id: 'cone',
+          name: 'Cone',
+          examples: ['🍦', '🎄', '🚧'],
+          html: `<div class="shape-cone">
+            <div class="cone-body"></div>
+            <div class="cone-base"></div>
+          </div>`
+        }
+      ],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.shapeDisplay = document.getElementById('shape-display');
+        this.realExample = document.getElementById('real-example');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+
+        // Pick random shape
+        this.currentShape = this.shapes[randomInt(0, this.shapes.length - 1)];
+
+        // Render shape
+        this.shapeDisplay.innerHTML = this.currentShape.html;
+
+        // Show real world example
+        const example = this.currentShape.examples[randomInt(0, this.currentShape.examples.length - 1)];
+        this.realExample.textContent = example;
+
+        // Reset UI
+        this.feedback.classList.remove('show', 'error');
+
+        // Render choices
+        this.renderChoices();
+        this.renderProgress();
+      },
+
+      /**
+       * Render answer choices
+       */
+      renderChoices() {
+        this.answerChoices.innerHTML = '';
+
+        // Get all shape names
+        const choices = this.shapes.map(s => s.name);
+
+        // Shuffle
+        choices.sort(() => Math.random() - 0.5);
+
+        choices.forEach(name => {
+          const btn = document.createElement('button');
+          btn.className = 'answer-btn';
+
+          // Get translated name
+          const translatedName = i18n.t(`section.activities.name-shapes-3d-k.shapes.${name.toLowerCase()}`) || name;
+          btn.textContent = translatedName;
+          btn.dataset.name = name;
+
+          btn.addEventListener('click', () => this.selectAnswer(name, btn));
+          this.answerChoices.appendChild(btn);
+        });
+      },
+
+      /**
+       * Select answer
+       */
+      selectAnswer(name, btn) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        const allBtns = this.answerChoices.querySelectorAll('.answer-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        const isCorrect = name === this.currentShape.name;
+        const translatedName = i18n.t(`section.activities.name-shapes-3d-k.shapes.${this.currentShape.name.toLowerCase()}`) || this.currentShape.name;
+
+        if (isCorrect) {
+          btn.classList.add('correct');
+          const msg = i18n.t('section.activities.name-shapes-3d-k.correct') || "Yes! That's a {{shape}}!";
+          this.feedback.textContent = msg.replace('{{shape}}', translatedName);
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          if (typeof celebrate === 'function') {
+            celebrate(btn);
+          }
+        } else {
+          btn.classList.add('incorrect');
+          allBtns.forEach(b => {
+            if (b.dataset.name === this.currentShape.name) {
+              b.classList.add('correct');
+            }
+          });
+          const msg = i18n.t('section.activities.name-shapes-3d-k.incorrect') || "Not quite! That's a {{shape}}.";
+          this.feedback.textContent = msg.replace('{{shape}}', translatedName);
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🧱';
+          this.statsMessage.textContent = i18n.t('section.activities.name-shapes-3d-k.perfect') || '3D Shape Master!';
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.name-shapes-3d-k.great') || 'Great shape finding!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.name-shapes-3d-k.keepPracticing') || 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      NameShapes3DK.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

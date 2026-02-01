@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Area & Perimeter Builder - Grade 4 Math Activity - Meadow Math">
+  <title>Area & Perimeter Builder - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade4">Grade 4</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧱</span>
+            <span data-i18n="section.activities.area-perimeter.title">Area & Perimeter Builder</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.area-perimeter.instruction">Build a rectangle, then choose the area or perimeter.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <div class="builder-panel">
+            <div class="builder-controls">
+              <div class="dimension-card width-card">
+                <div class="dimension-label" data-i18n="section.activities.area-perimeter.widthLabel">Width</div>
+                <div class="dimension-value" id="width-value">4</div>
+                <div class="dimension-controls">
+                  <button class="control-btn minus" type="button" data-dimension="width" data-action="minus" aria-label="Decrease width" data-i18n-title="section.activities.area-perimeter.controls.decreaseWidth">−</button>
+                  <button class="control-btn plus" type="button" data-dimension="width" data-action="plus" aria-label="Increase width" data-i18n-title="section.activities.area-perimeter.controls.increaseWidth">+</button>
+                </div>
+              </div>
+
+              <div class="dimension-card height-card">
+                <div class="dimension-label" data-i18n="section.activities.area-perimeter.heightLabel">Height</div>
+                <div class="dimension-value" id="height-value">3</div>
+                <div class="dimension-controls">
+                  <button class="control-btn minus" type="button" data-dimension="height" data-action="minus" aria-label="Decrease height" data-i18n-title="section.activities.area-perimeter.controls.decreaseHeight">−</button>
+                  <button class="control-btn plus" type="button" data-dimension="height" data-action="plus" aria-label="Increase height" data-i18n-title="section.activities.area-perimeter.controls.increaseHeight">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-card">
+              <div class="grid-title" data-i18n="section.activities.area-perimeter.gridLabel">Rectangle grid</div>
+              <div class="grid-wrapper">
+                <div class="grid" id="grid" role="img"></div>
+              </div>
+              <div class="dimension-tags">
+                <span class="dimension-tag" id="width-tag">Width: 4 units</span>
+                <span class="dimension-tag" id="height-tag">Height: 3 units</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="question-card">
+            <span class="question-text" id="question-text" aria-live="polite"></span>
+          </div>
+          <p class="question-hint" id="question-hint"></p>
+
+          <div class="choices-container" id="choices-container" role="group" data-i18n-title="section.activities.area-perimeter.choiceGroupLabel"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.area-perimeter.great">Great measuring!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Area & Perimeter Builder Activity - Grade 4 Level 4
+    const AreaPerimeterBuilder = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      minSide: 2,
+      maxSide: 9,
+      width: 4,
+      height: 3,
+      currentMode: 'area',
+      questionModes: [],
+      isAnswered: false,
+      lastResult: null,
+      advanceTimeout: null,
+      lastSignature: null,
+
+      progress: null,
+      grid: null,
+      widthValue: null,
+      heightValue: null,
+      widthTag: null,
+      heightTag: null,
+      questionText: null,
+      questionHint: null,
+      choicesContainer: null,
+      feedback: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+      choiceButtons: [],
+      controlButtons: [],
+
+      init() {
+        this.progress = document.getElementById('progress');
+        this.grid = document.getElementById('grid');
+        this.widthValue = document.getElementById('width-value');
+        this.heightValue = document.getElementById('height-value');
+        this.widthTag = document.getElementById('width-tag');
+        this.heightTag = document.getElementById('height-tag');
+        this.questionText = document.getElementById('question-text');
+        this.questionHint = document.getElementById('question-hint');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.feedback = document.getElementById('feedback');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+        this.controlButtons = Array.from(document.querySelectorAll('.control-btn'));
+
+        this.controlButtons.forEach(button => {
+          button.addEventListener('click', () => this.handleDimensionChange(button));
+        });
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.buildModeQueue();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      buildModeQueue() {
+        const half = Math.floor(this.totalQuestions / 2);
+        const modes = Array.from({ length: this.totalQuestions }, (_, index) =>
+          index < half ? 'area' : 'perimeter'
+        );
+        this.questionModes = shuffle(modes);
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.lastResult = null;
+        this.feedback.classList.remove('show', 'error');
+        this.currentMode = this.questionModes[this.currentQuestion] || 'area';
+        this.randomizeDimensions();
+        this.updateDimensionDisplays();
+        this.renderGrid();
+        this.renderQuestion();
+        this.renderChoices();
+        this.enableControls();
+        this.renderProgress();
+      },
+
+      randomizeDimensions() {
+        let width = 0;
+        let height = 0;
+        let signature = '';
+        let attempts = 0;
+
+        do {
+          width = randomInt(this.minSide, this.maxSide);
+          height = randomInt(this.minSide, this.maxSide);
+          signature = `${width}x${height}`;
+          attempts += 1;
+        } while (signature === this.lastSignature && attempts < 20);
+
+        this.width = width;
+        this.height = height;
+        this.lastSignature = signature;
+      },
+
+      handleDimensionChange(button) {
+        if (this.isAnswered) return;
+        const dimension = button.dataset.dimension;
+        const action = button.dataset.action;
+        const delta = action === 'plus' ? 1 : -1;
+
+        if (dimension === 'width') {
+          this.width = Math.min(this.maxSide, Math.max(this.minSide, this.width + delta));
+        } else {
+          this.height = Math.min(this.maxSide, Math.max(this.minSide, this.height + delta));
+        }
+
+        this.updateDimensionDisplays();
+        this.renderGrid();
+        this.renderChoices();
+        this.enableControls();
+      },
+
+      updateDimensionDisplays() {
+        this.widthValue.textContent = this.width;
+        this.heightValue.textContent = this.height;
+
+        const widthTemplate = this.getTranslation(
+          'section.activities.area-perimeter.widthTag',
+          'Width: {value} units'
+        );
+        const heightTemplate = this.getTranslation(
+          'section.activities.area-perimeter.heightTag',
+          'Height: {value} units'
+        );
+        this.widthTag.textContent = widthTemplate.replace('{value}', this.width);
+        this.heightTag.textContent = heightTemplate.replace('{value}', this.height);
+
+        this.updateGridLabel();
+        this.updateControlStates();
+      },
+
+      updateGridLabel() {
+        const labelTemplate = this.getTranslation(
+          'section.activities.area-perimeter.gridAria',
+          'Rectangle grid {width} by {height}'
+        );
+        if (this.grid) {
+          this.grid.setAttribute(
+            'aria-label',
+            labelTemplate.replace('{width}', this.width).replace('{height}', this.height)
+          );
+        }
+      },
+
+      updateControlStates() {
+        this.controlButtons.forEach(button => {
+          const dimension = button.dataset.dimension;
+          const action = button.dataset.action;
+          const value = dimension === 'width' ? this.width : this.height;
+          if (action === 'minus') {
+            button.disabled = value <= this.minSide;
+          } else {
+            button.disabled = value >= this.maxSide;
+          }
+        });
+      },
+
+      enableControls() {
+        this.updateControlStates();
+        this.choiceButtons.forEach(button => {
+          button.disabled = false;
+        });
+      },
+
+      disableControls() {
+        this.controlButtons.forEach(button => {
+          button.disabled = true;
+        });
+        this.choiceButtons.forEach(button => {
+          button.disabled = true;
+        });
+      },
+
+      renderGrid() {
+        if (!this.grid) return;
+        this.grid.style.gridTemplateColumns = `repeat(${this.width}, var(--cell-size))`;
+        this.grid.style.gridTemplateRows = `repeat(${this.height}, var(--cell-size))`;
+        this.grid.innerHTML = '';
+
+        for (let i = 0; i < this.width * this.height; i++) {
+          const cell = document.createElement('div');
+          cell.className = 'grid-cell';
+          this.grid.appendChild(cell);
+        }
+      },
+
+      renderQuestion() {
+        const questionKey = this.currentMode === 'area' ? 'questionArea' : 'questionPerimeter';
+        const hintKey = this.currentMode === 'area' ? 'areaHint' : 'perimeterHint';
+        const questionFallback = this.currentMode === 'area'
+          ? 'What is the area of this rectangle?'
+          : 'What is the perimeter of this rectangle?';
+        const hintFallback = this.currentMode === 'area'
+          ? 'Area = length × width'
+          : 'Perimeter = 2 × (length + width)';
+
+        this.questionText.textContent = this.getTranslation(
+          `section.activities.area-perimeter.${questionKey}`,
+          questionFallback
+        );
+        this.questionHint.textContent = this.getTranslation(
+          `section.activities.area-perimeter.${hintKey}`,
+          hintFallback
+        );
+      },
+
+      renderChoices() {
+        const correctValue = this.getCorrectValue();
+        const otherValue = this.getOtherValue();
+        const choices = new Set([correctValue]);
+
+        if (otherValue !== correctValue) {
+          choices.add(otherValue);
+        }
+
+        const maxValue = this.currentMode === 'area' ? 100 : 60;
+        while (choices.size < 4) {
+          const offset = randomInt(-6, 6);
+          if (offset === 0) continue;
+          const candidate = correctValue + offset;
+          if (candidate > 0 && candidate <= maxValue) {
+            choices.add(candidate);
+          }
+        }
+
+        const unitLabel = this.getUnitLabel();
+        const choiceTemplate = this.getTranslation(
+          'section.activities.area-perimeter.choiceLabel',
+          '{value} {unit}'
+        );
+
+        this.choicesContainer.innerHTML = '';
+        const options = shuffle(Array.from(choices));
+        options.forEach(value => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'choice-btn';
+          button.type = 'button';
+          button.dataset.value = value;
+          button.innerHTML = `<span class="choice-value">${value}</span><span class="choice-unit">${unitLabel}</span>`;
+          button.setAttribute('aria-label', choiceTemplate.replace('{value}', value).replace('{unit}', unitLabel));
+          button.addEventListener('click', () => this.checkAnswer(button));
+          this.choicesContainer.appendChild(button);
+        });
+
+        this.choiceButtons = Array.from(this.choicesContainer.querySelectorAll('.choice-btn'));
+      },
+
+      checkAnswer(button) {
+        if (this.isAnswered) return;
+        const selectedValue = parseInt(button.dataset.value, 10);
+        const correctValue = this.getCorrectValue();
+        const isCorrect = selectedValue === correctValue;
+
+        this.isAnswered = true;
+        this.lastResult = {
+          isCorrect,
+          mode: this.currentMode,
+          value: correctValue
+        };
+
+        if (isCorrect) {
+          this.correctCount += 1;
+          if (typeof celebrate === 'function') {
+            celebrate(this.grid);
+          }
+        } else {
+          this.incorrectCount += 1;
+          if (typeof wiggle === 'function') {
+            wiggle(this.grid);
+          }
+        }
+
+        this.choiceButtons.forEach(choice => {
+          const value = parseInt(choice.dataset.value, 10);
+          choice.disabled = true;
+          if (value === correctValue) {
+            choice.classList.add('correct');
+          }
+        });
+
+        if (!isCorrect) {
+          button.classList.add('incorrect');
+        }
+
+        this.disableControls();
+        this.showFeedback(isCorrect, correctValue);
+
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.currentQuestion += 1;
+            this.startQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      showFeedback(isCorrect, correctValue) {
+        const key = this.currentMode === 'area'
+          ? (isCorrect ? 'correctArea' : 'wrongArea')
+          : (isCorrect ? 'correctPerimeter' : 'wrongPerimeter');
+        const fallback = isCorrect
+          ? (this.currentMode === 'area'
+            ? 'Correct! The area is {value} square units.'
+            : 'Correct! The perimeter is {value} units.')
+          : (this.currentMode === 'area'
+            ? 'The area is {value} square units.'
+            : 'The perimeter is {value} units.');
+
+        const template = this.getTranslation(`section.activities.area-perimeter.${key}`, fallback);
+        this.feedback.textContent = template.replace('{value}', correctValue);
+        this.feedback.classList.add('show');
+        if (isCorrect) {
+          this.feedback.classList.remove('error');
+        } else {
+          this.feedback.classList.add('error');
+        }
+      },
+
+      getCorrectValue() {
+        return this.currentMode === 'area'
+          ? this.width * this.height
+          : 2 * (this.width + this.height);
+      },
+
+      getOtherValue() {
+        return this.currentMode === 'area'
+          ? 2 * (this.width + this.height)
+          : this.width * this.height;
+      },
+
+      getUnitLabel() {
+        const key = this.currentMode === 'area' ? 'squareUnitLabel' : 'unitLabel';
+        const fallback = this.currentMode === 'area' ? 'square units' : 'units';
+        return this.getTranslation(`section.activities.area-perimeter.${key}`, fallback);
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const scoreRatio = this.correctCount / this.totalQuestions;
+        if (scoreRatio === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.area-perimeter.perfect',
+            'Perfect building!'
+          );
+        } else if (scoreRatio >= 0.7) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.area-perimeter.great',
+            'Great measuring!'
+          );
+        } else if (scoreRatio >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.area-perimeter.good',
+            'Nice work!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.area-perimeter.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.buildModeQueue();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      updateChoiceLabels() {
+        if (!this.choiceButtons.length) return;
+        const unitLabel = this.getUnitLabel();
+        const choiceTemplate = this.getTranslation(
+          'section.activities.area-perimeter.choiceLabel',
+          '{value} {unit}'
+        );
+
+        this.choiceButtons.forEach(button => {
+          const value = button.dataset.value;
+          const valueEl = button.querySelector('.choice-value');
+          const unitEl = button.querySelector('.choice-unit');
+          if (valueEl) valueEl.textContent = value;
+          if (unitEl) unitEl.textContent = unitLabel;
+          button.setAttribute(
+            'aria-label',
+            choiceTemplate.replace('{value}', value).replace('{unit}', unitLabel)
+          );
+        });
+      },
+
+      updateTranslations() {
+        this.updateDimensionDisplays();
+        this.renderQuestion();
+        this.updateChoiceLabels();
+
+        if (this.lastResult && this.feedback.classList.contains('show')) {
+          this.showFeedback(this.lastResult.isCorrect, this.lastResult.value);
+        }
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+
+        this.updateProgressLabel();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      },
+
+      getTranslation(key, fallback) {
+        const translated = i18n.t(key);
+        return translated !== key ? translated : fallback;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => AreaPerimeterBuilder.init());
+      } else {
+        AreaPerimeterBuilder.init();
+      }
+    });
+  </script>
+  <style>
+    /* Area & Perimeter Builder specific styles */
+
+    :root {
+      --cell-size: clamp(20px, 3.4vw, 32px);
+    }
+
+    .builder-panel {
+      width: 100%;
+      max-width: 820px;
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) minmax(280px, 1.2fr);
+      gap: var(--space-5);
+      margin-bottom: var(--space-6);
+      align-items: start;
+    }
+
+    .builder-controls {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .dimension-card {
+      padding: var(--space-4);
+      border-radius: var(--radius-2xl);
+      text-align: center;
+      border: 3px solid #f59e0b;
+      background: linear-gradient(135deg, #fef9c3, #fde68a);
+      box-shadow: 0 4px 0 #f59e0b;
+    }
+
+    .dimension-card.height-card {
+      border-color: #0ea5e9;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      box-shadow: 0 4px 0 #0284c7;
+    }
+
+    .dimension-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-2);
+    }
+
+    .dimension-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-800);
+      margin-bottom: var(--space-3);
+    }
+
+    .dimension-controls {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+    }
+
+    .control-btn {
+      width: 48px;
+      height: 48px;
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      border: 2px solid var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 0 var(--color-neutral-300);
+    }
+
+    .control-btn.plus {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      color: #166534;
+      border-color: #22c55e;
+      box-shadow: 0 2px 0 #16a34a;
+    }
+
+    .control-btn.minus {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      color: #991b1b;
+      border-color: #ef4444;
+      box-shadow: 0 2px 0 #dc2626;
+    }
+
+    .control-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+    }
+
+    .control-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 1px 0 var(--color-neutral-300);
+    }
+
+    .control-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .control-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4), 0 2px 0 var(--color-neutral-300);
+    }
+
+    .grid-card {
+      padding: var(--space-4);
+      border-radius: var(--radius-2xl);
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      border: 3px solid #22d3ee;
+      box-shadow: 0 4px 0 #0ea5e9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .grid-title {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #0f766e;
+    }
+
+    .grid-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .grid {
+      display: grid;
+      gap: 4px;
+      padding: var(--space-3);
+      border-radius: var(--radius-xl);
+      background: #f0fdfa;
+      border: 2px solid #99f6e4;
+      width: fit-content;
+    }
+
+    .grid-cell {
+      width: var(--cell-size);
+      height: var(--cell-size);
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-radius: var(--radius-sm);
+      border: 1px solid #86efac;
+    }
+
+    .grid-cell:nth-child(even) {
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    }
+
+    .dimension-tags {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .dimension-tag {
+      background: #ffffff;
+      border: 2px solid #22d3ee;
+      border-radius: var(--radius-lg);
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: #0f766e;
+    }
+
+    .question-card {
+      padding: var(--space-4) var(--space-5);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border: 3px solid #a78bfa;
+      box-shadow: 0 4px 0 #8b5cf6;
+      text-align: center;
+      margin-bottom: var(--space-3);
+      max-width: 620px;
+      width: 100%;
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #5b21b6;
+    }
+
+    .question-hint {
+      text-align: center;
+      font-size: var(--text-sm);
+      color: var(--color-neutral-500);
+      margin-bottom: var(--space-5);
+    }
+
+    .choices-container {
+      width: 100%;
+      max-width: 520px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(130px, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .choice-btn {
+      min-height: 72px;
+      padding: var(--space-2) var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 4px solid #38bdf8;
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 #0284c7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-1);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 0 #0284c7;
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 #0284c7;
+    }
+
+    .choice-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4), 0 4px 0 #0284c7;
+    }
+
+    .choice-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      box-shadow: 0 4px 0 #15803d;
+      color: #166534;
+      animation: pulse-correct 0.5s ease;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      box-shadow: 0 4px 0 #b91c1c;
+      color: #991b1b;
+      animation: wiggle 0.3s ease;
+    }
+
+    .choice-btn.correct .choice-unit,
+    .choice-btn.incorrect .choice-unit {
+      color: inherit;
+    }
+
+    .choice-unit {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-500);
+    }
+
+    @keyframes pulse-correct {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-3deg); }
+      75% { transform: rotate(3deg); }
+    }
+
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 900px) {
+      .builder-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .builder-controls {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .dimension-card {
+        min-width: 200px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .builder-controls {
+        flex-direction: column;
+      }
+
+      .choices-container {
+        grid-template-columns: 1fr;
+      }
+
+      .question-card {
+        padding: var(--space-3) var(--space-4);
+      }
+
+      .question-text {
+        font-size: var(--text-lg);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

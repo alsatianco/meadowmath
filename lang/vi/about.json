@@ -1,0 +1,80 @@
+{
+  "title": "Giới thiệu Meadow Math",
+  "description": "Tìm hiểu về sứ mệnh và giá trị của chúng tôi",
+  "tabs": {
+    "about": "Giới thiệu",
+    "privacy": "Quyền riêng tư & Điều khoản"
+  },
+  "about": {
+    "title": "Meadow Math là gì?",
+    "intro": "Meadow Math là không gian miễn phí, nhẹ nhàng và vui vẻ để trẻ em khám phá toán học từ Mầm non đến Lớp 5.",
+    "mission": {
+      "title": "Sứ mệnh của chúng tôi",
+      "content": "Chúng tôi tin rằng mọi trẻ em đều có thể yêu thích toán học khi việc học giống như chơi. Meadow Math mang đến môi trường bình yên, không áp lực, nơi trẻ có thể khám phá các khái niệm toán học theo nhịp độ riêng thông qua các hoạt động tương tác và công cụ thực hành."
+    },
+    "philosophy": {
+      "title": "Triết lý của chúng tôi",
+      "principles": {
+        "handson": {
+          "title": "Học qua thực hành",
+          "content": "Trẻ em học tốt nhất khi được chạm, di chuyển và thao tác. Các công cụ và hoạt động của chúng tôi cho phép trẻ khám phá khái niệm toán học qua tương tác trực tiếp."
+        },
+        "calm": {
+          "title": "Bình yên & Không áp lực",
+          "content": "Không đồng hồ đếm, không điểm số, không cạnh tranh. Chỉ có sự khuyến khích nhẹ nhàng và tự do học theo nhịp độ riêng."
+        },
+        "joyful": {
+          "title": "Khám phá vui vẻ",
+          "content": "Toán học nên khơi gợi sự tò mò và ngạc nhiên. Mỗi hoạt động được thiết kế để tạo ra những khoảnh khắc 'à há!' kỳ diệu."
+        }
+      }
+    },
+    "team": {
+      "title": "Ai xây dựng dự án này?",
+      "content": "Meadow Math là dự án gia đình được xây dựng với tình yêu thương. Chúng tôi tạo ra nó cho con cái mình và quyết định chia sẻ với mọi người."
+    },
+    "contribute": {
+      "title": "Cách đóng góp",
+      "content": "Meadow Math là mã nguồn mở! Bạn có thể đóng góp bằng cách:",
+      "items": {
+        "issues": "Báo lỗi hoặc đề xuất tính năng trên GitHub",
+        "code": "Đóng góp cải tiến mã nguồn",
+        "translate": "Giúp dịch sang nhiều ngôn ngữ hơn",
+        "spread": "Chia sẻ với các gia đình và giáo viên khác"
+      },
+      "github": "Truy cập GitHub của chúng tôi"
+    }
+  },
+  "privacy": {
+    "title": "Quyền riêng tư & Điều khoản",
+    "intro": "Chúng tôi tin vào sự đơn giản và tôn trọng quyền riêng tư của gia đình bạn.",
+    "noAccounts": {
+      "title": "Không cần tài khoản",
+      "content": "Meadow Math không yêu cầu bạn tạo tài khoản. Không đăng ký, không đăng nhập, không mật khẩu cần nhớ."
+    },
+    "noData": {
+      "title": "Không thu thập dữ liệu cá nhân",
+      "content": "Chúng tôi không thu thập, lưu trữ hay chia sẻ bất kỳ thông tin cá nhân nào về bạn hoặc con cái bạn. Không tên, không email, không theo dõi."
+    },
+    "localStorage": {
+      "title": "Chỉ lưu trữ cục bộ",
+      "content": "Nếu có tiến độ hoặc tùy chọn nào được lưu, chúng chỉ được lưu trong bộ nhớ cục bộ của trình duyệt trên thiết bị của bạn. Dữ liệu này không bao giờ rời khỏi máy tính của bạn."
+    },
+    "analytics": {
+      "title": "Phân tích tối thiểu",
+      "content": "Chúng tôi có thể sử dụng phân tích cơ bản, tôn trọng quyền riêng tư (như Cloudflare Web Analytics) để hiểu có bao nhiêu người truy cập trang. Dữ liệu này là ẩn danh và tổng hợp."
+    },
+    "cloudflare": {
+      "title": "Cloudflare Analytics trên mọi trang",
+      "content": "Chúng tôi sử dụng Cloudflare Web Analytics trên tất cả các trang để hiểu lưu lượng truy cập cơ bản (như số người truy cập và những trang nào phổ biến). Dữ liệu này tập trung vào quyền riêng tư, ẩn danh và được báo cáo dưới dạng tổng hợp. Chúng tôi không sử dụng dữ liệu này để nhận dạng bạn và không bán dữ liệu của bạn."
+    },
+    "disclaimer": {
+      "title": "Tuyên bố miễn trừ",
+      "content": "Meadow Math được cung cấp như một tài nguyên giáo dục miễn phí. Mặc dù chúng tôi cố gắng tạo nội dung chính xác và hữu ích, chúng tôi không đảm bảo về kết quả học tập. Công cụ này nhằm bổ sung, không thay thế, việc giảng dạy chất lượng. Chúng tôi khuyến nghị sự giám sát của phụ huynh cho trẻ nhỏ."
+    },
+    "openSource": {
+      "title": "Mã nguồn mở",
+      "content": "Meadow Math là phần mềm mã nguồn mở. Bạn có thể xem, sao chép và sửa đổi mã theo giấy phép của dự án."
+    }
+  }
+}

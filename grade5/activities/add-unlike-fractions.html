@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Add Unlike Fractions - Grade 5 Math Activity - Meadow Math">
+  <title>Add Unlike Fractions - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">➕</span>
+            <span data-i18n="section.activities.add-unlike-fractions.title">Add Unlike Fractions</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.add-unlike-fractions.instruction">Add the fractions by finding a common denominator!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Problem Display -->
+          <div class="problem-container" id="problem-container">
+            <div class="problem-label" id="problem-label">
+              <span data-i18n="section.activities.add-unlike-fractions.addThese">Add these fractions:</span>
+            </div>
+            <div class="fractions-row" id="fractions-row">
+              <div class="fraction-card" id="fraction-1">
+                <span class="whole-part hidden" id="whole1"></span>
+                <div class="fraction-part">
+                  <span class="numerator" id="num1">1</span>
+                  <span class="fraction-bar"></span>
+                  <span class="denominator" id="den1">2</span>
+                </div>
+              </div>
+              <span class="operator-label">+</span>
+              <div class="fraction-card" id="fraction-2">
+                <span class="whole-part hidden" id="whole2"></span>
+                <div class="fraction-part">
+                  <span class="numerator" id="num2">1</span>
+                  <span class="fraction-bar"></span>
+                  <span class="denominator" id="den2">3</span>
+                </div>
+              </div>
+              <span class="operator-label">=</span>
+              <span class="answer-placeholder" id="answer-placeholder">?</span>
+            </div>
+          </div>
+
+          <!-- Fraction Strips Visualization -->
+          <div class="strips-container" id="strips-container">
+            <div class="strip-row" id="strip-row-1">
+              <div class="strip-label" id="strip-label-1">
+                <span class="frac-display" id="frac-display-1">1/2</span>
+              </div>
+              <div class="fraction-strip" id="strip-1" aria-label="First fraction strip"></div>
+            </div>
+            <div class="strip-row" id="strip-row-2">
+              <div class="strip-label" id="strip-label-2">
+                <span class="frac-display" id="frac-display-2">1/3</span>
+              </div>
+              <div class="fraction-strip" id="strip-2" aria-label="Second fraction strip"></div>
+            </div>
+            <div class="strip-row sum-strip" id="strip-row-sum">
+              <div class="strip-label" id="strip-label-sum">
+                <span class="frac-display" id="frac-display-sum">=</span>
+              </div>
+              <div class="fraction-strip" id="strip-sum" aria-label="Sum fraction strip"></div>
+            </div>
+          </div>
+
+          <!-- Step 1: Choose Common Denominator -->
+          <div class="step-section step-1" id="step-1-section">
+            <div class="step-label" id="step-1-label">
+              <span data-i18n="section.activities.add-unlike-fractions.chooseCommon">Step 1: Choose a common denominator</span>
+            </div>
+            <div class="choices-container" id="denominator-choices">
+              <!-- Choices will be generated here -->
+            </div>
+          </div>
+
+          <!-- Step 2: Convert and Add (shown after step 1) -->
+          <div class="step-section step-2 hidden" id="step-2-section">
+            <div class="step-label" id="step-2-label">
+              <span data-i18n="section.activities.add-unlike-fractions.convertAdd">Step 2: Convert and add</span>
+            </div>
+            <div class="conversion-display" id="conversion-display">
+              <div class="conversion-row" id="conversion-1">
+                <span class="conv-original" id="conv-orig-1">1/2</span>
+                <span class="conv-arrow">=</span>
+                <span class="conv-result" id="conv-result-1">3/6</span>
+              </div>
+              <div class="conversion-row" id="conversion-2">
+                <span class="conv-original" id="conv-orig-2">1/3</span>
+                <span class="conv-arrow">=</span>
+                <span class="conv-result" id="conv-result-2">2/6</span>
+              </div>
+              <div class="conversion-row sum-row">
+                <span class="conv-sum-label" data-i18n="section.activities.add-unlike-fractions.sum">Sum:</span>
+                <span class="conv-result sum-result" id="conv-sum">?/6</span>
+              </div>
+            </div>
+            <div class="answer-choices" id="answer-choices">
+              <!-- Answer choices will be generated here -->
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.add-unlike-fractions.great">Great work adding fractions!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Add Unlike Fractions Activity - Grade 5 Level 3
+    const AddUnlikeFractions = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+      currentStep: 1, // 1 = choose denominator, 2 = choose sum
+      selectedDenominator: null,
+
+      // DOM elements
+      problemLabel: null,
+      whole1: null,
+      whole2: null,
+      num1: null,
+      den1: null,
+      num2: null,
+      den2: null,
+      answerPlaceholder: null,
+      fracDisplay1: null,
+      fracDisplay2: null,
+      fracDisplaySum: null,
+      strip1: null,
+      strip2: null,
+      stripSum: null,
+      step1Section: null,
+      step2Section: null,
+      denominatorChoices: null,
+      convOrig1: null,
+      convOrig2: null,
+      convResult1: null,
+      convResult2: null,
+      convSum: null,
+      answerChoices: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.problemLabel = document.getElementById('problem-label');
+        this.whole1 = document.getElementById('whole1');
+        this.whole2 = document.getElementById('whole2');
+        this.num1 = document.getElementById('num1');
+        this.den1 = document.getElementById('den1');
+        this.num2 = document.getElementById('num2');
+        this.den2 = document.getElementById('den2');
+        this.answerPlaceholder = document.getElementById('answer-placeholder');
+        this.fracDisplay1 = document.getElementById('frac-display-1');
+        this.fracDisplay2 = document.getElementById('frac-display-2');
+        this.fracDisplaySum = document.getElementById('frac-display-sum');
+        this.strip1 = document.getElementById('strip-1');
+        this.strip2 = document.getElementById('strip-2');
+        this.stripSum = document.getElementById('strip-sum');
+        this.step1Section = document.getElementById('step-1-section');
+        this.step2Section = document.getElementById('step-2-section');
+        this.denominatorChoices = document.getElementById('denominator-choices');
+        this.convOrig1 = document.getElementById('conv-orig-1');
+        this.convOrig2 = document.getElementById('conv-orig-2');
+        this.convResult1 = document.getElementById('conv-result-1');
+        this.convResult2 = document.getElementById('conv-result-2');
+        this.convSum = document.getElementById('conv-sum');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      // Calculate GCD using Euclidean algorithm
+      gcd(a, b) {
+        return b === 0 ? a : this.gcd(b, a % b);
+      },
+
+      // Calculate LCM
+      lcm(a, b) {
+        return (a * b) / this.gcd(a, b);
+      },
+
+      // Simplify a fraction
+      simplify(num, den) {
+        const g = this.gcd(num, den);
+        return { num: num / g, den: den / g };
+      },
+
+      generateQuestions() {
+        // Simple fraction pairs (no mixed numbers first 7 questions)
+        const simpleProblems = [
+          { num1: 1, den1: 2, num2: 1, den2: 3 },   // = 5/6
+          { num1: 1, den1: 2, num2: 1, den2: 4 },   // = 3/4
+          { num1: 2, den1: 3, num2: 1, den2: 4 },   // = 11/12
+          { num1: 1, den1: 3, num2: 1, den2: 6 },   // = 1/2
+          { num1: 3, den1: 4, num2: 1, den2: 8 },   // = 7/8
+          { num1: 2, den1: 5, num2: 1, den2: 2 },   // = 9/10
+          { num1: 1, den1: 4, num2: 1, den2: 3 },   // = 7/12
+          { num1: 1, den1: 6, num2: 1, den2: 4 },   // = 5/12
+          { num1: 3, den1: 5, num2: 1, den2: 3 },   // = 14/15
+          { num1: 2, den1: 3, num2: 1, den2: 6 },   // = 5/6
+          { num1: 1, den1: 2, num2: 2, den2: 5 },   // = 9/10
+          { num1: 1, den1: 3, num2: 2, den2: 5 },   // = 11/15
+        ];
+
+        // Mixed number problems (last 3 questions)
+        const mixedProblems = [
+          { whole1: 1, num1: 1, den1: 4, whole2: 2, num2: 2, den2: 3 },  // = 3 11/12
+          { whole1: 2, num1: 1, den1: 2, whole2: 1, num2: 1, den2: 3 },  // = 3 5/6
+          { whole1: 1, num1: 2, den1: 3, whole2: 1, num2: 1, den2: 4 },  // = 2 11/12
+          { whole1: 2, num1: 1, den1: 6, whole2: 1, num2: 1, den2: 2 },  // = 3 2/3
+          { whole1: 1, num1: 1, den1: 3, whole2: 2, num2: 1, den2: 6 },  // = 3 1/2
+        ];
+
+        // Shuffle and pick questions
+        const shuffledSimple = shuffle(simpleProblems);
+        const shuffledMixed = shuffle(mixedProblems);
+
+        this.questions = [];
+
+        // First 7 simple problems
+        for (let i = 0; i < 7 && i < shuffledSimple.length; i++) {
+          const p = shuffledSimple[i];
+          const lcd = this.lcm(p.den1, p.den2);
+          const mult1 = lcd / p.den1;
+          const mult2 = lcd / p.den2;
+          const newNum1 = p.num1 * mult1;
+          const newNum2 = p.num2 * mult2;
+          const sumNum = newNum1 + newNum2;
+
+          // Simplify if needed
+          const simplified = this.simplify(sumNum, lcd);
+
+          this.questions.push({
+            type: 'simple',
+            num1: p.num1,
+            den1: p.den1,
+            num2: p.num2,
+            den2: p.den2,
+            lcd: lcd,
+            newNum1: newNum1,
+            newNum2: newNum2,
+            sumNum: sumNum,
+            sumDen: lcd,
+            simplifiedNum: simplified.num,
+            simplifiedDen: simplified.den
+          });
+        }
+
+        // Last 3 mixed number problems
+        for (let i = 0; i < 3 && i < shuffledMixed.length; i++) {
+          const p = shuffledMixed[i];
+          const lcd = this.lcm(p.den1, p.den2);
+          const mult1 = lcd / p.den1;
+          const mult2 = lcd / p.den2;
+          const newNum1 = p.num1 * mult1;
+          const newNum2 = p.num2 * mult2;
+          const sumNum = newNum1 + newNum2;
+          const wholeSum = p.whole1 + p.whole2;
+
+          // Handle improper fraction result
+          let finalWhole = wholeSum;
+          let finalNum = sumNum;
+          if (sumNum >= lcd) {
+            finalWhole += Math.floor(sumNum / lcd);
+            finalNum = sumNum % lcd;
+          }
+
+          // Simplify if needed
+          const simplified = finalNum > 0 ? this.simplify(finalNum, lcd) : { num: 0, den: lcd };
+
+          this.questions.push({
+            type: 'mixed',
+            whole1: p.whole1,
+            num1: p.num1,
+            den1: p.den1,
+            whole2: p.whole2,
+            num2: p.num2,
+            den2: p.den2,
+            lcd: lcd,
+            newNum1: newNum1,
+            newNum2: newNum2,
+            sumNum: sumNum,
+            sumDen: lcd,
+            resultWhole: finalWhole,
+            resultNum: simplified.num,
+            resultDen: simplified.den
+          });
+        }
+
+        // Final shuffle
+        this.questions = shuffle(this.questions);
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.currentStep = 1;
+        this.selectedDenominator = null;
+        this.feedback.classList.remove('show', 'error');
+        this.step1Section.classList.remove('hidden');
+        this.step2Section.classList.add('hidden');
+        this.answerPlaceholder.textContent = '?';
+        this.stripSum.innerHTML = '';
+        this.fracDisplaySum.textContent = '=';
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        // Update fraction displays
+        if (question.type === 'mixed') {
+          this.whole1.textContent = question.whole1;
+          this.whole1.classList.remove('hidden');
+          this.whole2.textContent = question.whole2;
+          this.whole2.classList.remove('hidden');
+        } else {
+          this.whole1.classList.add('hidden');
+          this.whole2.classList.add('hidden');
+        }
+
+        this.num1.textContent = question.num1;
+        this.den1.textContent = question.den1;
+        this.num2.textContent = question.num2;
+        this.den2.textContent = question.den2;
+
+        // Update strip labels
+        if (question.type === 'mixed') {
+          this.fracDisplay1.textContent = `${question.whole1} ${question.num1}/${question.den1}`;
+          this.fracDisplay2.textContent = `${question.whole2} ${question.num2}/${question.den2}`;
+        } else {
+          this.fracDisplay1.textContent = `${question.num1}/${question.den1}`;
+          this.fracDisplay2.textContent = `${question.num2}/${question.den2}`;
+        }
+
+        // Render fraction strips (original)
+        this.renderFractionStrip(this.strip1, question.num1, question.den1, 'primary');
+        this.renderFractionStrip(this.strip2, question.num2, question.den2, 'secondary');
+
+        // Generate denominator choices
+        this.renderDenominatorChoices(question);
+
+        this.renderProgress();
+      },
+
+      renderFractionStrip(container, num, den, colorClass) {
+        container.innerHTML = '';
+
+        for (let i = 0; i < den; i++) {
+          const part = document.createElement('div');
+          part.className = 'strip-part';
+          part.style.width = `${100 / den}%`;
+
+          if (i < num) {
+            part.classList.add('shaded', colorClass);
+          }
+
+          container.appendChild(part);
+        }
+      },
+
+      renderDenominatorChoices(question) {
+        this.denominatorChoices.innerHTML = '';
+
+        // Generate 4 choices including the LCD
+        const lcd = question.lcd;
+        const choices = new Set([lcd]);
+
+        // Add some wrong choices
+        const product = question.den1 * question.den2;
+        if (product !== lcd) choices.add(product);
+
+        // One of the denominators (wrong)
+        choices.add(question.den1);
+        choices.add(question.den2);
+
+        // Multiple of LCD
+        if (lcd * 2 <= 48) choices.add(lcd * 2);
+
+        // Other common denominators
+        choices.add(lcd + 2);
+        choices.add(lcd + 4);
+        if (lcd > 4) choices.add(lcd - 2);
+
+        // Convert to array, filter valid ones
+        let choicesArray = [...choices].filter(c => c > 0 && c <= 48 && c >= Math.max(question.den1, question.den2));
+
+        // Remove LCD temporarily, shuffle, take 3, then add LCD back
+        const withoutLcd = choicesArray.filter(c => c !== lcd);
+        const shuffledDistractors = shuffle(withoutLcd).slice(0, 3);
+
+        // Ensure we have exactly 4 choices with LCD included
+        choicesArray = [lcd, ...shuffledDistractors];
+
+        // If we still have less than 4, add more
+        while (choicesArray.length < 4) {
+          const extra = lcd + choicesArray.length * 2;
+          if (!choicesArray.includes(extra) && extra <= 48) {
+            choicesArray.push(extra);
+          } else {
+            choicesArray.push(lcd * 2 + choicesArray.length);
+          }
+        }
+
+        // Sort for better UX
+        choicesArray.sort((a, b) => a - b);
+
+        choicesArray.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn denominator-choice';
+          btn.textContent = choice;
+          btn.addEventListener('click', () => this.selectDenominator(choice, btn, question));
+          this.denominatorChoices.appendChild(btn);
+        });
+      },
+
+      selectDenominator(choice, btn, question) {
+        if (this.isAnswered || this.currentStep !== 1) return;
+
+        // Check if this is a valid common denominator (must be divisible by both)
+        const isValidCommon = choice % question.den1 === 0 && choice % question.den2 === 0;
+        const isLcd = choice === question.lcd;
+
+        // Disable all buttons
+        const allBtns = this.denominatorChoices.querySelectorAll('.choice-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        if (isValidCommon) {
+          btn.classList.add('correct');
+          this.selectedDenominator = choice;
+
+          // Show step 2
+          setTimeout(() => {
+            this.showStep2(question, choice);
+          }, 600);
+        } else {
+          btn.classList.add('incorrect');
+
+          // Show the LCD
+          allBtns.forEach(b => {
+            if (parseInt(b.textContent) === question.lcd) {
+              b.classList.add('correct');
+            }
+          });
+
+          const feedbackText = this.getTranslation(
+            'section.activities.add-unlike-fractions.wrongDenominator',
+            '{choice} is not divisible by both {den1} and {den2}. Try {lcd}!'
+          ).replace('{choice}', choice)
+           .replace('{den1}', question.den1)
+           .replace('{den2}', question.den2)
+           .replace('{lcd}', question.lcd);
+
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.add('error', 'show');
+          this.incorrectCount++;
+          this.isAnswered = true;
+          this.scheduleAdvance();
+        }
+      },
+
+      showStep2(question, denominator) {
+        this.currentStep = 2;
+        this.step1Section.classList.add('hidden');
+        this.step2Section.classList.remove('hidden');
+
+        // Calculate conversions with the selected denominator
+        const mult1 = denominator / question.den1;
+        const mult2 = denominator / question.den2;
+        const newNum1 = question.num1 * mult1;
+        const newNum2 = question.num2 * mult2;
+        const sumNum = newNum1 + newNum2;
+
+        // Store for answer checking
+        this.currentSumNum = sumNum;
+        this.currentSumDen = denominator;
+
+        // Update conversion display
+        if (question.type === 'mixed') {
+          this.convOrig1.textContent = `${question.whole1} ${question.num1}/${question.den1}`;
+          this.convOrig2.textContent = `${question.whole2} ${question.num2}/${question.den2}`;
+          this.convResult1.textContent = `${question.whole1} ${newNum1}/${denominator}`;
+          this.convResult2.textContent = `${question.whole2} ${newNum2}/${denominator}`;
+        } else {
+          this.convOrig1.textContent = `${question.num1}/${question.den1}`;
+          this.convOrig2.textContent = `${question.num2}/${question.den2}`;
+          this.convResult1.textContent = `${newNum1}/${denominator}`;
+          this.convResult2.textContent = `${newNum2}/${denominator}`;
+        }
+        this.convSum.textContent = `?/${denominator}`;
+
+        // Update fraction strips to show converted fractions
+        this.animateStripConversion(this.strip1, newNum1, denominator, 'primary');
+        this.animateStripConversion(this.strip2, newNum2, denominator, 'secondary');
+
+        // Generate answer choices
+        this.renderAnswerChoices(question, denominator, newNum1, newNum2, sumNum);
+      },
+
+      animateStripConversion(container, num, den, colorClass) {
+        container.innerHTML = '';
+        container.classList.add('animating');
+
+        for (let i = 0; i < den; i++) {
+          const part = document.createElement('div');
+          part.className = 'strip-part';
+          part.style.width = `${100 / den}%`;
+          part.style.animationDelay = `${i * 20}ms`;
+
+          if (i < num) {
+            part.classList.add('shaded', colorClass);
+          }
+
+          part.classList.add('animate-in');
+          container.appendChild(part);
+        }
+
+        setTimeout(() => {
+          container.classList.remove('animating');
+        }, 500);
+      },
+
+      renderAnswerChoices(question, denominator, newNum1, newNum2, sumNum) {
+        this.answerChoices.innerHTML = '';
+
+        // For mixed numbers, include whole parts
+        let wholeSum = 0;
+        if (question.type === 'mixed') {
+          wholeSum = question.whole1 + question.whole2;
+        }
+
+        // Handle improper result
+        let finalWhole = wholeSum;
+        let finalNum = sumNum;
+        if (sumNum >= denominator) {
+          finalWhole += Math.floor(sumNum / denominator);
+          finalNum = sumNum % denominator;
+        }
+
+        // Format correct answer
+        let correctAnswer;
+        if (question.type === 'mixed' || finalWhole > 0) {
+          if (finalNum === 0) {
+            correctAnswer = `${finalWhole}`;
+          } else {
+            correctAnswer = `${finalWhole} ${finalNum}/${denominator}`;
+          }
+        } else {
+          correctAnswer = `${sumNum}/${denominator}`;
+        }
+
+        // Generate distractors
+        const distractors = new Set();
+
+        // Helper to format answer (avoids 0 in fraction part)
+        const formatAnswer = (w, n, d) => {
+          if (n === 0) return `${w}`;
+          if (w === 0) return `${n}/${d}`;
+          return `${w} ${n}/${d}`;
+        };
+
+        // Off by one in numerator
+        if (question.type === 'mixed' || finalWhole > 0) {
+          if (finalNum > 0) {
+            if (finalNum + 1 < denominator) {
+              distractors.add(formatAnswer(finalWhole, finalNum + 1, denominator));
+            }
+            if (finalNum > 1) distractors.add(formatAnswer(finalWhole, finalNum - 1, denominator));
+          }
+          // Off by one in whole part
+          if (finalNum > 0) {
+            distractors.add(formatAnswer(finalWhole + 1, finalNum, denominator));
+            if (finalWhole > 1) distractors.add(formatAnswer(finalWhole - 1, finalNum, denominator));
+          } else {
+            distractors.add(`${finalWhole + 1}`);
+            if (finalWhole > 1) distractors.add(`${finalWhole - 1}`);
+          }
+        } else {
+          distractors.add(`${sumNum + 1}/${denominator}`);
+          if (sumNum > 1) distractors.add(`${sumNum - 1}/${denominator}`);
+          distractors.add(`${sumNum + 2}/${denominator}`);
+        }
+
+        // Wrong calculation (forgot to add, just used one fraction)
+        if (newNum1 !== sumNum) distractors.add(`${newNum1}/${denominator}`);
+        if (newNum2 !== sumNum) distractors.add(`${newNum2}/${denominator}`);
+
+        // Remove correct answer if accidentally added
+        distractors.delete(correctAnswer);
+
+        // Pick 3 unique distractors
+        const uniqueDistractors = [...distractors].slice(0, 3);
+
+        // Ensure we have exactly 3 distractors
+        let fallbackCounter = 2;
+        while (uniqueDistractors.length < 3) {
+          const fallbackNum = (finalNum + fallbackCounter) % denominator;
+          const fallback = question.type === 'mixed' || finalWhole > 0 ?
+            formatAnswer(finalWhole, fallbackNum || 1, denominator) :
+            `${sumNum + fallbackCounter}/${denominator}`;
+          fallbackCounter++;
+          if (!uniqueDistractors.includes(fallback) && fallback !== correctAnswer) {
+            uniqueDistractors.push(fallback);
+          }
+        }
+
+        const allChoices = shuffle([correctAnswer, ...uniqueDistractors]);
+
+        allChoices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn answer-choice';
+          btn.textContent = choice;
+          btn.addEventListener('click', () => this.checkAnswer(choice, btn, correctAnswer, question, denominator, sumNum));
+          this.answerChoices.appendChild(btn);
+        });
+      },
+
+      checkAnswer(selected, btn, correctAnswer, question, denominator, sumNum) {
+        if (this.isAnswered) return;
+
+        this.isAnswered = true;
+        const isCorrect = selected === correctAnswer;
+
+        // Disable all buttons
+        const allBtns = this.answerChoices.querySelectorAll('.choice-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        // Update the sum display
+        this.convSum.textContent = correctAnswer;
+
+        // Show sum strip (show the fractional part only, or full strip if whole number)
+        let displayNum = sumNum % denominator;
+        if (displayNum === 0 && sumNum >= denominator) {
+          // Result is a whole number, show a full strip
+          displayNum = denominator;
+        }
+        this.renderSumStrip(displayNum, denominator);
+        this.fracDisplaySum.textContent = correctAnswer;
+
+        // Update answer placeholder
+        this.answerPlaceholder.textContent = correctAnswer;
+
+        if (isCorrect) {
+          this.correctCount++;
+          btn.classList.add('correct');
+
+          const feedbackText = this.getTranslation(
+            'section.activities.add-unlike-fractions.correct',
+            'Correct! The sum is {answer}'
+          ).replace('{answer}', correctAnswer);
+
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          btn.classList.add('incorrect');
+
+          // Highlight correct answer
+          allBtns.forEach(b => {
+            if (b.textContent === correctAnswer) {
+              b.classList.add('correct');
+            }
+          });
+
+          const feedbackText = this.getTranslation(
+            'section.activities.add-unlike-fractions.wrong',
+            'The answer is {answer}'
+          ).replace('{answer}', correctAnswer);
+
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+        this.scheduleAdvance();
+      },
+
+      renderSumStrip(num, den) {
+        this.stripSum.innerHTML = '';
+        this.stripSum.classList.add('animating');
+
+        for (let i = 0; i < den; i++) {
+          const part = document.createElement('div');
+          part.className = 'strip-part';
+          part.style.width = `${100 / den}%`;
+          part.style.animationDelay = `${i * 20}ms`;
+
+          if (i < num) {
+            part.classList.add('shaded', 'sum-shaded');
+          }
+
+          part.classList.add('animate-in');
+          this.stripSum.appendChild(part);
+        }
+
+        setTimeout(() => {
+          this.stripSum.classList.remove('animating');
+        }, 500);
+      },
+
+      scheduleAdvance() {
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.add-unlike-fractions.perfect',
+            'Perfect! You mastered adding fractions!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.add-unlike-fractions.great',
+            'Great work adding fractions!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.add-unlike-fractions.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.add-unlike-fractions.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => AddUnlikeFractions.init());
+      } else {
+        AddUnlikeFractions.init();
+      }
+    });
+  </script>
+  <style>
+    /* Add Unlike Fractions specific styles */
+
+    .problem-container {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .problem-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-medium);
+      color: #374151;
+      margin-bottom: var(--space-3);
+    }
+
+    .fractions-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .fraction-card {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #8b5cf6;
+      padding: var(--space-2) var(--space-4);
+    }
+
+    .whole-part {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: #5b21b6;
+    }
+
+    .whole-part.hidden {
+      display: none;
+    }
+
+    .fraction-part {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .fraction-card .numerator,
+    .fraction-card .denominator {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #5b21b6;
+      line-height: 1.2;
+    }
+
+    .fraction-card .fraction-bar {
+      width: 40px;
+      height: 3px;
+      background: #7c3aed;
+      border-radius: 2px;
+      margin: 2px 0;
+    }
+
+    .operator-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #6b7280;
+    }
+
+    .answer-placeholder {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #059669;
+      background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 3px solid #10b981;
+      min-width: 60px;
+      text-align: center;
+    }
+
+    /* Fraction Strips Container */
+    .strips-container {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 2px solid #e5e7eb;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .strip-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-3);
+    }
+
+    .strip-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .strip-row.sum-strip {
+      margin-top: var(--space-2);
+      padding-top: var(--space-3);
+      border-top: 2px dashed #d1d5db;
+    }
+
+    .strip-label {
+      min-width: 70px;
+      text-align: center;
+    }
+
+    .frac-display {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #374151;
+    }
+
+    #strip-row-1 .frac-display {
+      color: #2563eb;
+    }
+
+    #strip-row-2 .frac-display {
+      color: #059669;
+    }
+
+    #strip-row-sum .frac-display {
+      color: #dc2626;
+    }
+
+    .fraction-strip {
+      flex: 1;
+      display: flex;
+      height: 36px;
+      border: 2px solid #d1d5db;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #f9fafb;
+    }
+
+    .strip-part {
+      height: 100%;
+      border-right: 1px solid #d1d5db;
+      transition: background 0.3s ease;
+    }
+
+    .strip-part:last-child {
+      border-right: none;
+    }
+
+    .strip-part.shaded.primary {
+      background: linear-gradient(180deg, #60a5fa, #3b82f6);
+    }
+
+    .strip-part.shaded.secondary {
+      background: linear-gradient(180deg, #34d399, #10b981);
+    }
+
+    .strip-part.shaded.sum-shaded {
+      background: linear-gradient(180deg, #f87171, #ef4444);
+    }
+
+    .strip-part.animate-in {
+      animation: partAppear 0.3s ease forwards;
+      opacity: 0;
+      transform: scaleY(0);
+    }
+
+    @keyframes partAppear {
+      to {
+        opacity: 1;
+        transform: scaleY(1);
+      }
+    }
+
+    /* Step Sections */
+    .step-section {
+      margin-bottom: var(--space-4);
+    }
+
+    .step-section.hidden {
+      display: none;
+    }
+
+    .step-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-medium);
+      color: #374151;
+      margin-bottom: var(--space-3);
+      text-align: center;
+    }
+
+    /* Choice Buttons */
+    .choices-container,
+    .answer-choices {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .choice-btn {
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #1e3a5f;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 3px solid #0ea5e9;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: scale(1.02);
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+      border-color: #0284c7;
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .choice-btn:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .choice-btn:focus-visible {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border-color: #ef4444;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+      20%, 40%, 60%, 80% { transform: translateX(4px); }
+    }
+
+    /* Conversion Display */
+    .conversion-display {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .conversion-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-2);
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      flex-wrap: wrap;
+    }
+
+    .conversion-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .conversion-row.sum-row {
+      margin-top: var(--space-2);
+      padding-top: var(--space-2);
+      border-top: 2px dashed #d97706;
+    }
+
+    .conv-original {
+      color: #92400e;
+    }
+
+    .conv-arrow {
+      color: #d97706;
+    }
+
+    .conv-result {
+      color: #166534;
+      background: #dcfce7;
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-md);
+    }
+
+    .conv-sum-label {
+      color: #92400e;
+    }
+
+    .sum-result {
+      background: #fef2f2;
+      color: #dc2626;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .fraction-card .numerator,
+      .fraction-card .denominator {
+        font-size: var(--text-xl);
+      }
+
+      .whole-part {
+        font-size: var(--text-2xl);
+      }
+
+      .fraction-card .fraction-bar {
+        width: 30px;
+      }
+
+      .fraction-card {
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .fractions-row {
+        gap: var(--space-2);
+      }
+
+      .operator-label {
+        font-size: var(--text-xl);
+      }
+
+      .answer-placeholder {
+        font-size: var(--text-xl);
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .strips-container {
+        padding: var(--space-3);
+      }
+
+      .strip-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-2);
+      }
+
+      .strip-label {
+        min-width: auto;
+      }
+
+      .fraction-strip {
+        height: 32px;
+      }
+
+      .frac-display {
+        font-size: var(--text-base);
+      }
+
+      .choices-container,
+      .answer-choices {
+        gap: var(--space-2);
+        max-width: 320px;
+      }
+
+      .choice-btn {
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--text-lg);
+        min-height: 55px;
+      }
+
+      .conversion-display {
+        padding: var(--space-3);
+      }
+
+      .conversion-row {
+        font-size: var(--text-base);
+        gap: var(--space-2);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .problem-label {
+        font-size: var(--text-base);
+      }
+
+      .fraction-card .numerator,
+      .fraction-card .denominator {
+        font-size: var(--text-lg);
+      }
+
+      .whole-part {
+        font-size: var(--text-xl);
+      }
+
+      .fraction-card .fraction-bar {
+        width: 25px;
+        height: 2px;
+      }
+
+      .fraction-card {
+        padding: var(--space-1) var(--space-2);
+      }
+
+      .operator-label {
+        font-size: var(--text-lg);
+      }
+
+      .answer-placeholder {
+        font-size: var(--text-lg);
+        min-width: 50px;
+      }
+
+      .step-label {
+        font-size: var(--text-base);
+      }
+
+      .fraction-strip {
+        height: 28px;
+      }
+
+      .frac-display {
+        font-size: var(--text-sm);
+      }
+
+      .choice-btn {
+        font-size: var(--text-base);
+        min-height: 50px;
+        padding: var(--space-2);
+      }
+
+      .conversion-row {
+        font-size: var(--text-sm);
+      }
+    }
+
+    @media (max-width: 360px) {
+      .choices-container,
+      .answer-choices {
+        grid-template-columns: 1fr;
+        max-width: 200px;
+      }
+
+      .choice-btn {
+        min-height: 50px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

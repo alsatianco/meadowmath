@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Points, Lines, Rays Explorer - Grade 4 Math Activity - Meadow Math">
+  <title>Points, Lines, Rays Explorer - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade4">Grade 4</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">✨</span>
+            <span data-i18n="section.activities.points-lines-rays.title">Points, Lines, Rays Explorer</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.points-lines-rays.instruction">Name what you see!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Diagram Display -->
+          <div class="diagram-card">
+            <div class="diagram-prompt" data-i18n="section.activities.points-lines-rays.prompt">What is this?</div>
+            <div class="diagram-canvas" id="diagram-canvas" aria-label="Geometry diagram">
+              <svg id="diagram-svg" viewBox="0 0 300 150" aria-hidden="true">
+                <!-- Diagram will be drawn here -->
+              </svg>
+            </div>
+            <p class="diagram-hint" id="diagram-hint"></p>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container">
+            <div class="choices-grid" id="choices-grid" role="group" aria-label="Answer choices">
+              <!-- Choices will be generated here -->
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.points-lines-rays.great">Great geometry skills!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Points, Lines, Rays Explorer Activity - Grade 4 Level 5
+    const PointsLinesRays = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+      currentAnswer: null,
+      lastType: null,
+      advanceTimeout: null,
+
+      // Geometry types with their properties
+      geometryTypes: [
+        { type: 'point', label: 'Point', labelKey: 'point' },
+        { type: 'line', label: 'Line', labelKey: 'line' },
+        { type: 'segment', label: 'Line Segment', labelKey: 'segment' },
+        { type: 'ray', label: 'Ray', labelKey: 'ray' }
+      ],
+
+      // DOM elements
+      diagramCanvas: null,
+      diagramSvg: null,
+      diagramHint: null,
+      choicesGrid: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.diagramCanvas = document.getElementById('diagram-canvas');
+        this.diagramSvg = document.getElementById('diagram-svg');
+        this.diagramHint = document.getElementById('diagram-hint');
+        this.choicesGrid = document.getElementById('choices-grid');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(key);
+          return translated !== key ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      getTypeLabel(type) {
+        const geo = this.geometryTypes.find(g => g.type === type);
+        if (!geo) return type;
+        return this.getTranslation(`section.activities.points-lines-rays.types.${geo.labelKey}`, geo.label);
+      },
+
+      generateQuestion() {
+        // Pick a random geometry type (avoid repeating the same type)
+        let types = this.geometryTypes.map(g => g.type);
+        if (this.lastType) {
+          types = types.filter(t => t !== this.lastType);
+        }
+        const type = types[randomInt(0, types.length - 1)];
+        this.lastType = type;
+        this.currentAnswer = type;
+        return type;
+      },
+
+      drawDiagram(type) {
+        const svg = this.diagramSvg;
+        const width = 300;
+        const height = 150;
+
+        // Clear previous drawing
+        svg.innerHTML = '';
+
+        // Common styles
+        const pointRadius = 8;
+        const strokeWidth = 4;
+        const color = '#6366f1';
+        const arrowColor = '#6366f1';
+
+        switch (type) {
+          case 'point':
+            // Draw a single point with label
+            const px = width / 2;
+            const py = height / 2;
+            svg.innerHTML = `
+              <circle cx="${px}" cy="${py}" r="${pointRadius}" fill="${color}" />
+              <text x="${px + 15}" y="${py - 10}" font-size="18" font-weight="bold" fill="#1e1b4b">A</text>
+            `;
+            this.setHint('hintPoint', 'A single location in space.');
+            break;
+
+          case 'line':
+            // Draw a line extending in both directions with arrows on both ends
+            const lx1 = 30;
+            const lx2 = width - 30;
+            const ly = height / 2;
+            svg.innerHTML = `
+              <defs>
+                <marker id="arrowLeft" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M9,0 L9,6 L0,3 z" fill="${arrowColor}" />
+                </marker>
+                <marker id="arrowRight" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="${arrowColor}" />
+                </marker>
+              </defs>
+              <line x1="${lx1}" y1="${ly}" x2="${lx2}" y2="${ly}" stroke="${color}" stroke-width="${strokeWidth}" marker-start="url(#arrowLeft)" marker-end="url(#arrowRight)" />
+              <circle cx="${100}" cy="${ly}" r="${pointRadius - 2}" fill="${color}" />
+              <circle cx="${200}" cy="${ly}" r="${pointRadius - 2}" fill="${color}" />
+              <text x="95" y="${ly - 15}" font-size="16" font-weight="bold" fill="#1e1b4b">A</text>
+              <text x="195" y="${ly - 15}" font-size="16" font-weight="bold" fill="#1e1b4b">B</text>
+            `;
+            this.setHint('hintLine', 'Goes on forever in both directions.');
+            break;
+
+          case 'segment':
+            // Draw a line segment with endpoints (no arrows)
+            const sx1 = 60;
+            const sx2 = width - 60;
+            const sy = height / 2;
+            svg.innerHTML = `
+              <line x1="${sx1}" y1="${sy}" x2="${sx2}" y2="${sy}" stroke="${color}" stroke-width="${strokeWidth}" />
+              <circle cx="${sx1}" cy="${sy}" r="${pointRadius}" fill="${color}" />
+              <circle cx="${sx2}" cy="${sy}" r="${pointRadius}" fill="${color}" />
+              <text x="${sx1 - 5}" y="${sy - 15}" font-size="16" font-weight="bold" fill="#1e1b4b">A</text>
+              <text x="${sx2 - 5}" y="${sy - 15}" font-size="16" font-weight="bold" fill="#1e1b4b">B</text>
+            `;
+            this.setHint('hintSegment', 'Has two endpoints.');
+            break;
+
+          case 'ray':
+            // Draw a ray with one endpoint and one arrow
+            const rx1 = 60;
+            const rx2 = width - 30;
+            const ry = height / 2;
+            svg.innerHTML = `
+              <defs>
+                <marker id="arrowRay" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="${arrowColor}" />
+                </marker>
+              </defs>
+              <line x1="${rx1}" y1="${ry}" x2="${rx2}" y2="${ry}" stroke="${color}" stroke-width="${strokeWidth}" marker-end="url(#arrowRay)" />
+              <circle cx="${rx1}" cy="${ry}" r="${pointRadius}" fill="${color}" />
+              <text x="${rx1 - 5}" y="${ry - 15}" font-size="16" font-weight="bold" fill="#1e1b4b">A</text>
+              <text x="${rx2 - 15}" y="${ry - 15}" font-size="16" font-weight="bold" fill="#1e1b4b">B</text>
+            `;
+            this.setHint('hintRay', 'Has one endpoint and goes on forever in one direction.');
+            break;
+        }
+      },
+
+      setHint(key, fallback) {
+        this.diagramHint.textContent = this.getTranslation(`section.activities.points-lines-rays.${key}`, fallback);
+      },
+
+      renderChoices() {
+        this.choicesGrid.innerHTML = '';
+
+        // Shuffle the choices
+        const shuffledTypes = shuffle([...this.geometryTypes]);
+
+        shuffledTypes.forEach(geo => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.dataset.type = geo.type;
+          btn.textContent = this.getTypeLabel(geo.type);
+          btn.setAttribute('aria-label', this.getTypeLabel(geo.type));
+
+          btn.addEventListener('click', () => this.checkAnswer(geo.type));
+          this.choicesGrid.appendChild(btn);
+        });
+      },
+
+      checkAnswer(selectedType) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const isCorrect = selectedType === this.currentAnswer;
+        const buttons = this.choicesGrid.querySelectorAll('.choice-btn');
+
+        buttons.forEach(btn => {
+          btn.disabled = true;
+          if (btn.dataset.type === this.currentAnswer) {
+            btn.classList.add('correct');
+          } else if (btn.dataset.type === selectedType && !isCorrect) {
+            btn.classList.add('wrong');
+          }
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = this.getTranslation(
+            'section.activities.points-lines-rays.correct',
+            'Correct! This is a {type}.'
+          );
+          this.feedback.textContent = msg.replace('{type}', this.getTypeLabel(this.currentAnswer));
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const msg = this.getTranslation(
+            'section.activities.points-lines-rays.wrong',
+            'This is a {type}.'
+          );
+          this.feedback.textContent = msg.replace('{type}', this.getTypeLabel(this.currentAnswer));
+          this.feedback.classList.add('error');
+          if (typeof wiggle === 'function') {
+            const wrongBtn = this.choicesGrid.querySelector(`[data-type="${selectedType}"]`);
+            if (wrongBtn) wiggle(wrongBtn);
+          }
+        }
+
+        this.feedback.classList.add('show');
+
+        this.advanceTimeout = setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      startQuestion() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        const type = this.generateQuestion();
+        this.drawDiagram(type);
+        this.renderChoices();
+        this.renderProgress();
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.points-lines-rays.perfect',
+            'Perfect geometry explorer!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.points-lines-rays.great',
+            'Great geometry skills!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.points-lines-rays.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.points-lines-rays.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.lastType = null;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      },
+
+      updateTranslations() {
+        // Update choices labels
+        const buttons = this.choicesGrid.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => {
+          const type = btn.dataset.type;
+          btn.textContent = this.getTypeLabel(type);
+          btn.setAttribute('aria-label', this.getTypeLabel(type));
+        });
+
+        // Update hint
+        if (this.currentAnswer) {
+          switch (this.currentAnswer) {
+            case 'point':
+              this.setHint('hintPoint', 'A single location in space.');
+              break;
+            case 'line':
+              this.setHint('hintLine', 'Goes on forever in both directions.');
+              break;
+            case 'segment':
+              this.setHint('hintSegment', 'Has two endpoints.');
+              break;
+            case 'ray':
+              this.setHint('hintRay', 'Has one endpoint and goes on forever in one direction.');
+              break;
+          }
+        }
+
+        this.updateProgressLabel();
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => PointsLinesRays.init());
+      } else {
+        PointsLinesRays.init();
+      }
+    });
+  </script>
+  <style>
+    /* Points, Lines, Rays Explorer specific styles */
+
+    .diagram-card {
+      width: min(480px, 100%);
+      text-align: center;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 3px solid #0ea5e9;
+      border-radius: var(--radius-2xl);
+      padding: var(--space-5);
+      margin-bottom: var(--space-5);
+      box-shadow: 0 6px 0 #0284c7;
+    }
+
+    .diagram-prompt {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #0c4a6e;
+      margin-bottom: var(--space-4);
+    }
+
+    .diagram-canvas {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 3px solid #7dd3fc;
+      padding: var(--space-4);
+      margin-bottom: var(--space-3);
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #diagram-svg {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+    }
+
+    .diagram-hint {
+      font-size: var(--text-base);
+      color: var(--color-neutral-600);
+      font-style: italic;
+      margin: 0;
+    }
+
+    .choices-container {
+      width: min(480px, 100%);
+      margin-bottom: var(--space-4);
+    }
+
+    .choices-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+    }
+
+    .choice-btn {
+      padding: var(--space-4) var(--space-3);
+      min-height: 70px;
+      border-radius: var(--radius-xl);
+      border: 3px solid #c4b5fd;
+      background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+      color: #4c1d95;
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      box-shadow: 0 4px 0 rgba(76, 29, 149, 0.2);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 rgba(76, 29, 149, 0.25);
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 rgba(76, 29, 149, 0.2);
+    }
+
+    .choice-btn:focus-visible {
+      outline: 3px solid rgba(139, 92, 246, 0.5);
+      outline-offset: 2px;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 rgba(22, 101, 52, 0.3);
+    }
+
+    .choice-btn.wrong {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      color: #991b1b;
+      box-shadow: 0 4px 0 rgba(153, 27, 27, 0.3);
+    }
+
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 480px) {
+      .diagram-card {
+        padding: var(--space-4);
+      }
+
+      .diagram-prompt {
+        font-size: var(--text-lg);
+      }
+
+      .diagram-hint {
+        font-size: var(--text-sm);
+      }
+
+      .choices-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-2);
+      }
+
+      .choice-btn {
+        min-height: 60px;
+        font-size: var(--text-base);
+        padding: var(--space-3);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Number Line Explorer - Explore numbers, hops, and distances">
+  <title>Number Line Explorer - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="../tool-shell.css">
+  <link rel="stylesheet" href="tool.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kinder/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item active">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="tool-container">
+        <!-- Tool Header -->
+        <header class="tool-header">
+          <div class="tool-title-section">
+            <a href="../index.html" class="back-link" aria-label="Back to Tools">←</a>
+            <span class="tool-icon">📏</span>
+            <h1 class="tool-title" data-i18n="section.tools.numberLine.title">Number Line Explorer</h1>
+          </div>
+          <div class="tool-controls">
+            <div class="mode-switch">
+              <button class="mode-btn active" data-mode="explore" data-i18n="section.modes.explore">Explore</button>
+              <button class="mode-btn" data-mode="challenges" data-i18n="section.modes.challenges">Challenges</button>
+            </div>
+            <button class="btn-reset">
+              <span>↺</span>
+              <span data-i18n="section.common.reset">Reset</span>
+            </button>
+          </div>
+        </header>
+
+        <!-- Tool Main Area -->
+        <div class="tool-main">
+          <!-- Options Bar -->
+          <div class="tool-options">
+            <div class="option-group">
+              <label class="option-label" data-i18n="section.tools.numberLine.range">Range:</label>
+              <select class="option-select" id="range-select">
+                <option value="0-20">0 to 20</option>
+                <option value="0-100">0 to 100</option>
+                <option value="-20-20">-20 to 20</option>
+              </select>
+            </div>
+            <div class="hop-controls" id="hop-controls">
+              <button class="hop-btn negative" data-hop="-10">-10</button>
+              <button class="hop-btn negative" data-hop="-5">-5</button>
+              <button class="hop-btn negative" data-hop="-2">-2</button>
+              <button class="hop-btn negative" data-hop="-1">-1</button>
+              <button class="hop-btn positive" data-hop="1">+1</button>
+              <button class="hop-btn positive" data-hop="2">+2</button>
+              <button class="hop-btn positive" data-hop="5">+5</button>
+              <button class="hop-btn positive" data-hop="10">+10</button>
+            </div>
+          </div>
+
+          <!-- Canvas Area -->
+          <div class="tool-canvas" id="tool-canvas">
+            <svg class="number-line-svg" id="number-line-svg"></svg>
+          </div>
+
+          <!-- Feedback Banner (Explore Mode) -->
+          <div class="tool-feedback" id="feedback-banner">
+            <p class="feedback-text" id="feedback-text">
+              <span data-i18n="section.tools.numberLine.position">Position:</span>
+              <span id="current-position">0</span>
+            </p>
+          </div>
+
+          <!-- Challenge Panel (Challenge Mode) -->
+          <div class="challenge-panel" id="challenge-panel" style="display: none;">
+            <div class="challenge-header">
+              <span class="challenge-progress" id="challenge-progress">Challenge 1 of 6</span>
+            </div>
+            <p class="challenge-prompt" id="challenge-prompt">Place the point at 13</p>
+            <div class="challenge-actions">
+              <button class="btn-check" id="btn-check" data-i18n="buttons.check">Check!</button>
+              <button class="btn-skip" id="btn-skip">Skip →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="footer-content">
+          <div class="footer-links">
+            <a href="../../about/index.html" class="footer-link" data-i18n="footer.about">About</a>
+            <span class="footer-divider">•</span>
+            <a href="../../about/index.html#privacy" class="footer-link" data-i18n="footer.privacy">Privacy & Terms</a>
+          </div>
+
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Completion Modal -->
+  <div class="completion-overlay" id="completion-overlay">
+    <div class="completion-modal">
+      <div class="completion-icon">🎉</div>
+      <h2 class="completion-title" data-i18n="section.common.allChallengesComplete">All Challenges Complete!</h2>
+      <p class="completion-message" data-i18n="section.common.greatJob">Great job!</p>
+      <button class="btn-continue" id="btn-restart">
+        <span data-i18n="buttons.playAgain">Play Again</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script src="tool.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

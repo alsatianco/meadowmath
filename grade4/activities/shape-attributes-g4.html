@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Build a Shape Challenge - Grade 4 Math Activity - Meadow Math">
+  <title>Build a Shape Challenge - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link">
+            <span data-i18n="activity.backTo">← Back to</span>
+            <span data-i18n="nav.grade4">Grade 4</span>
+          </a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧩</span>
+            <span data-i18n="section.activities.shape-attributes-g4.title">Build a Shape Challenge</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.shape-attributes-g4.description">Choose a shape that matches the clues.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Clues Card -->
+          <div class="clues-card">
+            <div class="clues-title" data-i18n="section.activities.shape-attributes-g4.mysteryShape">Mystery Shape Clues:</div>
+            <ul class="clues-list" id="clues-list" aria-live="polite">
+              <!-- Clues will be added here -->
+            </ul>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container">
+            <div class="choices-prompt" data-i18n="section.activities.shape-attributes-g4.whichShape">Which shape am I?</div>
+            <div class="choices-grid" id="choices-grid" role="group" aria-label="Shape choices">
+              <!-- Choices will be generated here -->
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.shape-attributes-g4.great">Great shape detective work!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Build a Shape Challenge Activity - Grade 4 Level 5
+    const ShapeAttributes = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1800,
+      isAnswered: false,
+      currentShape: null,
+      lastShapeIndex: -1,
+      advanceTimeout: null,
+
+      // Shape definitions with clues
+      shapes: [
+        {
+          id: 'square',
+          name: 'Square',
+          clues: [
+            'I have 4 sides.',
+            'All my sides are equal.',
+            'All my angles are right angles (90°).',
+            'I am a special rectangle.'
+          ],
+          svg: `<rect x="50" y="35" width="80" height="80" fill="#a78bfa" stroke="#6366f1" stroke-width="3" />`
+        },
+        {
+          id: 'rectangle',
+          name: 'Rectangle',
+          clues: [
+            'I have 4 sides.',
+            'Opposite sides are equal.',
+            'All my angles are right angles (90°).',
+            'I am NOT a square.'
+          ],
+          svg: `<rect x="30" y="50" width="120" height="70" fill="#93c5fd" stroke="#3b82f6" stroke-width="3" />`
+        },
+        {
+          id: 'rhombus',
+          name: 'Rhombus',
+          clues: [
+            'I have 4 sides.',
+            'All my sides are equal.',
+            'My opposite angles are equal.',
+            'I do NOT have right angles.'
+          ],
+          svg: `<polygon points="90,20 150,75 90,130 30,75" fill="#fcd34d" stroke="#f59e0b" stroke-width="3" />`
+        },
+        {
+          id: 'trapezoid',
+          name: 'Trapezoid',
+          clues: [
+            'I have 4 sides.',
+            'I have exactly 1 pair of parallel sides.',
+            'My other sides are not parallel.',
+            'I am NOT a parallelogram.'
+          ],
+          svg: `<polygon points="50,40 130,40 160,120 20,120" fill="#86efac" stroke="#22c55e" stroke-width="3" />`
+        },
+        {
+          id: 'parallelogram',
+          name: 'Parallelogram',
+          clues: [
+            'I have 4 sides.',
+            'I have 2 pairs of parallel sides.',
+            'My opposite sides are equal.',
+            'I do NOT have right angles.'
+          ],
+          svg: `<polygon points="40,40 150,40 140,120 30,120" fill="#f9a8d4" stroke="#ec4899" stroke-width="3" />`
+        },
+        {
+          id: 'equilateral-triangle',
+          name: 'Equilateral Triangle',
+          clues: [
+            'I have 3 sides.',
+            'All my sides are equal.',
+            'All my angles are equal (60° each).',
+            'I have 3 lines of symmetry.'
+          ],
+          svg: `<polygon points="90,20 30,130 150,130" fill="#fbbf24" stroke="#f59e0b" stroke-width="3" />`
+        },
+        {
+          id: 'right-triangle',
+          name: 'Right Triangle',
+          clues: [
+            'I have 3 sides.',
+            'One of my angles is 90°.',
+            'My sides are NOT all equal.',
+            'I have exactly 1 right angle.'
+          ],
+          svg: `<polygon points="30,130 30,30 150,130" fill="#a5f3fc" stroke="#06b6d4" stroke-width="3" />`
+        },
+        {
+          id: 'pentagon',
+          name: 'Pentagon',
+          clues: [
+            'I have 5 sides.',
+            'I have 5 angles.',
+            'My name comes from "penta" (five).',
+            'All my sides are equal.'
+          ],
+          svg: `<polygon points="90,15 155,55 135,130 45,130 25,55" fill="#c4b5fd" stroke="#8b5cf6" stroke-width="3" />`
+        },
+        {
+          id: 'hexagon',
+          name: 'Hexagon',
+          clues: [
+            'I have 6 sides.',
+            'I have 6 angles.',
+            'Bees make me in honeycombs!',
+            'All my sides are equal.'
+          ],
+          svg: `<polygon points="90,15 145,40 145,110 90,135 35,110 35,40" fill="#fed7aa" stroke="#f97316" stroke-width="3" />`
+        },
+        {
+          id: 'circle',
+          name: 'Circle',
+          clues: [
+            'I have no sides.',
+            'I have no corners.',
+            'All points on me are the same distance from my center.',
+            'I am perfectly round.'
+          ],
+          svg: `<circle cx="90" cy="75" r="55" fill="#fca5a5" stroke="#ef4444" stroke-width="3" />`
+        }
+      ],
+
+      init() {
+        this.cluesList = document.getElementById('clues-list');
+        this.choicesGrid = document.getElementById('choices-grid');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(key);
+          return translated !== key ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      },
+
+      generateQuestion() {
+        // Pick a shape, avoiding repeating
+        let idx;
+        do {
+          idx = this.randomInt(0, this.shapes.length - 1);
+        } while (idx === this.lastShapeIndex);
+
+        this.lastShapeIndex = idx;
+        this.currentShape = this.shapes[idx];
+      },
+
+      renderClues() {
+        this.cluesList.innerHTML = '';
+
+        // Get translated clues
+        const shape = this.currentShape;
+        const clues = shape.clues.map((clue, i) => {
+          const key = `section.activities.shape-attributes-g4.clues.${shape.id}.clue${i + 1}`;
+          return this.getTranslation(key, clue);
+        });
+
+        clues.forEach((clue, i) => {
+          const li = document.createElement('li');
+          li.className = 'clue-item';
+          li.innerHTML = `<span class="clue-number">${i + 1}.</span> ${clue}`;
+          this.cluesList.appendChild(li);
+        });
+      },
+
+      renderChoices() {
+        this.choicesGrid.innerHTML = '';
+
+        // Get 4 choices: correct + 3 wrong
+        const correctId = this.currentShape.id;
+        const wrongShapes = this.shapes.filter(s => s.id !== correctId);
+        const selectedWrong = this.shuffle(wrongShapes).slice(0, 3);
+        const allChoices = this.shuffle([this.currentShape, ...selectedWrong]);
+
+        allChoices.forEach(shape => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.dataset.shape = shape.id;
+
+          const label = this.getTranslation(
+            `section.activities.shape-attributes-g4.shapes.${shape.id}`,
+            shape.name
+          );
+
+          btn.innerHTML = `
+            <div class="choice-shape">
+              <svg viewBox="0 0 180 150">${shape.svg}</svg>
+            </div>
+            <span class="choice-name">${label}</span>
+          `;
+
+          btn.setAttribute('aria-label', label);
+          btn.addEventListener('click', () => this.checkAnswer(shape.id));
+          this.choicesGrid.appendChild(btn);
+        });
+      },
+
+      startQuestion() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        this.generateQuestion();
+        this.renderClues();
+        this.renderChoices();
+        this.renderProgress();
+      },
+
+      checkAnswer(selectedId) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const isCorrect = selectedId === this.currentShape.id;
+        const buttons = this.choicesGrid.querySelectorAll('.choice-btn');
+
+        buttons.forEach(btn => {
+          btn.disabled = true;
+          if (btn.dataset.shape === this.currentShape.id) {
+            btn.classList.add('correct');
+          } else if (btn.dataset.shape === selectedId && !isCorrect) {
+            btn.classList.add('wrong');
+          }
+        });
+
+        const shapeName = this.getTranslation(
+          `section.activities.shape-attributes-g4.shapes.${this.currentShape.id}`,
+          this.currentShape.name
+        );
+
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = this.getTranslation(
+            'section.activities.shape-attributes-g4.correct',
+            'Correct! It was a {shape}!'
+          );
+          this.feedback.textContent = msg.replace('{shape}', shapeName.toLowerCase());
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const msg = this.getTranslation(
+            'section.activities.shape-attributes-g4.wrong',
+            'The answer was {shape}.'
+          );
+          this.feedback.textContent = msg.replace('{shape}', shapeName.toLowerCase());
+          this.feedback.classList.add('error');
+
+          const wrongBtn = this.choicesGrid.querySelector(`[data-shape="${selectedId}"]`);
+          if (wrongBtn && typeof wiggle === 'function') {
+            wiggle(wrongBtn);
+          }
+        }
+
+        this.feedback.classList.add('show');
+
+        this.advanceTimeout = setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.shape-attributes-g4.perfect',
+            'Perfect shape detective!'
+          );
+        } else if (percent >= 0.75) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.shape-attributes-g4.great',
+            'Great shape detective work!'
+          );
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.shape-attributes-g4.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.shape-attributes-g4.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.lastShapeIndex = -1;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      },
+
+      updateTranslations() {
+        this.renderClues();
+        this.renderChoices();
+        this.updateProgressLabel();
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => ShapeAttributes.init());
+      } else {
+        ShapeAttributes.init();
+      }
+    });
+  </script>
+  <style>
+    /* Build a Shape Challenge specific styles */
+
+    .clues-card {
+      width: min(480px, 100%);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid #f59e0b;
+      border-radius: var(--radius-2xl);
+      padding: var(--space-5);
+      margin-bottom: var(--space-5);
+      box-shadow: 0 6px 0 #d97706;
+    }
+
+    .clues-title {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #78350f;
+      margin-bottom: var(--space-4);
+      text-align: center;
+    }
+
+    .clues-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .clue-item {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--space-3) var(--space-4);
+      margin-bottom: var(--space-2);
+      font-size: var(--text-base);
+      color: #92400e;
+      border-left: 4px solid #f59e0b;
+    }
+
+    .clue-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .clue-number {
+      font-weight: var(--weight-bold);
+      color: #f59e0b;
+    }
+
+    .choices-container {
+      width: min(560px, 100%);
+      margin-bottom: var(--space-4);
+    }
+
+    .choices-prompt {
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-4);
+    }
+
+    .choices-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+    }
+
+    .choice-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-3);
+      min-height: 140px;
+      border-radius: var(--radius-xl);
+      border: 3px solid #c4b5fd;
+      background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+      color: #4c1d95;
+      font-family: var(--font-secondary);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      box-shadow: 0 4px 0 rgba(76, 29, 149, 0.2);
+    }
+
+    .choice-shape {
+      width: 80px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .choice-shape svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .choice-name {
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 rgba(76, 29, 149, 0.25);
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 rgba(76, 29, 149, 0.2);
+    }
+
+    .choice-btn:focus-visible {
+      outline: 3px solid rgba(139, 92, 246, 0.5);
+      outline-offset: 2px;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 rgba(22, 101, 52, 0.3);
+    }
+
+    .choice-btn.wrong {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      color: #991b1b;
+      box-shadow: 0 4px 0 rgba(153, 27, 27, 0.3);
+    }
+
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 480px) {
+      .clues-card {
+        padding: var(--space-4);
+      }
+
+      .clues-title {
+        font-size: var(--text-lg);
+      }
+
+      .clue-item {
+        font-size: var(--text-sm);
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .choices-grid {
+        gap: var(--space-2);
+      }
+
+      .choice-btn {
+        min-height: 120px;
+        padding: var(--space-2);
+      }
+
+      .choice-shape {
+        width: 60px;
+        height: 50px;
+      }
+
+      .choice-name {
+        font-size: var(--text-sm);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calendar Helper - Kindergarten Math Activity - Meadow Math">
+  <title>Calendar Helper - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">📅</span>
+            <span data-i18n="section.activities.calendar-helper.title">Calendar Helper</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.calendar-helper.instruction">Learn about days!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Calendar Display -->
+          <div class="calendar-display">
+            <div class="calendar-strip" id="calendar-strip">
+              <!-- Three day cards: yesterday, today, tomorrow -->
+            </div>
+          </div>
+
+          <!-- Question -->
+          <div class="calendar-question" id="calendar-question">
+            <span class="question-icon">🤔</span>
+            <span class="question-text" id="question-text">What day is TODAY?</span>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices">
+            <!-- Day buttons -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">📅</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Calendar Helper Activity Styles */
+    .calendar-display {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .calendar-strip {
+      display: flex;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border-radius: var(--radius-xl);
+      border: 4px solid #22c55e;
+    }
+
+    .day-card {
+      width: 90px;
+      padding: var(--space-3);
+      background: white;
+      border: 3px solid #d1d5db;
+      border-radius: var(--radius-lg);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .day-card.yesterday {
+      opacity: 0.6;
+    }
+
+    .day-card.today {
+      border-color: #f59e0b;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+    }
+
+    .day-card.tomorrow {
+      opacity: 0.8;
+    }
+
+    .day-card.highlight {
+      border-color: #6366f1;
+      background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+      animation: highlightPulse 0.5s ease;
+    }
+
+    @keyframes highlightPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    .day-card.today.highlight {
+      animation: todayHighlightPulse 0.5s ease;
+    }
+
+    @keyframes todayHighlightPulse {
+      0%, 100% { transform: scale(1.1); }
+      50% { transform: scale(1.15); }
+    }
+
+    .day-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xs);
+      color: var(--color-neutral-500);
+      margin-bottom: var(--space-1);
+      text-transform: uppercase;
+    }
+
+    .day-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-800);
+    }
+
+    .day-name {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      color: var(--color-neutral-600);
+      margin-top: var(--space-1);
+    }
+
+    .calendar-question {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #3b82f6;
+    }
+
+    .question-icon {
+      font-size: var(--text-2xl);
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #1e40af;
+    }
+
+    .answer-choices {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-2);
+    }
+
+    .answer-btn {
+      min-width: 100px;
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 4px solid #22c55e;
+      border-radius: var(--radius-xl);
+      color: #166534;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 0 #16a34a, 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 8px 0 #16a34a, 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .answer-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #16a34a;
+    }
+
+    .answer-btn:focus {
+      outline: 3px solid #22c55e;
+      outline-offset: 2px;
+    }
+
+    .answer-btn:focus-visible {
+      outline: 3px solid #22c55e;
+      outline-offset: 2px;
+    }
+
+    .answer-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPulse 0.5s ease;
+    }
+
+    .answer-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      color: #b91c1c;
+      box-shadow: 0 4px 0 #dc2626;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .day-card {
+        width: 75px;
+        padding: var(--space-2);
+      }
+
+      .day-number {
+        font-size: var(--text-2xl);
+      }
+
+      .day-name {
+        font-size: var(--text-xs);
+      }
+
+      .answer-btn {
+        min-width: 85px;
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--text-sm);
+      }
+
+      .calendar-strip {
+        gap: var(--space-2);
+        padding: var(--space-3);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Calendar Helper Activity
+    const CalendarHelper = {
+      // Game state
+      round: 1,
+      maxRounds: 8,
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+      correctAnswer: '',
+      questionType: '',
+      askBefore: false, // For 'dayName' question type
+
+      // DOM elements
+      progress: null,
+      calendarStrip: null,
+      questionText: null,
+      answerChoices: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Day names
+      dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+
+      // Question types
+      questionTypes: ['today', 'yesterday', 'tomorrow', 'dayName'],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.calendarStrip = document.getElementById('calendar-strip');
+        this.questionText = document.getElementById('question-text');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Get translated day name
+       */
+      getDayName(dayIndex) {
+        const dayKey = `activities.calendar-helper.days.${this.dayNames[dayIndex].toLowerCase()}`;
+        return i18n.t(dayKey) || this.dayNames[dayIndex];
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        // Use a random "today" for variety
+        const todayOffset = Math.floor(Math.random() * 7);
+        const baseDate = new Date();
+        baseDate.setDate(baseDate.getDate() + todayOffset - 3);
+
+        const yesterday = new Date(baseDate);
+        yesterday.setDate(baseDate.getDate() - 1);
+
+        const tomorrow = new Date(baseDate);
+        tomorrow.setDate(baseDate.getDate() + 1);
+
+        // Pick question type
+        this.questionType = this.questionTypes[Math.floor(Math.random() * this.questionTypes.length)];
+
+        // Render calendar
+        this.renderCalendar(yesterday, baseDate, tomorrow);
+
+        // Generate question and answers
+        this.generateQuestion(yesterday, baseDate, tomorrow);
+        this.renderProgress();
+      },
+
+      /**
+       * Render calendar strip
+       */
+      renderCalendar(yesterday, today, tomorrow) {
+        this.calendarStrip.innerHTML = '';
+
+        const days = [
+          { date: yesterday, label: i18n.t('section.activities.calendar-helper.yesterday') || 'Yesterday', class: 'yesterday' },
+          { date: today, label: i18n.t('section.activities.calendar-helper.today') || 'Today', class: 'today' },
+          { date: tomorrow, label: i18n.t('section.activities.calendar-helper.tomorrow') || 'Tomorrow', class: 'tomorrow' }
+        ];
+
+        days.forEach(day => {
+          const card = document.createElement('div');
+          card.className = `day-card ${day.class}`;
+          card.dataset.type = day.class;
+
+          card.innerHTML = `
+            <div class="day-label">${day.label}</div>
+            <div class="day-number">${day.date.getDate()}</div>
+            <div class="day-name">${this.getDayName(day.date.getDay())}</div>
+          `;
+
+          this.calendarStrip.appendChild(card);
+        });
+      },
+
+      /**
+       * Generate question and answers
+       */
+      generateQuestion(yesterday, today, tomorrow) {
+        let question, choices;
+
+        switch (this.questionType) {
+          case 'today':
+            question = i18n.t('section.activities.calendar-helper.whatIsToday') || 'What is TODAY?';
+            this.correctAnswer = this.getDayName(today.getDay());
+            choices = this.generateDayChoices(today.getDay());
+            break;
+
+          case 'yesterday':
+            question = i18n.t('section.activities.calendar-helper.whatWasYesterday') || 'What was YESTERDAY?';
+            this.correctAnswer = this.getDayName(yesterday.getDay());
+            choices = this.generateDayChoices(yesterday.getDay());
+            break;
+
+          case 'tomorrow':
+            question = i18n.t('section.activities.calendar-helper.whatIsTomorrow') || 'What is TOMORROW?';
+            this.correctAnswer = this.getDayName(tomorrow.getDay());
+            choices = this.generateDayChoices(tomorrow.getDay());
+            break;
+
+          case 'dayName':
+            // Ask which day comes before/after
+            this.askBefore = Math.random() < 0.5;
+            if (this.askBefore) {
+              question = (i18n.t('section.activities.calendar-helper.dayBefore') || 'What day comes BEFORE {{day}}?')
+                .replace('{{day}}', this.getDayName(today.getDay()));
+              this.correctAnswer = this.getDayName(yesterday.getDay());
+              choices = this.generateDayChoices(yesterday.getDay());
+            } else {
+              question = (i18n.t('section.activities.calendar-helper.dayAfter') || 'What day comes AFTER {{day}}?')
+                .replace('{{day}}', this.getDayName(today.getDay()));
+              this.correctAnswer = this.getDayName(tomorrow.getDay());
+              choices = this.generateDayChoices(tomorrow.getDay());
+            }
+            break;
+        }
+
+        this.questionText.textContent = question;
+        this.renderChoices(choices);
+      },
+
+      /**
+       * Generate day name choices
+       */
+      generateDayChoices(correctDayIndex) {
+        const choices = [this.getDayName(correctDayIndex)];
+
+        // Add 2 wrong day names
+        const wrongDays = [];
+        for (let i = 0; i < 7; i++) {
+          if (i !== correctDayIndex) {
+            wrongDays.push(i);
+          }
+        }
+
+        shuffle(wrongDays);
+        choices.push(this.getDayName(wrongDays[0]));
+        choices.push(this.getDayName(wrongDays[1]));
+
+        return shuffle(choices);
+      },
+
+      /**
+       * Render answer choices
+       */
+      renderChoices(choices) {
+        this.answerChoices.innerHTML = '';
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'answer-btn';
+          btn.textContent = choice;
+          btn.setAttribute('aria-label', choice);
+          btn.addEventListener('click', () => this.checkAnswer(choice, btn));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.checkAnswer(choice, btn);
+            }
+          });
+          this.answerChoices.appendChild(btn);
+        });
+      },
+
+      /**
+       * Check the answer
+       */
+      checkAnswer(selected, button) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        const buttons = this.answerChoices.querySelectorAll('.answer-btn');
+        buttons.forEach(btn => btn.disabled = true);
+
+        // Highlight the relevant day card
+        const cards = this.calendarStrip.querySelectorAll('.day-card');
+        let highlightIndex = 1; // default to today
+        if (this.questionType === 'yesterday') highlightIndex = 0;
+        if (this.questionType === 'tomorrow') highlightIndex = 2;
+        if (this.questionType === 'dayName') {
+          // For "before/after" questions, highlight the answer day
+          highlightIndex = this.askBefore ? 0 : 2;
+        }
+        cards[highlightIndex].classList.add('highlight');
+
+        if (selected === this.correctAnswer) {
+          // Correct!
+          button.classList.add('correct');
+          this.correctCount++;
+
+          const msg = i18n.t('section.activities.calendar-helper.correct') || 'Yes! That\'s right!';
+          this.feedback.textContent = msg;
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+
+          if (typeof celebrate === 'function') {
+            celebrate(cards[highlightIndex]);
+          }
+        } else {
+          // Incorrect
+          button.classList.add('incorrect');
+          buttons.forEach(btn => {
+            if (btn.textContent === this.correctAnswer) {
+              btn.classList.add('correct');
+            }
+          });
+          this.wrongCount++;
+
+          const msg = i18n.t('section.activities.calendar-helper.incorrect') || 'Not quite! It\'s {{answer}}.';
+          this.feedback.textContent = msg.replace('{{answer}}', this.correctAnswer);
+          this.feedback.classList.add('show', 'error');
+        }
+
+        this.renderProgress();
+
+        // Auto-advance
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '📅';
+          this.statsMessage.textContent = i18n.t('section.activities.calendar-helper.perfect') || 'Calendar Expert!';
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.calendar-helper.great') || 'Great with days!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.calendar-helper.keepPracticing') || 'Keep learning days!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      CalendarHelper.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

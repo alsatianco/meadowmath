@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="100 Chart Hunt - Kindergarten Math Activity - Meadow Math">
+  <title>100 Chart Hunt - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🧩</span>
+            <span data-i18n="section.activities.hundred-chart-k.title">100 Chart Hunt</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.hundred-chart-k.instruction">Find the number on the chart!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Target Number -->
+          <div class="target-display">
+            <span class="target-label" data-i18n="section.activities.hundred-chart-k.find">Find:</span>
+            <span class="target-number" id="target-number">42</span>
+          </div>
+
+          <!-- 100 Chart -->
+          <div class="hundred-chart-container">
+            <div class="hundred-chart" id="hundred-chart">
+              <!-- Generated by JS -->
+            </div>
+          </div>
+
+          <!-- Hint -->
+          <p class="hint-text" id="hint-text"></p>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* 100 Chart Hunt Styles */
+    .target-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .target-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+    }
+
+    .target-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-5xl);
+      font-weight: var(--weight-bold);
+      color: #7c3aed;
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      padding: var(--space-3) var(--space-5);
+      border-radius: var(--radius-xl);
+      border: 4px solid #a78bfa;
+      box-shadow: 0 4px 0 #8b5cf6, 0 6px 15px rgba(0, 0, 0, 0.1);
+      min-width: 100px;
+      text-align: center;
+      animation: targetPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes targetPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .hundred-chart-container {
+      overflow-x: auto;
+      padding: var(--space-2);
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    .hundred-chart {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 3px;
+      background: #f1f5f9;
+      padding: 6px;
+      border-radius: var(--radius-xl);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+      min-width: 340px;
+      margin: 0 auto;
+    }
+
+    .chart-cell {
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      color: var(--color-neutral-700);
+    }
+
+    .chart-cell:hover:not(.found):not(.highlighted) {
+      background: #dbeafe;
+      border-color: #3b82f6;
+      transform: scale(1.1);
+      z-index: 5;
+    }
+
+    .chart-cell:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 1px;
+      z-index: 10;
+    }
+
+    .chart-cell.found {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      color: #166534;
+      cursor: default;
+      animation: foundPop 0.3s ease;
+    }
+
+    .chart-cell.highlighted {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      color: #92400e;
+      animation: shake 0.5s ease;
+    }
+
+    .chart-cell.correct-reveal {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-color: #a78bfa;
+      color: #7c3aed;
+    }
+
+    /* Row highlighting (tens) */
+    .chart-cell[data-row="1"] { background: linear-gradient(135deg, #fef2f2, #fee2e2); }
+    .chart-cell[data-row="2"] { background: linear-gradient(135deg, #fff7ed, #ffedd5); }
+    .chart-cell[data-row="3"] { background: linear-gradient(135deg, #fefce8, #fef9c3); }
+    .chart-cell[data-row="4"] { background: linear-gradient(135deg, #f0fdf4, #dcfce7); }
+    .chart-cell[data-row="5"] { background: linear-gradient(135deg, #ecfeff, #cffafe); }
+    .chart-cell[data-row="6"] { background: linear-gradient(135deg, #eff6ff, #dbeafe); }
+    .chart-cell[data-row="7"] { background: linear-gradient(135deg, #f5f3ff, #ede9fe); }
+    .chart-cell[data-row="8"] { background: linear-gradient(135deg, #fdf4ff, #fae8ff); }
+    .chart-cell[data-row="9"] { background: linear-gradient(135deg, #fdf2f8, #fce7f3); }
+    .chart-cell[data-row="10"] { background: linear-gradient(135deg, #f8fafc, #f1f5f9); }
+
+    @keyframes foundPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      75% { transform: translateX(4px); }
+    }
+
+    .hint-text {
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      color: var(--color-neutral-500);
+      font-style: italic;
+      margin-top: var(--space-3);
+      min-height: 20px;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .target-number {
+        font-size: var(--text-4xl);
+        padding: var(--space-2) var(--space-4);
+        min-width: 80px;
+      }
+
+      .hundred-chart {
+        gap: 2px;
+        padding: 4px;
+        min-width: 300px;
+      }
+
+      .chart-cell {
+        width: 28px;
+        height: 28px;
+        font-size: 11px;
+        border-width: 1px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hundred-chart {
+        min-width: 280px;
+      }
+
+      .chart-cell {
+        width: 26px;
+        height: 26px;
+        font-size: 10px;
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // 100 Chart Hunt Activity
+    const HundredChartK = {
+      // Game state
+      round: 1,
+      maxRounds: 8,
+      targetNumber: 0,
+      hasAnswered: false,
+      wrongAttempts: 0,
+      correctCount: 0,
+      wrongCount: 0,
+      foundNumbers: new Set(),
+      autoAdvanceDelay: 1500,
+
+      // DOM elements
+      progress: null,
+      targetNumberEl: null,
+      hundredChart: null,
+      hintText: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.targetNumberEl = document.getElementById('target-number');
+        this.hundredChart = document.getElementById('hundred-chart');
+        this.hintText = document.getElementById('hint-text');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.renderChart();
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Render the 100 chart
+       */
+      renderChart() {
+        this.hundredChart.innerHTML = '';
+
+        for (let num = 1; num <= 100; num++) {
+          const row = Math.ceil(num / 10);
+          const cell = document.createElement('div');
+          cell.className = 'chart-cell';
+          cell.textContent = num;
+          cell.dataset.num = num;
+          cell.dataset.row = row;
+          cell.tabIndex = 0;
+          cell.setAttribute('role', 'button');
+          cell.setAttribute('aria-label', num.toString());
+
+          cell.addEventListener('click', () => this.selectNumber(num, cell));
+          cell.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.selectNumber(num, cell);
+            }
+          });
+
+          this.hundredChart.appendChild(cell);
+        }
+      },
+
+      /**
+       * Get target number range based on round
+       */
+      getTargetRange() {
+        // Progressive: start smaller, expand range
+        if (this.round <= 2) {
+          return { min: 1, max: 30 };
+        } else if (this.round <= 4) {
+          return { min: 1, max: 60 };
+        } else if (this.round <= 6) {
+          return { min: 1, max: 80 };
+        } else {
+          return { min: 1, max: 100 };
+        }
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+        this.wrongAttempts = 0;
+
+        // Pick a new target number not already found
+        const range = this.getTargetRange();
+        let attempts = 0;
+        do {
+          this.targetNumber = randomInt(range.min, range.max);
+          attempts++;
+        } while (this.foundNumbers.has(this.targetNumber) && attempts < 50);
+
+        // Update UI
+        this.targetNumberEl.textContent = this.targetNumber;
+        this.hintText.textContent = '';
+        this.feedback.classList.remove('show', 'error');
+
+        // Clear previous highlights
+        this.hundredChart.querySelectorAll('.highlighted, .correct-reveal').forEach(cell => {
+          cell.classList.remove('highlighted', 'correct-reveal');
+        });
+
+        this.renderProgress();
+      },
+
+      /**
+       * Select a number
+       */
+      selectNumber(num, cell) {
+        if (this.hasAnswered || cell.classList.contains('found')) return;
+
+        if (num === this.targetNumber) {
+          // Correct!
+          this.hasAnswered = true;
+          cell.classList.add('found');
+          this.foundNumbers.add(num);
+
+          if (this.wrongAttempts === 0) {
+            this.correctCount++;
+          }
+
+          const msg = i18n.t('section.activities.hundred-chart-k.correct') || 'Found it! {{number}}!';
+          this.feedback.textContent = msg.replace('{{number}}', num);
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+
+          if (typeof celebrate === 'function') {
+            celebrate(cell);
+          }
+
+          this.renderProgress();
+
+          setTimeout(() => {
+            if (this.round < this.maxRounds) {
+              this.nextRound();
+            } else {
+              this.showStats();
+            }
+          }, this.autoAdvanceDelay);
+        } else {
+          // Incorrect
+          cell.classList.add('highlighted');
+          this.wrongAttempts++;
+
+          if (this.wrongAttempts === 1) {
+            this.wrongCount++;
+          }
+
+          setTimeout(() => {
+            cell.classList.remove('highlighted');
+          }, 500);
+
+          // Give hints after mistakes
+          if (this.wrongAttempts === 1) {
+            this.giveHint('row');
+          } else if (this.wrongAttempts === 2) {
+            this.giveHint('close');
+          } else if (this.wrongAttempts >= 3) {
+            this.revealAnswer();
+          }
+        }
+      },
+
+      /**
+       * Give a hint
+       */
+      giveHint(type) {
+        const row = Math.ceil(this.targetNumber / 10);
+        const ones = this.targetNumber % 10 || 10;
+
+        if (type === 'row') {
+          const hintTemplate = i18n.t('section.activities.hundred-chart-k.hintRow') || 'Hint: Look in row {{row}} ({{start}}-{{end}})';
+          this.hintText.textContent = hintTemplate
+            .replace('{{row}}', row)
+            .replace('{{start}}', (row - 1) * 10 + 1)
+            .replace('{{end}}', row * 10);
+        } else if (type === 'close') {
+          const hintTemplate = i18n.t('section.activities.hundred-chart-k.hintClose') || 'Getting closer! The ones digit is {{ones}}.';
+          this.hintText.textContent = hintTemplate.replace('{{ones}}', ones === 10 ? 0 : ones);
+        }
+      },
+
+      /**
+       * Reveal the answer after too many mistakes
+       */
+      revealAnswer() {
+        this.hasAnswered = true;
+
+        const cell = this.hundredChart.querySelector(`[data-num="${this.targetNumber}"]`);
+        if (cell) {
+          cell.classList.add('correct-reveal');
+        }
+
+        const msg = i18n.t('section.activities.hundred-chart-k.reveal') || 'Here it is! {{number}} is here.';
+        this.feedback.textContent = msg.replace('{{number}}', this.targetNumber);
+        this.feedback.classList.add('show', 'error');
+
+        this.hintText.textContent = '';
+
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay + 500);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.hundred-chart-k.perfect') || "Chart Champion!";
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.hundred-chart-k.great') || 'Great chart hunting!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.hundred-chart-k.keepPracticing') || 'Keep exploring the chart!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.foundNumbers.clear();
+        this.statsOverlay.classList.remove('show');
+
+        // Clear all found markers
+        this.hundredChart.querySelectorAll('.found').forEach(cell => {
+          cell.classList.remove('found');
+        });
+
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      HundredChartK.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

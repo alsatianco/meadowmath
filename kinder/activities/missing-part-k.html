@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Missing Part Mystery - Kindergarten Math Activity - Meadow Math">
+  <title>Missing Part Mystery - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🕵️</span>
+            <span data-i18n="section.activities.missing-part-k.title">Missing Part Mystery</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.missing-part-k.instruction">What number goes in the box?</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Equation Display -->
+          <div class="equation-display">
+            <span class="eq-part num" id="part1">3</span>
+            <span class="eq-part op">+</span>
+            <span class="eq-part mystery-box" id="mystery">?</span>
+            <span class="eq-part op">=</span>
+            <span class="eq-part num total" id="total">7</span>
+          </div>
+
+          <!-- Visual representation -->
+          <div class="visual-display" id="visual-display">
+            <!-- Will show the picture representation -->
+          </div>
+
+          <!-- Question and Choices -->
+          <div class="question-section">
+            <p class="question-text" data-i18n="section.activities.missing-part-k.question">What's the missing number?</p>
+            <div class="choice-buttons" id="choice-buttons">
+              <!-- Choices will be generated -->
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <!-- Auto-advance -->
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Missing Part Mystery Activity Styles */
+    .equation-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .eq-part {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+    }
+
+    .eq-part.num {
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #dbeafe, #93c5fd);
+      color: #1e40af;
+      border: 4px solid #3b82f6;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #2563eb;
+      min-width: 70px;
+      text-align: center;
+    }
+
+    .eq-part.total {
+      background: linear-gradient(135deg, #dcfce7, #86efac);
+      color: #166534;
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+    }
+
+    .eq-part.op {
+      color: var(--color-neutral-500);
+    }
+
+    .mystery-box {
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #d97706;
+      border: 4px dashed #f59e0b;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #d97706;
+      min-width: 70px;
+      text-align: center;
+      animation: pulse 1.5s ease infinite;
+    }
+
+    .mystery-box.revealed {
+      border-style: solid;
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      color: #16a34a;
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: none;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Visual Display */
+    .visual-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+      flex-wrap: wrap;
+    }
+
+    .visual-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px;
+      padding: var(--space-2);
+      min-width: 50px;
+    }
+
+    .visual-item {
+      font-size: 24px;
+      animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .visual-item.hidden {
+      visibility: hidden;
+    }
+
+    .visual-item.revealed {
+      visibility: visible;
+      animation: revealPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0); opacity: 0; }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes revealPop {
+      0% { transform: scale(0); }
+      70% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .visual-op {
+      font-size: var(--text-2xl);
+      font-weight: bold;
+      color: var(--color-neutral-400);
+    }
+
+    .mystery-items {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px dashed #f59e0b;
+      border-radius: var(--radius-lg);
+      padding: var(--space-2);
+    }
+
+    .mystery-items.revealed {
+      border-style: solid;
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+    }
+
+    /* Question Section */
+    .question-section {
+      text-align: center;
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-4);
+    }
+
+    .choice-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-3);
+    }
+
+    .choice-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 75px;
+      height: 75px;
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 4px solid #22c55e;
+      border-radius: var(--radius-xl);
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #166534;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 0 #16a34a, 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 0 #16a34a, 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #16a34a;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      animation: correctPulse 0.5s ease;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      color: #92400e;
+      box-shadow: 0 4px 0 #d97706;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .eq-part {
+        font-size: var(--text-3xl);
+      }
+
+      .eq-part.num, .mystery-box {
+        min-width: 60px;
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .visual-item {
+        font-size: 20px;
+      }
+
+      .choice-btn {
+        width: 65px;
+        height: 65px;
+        font-size: var(--text-xl);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Missing Part Mystery Activity
+    const MissingPart = {
+      // Game state
+      round: 1,
+      maxRounds: 10,
+      part1: 0,
+      missingPart: 0,
+      total: 0,
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+
+      // DOM elements
+      progress: null,
+      part1El: null,
+      mysteryEl: null,
+      totalEl: null,
+      visualDisplay: null,
+      choiceButtons: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Items to use
+      items: ['🍎', '⭐', '❤️', '🌸', '🦋', '🐸', '🍪', '🎈'],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        // Get DOM elements
+        this.progress = document.getElementById('progress');
+        this.part1El = document.getElementById('part1');
+        this.mysteryEl = document.getElementById('mystery');
+        this.totalEl = document.getElementById('total');
+        this.visualDisplay = document.getElementById('visual-display');
+        this.choiceButtons = document.getElementById('choice-buttons');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up event listeners
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Start
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+
+        // Generate numbers (progressive difficulty)
+        // Start with sums within 5, then increase
+        let maxTotal = Math.min(5 + Math.floor(this.round / 2), 10);
+        this.total = randomInt(3, maxTotal);
+        this.part1 = randomInt(1, this.total - 1);
+        this.missingPart = this.total - this.part1;
+
+        // Update equation display
+        this.part1El.textContent = this.part1;
+        this.mysteryEl.textContent = '?';
+        this.mysteryEl.classList.remove('revealed');
+        this.totalEl.textContent = this.total;
+
+        // Build visual display
+        this.buildVisual();
+
+        // Reset UI
+        this.feedback.classList.remove('show', 'error');
+
+        // Generate choices
+        this.generateChoices();
+
+        // Update progress
+        this.renderProgress();
+      },
+
+      /**
+       * Build the visual representation
+       */
+      buildVisual() {
+        const item = this.items[randomInt(0, this.items.length - 1)];
+
+        let html = '<div class="visual-group">';
+        for (let i = 0; i < this.part1; i++) {
+          html += `<span class="visual-item" style="animation-delay: ${i * 0.1}s">${item}</span>`;
+        }
+        html += '</div>';
+
+        html += '<span class="visual-op">+</span>';
+
+        html += '<div class="visual-group mystery-items" id="mystery-items">';
+        for (let i = 0; i < this.missingPart; i++) {
+          html += `<span class="visual-item hidden" data-reveal="true">${item}</span>`;
+        }
+        html += '</div>';
+
+        html += '<span class="visual-op">=</span>';
+
+        html += '<div class="visual-group">';
+        for (let i = 0; i < this.total; i++) {
+          html += `<span class="visual-item" style="animation-delay: ${(this.part1 + i) * 0.05}s">${item}</span>`;
+        }
+        html += '</div>';
+
+        this.visualDisplay.innerHTML = html;
+      },
+
+      /**
+       * Generate answer choices
+       */
+      generateChoices() {
+        this.choiceButtons.innerHTML = '';
+
+        // Create choices: correct answer and 3 distractors
+        const choices = [this.missingPart];
+
+        // Add nearby numbers as distractors
+        const possibleDistractors = [];
+        for (let i = 1; i <= 9; i++) {
+          if (i !== this.missingPart) {
+            possibleDistractors.push(i);
+          }
+        }
+
+        // Sort by distance to correct answer
+        possibleDistractors.sort((a, b) => {
+          return Math.abs(a - this.missingPart) - Math.abs(b - this.missingPart);
+        });
+
+        // Take first 3 distractors
+        for (let i = 0; i < 3 && i < possibleDistractors.length; i++) {
+          choices.push(possibleDistractors[i]);
+        }
+
+        // Shuffle choices
+        choices.sort(() => Math.random() - 0.5);
+
+        // Create buttons
+        choices.forEach(num => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.textContent = num;
+          btn.dataset.value = num;
+          btn.addEventListener('click', () => this.checkAnswer(num, btn));
+          this.choiceButtons.appendChild(btn);
+        });
+      },
+
+      /**
+       * Check the answer
+       */
+      checkAnswer(answer, button) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        // Disable all buttons
+        const buttons = this.choiceButtons.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => btn.disabled = true);
+
+        // Reveal mystery number
+        this.mysteryEl.textContent = this.missingPart;
+        this.mysteryEl.classList.add('revealed');
+
+        // Reveal hidden items
+        const mysteryItems = document.getElementById('mystery-items');
+        mysteryItems.classList.add('revealed');
+        const hiddenItems = mysteryItems.querySelectorAll('.visual-item[data-reveal]');
+        hiddenItems.forEach((item, i) => {
+          setTimeout(() => {
+            item.classList.remove('hidden');
+            item.classList.add('revealed');
+          }, i * 100);
+        });
+
+        if (answer === this.missingPart) {
+          // Correct!
+          button.classList.add('correct');
+          this.feedback.textContent = '🎉 Yes! ' + this.part1 + ' + ' + this.missingPart + ' = ' + this.total + '!';
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          if (typeof celebrate === 'function') {
+            celebrate(button);
+          }
+        } else {
+          // Incorrect
+          button.classList.add('incorrect');
+          // Highlight correct answer
+          buttons.forEach(btn => {
+            if (parseInt(btn.dataset.value) === this.missingPart) {
+              btn.classList.add('correct');
+            }
+          });
+
+          this.feedback.textContent = 'Not quite! The missing part is ' + this.missingPart;
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        // Auto-advance
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show completion stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = 'Amazing! You\'re a mystery solver!';
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = 'Great job finding the missing parts!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = 'Good effort! Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart the activity
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Go to next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress indicator
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      MissingPart.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

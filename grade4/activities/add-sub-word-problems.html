@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Two-Step Add/Sub Stories - Grade 4 Math Activity - Meadow Math">
+  <title>Two-Step Add/Sub Stories - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade4">Grade 4</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧾</span>
+            <span data-i18n="section.activities.add-sub-word-problems.title">Two-Step Add/Sub Stories</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.add-sub-word-problems.description">Solve short stories with big numbers.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Story Display -->
+          <div class="story-section">
+            <div class="story-card" id="story-card">
+              <div class="story-icon" id="story-icon" aria-hidden="true">📖</div>
+              <div class="story-text" id="story-text" data-i18n="section.activities.add-sub-word-problems.loadingStory">Loading story...</div>
+            </div>
+          </div>
+
+          <!-- Step Indicator -->
+          <div class="step-indicator" id="step-indicator">
+            <span class="step-icon" aria-hidden="true">1️⃣</span>
+            <span class="step-text" id="step-text" data-i18n="section.activities.add-sub-word-problems.step1">Step 1: Choose the first operation</span>
+          </div>
+
+          <!-- Step 1: First Operation Choice -->
+          <div class="operation-section" id="operation-section-1">
+            <div class="operation-prompt" id="operation-prompt-1">
+              <span class="prompt-icon" aria-hidden="true">🤔</span>
+              <span class="prompt-text" id="prompt-text-1" data-i18n="section.activities.add-sub-word-problems.whatOperation1">What operation do we use first?</span>
+            </div>
+            <div class="equation-preview" id="equation-preview-1">
+              <span class="eq-num" id="eq1-num1">?</span>
+              <span class="eq-op" id="eq1-op">?</span>
+              <span class="eq-num" id="eq1-num2">?</span>
+              <span class="eq-equals">=</span>
+              <span class="eq-result" id="eq1-result">?</span>
+            </div>
+            <div class="operation-choices" id="operation-choices-1" role="group" aria-label="Operation choices">
+              <button class="op-btn" data-op="+" aria-label="Addition" data-i18n-title="section.activities.add-sub-word-problems.addition">+</button>
+              <button class="op-btn" data-op="-" aria-label="Subtraction" data-i18n-title="section.activities.add-sub-word-problems.subtraction">−</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Second Operation Choice -->
+          <div class="operation-section hidden" id="operation-section-2">
+            <div class="operation-prompt" id="operation-prompt-2">
+              <span class="prompt-icon" aria-hidden="true">🤔</span>
+              <span class="prompt-text" id="prompt-text-2" data-i18n="section.activities.add-sub-word-problems.whatOperation2">What operation do we use next?</span>
+            </div>
+            <div class="equation-preview" id="equation-preview-2">
+              <span class="eq-num" id="eq2-num1">?</span>
+              <span class="eq-op" id="eq2-op">?</span>
+              <span class="eq-num" id="eq2-num2">?</span>
+              <span class="eq-equals">=</span>
+              <span class="eq-result" id="eq2-result">?</span>
+            </div>
+            <div class="operation-choices" id="operation-choices-2" role="group" aria-label="Operation choices">
+              <button class="op-btn" data-op="+" aria-label="Addition" data-i18n-title="section.activities.add-sub-word-problems.addition">+</button>
+              <button class="op-btn" data-op="-" aria-label="Subtraction" data-i18n-title="section.activities.add-sub-word-problems.subtraction">−</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Estimate -->
+          <div class="estimate-section hidden" id="estimate-section">
+            <div class="estimate-prompt" id="estimate-prompt">
+              <span class="prompt-icon" aria-hidden="true">🔎</span>
+              <span class="prompt-text" id="prompt-text-3" data-i18n="section.activities.add-sub-word-problems.aboutHowMuch">About how much?</span>
+            </div>
+            <div class="estimate-hint">
+              <span class="hint-label" data-i18n="section.activities.add-sub-word-problems.roundToNearest">Round to the nearest:</span>
+              <span class="hint-value" id="rounding-target">1,000</span>
+            </div>
+            <div class="estimate-equation" id="estimate-equation">
+              <span class="eq-num" id="est-num1">?</span>
+              <span class="eq-op" id="est-op1">?</span>
+              <span class="eq-num" id="est-num2">?</span>
+              <span class="eq-op" id="est-op2">?</span>
+              <span class="eq-num" id="est-num3">?</span>
+              <span class="eq-equals">≈</span>
+              <span class="eq-result" id="est-result">?</span>
+            </div>
+            <div class="choice-container" id="estimate-choices" role="group" aria-label="Estimate choices"></div>
+          </div>
+
+          <!-- Step 4: Final Answer -->
+          <div class="answer-section hidden" id="answer-section">
+            <div class="answer-prompt" id="answer-prompt">
+              <span class="prompt-icon" aria-hidden="true">✏️</span>
+              <span class="prompt-text" id="prompt-text-4" data-i18n="section.activities.add-sub-word-problems.whatAnswer">What is the final answer?</span>
+            </div>
+            <div class="solution-summary" id="solution-summary">
+              <div class="solution-step" id="solution-step-1">
+                <span class="step-label" data-i18n="section.activities.add-sub-word-problems.stepLabel1">Step 1:</span>
+                <span class="step-equation" id="summary-eq1">? + ? = ?</span>
+              </div>
+              <div class="solution-step" id="solution-step-2">
+                <span class="step-label" data-i18n="section.activities.add-sub-word-problems.stepLabel2">Step 2:</span>
+                <span class="step-equation" id="summary-eq2">? − ? = ?</span>
+              </div>
+            </div>
+            <div class="choice-container" id="answer-choices" role="group" aria-label="Answer choices"></div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.add-sub-word-problems.great">Great thinking!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Two-Step Add/Sub Stories Activity - Grade 4 Level 1
+    const AddSubWordProblems = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      currentStep: 1,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // Current problem data
+      problemData: null,
+      userOp1: null,
+      userOp2: null,
+
+      // DOM elements
+      storyCard: null,
+      storyIcon: null,
+      storyText: null,
+      stepIndicator: null,
+      stepText: null,
+      operationSection1: null,
+      operationSection2: null,
+      estimateSection: null,
+      answerSection: null,
+      operationChoices1: null,
+      operationChoices2: null,
+      estimateChoices: null,
+      answerChoices: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+      roundingTarget: null,
+      estNum1: null,
+      estNum2: null,
+      estNum3: null,
+      estOp1: null,
+      estOp2: null,
+      estResult: null,
+
+      // Word problem templates
+      problems: [
+        {
+          storyKey: 'balloons',
+          icon: '🎈',
+          template: '{name} has {a} balloons. {pronoun} buys {b} more, then gives {c} away.',
+          question: 'How many balloons does {name} have now?',
+          names: ['Mia', 'Leo', 'Ava', 'Max', 'Lily', 'Sam'],
+          ops: ['+', '-'],
+          ranges: { a: [120000, 360000, 10000], b: [40000, 150000, 10000], c: [30000, 120000, 10000] }
+        },
+        {
+          storyKey: 'library',
+          icon: '📚',
+          template: 'A library has {a} books. They buy {b} new books, then donate {c} old books.',
+          question: 'How many books does the library have now?',
+          names: null,
+          ops: ['+', '-'],
+          ranges: { a: [200000, 650000, 10000], b: [60000, 180000, 10000], c: [50000, 150000, 10000] }
+        },
+        {
+          storyKey: 'fieldTrip',
+          icon: '🚌',
+          template: '{name} has {a} tickets. {pronoun} sells {b} tickets, then sells {c} more.',
+          question: 'How many tickets are left?',
+          names: ['Jordan', 'Sofia', 'Noah', 'Grace'],
+          ops: ['-', '-'],
+          ranges: { a: [45000, 98000, 1000], b: [12000, 38000, 1000], c: [8000, 28000, 1000] }
+        },
+        {
+          storyKey: 'stickers',
+          icon: '⭐',
+          template: '{name} collects {a} stickers. {pronoun} trades away {b} stickers and then gets {c} new ones.',
+          question: 'How many stickers does {name} have now?',
+          names: ['Emma', 'Jake', 'Maya', 'Ryan'],
+          ops: ['-', '+'],
+          ranges: { a: [90000, 240000, 10000], b: [20000, 90000, 10000], c: [15000, 80000, 10000] }
+        },
+        {
+          storyKey: 'busStops',
+          icon: '🚏',
+          template: 'A bus has {a} passengers. At the first stop, {b} people get off. At the second stop, {c} people get on.',
+          question: 'How many passengers are on the bus now?',
+          names: null,
+          ops: ['-', '+'],
+          ranges: { a: [180000, 420000, 10000], b: [60000, 160000, 10000], c: [40000, 140000, 10000] }
+        },
+        {
+          storyKey: 'savings',
+          icon: '💰',
+          template: '{name} saves ${a}. {pronoun} spends ${b} on a project and then earns ${c} doing chores.',
+          question: 'How much money does {name} have now?',
+          names: ['Zoe', 'Caleb', 'Ivy', 'Liam'],
+          ops: ['-', '+'],
+          ranges: { a: [150000, 520000, 10000], b: [40000, 140000, 10000], c: [30000, 120000, 10000] }
+        },
+        {
+          storyKey: 'birds',
+          icon: '🐦',
+          template: 'There are {a} birds in a park. {b} birds fly away, then {c} more birds arrive.',
+          question: 'How many birds are in the park now?',
+          names: null,
+          ops: ['-', '+'],
+          ranges: { a: [75000, 210000, 1000], b: [20000, 70000, 1000], c: [15000, 60000, 1000] }
+        },
+        {
+          storyKey: 'candies',
+          icon: '🍬',
+          template: '{name} has {a} candies. {pronoun} gets {b} more from a friend, then eats {c} candies.',
+          question: 'How many candies does {name} have now?',
+          names: ['Chris', 'Nora', 'Alex', 'Ben'],
+          ops: ['+', '-'],
+          ranges: { a: [22000, 90000, 1000], b: [8000, 35000, 1000], c: [7000, 30000, 1000] }
+        }
+      ],
+
+      init() {
+        // Get DOM elements
+        this.storyCard = document.getElementById('story-card');
+        this.storyIcon = document.getElementById('story-icon');
+        this.storyText = document.getElementById('story-text');
+        this.stepIndicator = document.getElementById('step-indicator');
+        this.stepText = document.getElementById('step-text');
+        this.operationSection1 = document.getElementById('operation-section-1');
+        this.operationSection2 = document.getElementById('operation-section-2');
+        this.estimateSection = document.getElementById('estimate-section');
+        this.answerSection = document.getElementById('answer-section');
+        this.operationChoices1 = document.getElementById('operation-choices-1');
+        this.operationChoices2 = document.getElementById('operation-choices-2');
+        this.estimateChoices = document.getElementById('estimate-choices');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+        this.roundingTarget = document.getElementById('rounding-target');
+        this.estNum1 = document.getElementById('est-num1');
+        this.estNum2 = document.getElementById('est-num2');
+        this.estNum3 = document.getElementById('est-num3');
+        this.estOp1 = document.getElementById('est-op1');
+        this.estOp2 = document.getElementById('est-op2');
+        this.estResult = document.getElementById('est-result');
+
+        // Equation elements
+        this.eq1Num1 = document.getElementById('eq1-num1');
+        this.eq1Op = document.getElementById('eq1-op');
+        this.eq1Num2 = document.getElementById('eq1-num2');
+        this.eq1Result = document.getElementById('eq1-result');
+        this.eq2Num1 = document.getElementById('eq2-num1');
+        this.eq2Op = document.getElementById('eq2-op');
+        this.eq2Num2 = document.getElementById('eq2-num2');
+        this.eq2Result = document.getElementById('eq2-result');
+        this.summaryEq1 = document.getElementById('summary-eq1');
+        this.summaryEq2 = document.getElementById('summary-eq2');
+
+        // Event listeners
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Operation choice listeners
+        this.operationChoices1.querySelectorAll('.op-btn').forEach(btn => {
+          btn.addEventListener('click', () => this.selectOperation(1, btn.dataset.op));
+        });
+        this.operationChoices2.querySelectorAll('.op-btn').forEach(btn => {
+          btn.addEventListener('click', () => this.selectOperation(2, btn.dataset.op));
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+        this.updateAriaLabels();
+      },
+
+      updateTranslations() {
+        this.updateStepText();
+        this.renderStory();
+        this.updateAriaLabels();
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+      },
+
+      updateAriaLabels() {
+        const opLabel = this.getTranslation('operationChoicesLabel', 'Operation choices');
+        const estimateLabel = this.getTranslation('estimateChoicesLabel', 'Estimate choices');
+        const answerLabel = this.getTranslation('answerChoicesLabel', 'Answer choices');
+
+        this.operationChoices1.setAttribute('aria-label', opLabel);
+        this.operationChoices2.setAttribute('aria-label', opLabel);
+        this.estimateChoices.setAttribute('aria-label', estimateLabel);
+        this.answerChoices.setAttribute('aria-label', answerLabel);
+
+        this.updateChoiceAriaLabels();
+      },
+
+      updateChoiceAriaLabels() {
+        const estimateTemplate = this.getTranslation('estimateChoiceLabel', 'Estimate {value}');
+        const answerTemplate = this.getTranslation('answerChoiceLabel', 'Select {value}');
+
+        this.estimateChoices.querySelectorAll('.choice-btn').forEach(btn => {
+          const value = btn.textContent.trim();
+          btn.setAttribute('aria-label', estimateTemplate.replace('{value}', value));
+        });
+
+        this.answerChoices.querySelectorAll('.choice-btn').forEach(btn => {
+          const value = btn.textContent.trim();
+          btn.setAttribute('aria-label', answerTemplate.replace('{value}', value));
+        });
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      randomFromRange(range) {
+        const min = range[0];
+        const max = range[1];
+        const step = range[2];
+        if (!step) {
+          return this.randomInt(min, max);
+        }
+        const start = Math.ceil(min / step);
+        const end = Math.floor(max / step);
+        return this.randomInt(start, end) * step;
+      },
+
+      shuffle(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      },
+
+      formatOp(op) {
+        return op === '-' ? '−' : '+';
+      },
+
+      roundToNearest(number, place) {
+        return Math.round(number / place) * place;
+      },
+
+      getRoundingPlace(maxValue) {
+        return maxValue >= 100000 ? 10000 : 1000;
+      },
+
+      generateProblem() {
+        const problemIndex = this.currentQuestion % this.problems.length;
+        const problem = this.problems[problemIndex];
+
+        let a = 0;
+        let b = 0;
+        let c = 0;
+        let step1Result = 0;
+        let finalResult = 0;
+        let attempts = 0;
+        let isValid = false;
+
+        while (!isValid && attempts < 25) {
+          a = this.randomFromRange(problem.ranges.a);
+          b = this.randomFromRange(problem.ranges.b);
+          c = this.randomFromRange(problem.ranges.c);
+
+          if (problem.ops[0] === '-' && b >= a) {
+            attempts++;
+            continue;
+          }
+
+          step1Result = problem.ops[0] === '+' ? a + b : a - b;
+
+          if (step1Result <= 0) {
+            attempts++;
+            continue;
+          }
+
+          if (problem.ops[1] === '-' && c >= step1Result) {
+            attempts++;
+            continue;
+          }
+
+          finalResult = problem.ops[1] === '+' ? step1Result + c : step1Result - c;
+
+          if (finalResult <= 0) {
+            attempts++;
+            continue;
+          }
+
+          isValid = true;
+        }
+
+        if (!isValid) {
+          if (problem.ops[0] === '-' && b >= a) {
+            b = Math.max(problem.ranges.b[0], a - (problem.ranges.b[2] || 1000));
+          }
+          step1Result = problem.ops[0] === '+' ? a + b : a - b;
+          if (problem.ops[1] === '-' && c >= step1Result) {
+            c = Math.max(problem.ranges.c[0], step1Result - (problem.ranges.c[2] || 1000));
+          }
+          finalResult = problem.ops[1] === '+' ? step1Result + c : step1Result - c;
+        }
+
+        const name = problem.names ? problem.names[this.randomInt(0, problem.names.length - 1)] : null;
+        const femaleNames = ['Mia', 'Ava', 'Lily', 'Emma', 'Maya', 'Zoe', 'Ivy', 'Nora', 'Grace', 'Sofia'];
+        const isFemale = name ? femaleNames.includes(name) : null;
+
+        const maxValue = Math.max(a, b, c, step1Result, finalResult);
+        const roundTo = this.getRoundingPlace(maxValue);
+        const roundedA = this.roundToNearest(a, roundTo);
+        const roundedB = this.roundToNearest(b, roundTo);
+        const roundedC = this.roundToNearest(c, roundTo);
+        const roundedStep1 = problem.ops[0] === '+' ? roundedA + roundedB : roundedA - roundedB;
+        let estimateAnswer = problem.ops[1] === '+' ? roundedStep1 + roundedC : roundedStep1 - roundedC;
+        if (estimateAnswer <= 0) {
+          estimateAnswer = this.roundToNearest(finalResult, roundTo);
+        }
+
+        this.problemData = {
+          icon: problem.icon,
+          storyKey: problem.storyKey,
+          template: problem.template,
+          question: problem.question,
+          name: name,
+          isFemale: isFemale,
+          a: a,
+          b: b,
+          c: c,
+          op1: problem.ops[0],
+          op2: problem.ops[1],
+          step1Result: step1Result,
+          finalResult: finalResult,
+          roundTo: roundTo,
+          roundedA: roundedA,
+          roundedB: roundedB,
+          roundedC: roundedC,
+          estimateAnswer: estimateAnswer
+        };
+
+        this.currentStep = 1;
+        this.isAnswered = false;
+        this.userOp1 = null;
+        this.userOp2 = null;
+      },
+
+      buildStoryText() {
+        const fallbackName = this.getTranslation('someone', 'Someone');
+        const template = this.getTranslation(`stories.${this.problemData.storyKey}.template`, this.problemData.template);
+        const question = this.getTranslation(`stories.${this.problemData.storyKey}.question`, this.problemData.question);
+        const pronouns = this.getPronounSet(this.problemData.isFemale);
+        const name = this.problemData.name || fallbackName;
+
+        const storyText = template
+          .replace(/{a}/g, this.problemData.a.toLocaleString())
+          .replace(/{b}/g, this.problemData.b.toLocaleString())
+          .replace(/{c}/g, this.problemData.c.toLocaleString())
+          .replace(/{name}/g, name)
+          .replace(/{pronoun}/g, pronouns.pronoun)
+          .replace(/{pronoun_lower}/g, pronouns.pronounLower)
+          .replace(/{pronoun2}/g, pronouns.pronoun);
+
+        const questionText = question.replace(/{name}/g, name);
+
+        return { storyText, questionText };
+      },
+
+      renderStory() {
+        if (!this.problemData) {
+          return;
+        }
+        const story = this.buildStoryText();
+        this.storyIcon.textContent = this.problemData.icon;
+        this.storyText.innerHTML = `<p class="story-narrative">${story.storyText}</p><p class="story-question"><strong>${story.questionText}</strong></p>`;
+      },
+
+      startQuestion() {
+        this.generateProblem();
+        this.displayProblem();
+        this.updateStepText();
+        this.updateStepVisibility();
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      displayProblem() {
+        this.renderStory();
+
+        this.eq1Num1.textContent = this.problemData.a.toLocaleString();
+        this.eq1Op.textContent = '?';
+        this.eq1Num2.textContent = this.problemData.b.toLocaleString();
+        this.eq1Result.textContent = '?';
+
+        this.eq2Num1.textContent = '?';
+        this.eq2Op.textContent = '?';
+        this.eq2Num2.textContent = this.problemData.c.toLocaleString();
+        this.eq2Result.textContent = '?';
+
+        this.roundingTarget.textContent = this.problemData.roundTo.toLocaleString();
+        this.estNum1.textContent = this.problemData.roundedA.toLocaleString();
+        this.estNum2.textContent = this.problemData.roundedB.toLocaleString();
+        this.estNum3.textContent = this.problemData.roundedC.toLocaleString();
+        this.estOp1.textContent = this.formatOp(this.problemData.op1);
+        this.estOp2.textContent = this.formatOp(this.problemData.op2);
+        this.estResult.textContent = '?';
+        this.estResult.classList.remove('revealed');
+
+        this.operationSection1.classList.remove('completed');
+        this.operationSection2.classList.remove('completed');
+        this.estimateSection.classList.remove('completed');
+
+        this.operationChoices1.querySelectorAll('.op-btn').forEach(btn => {
+          btn.classList.remove('selected', 'correct', 'incorrect');
+          btn.disabled = false;
+        });
+        this.operationChoices2.querySelectorAll('.op-btn').forEach(btn => {
+          btn.classList.remove('selected', 'correct', 'incorrect');
+          btn.disabled = false;
+        });
+
+        this.estimateChoices.innerHTML = '';
+        this.answerChoices.innerHTML = '';
+      },
+
+      updateStepVisibility() {
+        this.operationSection1.classList.remove('hidden');
+        this.operationSection2.classList.add('hidden');
+        this.estimateSection.classList.add('hidden');
+        this.answerSection.classList.add('hidden');
+
+        if (this.currentStep >= 2) {
+          this.operationSection1.classList.add('completed');
+          this.operationSection2.classList.remove('hidden');
+        }
+        if (this.currentStep >= 3) {
+          this.operationSection2.classList.add('completed');
+          this.estimateSection.classList.remove('hidden');
+        }
+        if (this.currentStep >= 4) {
+          this.estimateSection.classList.add('completed');
+          this.answerSection.classList.remove('hidden');
+        }
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.add-sub-word-problems.${key}`);
+          return translated !== `section.activities.add-sub-word-problems.${key}` ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      getPronounSet(isFemale) {
+        const pronouns = {
+          they: this.getTranslation('pronouns.they', 'They'),
+          theyLower: this.getTranslation('pronouns.theyLower', 'they'),
+          he: this.getTranslation('pronouns.he', 'He'),
+          heLower: this.getTranslation('pronouns.heLower', 'he'),
+          she: this.getTranslation('pronouns.she', 'She'),
+          sheLower: this.getTranslation('pronouns.sheLower', 'she')
+        };
+
+        if (isFemale === true) {
+          return { pronoun: pronouns.she, pronounLower: pronouns.sheLower };
+        }
+        if (isFemale === false) {
+          return { pronoun: pronouns.he, pronounLower: pronouns.heLower };
+        }
+        return { pronoun: pronouns.they, pronounLower: pronouns.theyLower };
+      },
+
+      updateStepText() {
+        const stepIcon = this.stepIndicator.querySelector('.step-icon');
+        let text = '';
+        let icon = '';
+
+        if (this.currentStep === 1) {
+          icon = '1️⃣';
+          text = this.getTranslation('step1', 'Step 1: Choose the first operation');
+        } else if (this.currentStep === 2) {
+          icon = '2️⃣';
+          text = this.getTranslation('step2', 'Step 2: Choose the second operation');
+        } else if (this.currentStep === 3) {
+          icon = '3️⃣';
+          text = this.getTranslation('step3', 'Step 3: About how much?');
+        } else {
+          icon = '4️⃣';
+          text = this.getTranslation('step4', 'Step 4: What is the final answer?');
+        }
+
+        stepIcon.textContent = icon;
+        this.stepText.textContent = text;
+      },
+
+      selectOperation(step, op) {
+        if (step === 1 && this.userOp1) return;
+        if (step === 2 && this.userOp2) return;
+
+        if (step === 1) {
+          this.userOp1 = op;
+          const correctOp = this.problemData.op1;
+          const isCorrect = op === correctOp;
+
+          this.operationChoices1.querySelectorAll('.op-btn').forEach(btn => {
+            btn.disabled = true;
+            if (btn.dataset.op === op) {
+              btn.classList.add('selected');
+              btn.classList.add(isCorrect ? 'correct' : 'incorrect');
+            }
+            if (!isCorrect && btn.dataset.op === correctOp) {
+              btn.classList.add('correct');
+            }
+          });
+
+          this.eq1Op.textContent = this.formatOp(op);
+          const userResult = op === '+' ? this.problemData.a + this.problemData.b : this.problemData.a - this.problemData.b;
+          this.eq1Result.textContent = userResult.toLocaleString();
+
+          if (isCorrect) {
+            this.correctCount++;
+            const msg = window.i18n ? i18n.t('feedback.correct') || 'Correct!' : 'Correct!';
+            this.feedback.textContent = msg;
+            this.feedback.classList.remove('error');
+            this.problemData.step1Result = userResult;
+          } else {
+            this.incorrectCount++;
+            const opName = correctOp === '+' ? this.getTranslation('addition', 'addition (+)') : this.getTranslation('subtraction', 'subtraction (−)');
+            const msg = this.getTranslation('incorrectOp1', 'The first operation is {op}').replace('{op}', opName);
+            this.feedback.textContent = msg;
+            this.feedback.classList.add('error');
+            this.eq1Op.textContent = this.formatOp(correctOp);
+            this.eq1Result.textContent = this.problemData.step1Result.toLocaleString();
+          }
+          this.feedback.classList.add('show');
+
+          setTimeout(() => {
+            this.eq2Num1.textContent = this.problemData.step1Result.toLocaleString();
+            this.advanceToStep2();
+          }, this.autoAdvanceDelay);
+        } else if (step === 2) {
+          this.userOp2 = op;
+          const correctOp = this.problemData.op2;
+          const isCorrect = op === correctOp;
+
+          this.operationChoices2.querySelectorAll('.op-btn').forEach(btn => {
+            btn.disabled = true;
+            if (btn.dataset.op === op) {
+              btn.classList.add('selected');
+              btn.classList.add(isCorrect ? 'correct' : 'incorrect');
+            }
+            if (!isCorrect && btn.dataset.op === correctOp) {
+              btn.classList.add('correct');
+            }
+          });
+
+          this.eq2Op.textContent = this.formatOp(op);
+          const userResult = op === '+' ? this.problemData.step1Result + this.problemData.c : this.problemData.step1Result - this.problemData.c;
+          this.eq2Result.textContent = userResult.toLocaleString();
+
+          if (isCorrect) {
+            this.correctCount++;
+            const msg = window.i18n ? i18n.t('feedback.correct') || 'Correct!' : 'Correct!';
+            this.feedback.textContent = msg;
+            this.feedback.classList.remove('error');
+          } else {
+            this.incorrectCount++;
+            const opName = correctOp === '+' ? this.getTranslation('addition', 'addition (+)') : this.getTranslation('subtraction', 'subtraction (−)');
+            const msg = this.getTranslation('incorrectOp2', 'The second operation is {op}').replace('{op}', opName);
+            this.feedback.textContent = msg;
+            this.feedback.classList.add('error');
+            this.eq2Op.textContent = this.formatOp(correctOp);
+            this.eq2Result.textContent = this.problemData.finalResult.toLocaleString();
+          }
+          this.feedback.classList.add('show');
+
+          setTimeout(() => {
+            this.advanceToEstimate();
+          }, this.autoAdvanceDelay);
+        }
+      },
+
+      advanceToStep2() {
+        this.currentStep = 2;
+        this.feedback.classList.remove('show', 'error');
+        this.updateStepText();
+        this.updateStepVisibility();
+      },
+
+      advanceToEstimate() {
+        this.currentStep = 3;
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+        this.updateStepText();
+        this.updateStepVisibility();
+        this.generateEstimateChoices();
+      },
+
+      advanceToAnswer() {
+        this.currentStep = 4;
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+        this.updateStepText();
+        this.updateStepVisibility();
+
+        const op1Symbol = this.formatOp(this.problemData.op1);
+        const op2Symbol = this.formatOp(this.problemData.op2);
+
+        this.summaryEq1.textContent = `${this.problemData.a.toLocaleString()} ${op1Symbol} ${this.problemData.b.toLocaleString()} = ${this.problemData.step1Result.toLocaleString()}`;
+        this.summaryEq2.textContent = `${this.problemData.step1Result.toLocaleString()} ${op2Symbol} ${this.problemData.c.toLocaleString()} = ${this.problemData.finalResult.toLocaleString()}`;
+
+        this.generateAnswerChoices();
+      },
+
+      generateEstimateChoices() {
+        const correctAnswer = this.problemData.estimateAnswer;
+        const step = this.problemData.roundTo;
+        const choices = [];
+        const offsets = [step, -step, step * 2, -step * 2];
+        const labelTemplate = this.getTranslation('estimateChoiceLabel', 'Estimate {value}');
+
+        offsets.forEach(offset => {
+          const value = correctAnswer + offset;
+          if (value > 0 && value !== correctAnswer && !choices.includes(value)) {
+            choices.push(value);
+          }
+        });
+
+        while (choices.length < 3) {
+          const offset = this.randomInt(-3, 3) * step;
+          const value = correctAnswer + offset;
+          if (value > 0 && value !== correctAnswer && !choices.includes(value)) {
+            choices.push(value);
+          }
+        }
+
+        const finalChoices = this.shuffle([correctAnswer, ...this.shuffle(choices).slice(0, 3)]);
+        this.estimateChoices.innerHTML = finalChoices.map(choice => {
+          const display = choice.toLocaleString();
+          const label = labelTemplate.replace('{value}', display);
+          return `<button class="choice-btn" data-value="${choice}" aria-label="${label}">${display}</button>`;
+        }).join('');
+
+        this.estimateChoices.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.addEventListener('click', () => this.selectEstimate(parseInt(btn.dataset.value, 10)));
+        });
+      },
+
+      selectEstimate(value) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const correctValue = this.problemData.estimateAnswer;
+        const isCorrect = value === correctValue;
+
+        this.estimateChoices.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.disabled = true;
+          const btnValue = parseInt(btn.dataset.value, 10);
+          if (btnValue === correctValue) {
+            btn.classList.add('correct');
+          } else if (btnValue === value && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        this.estResult.textContent = correctValue.toLocaleString();
+        this.estResult.classList.add('revealed');
+
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = this.getTranslation('estimateCorrect', 'Nice estimate!');
+          this.feedback.textContent = msg;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const msg = this.getTranslation('incorrectEstimate', 'A good estimate is {answer}').replace('{answer}', correctValue.toLocaleString());
+          this.feedback.textContent = msg;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          this.advanceToAnswer();
+        }, this.autoAdvanceDelay);
+      },
+
+      generateAnswerChoices() {
+        const correctAnswer = this.problemData.finalResult;
+        const choices = [];
+        const step1Only = this.problemData.step1Result;
+        const wrongOp2 = this.problemData.op2 === '+'
+          ? this.problemData.step1Result - this.problemData.c
+          : this.problemData.step1Result + this.problemData.c;
+        const offset = this.problemData.roundTo;
+        const offsetLarge = this.problemData.roundTo * 2;
+        const labelTemplate = this.getTranslation('answerChoiceLabel', 'Select {value}');
+
+        if (step1Only > 0 && step1Only !== correctAnswer && !choices.includes(step1Only)) choices.push(step1Only);
+        if (wrongOp2 > 0 && wrongOp2 !== correctAnswer && !choices.includes(wrongOp2)) choices.push(wrongOp2);
+
+        const offBy = correctAnswer + (Math.random() > 0.5 ? offset : -offset);
+        if (offBy > 0 && offBy !== correctAnswer && !choices.includes(offBy)) choices.push(offBy);
+
+        const offByLarge = correctAnswer + (Math.random() > 0.5 ? offsetLarge : -offsetLarge);
+        if (offByLarge > 0 && offByLarge !== correctAnswer && !choices.includes(offByLarge)) choices.push(offByLarge);
+
+        while (choices.length < 3) {
+          const offsetPick = this.randomInt(-3, 3) * offset;
+          const value = correctAnswer + offsetPick;
+          if (value > 0 && value !== correctAnswer && !choices.includes(value)) {
+            choices.push(value);
+          }
+        }
+
+        const finalChoices = this.shuffle([correctAnswer, ...this.shuffle(choices).slice(0, 3)]);
+        this.answerChoices.innerHTML = finalChoices.map(choice => {
+          const display = choice.toLocaleString();
+          const label = labelTemplate.replace('{value}', display);
+          return `<button class="choice-btn" data-value="${choice}" aria-label="${label}">${display}</button>`;
+        }).join('');
+
+        this.answerChoices.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.addEventListener('click', () => this.selectAnswer(parseInt(btn.dataset.value, 10)));
+        });
+      },
+
+      selectAnswer(value) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const correctValue = this.problemData.finalResult;
+        const isCorrect = value === correctValue;
+
+        this.answerChoices.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.disabled = true;
+          const btnValue = parseInt(btn.dataset.value, 10);
+          if (btnValue === correctValue) {
+            btn.classList.add('correct');
+          } else if (btnValue === value && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = window.i18n ? i18n.t('feedback.correct') || 'Correct!' : 'Correct!';
+          this.feedback.textContent = msg;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const msg = this.getTranslation('incorrectAnswer', 'The answer is {answer}').replace('{answer}', correctValue.toLocaleString());
+          this.feedback.textContent = msg;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        this.updateStatsMessage();
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const totalOpportunities = this.totalQuestions * 4;
+        const percentage = (this.correctCount / totalOpportunities) * 100;
+
+        if (percentage >= 70) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation('perfect', 'Amazing problem-solving!');
+        } else if (percentage >= 40) {
+          this.statsIcon.textContent = '🧠';
+          this.statsMessage.textContent = this.getTranslation('great', 'Great thinking!');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation('keepPracticing', 'Keep practicing!');
+        }
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => AddSubWordProblems.init());
+      } else {
+        AddSubWordProblems.init();
+      }
+    });
+  </script>
+  <style>
+    /* Two-Step Add/Sub Stories specific styles */
+
+    /* Story Section */
+    .story-section {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .story-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-4) var(--space-5);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid #f59e0b;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #d97706;
+      max-width: 620px;
+      width: 100%;
+    }
+
+    .story-icon {
+      font-size: var(--text-4xl);
+    }
+
+    .story-text {
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .story-narrative {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-2);
+    }
+
+    .story-question {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      color: #92400e;
+    }
+
+    /* Step Indicator */
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+      border: 2px solid #6366f1;
+      border-radius: var(--radius-lg);
+    }
+
+    .step-icon {
+      font-size: var(--text-xl);
+    }
+
+    .step-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #4338ca;
+    }
+
+    /* Operation Section */
+    .operation-section {
+      margin-bottom: var(--space-4);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border: 2px solid var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      transition: opacity 0.3s ease;
+    }
+
+    .operation-section.hidden {
+      display: none;
+    }
+
+    .operation-section.completed {
+      opacity: 0.7;
+    }
+
+    .operation-prompt {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-2);
+    }
+
+    .prompt-icon {
+      font-size: var(--text-lg);
+    }
+
+    .prompt-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-medium);
+      color: var(--color-neutral-700);
+    }
+
+    /* Equation Preview */
+    .equation-preview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+      padding: var(--space-2) var(--space-4);
+      background: white;
+      border: 2px dashed var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      flex-wrap: wrap;
+    }
+
+    .eq-num,
+    .eq-result {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-800);
+      min-width: 50px;
+      text-align: center;
+    }
+
+    .eq-op {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      min-width: 30px;
+      text-align: center;
+    }
+
+    .eq-equals {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      color: var(--color-neutral-500);
+    }
+
+    /* Operation Choices */
+    .operation-choices {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+    }
+
+    .op-btn {
+      width: 80px;
+      height: 80px;
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 4px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 var(--color-primary-dark);
+    }
+
+    .op-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 0 var(--color-primary-dark);
+    }
+
+    .op-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 var(--color-primary-dark);
+    }
+
+    .op-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4), 0 4px 0 var(--color-primary-dark);
+    }
+
+    .op-btn.selected {
+      transform: scale(1.05);
+    }
+
+    .op-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      box-shadow: 0 4px 0 #15803d;
+      color: #166534;
+      animation: pulse-correct 0.5s ease;
+    }
+
+    .op-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      box-shadow: 0 4px 0 #b91c1c;
+      color: #991b1b;
+      animation: wiggle 0.3s ease;
+    }
+
+    @keyframes pulse-correct {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-5deg); }
+      75% { transform: rotate(5deg); }
+    }
+
+    /* Estimate Section */
+    .estimate-section {
+      margin-bottom: var(--space-4);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #fef9c3, #fde68a);
+      border: 2px solid #f59e0b;
+      border-radius: var(--radius-lg);
+      transition: opacity 0.3s ease;
+    }
+
+    .estimate-section.hidden {
+      display: none;
+    }
+
+    .estimate-section.completed {
+      opacity: 0.7;
+    }
+
+    .estimate-prompt {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-2);
+    }
+
+    .estimate-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      color: #92400e;
+      flex-wrap: wrap;
+    }
+
+    .hint-label {
+      font-weight: var(--weight-semibold);
+    }
+
+    .hint-value {
+      font-weight: var(--weight-bold);
+      padding: var(--space-1) var(--space-3);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-md);
+      border: 2px solid #f59e0b;
+    }
+
+    .estimate-equation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+      padding: var(--space-2) var(--space-4);
+      background: white;
+      border: 2px dashed var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      flex-wrap: wrap;
+    }
+
+    .estimate-equation .eq-result.revealed {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border: 2px solid var(--color-primary);
+      border-radius: var(--radius-md);
+      padding: var(--space-1) var(--space-2);
+    }
+
+    /* Answer Section */
+    .answer-section {
+      margin-bottom: var(--space-4);
+    }
+
+    .answer-section.hidden {
+      display: none;
+    }
+
+    .answer-prompt {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #10b981;
+      border-radius: var(--radius-lg);
+    }
+
+    .answer-prompt .prompt-text {
+      color: #065f46;
+    }
+
+    /* Solution Summary */
+    .solution-summary {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 2px solid #22c55e;
+      border-radius: var(--radius-lg);
+    }
+
+    .solution-step {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .step-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: #166534;
+      min-width: 60px;
+    }
+
+    .step-equation {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #15803d;
+    }
+
+    /* Choice Container */
+    .choice-container {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(140px, 1fr));
+      gap: var(--space-4);
+      max-width: 460px;
+      margin: 0 auto;
+      padding: var(--space-2);
+    }
+
+    .choice-btn {
+      min-height: 70px;
+      min-width: 120px;
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 4px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4), 0 4px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      box-shadow: 0 4px 0 #15803d;
+      color: #166534;
+      animation: pulse-correct 0.5s ease;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      box-shadow: 0 4px 0 #b91c1c;
+      color: #991b1b;
+      animation: wiggle 0.3s ease;
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .story-card {
+        padding: var(--space-3) var(--space-4);
+      }
+
+      .story-icon {
+        font-size: var(--text-3xl);
+      }
+
+      .story-narrative {
+        font-size: var(--text-base);
+      }
+
+      .story-question {
+        font-size: var(--text-base);
+      }
+
+      .equation-preview,
+      .estimate-equation {
+        padding: var(--space-2);
+        gap: var(--space-1);
+      }
+
+      .eq-num,
+      .eq-result {
+        font-size: var(--text-lg);
+        min-width: 40px;
+      }
+
+      .eq-op {
+        font-size: var(--text-xl);
+        min-width: 24px;
+      }
+
+      .op-btn {
+        width: 70px;
+        height: 70px;
+        font-size: var(--text-2xl);
+      }
+
+      .choice-container {
+        gap: var(--space-3);
+      }
+
+      .choice-btn {
+        min-height: 64px;
+        font-size: var(--text-lg);
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .step-indicator {
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .step-text {
+        font-size: var(--text-sm);
+      }
+
+      .hint-value {
+        font-size: var(--text-sm);
+        padding: var(--space-1) var(--space-2);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .story-card {
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .story-icon {
+        font-size: var(--text-2xl);
+      }
+
+      .story-narrative {
+        font-size: var(--text-base);
+      }
+
+      .eq-num,
+      .eq-result {
+        font-size: var(--text-base);
+        min-width: 35px;
+      }
+
+      .eq-op {
+        font-size: var(--text-lg);
+        min-width: 20px;
+      }
+
+      .op-btn {
+        width: 60px;
+        height: 60px;
+        font-size: var(--text-xl);
+      }
+
+      .operation-choices {
+        gap: var(--space-3);
+      }
+
+      .choice-container {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+        max-width: 280px;
+      }
+
+      .choice-btn {
+        min-height: 56px;
+        font-size: var(--text-lg);
+      }
+
+      .solution-summary {
+        padding: var(--space-2);
+      }
+
+      .step-equation {
+        font-size: var(--text-sm);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Division: First Estimate - Grade 5 Math Activity - Meadow Math">
+  <title>Division: First Estimate - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🎯</span>
+            <span data-i18n="section.activities.division-estimate-quotient.title">Division: First Estimate</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.division-estimate-quotient.instruction">Estimate the quotient first!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Problem Display -->
+          <div class="problem-display" id="problem-display">
+            <span class="dividend" id="dividend">936</span>
+            <span class="operator">÷</span>
+            <span class="divisor" id="divisor">24</span>
+            <span class="equals">=</span>
+            <span class="quotient">?</span>
+          </div>
+
+          <!-- Step A: Estimate -->
+          <div class="step-container" id="step-a">
+            <div class="step-label">
+              <span class="step-badge">A</span>
+              <span data-i18n="section.activities.division-estimate-quotient.stepA">Step 1: Estimate</span>
+            </div>
+            <p class="step-prompt" data-i18n="section.activities.division-estimate-quotient.aboutHow">About how much?</p>
+            <div class="choices-container" id="estimate-choices">
+              <!-- Buttons generated dynamically -->
+            </div>
+          </div>
+
+          <!-- Hint Display (shown after Step A) -->
+          <div class="hint-display" id="hint-display">
+            <span class="hint-text" id="hint-text">24 × 40 = 960</span>
+          </div>
+
+          <!-- Step B: Check -->
+          <div class="step-container" id="step-b">
+            <div class="step-label">
+              <span class="step-badge">B</span>
+              <span data-i18n="section.activities.division-estimate-quotient.stepB">Step 2: Check</span>
+            </div>
+            <p class="step-prompt" id="check-prompt">
+              <span data-i18n="section.activities.division-estimate-quotient.wasEstimate">Was your estimate</span>
+              <span class="estimate-value" id="estimate-value">40</span>
+              <span data-i18n="section.activities.division-estimate-quotient.reasonable">reasonable?</span>
+            </p>
+            <div class="check-choices" id="check-choices">
+              <button class="check-btn" data-value="low" type="button">
+                <span class="check-icon">📉</span>
+                <span data-i18n="section.activities.division-estimate-quotient.tooLow">Too Low</span>
+              </button>
+              <button class="check-btn" data-value="right" type="button">
+                <span class="check-icon">✅</span>
+                <span data-i18n="section.activities.division-estimate-quotient.aboutRight">About Right</span>
+              </button>
+              <button class="check-btn" data-value="high" type="button">
+                <span class="check-icon">📈</span>
+                <span data-i18n="section.activities.division-estimate-quotient.tooHigh">Too High</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.division-estimate-quotient.great">Great estimation!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Division: First Estimate Activity - Grade 5 Level 2
+    const DivisionEstimate = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      currentStep: 'A', // 'A' = estimate, 'B' = check
+      selectedEstimate: null,
+      isAnswered: false,
+      advanceTimeout: null,
+
+      // DOM elements
+      problemDisplay: null,
+      dividend: null,
+      divisor: null,
+      stepA: null,
+      stepB: null,
+      hintDisplay: null,
+      hintText: null,
+      estimateChoices: null,
+      checkChoices: null,
+      estimateValue: null,
+      btnReset: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.problemDisplay = document.getElementById('problem-display');
+        this.dividend = document.getElementById('dividend');
+        this.divisor = document.getElementById('divisor');
+        this.stepA = document.getElementById('step-a');
+        this.stepB = document.getElementById('step-b');
+        this.hintDisplay = document.getElementById('hint-display');
+        this.hintText = document.getElementById('hint-text');
+        this.estimateChoices = document.getElementById('estimate-choices');
+        this.checkChoices = document.getElementById('check-choices');
+        this.estimateValue = document.getElementById('estimate-value');
+        this.btnReset = document.getElementById('btn-reset');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Set up check button listeners
+        const checkBtns = this.checkChoices.querySelectorAll('.check-btn');
+        checkBtns.forEach(btn => {
+          btn.addEventListener('click', () => this.selectCheck(btn, btn.dataset.value));
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      generateQuestions() {
+        // Division problems with 2-digit divisors
+        const problems = [
+          { dividend: 936, divisor: 24 },   // exact: 39
+          { dividend: 725, divisor: 25 },   // exact: 29
+          { dividend: 864, divisor: 32 },   // exact: 27
+          { dividend: 1050, divisor: 35 },  // exact: 30
+          { dividend: 1248, divisor: 48 },  // exact: 26
+          { dividend: 756, divisor: 18 },   // exact: 42
+          { dividend: 1380, divisor: 46 },  // exact: 30
+          { dividend: 952, divisor: 28 },   // exact: 34
+          { dividend: 1120, divisor: 40 },  // exact: 28
+          { dividend: 1575, divisor: 45 },  // exact: 35
+          { dividend: 1008, divisor: 36 },  // exact: 28
+          { dividend: 1260, divisor: 42 }   // exact: 30
+        ];
+
+        this.questions = shuffle(problems).slice(0, this.totalQuestions).map(p => {
+          const exactQuotient = p.dividend / p.divisor;
+
+          // Generate estimate choices (multiples of 5 or 10 around the exact answer)
+          const roundedDown = Math.floor(exactQuotient / 10) * 10;
+          const choices = [
+            roundedDown - 10,
+            roundedDown,
+            roundedDown + 10,
+            roundedDown + 20
+          ].filter(c => c > 0);
+
+          // Ensure we have 4 choices
+          while (choices.length < 4) {
+            choices.push(choices[choices.length - 1] + 10);
+          }
+
+          // Find the best estimate (closest to exact)
+          let bestEstimate = choices[0];
+          let minDiff = Math.abs(exactQuotient - choices[0]);
+          choices.forEach(c => {
+            const diff = Math.abs(exactQuotient - c);
+            if (diff < minDiff) {
+              minDiff = diff;
+              bestEstimate = c;
+            }
+          });
+
+          return {
+            dividend: p.dividend,
+            divisor: p.divisor,
+            exactQuotient: exactQuotient,
+            choices: choices,
+            bestEstimate: bestEstimate
+          };
+        });
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      renderEstimateChoices(choices) {
+        this.estimateChoices.innerHTML = '';
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'estimate-btn';
+          btn.type = 'button';
+          btn.textContent = choice;
+          btn.dataset.value = choice;
+          btn.addEventListener('click', () => this.selectEstimate(btn, choice));
+          this.estimateChoices.appendChild(btn);
+        });
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.currentStep = 'A';
+        this.selectedEstimate = null;
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        // Update problem display
+        this.dividend.textContent = question.dividend.toLocaleString();
+        this.divisor.textContent = question.divisor;
+
+        // Show Step A, hide Step B and hint
+        this.stepA.classList.remove('hidden');
+        this.stepA.classList.add('active');
+        this.stepB.classList.add('hidden');
+        this.stepB.classList.remove('active');
+        this.hintDisplay.classList.remove('show');
+        this.problemDisplay.style.display = '';
+
+        // Render estimate choices
+        this.renderEstimateChoices(question.choices);
+
+        // Reset check buttons
+        const checkBtns = this.checkChoices.querySelectorAll('.check-btn');
+        checkBtns.forEach(btn => {
+          btn.disabled = false;
+          btn.classList.remove('selected', 'correct', 'incorrect');
+        });
+
+        this.renderProgress();
+      },
+
+      selectEstimate(btn, estimate) {
+        if (this.currentStep !== 'A') return;
+
+        this.selectedEstimate = estimate;
+        this.currentStep = 'B';
+
+        // Disable all estimate buttons
+        const buttons = this.estimateChoices.querySelectorAll('.estimate-btn');
+        buttons.forEach(b => {
+          b.disabled = true;
+          if (b === btn) {
+            b.classList.add('selected');
+          }
+        });
+
+        const question = this.questions[this.currentQuestion];
+
+        // Show hint
+        const product = question.divisor * estimate;
+        this.hintText.textContent = `${question.divisor} × ${estimate} = ${product.toLocaleString()}`;
+        this.hintDisplay.classList.add('show');
+
+        // Update estimate value in Step B
+        this.estimateValue.textContent = estimate;
+
+        // Hide problem display in Step B to reduce clutter
+        this.problemDisplay.style.display = 'none';
+
+        // Show Step B
+        this.stepA.classList.remove('active');
+        this.stepB.classList.remove('hidden');
+        this.stepB.classList.add('active');
+      },
+
+      selectCheck(btn, value) {
+        if (this.currentStep !== 'B' || this.isAnswered) return;
+
+        this.isAnswered = true;
+
+        const question = this.questions[this.currentQuestion];
+        const product = question.divisor * this.selectedEstimate;
+
+        // Determine the correct answer
+        let correctValue;
+        if (product < question.dividend - question.divisor) {
+          correctValue = 'low';
+        } else if (product > question.dividend + question.divisor) {
+          correctValue = 'high';
+        } else {
+          correctValue = 'right';
+        }
+
+        const isCorrect = value === correctValue;
+
+        // Disable all check buttons
+        const checkBtns = this.checkChoices.querySelectorAll('.check-btn');
+        checkBtns.forEach(b => {
+          b.disabled = true;
+        });
+
+        btn.classList.add('selected');
+
+        if (isCorrect) {
+          this.correctCount++;
+          btn.classList.add('correct');
+
+          let feedbackKey, feedbackFallback;
+          if (correctValue === 'right') {
+            feedbackKey = 'section.activities.division-estimate-quotient.correctRight';
+            feedbackFallback = 'Great estimate! {estimate} is about right.';
+          } else if (correctValue === 'low') {
+            feedbackKey = 'section.activities.division-estimate-quotient.correctLow';
+            feedbackFallback = 'Correct! {estimate} is a bit low.';
+          } else {
+            feedbackKey = 'section.activities.division-estimate-quotient.correctHigh';
+            feedbackFallback = 'Correct! {estimate} is a bit high.';
+          }
+
+          this.feedback.textContent = this.getTranslation(feedbackKey, feedbackFallback)
+            .replace('{estimate}', this.selectedEstimate);
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          btn.classList.add('incorrect');
+
+          // Highlight correct answer
+          checkBtns.forEach(b => {
+            if (b.dataset.value === correctValue) {
+              b.classList.add('correct');
+            }
+          });
+
+          let feedbackKey, feedbackFallback;
+          if (correctValue === 'right') {
+            feedbackKey = 'section.activities.division-estimate-quotient.wrongWasRight';
+            feedbackFallback = '{estimate} was actually about right!';
+          } else if (correctValue === 'low') {
+            feedbackKey = 'section.activities.division-estimate-quotient.wrongWasLow';
+            feedbackFallback = '{estimate} was actually too low.';
+          } else {
+            feedbackKey = 'section.activities.division-estimate-quotient.wrongWasHigh';
+            feedbackFallback = '{estimate} was actually too high.';
+          }
+
+          this.feedback.textContent = this.getTranslation(feedbackKey, feedbackFallback)
+            .replace('{estimate}', this.selectedEstimate);
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.division-estimate-quotient.perfect',
+            'Perfect estimation!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.division-estimate-quotient.great',
+            'Great estimation!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.division-estimate-quotient.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.division-estimate-quotient.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => DivisionEstimate.init());
+      } else {
+        DivisionEstimate.init();
+      }
+    });
+  </script>
+  <style>
+    /* Division: First Estimate specific styles */
+
+    .problem-display {
+      text-align: center;
+      margin-bottom: var(--space-4);
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+      border-radius: var(--radius-xl);
+      border: 3px solid #8b5cf6;
+      box-shadow: 0 3px 0 #7c3aed;
+    }
+
+    .problem-display .dividend,
+    .problem-display .divisor,
+    .problem-display .quotient {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: #5b21b6;
+    }
+
+    .problem-display .operator,
+    .problem-display .equals {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #7c3aed;
+      margin: 0 var(--space-2);
+    }
+
+    .step-container {
+      margin-bottom: var(--space-4);
+      padding: var(--space-4);
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 3px solid #e5e7eb;
+      transition: all 0.3s ease;
+    }
+
+    .step-container.hidden {
+      display: none;
+    }
+
+    .step-container.active {
+      border-color: #0ea5e9;
+      box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15);
+    }
+
+    .step-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+    }
+
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      border-radius: 50%;
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      color: white;
+    }
+
+    .step-label span[data-i18n] {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+    }
+
+    .step-prompt {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      color: var(--color-neutral-600);
+      margin-bottom: var(--space-3);
+      text-align: center;
+    }
+
+    .estimate-value {
+      font-weight: var(--weight-bold);
+      color: #0369a1;
+    }
+
+    .choices-container {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .estimate-btn {
+      min-width: 70px;
+      min-height: 70px;
+      padding: var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 4px solid #0ea5e9;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #0284c7;
+      color: #0369a1;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .estimate-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 #0284c7;
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+    }
+
+    .estimate-btn:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 #0284c7;
+    }
+
+    .estimate-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.35), 0 4px 0 #0284c7;
+    }
+
+    .estimate-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .estimate-btn:disabled.selected {
+      opacity: 1;
+      background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+      border-color: #8b5cf6;
+      box-shadow: 0 4px 0 #7c3aed;
+      color: #5b21b6;
+    }
+
+    .hint-display {
+      display: none;
+      text-align: center;
+      margin-bottom: var(--space-4);
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+      box-shadow: 0 3px 0 #d97706;
+    }
+
+    .hint-display.show {
+      display: block;
+    }
+
+    .hint-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+    }
+
+    .check-choices {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .check-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-1);
+      min-width: 90px;
+      min-height: 80px;
+      padding: var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      background: white;
+      border: 3px solid #d1d5db;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #9ca3af;
+      color: var(--color-neutral-700);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .check-btn .check-icon {
+      font-size: var(--text-2xl);
+    }
+
+    .check-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 #9ca3af;
+      border-color: #0ea5e9;
+    }
+
+    .check-btn:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 #9ca3af;
+    }
+
+    .check-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.35), 0 4px 0 #9ca3af;
+    }
+
+    .check-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .check-btn:disabled.selected {
+      opacity: 1;
+    }
+
+    .check-btn.selected {
+      border-color: #8b5cf6;
+      box-shadow: 0 4px 0 #7c3aed;
+    }
+
+    .check-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      color: #166534;
+    }
+
+    .check-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      box-shadow: 0 4px 0 #dc2626;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 767px) {
+      .problem-display .dividend,
+      .problem-display .divisor,
+      .problem-display .quotient {
+        font-size: var(--text-2xl);
+      }
+
+      .problem-display .operator,
+      .problem-display .equals {
+        font-size: var(--text-xl);
+      }
+
+      .estimate-btn {
+        min-width: 65px;
+        min-height: 65px;
+        font-size: var(--text-lg);
+      }
+
+      .check-btn {
+        min-width: 80px;
+        min-height: 70px;
+        padding: var(--space-2);
+      }
+
+      .check-btn .check-icon {
+        font-size: var(--text-xl);
+      }
+
+      .hint-text {
+        font-size: var(--text-lg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .problem-display {
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .problem-display .dividend,
+      .problem-display .divisor,
+      .problem-display .quotient {
+        font-size: var(--text-xl);
+      }
+
+      .step-container {
+        padding: var(--space-3);
+      }
+
+      .estimate-btn {
+        min-width: 60px;
+        min-height: 60px;
+        font-size: var(--text-base);
+        border-width: 3px;
+      }
+
+      .check-btn {
+        min-width: 70px;
+        min-height: 65px;
+        font-size: var(--text-xs);
+      }
+
+      .check-btn .check-icon {
+        font-size: var(--text-lg);
+      }
+
+      .hint-text {
+        font-size: var(--text-base);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

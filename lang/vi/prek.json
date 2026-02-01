@@ -360,7 +360,7 @@
       "title": "Trò hộp & nắp",
       "description": "Giấu một số vật, cho xem phần còn lại",
       "start": "📦 Nhấn vào đây để bắt đầu!",
-      "totalIn": "Có {total} vật trong hộp",
+      "totalIn": "Tổng trong hộp:",
       "canSee": "Bạn thấy {visible}...",
       "howManyHidden": "Bao nhiêu đang bị giấu dưới nắp?",
       "correct": "🎉 Đúng rồi! {visible} thấy + {hidden} giấu = {total}",

@@ -347,7 +347,7 @@
 
         // Generate choices: correct answer plus 3 distractors
         const choices = [correctAnswer];
-        
+
         // Add distractors (nearby multiples of 10)
         const distractors = [];
         for (let offset of [-20, -10, 10, 20, -30, 30]) {
@@ -356,11 +356,11 @@
             distractors.push(distractor);
           }
         }
-        
+
         // Pick 3 random distractors
         this.shuffleArray(distractors);
         choices.push(...distractors.slice(0, 3));
-        
+
         // Shuffle choices
         this.shuffleArray(choices);
 

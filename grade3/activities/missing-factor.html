@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Missing Factor Puzzle - Grade 3 Math Activity - Meadow Math">
+  <title>Missing Factor Puzzle - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧩</span>
+            <span data-i18n="section.activities.missing-factor.title">Missing Factor Puzzle</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.missing-factor.description">Find the missing number in a multiplication fact.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Equation Section -->
+          <div class="equation-section">
+            <div class="equation-display" id="equation-display">
+              <span class="equation-part factor" id="factor1">6</span>
+              <span class="equation-part operator">×</span>
+              <span class="equation-part factor mystery" id="factor2">?</span>
+              <span class="equation-part operator">=</span>
+              <span class="equation-part product" id="product">42</span>
+            </div>
+          </div>
+
+          <!-- Hint Section (Array Preview) -->
+          <div class="hint-section" id="hint-section">
+            <button class="hint-toggle" id="hint-toggle">
+              <span class="hint-toggle-show" data-i18n="section.activities.missing-factor.showHint">Show hint</span>
+              <span class="hint-toggle-hide" data-i18n="section.activities.missing-factor.hideHint">Hide hint</span>
+            </button>
+            <div class="hint-content" id="hint-content">
+              <div class="hint-label" data-i18n="section.activities.missing-factor.thinkAbout">Think about it:</div>
+              <div class="hint-array" id="hint-array"></div>
+              <div class="hint-text" id="hint-text"></div>
+            </div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-section" id="choices"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.missing-factor.great">Great factor finding!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Missing Factor Puzzle Activity - Grade 3 Level 3
+    const MissingFactor = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      factor1: 0,
+      factor2: 0,
+      product: 0,
+      missingPosition: 1, // 1 = first factor, 2 = second factor
+      correctAnswer: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+      hintVisible: false,
+
+      // DOM elements
+      factor1Display: null,
+      factor2Display: null,
+      productDisplay: null,
+      hintSection: null,
+      hintToggle: null,
+      hintContent: null,
+      hintArray: null,
+      hintText: null,
+      choices: null,
+      progress: null,
+      feedback: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        // Get DOM elements
+        this.factor1Display = document.getElementById('factor1');
+        this.factor2Display = document.getElementById('factor2');
+        this.productDisplay = document.getElementById('product');
+        this.hintSection = document.getElementById('hint-section');
+        this.hintToggle = document.getElementById('hint-toggle');
+        this.hintContent = document.getElementById('hint-content');
+        this.hintArray = document.getElementById('hint-array');
+        this.hintText = document.getElementById('hint-text');
+        this.choices = document.getElementById('choices');
+        this.progress = document.getElementById('progress');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up listeners
+        this.hintToggle.addEventListener('click', () => this.toggleHint());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Dynamic translations - will update on next question
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.missing-factor.${key}`);
+          return translated !== `section.activities.missing-factor.${key}` ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      shuffle(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      },
+
+      generateProblem() {
+        // Progressive difficulty
+        // Questions 0-3: Small factors (2-5)
+        // Questions 4-6: Medium factors (2-7)
+        // Questions 7-9: Larger factors (2-10)
+
+        let minFactor, maxFactor;
+        if (this.currentQuestion < 4) {
+          minFactor = 2;
+          maxFactor = 5;
+        } else if (this.currentQuestion < 7) {
+          minFactor = 2;
+          maxFactor = 7;
+        } else {
+          minFactor = 2;
+          maxFactor = 10;
+        }
+
+        this.factor1 = this.randomInt(minFactor, maxFactor);
+        this.factor2 = this.randomInt(minFactor, maxFactor);
+        this.product = this.factor1 * this.factor2;
+
+        // Randomly decide which factor is missing
+        this.missingPosition = this.randomInt(1, 2);
+        this.correctAnswer = this.missingPosition === 1 ? this.factor1 : this.factor2;
+      },
+
+      startQuestion() {
+        this.generateProblem();
+        this.isAnswered = false;
+        this.hintVisible = false;
+
+        // Update equation display
+        if (this.missingPosition === 1) {
+          this.factor1Display.textContent = '?';
+          this.factor1Display.classList.add('mystery');
+          this.factor2Display.textContent = this.factor2;
+          this.factor2Display.classList.remove('mystery');
+        } else {
+          this.factor1Display.textContent = this.factor1;
+          this.factor1Display.classList.remove('mystery');
+          this.factor2Display.textContent = '?';
+          this.factor2Display.classList.add('mystery');
+        }
+        this.productDisplay.textContent = this.product;
+
+        // Generate and render choices
+        const choiceValues = this.generateChoices();
+        this.renderChoices(choiceValues);
+
+        // Update hint
+        this.updateHint();
+
+        // Reset UI
+        this.hintContent.classList.remove('show');
+        this.hintSection.classList.remove('hint-open');
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      updateHint() {
+        // Build array visualization
+        const rows = this.missingPosition === 1 ? this.factor1 : this.factor2;
+        const cols = this.missingPosition === 1 ? this.factor2 : this.factor1;
+
+        // Limit visual array for large products
+        const maxVisualRows = Math.min(rows, 6);
+        const maxVisualCols = Math.min(cols, 8);
+        const isTruncated = rows > maxVisualRows || cols > maxVisualCols;
+
+        let arrayHtml = '<div class="mini-array" style="grid-template-columns: repeat(' + maxVisualCols + ', 1fr);">';
+        for (let r = 0; r < maxVisualRows; r++) {
+          for (let c = 0; c < maxVisualCols; c++) {
+            arrayHtml += '<div class="mini-cell"></div>';
+          }
+        }
+        arrayHtml += '</div>';
+        // Show ellipsis outside the grid when truncated
+        if (isTruncated) {
+          arrayHtml += '<div class="array-ellipsis">(' + rows + ' × ' + cols + ' = ' + this.product + ')</div>';
+        }
+
+        this.hintArray.innerHTML = arrayHtml;
+
+        // Build hint text
+        const groupsOf = this.getTranslation('groupsOf', 'groups of');
+        const whatTimes = this.getTranslation('whatTimes', 'What times');
+        const equals = this.getTranslation('equals', 'equals');
+
+        let hintTextContent;
+        if (this.missingPosition === 1) {
+          // □ × factor2 = product
+          // Hint: What × factor2 = product?
+          hintTextContent = `${whatTimes} ${this.factor2} ${equals} ${this.product}?`;
+        } else {
+          // factor1 × □ = product
+          // Hint: factor1 groups of what = product?
+          hintTextContent = `${this.factor1} ${groupsOf} ? ${equals} ${this.product}`;
+        }
+        this.hintText.textContent = hintTextContent;
+      },
+
+      toggleHint() {
+        this.hintVisible = !this.hintVisible;
+        if (this.hintVisible) {
+          this.hintContent.classList.add('show');
+          this.hintSection.classList.add('hint-open');
+        } else {
+          this.hintContent.classList.remove('show');
+          this.hintSection.classList.remove('hint-open');
+        }
+      },
+
+      generateChoices() {
+        const choices = new Set();
+        choices.add(this.correctAnswer);
+
+        // Generate plausible wrong answers
+        const wrongStrategies = [
+          () => this.correctAnswer + 1,
+          () => this.correctAnswer - 1,
+          () => this.correctAnswer + 2,
+          () => this.correctAnswer - 2,
+          () => this.correctAnswer > 2 ? Math.floor(this.product / (this.correctAnswer + 1)) : null, // Off by one in division
+          () => this.correctAnswer > 2 ? Math.ceil(this.product / (this.correctAnswer - 1)) : null,
+          () => this.factor1 + this.factor2, // Addition instead of finding factor
+          () => this.randomInt(2, 10)
+        ];
+
+        let attempts = 0;
+        while (choices.size < 4 && attempts < 20) {
+          const strategy = wrongStrategies[this.randomInt(0, wrongStrategies.length - 1)];
+          const wrongAnswer = strategy();
+          if (wrongAnswer !== null && wrongAnswer >= 2 && wrongAnswer <= 10 && wrongAnswer !== this.correctAnswer) {
+            choices.add(wrongAnswer);
+          }
+          attempts++;
+        }
+
+        // Fill remaining with random values in range
+        while (choices.size < 4) {
+          const newChoice = this.randomInt(2, 10);
+          if (!choices.has(newChoice)) {
+            choices.add(newChoice);
+          }
+        }
+
+        return this.shuffle(Array.from(choices));
+      },
+
+      renderChoices(choiceValues) {
+        this.choices.innerHTML = '';
+
+        choiceValues.forEach(value => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.textContent = value;
+          btn.dataset.value = value;
+          btn.addEventListener('click', () => {
+            if (!this.isAnswered) {
+              this.checkAnswer(value, btn);
+            }
+          });
+          this.choices.appendChild(btn);
+        });
+      },
+
+      checkAnswer(selectedValue, btnElement) {
+        if (this.isAnswered) return;
+
+        this.isAnswered = true;
+        const isCorrect = selectedValue === this.correctAnswer;
+
+        // Disable all buttons and show correct answer
+        const allBtns = this.choices.querySelectorAll('.choice-btn');
+        allBtns.forEach(btn => {
+          btn.disabled = true;
+          if (parseInt(btn.dataset.value) === this.correctAnswer) {
+            btn.classList.add('correct');
+          }
+        });
+
+        // Reveal the missing factor in the equation
+        if (this.missingPosition === 1) {
+          this.factor1Display.textContent = this.factor1;
+          this.factor1Display.classList.remove('mystery');
+          this.factor1Display.classList.add('revealed');
+        } else {
+          this.factor2Display.textContent = this.factor2;
+          this.factor2Display.classList.remove('mystery');
+          this.factor2Display.classList.add('revealed');
+        }
+
+        if (isCorrect) {
+          this.correctCount++;
+          btnElement.classList.add('correct');
+          const correctMsg = window.i18n ? i18n.t('feedback.correct') : 'Correct!';
+          this.feedback.textContent = `${correctMsg} ${this.factor1} × ${this.factor2} = ${this.product}`;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          btnElement.classList.add('incorrect');
+          const tryAgainMsg = window.i18n ? i18n.t('feedback.tryAgain') : 'Try again!';
+          this.feedback.textContent = `${tryAgainMsg} ${this.factor1} × ${this.factor2} = ${this.product}`;
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation('perfect', 'Amazing factor finding!');
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🧩';
+          this.statsMessage.textContent = this.getTranslation('great', 'Great factor work!');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation('keepPracticing', 'Keep practicing!');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => MissingFactor.init());
+      } else {
+        MissingFactor.init();
+      }
+    });
+  </script>
+  <style>
+    /* Missing Factor Puzzle specific styles */
+
+    /* Equation Section */
+    .equation-section {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border: 3px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5);
+      margin-bottom: var(--space-4);
+      text-align: center;
+      box-shadow: 0 4px 0 var(--color-primary-dark);
+    }
+
+    .equation-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .equation-part {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+    }
+
+    .equation-part.factor {
+      background: white;
+      color: var(--color-primary);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-lg);
+      min-width: 64px;
+      box-shadow: 0 2px 0 var(--color-neutral-300);
+    }
+
+    .equation-part.factor.mystery {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #b45309;
+      border: 3px dashed #f59e0b;
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.25);
+      transform: scale(1.02);
+    }
+
+    .equation-part.factor.revealed {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      color: #166534;
+      border: 3px solid #22c55e;
+      animation: reveal-pop 0.3s ease-out;
+    }
+
+    .equation-part.operator {
+      color: var(--color-neutral-600);
+    }
+
+    .equation-part.product {
+      background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+      color: #4338ca;
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-lg);
+      min-width: 72px;
+      box-shadow: 0 2px 0 #6366f1;
+    }
+
+    @keyframes reveal-pop {
+      0% { transform: scale(0.8); opacity: 0.5; }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Hint Section */
+    .hint-section {
+      margin-bottom: var(--space-4);
+      text-align: center;
+    }
+
+    .hint-toggle {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-medium);
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+      border: 2px solid var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: var(--color-neutral-600);
+    }
+
+    .hint-toggle:hover {
+      background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+      border-color: var(--color-neutral-400);
+    }
+
+    .hint-toggle:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
+    .hint-toggle:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+      border-color: var(--color-primary);
+    }
+
+    .hint-toggle .hint-toggle-hide {
+      display: none;
+    }
+
+    .hint-section.hint-open .hint-toggle .hint-toggle-show {
+      display: none;
+    }
+
+    .hint-section.hint-open .hint-toggle .hint-toggle-hide {
+      display: inline;
+    }
+
+    .hint-content {
+      display: none;
+      margin-top: var(--space-3);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #eab308;
+      border-radius: var(--radius-lg);
+      animation: hint-fade-in 0.3s ease-out;
+    }
+
+    .hint-content.show {
+      display: block;
+    }
+
+    @keyframes hint-fade-in {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hint-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #92400e;
+      margin-bottom: var(--space-2);
+    }
+
+    .hint-array {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-2);
+    }
+
+    .mini-array {
+      display: grid;
+      gap: 3px;
+      background: white;
+      padding: var(--space-2);
+      border-radius: var(--radius-md);
+      border: 2px solid var(--color-neutral-300);
+    }
+
+    .mini-cell {
+      width: 16px;
+      height: 16px;
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      border-radius: 3px;
+    }
+
+    .array-ellipsis {
+      text-align: center;
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--color-neutral-500);
+      margin-top: var(--space-1);
+    }
+
+    .hint-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-medium);
+      color: #92400e;
+    }
+
+    /* Choices Section */
+    .choices-section {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      max-width: 400px;
+      margin: 0 auto var(--space-4);
+    }
+
+    .choice-btn {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      padding: var(--space-4) var(--space-3);
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      border: 3px solid var(--color-neutral-300);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: var(--color-neutral-700);
+      box-shadow: 0 4px 0 var(--color-neutral-400);
+      min-height: 72px;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: var(--color-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 var(--color-neutral-400);
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #15803d;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border-color: #ef4444;
+      color: #991b1b;
+      box-shadow: 0 4px 0 #dc2626;
+      animation: wiggle 0.5s ease;
+    }
+
+    .choice-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 4px 0 var(--color-neutral-400), 0 0 0 3px rgba(59, 130, 246, 0.5);
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Wiggle animation */
+    @keyframes wiggle {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-6px); }
+      80% { transform: translateX(6px); }
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .equation-section {
+        padding: var(--space-4);
+      }
+
+      .equation-part {
+        font-size: var(--text-3xl);
+      }
+
+      .equation-part.factor {
+        padding: var(--space-2) var(--space-3);
+        min-width: 56px;
+      }
+
+      .equation-part.product {
+        padding: var(--space-2) var(--space-3);
+        min-width: 64px;
+      }
+
+      .equation-display {
+        gap: var(--space-2);
+      }
+
+      .choices-section {
+        gap: var(--space-2);
+      }
+
+      .choice-btn {
+        font-size: var(--text-xl);
+        padding: var(--space-3) var(--space-2);
+        min-height: 64px;
+      }
+
+      .hint-content {
+        padding: var(--space-3);
+      }
+
+      .mini-cell {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .equation-part {
+        font-size: var(--text-2xl);
+      }
+
+      .equation-part.factor {
+        padding: var(--space-2);
+        min-width: 48px;
+      }
+
+      .equation-part.product {
+        padding: var(--space-2);
+        min-width: 56px;
+      }
+
+      .choice-btn {
+        font-size: var(--text-lg);
+        padding: var(--space-3);
+        min-height: 60px;
+      }
+
+      .mini-cell {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

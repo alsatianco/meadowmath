@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Order Numbers to 10,000 - Grade 3 Math Activity - Meadow Math">
+  <title>Order Numbers to 10,000 - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">📚</span>
+            <span data-i18n="section.activities.order-numbers-10000.title">Order the Numbers (to 10,000)</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.order-numbers-10000.description">Put numbers in order from least to greatest.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Question -->
+          <div class="question-text" id="question">
+            <span data-i18n="section.activities.order-numbers-10000.instruction">Click the numbers in order from smallest to largest</span>
+          </div>
+
+          <!-- Order Direction -->
+          <div class="order-direction" id="order-direction">
+            <span class="direction-icon" id="direction-icon">⬆️</span>
+            <span class="direction-text" id="direction-text">
+              <span data-i18n="section.activities.order-numbers-10000.smallest">Smallest</span>
+              <span class="direction-arrow" aria-hidden="true">→</span>
+              <span data-i18n="section.activities.order-numbers-10000.largest">Largest</span>
+            </span>
+          </div>
+
+          <!-- Number Cards (to select from) -->
+          <div class="number-cards" id="number-cards"></div>
+
+          <!-- Answer Slots -->
+          <div class="answer-slots" id="answer-slots" role="list" aria-label="Selected numbers"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.order-numbers-10000.great">Great ordering!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Order Numbers to 10,000 Activity - Grade 3 Level 1
+    const OrderNumbers = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      numbers: [],
+      selectedOrder: [],
+      correctOrder: [],
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+      isDescending: false, // Track ordering direction
+
+      numberCards: null,
+      answerSlots: null,
+      feedback: null,
+      progress: null,
+      directionIcon: null,
+      directionText: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.numberCards = document.getElementById('number-cards');
+        this.answerSlots = document.getElementById('answer-slots');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.directionIcon = document.getElementById('direction-icon');
+        this.directionText = document.getElementById('direction-text');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        this.updateDirectionDisplay();
+        this.renderSlots();
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      },
+
+      formatNumber(num) {
+        return num.toLocaleString();
+      },
+
+      generateNumbers() {
+        // Determine count: 4-6 numbers based on difficulty
+        let count, minNum, maxNum, minGap;
+
+        // Progressive difficulty for 4-digit numbers
+        if (this.currentQuestion < 2) {
+          // Easy: 4 numbers, large gaps, different thousands
+          count = 4;
+          minNum = 1000;
+          maxNum = 9000;
+          minGap = 1000;
+          this.isDescending = false;
+        } else if (this.currentQuestion < 4) {
+          // Medium: 4 numbers, same thousand range
+          count = 4;
+          const th = this.randomInt(1, 7) * 1000;
+          minNum = th;
+          maxNum = th + 999;
+          minGap = 100;
+          this.isDescending = false;
+        } else if (this.currentQuestion < 6) {
+          // Harder: 5 numbers, mix of 3-digit and 4-digit
+          count = 5;
+          minNum = 500;
+          maxNum = 5000;
+          minGap = 200;
+          this.isDescending = Math.random() < 0.3; // 30% descending
+        } else {
+          // Hardest: 5-6 numbers, close numbers, may be descending
+          count = this.randomInt(5, 6);
+          const base = this.randomInt(2000, 8000);
+          minNum = base;
+          maxNum = base + 500;
+          minGap = 50;
+          this.isDescending = Math.random() < 0.5; // 50% descending
+        }
+
+        const nums = new Set();
+        let attempts = 0;
+        const maxAttempts = 1000;
+
+        while (nums.size < count && attempts < maxAttempts) {
+          const num = this.randomInt(minNum, maxNum);
+          // Check minimum gap
+          let tooClose = false;
+          for (const n of nums) {
+            if (Math.abs(n - num) < minGap) {
+              tooClose = true;
+              break;
+            }
+          }
+          if (!tooClose) {
+            nums.add(num);
+          }
+          attempts++;
+        }
+
+        this.numbers = Array.from(nums);
+
+        // Sort based on direction
+        if (this.isDescending) {
+          this.correctOrder = [...this.numbers].sort((a, b) => b - a);
+        } else {
+          this.correctOrder = [...this.numbers].sort((a, b) => a - b);
+        }
+
+        this.shuffleArray(this.numbers);
+        this.selectedOrder = [];
+        this.isAnswered = false;
+      },
+
+      updateDirectionDisplay() {
+        const questionText = document.getElementById('question').querySelector('span');
+        if (this.isDescending) {
+          this.directionIcon.textContent = '⬇️';
+          const largestText = window.i18n ? i18n.t('section.activities.order-numbers-10000.largest') : 'Largest';
+          const smallestText = window.i18n ? i18n.t('section.activities.order-numbers-10000.smallest') : 'Smallest';
+          this.directionText.textContent = `${largestText} → ${smallestText}`;
+          if (questionText) {
+            questionText.textContent = window.i18n
+              ? i18n.t('section.activities.order-numbers-10000.instructionDesc')
+              : 'Click the numbers in order from largest to smallest';
+          }
+        } else {
+          this.directionIcon.textContent = '⬆️';
+          const smallestText = window.i18n ? i18n.t('section.activities.order-numbers-10000.smallest') : 'Smallest';
+          const largestText = window.i18n ? i18n.t('section.activities.order-numbers-10000.largest') : 'Largest';
+          this.directionText.textContent = `${smallestText} → ${largestText}`;
+          if (questionText) {
+            questionText.textContent = window.i18n
+              ? i18n.t('section.activities.order-numbers-10000.instruction')
+              : 'Click the numbers in order from smallest to largest';
+          }
+        }
+      },
+
+      startQuestion() {
+        this.generateNumbers();
+        this.updateDirectionDisplay();
+        this.renderCards();
+        this.renderSlots();
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      renderCards() {
+        this.numberCards.innerHTML = '';
+
+        this.numbers.forEach((num, index) => {
+          // Check if already selected
+          if (this.selectedOrder.includes(num)) return;
+
+          const card = document.createElement('button');
+          card.className = 'number-card';
+          card.textContent = this.formatNumber(num);
+          card.dataset.value = num;
+          card.addEventListener('click', () => this.selectNumber(num));
+          this.numberCards.appendChild(card);
+        });
+      },
+
+      renderSlots() {
+        this.answerSlots.innerHTML = '';
+
+        const smallestText = window.i18n ? i18n.t('section.activities.order-numbers-10000.smallest') : 'Smallest';
+        const largestText = window.i18n ? i18n.t('section.activities.order-numbers-10000.largest') : 'Largest';
+
+        const removeText = window.i18n ? i18n.t('activity.clickToRemove') : 'Click to remove';
+
+        for (let i = 0; i < this.correctOrder.length; i++) {
+          const slot = document.createElement('div');
+          slot.className = 'answer-slot';
+          slot.dataset.index = i;
+          slot.setAttribute('role', 'listitem');
+
+          if (i < this.selectedOrder.length) {
+            // Filled slot - make it a button for accessibility
+            slot.classList.add('filled');
+            slot.textContent = this.formatNumber(this.selectedOrder[i]);
+            slot.setAttribute('tabindex', '0');
+            slot.setAttribute('role', 'button');
+            slot.setAttribute('aria-label', `${this.formatNumber(this.selectedOrder[i])} - ${removeText}`);
+            slot.addEventListener('click', () => this.unselectNumber(i));
+            slot.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.unselectNumber(i);
+              }
+            });
+          } else if (i === this.selectedOrder.length) {
+            // Current slot
+            slot.classList.add('current');
+            slot.textContent = '?';
+          } else {
+            // Empty slot
+            slot.textContent = '';
+          }
+
+          // Add position labels
+          const label = document.createElement('span');
+          label.className = 'slot-label';
+          if (i === 0) {
+            label.textContent = this.isDescending ? largestText : smallestText;
+          } else if (i === this.correctOrder.length - 1) {
+            label.textContent = this.isDescending ? smallestText : largestText;
+          } else {
+            label.textContent = `${i + 1}`;
+          }
+          slot.appendChild(label);
+
+          this.answerSlots.appendChild(slot);
+        }
+      },
+
+      selectNumber(num) {
+        if (this.isAnswered) return;
+
+        this.selectedOrder.push(num);
+        this.renderCards();
+        this.renderSlots();
+
+        // Check if complete
+        if (this.selectedOrder.length === this.correctOrder.length) {
+          this.checkAnswer();
+        }
+      },
+
+      unselectNumber(index) {
+        if (this.isAnswered) return;
+
+        // Remove this and all subsequent selections
+        this.selectedOrder = this.selectedOrder.slice(0, index);
+        this.renderCards();
+        this.renderSlots();
+      },
+
+      checkAnswer() {
+        this.isAnswered = true;
+
+        const isCorrect = this.selectedOrder.every((num, i) => num === this.correctOrder[i]);
+
+        // Show correct/incorrect on slots
+        const slots = this.answerSlots.querySelectorAll('.answer-slot');
+        slots.forEach((slot, i) => {
+          slot.classList.remove('current');
+          if (this.selectedOrder[i] === this.correctOrder[i]) {
+            slot.classList.add('correct');
+          } else {
+            slot.classList.add('incorrect');
+          }
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+          this.feedback.textContent = window.i18n ? i18n.t('feedback.correct') + ' 📚' : '✓ Perfect order! 📚';
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const symbol = this.isDescending ? ' > ' : ' < ';
+          const correctStr = this.correctOrder.map(n => this.formatNumber(n)).join(symbol);
+          this.feedback.textContent = window.i18n
+            ? i18n.t('feedback.tryAgain') + ` ${correctStr}`
+            : `✗ Correct: ${correctStr}`;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.selectedOrder = [];
+        this.renderCards();
+        this.renderSlots();
+        this.feedback.classList.remove('show', 'error');
+        this.isAnswered = false;
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.order-numbers-10000.perfect') : 'Amazing ordering!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '📚';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.order-numbers-10000.great') : 'Great sorting!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.order-numbers-10000.keepPracticing') : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => OrderNumbers.init());
+      } else {
+        OrderNumbers.init();
+      }
+    });
+  </script>
+  <style>
+    /* Order Numbers to 10,000 specific styles */
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-4);
+      text-align: center;
+    }
+
+    /* Order Direction */
+    .order-direction {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid #f59e0b;
+      border-radius: var(--radius-full);
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .direction-icon {
+      font-size: var(--text-xl);
+    }
+
+    .direction-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: #92400e;
+    }
+
+    /* Number Cards */
+    .number-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      justify-content: center;
+      margin: var(--space-4) 0;
+      min-height: 80px;
+    }
+
+    .number-card {
+      min-width: 110px;
+      min-height: 70px;
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border: 3px solid var(--color-primary-light);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .number-card:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 16px rgba(59, 130, 246, 0.25);
+    }
+
+    .number-card:active {
+      transform: translateY(1px) scale(0.97);
+    }
+
+    .number-card:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4);
+    }
+
+    /* Answer Slots */
+    .answer-slots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      justify-content: center;
+      margin: var(--space-6) 0;
+      padding: var(--space-4);
+      background: var(--color-neutral-100);
+      border-radius: var(--radius-xl);
+      border: 2px dashed var(--color-neutral-300);
+    }
+
+    .answer-slot {
+      position: relative;
+      min-width: 110px;
+      min-height: 70px;
+      padding: var(--space-3) var(--space-4);
+      padding-bottom: var(--space-6);
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-400);
+      background: white;
+      border: 3px dashed var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .answer-slot.current {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+      transform: scale(1.02);
+    }
+
+    .answer-slot.filled {
+      border-style: solid;
+      border-color: var(--color-primary-light);
+      color: var(--color-primary);
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      cursor: pointer;
+    }
+
+    .answer-slot.filled:hover {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+    }
+
+    .answer-slot.filled:active {
+      transform: translateY(1px) scale(0.97);
+    }
+
+    .answer-slot.filled:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4);
+    }
+
+    .answer-slot.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      border-style: solid;
+      color: #166534;
+    }
+
+    .answer-slot.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      border-style: solid;
+      color: #991b1b;
+    }
+
+    .slot-label {
+      position: absolute;
+      bottom: var(--space-1);
+      font-size: var(--text-xs);
+      color: var(--color-neutral-500);
+      font-weight: var(--weight-medium);
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .number-cards {
+        gap: var(--space-2);
+      }
+
+      .number-card {
+        min-width: 85px;
+        min-height: 55px;
+        font-size: var(--text-xl);
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .answer-slots {
+        gap: var(--space-2);
+        padding: var(--space-3);
+      }
+
+      .answer-slot {
+        min-width: 85px;
+        min-height: 55px;
+        font-size: var(--text-xl);
+        padding: var(--space-2) var(--space-3);
+        padding-bottom: var(--space-5);
+      }
+
+      .slot-label {
+        font-size: 10px;
+      }
+
+      .direction-text {
+        font-size: var(--text-xs);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .number-card {
+        min-width: 70px;
+        min-height: 60px;
+        font-size: var(--text-lg);
+        padding: var(--space-2);
+      }
+
+      .answer-slot {
+        min-width: 70px;
+        min-height: 60px;
+        font-size: var(--text-lg);
+        padding: var(--space-2);
+        padding-bottom: var(--space-5);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

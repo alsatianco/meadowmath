@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Place Value to 1,000,000 Telescope - Grade 4 Math Activity - Meadow Math">
+  <title>Place Value to 1,000,000 Telescope - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade4">Grade 4</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🔭</span>
+            <span data-i18n="section.activities.place-value-to-million.title">Place Value to 1,000,000 Telescope</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.place-value-to-million.description">Build big numbers using a place-value chart.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Target Number Display -->
+          <div class="target-section">
+            <div class="target-label" data-i18n="section.activities.place-value-to-million.buildNumber">Build this number:</div>
+            <div class="target-number" id="target-number">0</div>
+          </div>
+
+          <!-- Place Value Builder -->
+          <div class="builder-section">
+            <!-- Place Value Columns -->
+            <div class="place-value-columns">
+              <!-- Hundred Thousands -->
+              <div class="place-column" data-place="hundredThousands">
+                <div class="place-header">
+                  <span class="place-name" data-i18n="section.activities.place-value-to-million.hundredThousands">Hundred Thousands</span>
+                  <span class="place-abbrev">HTh</span>
+                  <span class="place-count" id="count-hundredThousands">0</span>
+                </div>
+                <div class="digit-display" id="digit-hundredThousands">0</div>
+                <div class="place-controls">
+                  <button class="control-btn minus" data-place="hundredThousands" data-action="minus" aria-label="Remove hundred thousand">−</button>
+                  <button class="control-btn plus" data-place="hundredThousands" data-action="plus" aria-label="Add hundred thousand">+</button>
+                </div>
+              </div>
+
+              <!-- Ten Thousands -->
+              <div class="place-column" data-place="tenThousands">
+                <div class="place-header">
+                  <span class="place-name" data-i18n="section.activities.place-value-to-million.tenThousands">Ten Thousands</span>
+                  <span class="place-abbrev">TTh</span>
+                  <span class="place-count" id="count-tenThousands">0</span>
+                </div>
+                <div class="digit-display" id="digit-tenThousands">0</div>
+                <div class="place-controls">
+                  <button class="control-btn minus" data-place="tenThousands" data-action="minus" aria-label="Remove ten thousand">−</button>
+                  <button class="control-btn plus" data-place="tenThousands" data-action="plus" aria-label="Add ten thousand">+</button>
+                </div>
+              </div>
+
+              <!-- Thousands -->
+              <div class="place-column" data-place="thousands">
+                <div class="place-header">
+                  <span class="place-name" data-i18n="section.activities.place-value-to-million.thousands">Thousands</span>
+                  <span class="place-abbrev">Th</span>
+                  <span class="place-count" id="count-thousands">0</span>
+                </div>
+                <div class="digit-display" id="digit-thousands">0</div>
+                <div class="place-controls">
+                  <button class="control-btn minus" data-place="thousands" data-action="minus" aria-label="Remove thousand">−</button>
+                  <button class="control-btn plus" data-place="thousands" data-action="plus" aria-label="Add thousand">+</button>
+                </div>
+              </div>
+
+              <!-- Hundreds -->
+              <div class="place-column" data-place="hundreds">
+                <div class="place-header">
+                  <span class="place-name" data-i18n="section.activities.place-value-to-million.hundreds">Hundreds</span>
+                  <span class="place-abbrev">H</span>
+                  <span class="place-count" id="count-hundreds">0</span>
+                </div>
+                <div class="digit-display" id="digit-hundreds">0</div>
+                <div class="place-controls">
+                  <button class="control-btn minus" data-place="hundreds" data-action="minus" aria-label="Remove hundred">−</button>
+                  <button class="control-btn plus" data-place="hundreds" data-action="plus" aria-label="Add hundred">+</button>
+                </div>
+              </div>
+
+              <!-- Tens -->
+              <div class="place-column" data-place="tens">
+                <div class="place-header">
+                  <span class="place-name" data-i18n="section.activities.place-value-to-million.tens">Tens</span>
+                  <span class="place-abbrev">T</span>
+                  <span class="place-count" id="count-tens">0</span>
+                </div>
+                <div class="digit-display" id="digit-tens">0</div>
+                <div class="place-controls">
+                  <button class="control-btn minus" data-place="tens" data-action="minus" aria-label="Remove ten">−</button>
+                  <button class="control-btn plus" data-place="tens" data-action="plus" aria-label="Add ten">+</button>
+                </div>
+              </div>
+
+              <!-- Ones -->
+              <div class="place-column" data-place="ones">
+                <div class="place-header">
+                  <span class="place-name" data-i18n="section.activities.place-value-to-million.ones">Ones</span>
+                  <span class="place-abbrev">O</span>
+                  <span class="place-count" id="count-ones">0</span>
+                </div>
+                <div class="digit-display" id="digit-ones">0</div>
+                <div class="place-controls">
+                  <button class="control-btn minus" data-place="ones" data-action="minus" aria-label="Remove one">−</button>
+                  <button class="control-btn plus" data-place="ones" data-action="plus" aria-label="Add one">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Readout - Expanded Form -->
+            <div class="live-readout" id="live-readout" aria-live="polite" aria-atomic="true">
+              <div class="expanded-form" id="expanded-form">0</div>
+              <span class="readout-equals">=</span>
+              <span class="readout-total" id="readout-total">0</span>
+            </div>
+          </div>
+
+          <!-- Check Button -->
+          <div class="check-section">
+            <button class="btn-activity btn-primary" id="btn-check" data-i18n="buttons.check">Check</button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" aria-live="assertive" aria-atomic="true"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.place-value-to-million.great">Great job building big numbers!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Place Value to 1,000,000 Telescope Activity - Grade 4 Level 1
+    const PlaceValueMillion = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      targetNumber: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // Current digit values for each place
+      hundredThousands: 0,
+      tenThousands: 0,
+      thousands: 0,
+      hundreds: 0,
+      tens: 0,
+      ones: 0,
+
+      // Place values
+      placeValues: {
+        hundredThousands: 100000,
+        tenThousands: 10000,
+        thousands: 1000,
+        hundreds: 100,
+        tens: 10,
+        ones: 1
+      },
+
+      // DOM elements
+      targetDisplay: null,
+      progress: null,
+      feedback: null,
+      btnCheck: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+      expandedForm: null,
+      readoutTotal: null,
+
+      init() {
+        // Get DOM elements
+        this.targetDisplay = document.getElementById('target-number');
+        this.progress = document.getElementById('progress');
+        this.feedback = document.getElementById('feedback');
+        this.btnCheck = document.getElementById('btn-check');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+        this.expandedForm = document.getElementById('expanded-form');
+        this.readoutTotal = document.getElementById('readout-total');
+
+        // Set up control button listeners
+        document.querySelectorAll('.control-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            if (this.isAnswered) return;
+            const place = btn.dataset.place;
+            const action = btn.dataset.action;
+            this.adjustDigit(place, action);
+          });
+        });
+
+        // Set up other listeners
+        this.btnCheck.addEventListener('click', () => this.checkAnswer());
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Dynamic translations handled via data-i18n
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      generateTargetNumber() {
+        // Progressive difficulty
+        // Questions 0-1: 4-digit numbers (warm-up, 1,000-9,999)
+        // Questions 2-3: 5-digit numbers (10,000-99,999)
+        // Questions 4-5: 6-digit numbers with all non-zero
+        // Questions 6-7: 6-digit numbers with some zeros
+
+        if (this.currentQuestion < 2) {
+          // 4-digit numbers: 1,000-9,999
+          return this.randomInt(1000, 9999);
+        } else if (this.currentQuestion < 4) {
+          // 5-digit numbers: 10,000-99,999
+          return this.randomInt(10000, 99999);
+        } else if (this.currentQuestion < 6) {
+          // 6-digit numbers with mostly non-zero digits
+          const hth = this.randomInt(1, 9);
+          const tth = this.randomInt(1, 9);
+          const th = this.randomInt(1, 9);
+          const h = this.randomInt(1, 9);
+          const t = this.randomInt(1, 9);
+          const o = this.randomInt(1, 9);
+          return hth * 100000 + tth * 10000 + th * 1000 + h * 100 + t * 10 + o;
+        } else {
+          // 6-digit numbers with some zeros
+          const hth = this.randomInt(1, 9);
+          let tth = this.randomInt(0, 9);
+          let th = this.randomInt(0, 9);
+          let h = this.randomInt(0, 9);
+          let t = this.randomInt(0, 9);
+          let o = this.randomInt(0, 9);
+
+          // Force 1-2 zeros
+          const zeroCount = this.randomInt(1, 2);
+          const positions = [0, 1, 2, 3, 4]; // tth, th, h, t, o
+          this.shuffleArray(positions);
+
+          for (let i = 0; i < zeroCount; i++) {
+            const pos = positions[i];
+            if (pos === 0) tth = 0;
+            else if (pos === 1) th = 0;
+            else if (pos === 2) h = 0;
+            else if (pos === 3) t = 0;
+            else o = 0;
+          }
+
+          return hth * 100000 + tth * 10000 + th * 1000 + h * 100 + t * 10 + o;
+        }
+      },
+
+      shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      },
+
+      startQuestion() {
+        this.targetNumber = this.generateTargetNumber();
+        this.hundredThousands = 0;
+        this.tenThousands = 0;
+        this.thousands = 0;
+        this.hundreds = 0;
+        this.tens = 0;
+        this.ones = 0;
+        this.isAnswered = false;
+
+        // Display target number with commas
+        this.targetDisplay.textContent = this.targetNumber.toLocaleString();
+
+        // Reset UI
+        this.updateDigitDisplays();
+        this.updateReadout();
+        this.feedback.classList.remove('show', 'error');
+        this.btnCheck.disabled = false;
+        this.enableControls(true);
+        this.renderProgress();
+
+        // Remove any correct/incorrect highlights
+        document.querySelectorAll('.place-column').forEach(col => {
+          col.classList.remove('correct', 'incorrect');
+        });
+      },
+
+      adjustDigit(place, action) {
+        const delta = action === 'plus' ? 1 : -1;
+
+        if (action === 'plus' && this[place] >= 9) return;
+        if (action === 'minus' && this[place] <= 0) return;
+
+        this[place] += delta;
+        this.updateDigitDisplays();
+        this.updateReadout();
+      },
+
+      updateDigitDisplays() {
+        const places = ['hundredThousands', 'tenThousands', 'thousands', 'hundreds', 'tens', 'ones'];
+        places.forEach(place => {
+          document.getElementById(`digit-${place}`).textContent = this[place];
+          document.getElementById(`count-${place}`).textContent = this[place];
+        });
+      },
+
+      updateReadout() {
+        // Build expanded form string
+        const parts = [];
+        if (this.hundredThousands > 0) parts.push((this.hundredThousands * 100000).toLocaleString());
+        if (this.tenThousands > 0) parts.push((this.tenThousands * 10000).toLocaleString());
+        if (this.thousands > 0) parts.push((this.thousands * 1000).toLocaleString());
+        if (this.hundreds > 0) parts.push((this.hundreds * 100).toLocaleString());
+        if (this.tens > 0) parts.push((this.tens * 10).toLocaleString());
+        if (this.ones > 0) parts.push(this.ones.toString());
+
+        const expandedStr = parts.length > 0 ? parts.join(' + ') : '0';
+        this.expandedForm.textContent = expandedStr;
+
+        const total = this.hundredThousands * 100000 +
+                      this.tenThousands * 10000 +
+                      this.thousands * 1000 +
+                      this.hundreds * 100 +
+                      this.tens * 10 +
+                      this.ones;
+        this.readoutTotal.textContent = total.toLocaleString();
+      },
+
+      enableControls(enabled) {
+        document.querySelectorAll('.control-btn').forEach(btn => {
+          btn.disabled = !enabled;
+        });
+      },
+
+      checkAnswer() {
+        if (this.isAnswered) return;
+
+        const builtNumber = this.hundredThousands * 100000 +
+                           this.tenThousands * 10000 +
+                           this.thousands * 1000 +
+                           this.hundreds * 100 +
+                           this.tens * 10 +
+                           this.ones;
+        const isCorrect = builtNumber === this.targetNumber;
+
+        this.isAnswered = true;
+        this.btnCheck.disabled = true;
+        this.enableControls(false);
+
+        if (isCorrect) {
+          this.correctCount++;
+          const correctMsg = window.i18n ? i18n.t('feedback.correct') : 'Correct!';
+          this.feedback.textContent = `${correctMsg} 🔭`;
+          this.feedback.classList.remove('error');
+
+          // Highlight columns as correct
+          document.querySelectorAll('.place-column').forEach(col => {
+            col.classList.add('correct');
+          });
+        } else {
+          this.incorrectCount++;
+          const tryAgainMsg = window.i18n ? i18n.t('feedback.tryAgain') : 'Try again!';
+
+          // Break down the target number
+          const targetHTh = Math.floor(this.targetNumber / 100000);
+          const targetTTh = Math.floor((this.targetNumber % 100000) / 10000);
+          const targetTh = Math.floor((this.targetNumber % 10000) / 1000);
+          const targetH = Math.floor((this.targetNumber % 1000) / 100);
+          const targetT = Math.floor((this.targetNumber % 100) / 10);
+          const targetO = this.targetNumber % 10;
+
+          this.feedback.textContent = `${tryAgainMsg} ${this.targetNumber.toLocaleString()} = ${targetHTh}${targetTTh}${targetTh},${targetH}${targetT}${targetO}`;
+          this.feedback.classList.add('error');
+
+          // Show the correct answer
+          this.hundredThousands = targetHTh;
+          this.tenThousands = targetTTh;
+          this.thousands = targetTh;
+          this.hundreds = targetH;
+          this.tens = targetT;
+          this.ones = targetO;
+          this.updateDigitDisplays();
+          this.updateReadout();
+
+          // Highlight as incorrect then correct
+          document.querySelectorAll('.place-column').forEach(col => {
+            col.classList.add('incorrect');
+          });
+        }
+
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          document.querySelectorAll('.place-column').forEach(col => {
+            col.classList.remove('correct', 'incorrect');
+          });
+
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.hundredThousands = 0;
+        this.tenThousands = 0;
+        this.thousands = 0;
+        this.hundreds = 0;
+        this.tens = 0;
+        this.ones = 0;
+        this.isAnswered = false;
+
+        this.updateDigitDisplays();
+        this.updateReadout();
+        this.feedback.classList.remove('show', 'error');
+        this.btnCheck.disabled = false;
+        this.enableControls(true);
+
+        document.querySelectorAll('.place-column').forEach(col => {
+          col.classList.remove('correct', 'incorrect');
+        });
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.place-value-to-million.perfect') : 'Amazing place value work!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🔭';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.place-value-to-million.great') : 'Great job building big numbers!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.place-value-to-million.keepPracticing') : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => PlaceValueMillion.init());
+      } else {
+        PlaceValueMillion.init();
+      }
+    });
+  </script>
+  <style>
+    /* Place Value to 1,000,000 Telescope specific styles */
+
+    .target-section {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .target-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      margin-bottom: var(--space-2);
+    }
+
+    .target-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border: 3px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      padding: var(--space-3) var(--space-6);
+      display: inline-block;
+      box-shadow: 0 4px 0 var(--color-primary-dark);
+    }
+
+    /* Builder Section */
+    .builder-section {
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Place Value Columns - 6 columns for million */
+    .place-value-columns {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .place-column {
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border: 2px solid var(--color-neutral-200);
+      border-radius: var(--radius-lg);
+      padding: var(--space-2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .place-column.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+    }
+
+    .place-column.incorrect {
+      background: linear-gradient(135deg, #fef2f2, #fee2e2);
+      border-color: #ef4444;
+    }
+
+    .place-header {
+      text-align: center;
+      margin-bottom: var(--space-1);
+    }
+
+    .place-name {
+      display: none;
+      font-family: var(--font-secondary);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+    }
+
+    .place-abbrev {
+      display: block;
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-500);
+    }
+
+    .place-count {
+      display: none;
+    }
+
+    /* Digit Display */
+    .digit-display {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-800);
+      background: white;
+      border: 2px solid var(--color-neutral-300);
+      border-radius: var(--radius-md);
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: var(--space-2) 0;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Control Buttons */
+    .place-controls {
+      display: flex;
+      gap: var(--space-1);
+    }
+
+    .control-btn {
+      width: 40px;
+      height: 40px;
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      border: 2px solid var(--color-neutral-300);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 0 var(--color-neutral-300);
+    }
+
+    .control-btn.plus {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      color: #166534;
+      border-color: #22c55e;
+      box-shadow: 0 2px 0 #16a34a;
+    }
+
+    .control-btn.minus {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      color: #991b1b;
+      border-color: #ef4444;
+      box-shadow: 0 2px 0 #dc2626;
+    }
+
+    .control-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+    }
+
+    .control-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 1px 0 var(--color-neutral-300);
+    }
+
+    .control-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .control-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4), 0 2px 0 var(--color-neutral-300);
+    }
+
+    /* Live Readout */
+    .live-readout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--color-primary-light);
+    }
+
+    .expanded-form {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      background: white;
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      max-width: 100%;
+      word-wrap: break-word;
+      text-align: center;
+    }
+
+    .readout-equals {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-500);
+    }
+
+    .readout-total {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      border: 2px solid var(--color-primary);
+    }
+
+    /* Check Section */
+    .check-section {
+      text-align: center;
+      margin: var(--space-4) 0;
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive - Tablet */
+    @media (max-width: 900px) {
+      .place-value-columns {
+        grid-template-columns: repeat(6, 1fr);
+        gap: var(--space-1);
+      }
+
+      .place-column {
+        padding: var(--space-1);
+      }
+
+      .place-abbrev {
+        font-size: var(--text-xs);
+      }
+
+      .digit-display {
+        width: 44px;
+        height: 44px;
+        font-size: var(--text-2xl);
+      }
+
+      .control-btn {
+        width: 36px;
+        height: 36px;
+        font-size: var(--text-lg);
+      }
+
+      .target-number {
+        font-size: var(--text-3xl);
+        padding: var(--space-2) var(--space-4);
+      }
+
+      .expanded-form {
+        font-size: var(--text-base);
+      }
+
+      .readout-total {
+        font-size: var(--text-xl);
+      }
+    }
+
+    /* Responsive - Mobile */
+    @media (max-width: 767px) {
+      .place-value-columns {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-2);
+      }
+
+      .place-column {
+        padding: var(--space-2);
+      }
+
+      .place-abbrev {
+        font-size: var(--text-sm);
+      }
+
+      .digit-display {
+        width: 48px;
+        height: 48px;
+        font-size: var(--text-2xl);
+      }
+
+      .control-btn {
+        width: 40px;
+        height: 40px;
+        font-size: var(--text-lg);
+      }
+
+      .target-number {
+        font-size: var(--text-2xl);
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .live-readout {
+        padding: var(--space-2);
+        gap: var(--space-1);
+      }
+
+      .expanded-form {
+        font-size: var(--text-sm);
+        padding: var(--space-1) var(--space-2);
+      }
+
+      .readout-total {
+        font-size: var(--text-lg);
+        padding: var(--space-1) var(--space-2);
+      }
+    }
+
+    /* Responsive - Small Mobile */
+    @media (max-width: 480px) {
+      .builder-section {
+        padding: var(--space-2);
+      }
+
+      .place-value-columns {
+        gap: var(--space-1);
+      }
+
+      .place-column {
+        padding: var(--space-1);
+      }
+
+      .place-abbrev {
+        font-size: var(--text-xs);
+      }
+
+      .digit-display {
+        width: 40px;
+        height: 40px;
+        font-size: var(--text-xl);
+        margin: var(--space-1) 0;
+      }
+
+      .control-btn {
+        width: 36px;
+        height: 36px;
+        font-size: var(--text-base);
+      }
+
+      .target-number {
+        font-size: var(--text-xl);
+      }
+
+      .target-label {
+        font-size: var(--text-base);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

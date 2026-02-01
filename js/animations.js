@@ -8,7 +8,7 @@ function playSound(soundName) {
   // Check if sounds are enabled in settings
   const settings = typeof getSettings === 'function' ? getSettings() : { soundEnabled: true };
   if (!settings.soundEnabled) return;
-  
+
   try {
     const audio = new Audio(`/assets/sounds/${soundName}.mp3`);
     audio.volume = 0.3; // Gentle volume for kids
@@ -37,9 +37,9 @@ function createSparkle(x, y, container = document.body) {
   sparkle.style.pointerEvents = 'none';
   sparkle.style.zIndex = '1000';
   sparkle.classList.add('animate-sparkle');
-  
+
   container.appendChild(sparkle);
-  
+
   setTimeout(() => {
     sparkle.remove();
   }, 800);
@@ -52,11 +52,11 @@ function createSparkle(x, y, container = document.body) {
  */
 function createFloatingHearts(element, count = 5) {
   if (!element) return;
-  
+
   const rect = element.getBoundingClientRect();
   const centerX = rect.left + rect.width / 2;
   const centerY = rect.top + rect.height / 2;
-  
+
   for (let i = 0; i < count; i++) {
     const heart = document.createElement('div');
     heart.innerHTML = '❤️';
@@ -68,9 +68,9 @@ function createFloatingHearts(element, count = 5) {
     heart.style.zIndex = '1000';
     heart.style.animation = 'float 2s ease-out forwards';
     heart.style.opacity = '1';
-    
+
     document.body.appendChild(heart);
-    
+
     setTimeout(() => {
       heart.remove();
     }, 2000);
@@ -84,15 +84,15 @@ function createFloatingHearts(element, count = 5) {
  */
 function createStarBurst(element, count = 8) {
   if (!element) return;
-  
+
   const rect = element.getBoundingClientRect();
   const centerX = rect.left + rect.width / 2;
   const centerY = rect.top + rect.height / 2;
-  
+
   for (let i = 0; i < count; i++) {
     const angle = (Math.PI * 2 * i) / count;
     const distance = 100;
-    
+
     const star = document.createElement('div');
     star.innerHTML = '⭐';
     star.style.position = 'fixed';
@@ -101,13 +101,13 @@ function createStarBurst(element, count = 8) {
     star.style.fontSize = '16px';
     star.style.pointerEvents = 'none';
     star.style.zIndex = '1000';
-    
+
     document.body.appendChild(star);
-    
+
     // Animate outward
     const endX = centerX + Math.cos(angle) * distance;
     const endY = centerY + Math.sin(angle) * distance;
-    
+
     star.animate([
       { left: `${centerX}px`, top: `${centerY}px`, opacity: 1 },
       { left: `${endX}px`, top: `${endY}px`, opacity: 0 }
@@ -115,7 +115,7 @@ function createStarBurst(element, count = 8) {
       duration: 1000,
       easing: 'ease-out'
     });
-    
+
     setTimeout(() => {
       star.remove();
     }, 1000);
@@ -137,7 +137,7 @@ function shake(element) {
  */
 function pulse(element) {
   if (!element) return;
-  
+
   element.style.animation = 'none';
   setTimeout(() => {
     element.style.animation = 'pulseGlow 2s ease-in-out infinite';
@@ -162,19 +162,19 @@ function stopPulse(element) {
  */
 function animateNumber(element, start, end, duration = 1000) {
   if (!element) return;
-  
+
   const range = end - start;
   const increment = range / (duration / 16); // 60fps
   let current = start;
-  
+
   const timer = setInterval(() => {
     current += increment;
-    
+
     if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
       current = end;
       clearInterval(timer);
     }
-    
+
     element.textContent = Math.round(current);
   }, 16);
 }
@@ -186,10 +186,10 @@ function animateNumber(element, start, end, duration = 1000) {
  */
 function fadeIn(element, duration = 400) {
   if (!element) return;
-  
+
   element.style.opacity = '0';
   element.style.display = 'block';
-  
+
   element.animate([
     { opacity: 0 },
     { opacity: 1 }
@@ -207,7 +207,7 @@ function fadeIn(element, duration = 400) {
  */
 function fadeOut(element, duration = 400) {
   if (!element) return;
-  
+
   element.animate([
     { opacity: 1 },
     { opacity: 0 }
@@ -243,17 +243,17 @@ function showSuccessMessage(message, container = document.body) {
   messageEl.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.2)';
   messageEl.style.zIndex = '10000';
   messageEl.style.animation = 'bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-  
+
   container.appendChild(messageEl);
-  
+
   // Play success sound
   playSound('success');
-  
+
   // Create confetti
   if (typeof createConfetti === 'function') {
     createConfetti(container);
   }
-  
+
   setTimeout(() => {
     fadeOut(messageEl, 400);
     setTimeout(() => messageEl.remove(), 400);

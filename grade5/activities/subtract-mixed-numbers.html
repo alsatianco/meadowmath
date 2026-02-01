@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Subtract Mixed Numbers - Grade 5 Math Activity - Meadow Math">
+  <title>Subtract Mixed Numbers - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">➖</span>
+            <span data-i18n="section.activities.subtract-mixed-numbers.title">Subtract Mixed Numbers</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.subtract-mixed-numbers.instruction">Subtract the mixed numbers!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Problem Display -->
+          <div class="problem-container" id="problem-container">
+            <div class="problem-label" id="problem-label">
+              <span data-i18n="section.activities.subtract-mixed-numbers.subtractThese">Subtract:</span>
+            </div>
+            <div class="fractions-row" id="fractions-row">
+              <div class="fraction-card minuend" id="fraction-1">
+                <span class="whole-part" id="whole1">3</span>
+                <div class="fraction-part">
+                  <span class="numerator" id="num1">1</span>
+                  <span class="fraction-bar"></span>
+                  <span class="denominator" id="den1">4</span>
+                </div>
+              </div>
+              <span class="operator-label">−</span>
+              <div class="fraction-card subtrahend" id="fraction-2">
+                <span class="whole-part" id="whole2">1</span>
+                <div class="fraction-part">
+                  <span class="numerator" id="num2">3</span>
+                  <span class="fraction-bar"></span>
+                  <span class="denominator" id="den2">4</span>
+                </div>
+              </div>
+              <span class="operator-label">=</span>
+              <span class="answer-placeholder" id="answer-placeholder">?</span>
+            </div>
+          </div>
+
+          <!-- Regrouping Visualization -->
+          <div class="regroup-container" id="regroup-container">
+            <div class="regroup-section" id="regroup-section">
+              <div class="regroup-label" id="regroup-label">
+                <span data-i18n="section.activities.subtract-mixed-numbers.needRegroup">Need to regroup? Borrow 1 whole:</span>
+              </div>
+              <div class="regroup-visual" id="regroup-visual">
+                <div class="regroup-before" id="regroup-before">
+                  <span class="regroup-whole">3</span>
+                  <span class="regroup-frac">1/4</span>
+                </div>
+                <span class="regroup-arrow">→</span>
+                <div class="regroup-after" id="regroup-after">
+                  <span class="regroup-whole">2</span>
+                  <span class="regroup-frac">5/4</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fraction Strips Visualization -->
+          <div class="strips-container" id="strips-container">
+            <div class="strip-row" id="strip-row-1">
+              <div class="strip-label" id="strip-label-1">
+                <span class="frac-display" id="frac-display-1">3 1/4</span>
+              </div>
+              <div class="strips-group" id="strips-group-1">
+                <!-- Whole strips + fraction strip -->
+              </div>
+            </div>
+            <div class="strip-row" id="strip-row-2">
+              <div class="strip-label" id="strip-label-2">
+                <span class="frac-display" id="frac-display-2">− 1 3/4</span>
+              </div>
+              <div class="strips-group" id="strips-group-2">
+                <!-- Whole strips + fraction strip crossed out -->
+              </div>
+            </div>
+            <div class="strip-row result-strip" id="strip-row-result">
+              <div class="strip-label" id="strip-label-result">
+                <span class="frac-display" id="frac-display-result">=</span>
+              </div>
+              <div class="strips-group" id="strips-group-result">
+                <!-- Result strips -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Step: Choose Answer -->
+          <div class="step-section" id="step-section">
+            <div class="step-label" id="step-label">
+              <span data-i18n="section.activities.subtract-mixed-numbers.chooseAnswer">What is the difference?</span>
+            </div>
+            <div class="answer-choices" id="answer-choices">
+              <!-- Answer choices will be generated here -->
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.subtract-mixed-numbers.great">Great work subtracting mixed numbers!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Subtract Mixed Numbers Activity - Grade 5 Level 3
+    const SubtractMixedNumbers = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+
+      // DOM elements
+      problemLabel: null,
+      whole1: null,
+      whole2: null,
+      num1: null,
+      den1: null,
+      num2: null,
+      den2: null,
+      answerPlaceholder: null,
+      fracDisplay1: null,
+      fracDisplay2: null,
+      fracDisplayResult: null,
+      stripsGroup1: null,
+      stripsGroup2: null,
+      stripsGroupResult: null,
+      regroupContainer: null,
+      regroupSection: null,
+      regroupBefore: null,
+      regroupAfter: null,
+      stepSection: null,
+      answerChoices: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.problemLabel = document.getElementById('problem-label');
+        this.whole1 = document.getElementById('whole1');
+        this.whole2 = document.getElementById('whole2');
+        this.num1 = document.getElementById('num1');
+        this.den1 = document.getElementById('den1');
+        this.num2 = document.getElementById('num2');
+        this.den2 = document.getElementById('den2');
+        this.answerPlaceholder = document.getElementById('answer-placeholder');
+        this.fracDisplay1 = document.getElementById('frac-display-1');
+        this.fracDisplay2 = document.getElementById('frac-display-2');
+        this.fracDisplayResult = document.getElementById('frac-display-result');
+        this.stripsGroup1 = document.getElementById('strips-group-1');
+        this.stripsGroup2 = document.getElementById('strips-group-2');
+        this.stripsGroupResult = document.getElementById('strips-group-result');
+        this.regroupContainer = document.getElementById('regroup-container');
+        this.regroupSection = document.getElementById('regroup-section');
+        this.regroupBefore = document.getElementById('regroup-before');
+        this.regroupAfter = document.getElementById('regroup-after');
+        this.stepSection = document.getElementById('step-section');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      // Calculate GCD using Euclidean algorithm
+      gcd(a, b) {
+        a = Math.abs(a);
+        b = Math.abs(b);
+        return b === 0 ? a : this.gcd(b, a % b);
+      },
+
+      // Calculate LCM
+      lcm(a, b) {
+        return (a * b) / this.gcd(a, b);
+      },
+
+      // Simplify a fraction
+      simplify(num, den) {
+        if (num === 0) return { num: 0, den: 1 };
+        const g = this.gcd(num, den);
+        return { num: num / g, den: den / g };
+      },
+
+      // Convert mixed number to improper fraction
+      toImproper(whole, num, den) {
+        return whole * den + num;
+      },
+
+      // Convert improper fraction to mixed number
+      toMixed(num, den) {
+        const whole = Math.floor(num / den);
+        const remainder = num % den;
+        return { whole, num: remainder, den };
+      },
+
+      generateQuestions() {
+        // Problems designed to practice regrouping (borrowing)
+        // Mix of: needs regrouping and doesn't need regrouping
+        const problems = [
+          // Needs regrouping (minuend fraction < subtrahend fraction, same denominator)
+          { w1: 3, n1: 1, d1: 4, w2: 1, n2: 3, d2: 4 },   // 3 1/4 - 1 3/4 = 1 2/4 = 1 1/2
+          { w1: 4, n1: 1, d1: 3, w2: 2, n2: 2, d2: 3 },   // 4 1/3 - 2 2/3 = 1 2/3
+          { w1: 5, n1: 1, d1: 6, w2: 2, n2: 5, d2: 6 },   // 5 1/6 - 2 5/6 = 2 2/6 = 2 1/3
+          { w1: 3, n1: 2, d1: 5, w2: 1, n2: 4, d2: 5 },   // 3 2/5 - 1 4/5 = 1 3/5
+          { w1: 6, n1: 1, d1: 8, w2: 3, n2: 5, d2: 8 },   // 6 1/8 - 3 5/8 = 2 4/8 = 2 1/2
+
+          // Doesn't need regrouping (minuend fraction >= subtrahend fraction, same denominator)
+          { w1: 4, n1: 3, d1: 4, w2: 2, n2: 1, d2: 4 },   // 4 3/4 - 2 1/4 = 2 2/4 = 2 1/2
+          { w1: 5, n1: 5, d1: 6, w2: 1, n2: 2, d2: 6 },   // 5 5/6 - 1 2/6 = 4 3/6 = 4 1/2
+          { w1: 3, n1: 4, d1: 5, w2: 1, n2: 1, d2: 5 },   // 3 4/5 - 1 1/5 = 2 3/5
+
+          // Different denominators requiring LCD (needs regrouping)
+          { w1: 4, n1: 1, d1: 3, w2: 2, n2: 3, d2: 4 },   // 4 1/3 - 2 3/4 = 4 4/12 - 2 9/12 = 1 7/12
+          { w1: 5, n1: 1, d1: 4, w2: 1, n2: 2, d2: 3 },   // 5 1/4 - 1 2/3 = 5 3/12 - 1 8/12 = 3 7/12
+
+          // Different denominators (no regrouping)
+          { w1: 3, n1: 2, d1: 3, w2: 1, n2: 1, d2: 4 },   // 3 2/3 - 1 1/4 = 3 8/12 - 1 3/12 = 2 5/12
+          { w1: 4, n1: 3, d1: 4, w2: 2, n2: 1, d2: 6 },   // 4 3/4 - 2 1/6 = 4 9/12 - 2 2/12 = 2 7/12
+        ];
+
+        // Calculate answers for each problem
+        this.questions = [];
+
+        for (const p of problems) {
+          const lcd = this.lcm(p.d1, p.d2);
+          const mult1 = lcd / p.d1;
+          const mult2 = lcd / p.d2;
+
+          // Convert to common denominator
+          const newN1 = p.n1 * mult1;
+          const newN2 = p.n2 * mult2;
+
+          // Check if regrouping is needed
+          const needsRegroup = newN1 < newN2;
+
+          // Perform subtraction
+          let resultWhole, resultNum;
+          if (needsRegroup) {
+            // Borrow 1 whole: becomes (w1-1) and (lcd + newN1)
+            resultWhole = p.w1 - 1 - p.w2;
+            resultNum = lcd + newN1 - newN2;
+          } else {
+            resultWhole = p.w1 - p.w2;
+            resultNum = newN1 - newN2;
+          }
+
+          // Simplify result
+          const simplified = this.simplify(resultNum, lcd);
+
+          this.questions.push({
+            w1: p.w1,
+            n1: p.n1,
+            d1: p.d1,
+            w2: p.w2,
+            n2: p.n2,
+            d2: p.d2,
+            lcd: lcd,
+            newN1: newN1,
+            newN2: newN2,
+            needsRegroup: needsRegroup,
+            regroupedWhole: needsRegroup ? p.w1 - 1 : p.w1,
+            regroupedNum: needsRegroup ? lcd + newN1 : newN1,
+            resultWhole: resultWhole,
+            resultNum: simplified.num,
+            resultDen: simplified.den
+          });
+        }
+
+        // Shuffle and pick 8
+        this.questions = shuffle(this.questions).slice(0, this.totalQuestions);
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+        this.answerPlaceholder.textContent = '?';
+        this.stripsGroupResult.innerHTML = '';
+        this.fracDisplayResult.textContent = '=';
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        // Update fraction displays
+        this.whole1.textContent = question.w1;
+        this.num1.textContent = question.n1;
+        this.den1.textContent = question.d1;
+        this.whole2.textContent = question.w2;
+        this.num2.textContent = question.n2;
+        this.den2.textContent = question.d2;
+
+        // Update strip labels
+        this.fracDisplay1.textContent = `${question.w1} ${question.n1}/${question.d1}`;
+        this.fracDisplay2.textContent = `− ${question.w2} ${question.n2}/${question.d2}`;
+
+        // Show/hide regrouping section
+        if (question.needsRegroup) {
+          this.regroupContainer.classList.remove('hidden');
+          // Show regrouping visualization
+          const beforeWhole = this.regroupBefore.querySelector('.regroup-whole');
+          const beforeFrac = this.regroupBefore.querySelector('.regroup-frac');
+          const afterWhole = this.regroupAfter.querySelector('.regroup-whole');
+          const afterFrac = this.regroupAfter.querySelector('.regroup-frac');
+
+          beforeWhole.textContent = question.w1;
+          beforeFrac.textContent = `${question.newN1}/${question.lcd}`;
+          afterWhole.textContent = question.regroupedWhole;
+          afterFrac.textContent = `${question.regroupedNum}/${question.lcd}`;
+        } else {
+          this.regroupContainer.classList.add('hidden');
+        }
+
+        // Render fraction strips
+        this.renderStrips(question);
+
+        // Generate answer choices
+        this.renderAnswerChoices(question);
+
+        this.renderProgress();
+      },
+
+      renderStrips(question) {
+        // Clear strips
+        this.stripsGroup1.innerHTML = '';
+        this.stripsGroup2.innerHTML = '';
+
+        // Render minuend strips (top)
+        // Show whole number as full strips + fraction strip
+        for (let w = 0; w < question.w1; w++) {
+          const strip = this.createWholeStrip(question.lcd, 'minuend');
+          this.stripsGroup1.appendChild(strip);
+        }
+        // Add fraction part
+        if (question.n1 > 0) {
+          const fracStrip = this.createFractionStrip(question.newN1, question.lcd, 'minuend');
+          this.stripsGroup1.appendChild(fracStrip);
+        }
+
+        // Render subtrahend strips (to be crossed out)
+        for (let w = 0; w < question.w2; w++) {
+          const strip = this.createWholeStrip(question.lcd, 'subtrahend');
+          this.stripsGroup2.appendChild(strip);
+        }
+        // Add fraction part
+        if (question.n2 > 0) {
+          const fracStrip = this.createFractionStrip(question.newN2, question.lcd, 'subtrahend');
+          this.stripsGroup2.appendChild(fracStrip);
+        }
+      },
+
+      createWholeStrip(den, type) {
+        const strip = document.createElement('div');
+        strip.className = `fraction-strip whole-strip ${type}`;
+
+        for (let i = 0; i < den; i++) {
+          const part = document.createElement('div');
+          part.className = `strip-part shaded ${type}`;
+          part.style.width = `${100 / den}%`;
+          strip.appendChild(part);
+        }
+
+        return strip;
+      },
+
+      createFractionStrip(num, den, type) {
+        const strip = document.createElement('div');
+        strip.className = `fraction-strip ${type}`;
+
+        for (let i = 0; i < den; i++) {
+          const part = document.createElement('div');
+          part.className = 'strip-part';
+          part.style.width = `${100 / den}%`;
+
+          if (i < num) {
+            part.classList.add('shaded', type);
+          }
+
+          strip.appendChild(part);
+        }
+
+        return strip;
+      },
+
+      renderAnswerChoices(question) {
+        this.answerChoices.innerHTML = '';
+
+        // Format correct answer
+        let correctAnswer;
+        if (question.resultNum === 0) {
+          correctAnswer = `${question.resultWhole}`;
+        } else if (question.resultWhole === 0) {
+          correctAnswer = `${question.resultNum}/${question.resultDen}`;
+        } else {
+          correctAnswer = `${question.resultWhole} ${question.resultNum}/${question.resultDen}`;
+        }
+
+        // Generate distractors
+        const distractors = new Set();
+
+        // Helper to format answer
+        const formatAnswer = (w, n, d) => {
+          if (n === 0) return `${w}`;
+          if (w === 0) return `${n}/${d}`;
+          return `${w} ${n}/${d}`;
+        };
+
+        // Common mistakes:
+        // 1. Off by one in whole part
+        if (question.resultWhole > 0) {
+          if (question.resultNum > 0) {
+            distractors.add(formatAnswer(question.resultWhole + 1, question.resultNum, question.resultDen));
+            if (question.resultWhole > 1) {
+              distractors.add(formatAnswer(question.resultWhole - 1, question.resultNum, question.resultDen));
+            }
+          } else {
+            distractors.add(`${question.resultWhole + 1}`);
+            if (question.resultWhole > 1) distractors.add(`${question.resultWhole - 1}`);
+          }
+        }
+
+        // 2. Off by one in numerator
+        if (question.resultNum > 0 && question.resultNum + 1 < question.resultDen) {
+          distractors.add(formatAnswer(question.resultWhole, question.resultNum + 1, question.resultDen));
+        }
+        if (question.resultNum > 1) {
+          distractors.add(formatAnswer(question.resultWhole, question.resultNum - 1, question.resultDen));
+        }
+
+        // 3. Forgot to regroup (for regroup problems)
+        if (question.needsRegroup) {
+          const wrongWhole = question.w1 - question.w2;
+          const wrongNum = Math.abs(question.newN1 - question.newN2);
+          const wrongSimp = this.simplify(wrongNum, question.lcd);
+          distractors.add(formatAnswer(wrongWhole, wrongSimp.num, wrongSimp.den));
+        }
+
+        // 4. Used wrong denominator
+        if (question.resultNum > 0) {
+          distractors.add(formatAnswer(question.resultWhole, question.resultNum, question.lcd));
+        }
+
+        // Remove correct answer if accidentally added
+        distractors.delete(correctAnswer);
+
+        // Pick 3 unique distractors
+        let uniqueDistractors = [...distractors].slice(0, 3);
+
+        // Ensure we have exactly 3 distractors
+        let fallbackCounter = 2;
+        while (uniqueDistractors.length < 3) {
+          const fallbackNum = (question.resultNum + fallbackCounter) % (question.resultDen || 4);
+          const fallback = formatAnswer(
+            question.resultWhole || 1,
+            fallbackNum || 1,
+            question.resultDen || 4
+          );
+          fallbackCounter++;
+          if (!uniqueDistractors.includes(fallback) && fallback !== correctAnswer) {
+            uniqueDistractors.push(fallback);
+          }
+        }
+
+        const allChoices = shuffle([correctAnswer, ...uniqueDistractors]);
+
+        allChoices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn answer-choice';
+          btn.textContent = choice;
+          btn.addEventListener('click', () => this.checkAnswer(choice, btn, correctAnswer, question));
+          this.answerChoices.appendChild(btn);
+        });
+      },
+
+      checkAnswer(selected, btn, correctAnswer, question) {
+        if (this.isAnswered) return;
+
+        this.isAnswered = true;
+        const isCorrect = selected === correctAnswer;
+
+        // Disable all buttons
+        const allBtns = this.answerChoices.querySelectorAll('.choice-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        // Update answer placeholder
+        this.answerPlaceholder.textContent = correctAnswer;
+
+        // Show result strip
+        this.renderResultStrip(question);
+        this.fracDisplayResult.textContent = correctAnswer;
+
+        if (isCorrect) {
+          this.correctCount++;
+          btn.classList.add('correct');
+
+          const feedbackText = this.getTranslation(
+            'section.activities.subtract-mixed-numbers.correct',
+            'Correct! The difference is {answer}'
+          ).replace('{answer}', correctAnswer);
+
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          btn.classList.add('incorrect');
+
+          // Highlight correct answer
+          allBtns.forEach(b => {
+            if (b.textContent === correctAnswer) {
+              b.classList.add('correct');
+            }
+          });
+
+          const feedbackText = this.getTranslation(
+            'section.activities.subtract-mixed-numbers.wrong',
+            'The answer is {answer}'
+          ).replace('{answer}', correctAnswer);
+
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+        this.scheduleAdvance();
+      },
+
+      renderResultStrip(question) {
+        this.stripsGroupResult.innerHTML = '';
+        this.stripsGroupResult.classList.add('animating');
+
+        // Render result whole strips
+        for (let w = 0; w < question.resultWhole; w++) {
+          const strip = this.createWholeStrip(question.resultDen, 'result');
+          strip.classList.add('animate-in');
+          strip.style.animationDelay = `${w * 100}ms`;
+          this.stripsGroupResult.appendChild(strip);
+        }
+
+        // Render result fraction strip
+        if (question.resultNum > 0) {
+          const fracStrip = this.createFractionStrip(question.resultNum, question.resultDen, 'result');
+          fracStrip.classList.add('animate-in');
+          fracStrip.style.animationDelay = `${question.resultWhole * 100}ms`;
+          this.stripsGroupResult.appendChild(fracStrip);
+        }
+
+        setTimeout(() => {
+          this.stripsGroupResult.classList.remove('animating');
+        }, 500);
+      },
+
+      scheduleAdvance() {
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.subtract-mixed-numbers.perfect',
+            'Perfect! You mastered subtracting mixed numbers!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.subtract-mixed-numbers.great',
+            'Great work subtracting mixed numbers!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.subtract-mixed-numbers.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.subtract-mixed-numbers.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => SubtractMixedNumbers.init());
+      } else {
+        SubtractMixedNumbers.init();
+      }
+    });
+  </script>
+  <style>
+    /* Subtract Mixed Numbers specific styles */
+
+    .problem-container {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .problem-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-medium);
+      color: #374151;
+      margin-bottom: var(--space-3);
+    }
+
+    .fractions-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .fraction-card {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      border-radius: var(--radius-xl);
+      border: 3px solid;
+      padding: var(--space-2) var(--space-4);
+    }
+
+    .fraction-card.minuend {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: #3b82f6;
+    }
+
+    .fraction-card.subtrahend {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+    }
+
+    .whole-part {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: inherit;
+    }
+
+    .fraction-card.minuend .whole-part,
+    .fraction-card.minuend .numerator,
+    .fraction-card.minuend .denominator {
+      color: #1d4ed8;
+    }
+
+    .fraction-card.subtrahend .whole-part,
+    .fraction-card.subtrahend .numerator,
+    .fraction-card.subtrahend .denominator {
+      color: #b45309;
+    }
+
+    .fraction-part {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .fraction-card .numerator,
+    .fraction-card .denominator {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      line-height: 1.2;
+    }
+
+    .fraction-card .fraction-bar {
+      width: 40px;
+      height: 3px;
+      background: currentColor;
+      border-radius: 2px;
+      margin: 2px 0;
+    }
+
+    .fraction-card.minuend .fraction-bar {
+      background: #3b82f6;
+    }
+
+    .fraction-card.subtrahend .fraction-bar {
+      background: #f59e0b;
+    }
+
+    .operator-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #6b7280;
+    }
+
+    .answer-placeholder {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #059669;
+      background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 3px solid #10b981;
+      min-width: 80px;
+      text-align: center;
+    }
+
+    /* Regrouping Container */
+    .regroup-container {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .regroup-container.hidden {
+      display: none;
+    }
+
+    .regroup-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-medium);
+      color: #92400e;
+      margin-bottom: var(--space-3);
+      text-align: center;
+    }
+
+    .regroup-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .regroup-before,
+    .regroup-after {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      background: white;
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-lg);
+      border: 2px solid #d97706;
+    }
+
+    .regroup-whole {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+    }
+
+    .regroup-frac {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #b45309;
+    }
+
+    .regroup-arrow {
+      font-size: var(--text-2xl);
+      color: #d97706;
+    }
+
+    /* Fraction Strips Container */
+    .strips-container {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 2px solid #e5e7eb;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .strip-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-3);
+    }
+
+    .strip-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .strip-row.result-strip {
+      margin-top: var(--space-2);
+      padding-top: var(--space-3);
+      border-top: 2px dashed #d1d5db;
+    }
+
+    .strip-label {
+      min-width: 90px;
+      text-align: center;
+    }
+
+    .frac-display {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #374151;
+    }
+
+    #strip-row-1 .frac-display {
+      color: #2563eb;
+    }
+
+    #strip-row-2 .frac-display {
+      color: #d97706;
+    }
+
+    #strip-row-result .frac-display {
+      color: #059669;
+    }
+
+    .strips-group {
+      flex: 1;
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .fraction-strip {
+      display: flex;
+      height: 32px;
+      border: 2px solid #d1d5db;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #f9fafb;
+      min-width: 60px;
+      flex: 1;
+      max-width: 120px;
+    }
+
+    .fraction-strip.whole-strip {
+      min-width: 80px;
+    }
+
+    .strip-part {
+      height: 100%;
+      border-right: 1px solid #d1d5db;
+      transition: background 0.3s ease;
+    }
+
+    .strip-part:last-child {
+      border-right: none;
+    }
+
+    .strip-part.shaded.minuend {
+      background: linear-gradient(180deg, #60a5fa, #3b82f6);
+    }
+
+    .strip-part.shaded.subtrahend {
+      background: linear-gradient(180deg, #fbbf24, #f59e0b);
+    }
+
+    .strip-part.shaded.result {
+      background: linear-gradient(180deg, #34d399, #10b981);
+    }
+
+    .fraction-strip.animate-in {
+      animation: stripAppear 0.4s ease forwards;
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    @keyframes stripAppear {
+      to {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+    }
+
+    /* Step Section */
+    .step-section {
+      margin-bottom: var(--space-4);
+    }
+
+    .step-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-medium);
+      color: #374151;
+      margin-bottom: var(--space-3);
+      text-align: center;
+    }
+
+    /* Answer Choices */
+    .answer-choices {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .choice-btn {
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #1e3a5f;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 3px solid #0ea5e9;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: scale(1.02);
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+      border-color: #0284c7;
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .choice-btn:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .choice-btn:focus-visible {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border-color: #ef4444;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+      20%, 40%, 60%, 80% { transform: translateX(4px); }
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .fraction-card .numerator,
+      .fraction-card .denominator {
+        font-size: var(--text-xl);
+      }
+
+      .whole-part {
+        font-size: var(--text-2xl);
+      }
+
+      .fraction-card .fraction-bar {
+        width: 30px;
+      }
+
+      .fraction-card {
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .fractions-row {
+        gap: var(--space-2);
+      }
+
+      .operator-label {
+        font-size: var(--text-xl);
+      }
+
+      .answer-placeholder {
+        font-size: var(--text-xl);
+        padding: var(--space-2) var(--space-3);
+        min-width: 70px;
+      }
+
+      .strips-container {
+        padding: var(--space-3);
+      }
+
+      .strip-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-2);
+      }
+
+      .strip-label {
+        min-width: auto;
+      }
+
+      .strips-group {
+        justify-content: center;
+      }
+
+      .fraction-strip {
+        height: 28px;
+        max-width: 100px;
+      }
+
+      .frac-display {
+        font-size: var(--text-base);
+      }
+
+      .answer-choices {
+        gap: var(--space-2);
+        max-width: 320px;
+      }
+
+      .choice-btn {
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--text-lg);
+        min-height: 55px;
+      }
+
+      .regroup-container {
+        padding: var(--space-3);
+      }
+
+      .regroup-label {
+        font-size: var(--text-sm);
+      }
+
+      .regroup-visual {
+        gap: var(--space-2);
+      }
+
+      .regroup-whole {
+        font-size: var(--text-lg);
+      }
+
+      .regroup-frac {
+        font-size: var(--text-base);
+      }
+
+      .regroup-arrow {
+        font-size: var(--text-xl);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .problem-label {
+        font-size: var(--text-base);
+      }
+
+      .fraction-card .numerator,
+      .fraction-card .denominator {
+        font-size: var(--text-lg);
+      }
+
+      .whole-part {
+        font-size: var(--text-xl);
+      }
+
+      .fraction-card .fraction-bar {
+        width: 25px;
+        height: 2px;
+      }
+
+      .fraction-card {
+        padding: var(--space-1) var(--space-2);
+      }
+
+      .operator-label {
+        font-size: var(--text-lg);
+      }
+
+      .answer-placeholder {
+        font-size: var(--text-lg);
+        min-width: 60px;
+      }
+
+      .step-label {
+        font-size: var(--text-base);
+      }
+
+      .fraction-strip {
+        height: 24px;
+        max-width: 80px;
+      }
+
+      .frac-display {
+        font-size: var(--text-sm);
+      }
+
+      .choice-btn {
+        font-size: var(--text-base);
+        min-height: 50px;
+        padding: var(--space-2);
+      }
+    }
+
+    @media (max-width: 360px) {
+      .answer-choices {
+        grid-template-columns: 1fr;
+        max-width: 200px;
+      }
+
+      .choice-btn {
+        min-height: 50px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Count Unit Fractions - Grade 3 Math Activity - Meadow Math">
+  <title>Count Unit Fractions - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🔍</span>
+            <span data-i18n="section.activities.unit-fractions-count.title">Count Unit Fractions</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.unit-fractions-count.instruction">Count the unit fractions!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Question Display -->
+          <div class="question-display" id="question-display">
+            <span id="question-text" data-i18n="section.activities.unit-fractions-count.howMany">How many unit fractions are shaded?</span>
+          </div>
+
+          <!-- Shape Display - shows the fraction strip with shaded parts -->
+          <div class="shape-display" id="shape-display">
+            <div class="shape-visual" id="shape-visual">
+              <!-- Fraction strip will be shown here -->
+            </div>
+            <div class="unit-label" id="unit-label">
+              <!-- e.g., "Each part is 1/4" -->
+            </div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices">
+            <!-- Answer buttons will be dynamically generated here -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.unit-fractions-count.great">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Count Unit Fractions specific styles */
+    .question-display {
+      text-align: center;
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--space-4);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-radius: var(--radius-xl);
+      border: 4px solid #3b82f6;
+    }
+
+    .shape-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-6);
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 4px solid #e2e8f0;
+      margin-bottom: var(--space-6);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .shape-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .shape-visual svg {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+    }
+
+    .unit-label {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #1e40af;
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      border-radius: var(--radius-lg);
+      border: 2px solid #93c5fd;
+    }
+
+    .answer-choices {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
+      max-width: 600px;
+      margin: 0 auto var(--space-6);
+    }
+
+    .choice-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-4);
+      min-height: 100px;
+      background: white;
+      border: 4px solid #e2e8f0;
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.08);
+      font-family: inherit;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      border-color: var(--color-primary);
+      box-shadow: 0 6px 0 rgba(59, 130, 246, 0.2), 0 8px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .choice-btn:focus {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 2px;
+      border-color: var(--color-primary);
+      box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .choice-btn.correct {
+      border-color: var(--color-success);
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      box-shadow: 0 4px 0 rgba(34, 197, 94, 0.3), 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .choice-btn.incorrect {
+      border-color: var(--color-error);
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      animation: wiggle 0.5s ease;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .choice-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .choice-count {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-text);
+    }
+
+    .choice-fraction {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+    }
+
+    .fraction-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: var(--color-text);
+      line-height: 1;
+    }
+
+    .fraction-numerator {
+      border-bottom: 2px solid currentColor;
+      padding-bottom: 2px;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .fraction-denominator {
+      padding-top: 2px;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    @media (max-width: 767px) {
+      .question-display {
+        font-size: var(--text-xl);
+        padding: var(--space-3);
+        margin-bottom: var(--space-3);
+      }
+
+      .shape-display {
+        padding: var(--space-4);
+        margin-bottom: var(--space-4);
+      }
+
+      .shape-visual svg {
+        max-width: 320px;
+      }
+
+      .unit-label {
+        font-size: var(--text-lg);
+      }
+
+      .answer-choices {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-3);
+      }
+
+      .choice-btn {
+        padding: var(--space-3);
+        min-height: 90px;
+      }
+
+      .choice-count {
+        font-size: var(--text-xl);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .shape-visual svg {
+        max-width: 280px;
+      }
+
+      .choice-btn {
+        min-height: 80px;
+      }
+    }
+
+    /* Activity area needs padding for feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    /* Feedback at bottom */
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Count Unit Fractions Activity - Grade 3 Level 4
+    const UnitFractionsCount = {
+      // Game state
+      currentRound: 1,
+      maxRounds: 10,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1500,
+      currentQuestion: null,
+      questions: [],
+
+      // DOM elements
+      questionText: null,
+      shapeVisual: null,
+      unitLabel: null,
+      answerChoices: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Colors for shapes
+      colors: {
+        shaded: '#3b82f6',
+        stroke: '#1e40af',
+        unshaded: '#f1f5f9'
+      },
+
+      // Denominators used in Grade 3 (per content-g3.md)
+      denominators: [2, 3, 4, 6, 8],
+
+      /**
+       * Get ordinal word for a denominator
+       */
+      getOrdinalWord(denominator, count) {
+        const ordinals = {
+          2: { singular: 'half', plural: 'halves' },
+          3: { singular: 'third', plural: 'thirds' },
+          4: { singular: 'fourth', plural: 'fourths' },
+          6: { singular: 'sixth', plural: 'sixths' },
+          8: { singular: 'eighth', plural: 'eighths' }
+        };
+
+        const ordinal = ordinals[denominator];
+        if (!ordinal) return '';
+
+        return count === 1 ? ordinal.singular : ordinal.plural;
+      },
+
+      /**
+       * Generate a fraction strip (horizontal bar divided into equal parts)
+       */
+      generateFractionStrip(shadedCount, totalParts) {
+        const width = 360;
+        const height = 60;
+        const partWidth = width / totalParts;
+        const padding = 10;
+
+        let svg = `<svg viewBox="0 0 ${width + padding * 2} ${height + padding * 2}" role="img" aria-label="A strip divided into ${totalParts} equal parts with ${shadedCount} parts shaded">`;
+
+        for (let i = 0; i < totalParts; i++) {
+          const fill = i < shadedCount ? this.colors.shaded : this.colors.unshaded;
+          svg += `<rect
+            x="${padding + i * partWidth}"
+            y="${padding}"
+            width="${partWidth}"
+            height="${height}"
+            fill="${fill}"
+            stroke="${this.colors.stroke}"
+            stroke-width="3"
+          />`;
+        }
+
+        svg += `</svg>`;
+        return svg;
+      },
+
+      /**
+       * Generate questions for the activity
+       */
+      generateQuestions() {
+        this.questions = [];
+
+        for (let i = 0; i < this.maxRounds; i++) {
+          // Pick a random denominator
+          const denominator = this.denominators[Math.floor(Math.random() * this.denominators.length)];
+
+          // Pick a random numerator (at least 1, at most denominator)
+          const numerator = randomInt(1, denominator);
+
+          // Generate wrong answers (different numerators)
+          const wrongAnswers = [];
+          const possibleWrong = [];
+
+          for (let j = 1; j <= denominator; j++) {
+            if (j !== numerator) {
+              possibleWrong.push(j);
+            }
+          }
+
+          // Add some out-of-range wrong answers if denominator allows
+          if (denominator < 8) {
+            possibleWrong.push(denominator + 1);
+          }
+          if (numerator > 1) {
+            possibleWrong.push(0);
+          }
+
+          // Shuffle and pick 3 wrong answers
+          const shuffledWrong = shuffle(possibleWrong);
+          for (let j = 0; j < 3 && j < shuffledWrong.length; j++) {
+            wrongAnswers.push(shuffledWrong[j]);
+          }
+
+          // Fill in if we don't have enough wrong answers
+          while (wrongAnswers.length < 3) {
+            const candidate = randomInt(0, denominator + 2);
+            if (candidate !== numerator && !wrongAnswers.includes(candidate)) {
+              wrongAnswers.push(candidate);
+            }
+          }
+
+          // Combine correct and wrong, then shuffle
+          const allOptions = [numerator, ...wrongAnswers.slice(0, 3)];
+          const shuffledOptions = shuffle(allOptions);
+
+          this.questions.push({
+            numerator,
+            denominator,
+            options: shuffledOptions
+          });
+        }
+      },
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        // Get DOM elements
+        this.questionText = document.getElementById('question-text');
+        this.shapeVisual = document.getElementById('shape-visual');
+        this.unitLabel = document.getElementById('unit-label');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up event listeners
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        // Generate questions and start
+        this.generateQuestions();
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Update translations when language changes
+       */
+      updateTranslations() {
+        // Update unit label
+        if (this.currentQuestion) {
+          const { denominator } = this.currentQuestion;
+          this.unitLabel.textContent = i18n.t('section.activities.unit-fractions-count.eachPart')
+            .replace('{den}', denominator);
+        }
+
+        // Update feedback message if showing
+        if (this.feedback.classList.contains('show')) {
+          const isError = this.feedback.classList.contains('error');
+          const { numerator, denominator } = this.currentQuestion;
+
+          if (isError) {
+            this.feedback.textContent = i18n.t('section.activities.unit-fractions-count.wrong')
+              .replace('{num}', numerator)
+              .replace('{den}', denominator);
+          } else {
+            this.feedback.textContent = i18n.t('section.activities.unit-fractions-count.correct');
+          }
+        }
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.currentQuestion = this.questions[this.currentRound - 1];
+        this.feedback.classList.remove('show', 'error');
+
+        const { numerator, denominator } = this.currentQuestion;
+
+        // Show the fraction strip
+        this.shapeVisual.innerHTML = this.generateFractionStrip(numerator, denominator);
+
+        // Update unit label (e.g., "Each part is 1/4")
+        this.unitLabel.textContent = i18n.t('section.activities.unit-fractions-count.eachPart')
+          .replace('{den}', denominator);
+
+        // Render answer choices
+        this.renderChoices();
+        this.renderProgress();
+      },
+
+      /**
+       * Render answer choices
+       */
+      renderChoices() {
+        const { options, denominator } = this.currentQuestion;
+
+        let html = '';
+        options.forEach(count => {
+          // Format the choice display
+          const ordinalWord = this.getOrdinalWord(denominator, count);
+          const fractionText = `${count}/${denominator}`;
+
+          html += `
+            <button class="choice-btn" data-count="${count}" aria-label="${count} one-${ordinalWord}, ${fractionText}">
+              <div class="choice-content">
+                <div class="choice-count">${count}</div>
+                <div class="choice-fraction">
+                  <div class="fraction-display">
+                    <span class="fraction-numerator">${count}</span>
+                    <span class="fraction-denominator">${denominator}</span>
+                  </div>
+                </div>
+              </div>
+            </button>
+          `;
+        });
+
+        this.answerChoices.innerHTML = html;
+
+        // Add click and keyboard handlers
+        const buttons = this.answerChoices.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const count = parseInt(btn.dataset.count);
+            this.checkAnswer(count, btn);
+          });
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              const count = parseInt(btn.dataset.count);
+              this.checkAnswer(count, btn);
+            }
+          });
+        });
+      },
+
+      /**
+       * Check the selected answer
+       */
+      checkAnswer(selectedCount, selectedBtn) {
+        // Disable all buttons
+        const buttons = this.answerChoices.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => btn.disabled = true);
+
+        const { numerator, denominator } = this.currentQuestion;
+        const isCorrect = selectedCount === numerator;
+
+        if (isCorrect) {
+          selectedBtn.classList.add('correct');
+          this.feedback.textContent = i18n.t('section.activities.unit-fractions-count.correct');
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+        } else {
+          selectedBtn.classList.add('incorrect');
+          // Show correct answer
+          buttons.forEach(btn => {
+            const count = parseInt(btn.dataset.count);
+            if (count === numerator) {
+              btn.classList.add('correct');
+            }
+          });
+          this.feedback.textContent = i18n.t('section.activities.unit-fractions-count.wrong')
+            .replace('{num}', numerator)
+            .replace('{den}', denominator);
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        // Auto-advance after delay
+        setTimeout(() => {
+          if (this.currentRound < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show completion stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = i18n.t('section.activities.unit-fractions-count.perfect');
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.unit-fractions-count.great');
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.unit-fractions-count.good');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = i18n.t('section.activities.unit-fractions-count.keepPracticing');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart the activity
+       */
+      restartActivity() {
+        this.currentRound = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Go to next round
+       */
+      nextRound() {
+        this.currentRound++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress indicator
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      UnitFractionsCount.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

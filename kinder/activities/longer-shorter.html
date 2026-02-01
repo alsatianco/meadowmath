@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Longer or Shorter? - Kindergarten Math Activity - Meadow Math">
+  <title>Longer or Shorter? - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">📏</span>
+            <span data-i18n="section.activities.longer-shorter.title">Longer or Shorter?</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.longer-shorter.instruction">Tap the one that is longer!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Question -->
+          <p class="question-text" id="question-text" data-i18n="section.activities.longer-shorter.questionLonger">Which one is longer?</p>
+
+          <!-- Comparison Objects -->
+          <div class="objects-container" id="objects-container">
+            <button class="object-card" id="object-top">
+              <div class="object-bar" id="bar-top"></div>
+              <div class="object-emoji" id="emoji-top">🐛</div>
+            </button>
+
+            <div class="vs-badge">VS</div>
+
+            <button class="object-card" id="object-bottom">
+              <div class="object-bar" id="bar-bottom"></div>
+              <div class="object-emoji" id="emoji-bottom">🐛</div>
+            </button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">📏</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great measuring!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Longer or Shorter Styles */
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .objects-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .object-card {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border: 4px solid #e2e8f0;
+      border-radius: var(--radius-2xl);
+      min-width: 280px;
+      min-height: 80px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 0 #cbd5e1, 0 6px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .object-card:hover:not(:disabled) {
+      transform: translateY(-4px) scale(1.02);
+      border-color: #3b82f6;
+      box-shadow: 0 8px 0 #2563eb, 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .object-card:focus {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .object-card:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .object-card:focus-visible {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .object-card:disabled {
+      cursor: not-allowed;
+    }
+
+    .object-card.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPop 0.5s ease;
+    }
+
+    .object-card.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      box-shadow: 0 4px 0 #d97706;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Object Bar Styling */
+    .object-bar {
+      height: 24px;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      border-radius: var(--radius-full);
+      box-shadow: 0 3px 0 #6d28d9;
+      transition: width 0.3s ease;
+    }
+
+    .object-emoji {
+      font-size: 40px;
+      flex-shrink: 0;
+    }
+
+    /* Color variations for visual variety */
+    #object-top .object-bar {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      box-shadow: 0 3px 0 #c2410c;
+    }
+
+    #object-bottom .object-bar {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      box-shadow: 0 3px 0 #0e7490;
+    }
+
+    .vs-badge {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: white;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-full);
+      box-shadow: 0 3px 0 #6d28d9;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .objects-container {
+        gap: var(--space-3);
+      }
+
+      .object-card {
+        min-width: 240px;
+        min-height: 70px;
+        padding: var(--space-3);
+      }
+
+      .object-bar {
+        height: 20px;
+      }
+
+      .object-emoji {
+        font-size: 32px;
+      }
+
+      .vs-badge {
+        font-size: var(--text-lg);
+        padding: var(--space-1) var(--space-2);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .object-card {
+        min-width: 200px;
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Longer or Shorter Activity
+    const LongerShorter = {
+      // Game state
+      round: 1,
+      maxRounds: 8,
+      topLength: 0,
+      bottomLength: 0,
+      askingForLonger: true, // alternates between asking for longer/shorter
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+
+      // DOM elements
+      progress: null,
+      questionText: null,
+      objectTop: null,
+      objectBottom: null,
+      barTop: null,
+      barBottom: null,
+      emojiTop: null,
+      emojiBottom: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Objects with emojis for variety
+      objects: [
+        { emoji: '🐛', name: 'caterpillar' },
+        { emoji: '🐍', name: 'snake' },
+        { emoji: '🖍️', name: 'crayon' },
+        { emoji: '✏️', name: 'pencil' },
+        { emoji: '🌈', name: 'rainbow' },
+        { emoji: '🚂', name: 'train' },
+        { emoji: '🦎', name: 'lizard' },
+        { emoji: '🍌', name: 'banana' }
+      ],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.questionText = document.getElementById('question-text');
+        this.objectTop = document.getElementById('object-top');
+        this.objectBottom = document.getElementById('object-bottom');
+        this.barTop = document.getElementById('bar-top');
+        this.barBottom = document.getElementById('bar-bottom');
+        this.emojiTop = document.getElementById('emoji-top');
+        this.emojiBottom = document.getElementById('emoji-bottom');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.objectTop.addEventListener('click', () => this.selectObject('top'));
+        this.objectBottom.addEventListener('click', () => this.selectObject('bottom'));
+
+        this.objectTop.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.selectObject('top');
+          }
+        });
+
+        this.objectBottom.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.selectObject('bottom');
+          }
+        });
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+
+        // Alternate between asking for longer and shorter
+        this.askingForLonger = this.round % 2 === 1;
+
+        // Update question text
+        if (this.askingForLonger) {
+          this.questionText.textContent = i18n.t('section.activities.longer-shorter.questionLonger') || 'Which one is longer?';
+        } else {
+          this.questionText.textContent = i18n.t('section.activities.longer-shorter.questionShorter') || 'Which one is shorter?';
+        }
+
+        // Generate different lengths (40-180px range)
+        // Make sure there's a noticeable difference
+        const minLen = 40;
+        const maxLen = 180;
+
+        this.topLength = randomInt(minLen, maxLen);
+        do {
+          this.bottomLength = randomInt(minLen, maxLen);
+        } while (Math.abs(this.topLength - this.bottomLength) < 30);
+
+        // Pick random object
+        const obj = this.objects[randomInt(0, this.objects.length - 1)];
+        this.emojiTop.textContent = obj.emoji;
+        this.emojiBottom.textContent = obj.emoji;
+
+        // Set bar widths
+        this.barTop.style.width = this.topLength + 'px';
+        this.barBottom.style.width = this.bottomLength + 'px';
+
+        // Reset UI
+        this.objectTop.classList.remove('correct', 'incorrect');
+        this.objectBottom.classList.remove('correct', 'incorrect');
+        this.objectTop.disabled = false;
+        this.objectBottom.disabled = false;
+        this.feedback.classList.remove('show', 'error');
+
+        this.renderProgress();
+      },
+
+      /**
+       * Select an object
+       */
+      selectObject(side) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        this.objectTop.disabled = true;
+        this.objectBottom.disabled = true;
+
+        const selectedSide = side;
+        const topIsLonger = this.topLength > this.bottomLength;
+
+        let correctSide;
+        if (this.askingForLonger) {
+          correctSide = topIsLonger ? 'top' : 'bottom';
+        } else {
+          // Asking for shorter
+          correctSide = topIsLonger ? 'bottom' : 'top';
+        }
+
+        const isCorrect = selectedSide === correctSide;
+
+        const selectedCard = side === 'top' ? this.objectTop : this.objectBottom;
+        const correctCard = correctSide === 'top' ? this.objectTop : this.objectBottom;
+
+        if (isCorrect) {
+          selectedCard.classList.add('correct');
+
+          let msg;
+          if (this.askingForLonger) {
+            msg = i18n.t('section.activities.longer-shorter.correctLonger') || 'Yes! This one is longer!';
+          } else {
+            msg = i18n.t('section.activities.longer-shorter.correctShorter') || 'Yes! This one is shorter!';
+          }
+          this.feedback.textContent = msg;
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          if (typeof celebrate === 'function') {
+            celebrate(selectedCard);
+          }
+        } else {
+          selectedCard.classList.add('incorrect');
+          correctCard.classList.add('correct');
+
+          let msg;
+          if (this.askingForLonger) {
+            msg = i18n.t('section.activities.longer-shorter.incorrectLonger') || 'Not quite! This one is longer.';
+          } else {
+            msg = i18n.t('section.activities.longer-shorter.incorrectShorter') || 'Not quite! This one is shorter.';
+          }
+          this.feedback.textContent = msg;
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '📏';
+          this.statsMessage.textContent = i18n.t('section.activities.longer-shorter.perfect') || 'Measurement Master!';
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.longer-shorter.great') || 'Great measuring!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.longer-shorter.keepPracticing') || 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      LongerShorter.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

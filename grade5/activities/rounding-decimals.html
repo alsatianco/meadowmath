@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rounding Roller - Grade 5 Math Activity - Meadow Math">
+  <title>Rounding Roller - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🎢</span>
+            <span data-i18n="section.activities.rounding-decimals.title">Rounding Roller</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.rounding-decimals.instruction">Round the decimal to the place shown!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Rounding Prompt -->
+          <div class="rounding-prompt" id="rounding-prompt">
+            <span class="prompt-text" data-i18n="section.activities.rounding-decimals.roundTo">Round to the nearest</span>
+            <span class="round-place" id="round-place">tenth</span>:
+          </div>
+
+          <!-- Number Display -->
+          <div class="number-display" id="number-display">
+            <span class="target-number" id="target-number">6.378</span>
+          </div>
+
+          <!-- Number Line Visual -->
+          <div class="number-line-container" id="number-line-container">
+            <div class="number-line">
+              <div class="line-endpoint left">
+                <span class="endpoint-value" id="endpoint-left">6.3</span>
+              </div>
+              <div class="line-track">
+                <div class="line-marker" id="line-marker"></div>
+                <div class="line-midpoint"></div>
+              </div>
+              <div class="line-endpoint right">
+                <span class="endpoint-value" id="endpoint-right">6.4</span>
+              </div>
+            </div>
+            <div class="number-line-hint" id="number-line-hint">
+              <span data-i18n="section.activities.rounding-decimals.lookAt">Look at the next digit:</span>
+              <span class="deciding-digit" id="deciding-digit">7</span>
+            </div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <!-- Buttons will be generated dynamically -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.rounding-decimals.great">Great rounding!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Rounding Roller Activity - Grade 5 Level 1
+    const RoundingRoller = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      lastResult: null,
+      lastStatsKey: null,
+      advanceTimeout: null,
+
+      // DOM elements
+      roundPlace: null,
+      targetNumber: null,
+      endpointLeft: null,
+      endpointRight: null,
+      lineMarker: null,
+      decidingDigit: null,
+      choicesContainer: null,
+      choiceButtons: [],
+      btnReset: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.roundPlace = document.getElementById('round-place');
+        this.targetNumber = document.getElementById('target-number');
+        this.endpointLeft = document.getElementById('endpoint-left');
+        this.endpointRight = document.getElementById('endpoint-right');
+        this.lineMarker = document.getElementById('line-marker');
+        this.decidingDigit = document.getElementById('deciding-digit');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.btnReset = document.getElementById('btn-reset');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      // Round a number to a specific place
+      roundToPlace(num, place) {
+        switch (place) {
+          case 'whole':
+            return Math.round(num);
+          case 'tenth':
+            return Math.round(num * 10) / 10;
+          case 'hundredth':
+            return Math.round(num * 100) / 100;
+          default:
+            return num;
+        }
+      },
+
+      // Get the floor and ceiling for the number line
+      getBounds(num, place) {
+        let factor;
+        switch (place) {
+          case 'whole':
+            factor = 1;
+            break;
+          case 'tenth':
+            factor = 10;
+            break;
+          case 'hundredth':
+            factor = 100;
+            break;
+          default:
+            factor = 1;
+        }
+
+        const lower = Math.floor(num * factor) / factor;
+        const upper = Math.ceil(num * factor) / factor;
+
+        // If number is exactly on a boundary, create a range around it
+        if (lower === upper) {
+          return {
+            lower: lower - (1 / factor),
+            upper: upper
+          };
+        }
+
+        return { lower, upper };
+      },
+
+      // Get the deciding digit for rounding
+      getDecidingDigit(num, place) {
+        const numStr = num.toString();
+        const parts = numStr.split('.');
+        const decimalPart = parts[1] || '';
+
+        switch (place) {
+          case 'whole':
+            return decimalPart[0] || '0';
+          case 'tenth':
+            return decimalPart[1] || '0';
+          case 'hundredth':
+            return decimalPart[2] || '0';
+          default:
+            return '0';
+        }
+      },
+
+      // Format number for display
+      formatNumber(num, decimals) {
+        return num.toFixed(decimals);
+      },
+
+      generateQuestions() {
+        const questions = [];
+        const places = ['whole', 'tenth', 'hundredth'];
+
+        // Generate varied rounding problems
+        const configs = [
+          // Round to whole
+          { num: 6.378, place: 'whole' },
+          { num: 12.5, place: 'whole' },  // Exact halfway
+          { num: 3.91, place: 'whole' },
+
+          // Round to tenth
+          { num: 4.567, place: 'tenth' },
+          { num: 8.25, place: 'tenth' },  // Exact halfway
+          { num: 15.634, place: 'tenth' },
+          { num: 0.978, place: 'tenth' },
+
+          // Round to hundredth
+          { num: 2.345, place: 'hundredth' },  // Exact halfway
+          { num: 7.8923, place: 'hundredth' },
+          { num: 0.0567, place: 'hundredth' }
+        ];
+
+        configs.forEach(config => {
+          const bounds = this.getBounds(config.num, config.place);
+          const correctAnswer = this.roundToPlace(config.num, config.place);
+          const decidingDigit = this.getDecidingDigit(config.num, config.place);
+
+          // Generate wrong answers
+          const wrongAnswers = new Set();
+          wrongAnswers.add(bounds.lower);
+          wrongAnswers.add(bounds.upper);
+
+          // Add some other distractors
+          if (config.place === 'whole') {
+            wrongAnswers.add(Math.round(config.num * 10) / 10);
+            wrongAnswers.add(correctAnswer + 1);
+            wrongAnswers.add(correctAnswer - 1);
+          } else if (config.place === 'tenth') {
+            wrongAnswers.add(Math.round(config.num));
+            wrongAnswers.add(this.roundToPlace(config.num, 'hundredth'));
+          } else {
+            wrongAnswers.add(this.roundToPlace(config.num, 'tenth'));
+            wrongAnswers.add(bounds.lower + 0.005);
+          }
+
+          // Remove correct answer from wrong answers
+          wrongAnswers.delete(correctAnswer);
+
+          // Convert to array and filter valid numbers
+          // Use string comparison to avoid floating point issues
+          const correctStr = correctAnswer.toFixed(6);
+          const wrongArr = Array.from(wrongAnswers)
+            .filter(n => n >= 0 && n.toFixed(6) !== correctStr)
+            .slice(0, 3);
+
+          questions.push({
+            number: config.num,
+            place: config.place,
+            correctAnswer: correctAnswer,
+            decidingDigit: decidingDigit,
+            bounds: bounds,
+            choices: shuffle([
+              { value: correctAnswer, isCorrect: true },
+              ...wrongArr.map(w => ({ value: w, isCorrect: false }))
+            ])
+          });
+        });
+
+        this.questions = shuffle(questions);
+      },
+
+      getPlaceLabel(place) {
+        switch (place) {
+          case 'whole':
+            return this.getTranslation('section.activities.rounding-decimals.wholeNumber', 'whole number');
+          case 'tenth':
+            return this.getTranslation('section.activities.rounding-decimals.tenth', 'tenth');
+          case 'hundredth':
+            return this.getTranslation('section.activities.rounding-decimals.hundredth', 'hundredth');
+          default:
+            return place;
+        }
+      },
+
+      getDecimalsForPlace(place) {
+        switch (place) {
+          case 'whole': return 0;
+          case 'tenth': return 1;
+          case 'hundredth': return 2;
+          default: return 2;
+        }
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      renderChoices(choices, decimals) {
+        this.choicesContainer.innerHTML = '';
+        this.choiceButtons = [];
+
+        choices.forEach((choice) => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn number-choice';
+          btn.type = 'button';
+          btn.textContent = this.formatNumber(choice.value, decimals);
+          btn.dataset.value = choice.value;
+          btn.dataset.correct = choice.isCorrect;
+          btn.setAttribute('aria-pressed', 'false');
+          btn.addEventListener('click', () => this.selectAnswer(btn));
+
+          this.choicesContainer.appendChild(btn);
+          this.choiceButtons.push(btn);
+        });
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.lastResult = null;
+        this.feedback.classList.remove('show', 'error');
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        // Update display
+        this.roundPlace.textContent = this.getPlaceLabel(question.place);
+        this.targetNumber.textContent = question.number;
+
+        // Update number line
+        const decimals = this.getDecimalsForPlace(question.place);
+        this.endpointLeft.textContent = this.formatNumber(question.bounds.lower, decimals);
+        this.endpointRight.textContent = this.formatNumber(question.bounds.upper, decimals);
+
+        // Position marker on number line
+        const range = question.bounds.upper - question.bounds.lower;
+        const position = (question.number - question.bounds.lower) / range;
+        this.lineMarker.style.left = `${position * 100}%`;
+
+        // Show deciding digit
+        this.decidingDigit.textContent = question.decidingDigit;
+
+        // Render choices
+        this.renderChoices(question.choices, decimals);
+
+        this.renderProgress();
+      },
+
+      selectAnswer(btn) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+        this.clearAdvanceTimeout();
+
+        const isCorrect = btn.dataset.correct === 'true';
+        const question = this.questions[this.currentQuestion];
+        const decimals = this.getDecimalsForPlace(question.place);
+        const correctValue = this.formatNumber(question.correctAnswer, decimals);
+
+        // Disable all buttons
+        this.choiceButtons.forEach(button => {
+          button.disabled = true;
+          button.setAttribute('aria-pressed', button === btn ? 'true' : 'false');
+        });
+
+        btn.classList.add('selected');
+
+        if (isCorrect) {
+          this.correctCount++;
+          btn.classList.add('correct');
+
+          const directionKey = parseInt(question.decidingDigit) >= 5 ? 'up' : 'down';
+          const template = this.getTranslation(
+            'section.activities.rounding-decimals.correct',
+            'Correct! {digit} rounds {direction}.'
+          );
+          const directionText = this.getTranslation(
+            `section.activities.rounding-decimals.${directionKey}`,
+            directionKey
+          );
+          this.feedback.textContent = template
+            .replace('{digit}', question.decidingDigit)
+            .replace('{direction}', directionText);
+          this.feedback.classList.remove('error');
+
+          this.lastResult = { isCorrect: true, digit: question.decidingDigit, directionKey };
+        } else {
+          this.incorrectCount++;
+          btn.classList.add('incorrect');
+
+          // Show correct answer
+          this.choiceButtons.forEach(button => {
+            if (button.dataset.correct === 'true') {
+              button.classList.add('correct');
+            }
+          });
+
+          const template = this.getTranslation(
+            'section.activities.rounding-decimals.wrong',
+            'The answer is {answer}.'
+          );
+          this.feedback.textContent = template.replace('{answer}', correctValue);
+          this.feedback.classList.add('error');
+
+          this.lastResult = { isCorrect: false, correctAnswer: correctValue };
+        }
+
+        this.feedback.classList.add('show');
+        this.renderProgress();
+
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      updateTranslations() {
+        const question = this.questions[this.currentQuestion];
+        if (question) {
+          this.roundPlace.textContent = this.getPlaceLabel(question.place);
+        }
+
+        if (this.lastResult && this.feedback.classList.contains('show')) {
+          if (this.lastResult.isCorrect) {
+            const template = this.getTranslation(
+              'section.activities.rounding-decimals.correct',
+              'Correct! {digit} rounds {direction}.'
+            );
+            const directionText = this.getTranslation(
+              `section.activities.rounding-decimals.${this.lastResult.directionKey}`,
+              this.lastResult.directionKey
+            );
+            this.feedback.textContent = template
+              .replace('{digit}', this.lastResult.digit)
+              .replace('{direction}', directionText);
+          } else {
+            const template = this.getTranslation(
+              'section.activities.rounding-decimals.wrong',
+              'The answer is {answer}.'
+            );
+            this.feedback.textContent = template.replace('{answer}', this.lastResult.correctAnswer);
+          }
+        }
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+
+        this.updateProgressLabel();
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.lastStatsKey = 'perfect';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.rounding-decimals.perfect',
+            'Perfect rounding!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.lastStatsKey = 'great';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.rounding-decimals.great',
+            'Great rounding!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.lastStatsKey = 'good';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.rounding-decimals.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.lastStatsKey = 'keepPracticing';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.rounding-decimals.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.lastStatsKey = null;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => RoundingRoller.init());
+      } else {
+        RoundingRoller.init();
+      }
+    });
+  </script>
+  <style>
+    /* Rounding Roller specific styles */
+
+    .rounding-prompt {
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-4);
+    }
+
+    .round-place {
+      color: #7c3aed;
+      font-weight: var(--weight-bold);
+    }
+
+    .number-display {
+      text-align: center;
+      margin-bottom: var(--space-5);
+    }
+
+    .target-number {
+      display: inline-block;
+      font-family: var(--font-secondary);
+      font-size: var(--text-5xl);
+      font-weight: var(--weight-bold);
+      color: #0f766e;
+      background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+      padding: var(--space-3) var(--space-6);
+      border-radius: var(--radius-xl);
+      border: 4px solid #14b8a6;
+      box-shadow: 0 4px 0 rgba(13, 148, 136, 0.4);
+    }
+
+    .number-line-container {
+      margin: 0 auto var(--space-6);
+      max-width: 400px;
+      padding: 0 var(--space-4);
+    }
+
+    .number-line {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+    }
+
+    .line-endpoint {
+      flex-shrink: 0;
+    }
+
+    .endpoint-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-600);
+      background: white;
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-md);
+      border: 2px solid var(--color-neutral-300);
+    }
+
+    .line-track {
+      flex: 1;
+      height: 8px;
+      background: linear-gradient(90deg, #fecaca, #fde68a, #bbf7d0);
+      border-radius: var(--radius-full);
+      position: relative;
+      border: 2px solid var(--color-neutral-300);
+    }
+
+    .line-marker {
+      position: absolute;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+      border: 3px solid white;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 2px 8px rgba(124, 58, 237, 0.4);
+      z-index: 1;
+    }
+
+    .line-midpoint {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 4px;
+      height: 16px;
+      background: var(--color-neutral-400);
+      transform: translate(-50%, -50%);
+      border-radius: var(--radius-sm);
+    }
+
+    .number-line-hint {
+      text-align: center;
+      font-size: var(--text-base);
+      color: var(--color-neutral-600);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 2px solid #f59e0b;
+    }
+
+    .deciding-digit {
+      display: inline-block;
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+      background: white;
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-md);
+      border: 2px solid #f59e0b;
+      margin-left: var(--space-2);
+    }
+
+    .choices-container {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .number-choice {
+      min-width: 100px;
+      height: 60px;
+      padding: var(--space-2) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 4px solid #0ea5e9;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #0284c7;
+      color: #0369a1;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .number-choice:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 #0284c7;
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+    }
+
+    .number-choice:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 #0284c7;
+    }
+
+    .number-choice:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.35), 0 4px 0 #0284c7;
+    }
+
+    .number-choice:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .number-choice.selected {
+      background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+      border-color: #8b5cf6;
+      box-shadow: 0 4px 0 #7c3aed;
+      color: #5b21b6;
+    }
+
+    .number-choice.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      color: #166534;
+    }
+
+    .number-choice.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      box-shadow: 0 4px 0 #dc2626;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 767px) {
+      .target-number {
+        font-size: var(--text-4xl);
+        padding: var(--space-2) var(--space-4);
+      }
+
+      .number-line-container {
+        max-width: 320px;
+      }
+
+      .endpoint-value {
+        font-size: var(--text-base);
+      }
+
+      .deciding-digit {
+        font-size: var(--text-lg);
+      }
+
+      .number-choice {
+        min-width: 85px;
+        height: 54px;
+        font-size: var(--text-lg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .rounding-prompt {
+        font-size: var(--text-lg);
+      }
+
+      .target-number {
+        font-size: var(--text-3xl);
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .number-line-container {
+        max-width: 280px;
+      }
+
+      .endpoint-value {
+        font-size: var(--text-sm);
+      }
+
+      .line-marker {
+        width: 16px;
+        height: 16px;
+      }
+
+      .number-choice {
+        min-width: 76px;
+        height: 50px;
+        font-size: var(--text-base);
+        border-width: 3px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

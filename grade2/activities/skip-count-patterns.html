@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Skip Count Patterns - Grade 2 Math Activity - Meadow Math">
+  <title>Skip Count Patterns - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade2">Grade 2</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🎵</span>
+            <span data-i18n="section.activities.skip-count-patterns.title">Skip Count Patterns</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.skip-count-patterns.description">Use patterns to skip count by 2s, 5s, and 10s!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Pattern Hint -->
+          <div class="pattern-hint" id="pattern-hint">
+            <span class="hint-label" data-i18n="section.activities.skip-count-patterns.countBy">Count by:</span>
+            <span class="hint-badge" id="hint-badge">+2</span>
+          </div>
+
+          <!-- Instruction -->
+          <div class="question-text" id="instruction">
+            <span data-i18n="section.activities.skip-count-patterns.fillInMissing">Fill in the missing numbers!</span>
+          </div>
+
+          <!-- Sequence Display -->
+          <div class="sequence-container" id="sequence-container"></div>
+
+          <!-- Choice Buttons -->
+          <div class="choice-container" id="choice-container"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great skip counting!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Skip Count Patterns Activity - Grade 2 Level 3
+    const SkipCountPatterns = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      skipBy: 2,
+      currentSequence: [],
+      missingIndices: [],
+      currentMissingIndex: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      sequenceContainer: null,
+      choiceContainer: null,
+      feedback: null,
+      progress: null,
+      hintBadge: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.sequenceContainer = document.getElementById('sequence-container');
+        this.choiceContainer = document.getElementById('choice-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.hintBadge = document.getElementById('hint-badge');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Dynamic translations are handled automatically via data-i18n
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      },
+
+      generateSequence() {
+        // Progressive difficulty - vary skip amounts
+        // Focus on 2s, 5s, 10s for array/equal groups foundations
+        if (this.currentQuestion < 3) {
+          this.skipBy = 2;
+        } else if (this.currentQuestion < 6) {
+          this.skipBy = 5;
+        } else if (this.currentQuestion < 8) {
+          this.skipBy = 10;
+        } else {
+          // Mix it up for last rounds
+          this.skipBy = [2, 5, 10][this.randomInt(0, 2)];
+        }
+
+        // Generate starting number based on skip amount
+        // Keep sequences within 0-100 for Level 3
+        let start;
+        let sequenceLength = 6; // Show 6 numbers
+
+        if (this.skipBy === 2) {
+          // Start between 0 and 80 (so max is ~92)
+          start = this.randomInt(0, 8) * 2;
+        } else if (this.skipBy === 5) {
+          // Start between 0 and 70
+          start = this.randomInt(0, 7) * 5;
+        } else {
+          // Skip by 10, start between 0 and 50
+          start = this.randomInt(0, 5) * 10;
+        }
+
+        // Generate sequence
+        this.currentSequence = [];
+        for (let i = 0; i < sequenceLength; i++) {
+          this.currentSequence.push(start + i * this.skipBy);
+        }
+
+        // Pick 1-2 missing positions (not first or last)
+        const availableIndices = [1, 2, 3, 4]; // indices 1-4 can be missing
+        this.shuffleArray(availableIndices);
+
+        // For easier rounds, just 1 missing; for harder, 2 missing
+        const numMissing = this.currentQuestion < 5 ? 1 : 2;
+        this.missingIndices = availableIndices.slice(0, numMissing).sort((a, b) => a - b);
+        this.currentMissingIndex = 0;
+        this.isAnswered = false;
+      },
+
+      startQuestion() {
+        this.generateSequence();
+        if (this.hintBadge) {
+          this.hintBadge.textContent = `+${this.skipBy}`;
+          // Color-code by skip amount
+          this.hintBadge.className = 'hint-badge skip-' + this.skipBy;
+        }
+        this.renderSequence();
+        this.renderChoices();
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      renderSequence() {
+        this.sequenceContainer.innerHTML = '';
+
+        this.currentSequence.forEach((num, index) => {
+          const numBox = document.createElement('div');
+          numBox.className = 'number-box';
+          numBox.dataset.index = index;
+
+          if (this.missingIndices.includes(index)) {
+            if (index === this.missingIndices[this.currentMissingIndex]) {
+              // Current missing - show as question
+              numBox.classList.add('missing', 'current');
+              numBox.innerHTML = `<span class="missing-mark">?</span>`;
+            } else if (index < this.missingIndices[this.currentMissingIndex]) {
+              // Already filled
+              numBox.classList.add('filled');
+              numBox.innerHTML = `<span class="number-value">${num}</span>`;
+            } else {
+              // Future missing
+              numBox.classList.add('missing');
+              numBox.innerHTML = `<span class="missing-mark">?</span>`;
+            }
+          } else {
+            numBox.innerHTML = `<span class="number-value">${num}</span>`;
+          }
+
+          this.sequenceContainer.appendChild(numBox);
+
+          // Add arrow between numbers (except after last)
+          if (index < this.currentSequence.length - 1) {
+            const arrow = document.createElement('div');
+            arrow.className = 'sequence-arrow';
+            arrow.textContent = '→';
+            this.sequenceContainer.appendChild(arrow);
+          }
+        });
+      },
+
+      renderChoices() {
+        this.choiceContainer.innerHTML = '';
+
+        if (this.isAnswered) return;
+
+        const currentMissing = this.missingIndices[this.currentMissingIndex];
+        const correctAnswer = this.currentSequence[currentMissing];
+        const choices = [correctAnswer];
+
+        // Generate distractors
+        const distractors = [];
+
+        // Off-pattern distractors (wrong skip amounts)
+        for (let offset of [-1, 1, -2, 2]) {
+          const d = correctAnswer + offset;
+          if (d >= 0 && d <= 100 && !choices.includes(d)) {
+            distractors.push(d);
+          }
+        }
+
+        // On-pattern but wrong position
+        for (let mult of [-2, -1, 1, 2]) {
+          const d = correctAnswer + mult * this.skipBy;
+          if (d >= 0 && d <= 100 && !choices.includes(d) && !distractors.includes(d)) {
+            distractors.push(d);
+          }
+        }
+
+        this.shuffleArray(distractors);
+        choices.push(...distractors.slice(0, 3));
+        this.shuffleArray(choices);
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.textContent = choice;
+          btn.dataset.value = choice;
+          btn.addEventListener('click', () => this.selectChoice(choice));
+          this.choiceContainer.appendChild(btn);
+        });
+      },
+
+      selectChoice(value) {
+        if (this.isAnswered) return;
+
+        const currentMissing = this.missingIndices[this.currentMissingIndex];
+        const correctAnswer = this.currentSequence[currentMissing];
+        const isCorrect = value === correctAnswer;
+
+        // Update the number box
+        const missingBox = this.sequenceContainer.querySelector(`.number-box[data-index="${currentMissing}"]`);
+        if (missingBox) {
+          missingBox.innerHTML = `<span class="number-value">${correctAnswer}</span>`;
+          missingBox.classList.remove('missing', 'current');
+          missingBox.classList.add('filled', isCorrect ? 'correct' : 'incorrect');
+        }
+
+        if (isCorrect) {
+          // Check if there are more missing numbers
+          this.currentMissingIndex++;
+          if (this.currentMissingIndex < this.missingIndices.length) {
+            // More to fill - update display and continue
+            this.renderSequence();
+            this.renderChoices();
+            return;
+          }
+
+          // All filled correctly
+          this.correctCount++;
+          this.isAnswered = true;
+          this.choiceContainer.innerHTML = '';
+
+          // Show the pattern explanation
+          const patternText = this.currentSequence.join(', ');
+          this.feedback.textContent = window.i18n ? i18n.t('feedback.correct') + ' 🎵' : '✓ Correct! 🎵';
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          this.isAnswered = true;
+          this.choiceContainer.innerHTML = '';
+
+          // Fill all remaining missing with correct answers
+          this.missingIndices.forEach(idx => {
+            const box = this.sequenceContainer.querySelector(`.number-box[data-index="${idx}"]`);
+            if (box && box.classList.contains('missing')) {
+              box.innerHTML = `<span class="number-value">${this.currentSequence[idx]}</span>`;
+              box.classList.remove('missing', 'current');
+              box.classList.add('filled');
+            }
+          });
+
+          this.feedback.textContent = window.i18n
+            ? i18n.t('feedback.tryAgain') + ` ${window.i18n ? i18n.t('section.activities.skip-count-patterns.thePatternIs') : 'The pattern is:'} +${this.skipBy}`
+            : `✗ The pattern is: +${this.skipBy}`;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.currentMissingIndex = 0;
+        this.isAnswered = false;
+        this.renderSequence();
+        this.renderChoices();
+        this.feedback.classList.remove('show', 'error');
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.skip-count-patterns.perfect') : 'Amazing pattern skills!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🎵';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.skip-count-patterns.great') : 'Great skip counting!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.skip-count-patterns.keepPracticing') : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => SkipCountPatterns.init());
+      } else {
+        SkipCountPatterns.init();
+      }
+    });
+  </script>
+  <style>
+    /* Skip Count Patterns specific styles */
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-4);
+      text-align: center;
+    }
+
+    .pattern-hint {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .hint-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+    }
+
+    .hint-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+    }
+
+    /* Color-coded hint badges by skip amount */
+    .hint-badge.skip-2 {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border: 2px solid #3b82f6;
+      color: #1e40af;
+    }
+
+    .hint-badge.skip-5 {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid #f59e0b;
+      color: #92400e;
+    }
+
+    .hint-badge.skip-10 {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border: 2px solid #22c55e;
+      color: #166534;
+    }
+
+    /* Sequence Container */
+    .sequence-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-1);
+      margin: var(--space-6) 0;
+      flex-wrap: wrap;
+      padding: var(--space-4);
+    }
+
+    .number-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 3px solid var(--color-primary-light);
+      border-radius: var(--radius-lg);
+      transition: all 0.3s ease;
+    }
+
+    .number-box .number-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+    }
+
+    .number-box.missing {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+    }
+
+    .number-box.missing.current {
+      animation: pulse 1s ease-in-out infinite;
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.3);
+    }
+
+    .number-box .missing-mark {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+    }
+
+    .number-box.filled {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+    }
+
+    .number-box.filled .number-value {
+      color: #166534;
+    }
+
+    .number-box.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+    }
+
+    .number-box.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+    }
+
+    .sequence-arrow {
+      font-size: var(--text-xl);
+      color: var(--color-neutral-400);
+      padding: 0 var(--space-1);
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Choice Container */
+    .choice-container {
+      display: grid;
+      grid-template-columns: repeat(2, 90px);
+      justify-content: center;
+      gap: var(--space-3);
+      margin: var(--space-4) auto;
+    }
+
+    .choice-btn {
+      width: 90px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #ffffff, #f8fafc);
+      border: 3px solid var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 0 var(--color-neutral-300);
+    }
+
+    .choice-btn:hover {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: #3b82f6;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 #2563eb;
+    }
+
+    .choice-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 1px 0 var(--color-neutral-300);
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .sequence-container {
+        gap: var(--space-1);
+        padding: var(--space-2);
+      }
+
+      .number-box {
+        width: 55px;
+        height: 55px;
+      }
+
+      .number-box .number-value,
+      .number-box .missing-mark {
+        font-size: var(--text-xl);
+      }
+
+      .sequence-arrow {
+        font-size: var(--text-base);
+        padding: 0;
+      }
+
+      .choice-container {
+        grid-template-columns: repeat(2, 80px);
+        gap: var(--space-2);
+      }
+
+      .choice-btn {
+        width: 80px;
+        height: 80px;
+        font-size: var(--text-xl);
+      }
+
+      .hint-badge {
+        font-size: var(--text-base);
+        padding: var(--space-1) var(--space-2);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .number-box {
+        width: 48px;
+        height: 48px;
+      }
+
+      .number-box .number-value,
+      .number-box .missing-mark {
+        font-size: var(--text-lg);
+      }
+
+      .choice-container {
+        grid-template-columns: repeat(2, 70px);
+      }
+
+      .choice-btn {
+        width: 70px;
+        height: 70px;
+        font-size: var(--text-lg);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

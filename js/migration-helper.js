@@ -16,55 +16,55 @@ const MigrationHelper = {
    */
   analyze() {
     console.group('🔍 Activity Refactoring Analysis');
-    
+
     const suggestions = [];
     const warnings = [];
-    
+
     // Check if using shared ActivityBase
     if (!window.ActivityBase) {
       warnings.push('⚠️ ActivityBase not loaded - include ../../js/activity-base.js');
     } else {
       suggestions.push('✓ ActivityBase is available');
     }
-    
+
     // Check if using shared ActivityComponents
     if (!window.ActivityComponents) {
       warnings.push('⚠️ ActivityComponents not loaded - include ../../js/activity-components.js');
     } else {
       suggestions.push('✓ ActivityComponents is available');
     }
-    
+
     // Check for shared CSS
     this.checkForSharedCSS(suggestions, warnings);
-    
+
     // Check for common elements that could use shared classes
     this.checkForCommonElements(suggestions, warnings);
-    
+
     // Check for duplicate code patterns
     this.checkForDuplicatePatterns(suggestions, warnings);
-    
+
     // Display results
     console.log('\n📋 Suggestions:');
     suggestions.forEach(s => console.log(s));
-    
+
     if (warnings.length > 0) {
       console.log('\n⚠️ Warnings:');
       warnings.forEach(w => console.log(w));
     }
-    
+
     this.printNextSteps();
-    
+
     console.groupEnd();
-    
+
     return { suggestions, warnings };
   },
-  
+
   /**
    * Check for shared CSS files
    */
   checkForSharedCSS(suggestions, warnings) {
     const stylesheets = Array.from(document.styleSheets);
-    
+
     const hasActivityCSS = stylesheets.some(sheet => {
       try {
         return sheet.href && sheet.href.includes('activity.css');
@@ -72,13 +72,13 @@ const MigrationHelper = {
         return false;
       }
     });
-    
+
     if (hasActivityCSS) {
       suggestions.push('✓ activity.css is loaded');
     } else {
       warnings.push('⚠️ activity.css not found');
     }
-    
+
     const hasSharedCSS = stylesheets.some(sheet => {
       try {
         return sheet.href && sheet.href.includes('activity-shared.css');
@@ -86,12 +86,12 @@ const MigrationHelper = {
         return false;
       }
     });
-    
+
     if (hasSharedCSS) {
       suggestions.push('✓ activity-shared.css is loaded');
     }
   },
-  
+
   /**
    * Check for common elements
    */
@@ -104,7 +104,7 @@ const MigrationHelper = {
       'btn-play-again': 'Play again button',
       'btn-reset': 'Reset button'
     };
-    
+
     for (const [id, name] of Object.entries(elements)) {
       const el = document.getElementById(id);
       if (el) {
@@ -112,14 +112,14 @@ const MigrationHelper = {
       }
     }
   },
-  
+
   /**
    * Check for duplicate patterns in inline scripts
    */
   checkForDuplicatePatterns(suggestions, warnings) {
     const scripts = Array.from(document.querySelectorAll('script:not([src])'));
     const scriptContent = scripts.map(s => s.textContent).join('\n');
-    
+
     const patterns = {
       'correctCount': 'Use incrementCorrect()',
       'incorrectCount': 'Use incrementIncorrect()',
@@ -132,7 +132,7 @@ const MigrationHelper = {
       'escapeHtml': 'Use this.escapeHtml()',
       '\\.disabled\\s*=': 'Use this.disableButtons()/enableButtons()'
     };
-    
+
     for (const [pattern, suggestion] of Object.entries(patterns)) {
       const regex = new RegExp(pattern, 'i');
       if (regex.test(scriptContent)) {
@@ -140,7 +140,7 @@ const MigrationHelper = {
       }
     }
   },
-  
+
   /**
    * Print next steps
    */
@@ -159,14 +159,14 @@ const MigrationHelper = {
     console.log('');
     console.log('4. Test thoroughly!');
   },
-  
+
   /**
    * Generate a template for a refactored activity
    */
   generateTemplate(activityId, activityName, gradeLevel = 'grade1') {
     const className = this.toPascalCase(activityId);
     const backToKey = gradeLevel === 'prek' ? 'nav.prek' : `nav.${gradeLevel}`;
-    
+
     const template = `
 /**
  * ${activityName} Activity
@@ -187,10 +187,10 @@ class ${className} extends ActivityBase {
       gradeLevel: '${gradeLevel}',
       autoAdvanceDelay: 1500
     });
-    
+
     // Activity-specific properties
     this.currentAnswer = null;
-    
+
     // Activity-specific DOM elements (assigned in init)
     this.questionEl = null;
     this.choicesContainer = null;
@@ -202,14 +202,14 @@ class ${className} extends ActivityBase {
   init() {
     // Initialize base class (DOM refs, event listeners, translations)
     super.init();
-    
+
     // Get activity-specific DOM elements
     this.questionEl = document.getElementById('question');
     this.choicesContainer = document.getElementById('choices-container');
-    
+
     // Set up activity-specific event listeners
     // ...
-    
+
     // Start the activity
     this.nextRound();
   }
@@ -221,10 +221,10 @@ class ${className} extends ActivityBase {
   startRound() {
     // Generate question
     this.generateQuestion();
-    
+
     // Generate answer choices
     this.generateChoices();
-    
+
     // Render UI
     this.renderQuestion();
     this.renderChoices();
@@ -260,7 +260,7 @@ class ${className} extends ActivityBase {
    */
   renderChoices() {
     if (!this.choicesContainer) return;
-    
+
     this.choicesContainer.innerHTML = '';
     // Create choice buttons...
   }
@@ -271,12 +271,12 @@ class ${className} extends ActivityBase {
   selectAnswer(answer, buttonEl) {
     if (this.isAnswered) return;
     this.isAnswered = true;
-    
+
     // Disable all buttons
     this.disableButtons(this.choicesContainer);
-    
+
     const correct = answer === this.currentAnswer;
-    
+
     if (correct) {
       this.incrementCorrect();
       buttonEl.classList.add('correct');
@@ -287,7 +287,7 @@ class ${className} extends ActivityBase {
       this.showFeedback('Try again!', true);
       // Optionally highlight correct answer
     }
-    
+
     // Auto-advance to next round
     this.autoAdvance();
   }
@@ -323,14 +323,14 @@ document.addEventListener('DOMContentLoaded', () => {
   activity.init();
 });
     `.trim();
-    
+
     console.group(`📝 Generated Template for ${activityName}`);
     console.log(template);
     console.groupEnd();
-    
+
     return template;
   },
-  
+
   /**
    * Convert kebab-case to PascalCase
    */
@@ -340,19 +340,19 @@ document.addEventListener('DOMContentLoaded', () => {
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join('');
   },
-  
+
   /**
    * List all activities that could be refactored
    */
   listActivities() {
     console.group('📚 Activities to Refactor');
-    
+
     // This would need to be run from a page that can access the file system
     // For now, just print instructions
     console.log('Run this command in terminal to list activities:');
     console.log('ls prek/activities/*.html | wc -l');
     console.log('ls grade1/activities/*.html | wc -l');
-    
+
     console.groupEnd();
   }
 };

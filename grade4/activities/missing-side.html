@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Find the Missing Side - Grade 4 Math Activity - Meadow Math">
+  <title>Find the Missing Side - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link">
+            <span data-i18n="activity.backTo">← Back to</span>
+            <span data-i18n="nav.grade4">Grade 4</span>
+          </a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🕵️</span>
+            <span data-i18n="section.activities.missing-side.title">Find the Missing Side</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.missing-side.instruction">Use what you know to find the missing side!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <div class="question-card" aria-live="polite">
+            <p class="question-text" id="question-text"></p>
+          </div>
+          <p class="question-hint" id="question-hint"></p>
+
+          <div class="shape-card">
+            <div class="shape-title" data-i18n="section.activities.missing-side.shapeTitle">Mystery Rectangle</div>
+            <div class="shape-display" id="shape-display" role="img">
+              <div class="shape-rectangle" id="shape-rectangle" aria-hidden="true">
+                <span class="side-label top" id="side-top"></span>
+                <span class="side-label bottom" id="side-bottom"></span>
+                <span class="side-label left" id="side-left"></span>
+                <span class="side-label right" id="side-right"></span>
+              </div>
+            </div>
+            <p class="shape-hint" id="shape-hint" data-i18n="section.activities.missing-side.shapeHint">Opposite sides are equal.</p>
+          </div>
+
+          <div class="choices-container" id="choices-container" role="group" data-i18n-title="section.activities.missing-side.choicesLabel"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.missing-side.great">Great reasoning!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Find the Missing Side Activity - Grade 4 Level 4
+    const MissingSide = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      minSide: 3,
+      maxSide: 12,
+      questions: [],
+      currentItem: null,
+      isAnswered: false,
+      lastResult: null,
+      advanceTimeout: null,
+
+      progress: null,
+      questionText: null,
+      questionHint: null,
+      shapeDisplay: null,
+      shapeRectangle: null,
+      sideTop: null,
+      sideBottom: null,
+      sideLeft: null,
+      sideRight: null,
+      choicesContainer: null,
+      feedback: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+      choiceButtons: [],
+
+      init() {
+        this.progress = document.getElementById('progress');
+        this.questionText = document.getElementById('question-text');
+        this.questionHint = document.getElementById('question-hint');
+        this.shapeDisplay = document.getElementById('shape-display');
+        this.shapeRectangle = document.getElementById('shape-rectangle');
+        this.sideTop = document.getElementById('side-top');
+        this.sideBottom = document.getElementById('side-bottom');
+        this.sideLeft = document.getElementById('side-left');
+        this.sideRight = document.getElementById('side-right');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.feedback = document.getElementById('feedback');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) {
+            return text;
+          }
+        }
+        return fallback;
+      },
+
+      formatValue(value) {
+        if (typeof formatNumber === 'function') {
+          return formatNumber(value);
+        }
+        return value.toString();
+      },
+
+      applyTemplate(template, replacements) {
+        return Object.entries(replacements).reduce((text, [key, value]) => {
+          return text.split(`{${key}}`).join(value);
+        }, template);
+      },
+
+      getUnitsLabel() {
+        return this.getTranslation('section.activities.missing-side.unitsLabel', 'units');
+      },
+
+      getSquareUnitsLabel() {
+        return this.getTranslation('section.activities.missing-side.squareUnitsLabel', 'square units');
+      },
+
+      generateQuestions() {
+        const modes = [];
+        const areaCount = Math.floor(this.totalQuestions / 2);
+        for (let i = 0; i < areaCount; i++) {
+          modes.push('area');
+        }
+        while (modes.length < this.totalQuestions) {
+          modes.push('perimeter');
+        }
+        const shuffledModes = shuffle(modes);
+        const usedKeys = new Set();
+
+        this.questions = shuffledModes.map((mode) => {
+          let question = null;
+          let key = '';
+          let attempts = 0;
+          do {
+            question = this.createQuestion(mode);
+            key = this.getQuestionKey(question);
+            attempts++;
+          } while (usedKeys.has(key) && attempts < 25);
+          usedKeys.add(key);
+          return question;
+        });
+      },
+
+      createQuestion(mode) {
+        const width = randomInt(this.minSide, this.maxSide);
+        const height = randomInt(this.minSide, this.maxSide);
+        const missing = Math.random() < 0.5 ? 'width' : 'height';
+        const area = width * height;
+        const perimeter = 2 * (width + height);
+        const missingValue = missing === 'width' ? width : height;
+        const knownValue = missing === 'width' ? height : width;
+
+        return {
+          mode,
+          width,
+          height,
+          missing,
+          area,
+          perimeter,
+          missingValue,
+          knownValue
+        };
+      },
+
+      getQuestionKey(question) {
+        return `${question.mode}-${question.width}-${question.height}-${question.missing}`;
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.lastResult = null;
+        this.feedback.classList.remove('show', 'error');
+
+        this.currentItem = this.questions[this.currentQuestion];
+        if (!this.currentItem) {
+          this.showStats();
+          return;
+        }
+
+        this.renderQuestion();
+        this.renderRectangle();
+        this.renderChoices();
+        this.renderProgress();
+      },
+
+      renderQuestion() {
+        if (!this.currentItem) return;
+        const unitsLabel = this.getUnitsLabel();
+        const squareUnitsLabel = this.getSquareUnitsLabel();
+
+        if (this.currentItem.mode === 'area') {
+          const template = this.getTranslation(
+            'section.activities.missing-side.promptArea',
+            'Area = {area} {squareUnits}. One side is {known} {units}. What is the missing side length?'
+          );
+          this.questionText.textContent = this.applyTemplate(template, {
+            area: this.formatValue(this.currentItem.area),
+            squareUnits: squareUnitsLabel,
+            known: this.formatValue(this.currentItem.knownValue),
+            units: unitsLabel
+          });
+          this.questionHint.textContent = this.getTranslation(
+            'section.activities.missing-side.areaHint',
+            'Area = length × width'
+          );
+        } else {
+          const template = this.getTranslation(
+            'section.activities.missing-side.promptPerimeter',
+            'Perimeter = {perimeter} {units}. One side is {known} {units}. What is the missing side length?'
+          );
+          this.questionText.textContent = this.applyTemplate(template, {
+            perimeter: this.formatValue(this.currentItem.perimeter),
+            known: this.formatValue(this.currentItem.knownValue),
+            units: unitsLabel
+          });
+          this.questionHint.textContent = this.getTranslation(
+            'section.activities.missing-side.perimeterHint',
+            'Perimeter = 2 × (length + width)'
+          );
+        }
+
+        const shapeTemplate = this.getTranslation(
+          'section.activities.missing-side.shapeAria',
+          'Rectangle with one missing side and a known side of {known} {units}'
+        );
+        this.shapeDisplay.setAttribute(
+          'aria-label',
+          this.applyTemplate(shapeTemplate, {
+            known: this.formatValue(this.currentItem.knownValue),
+            units: unitsLabel
+          })
+        );
+      },
+
+      renderRectangle() {
+        if (!this.currentItem) return;
+        const { width, height, missing } = this.currentItem;
+
+        const maxWidth = 280;
+        const maxHeight = 200;
+        const scale = Math.min(maxWidth / width, maxHeight / height);
+        const rectWidth = Math.round(width * scale);
+        const rectHeight = Math.round(height * scale);
+
+        this.shapeRectangle.style.width = `${rectWidth}px`;
+        this.shapeRectangle.style.height = `${rectHeight}px`;
+
+        const widthLabel = missing === 'width' ? '?' : this.formatValue(width);
+        const heightLabel = missing === 'height' ? '?' : this.formatValue(height);
+
+        this.updateSideLabel(this.sideTop, widthLabel, missing === 'width');
+        this.updateSideLabel(this.sideBottom, widthLabel, missing === 'width');
+        this.updateSideLabel(this.sideLeft, heightLabel, missing === 'height');
+        this.updateSideLabel(this.sideRight, heightLabel, missing === 'height');
+      },
+
+      updateSideLabel(element, text, isMissing) {
+        if (!element) return;
+        element.textContent = text;
+        element.classList.toggle('missing', isMissing);
+      },
+
+      renderChoices() {
+        if (!this.currentItem) return;
+        const choices = this.generateChoices(this.currentItem);
+        const unitsLabel = this.getUnitsLabel();
+        const choiceTemplate = this.getTranslation(
+          'section.activities.missing-side.choiceLabel',
+          '{value} {units}'
+        );
+
+        this.choicesContainer.innerHTML = '';
+        choices.forEach((value) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'choice-btn';
+          button.dataset.value = value;
+          button.innerHTML = `
+            <span class="choice-value">${this.formatValue(value)}</span>
+            <span class="choice-unit">${unitsLabel}</span>
+          `;
+          button.setAttribute(
+            'aria-label',
+            this.applyTemplate(choiceTemplate, {
+              value: this.formatValue(value),
+              units: unitsLabel
+            })
+          );
+          button.addEventListener('click', () => this.checkAnswer(button));
+          this.choicesContainer.appendChild(button);
+        });
+
+        this.choiceButtons = Array.from(this.choicesContainer.querySelectorAll('.choice-btn'));
+      },
+
+      generateChoices(question) {
+        const choices = new Set([question.missingValue]);
+        const candidatePool = [question.knownValue];
+
+        if (question.mode === 'area') {
+          const estimate = Math.round(question.area / 2);
+          if (estimate !== question.missingValue) {
+            candidatePool.push(estimate);
+          }
+        } else {
+          const halfPerimeter = Math.round(question.perimeter / 2);
+          if (halfPerimeter !== question.missingValue) {
+            candidatePool.push(halfPerimeter);
+          }
+        }
+
+        candidatePool.forEach((candidate) => {
+          if (candidate > 0) {
+            choices.add(candidate);
+          }
+        });
+
+        let attempts = 0;
+        while (choices.size < 4 && attempts < 40) {
+          const offset = randomInt(1, 4);
+          const sign = Math.random() < 0.5 ? -1 : 1;
+          const candidate = question.missingValue + sign * offset;
+          if (candidate > 0) {
+            choices.add(candidate);
+          }
+          attempts++;
+        }
+
+        return shuffle(Array.from(choices)).slice(0, 4);
+      },
+
+      checkAnswer(button) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+        this.clearAdvanceTimeout();
+
+        const selectedValue = parseInt(button.dataset.value, 10);
+        const correctValue = this.currentItem.missingValue;
+        const isCorrect = selectedValue === correctValue;
+
+        this.choiceButtons.forEach((btn) => {
+          btn.disabled = true;
+          if (parseInt(btn.dataset.value, 10) === correctValue) {
+            btn.classList.add('correct');
+          }
+        });
+
+        if (isCorrect) {
+          this.correctCount += 1;
+          button.classList.add('correct');
+          if (typeof celebrate === 'function') {
+            celebrate(this.shapeRectangle);
+          }
+        } else {
+          this.incorrectCount += 1;
+          button.classList.add('incorrect');
+          if (typeof wiggle === 'function') {
+            wiggle(this.shapeRectangle);
+          }
+        }
+
+        this.lastResult = {
+          isCorrect,
+          value: correctValue
+        };
+
+        this.showFeedback(isCorrect, correctValue);
+
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.currentQuestion += 1;
+            this.startQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      showFeedback(isCorrect, value) {
+        const unitsLabel = this.getUnitsLabel();
+        const key = isCorrect ? 'section.activities.missing-side.correct' : 'section.activities.missing-side.wrong';
+        const fallback = isCorrect
+          ? 'Correct! The missing side is {value} {units}.'
+          : 'The missing side is {value} {units}.';
+        const template = this.getTranslation(key, fallback);
+        this.feedback.textContent = this.applyTemplate(template, {
+          value: this.formatValue(value),
+          units: unitsLabel
+        });
+        this.feedback.classList.add('show');
+        if (isCorrect) {
+          this.feedback.classList.remove('error');
+        } else {
+          this.feedback.classList.add('error');
+        }
+      },
+
+      updateTranslations() {
+        this.renderQuestion();
+        this.updateChoiceLabels();
+
+        if (this.lastResult && this.feedback.classList.contains('show')) {
+          this.showFeedback(this.lastResult.isCorrect, this.lastResult.value);
+        }
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+
+        this.updateProgressLabel();
+      },
+
+      updateChoiceLabels() {
+        if (!this.choiceButtons.length) return;
+        const unitsLabel = this.getUnitsLabel();
+        const choiceTemplate = this.getTranslation(
+          'section.activities.missing-side.choiceLabel',
+          '{value} {units}'
+        );
+
+        this.choiceButtons.forEach((button) => {
+          const value = parseInt(button.dataset.value, 10);
+          const valueEl = button.querySelector('.choice-value');
+          const unitEl = button.querySelector('.choice-unit');
+          if (valueEl) valueEl.textContent = this.formatValue(value);
+          if (unitEl) unitEl.textContent = unitsLabel;
+          button.setAttribute(
+            'aria-label',
+            this.applyTemplate(choiceTemplate, {
+              value: this.formatValue(value),
+              units: unitsLabel
+            })
+          );
+        });
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const ratio = this.correctCount / this.totalQuestions;
+        if (ratio === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.missing-side.perfect',
+            'Perfect side-finding!'
+          );
+        } else if (ratio >= 0.75) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.missing-side.great',
+            'Great reasoning!'
+          );
+        } else if (ratio >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.missing-side.good',
+            'Nice work!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.missing-side.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.lastResult = null;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => MissingSide.init());
+      } else {
+        MissingSide.init();
+      }
+    });
+  </script>
+  <style>
+    /* Find the Missing Side specific styles */
+
+    .question-card {
+      width: 100%;
+      max-width: 680px;
+      padding: var(--space-4) var(--space-5);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border: 3px solid #a78bfa;
+      box-shadow: 0 4px 0 #8b5cf6;
+      text-align: center;
+      margin-bottom: var(--space-3);
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #5b21b6;
+    }
+
+    .question-hint {
+      text-align: center;
+      font-size: var(--text-sm);
+      color: var(--color-neutral-500);
+      margin-bottom: var(--space-5);
+    }
+
+    .shape-card {
+      width: 100%;
+      max-width: 520px;
+      padding: var(--space-4);
+      border-radius: var(--radius-2xl);
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      border: 3px solid #22d3ee;
+      box-shadow: 0 4px 0 #0ea5e9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+    }
+
+    .shape-title {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #0f766e;
+    }
+
+    .shape-display {
+      width: 100%;
+      min-height: 220px;
+      background: #f0fdfa;
+      border-radius: var(--radius-xl);
+      border: 2px dashed #99f6e4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-4);
+    }
+
+    .shape-rectangle {
+      position: relative;
+      background: linear-gradient(135deg, #fef9c3, #fde68a);
+      border: 4px solid #f59e0b;
+      border-radius: var(--radius-lg);
+      box-shadow: inset 0 0 0 2px #fef3c7;
+    }
+
+    .side-label {
+      position: absolute;
+      background: #ffffff;
+      border: 2px solid #0ea5e9;
+      border-radius: var(--radius-lg);
+      padding: 4px 10px;
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #0c4a6e;
+      min-width: 44px;
+      text-align: center;
+      box-shadow: 0 2px 0 rgba(15, 118, 110, 0.2);
+    }
+
+    .side-label.top {
+      top: -18px;
+      left: 50%;
+      transform: translate(-50%, -100%);
+    }
+
+    .side-label.bottom {
+      bottom: -18px;
+      left: 50%;
+      transform: translate(-50%, 100%);
+    }
+
+    .side-label.left {
+      left: -18px;
+      top: 50%;
+      transform: translate(-100%, -50%);
+    }
+
+    .side-label.right {
+      right: -18px;
+      top: 50%;
+      transform: translate(100%, -50%);
+    }
+
+    .side-label.missing {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+
+    .shape-hint {
+      margin: 0;
+      font-size: var(--text-sm);
+      color: #0f766e;
+      font-weight: var(--weight-semibold);
+    }
+
+    .choices-container {
+      width: 100%;
+      max-width: 420px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(140px, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .choice-btn {
+      min-height: 76px;
+      padding: var(--space-2) var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 4px solid #38bdf8;
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 #0284c7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-1);
+    }
+
+    .choice-value {
+      font-size: var(--text-2xl);
+    }
+
+    .choice-unit {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-500);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 #0284c7;
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 #0284c7;
+    }
+
+    .choice-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4), 0 4px 0 #0284c7;
+    }
+
+    .choice-btn:disabled {
+      opacity: 0.75;
+      cursor: not-allowed;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      box-shadow: 0 4px 0 #dc2626;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 720px) {
+      .question-card {
+        padding: var(--space-3) var(--space-4);
+      }
+
+      .question-text {
+        font-size: var(--text-base);
+      }
+
+      .shape-card {
+        padding: var(--space-3);
+      }
+
+      .shape-display {
+        min-height: 200px;
+      }
+
+      .choices-container {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+      }
+
+      .choice-btn {
+        min-height: 72px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .shape-display {
+        min-height: 180px;
+      }
+
+      .side-label {
+        font-size: var(--text-sm);
+        padding: 3px 8px;
+      }
+
+      .choice-btn {
+        min-height: 68px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

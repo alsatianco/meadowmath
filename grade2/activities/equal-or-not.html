@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Which Parts Are Equal? - Grade 2 Math Activity - Meadow Math">
+  <title>Which Parts Are Equal? - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="../../prek/activities/activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade2">Grade 2</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">⚖️</span>
+            <span data-i18n="section.activities.equal-or-not.title">Which Parts Are Equal?</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.equal-or-not.instruction">Look at the shape. Are the parts equal?</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Question Display -->
+          <div class="question-display" id="question-display">
+            <span data-i18n="section.activities.equal-or-not.arePartsEqual">Are these parts equal?</span>
+          </div>
+
+          <!-- Shape Display -->
+          <div class="shape-display" id="shape-display">
+            <!-- Shape will be shown here -->
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices">
+            <button class="choice-btn equal-btn" data-answer="equal" tabindex="0" aria-label="Equal Shares">
+              <span class="choice-icon" aria-hidden="true">✓</span>
+              <span class="choice-label" data-i18n="section.activities.equal-or-not.equalShares">Equal Shares</span>
+            </button>
+            <button class="choice-btn not-equal-btn" data-answer="not-equal" tabindex="0" aria-label="Not Equal">
+              <span class="choice-icon" aria-hidden="true">✗</span>
+              <span class="choice-label" data-i18n="section.activities.equal-or-not.notEqual">Not Equal</span>
+            </button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Equal or Not specific styles */
+    .question-display {
+      text-align: center;
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--space-6);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #dbeafe, #eff6ff);
+      border-radius: var(--radius-xl);
+      border: 4px solid #3b82f6;
+    }
+
+    .shape-display {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: var(--space-6);
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 4px solid #e2e8f0;
+      margin-bottom: var(--space-8);
+      min-height: 220px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .shape-display svg {
+      width: 200px;
+      height: 200px;
+      max-width: 100%;
+    }
+
+    .answer-choices {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-6);
+      margin-bottom: var(--space-6);
+    }
+
+    .choice-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-5) var(--space-8);
+      min-width: 160px;
+      min-height: 100px;
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 4px solid;
+      font-family: inherit;
+    }
+
+    .equal-btn {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 rgba(34, 197, 94, 0.3), 0 6px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .equal-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 rgba(34, 197, 94, 0.3), 0 8px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .not-equal-btn {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      border-color: #ef4444;
+      box-shadow: 0 4px 0 rgba(239, 68, 68, 0.3), 0 6px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .not-equal-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 rgba(239, 68, 68, 0.3), 0 8px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .choice-btn:active {
+      transform: translateY(0);
+    }
+
+    .choice-btn:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4), 0 4px 0 currentColor, 0 6px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .choice-btn.selected.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #16a34a;
+      animation: pulse-success 0.5s ease;
+    }
+
+    .choice-btn.selected.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      animation: wiggle 0.5s ease;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .choice-icon {
+      font-size: var(--text-3xl);
+      margin-bottom: var(--space-2);
+    }
+
+    .equal-btn .choice-icon {
+      color: #16a34a;
+    }
+
+    .not-equal-btn .choice-icon {
+      color: #dc2626;
+    }
+
+    .choice-label {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: var(--color-text);
+    }
+
+    @keyframes pulse-success {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    @media (max-width: 767px) {
+      .question-display {
+        font-size: var(--text-xl);
+        padding: var(--space-3);
+        margin-bottom: var(--space-4);
+      }
+
+      .shape-display {
+        padding: var(--space-4);
+        margin-bottom: var(--space-6);
+        min-height: 180px;
+      }
+
+      .shape-display svg {
+        width: 160px;
+        height: 160px;
+      }
+
+      .answer-choices {
+        gap: var(--space-4);
+      }
+
+      .choice-btn {
+        min-width: 130px;
+        min-height: 90px;
+        padding: var(--space-4) var(--space-5);
+      }
+
+      .choice-icon {
+        font-size: var(--text-2xl);
+      }
+
+      .choice-label {
+        font-size: var(--text-base);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .choice-btn {
+        min-width: 110px;
+        min-height: 80px;
+        padding: var(--space-3) var(--space-4);
+      }
+
+      .shape-display svg {
+        width: 140px;
+        height: 140px;
+      }
+    }
+
+    /* Activity area needs padding for feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    /* Feedback at bottom */
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Equal or Not Activity - Grade 2
+    const EqualOrNot = {
+      // Game state
+      currentRound: 1,
+      maxRounds: 10,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1500,
+      currentQuestion: null,
+      questions: [],
+
+      // DOM elements
+      shapeDisplay: null,
+      answerChoices: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Shape colors
+      colors: {
+        fill: ['#fecaca', '#fed7aa', '#fef08a', '#bbf7d0', '#bae6fd', '#ddd6fe', '#fbcfe8'],
+        stroke: ['#ef4444', '#f97316', '#eab308', '#22c55e', '#0ea5e9', '#8b5cf6', '#ec4899']
+      },
+
+      /**
+       * Shape generators - create equal and unequal partitions
+       */
+      shapes: {
+        // Rectangle partitions
+        rectangleHalvesEqual: (fill, stroke) => `
+          <svg viewBox="0 0 200 200">
+            <rect x="20" y="50" width="160" height="100" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
+            <line x1="100" y1="50" x2="100" y2="150" stroke="${stroke}" stroke-width="3"/>
+          </svg>
+        `,
+        rectangleHalvesUnequal: (fill, stroke) => `
+          <svg viewBox="0 0 200 200">
+            <rect x="20" y="50" width="160" height="100" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
+            <line x1="70" y1="50" x2="70" y2="150" stroke="${stroke}" stroke-width="3"/>
+          </svg>
+        `,
+        rectangleThirdsEqual: (fill, stroke) => `
+          <svg viewBox="0 0 200 200">
+            <rect x="20" y="50" width="160" height="100" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
+            <line x1="73" y1="50" x2="73" y2="150" stroke="${stroke}" stroke-width="3"/>
+            <line x1="127" y1="50" x2="127" y2="150" stroke="${stroke}" stroke-width="3"/>
+          </svg>
+        `,
+        rectangleThirdsUnequal: (fill, stroke) => `
+          <svg viewBox="0 0 200 200">
+            <rect x="20" y="50" width="160" height="100" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
+            <line x1="60" y1="50" x2="60" y2="150" stroke="${stroke}" stroke-width="3"/>
+            <line x1="140" y1="50" x2="140" y2="150" stroke="${stroke}" stroke-width="3"/>
+          </svg>
+        `,
+        rectangleFourthsEqual: (fill, stroke) => `
+          <svg viewBox="0 0 200 200">
+            <rect x="20" y="50" width="160" height="100" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
+            <line x1="60" y1="50" x2="60" y2="150" stroke="${stroke}" stroke-width="3"/>
+            <line x1="100" y1="50" x2="100" y2="150" stroke="${stroke}" stroke-width="3"/>
+            <line x1="140" y1="50" x2="140" y2="150" stroke="${stroke}" stroke-width="3"/>
+          </svg>
+        `,
+        rectangleFourthsUnequal: (fill, stroke) => `
+          <svg viewBox="0 0 200 200">
+            <rect x="20" y="50" width="160" height="100" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
+            <line x1="50" y1="50" x2="50" y2="150" stroke="${stroke}" stroke-width="3"/>
+            <line x1="100" y1="50" x2="100" y2="150" stroke="${stroke}" stroke-width="3"/>
+            <line x1="130" y1="50" x2="130" y2="150" stroke="${stroke}" stroke-width="3"/>
+          </svg>
+        `,
+        // Circle partitions
+        circleHalvesEqual: (fill, stroke) => `
+          <svg viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="70" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
+            <line x1="100" y1="30" x2="100" y2="170" stroke="${stroke}" stroke-width="3"/>
+          </svg>
+        `,
+        circleHalvesUnequal: (fill, stroke) => `
+          <svg viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="70" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
+            <line x1="60" y1="43" x2="60" y2="157" stroke="${stroke}" stroke-width="3"/>
+          </svg>
+        `,
+        circleThirdsEqual: (fill, stroke) => {
+          // 3 equal pie slices
+          const cx = 100, cy = 100, r = 70;
+          const angles = [90, 210, 330];
+          let lines = '';
+          angles.forEach(angle => {
+            const rad = angle * Math.PI / 180;
+            const x2 = cx + r * Math.cos(rad);
+            const y2 = cy - r * Math.sin(rad);
+            lines += `<line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="${stroke}" stroke-width="3"/>`;
+          });
+          return `
+            <svg viewBox="0 0 200 200">
+              <circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
+              ${lines}
+            </svg>
+          `;
+        },
+        circleThirdsUnequal: (fill, stroke) => {
+          // Unequal pie slices
+          const cx = 100, cy = 100, r = 70;
+          const angles = [90, 180, 330];
+          let lines = '';
+          angles.forEach(angle => {
+            const rad = angle * Math.PI / 180;
+            const x2 = cx + r * Math.cos(rad);
+            const y2 = cy - r * Math.sin(rad);
+            lines += `<line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="${stroke}" stroke-width="3"/>`;
+          });
+          return `
+            <svg viewBox="0 0 200 200">
+              <circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
+              ${lines}
+            </svg>
+          `;
+        },
+        circleFourthsEqual: (fill, stroke) => `
+          <svg viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="70" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
+            <line x1="100" y1="30" x2="100" y2="170" stroke="${stroke}" stroke-width="3"/>
+            <line x1="30" y1="100" x2="170" y2="100" stroke="${stroke}" stroke-width="3"/>
+          </svg>
+        `,
+        circleFourthsUnequal: (fill, stroke) => {
+          // Unequal pie slices
+          const cx = 100, cy = 100, r = 70;
+          const angles = [60, 150, 240, 310];
+          let lines = '';
+          angles.forEach(angle => {
+            const rad = angle * Math.PI / 180;
+            const x2 = cx + r * Math.cos(rad);
+            const y2 = cy - r * Math.sin(rad);
+            lines += `<line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="${stroke}" stroke-width="3"/>`;
+          });
+          return `
+            <svg viewBox="0 0 200 200">
+              <circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
+              ${lines}
+            </svg>
+          `;
+        },
+        // Square partitions (horizontal)
+        squareHalvesEqualHorizontal: (fill, stroke) => `
+          <svg viewBox="0 0 200 200">
+            <rect x="40" y="40" width="120" height="120" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
+            <line x1="40" y1="100" x2="160" y2="100" stroke="${stroke}" stroke-width="3"/>
+          </svg>
+        `,
+        squareHalvesUnequalHorizontal: (fill, stroke) => `
+          <svg viewBox="0 0 200 200">
+            <rect x="40" y="40" width="120" height="120" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
+            <line x1="40" y1="70" x2="160" y2="70" stroke="${stroke}" stroke-width="3"/>
+          </svg>
+        `,
+        // Square diagonal
+        squareHalvesDiagonalEqual: (fill, stroke) => `
+          <svg viewBox="0 0 200 200">
+            <rect x="40" y="40" width="120" height="120" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
+            <line x1="40" y1="40" x2="160" y2="160" stroke="${stroke}" stroke-width="3"/>
+          </svg>
+        `,
+        squareFourthsEqualGrid: (fill, stroke) => `
+          <svg viewBox="0 0 200 200">
+            <rect x="40" y="40" width="120" height="120" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
+            <line x1="100" y1="40" x2="100" y2="160" stroke="${stroke}" stroke-width="3"/>
+            <line x1="40" y1="100" x2="160" y2="100" stroke="${stroke}" stroke-width="3"/>
+          </svg>
+        `,
+        squareFourthsUnequalGrid: (fill, stroke) => `
+          <svg viewBox="0 0 200 200">
+            <rect x="40" y="40" width="120" height="120" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
+            <line x1="80" y1="40" x2="80" y2="160" stroke="${stroke}" stroke-width="3"/>
+            <line x1="40" y1="80" x2="160" y2="80" stroke="${stroke}" stroke-width="3"/>
+          </svg>
+        `
+      },
+
+      /**
+       * Question definitions
+       */
+      questionPool: [
+        { shape: 'rectangleHalvesEqual', isEqual: true },
+        { shape: 'rectangleHalvesUnequal', isEqual: false },
+        { shape: 'rectangleThirdsEqual', isEqual: true },
+        { shape: 'rectangleThirdsUnequal', isEqual: false },
+        { shape: 'rectangleFourthsEqual', isEqual: true },
+        { shape: 'rectangleFourthsUnequal', isEqual: false },
+        { shape: 'circleHalvesEqual', isEqual: true },
+        { shape: 'circleHalvesUnequal', isEqual: false },
+        { shape: 'circleThirdsEqual', isEqual: true },
+        { shape: 'circleThirdsUnequal', isEqual: false },
+        { shape: 'circleFourthsEqual', isEqual: true },
+        { shape: 'circleFourthsUnequal', isEqual: false },
+        { shape: 'squareHalvesEqualHorizontal', isEqual: true },
+        { shape: 'squareHalvesUnequalHorizontal', isEqual: false },
+        { shape: 'squareHalvesDiagonalEqual', isEqual: true },
+        { shape: 'squareFourthsEqualGrid', isEqual: true },
+        { shape: 'squareFourthsUnequalGrid', isEqual: false }
+      ],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        // Get DOM elements
+        this.shapeDisplay = document.getElementById('shape-display');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up event listeners
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Set up choice buttons
+        const choiceBtns = this.answerChoices.querySelectorAll('.choice-btn');
+        choiceBtns.forEach(btn => {
+          btn.addEventListener('click', () => this.checkAnswer(btn.dataset.answer, btn));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.checkAnswer(btn.dataset.answer, btn);
+            }
+          });
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        // Generate question sequence
+        this.generateSequence();
+
+        // Start first round
+        this.generateRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Generate a random sequence of questions
+       */
+      generateSequence() {
+        this.questions = [];
+
+        // Shuffle and pick questions, ensuring a mix of equal and not equal
+        const shuffled = shuffle([...this.questionPool]);
+
+        // Ensure roughly equal distribution
+        const equalQuestions = shuffled.filter(q => q.isEqual);
+        const notEqualQuestions = shuffled.filter(q => !q.isEqual);
+
+        // Pick alternating to ensure balance
+        for (let i = 0; i < this.maxRounds; i++) {
+          const colorIndex = randomInt(0, this.colors.fill.length - 1);
+          if (i % 2 === 0 && equalQuestions.length > 0) {
+            const q = equalQuestions.shift();
+            this.questions.push({ ...q, colorIndex });
+          } else if (notEqualQuestions.length > 0) {
+            const q = notEqualQuestions.shift();
+            this.questions.push({ ...q, colorIndex });
+          } else if (equalQuestions.length > 0) {
+            const q = equalQuestions.shift();
+            this.questions.push({ ...q, colorIndex });
+          }
+        }
+
+        // Shuffle final order
+        this.questions = shuffle(this.questions);
+      },
+
+      /**
+       * Update translations when language changes
+       */
+      updateTranslations() {
+        // Update feedback message if showing
+        if (this.feedback.classList.contains('show')) {
+          const isError = this.feedback.classList.contains('error');
+          if (isError) {
+            if (this.currentQuestion.isEqual) {
+              this.feedback.textContent = i18n.t('section.activities.equal-or-not.wasEqual');
+            } else {
+              this.feedback.textContent = i18n.t('section.activities.equal-or-not.wasNotEqual');
+            }
+          } else {
+            this.feedback.textContent = i18n.t('section.activities.equal-or-not.correct');
+          }
+        }
+      },
+
+      /**
+       * Generate a new round
+       */
+      generateRound() {
+        this.feedback.classList.remove('show');
+        this.currentQuestion = this.questions[this.currentRound - 1];
+
+        // Reset button states
+        const choiceBtns = this.answerChoices.querySelectorAll('.choice-btn');
+        choiceBtns.forEach(btn => {
+          btn.disabled = false;
+          btn.classList.remove('selected', 'correct', 'incorrect');
+        });
+
+        this.renderShape();
+      },
+
+      /**
+       * Render the current shape
+       */
+      renderShape() {
+        const { shape, colorIndex } = this.currentQuestion;
+        const fill = this.colors.fill[colorIndex];
+        const stroke = this.colors.stroke[colorIndex];
+
+        const shapeGenerator = this.shapes[shape];
+        if (shapeGenerator) {
+          this.shapeDisplay.innerHTML = shapeGenerator(fill, stroke);
+        }
+      },
+
+      /**
+       * Check the selected answer
+       */
+      checkAnswer(answer, selectedBtn) {
+        // Disable all buttons
+        const choiceBtns = this.answerChoices.querySelectorAll('.choice-btn');
+        choiceBtns.forEach(btn => btn.disabled = true);
+
+        const isEqual = this.currentQuestion.isEqual;
+        const isCorrect = (answer === 'equal' && isEqual) || (answer === 'not-equal' && !isEqual);
+
+        selectedBtn.classList.add('selected');
+
+        if (isCorrect) {
+          selectedBtn.classList.add('correct');
+          this.feedback.textContent = i18n.t('section.activities.equal-or-not.correct');
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+        } else {
+          selectedBtn.classList.add('incorrect');
+          // Show correct answer
+          if (isEqual) {
+            this.feedback.textContent = i18n.t('section.activities.equal-or-not.wasEqual');
+          } else {
+            this.feedback.textContent = i18n.t('section.activities.equal-or-not.wasNotEqual');
+          }
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        // Auto-advance after delay
+        setTimeout(() => {
+          if (this.currentRound < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show completion stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = i18n.t('section.activities.equal-or-not.perfect');
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.equal-or-not.great');
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.equal-or-not.good');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = i18n.t('section.activities.equal-or-not.keepPracticing');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart the entire activity
+       */
+      restartActivity() {
+        this.currentRound = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateSequence();
+        this.generateRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Go to next round
+       */
+      nextRound() {
+        this.currentRound++;
+        this.generateRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Render progress indicator
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      EqualOrNot.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

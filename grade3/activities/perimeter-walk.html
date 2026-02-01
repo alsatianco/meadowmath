@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Perimeter Walk - Grade 3 Math Activity - Meadow Math">
+  <title>Perimeter Walk - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🚶</span>
+            <span data-i18n="section.activities.perimeter-walk.title">Perimeter Walk</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.perimeter-walk.instruction">Count the units around the edge!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Question Display -->
+          <div class="question-display" id="question-display">
+            <span id="question-text" data-i18n="section.activities.perimeter-walk.findPerimeter">Find the perimeter of this shape!</span>
+          </div>
+
+          <!-- Shape Display - shows the shape on a grid -->
+          <div class="shape-container">
+            <div class="shape-grid" id="shape-grid">
+              <!-- Grid with shape will be rendered here -->
+            </div>
+
+            <!-- Walking counter -->
+            <div class="walk-counter" id="walk-counter">
+              <span class="walk-icon">🚶</span>
+              <span class="walk-label" data-i18n="section.activities.perimeter-walk.counted">Counted:</span>
+              <span class="walk-value" id="walk-value">0</span>
+              <span class="walk-unit" data-i18n="section.activities.perimeter-walk.units">units</span>
+            </div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices">
+            <!-- Answer buttons will be dynamically generated here -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.perimeter-walk.great">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Perimeter Walk specific styles */
+    .question-display {
+      text-align: center;
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--space-4);
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #3b82f6;
+    }
+
+    .shape-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--space-4);
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 4px solid #e2e8f0;
+      margin-bottom: var(--space-4);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .shape-grid {
+      display: grid;
+      gap: 0;
+      margin-bottom: var(--space-4);
+      background: #f8fafc;
+      padding: var(--space-2);
+      border-radius: var(--radius-lg);
+      border: 2px solid #e2e8f0;
+      --cell-size: 44px;
+      --segment-thickness: 6px;
+    }
+
+    .grid-cell {
+      width: var(--cell-size);
+      height: var(--cell-size);
+      border: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-xs);
+      color: transparent;
+      transition: all 0.2s ease;
+    }
+
+    .grid-cell.shape-cell {
+      background: linear-gradient(135deg, #93c5fd, #60a5fa);
+      border-color: #3b82f6;
+    }
+
+    .grid-cell.edge-cell {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .grid-cell.edge-cell::after {
+      content: '';
+      position: absolute;
+      background: transparent;
+      transition: all 0.2s ease;
+    }
+
+    /* Edge highlighting - different borders for different sides */
+    .grid-cell.edge-top::after {
+      top: -2px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: transparent;
+    }
+
+    .grid-cell.edge-bottom::after {
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: transparent;
+    }
+
+    .grid-cell.edge-left::after {
+      left: -2px;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: transparent;
+    }
+
+    .grid-cell.edge-right::after {
+      right: -2px;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: transparent;
+    }
+
+    /* Perimeter edge segments */
+    .perimeter-segment {
+      position: absolute;
+      background: #10b981;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 10;
+      border-radius: 999px;
+    }
+
+    .perimeter-segment::before {
+      content: '';
+      position: absolute;
+      width: var(--cell-size);
+      height: var(--cell-size);
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: transparent;
+    }
+
+    .perimeter-segment:hover:not(.counted) {
+      background: #34d399;
+      transform: scale(1.1);
+    }
+
+    .perimeter-segment:active:not(.counted) {
+      transform: scale(0.95);
+    }
+
+    .perimeter-segment.counted {
+      background: #f59e0b;
+      cursor: default;
+    }
+
+    .perimeter-segment.horizontal {
+      height: var(--segment-thickness);
+      width: var(--cell-size);
+    }
+
+    .perimeter-segment.vertical {
+      width: var(--segment-thickness);
+      height: var(--cell-size);
+    }
+
+    .perimeter-segment.edge-top {
+      top: calc(var(--segment-thickness) * -0.5);
+      left: 0;
+    }
+
+    .perimeter-segment.edge-bottom {
+      bottom: calc(var(--segment-thickness) * -0.5);
+      left: 0;
+    }
+
+    .perimeter-segment.edge-left {
+      left: calc(var(--segment-thickness) * -0.5);
+      top: 0;
+    }
+
+    .perimeter-segment.edge-right {
+      right: calc(var(--segment-thickness) * -0.5);
+      top: 0;
+    }
+
+    /* Walk counter */
+    .walk-counter {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+    }
+
+    .walk-icon {
+      font-size: var(--text-2xl);
+    }
+
+    .walk-counter.is-counting .walk-icon {
+      animation: walk 0.3s ease-in-out;
+    }
+
+    @keyframes walk {
+      from { transform: translateX(-2px); }
+      to { transform: translateX(2px); }
+    }
+
+    .walk-label {
+      color: var(--color-neutral-700);
+    }
+
+    .walk-value {
+      font-size: var(--text-2xl);
+      color: #b45309;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .walk-unit {
+      color: var(--color-neutral-600);
+    }
+
+    .answer-choices {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-3);
+      max-width: 500px;
+      margin: 0 auto var(--space-4);
+    }
+
+    .choice-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-3) var(--space-2);
+      min-height: 80px;
+      background: white;
+      border: 4px solid #e2e8f0;
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.08);
+      font-family: inherit;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      border-color: var(--color-primary);
+      box-shadow: 0 6px 0 rgba(59, 130, 246, 0.2), 0 8px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .choice-btn:focus {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .choice-btn.correct {
+      border-color: var(--color-success);
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      box-shadow: 0 4px 0 rgba(34, 197, 94, 0.3), 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .choice-btn.incorrect {
+      border-color: var(--color-error);
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      animation: wiggle 0.5s ease;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .choice-value {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-text);
+    }
+
+    .choice-unit {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    @media (max-width: 767px) {
+      .question-display {
+        font-size: var(--text-lg);
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .shape-container {
+        padding: var(--space-3);
+      }
+
+      .shape-grid {
+        --cell-size: 36px;
+        --segment-thickness: 6px;
+      }
+
+      .walk-counter {
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--text-base);
+        gap: var(--space-1);
+      }
+
+      .walk-icon {
+        font-size: var(--text-xl);
+      }
+
+      .walk-value {
+        font-size: var(--text-xl);
+      }
+
+      .answer-choices {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-2);
+      }
+
+      .choice-btn {
+        min-height: 70px;
+        padding: var(--space-2);
+      }
+
+      .choice-value {
+        font-size: var(--text-xl);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .shape-grid {
+        --cell-size: 30px;
+        --segment-thickness: 5px;
+      }
+    }
+
+    /* Activity area needs padding for feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    /* Feedback at bottom */
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Perimeter Walk Activity - Grade 3 Level 5
+    const PerimeterWalk = {
+      // Game state
+      currentRound: 1,
+      maxRounds: 8,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1500,
+      currentQuestion: null,
+      questions: [],
+      countedSegments: 0,
+      totalSegments: 0,
+      walkCounterTimeout: null,
+
+      // DOM elements
+      questionText: null,
+      shapeGrid: null,
+      walkCounter: null,
+      walkValue: null,
+      answerChoices: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+      lastResult: null,
+
+      // Predefined shapes (different configurations of grid squares)
+      // Each shape is defined as an array of [row, col] coordinates
+      shapes: [
+        // Rectangle 3x2
+        { cells: [[0,0], [0,1], [0,2], [1,0], [1,1], [1,2]], name: 'Rectangle 3x2' },
+        // Rectangle 4x2
+        { cells: [[0,0], [0,1], [0,2], [0,3], [1,0], [1,1], [1,2], [1,3]], name: 'Rectangle 4x2' },
+        // Square 3x3
+        { cells: [[0,0], [0,1], [0,2], [1,0], [1,1], [1,2], [2,0], [2,1], [2,2]], name: 'Square 3x3' },
+        // L-shape
+        { cells: [[0,0], [1,0], [2,0], [2,1], [2,2]], name: 'L-shape' },
+        // T-shape
+        { cells: [[0,0], [0,1], [0,2], [1,1], [2,1]], name: 'T-shape' },
+        // Rectangle 5x2
+        { cells: [[0,0], [0,1], [0,2], [0,3], [0,4], [1,0], [1,1], [1,2], [1,3], [1,4]], name: 'Rectangle 5x2' },
+        // Rectangle 3x3
+        { cells: [[0,0], [0,1], [0,2], [1,0], [1,1], [1,2], [2,0], [2,1], [2,2]], name: 'Square 3x3 alt' },
+        // Plus shape
+        { cells: [[0,1], [1,0], [1,1], [1,2], [2,1]], name: 'Plus' },
+        // Rectangle 4x3
+        { cells: [[0,0], [0,1], [0,2], [0,3], [1,0], [1,1], [1,2], [1,3], [2,0], [2,1], [2,2], [2,3]], name: 'Rectangle 4x3' },
+        // U-shape
+        { cells: [[0,0], [0,2], [1,0], [1,2], [2,0], [2,1], [2,2]], name: 'U-shape' },
+        // Staircase
+        { cells: [[0,0], [1,0], [1,1], [2,0], [2,1], [2,2]], name: 'Staircase' },
+        // Rectangle 2x4
+        { cells: [[0,0], [0,1], [1,0], [1,1], [2,0], [2,1], [3,0], [3,1]], name: 'Rectangle 2x4' },
+      ],
+
+      /**
+       * Calculate the perimeter of a shape
+       */
+      calculatePerimeter(cells) {
+        const cellSet = new Set(cells.map(c => `${c[0]},${c[1]}`));
+        let perimeter = 0;
+
+        cells.forEach(([row, col]) => {
+          // Check all four sides
+          // Top
+          if (!cellSet.has(`${row - 1},${col}`)) perimeter++;
+          // Bottom
+          if (!cellSet.has(`${row + 1},${col}`)) perimeter++;
+          // Left
+          if (!cellSet.has(`${row},${col - 1}`)) perimeter++;
+          // Right
+          if (!cellSet.has(`${row},${col + 1}`)) perimeter++;
+        });
+
+        return perimeter;
+      },
+
+      /**
+       * Get the grid dimensions needed to display a shape
+       */
+      getGridDimensions(cells) {
+        let minRow = Infinity, maxRow = -Infinity;
+        let minCol = Infinity, maxCol = -Infinity;
+
+        cells.forEach(([row, col]) => {
+          minRow = Math.min(minRow, row);
+          maxRow = Math.max(maxRow, row);
+          minCol = Math.min(minCol, col);
+          maxCol = Math.max(maxCol, col);
+        });
+
+        return {
+          rows: maxRow - minRow + 1,
+          cols: maxCol - minCol + 1,
+          minRow,
+          minCol
+        };
+      },
+
+      /**
+       * Generate questions for the activity
+       */
+      generateQuestions() {
+        this.questions = [];
+        const shuffledShapes = shuffle([...this.shapes]);
+
+        for (let i = 0; i < this.maxRounds && i < shuffledShapes.length; i++) {
+          const shape = shuffledShapes[i];
+          const perimeter = this.calculatePerimeter(shape.cells);
+
+          // Generate wrong answers
+          const wrongAnswers = [];
+          const possibleWrong = [];
+
+          // Add nearby values as distractors
+          for (let j = perimeter - 4; j <= perimeter + 4; j++) {
+            if (j !== perimeter && j > 0) {
+              possibleWrong.push(j);
+            }
+          }
+
+          // Also add area as a common mistake
+          const area = shape.cells.length;
+          if (area !== perimeter && !possibleWrong.includes(area)) {
+            possibleWrong.push(area);
+          }
+
+          const shuffledWrong = shuffle(possibleWrong);
+          for (let j = 0; j < 3 && j < shuffledWrong.length; j++) {
+            wrongAnswers.push(shuffledWrong[j]);
+          }
+
+          // Fill if needed
+          while (wrongAnswers.length < 3) {
+            const candidate = randomInt(perimeter - 6, perimeter + 6);
+            if (candidate > 0 && candidate !== perimeter && !wrongAnswers.includes(candidate)) {
+              wrongAnswers.push(candidate);
+            }
+          }
+
+          // Combine and shuffle options
+          const options = shuffle([perimeter, ...wrongAnswers.slice(0, 3)]);
+
+          this.questions.push({
+            shape: shape,
+            perimeter: perimeter,
+            options: options
+          });
+        }
+      },
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        // Get DOM elements
+        this.questionText = document.getElementById('question-text');
+        this.shapeGrid = document.getElementById('shape-grid');
+        this.walkCounter = document.getElementById('walk-counter');
+        this.walkValue = document.getElementById('walk-value');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up event listeners
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        // Generate questions and start
+        this.generateQuestions();
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Update translations when language changes
+       */
+      updateTranslations() {
+        const unitText = this.getTranslation('section.activities.perimeter-walk.units', 'units');
+        const buttons = this.answerChoices ? this.answerChoices.querySelectorAll('.choice-btn') : [];
+        buttons.forEach(btn => {
+          const unitEl = btn.querySelector('.choice-unit');
+          if (unitEl) {
+            unitEl.textContent = unitText;
+          }
+          if (btn.dataset.value) {
+            btn.setAttribute('aria-label', `${btn.dataset.value} ${unitText}`);
+          }
+        });
+
+        if (this.feedback.classList.contains('show') && this.lastResult) {
+          if (this.lastResult.isCorrect) {
+            this.feedback.textContent = this.getTranslation('section.activities.perimeter-walk.correct', 'Correct!');
+            this.feedback.classList.remove('error');
+          } else {
+            const wrongTemplate = this.getTranslation('section.activities.perimeter-walk.wrong', 'The perimeter is {perimeter} units.');
+            this.feedback.textContent = wrongTemplate.replace('{perimeter}', this.lastResult.perimeter);
+            this.feedback.classList.add('error');
+          }
+        }
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.showStats();
+        }
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(key);
+          return translated !== key ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.currentQuestion = this.questions[this.currentRound - 1];
+        this.feedback.classList.remove('show', 'error');
+        this.lastResult = null;
+        this.countedSegments = 0;
+        this.totalSegments = this.currentQuestion.perimeter;
+        if (this.walkCounter) {
+          this.walkCounter.classList.remove('is-counting');
+        }
+        if (this.walkCounterTimeout) {
+          clearTimeout(this.walkCounterTimeout);
+          this.walkCounterTimeout = null;
+        }
+
+        // Update walk counter
+        this.walkValue.textContent = '0';
+
+        // Render the shape
+        this.renderShape();
+
+        // Render answer choices
+        this.renderChoices();
+        this.renderProgress();
+      },
+
+      /**
+       * Render the shape grid
+       */
+      renderShape() {
+        const { shape } = this.currentQuestion;
+        const dims = this.getGridDimensions(shape.cells);
+
+        // Add padding around the shape
+        const gridRows = dims.rows + 2;
+        const gridCols = dims.cols + 2;
+
+        // Create cell lookup set
+        const cellSet = new Set(shape.cells.map(c => `${c[0] - dims.minRow + 1},${c[1] - dims.minCol + 1}`));
+
+        // Set up grid
+        this.shapeGrid.style.gridTemplateColumns = `repeat(${gridCols}, 1fr)`;
+        this.shapeGrid.style.gridTemplateRows = `repeat(${gridRows}, 1fr)`;
+
+        let html = '';
+
+        for (let row = 0; row < gridRows; row++) {
+          for (let col = 0; col < gridCols; col++) {
+            const isShapeCell = cellSet.has(`${row},${col}`);
+
+            html += `<div class="grid-cell ${isShapeCell ? 'shape-cell' : ''}"
+                          data-row="${row}" data-col="${col}"></div>`;
+          }
+        }
+
+        this.shapeGrid.innerHTML = html;
+
+        // Add perimeter segments that can be clicked
+        this.addPerimeterSegments(shape.cells, dims);
+      },
+
+      /**
+       * Add clickable perimeter segments
+       */
+      addPerimeterSegments(cells, dims) {
+        const cellSet = new Set(cells.map(c => `${c[0] - dims.minRow + 1},${c[1] - dims.minCol + 1}`));
+        const gridCells = this.shapeGrid.querySelectorAll('.shape-cell');
+        const cellWidth = gridCells[0] ? gridCells[0].offsetWidth : 44;
+
+        // Find all edge segments
+        cells.forEach((cell) => {
+          const row = cell[0] - dims.minRow + 1;
+          const col = cell[1] - dims.minCol + 1;
+
+          const gridCell = this.shapeGrid.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+          if (!gridCell) return;
+
+          // Check each edge
+          // Top edge
+          if (!cellSet.has(`${row - 1},${col}`)) {
+          const segment = document.createElement('div');
+          segment.className = 'perimeter-segment horizontal edge-top';
+          segment.addEventListener('click', () => this.countSegment(segment));
+          gridCell.style.position = 'relative';
+          gridCell.appendChild(segment);
+        }
+
+          // Bottom edge
+          if (!cellSet.has(`${row + 1},${col}`)) {
+          const segment = document.createElement('div');
+          segment.className = 'perimeter-segment horizontal edge-bottom';
+          segment.addEventListener('click', () => this.countSegment(segment));
+          gridCell.style.position = 'relative';
+          gridCell.appendChild(segment);
+        }
+
+          // Left edge
+          if (!cellSet.has(`${row},${col - 1}`)) {
+          const segment = document.createElement('div');
+          segment.className = 'perimeter-segment vertical edge-left';
+          segment.addEventListener('click', () => this.countSegment(segment));
+          gridCell.style.position = 'relative';
+          gridCell.appendChild(segment);
+        }
+
+          // Right edge
+          if (!cellSet.has(`${row},${col + 1}`)) {
+          const segment = document.createElement('div');
+          segment.className = 'perimeter-segment vertical edge-right';
+          segment.addEventListener('click', () => this.countSegment(segment));
+          gridCell.style.position = 'relative';
+          gridCell.appendChild(segment);
+        }
+        });
+      },
+
+      /**
+       * Count a perimeter segment when clicked
+       */
+      countSegment(segment) {
+        if (segment.classList.contains('counted')) return;
+
+        segment.classList.add('counted');
+        this.countedSegments++;
+        this.walkValue.textContent = this.countedSegments;
+        if (this.walkCounter) {
+          this.walkCounter.classList.add('is-counting');
+          if (this.walkCounterTimeout) {
+            clearTimeout(this.walkCounterTimeout);
+          }
+          this.walkCounterTimeout = setTimeout(() => {
+            this.walkCounter.classList.remove('is-counting');
+          }, 250);
+        }
+
+        // Add a small animation
+        segment.style.transform = 'scale(1.2)';
+        setTimeout(() => {
+          segment.style.transform = 'scale(1)';
+        }, 200);
+      },
+
+      /**
+       * Render answer choices
+       */
+      renderChoices() {
+        const { options } = this.currentQuestion;
+        const unitText = this.getTranslation('section.activities.perimeter-walk.units', 'units');
+
+        let html = '';
+        options.forEach(value => {
+          html += `
+            <button class="choice-btn" data-value="${value}" aria-label="${value} ${unitText}">
+              <span class="choice-value">${value}</span>
+              <span class="choice-unit">${unitText}</span>
+            </button>
+          `;
+        });
+
+        this.answerChoices.innerHTML = html;
+
+        // Add click and keyboard handlers
+        const buttons = this.answerChoices.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const value = parseInt(btn.dataset.value);
+            this.checkAnswer(value, btn);
+          });
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              const value = parseInt(btn.dataset.value);
+              this.checkAnswer(value, btn);
+            }
+          });
+        });
+      },
+
+      /**
+       * Check the selected answer
+       */
+      checkAnswer(selectedValue, selectedBtn) {
+        // Disable all buttons
+        const buttons = this.answerChoices.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => btn.disabled = true);
+
+        // Also disable perimeter segments
+        const segments = this.shapeGrid.querySelectorAll('.perimeter-segment');
+        segments.forEach(s => s.style.pointerEvents = 'none');
+
+        const { perimeter } = this.currentQuestion;
+        const isCorrect = selectedValue === perimeter;
+        this.lastResult = { isCorrect, perimeter };
+
+        if (isCorrect) {
+          selectedBtn.classList.add('correct');
+          this.feedback.textContent = this.getTranslation('section.activities.perimeter-walk.correct', 'Correct!');
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          // Mark all segments as counted
+          segments.forEach(s => s.classList.add('counted'));
+          this.walkValue.textContent = perimeter;
+        } else {
+          selectedBtn.classList.add('incorrect');
+          // Show correct answer
+          buttons.forEach(btn => {
+            const value = parseInt(btn.dataset.value);
+            if (value === perimeter) {
+              btn.classList.add('correct');
+            }
+          });
+          const wrongMsg = this.getTranslation('section.activities.perimeter-walk.wrong', 'The perimeter is {perimeter} units.')
+            .replace('{perimeter}', perimeter);
+          this.feedback.textContent = wrongMsg;
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+
+          // Mark all segments as counted
+          segments.forEach(s => s.classList.add('counted'));
+          this.walkValue.textContent = perimeter;
+        }
+
+        this.renderProgress();
+
+        // Auto-advance after delay
+        setTimeout(() => {
+          if (this.currentRound < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show completion stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation('section.activities.perimeter-walk.perfect', 'Perfect perimeter skills!');
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation('section.activities.perimeter-walk.great', 'Great walking!');
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation('section.activities.perimeter-walk.good', 'Good job!');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation('section.activities.perimeter-walk.keepPracticing', 'Keep practicing!');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart the activity
+       */
+      restartActivity() {
+        this.currentRound = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        if (this.walkCounterTimeout) {
+          clearTimeout(this.walkCounterTimeout);
+          this.walkCounterTimeout = null;
+        }
+        if (this.walkCounter) {
+          this.walkCounter.classList.remove('is-counting');
+        }
+        this.generateQuestions();
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Go to next round
+       */
+      nextRound() {
+        this.currentRound++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress indicator
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => PerimeterWalk.init());
+      } else {
+        PerimeterWalk.init();
+      }
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,11 @@
+/**
+ * Kindergarten Shared Activity Utilities
+ *
+ * This file imports the shared activity utilities from the central CSS folder.
+ * Add any Kindergarten specific overrides below the import.
+ */
+
+@import url('../../css/activity-shared.css');
+
+/* ========== KINDERGARTEN SPECIFIC OVERRIDES ========== */
+/* Add Kindergarten specific utility styles here if needed */

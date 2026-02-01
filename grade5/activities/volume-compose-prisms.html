@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Compose Volumes - Grade 5 Math Activity - Meadow Math">
+  <title>Compose Volumes - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧱</span>
+            <span data-i18n="section.activities.volume-compose-prisms.title">Compose Volumes</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.volume-compose-prisms.instruction">Find the total volume!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Question Prompt -->
+          <div class="question-container" id="question-container">
+            <div class="question-text" id="question-text">
+              <span data-i18n="section.activities.volume-compose-prisms.prompt">This L-shaped figure is made of two rectangular prisms. What is the total volume?</span>
+            </div>
+          </div>
+
+          <!-- L-Shape Diagram -->
+          <div class="shape-container" id="shape-container">
+            <svg class="l-shape-diagram" id="l-shape-svg" viewBox="0 0 300 220" preserveAspectRatio="xMidYMid meet">
+              <!-- L-shape will be drawn here -->
+            </svg>
+            <div class="dimension-hints" id="dimension-hints">
+              <!-- Dimension values shown here -->
+            </div>
+          </div>
+
+          <!-- Decomposition Hint -->
+          <div class="hint-container" id="hint-container">
+            <div class="hint-card" id="hint-card">
+              <!-- Hint showing breakdown will appear here -->
+            </div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <!-- Choices will be rendered here -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.volume-compose-prisms.great">Great work composing volumes!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Compose Volumes Activity - Grade 5 Level 4
+    const VolumeCompose = {
+      currentQuestion: 0,
+      totalQuestions: 6,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 2000,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+      currentShape: null,
+
+      // L-shape configurations
+      // Each shape has two prisms: prism1 and prism2
+      // Dimensions: [length, width, height]
+      shapeConfigs: [
+        // Simple L-shapes
+        { prism1: [4, 2, 3], prism2: [2, 2, 3], type: 'L-horizontal' },
+        { prism1: [3, 3, 2], prism2: [3, 2, 2], type: 'L-horizontal' },
+        { prism1: [5, 2, 2], prism2: [2, 2, 2], type: 'L-horizontal' },
+        { prism1: [4, 3, 2], prism2: [2, 3, 2], type: 'L-horizontal' },
+        // T-shapes (wider base)
+        { prism1: [6, 2, 2], prism2: [2, 2, 3], type: 'T-shape' },
+        { prism1: [5, 2, 2], prism2: [2, 2, 4], type: 'T-shape' },
+        // Step shapes
+        { prism1: [3, 3, 3], prism2: [3, 3, 2], type: 'step' },
+        { prism1: [4, 2, 3], prism2: [4, 2, 2], type: 'step' }
+      ],
+
+      // DOM elements
+      questionContainer: null,
+      questionText: null,
+      shapeContainer: null,
+      shapeSvg: null,
+      dimensionHints: null,
+      hintContainer: null,
+      hintCard: null,
+      choicesContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.questionContainer = document.getElementById('question-container');
+        this.questionText = document.getElementById('question-text');
+        this.shapeContainer = document.getElementById('shape-container');
+        this.shapeSvg = document.getElementById('l-shape-svg');
+        this.dimensionHints = document.getElementById('dimension-hints');
+        this.hintContainer = document.getElementById('hint-container');
+        this.hintCard = document.getElementById('hint-card');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      generateQuestions() {
+        const shuffled = shuffle([...this.shapeConfigs]);
+        this.questions = shuffled.slice(0, this.totalQuestions);
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+        this.hintCard.innerHTML = '';
+
+        const shape = this.questions[this.currentQuestion];
+        if (!shape) {
+          this.showStats();
+          return;
+        }
+
+        this.currentShape = shape;
+
+        // Calculate volumes
+        const vol1 = shape.prism1[0] * shape.prism1[1] * shape.prism1[2];
+        const vol2 = shape.prism2[0] * shape.prism2[1] * shape.prism2[2];
+        const totalVolume = vol1 + vol2;
+
+        // Draw the L-shape
+        this.drawLShape(shape);
+
+        // Show decomposition hint
+        this.showDecompositionHint(shape, vol1, vol2);
+
+        // Generate choices
+        const choices = this.generateChoices(totalVolume, vol1, vol2);
+        this.renderChoices(choices, totalVolume);
+
+        this.renderProgress();
+      },
+
+      drawLShape(shape) {
+        const svg = this.shapeSvg;
+        svg.innerHTML = '';
+
+        const [l1, w1, h1] = shape.prism1;
+        const [l2, w2, h2] = shape.prism2;
+
+        // Scaling factor
+        const scale = 15;
+        const offsetX = 50;
+        const offsetY = 30;
+
+        // Draw based on shape type
+        if (shape.type === 'L-horizontal' || shape.type === 'T-shape') {
+          // Draw L-shape from isometric-ish view
+          // Prism 1 (larger/base)
+          this.drawPrism(svg, offsetX, offsetY, l1 * scale, w1 * scale, h1 * scale, '#3b82f6', '#60a5fa', '#93c5fd');
+
+          // Prism 2 (extension)
+          const p2OffsetX = offsetX + l1 * scale * 0.866;
+          this.drawPrism(svg, p2OffsetX, offsetY, l2 * scale, w2 * scale, h2 * scale, '#22c55e', '#4ade80', '#86efac');
+
+          // Add dimension labels
+          this.addDimensionLabels(shape, scale, offsetX, offsetY);
+        } else if (shape.type === 'step') {
+          // Draw step shape (stacked)
+          // Bottom prism
+          this.drawPrism(svg, offsetX, offsetY + h2 * scale, l1 * scale, w1 * scale, h1 * scale, '#3b82f6', '#60a5fa', '#93c5fd');
+
+          // Top prism
+          this.drawPrism(svg, offsetX, offsetY, l2 * scale, w2 * scale, h2 * scale, '#22c55e', '#4ade80', '#86efac');
+
+          this.addStepDimensionLabels(shape, scale, offsetX, offsetY);
+        }
+      },
+
+      drawPrism(svg, x, y, l, w, h, colorDark, colorMed, colorLight) {
+        // Isometric-style prism (simplified 2.5D)
+        const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+        // Front face
+        const front = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+        const frontPoints = [
+          `${x},${y + h}`,
+          `${x + l * 0.866},${y + h + l * 0.5}`,
+          `${x + l * 0.866},${y + l * 0.5}`,
+          `${x},${y}`
+        ].join(' ');
+        front.setAttribute('points', frontPoints);
+        front.setAttribute('fill', colorMed);
+        front.setAttribute('stroke', colorDark);
+        front.setAttribute('stroke-width', '2');
+        group.appendChild(front);
+
+        // Right face
+        const right = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+        const rightPoints = [
+          `${x + l * 0.866},${y + h + l * 0.5}`,
+          `${x + l * 0.866 + w * 0.866},${y + h + l * 0.5 - w * 0.5}`,
+          `${x + l * 0.866 + w * 0.866},${y + l * 0.5 - w * 0.5}`,
+          `${x + l * 0.866},${y + l * 0.5}`
+        ].join(' ');
+        right.setAttribute('points', rightPoints);
+        right.setAttribute('fill', colorDark);
+        right.setAttribute('stroke', colorDark);
+        right.setAttribute('stroke-width', '2');
+        group.appendChild(right);
+
+        // Top face
+        const top = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+        const topPoints = [
+          `${x},${y}`,
+          `${x + l * 0.866},${y + l * 0.5}`,
+          `${x + l * 0.866 + w * 0.866},${y + l * 0.5 - w * 0.5}`,
+          `${x + w * 0.866},${y - w * 0.5}`
+        ].join(' ');
+        top.setAttribute('points', topPoints);
+        top.setAttribute('fill', colorLight);
+        top.setAttribute('stroke', colorDark);
+        top.setAttribute('stroke-width', '2');
+        group.appendChild(top);
+
+        svg.appendChild(group);
+      },
+
+      addDimensionLabels(shape, scale, offsetX, offsetY) {
+        const [l1, w1, h1] = shape.prism1;
+        const [l2, w2, h2] = shape.prism2;
+
+        const prism1Label = this.getTranslation('section.activities.volume-compose-prisms.prism1', 'Prism 1');
+        const prism2Label = this.getTranslation('section.activities.volume-compose-prisms.prism2', 'Prism 2');
+
+        this.dimensionHints.innerHTML = `
+          <div class="dim-group blue">
+            <span class="dim-title">${prism1Label}</span>:
+            ${l1} × ${w1} × ${h1}
+          </div>
+          <div class="dim-group green">
+            <span class="dim-title">${prism2Label}</span>:
+            ${l2} × ${w2} × ${h2}
+          </div>
+        `;
+      },
+
+      addStepDimensionLabels(shape, scale, offsetX, offsetY) {
+        const [l1, w1, h1] = shape.prism1;
+        const [l2, w2, h2] = shape.prism2;
+
+        const bottomLabel = this.getTranslation('section.activities.volume-compose-prisms.bottom', 'Bottom');
+        const topLabel = this.getTranslation('section.activities.volume-compose-prisms.top', 'Top');
+
+        this.dimensionHints.innerHTML = `
+          <div class="dim-group blue">
+            <span class="dim-title">${bottomLabel}</span>:
+            ${l1} × ${w1} × ${h1}
+          </div>
+          <div class="dim-group green">
+            <span class="dim-title">${topLabel}</span>:
+            ${l2} × ${w2} × ${h2}
+          </div>
+        `;
+      },
+
+      showDecompositionHint(shape, vol1, vol2) {
+        const [l1, w1, h1] = shape.prism1;
+        const [l2, w2, h2] = shape.prism2;
+
+        const hintText = this.getTranslation(
+          'section.activities.volume-compose-prisms.hint',
+          'Hint: Split into two prisms and add the volumes!'
+        );
+
+        this.hintCard.innerHTML = `
+          <div class="hint-text">${hintText}</div>
+          <div class="hint-formula">
+            <span class="formula-part blue">(${l1}×${w1}×${h1})</span>
+            <span class="formula-op">+</span>
+            <span class="formula-part green">(${l2}×${w2}×${h2})</span>
+          </div>
+        `;
+      },
+
+      generateChoices(correct, vol1, vol2) {
+        const choices = [correct];
+        const used = new Set([correct]);
+
+        // Common mistakes
+        const distractors = [
+          vol1,                    // Only first prism
+          vol2,                    // Only second prism
+          correct + vol1,          // Added one prism twice
+          correct - vol1 / 2,      // Partial calculation
+          Math.abs(vol1 - vol2),   // Subtracted instead of added
+          correct + 10,
+          correct - 10
+        ].filter(v => v > 0 && Number.isInteger(v) && !used.has(v));
+
+        for (const d of distractors) {
+          if (choices.length >= 4) break;
+          if (!used.has(d)) {
+            choices.push(d);
+            used.add(d);
+          }
+        }
+
+        // Fill with random if needed
+        while (choices.length < 4) {
+          const offset = Math.floor(Math.random() * 20) - 10;
+          const val = correct + offset;
+          if (val > 0 && !used.has(val)) {
+            choices.push(val);
+            used.add(val);
+          }
+        }
+
+        return shuffle(choices);
+      },
+
+      renderChoices(choices, answer) {
+        this.choicesContainer.innerHTML = '';
+        const unitLabel = this.getTranslation('section.activities.volume-compose-prisms.cubicUnits', 'cubic units');
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.setAttribute('tabindex', '0');
+          btn.innerHTML = `<span class="choice-number">${choice}</span><span class="choice-unit">${unitLabel}</span>`;
+
+          btn.addEventListener('click', () => this.checkAnswer(choice, answer));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.checkAnswer(choice, answer);
+            }
+          });
+
+          this.choicesContainer.appendChild(btn);
+        });
+      },
+
+      checkAnswer(selected, correct) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const buttons = this.choicesContainer.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => btn.disabled = true);
+
+        const isCorrect = selected === correct;
+
+        buttons.forEach(btn => {
+          const btnValue = parseInt(btn.querySelector('.choice-number').textContent);
+          if (btnValue === correct) {
+            btn.classList.add('correct');
+          } else if (btnValue === selected) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        const [l1, w1, h1] = this.currentShape.prism1;
+        const [l2, w2, h2] = this.currentShape.prism2;
+        const vol1 = l1 * w1 * h1;
+        const vol2 = l2 * w2 * h2;
+
+        if (isCorrect) {
+          this.correctCount++;
+          const feedbackText = this.getTranslation(
+            'section.activities.volume-compose-prisms.correct',
+            'Correct! {vol1} + {vol2} = {total} cubic units'
+          )
+            .replace('{vol1}', vol1)
+            .replace('{vol2}', vol2)
+            .replace('{total}', correct);
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const feedbackText = this.getTranslation(
+            'section.activities.volume-compose-prisms.wrong',
+            'The total volume is {vol1} + {vol2} = {total} cubic units'
+          )
+            .replace('{vol1}', vol1)
+            .replace('{vol2}', vol2)
+            .replace('{total}', correct);
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+        this.scheduleAdvance();
+      },
+
+      scheduleAdvance() {
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+
+        // Update dimension labels and hint for current question
+        if (this.currentShape && !this.statsOverlay.classList.contains('show')) {
+          const shape = this.currentShape;
+          const vol1 = shape.prism1[0] * shape.prism1[1] * shape.prism1[2];
+          const vol2 = shape.prism2[0] * shape.prism2[1] * shape.prism2[2];
+
+          if (shape.type === 'step') {
+            this.addStepDimensionLabels(shape, 15, 50, 30);
+          } else {
+            this.addDimensionLabels(shape, 15, 50, 30);
+          }
+          this.showDecompositionHint(shape, vol1, vol2);
+
+          // Update choice unit labels
+          const unitLabel = this.getTranslation('section.activities.volume-compose-prisms.cubicUnits', 'cubic units');
+          this.choicesContainer.querySelectorAll('.choice-unit').forEach(el => {
+            el.textContent = unitLabel;
+          });
+        }
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.volume-compose-prisms.perfect',
+            'Perfect! You mastered composing volumes!'
+          );
+        } else if (percent >= 0.75) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.volume-compose-prisms.great',
+            'Great work composing volumes!'
+          );
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.volume-compose-prisms.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.volume-compose-prisms.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => VolumeCompose.init());
+      } else {
+        VolumeCompose.init();
+      }
+    });
+  </script>
+  <style>
+    /* Compose Volumes specific styles */
+
+    /* Question Container */
+    .question-container {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #3b82f6;
+      padding: var(--space-3);
+      margin-bottom: var(--space-3);
+      text-align: center;
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #1e3a8a;
+    }
+
+    /* Shape Container */
+    .shape-container {
+      background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: var(--radius-xl);
+      border: 2px solid #e2e8f0;
+      padding: var(--space-3);
+      margin-bottom: var(--space-3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .l-shape-diagram {
+      width: 100%;
+      max-width: 300px;
+      height: 180px;
+    }
+
+    /* Dimension Hints */
+    .dimension-hints {
+      display: flex;
+      gap: var(--space-3);
+      margin-top: var(--space-2);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .dim-group {
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-md);
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+    }
+
+    .dim-group.blue {
+      background: #dbeafe;
+      color: #1e40af;
+      border: 2px solid #3b82f6;
+    }
+
+    .dim-group.green {
+      background: #dcfce7;
+      color: #166534;
+      border: 2px solid #22c55e;
+    }
+
+    .dim-title {
+      font-weight: var(--weight-bold);
+    }
+
+    /* Hint Container */
+    .hint-container {
+      margin-bottom: var(--space-3);
+    }
+
+    .hint-card {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-lg);
+      border: 2px solid #f59e0b;
+      padding: var(--space-2) var(--space-3);
+      text-align: center;
+    }
+
+    .hint-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: #92400e;
+      margin-bottom: var(--space-1);
+    }
+
+    .hint-formula {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+    }
+
+    .formula-part.blue {
+      color: #1e40af;
+    }
+
+    .formula-part.green {
+      color: #166534;
+    }
+
+    .formula-op {
+      color: #92400e;
+      font-size: var(--text-lg);
+    }
+
+    /* Choices Container */
+    .choices-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .choice-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-3);
+      font-family: var(--font-secondary);
+      color: #374151;
+      background: white;
+      border: 3px solid #d1d5db;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 70px;
+    }
+
+    .choice-number {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+    }
+
+    .choice-unit {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-medium);
+      color: #6b7280;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: #f3f4f6;
+      border-color: #9ca3af;
+      transform: scale(1.02);
+    }
+
+    .choice-btn:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn.correct {
+      background: #dcfce7;
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: #fee2e2;
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    /* Feedback and layout */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .l-shape-diagram {
+        height: 150px;
+      }
+
+      .question-text {
+        font-size: var(--text-sm);
+      }
+
+      .dim-group {
+        font-size: var(--text-xs);
+      }
+
+      .hint-formula {
+        font-size: var(--text-sm);
+      }
+
+      .choices-container {
+        gap: var(--space-2);
+      }
+
+      .choice-btn {
+        padding: var(--space-2);
+        min-height: 60px;
+      }
+
+      .choice-number {
+        font-size: var(--text-xl);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .l-shape-diagram {
+        height: 130px;
+      }
+
+      .dimension-hints {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-1);
+      }
+
+      .choice-btn {
+        min-height: 55px;
+      }
+
+      .choice-number {
+        font-size: var(--text-lg);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,529 @@
+{
+  "region": "grade3",
+  "title": "Grade 3 Activities",
+  "description": "Times and groups",
+  "levels": [
+    {
+      "id": "level-1",
+      "number": 1,
+      "title": "Place Value to 10,000",
+      "icon": "🟢",
+      "goal": "Understand thousands/hundreds/tens/ones, represent numbers in multiple ways, and round sensibly.",
+      "skills": [
+        "Read and write numbers to 10,000",
+        "Understand each digit's value (place value)",
+        "Compare and order 4-digit numbers",
+        "Use number lines for magnitude and rounding"
+      ],
+      "activities": [
+        {
+          "id": "count-to-10000",
+          "title": "Count to 10,000 Trail",
+          "description": "Fill in missing numbers as you climb to 10,000.",
+          "icon": "🧭",
+          "path": "activities/count-to-10000.html",
+          "type": "interactive"
+        },
+        {
+          "id": "place-value-builder-10000",
+          "title": "Place Value Builder (to 10,000)",
+          "description": "Build the number using thousands, hundreds, tens, and ones.",
+          "icon": "🧱",
+          "path": "activities/place-value-builder-10000.html",
+          "type": "interactive"
+        },
+        {
+          "id": "expanded-form-10000",
+          "title": "Expanded Form Match (to 10,000)",
+          "description": "Match the number to its expanded form.",
+          "icon": "🧩",
+          "path": "activities/expanded-form-10000.html",
+          "type": "interactive"
+        },
+        {
+          "id": "compare-four-digit",
+          "title": "Compare 4-Digit Numbers",
+          "description": "Pick >, <, or = to compare.",
+          "icon": "🐊",
+          "path": "activities/compare-four-digit.html",
+          "type": "interactive"
+        },
+        {
+          "id": "order-numbers-10000",
+          "title": "Order the Numbers (to 10,000)",
+          "description": "Put numbers in order from least to greatest.",
+          "icon": "📚",
+          "path": "activities/order-numbers-10000.html",
+          "type": "interactive"
+        },
+        {
+          "id": "number-line-10000",
+          "title": "Number Line to 10,000",
+          "description": "Find where the number belongs on the number line.",
+          "icon": "➡️",
+          "path": "activities/number-line-10000.html",
+          "type": "interactive"
+        },
+        {
+          "id": "rounding-10-100-1000",
+          "title": "Round to the Nearest 10/100/1000",
+          "description": "Round numbers to the nearest 10, 100, or 1,000.",
+          "icon": "🎯",
+          "path": "activities/rounding-10-100-1000.html",
+          "type": "interactive"
+        },
+        {
+          "id": "digit-value",
+          "title": "Digit Value Detective",
+          "description": "What value does this digit represent?",
+          "icon": "🕵️",
+          "path": "activities/digit-value.html",
+          "type": "interactive"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {
+            "id": "g3-l1-big-idea",
+            "icon": "💡",
+            "title": "Big idea"
+          },
+          {
+            "id": "g3-l1-notice",
+            "icon": "👀",
+            "title": "What to notice"
+          },
+          {
+            "id": "g3-l1-home",
+            "icon": "🏡",
+            "title": "Try at home"
+          },
+          {
+            "id": "g3-l1-videos",
+            "icon": "📺",
+            "title": "Optional videos"
+          }
+        ]
+      }
+    },
+    {
+      "id": "level-2",
+      "number": 2,
+      "title": "Add/Subtract Within 1,000",
+      "icon": "🟡",
+      "goal": "Add and subtract within 1,000 using place-value reasoning, regrouping, and estimation.",
+      "skills": [
+        "Add and subtract within 1,000",
+        "Regroup (trade) tens and hundreds conceptually",
+        "Estimate to check reasonableness",
+        "Solve one- and two-step word problems"
+      ],
+      "activities": [
+        {
+          "id": "add-within-1000",
+          "title": "Add Within 1,000 (Base-Ten)",
+          "description": "Use blocks to add three-digit numbers.",
+          "icon": "➕",
+          "path": "activities/add-within-1000.html",
+          "type": "interactive"
+        },
+        {
+          "id": "subtract-within-1000",
+          "title": "Subtract Within 1,000 (Base-Ten)",
+          "description": "Trade and take away to subtract.",
+          "icon": "➖",
+          "path": "activities/subtract-within-1000.html",
+          "type": "interactive"
+        },
+        {
+          "id": "add-regrouping-1000",
+          "title": "Regrouping Practice: Add (Column)",
+          "description": "Practice adding with regrouping.",
+          "icon": "🎒",
+          "path": "activities/add-regrouping-1000.html",
+          "type": "interactive"
+        },
+        {
+          "id": "subtract-regrouping-1000",
+          "title": "Regrouping Practice: Subtract (Column)",
+          "description": "Practice subtracting with regrouping.",
+          "icon": "🧩",
+          "path": "activities/subtract-regrouping-1000.html",
+          "type": "interactive"
+        },
+        {
+          "id": "estimate-sum-diff",
+          "title": "Estimate, Then Check",
+          "description": "Estimate first, then solve exactly.",
+          "icon": "🔎",
+          "path": "activities/estimate-sum-diff.html",
+          "type": "interactive"
+        },
+        {
+          "id": "number-line-add-sub-1000",
+          "title": "Number Line Add/Subtract (to 1,000)",
+          "description": "Jump by hundreds, tens, and ones.",
+          "icon": "🐸",
+          "path": "activities/number-line-add-sub-1000.html",
+          "type": "interactive"
+        },
+        {
+          "id": "missing-number-1000",
+          "title": "Missing Number (to 1,000)",
+          "description": "Find the mystery number in an equation.",
+          "icon": "❓",
+          "path": "activities/missing-number-1000.html",
+          "type": "interactive"
+        },
+        {
+          "id": "multi-step-word-problems-1000",
+          "title": "Two-Step Word Problems",
+          "description": "Solve a short story in two steps.",
+          "icon": "🧠",
+          "path": "activities/multi-step-word-problems-1000.html",
+          "type": "interactive"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {
+            "id": "g3-l2-big-idea",
+            "icon": "💡",
+            "title": "Big idea"
+          },
+          {
+            "id": "g3-l2-notice",
+            "icon": "👀",
+            "title": "What to notice"
+          },
+          {
+            "id": "g3-l2-home",
+            "icon": "🏡",
+            "title": "Try at home"
+          },
+          {
+            "id": "g3-l2-videos",
+            "icon": "📺",
+            "title": "Optional videos"
+          }
+        ]
+      }
+    },
+    {
+      "id": "level-3",
+      "number": 3,
+      "title": "Multiply & Divide Within 100",
+      "icon": "🟠",
+      "goal": "Understand multiplication and division as equal groups and arrays, and build fluent strategies.",
+      "skills": [
+        "Interpret multiplication as equal groups / arrays",
+        "Interpret division as sharing / grouping",
+        "Use fact families and unknowns",
+        "Use skip counting patterns connected to facts"
+      ],
+      "activities": [
+        {
+          "id": "build-array-g3",
+          "title": "Build an Array",
+          "description": "Make an array with the given rows and columns.",
+          "icon": "🟦",
+          "path": "activities/build-array-g3.html",
+          "type": "interactive"
+        },
+        {
+          "id": "array-multiply",
+          "title": "Multiply the Array",
+          "description": "Find the total using rows x columns.",
+          "icon": "✖️",
+          "path": "activities/array-multiply.html",
+          "type": "interactive"
+        },
+        {
+          "id": "equal-groups-multiply",
+          "title": "Equal Groups Stories",
+          "description": "Use equal groups to solve story problems.",
+          "icon": "🧺",
+          "path": "activities/equal-groups-multiply.html",
+          "type": "interactive"
+        },
+        {
+          "id": "missing-factor",
+          "title": "Missing Factor Puzzle",
+          "description": "Find the missing number in a multiplication fact.",
+          "icon": "🧩",
+          "path": "activities/missing-factor.html",
+          "type": "interactive"
+        },
+        {
+          "id": "fact-family-mult-div",
+          "title": "Fact Family Match (× and ÷)",
+          "description": "Multiplication and division are a family.",
+          "icon": "🔗",
+          "path": "activities/fact-family-mult-div.html",
+          "type": "interactive"
+        },
+        {
+          "id": "division-sharing",
+          "title": "Division Sharing Game",
+          "description": "Share items equally and see how many in each group.",
+          "icon": "🍪",
+          "path": "activities/division-sharing.html",
+          "type": "interactive"
+        },
+        {
+          "id": "skip-count-multiply",
+          "title": "Skip Count for Multiplication",
+          "description": "Use skip counting to find products.",
+          "icon": "🎵",
+          "path": "activities/skip-count-multiply.html",
+          "type": "interactive"
+        },
+        {
+          "id": "match-picture-equation-mult",
+          "title": "Match Picture to Equation",
+          "description": "Which equation matches the picture?",
+          "icon": "🖼️",
+          "path": "activities/match-picture-equation-mult.html",
+          "type": "interactive"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {
+            "id": "g3-l3-big-idea",
+            "icon": "💡",
+            "title": "Big idea"
+          },
+          {
+            "id": "g3-l3-notice",
+            "icon": "👀",
+            "title": "What to notice"
+          },
+          {
+            "id": "g3-l3-home",
+            "icon": "🏡",
+            "title": "Try at home"
+          },
+          {
+            "id": "g3-l3-videos",
+            "icon": "📺",
+            "title": "Optional videos"
+          }
+        ]
+      }
+    },
+    {
+      "id": "level-4",
+      "number": 4,
+      "title": "Fractions as Numbers",
+      "icon": "🔵",
+      "goal": "Understand fractions as equal parts of a whole and as numbers on the number line, including equivalence and comparisons.",
+      "skills": [
+        "Understand 1/b and a/b as equal parts",
+        "Place fractions on a number line",
+        "Recognize and generate equivalent fractions",
+        "Compare fractions with reasoning"
+      ],
+      "activities": [
+        {
+          "id": "fraction-of-shape-g3",
+          "title": "Fraction of a Shape",
+          "description": "What fraction is shaded?",
+          "icon": "🎨",
+          "path": "activities/fraction-of-shape-g3.html",
+          "type": "interactive"
+        },
+        {
+          "id": "build-the-fraction",
+          "title": "Build the Fraction",
+          "description": "Shade or select parts to make the fraction.",
+          "icon": "🧱",
+          "path": "activities/build-the-fraction.html",
+          "type": "interactive"
+        },
+        {
+          "id": "fraction-number-line",
+          "title": "Fractions on the Number Line",
+          "description": "Place the fraction between 0 and 1.",
+          "icon": "📍",
+          "path": "activities/fraction-number-line.html",
+          "type": "interactive"
+        },
+        {
+          "id": "equivalent-fractions",
+          "title": "Equivalent Fractions Match",
+          "description": "Find fractions that name the same amount.",
+          "icon": "♻️",
+          "path": "activities/equivalent-fractions.html",
+          "type": "interactive"
+        },
+        {
+          "id": "compare-fractions",
+          "title": "Compare Fractions",
+          "description": "Use >, <, or = to compare fractions.",
+          "icon": "⚖️",
+          "path": "activities/compare-fractions.html",
+          "type": "interactive"
+        },
+        {
+          "id": "fraction-story-problems",
+          "title": "Fraction Story Problems",
+          "description": "Read a short story and solve with fractions.",
+          "icon": "🥧",
+          "path": "activities/fraction-story-problems.html",
+          "type": "interactive"
+        },
+        {
+          "id": "fractions-equal-to-1",
+          "title": "Fractions Equal to 1",
+          "description": "Which fractions make a whole?",
+          "icon": "✅",
+          "path": "activities/fractions-equal-to-1.html",
+          "type": "interactive"
+        },
+        {
+          "id": "unit-fractions-count",
+          "title": "Count Unit Fractions",
+          "description": "How many 1/b pieces are shown?",
+          "icon": "🔍",
+          "path": "activities/unit-fractions-count.html",
+          "type": "interactive"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {
+            "id": "g3-l4-big-idea",
+            "icon": "💡",
+            "title": "Big idea"
+          },
+          {
+            "id": "g3-l4-notice",
+            "icon": "👀",
+            "title": "What to notice"
+          },
+          {
+            "id": "g3-l4-home",
+            "icon": "🏡",
+            "title": "Try at home"
+          },
+          {
+            "id": "g3-l4-videos",
+            "icon": "📺",
+            "title": "Optional videos"
+          }
+        ]
+      }
+    },
+    {
+      "id": "level-5",
+      "number": 5,
+      "title": "Measurement & Geometry",
+      "icon": "🟣",
+      "goal": "Measure and reason about area and perimeter, read time problems, interpret scaled graphs, and classify quadrilaterals.",
+      "skills": [
+        "Find perimeter by counting and by adding side lengths",
+        "Understand area as counting square units and as rows x columns",
+        "Solve elapsed time problems",
+        "Compare mass and volume with appropriate units",
+        "Read scaled bar graphs",
+        "Classify quadrilaterals by attributes"
+      ],
+      "activities": [
+        {
+          "id": "perimeter-walk",
+          "title": "Perimeter Walk",
+          "description": "Find the perimeter by walking around the edge.",
+          "icon": "🚶",
+          "path": "activities/perimeter-walk.html",
+          "type": "interactive"
+        },
+        {
+          "id": "build-perimeter",
+          "title": "Build the Perimeter",
+          "description": "Add side lengths to find perimeter.",
+          "icon": "🧰",
+          "path": "activities/build-perimeter.html",
+          "type": "interactive"
+        },
+        {
+          "id": "area-count",
+          "title": "Area Count (Square Units)",
+          "description": "Count squares to find area.",
+          "icon": "🟩",
+          "path": "activities/area-count.html",
+          "type": "interactive"
+        },
+        {
+          "id": "area-multiply",
+          "title": "Area as Multiply",
+          "description": "Use rows x columns to find area fast.",
+          "icon": "✖️",
+          "path": "activities/area-multiply.html",
+          "type": "interactive"
+        },
+        {
+          "id": "elapsed-time",
+          "title": "Elapsed Time Stories",
+          "description": "How much time passed?",
+          "icon": "⏳",
+          "path": "activities/elapsed-time.html",
+          "type": "interactive"
+        },
+        {
+          "id": "mass-volume",
+          "title": "Mass & Volume Compare",
+          "description": "Choose the best unit and compare amounts.",
+          "icon": "⚖️",
+          "path": "activities/mass-volume.html",
+          "type": "interactive"
+        },
+        {
+          "id": "scaled-bar-graph-g3",
+          "title": "Scaled Bar Graph Questions",
+          "description": "Read a bar graph where each mark counts more than 1.",
+          "icon": "📊",
+          "path": "activities/scaled-bar-graph-g3.html",
+          "type": "interactive"
+        },
+        {
+          "id": "quadrilateral-sort",
+          "title": "Quadrilateral Sort",
+          "description": "Sort quadrilaterals by their properties.",
+          "icon": "🟪",
+          "path": "activities/quadrilateral-sort.html",
+          "type": "interactive"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {
+            "id": "g3-l5-big-idea",
+            "icon": "💡",
+            "title": "Big idea"
+          },
+          {
+            "id": "g3-l5-notice",
+            "icon": "👀",
+            "title": "What to notice"
+          },
+          {
+            "id": "g3-l5-home",
+            "icon": "🏡",
+            "title": "Try at home"
+          },
+          {
+            "id": "g3-l5-videos",
+            "icon": "📺",
+            "title": "Optional videos"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Line Plot with Fractions - Grade 4 Math Activity - Meadow Math">
+  <title>Line Plot with Fractions - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade4">Grade 4</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">📍</span>
+            <span data-i18n="section.activities.line-plot-fractions.title">Line Plot with Fractions</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.line-plot-fractions.instruction">Build the line plot and answer the questions!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Phase 1: Build the line plot -->
+          <div class="phase-container" id="phase-build">
+            <!-- Data to plot -->
+            <div class="data-container" id="data-container">
+              <div class="data-title" data-i18n="section.activities.line-plot-fractions.dataTitle">These are the measurements:</div>
+              <div class="data-values" id="data-values"></div>
+            </div>
+
+            <p class="plot-hint" data-i18n="section.activities.line-plot-fractions.plotHint">Each tick mark is 1/4.</p>
+
+            <!-- Line Plot Area -->
+            <div class="line-plot-container" id="line-plot-container">
+              <div class="plot-title" id="plot-title"></div>
+              <div class="plot-area" id="plot-area"></div>
+              <div class="plot-axis" id="plot-axis"></div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="build-instruction" data-i18n="section.activities.line-plot-fractions.buildInstruction">Click on the line plot to add dots!</div>
+
+            <!-- Check Button -->
+            <button class="btn-activity btn-primary check-btn" id="btn-check" data-i18n="section.activities.line-plot-fractions.checkPlot">Check Line Plot</button>
+          </div>
+
+          <!-- Phase 2: Answer questions -->
+          <div class="phase-container hidden" id="phase-question">
+            <!-- Line Plot Display (read-only) -->
+            <div class="line-plot-container readonly" id="line-plot-display">
+              <div class="plot-title" id="plot-title-display"></div>
+              <div class="plot-area" id="plot-area-display"></div>
+              <div class="plot-axis" id="plot-axis-display"></div>
+            </div>
+
+            <!-- Question Area -->
+            <div class="question-area" id="question-area">
+              <div class="question-text" id="question-text"></div>
+            </div>
+
+            <!-- Answer Choices -->
+            <div class="choice-container" id="choice-container"></div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.line-plot-fractions.great">Great job with line plots!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Line Plot with Fractions Activity - Grade 4 Level 4
+    const LinePlotFractions = {
+      currentRound: 0,
+      totalRounds: 5,
+      questionsPerRound: 2,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+      phase: 'build',
+      currentQuestionIndex: 0,
+      lastQuestionType: null,
+      currentQuestion: null,
+      lastFeedback: null,
+      isBuildLocked: false,
+      advanceTimeout: null,
+
+      // Current round data
+      currentData: [],
+      axisValues: [],
+      axisMinQ: 0,
+      axisMaxQ: 0,
+      placedDots: {},
+      currentTheme: null,
+
+      themes: [
+        { titleKey: 'ribbonLengths', defaultTitle: 'Ribbon Lengths', unitKey: 'in', unitFallback: 'in', emoji: '🎀' },
+        { titleKey: 'frogJumps', defaultTitle: 'Frog Jumps', unitKey: 'ft', unitFallback: 'ft', emoji: '🐸' },
+        { titleKey: 'gardenPaths', defaultTitle: 'Garden Paths', unitKey: 'ft', unitFallback: 'ft', emoji: '🌿' },
+        { titleKey: 'paintCups', defaultTitle: 'Paint Cups', unitKey: 'cups', unitFallback: 'cups', emoji: '🎨' }
+      ],
+
+      // DOM elements
+      dataValues: null,
+      plotArea: null,
+      plotAxis: null,
+      plotTitle: null,
+      phaseBuild: null,
+      phaseQuestion: null,
+      btnCheck: null,
+      questionText: null,
+      choiceContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+      plotContainer: null,
+
+      init() {
+        this.dataValues = document.getElementById('data-values');
+        this.plotArea = document.getElementById('plot-area');
+        this.plotAxis = document.getElementById('plot-axis');
+        this.plotTitle = document.getElementById('plot-title');
+        this.plotContainer = document.getElementById('line-plot-container');
+        this.phaseBuild = document.getElementById('phase-build');
+        this.phaseQuestion = document.getElementById('phase-question');
+        this.btnCheck = document.getElementById('btn-check');
+        this.questionText = document.getElementById('question-text');
+        this.choiceContainer = document.getElementById('choice-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnCheck.addEventListener('click', () => this.checkPlot());
+        this.btnReset.addEventListener('click', () => this.resetCurrentRound());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const translated = i18n.t(key);
+          if (translated && translated !== key) {
+            return translated;
+          }
+        }
+        return fallback;
+      },
+
+      formatValue(valueQ) {
+        const whole = Math.floor(valueQ / 4);
+        const remainder = valueQ % 4;
+        if (remainder === 0) {
+          return `${whole}`;
+        }
+        const fraction = remainder === 1 ? '1/4' : remainder === 2 ? '1/2' : '3/4';
+        if (whole === 0) {
+          return fraction;
+        }
+        return `${whole} ${fraction}`;
+      },
+
+      getDotLabel(valueQ) {
+        const template = this.getTranslation(
+          'section.activities.line-plot-fractions.dotLabel',
+          'Add dot at {value}'
+        );
+        return template.replace('{value}', this.formatValue(valueQ));
+      },
+
+      generateData() {
+        this.currentTheme = this.themes[randomInt(0, this.themes.length - 1)];
+        this.axisMinQ = randomInt(8, 20);
+        this.axisMaxQ = this.axisMinQ + 8;
+        this.axisValues = [];
+        for (let v = this.axisMinQ; v <= this.axisMaxQ; v++) {
+          this.axisValues.push(v);
+        }
+
+        const totalPoints = randomInt(6, 9);
+        const halfValues = this.axisValues.filter(value => value % 4 === 2);
+        const quarterValues = this.axisValues.filter(value => value % 4 === 1 || value % 4 === 3);
+        const baseValues = [];
+
+        if (halfValues.length) {
+          baseValues.push(halfValues[randomInt(0, halfValues.length - 1)]);
+        }
+        if (quarterValues.length) {
+          baseValues.push(quarterValues[randomInt(0, quarterValues.length - 1)]);
+        }
+
+        const uniqueTarget = Math.min(randomInt(4, 6), this.axisValues.length);
+        const remaining = shuffle(this.axisValues.filter(value => !baseValues.includes(value)));
+        while (baseValues.length < uniqueTarget && remaining.length) {
+          baseValues.push(remaining.pop());
+        }
+
+        const uniqueValues = Array.from(new Set(baseValues));
+        this.currentData = [...uniqueValues];
+        while (this.currentData.length < totalPoints) {
+          const value = uniqueValues[randomInt(0, uniqueValues.length - 1)];
+          this.currentData.push(value);
+        }
+        this.currentData = shuffle(this.currentData);
+
+        this.placedDots = {};
+        this.axisValues.forEach(value => {
+          this.placedDots[value] = 0;
+        });
+
+        this.phase = 'build';
+        this.currentQuestionIndex = 0;
+        this.lastQuestionType = null;
+        this.currentQuestion = null;
+        this.isAnswered = false;
+        this.lastFeedback = null;
+        this.isBuildLocked = false;
+      },
+
+      startRound() {
+        this.clearAdvanceTimeout();
+        this.generateData();
+        this.renderDataValues();
+        this.renderPlot();
+        this.renderPlotTitle();
+        this.showBuildPhase();
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      renderDataValues() {
+        this.dataValues.innerHTML = '';
+        this.currentData.forEach((value, index) => {
+          const tag = document.createElement('span');
+          tag.className = 'data-tag';
+          tag.textContent = this.formatValue(value);
+          tag.style.animationDelay = `${index * 0.05}s`;
+          this.dataValues.appendChild(tag);
+        });
+      },
+
+      renderPlotTitle() {
+        if (!this.currentTheme) return;
+        const titleText = this.getTranslation(
+          `section.activities.line-plot-fractions.themes.${this.currentTheme.titleKey}`,
+          this.currentTheme.defaultTitle
+        );
+        const unitText = this.getTranslation(
+          `section.activities.line-plot-fractions.units.${this.currentTheme.unitKey}`,
+          this.currentTheme.unitFallback
+        );
+
+        this.plotTitle.innerHTML = `${this.currentTheme.emoji} ${titleText} <span class="unit-label">(${unitText})</span>`;
+
+        const displayTitle = document.getElementById('plot-title-display');
+        if (displayTitle) {
+          displayTitle.innerHTML = this.plotTitle.innerHTML;
+        }
+      },
+
+      updateDotLabels() {
+        if (!this.plotArea) return;
+        const stacks = this.plotArea.querySelectorAll('.dot-stack');
+        stacks.forEach(stack => {
+          const value = parseInt(stack.dataset.value, 10);
+          stack.setAttribute('aria-label', this.getDotLabel(value));
+        });
+      },
+
+      renderPlot() {
+        this.plotArea.innerHTML = '';
+        this.plotAxis.innerHTML = '';
+
+        this.axisValues.forEach((value) => {
+          const column = document.createElement('div');
+          column.className = 'plot-column';
+          column.dataset.value = value;
+
+          const dotStack = document.createElement('div');
+          dotStack.className = 'dot-stack';
+          dotStack.dataset.value = value;
+          dotStack.tabIndex = 0;
+          dotStack.setAttribute('role', 'button');
+          dotStack.setAttribute('aria-label', this.getDotLabel(value));
+          dotStack.addEventListener('click', () => this.toggleDot(value));
+          dotStack.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              this.toggleDot(value);
+            }
+          });
+
+          column.appendChild(dotStack);
+          this.plotArea.appendChild(column);
+
+          const label = document.createElement('div');
+          label.className = 'axis-label';
+          label.textContent = this.formatValue(value);
+          this.plotAxis.appendChild(label);
+        });
+
+        this.setBuildInteractionEnabled(!this.isBuildLocked);
+      },
+
+      toggleDot(value) {
+        if (this.phase !== 'build' || this.isBuildLocked) return;
+        const dotStack = this.plotArea.querySelector(`.dot-stack[data-value="${value}"]`);
+        if (!dotStack) return;
+
+        this.placedDots[value] += 1;
+
+        const dot = document.createElement('div');
+        dot.className = 'plot-dot';
+        dot.setAttribute('aria-hidden', 'true');
+        dot.addEventListener('click', (event) => {
+          event.stopPropagation();
+          this.removeDot(value, dot);
+        });
+
+        dotStack.appendChild(dot);
+        dot.style.animation = 'dotPop 0.25s ease-out';
+      },
+
+      removeDot(value, dotEl) {
+        if (this.phase !== 'build' || this.isBuildLocked) return;
+        this.placedDots[value] = Math.max(0, this.placedDots[value] - 1);
+        if (dotEl && dotEl.parentNode) {
+          dotEl.parentNode.removeChild(dotEl);
+        }
+      },
+
+      checkPlot() {
+        this.clearAdvanceTimeout();
+        const expected = {};
+        this.axisValues.forEach(value => {
+          expected[value] = 0;
+        });
+        this.currentData.forEach(value => {
+          expected[value] += 1;
+        });
+
+        let isCorrect = true;
+        this.axisValues.forEach(value => {
+          if (this.placedDots[value] !== expected[value]) {
+            isCorrect = false;
+          }
+        });
+
+        if (isCorrect) {
+          const msg = this.getTranslation(
+            'section.activities.line-plot-fractions.plotCorrect',
+            '✓ Great line plot! Now answer questions!'
+          );
+          this.feedback.textContent = msg;
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.lastFeedback = { stage: 'plot', isCorrect: true };
+          this.isBuildLocked = true;
+          this.setBuildInteractionEnabled(false);
+
+          if (typeof celebrate === 'function') {
+            celebrate(this.plotArea);
+          }
+
+          this.advanceTimeout = setTimeout(() => {
+            this.advanceTimeout = null;
+            this.feedback.classList.remove('show');
+            this.showQuestionPhase();
+          }, this.autoAdvanceDelay);
+        } else {
+          const msg = this.getTranslation(
+            'section.activities.line-plot-fractions.plotWrong',
+            'Check the data and try again!'
+          );
+          this.feedback.textContent = msg;
+          this.feedback.classList.add('error', 'show');
+          this.lastFeedback = { stage: 'plot', isCorrect: false };
+
+          if (typeof wiggle === 'function') {
+            wiggle(this.plotArea);
+          }
+        }
+      },
+
+      showBuildPhase() {
+        this.phase = 'build';
+        this.isBuildLocked = false;
+        this.phaseBuild.classList.remove('hidden');
+        this.phaseQuestion.classList.add('hidden');
+        this.btnCheck.classList.remove('hidden');
+        this.setBuildInteractionEnabled(true);
+      },
+
+      showQuestionPhase() {
+        this.phase = 'question';
+        this.phaseBuild.classList.add('hidden');
+        this.phaseQuestion.classList.remove('hidden');
+        this.btnCheck.classList.add('hidden');
+
+        this.renderDisplayPlot();
+        this.showQuestion();
+      },
+
+      renderDisplayPlot() {
+        const displayArea = document.getElementById('plot-area-display');
+        const displayAxis = document.getElementById('plot-axis-display');
+
+        displayArea.innerHTML = '';
+        displayAxis.innerHTML = '';
+
+        this.axisValues.forEach((value) => {
+          const column = document.createElement('div');
+          column.className = 'plot-column';
+
+          const dotStack = document.createElement('div');
+          dotStack.className = 'dot-stack';
+
+          const count = this.placedDots[value];
+          for (let i = 0; i < count; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'plot-dot';
+            dot.setAttribute('aria-hidden', 'true');
+            dotStack.appendChild(dot);
+          }
+
+          column.appendChild(dotStack);
+          displayArea.appendChild(column);
+
+          const label = document.createElement('div');
+          label.className = 'axis-label';
+          label.textContent = this.formatValue(value);
+          displayAxis.appendChild(label);
+        });
+      },
+
+      showQuestion() {
+        this.isAnswered = false;
+        this.currentQuestion = this.generateQuestion();
+        this.questionText.textContent = this.currentQuestion.text;
+        this.renderChoices(this.currentQuestion.choices, this.currentQuestion.correctAnswer, this.currentQuestion.choiceType);
+      },
+
+      getQuestionText(question) {
+        switch (question.type) {
+          case 'howMany': {
+            const template = this.getTranslation(
+              'section.activities.line-plot-fractions.questionHowMany',
+              'How many are at {value}?'
+            );
+            return template.replace('{value}', this.formatValue(question.askValue));
+          }
+          case 'most': {
+            return this.getTranslation(
+              'section.activities.line-plot-fractions.questionMost',
+              'Which value has the most dots?'
+            );
+          }
+          case 'least': {
+            return this.getTranslation(
+              'section.activities.line-plot-fractions.questionLeast',
+              'Which value has the least dots?'
+            );
+          }
+          case 'total':
+          default:
+            return this.getTranslation(
+              'section.activities.line-plot-fractions.questionTotal',
+              'How many dots are there in total?'
+            );
+        }
+      },
+
+      generateQuestion() {
+        const counts = {};
+        this.axisValues.forEach(value => {
+          counts[value] = 0;
+        });
+        this.currentData.forEach(value => {
+          counts[value] += 1;
+        });
+
+        const countValues = Object.values(counts);
+        const maxCount = Math.max(...countValues);
+        const minCount = Math.min(...countValues);
+        const hasUniqueMost = countValues.filter(count => count === maxCount).length === 1;
+        const hasUniqueLeast = countValues.filter(count => count === minCount).length === 1;
+
+        let questionTypes = ['howMany', 'total'];
+        if (hasUniqueMost) questionTypes.push('most');
+        if (hasUniqueLeast) questionTypes.push('least');
+
+        let availableTypes = [...questionTypes];
+        if (this.currentQuestionIndex > 0 && this.lastQuestionType) {
+          availableTypes = availableTypes.filter(type => type !== this.lastQuestionType);
+        }
+
+        const qType = availableTypes[randomInt(0, availableTypes.length - 1)];
+        this.lastQuestionType = qType;
+
+        let correctAnswer = 0;
+        let choices = [];
+        let choiceType = 'count';
+        let askValue = null;
+
+        switch (qType) {
+          case 'howMany': {
+            const availableValues = this.axisValues.filter(value => counts[value] > 0);
+            const pool = availableValues.length ? availableValues : this.axisValues;
+            askValue = pool[randomInt(0, pool.length - 1)];
+            correctAnswer = counts[askValue];
+            choices = [correctAnswer];
+            while (choices.length < 4) {
+              const distractor = randomInt(0, Math.max(...countValues) + 2);
+              if (!choices.includes(distractor)) {
+                choices.push(distractor);
+              }
+            }
+            break;
+          }
+          case 'most': {
+            const maxValue = this.axisValues.find(value => counts[value] === maxCount);
+            correctAnswer = maxValue;
+            choices = shuffle([...this.axisValues]).slice(0, 4);
+            if (!choices.includes(correctAnswer)) {
+              choices[0] = correctAnswer;
+              choices = shuffle(choices);
+            }
+            choiceType = 'value';
+            break;
+          }
+          case 'least': {
+            const minValue = this.axisValues.find(value => counts[value] === minCount);
+            correctAnswer = minValue;
+            choices = shuffle([...this.axisValues]).slice(0, 4);
+            if (!choices.includes(correctAnswer)) {
+              choices[0] = correctAnswer;
+              choices = shuffle(choices);
+            }
+            choiceType = 'value';
+            break;
+          }
+          case 'total':
+          default: {
+            correctAnswer = this.currentData.length;
+            choices = [correctAnswer];
+            while (choices.length < 4) {
+              const distractor = randomInt(Math.max(1, correctAnswer - 3), correctAnswer + 3);
+              if (!choices.includes(distractor)) {
+                choices.push(distractor);
+              }
+            }
+            break;
+          }
+        }
+
+        choices = shuffle(choices);
+
+        const question = {
+          type: qType,
+          askValue,
+          text: '',
+          correctAnswer,
+          choices,
+          choiceType
+        };
+
+        question.text = this.getQuestionText(question);
+        return question;
+      },
+
+      renderChoices(choices, correctAnswer, choiceType) {
+        this.choiceContainer.innerHTML = '';
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.type = 'button';
+          btn.textContent = choiceType === 'value' ? this.formatValue(choice) : choice;
+          btn.dataset.value = choice;
+          btn.addEventListener('click', () => this.selectChoice(choice, correctAnswer, choiceType));
+          this.choiceContainer.appendChild(btn);
+        });
+      },
+
+      selectChoice(value, correctAnswer, choiceType) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const isCorrect = value === correctAnswer;
+        const answerText = choiceType === 'value' ? this.formatValue(correctAnswer) : `${correctAnswer}`;
+
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          const btnValue = parseInt(btn.dataset.value, 10);
+          if (btnValue === correctAnswer) {
+            btn.classList.add('correct');
+          } else if (btnValue === value && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+          btn.disabled = true;
+        });
+
+        if (isCorrect) {
+          this.correctCount += 1;
+          const msg = this.getTranslation(
+            'section.activities.line-plot-fractions.correct',
+            '✓ Correct! The answer is {answer}.'
+          );
+          this.feedback.textContent = msg.replace('{answer}', answerText);
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount += 1;
+          const msg = this.getTranslation(
+            'section.activities.line-plot-fractions.wrong',
+            'The answer is {answer}.'
+          );
+          this.feedback.textContent = msg.replace('{answer}', answerText);
+          this.feedback.classList.add('error');
+        }
+
+        this.lastFeedback = { stage: 'question', isCorrect, answerText };
+        this.feedback.classList.add('show');
+
+        this.clearAdvanceTimeout();
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          this.currentQuestionIndex += 1;
+          if (this.currentQuestionIndex < this.questionsPerRound) {
+            this.feedback.classList.remove('show', 'error');
+            this.showQuestion();
+          } else {
+            if (this.currentRound < this.totalRounds - 1) {
+              this.nextRound();
+            } else {
+              this.showStats();
+            }
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextRound() {
+        this.currentRound += 1;
+        this.startRound();
+      },
+
+      resetCurrentRound() {
+        this.clearAdvanceTimeout();
+        this.axisValues.forEach(value => {
+          this.placedDots[value] = 0;
+        });
+        this.renderPlot();
+        this.feedback.classList.remove('show', 'error');
+        this.currentQuestionIndex = 0;
+        this.lastQuestionType = null;
+        this.currentQuestion = null;
+        this.isAnswered = false;
+        this.lastFeedback = null;
+        this.showBuildPhase();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const totalQuestions = this.totalRounds * this.questionsPerRound;
+        const ratio = totalQuestions ? this.correctCount / totalQuestions : 0;
+
+        if (ratio === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.line-plot-fractions.perfect',
+            'Amazing line plot skills!'
+          );
+        } else if (ratio >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.line-plot-fractions.great',
+            'Great job with line plots!'
+          );
+        } else if (ratio >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.line-plot-fractions.good',
+            'Nice work!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.line-plot-fractions.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentRound = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      setBuildInteractionEnabled(isEnabled) {
+        if (!this.plotContainer) return;
+        this.plotContainer.classList.toggle('locked', !isEnabled);
+        if (this.btnCheck) {
+          this.btnCheck.disabled = !isEnabled;
+          this.btnCheck.setAttribute('aria-disabled', String(!isEnabled));
+        }
+        const stacks = this.plotArea ? this.plotArea.querySelectorAll('.dot-stack') : [];
+        stacks.forEach(stack => {
+          stack.setAttribute('aria-disabled', String(!isEnabled));
+          stack.tabIndex = isEnabled ? 0 : -1;
+        });
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentRound + 1, this.totalRounds);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalRounds}`);
+      },
+
+      updateFeedbackText() {
+        if (!this.lastFeedback || !this.feedback.classList.contains('show')) return;
+        if (this.lastFeedback.stage === 'plot') {
+          const key = this.lastFeedback.isCorrect ? 'plotCorrect' : 'plotWrong';
+          const fallback = this.lastFeedback.isCorrect
+            ? '✓ Great line plot! Now answer questions!'
+            : 'Check the data and try again!';
+          this.feedback.textContent = this.getTranslation(
+            `section.activities.line-plot-fractions.${key}`,
+            fallback
+          );
+          this.feedback.classList.toggle('error', !this.lastFeedback.isCorrect);
+          return;
+        }
+
+        const key = this.lastFeedback.isCorrect ? 'correct' : 'wrong';
+        const fallback = this.lastFeedback.isCorrect
+          ? '✓ Correct! The answer is {answer}.'
+          : 'The answer is {answer}.';
+        this.feedback.textContent = this.getTranslation(
+          `section.activities.line-plot-fractions.${key}`,
+          fallback
+        ).replace('{answer}', this.lastFeedback.answerText);
+        this.feedback.classList.toggle('error', !this.lastFeedback.isCorrect);
+      },
+
+      updateTranslations() {
+        this.renderPlotTitle();
+        this.updateDotLabels();
+        if (this.currentQuestion && this.questionText) {
+          this.questionText.textContent = this.getQuestionText(this.currentQuestion);
+        }
+        this.updateFeedbackText();
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => LinePlotFractions.init());
+      } else {
+        LinePlotFractions.init();
+      }
+    });
+  </script>
+  <style>
+    /* Line Plot with Fractions specific styles */
+
+    .phase-container {
+      transition: opacity 0.3s ease;
+    }
+
+    .phase-container.hidden {
+      display: none;
+    }
+
+    .data-container {
+      text-align: center;
+      margin-bottom: var(--space-4);
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #8b5cf6;
+      box-shadow: 0 4px 0 #7c3aed;
+    }
+
+    .data-title {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #4c1d95;
+      margin-bottom: var(--space-2);
+    }
+
+    .data-values {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-2);
+    }
+
+    .data-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 64px;
+      height: 44px;
+      padding: var(--space-1) var(--space-2);
+      background: linear-gradient(135deg, #ffffff, #ede9fe);
+      border: 2px solid #a78bfa;
+      border-radius: var(--radius-md);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #4c1d95;
+      animation: tagPop 0.3s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes tagPop {
+      0% {
+        opacity: 0;
+        transform: scale(0.85);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .plot-hint {
+      text-align: center;
+      font-size: var(--text-sm);
+      color: var(--color-neutral-500);
+      margin: 0 0 var(--space-3);
+    }
+
+    .line-plot-container {
+      padding: var(--space-4);
+      margin: var(--space-4) auto;
+      max-width: 560px;
+      background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #c4b5fd;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .line-plot-container.readonly {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border-color: #10b981;
+    }
+
+    .line-plot-container.locked {
+      opacity: 0.9;
+    }
+
+    .line-plot-container.locked .dot-stack {
+      cursor: default;
+      pointer-events: none;
+      background-color: transparent;
+    }
+
+    .line-plot-container.locked .plot-dot {
+      cursor: default;
+    }
+
+    .plot-title {
+      text-align: center;
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #4c1d95;
+      margin-bottom: var(--space-3);
+    }
+
+    .unit-label {
+      font-weight: var(--weight-normal);
+      font-size: var(--text-base);
+      color: var(--color-neutral-500);
+    }
+
+    .plot-area {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      min-height: 160px;
+      padding: var(--space-2);
+      border-bottom: 3px solid #4c1d95;
+    }
+
+    .plot-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 44px;
+    }
+
+    .dot-stack {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 6px;
+      min-height: 120px;
+      width: 100%;
+      cursor: pointer;
+      padding: var(--space-2);
+      border-radius: var(--radius-md);
+      transition: background-color 0.2s ease;
+    }
+
+    .line-plot-container:not(.readonly) .dot-stack:hover {
+      background-color: rgba(124, 58, 237, 0.12);
+    }
+
+    .line-plot-container:not(.readonly) .dot-stack:focus {
+      outline: none;
+      background-color: rgba(124, 58, 237, 0.2);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.35);
+    }
+
+    .line-plot-container:not(.readonly) .dot-stack:focus-visible {
+      outline: 2px solid #7c3aed;
+      outline-offset: 2px;
+    }
+
+    .readonly .dot-stack {
+      cursor: default;
+      outline: none;
+    }
+
+    .plot-dot {
+      width: 22px;
+      height: 22px;
+      background: linear-gradient(135deg, #a855f7, #7c3aed);
+      border: 2px solid #6d28d9;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .line-plot-container:not(.readonly) .plot-dot:hover {
+      transform: scale(1.2);
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      border-color: #c2410c;
+    }
+
+    .readonly .plot-dot {
+      cursor: default;
+    }
+
+    .readonly .plot-dot:hover {
+      transform: none !important;
+      background: linear-gradient(135deg, #a855f7, #7c3aed) !important;
+      border-color: #6d28d9 !important;
+    }
+
+    @keyframes dotPop {
+      0% {
+        transform: scale(0);
+      }
+      50% {
+        transform: scale(1.25);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .plot-axis {
+      display: flex;
+      justify-content: space-around;
+      padding-top: var(--space-2);
+    }
+
+    .axis-label {
+      flex: 1;
+      text-align: center;
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      white-space: nowrap;
+    }
+
+    .build-instruction {
+      text-align: center;
+      font-size: var(--text-base);
+      color: var(--color-neutral-600);
+      margin: var(--space-3) 0;
+      font-style: italic;
+    }
+
+    .check-btn {
+      display: block;
+      margin: var(--space-4) auto 0;
+      min-width: 180px;
+      min-height: 52px;
+    }
+
+    .check-btn.hidden {
+      display: none;
+    }
+
+    .question-area {
+      text-align: center;
+      margin: var(--space-4) auto;
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-radius: var(--radius-lg);
+      border: 3px solid #8b5cf6;
+      max-width: 520px;
+    }
+
+    .question-text {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #4c1d95;
+    }
+
+    .choice-container {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(140px, 1fr));
+      gap: var(--space-3);
+      margin: var(--space-4) auto var(--space-6);
+      max-width: 420px;
+    }
+
+    .choice-btn {
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 3px solid #38bdf8;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 0 #0284c7;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+      border-color: #0ea5e9;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 #0284c7;
+    }
+
+    .choice-btn:focus:not(:disabled) {
+      outline: none;
+      box-shadow: 0 3px 0 #0284c7, 0 0 0 4px rgba(56, 189, 248, 0.5);
+      border-color: #0ea5e9;
+    }
+
+    .choice-btn:focus-visible:not(:disabled) {
+      outline: 3px solid #38bdf8;
+      outline-offset: 2px;
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 1px 0 #0284c7;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      box-shadow: 0 3px 0 #166534;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      box-shadow: 0 3px 0 #991b1b;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    .choice-btn:disabled {
+      cursor: default;
+    }
+
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    .activity-area {
+      position: relative;
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    @media (max-width: 767px) {
+      .line-plot-container {
+        padding: var(--space-3);
+      }
+
+      .plot-area {
+        min-height: 140px;
+      }
+
+      .dot-stack {
+        min-height: 100px;
+        padding: var(--space-1);
+      }
+
+      .plot-dot {
+        width: 20px;
+        height: 20px;
+      }
+
+      .axis-label {
+        font-size: var(--text-xs);
+      }
+
+      .data-tag {
+        min-width: 56px;
+        height: 40px;
+        font-size: var(--text-sm);
+      }
+
+      .choice-container {
+        gap: var(--space-2);
+        max-width: 360px;
+      }
+
+      .choice-btn {
+        padding: var(--space-3);
+        font-size: var(--text-lg);
+        min-height: 64px;
+      }
+
+      .data-title {
+        font-size: var(--text-base);
+      }
+
+      .plot-title {
+        font-size: var(--text-base);
+      }
+
+      .question-text {
+        font-size: var(--text-base);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .plot-area {
+        min-height: 120px;
+      }
+
+      .dot-stack {
+        min-height: 84px;
+        gap: 4px;
+      }
+
+      .plot-dot {
+        width: 18px;
+        height: 18px;
+      }
+
+      .plot-column {
+        min-width: 36px;
+      }
+
+      .axis-label {
+        font-size: 10px;
+      }
+
+      .data-tag {
+        min-width: 50px;
+        height: 36px;
+        font-size: var(--text-xs);
+      }
+
+      .choice-container {
+        grid-template-columns: 1fr;
+        max-width: 260px;
+      }
+
+      .choice-btn {
+        font-size: var(--text-base);
+        min-height: 60px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fraction Scaling - Grade 5 Math Activity - Meadow Math">
+  <title>Fraction Scaling - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🔎</span>
+            <span data-i18n="section.activities.fraction-scaling.title">Fraction Scaling</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.fraction-scaling.instruction">Predict: bigger or smaller?</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Question Display -->
+          <div class="question-container" id="question-container">
+            <div class="question-prompt" id="question-prompt">
+              <!-- Question text will be inserted here -->
+            </div>
+
+            <!-- Visual Model -->
+            <div class="visual-model" id="visual-model">
+              <div class="model-bar original" id="original-bar">
+                <span class="bar-label" id="original-label">Original</span>
+                <div class="bar-fill" id="original-fill"></div>
+                <span class="bar-value" id="original-value"></span>
+              </div>
+              <div class="model-bar result" id="result-bar">
+                <span class="bar-label" id="result-label">Result</span>
+                <div class="bar-fill" id="result-fill"></div>
+                <span class="bar-value" id="result-value"></span>
+              </div>
+            </div>
+
+            <!-- Expression Display -->
+            <div class="expression-display" id="expression-display">
+              <span class="expression-number" id="expr-number"></span>
+              <span class="expression-operator">×</span>
+              <span class="expression-fraction" id="expr-fraction"></span>
+              <span class="expression-result" id="expr-result">= ?</span>
+            </div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <button class="choice-btn scaling-choice" data-value="smaller" id="btn-smaller">
+              <span class="choice-icon">📉</span>
+              <span class="choice-text" data-i18n="section.activities.fraction-scaling.smaller">Smaller</span>
+            </button>
+            <button class="choice-btn scaling-choice" data-value="same" id="btn-same">
+              <span class="choice-icon">🟰</span>
+              <span class="choice-text" data-i18n="section.activities.fraction-scaling.same">Same</span>
+            </button>
+            <button class="choice-btn scaling-choice" data-value="bigger" id="btn-bigger">
+              <span class="choice-icon">📈</span>
+              <span class="choice-text" data-i18n="section.activities.fraction-scaling.bigger">Bigger</span>
+            </button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.fraction-scaling.great">Great work with fraction scaling!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Fraction Scaling Activity - Grade 5 Level 3
+    const FractionScaling = {
+      currentQuestion: 0,
+      totalQuestions: 12,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+
+      // DOM elements
+      questionPrompt: null,
+      visualModel: null,
+      originalBar: null,
+      originalFill: null,
+      originalValue: null,
+      originalLabel: null,
+      resultBar: null,
+      resultFill: null,
+      resultValue: null,
+      resultLabel: null,
+      exprNumber: null,
+      exprFraction: null,
+      exprResult: null,
+      expressionDisplay: null,
+      choicesContainer: null,
+      btnSmaller: null,
+      btnSame: null,
+      btnBigger: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.questionPrompt = document.getElementById('question-prompt');
+        this.visualModel = document.getElementById('visual-model');
+        this.originalBar = document.getElementById('original-bar');
+        this.originalFill = document.getElementById('original-fill');
+        this.originalValue = document.getElementById('original-value');
+        this.originalLabel = document.getElementById('original-label');
+        this.resultBar = document.getElementById('result-bar');
+        this.resultFill = document.getElementById('result-fill');
+        this.resultValue = document.getElementById('result-value');
+        this.resultLabel = document.getElementById('result-label');
+        this.exprNumber = document.getElementById('expr-number');
+        this.exprFraction = document.getElementById('expr-fraction');
+        this.exprResult = document.getElementById('expr-result');
+        this.expressionDisplay = document.getElementById('expression-display');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.btnSmaller = document.getElementById('btn-smaller');
+        this.btnSame = document.getElementById('btn-same');
+        this.btnBigger = document.getElementById('btn-bigger');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Event listeners
+        this.btnSmaller.addEventListener('click', () => this.checkAnswer('smaller', this.btnSmaller));
+        this.btnSame.addEventListener('click', () => this.checkAnswer('same', this.btnSame));
+        this.btnBigger.addEventListener('click', () => this.checkAnswer('bigger', this.btnBigger));
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      // Calculate GCD using Euclidean algorithm
+      gcd(a, b) {
+        return b === 0 ? a : this.gcd(b, a % b);
+      },
+
+      // Simplify a fraction
+      simplify(num, den) {
+        const g = this.gcd(num, den);
+        return { num: num / g, den: den / g };
+      },
+
+      // Format fraction for HTML display
+      formatFractionHTML(num, den) {
+        if (den === 1) return `<span class="whole-number">${num}</span>`;
+        return `<span class="frac-display"><span class="frac-num">${num}</span><span class="frac-bar"></span><span class="frac-den">${den}</span></span>`;
+      },
+
+      // Format fraction as text
+      formatFractionText(num, den) {
+        if (den === 1) return `${num}`;
+        return `${num}/${den}`;
+      },
+
+      generateQuestions() {
+        // Question types:
+        // 1. Fraction < 1 (shrinks)
+        // 2. Fraction = 1 (same)
+        // 3. Fraction > 1 (grows)
+        const questionTemplates = [
+          // Fractions less than 1 (result is smaller)
+          { num: 1, den: 2, answer: 'smaller' },  // 1/2
+          { num: 1, den: 3, answer: 'smaller' },  // 1/3
+          { num: 1, den: 4, answer: 'smaller' },  // 1/4
+          { num: 2, den: 3, answer: 'smaller' },  // 2/3
+          { num: 3, den: 4, answer: 'smaller' },  // 3/4
+          { num: 2, den: 5, answer: 'smaller' },  // 2/5
+          { num: 3, den: 5, answer: 'smaller' },  // 3/5
+          { num: 4, den: 5, answer: 'smaller' },  // 4/5
+
+          // Fractions equal to 1 (result is same)
+          { num: 2, den: 2, answer: 'same' },     // 2/2 = 1
+          { num: 3, den: 3, answer: 'same' },     // 3/3 = 1
+          { num: 4, den: 4, answer: 'same' },     // 4/4 = 1
+          { num: 5, den: 5, answer: 'same' },     // 5/5 = 1
+
+          // Fractions greater than 1 (result is bigger)
+          { num: 3, den: 2, answer: 'bigger' },   // 3/2
+          { num: 4, den: 3, answer: 'bigger' },   // 4/3
+          { num: 5, den: 4, answer: 'bigger' },   // 5/4
+          { num: 5, den: 3, answer: 'bigger' },   // 5/3
+          { num: 7, den: 4, answer: 'bigger' },   // 7/4
+          { num: 5, den: 2, answer: 'bigger' },   // 5/2
+          { num: 6, den: 5, answer: 'bigger' },   // 6/5
+          { num: 8, den: 5, answer: 'bigger' },   // 8/5
+        ];
+
+        // Whole numbers to multiply with
+        const wholeNumbers = [4, 6, 8, 10, 12, 15, 16, 18, 20, 24];
+
+        // Shuffle templates and take 12
+        const shuffledTemplates = shuffle(questionTemplates);
+
+        this.questions = [];
+        for (let i = 0; i < this.totalQuestions; i++) {
+          const template = shuffledTemplates[i % shuffledTemplates.length];
+          const wholeNum = wholeNumbers[Math.floor(Math.random() * wholeNumbers.length)];
+
+          // Calculate the product
+          const productNum = wholeNum * template.num;
+          const productDen = template.den;
+          const simplified = this.simplify(productNum, productDen);
+
+          // Calculate actual decimal value for visual comparison
+          const originalValue = wholeNum;
+          const resultValue = (wholeNum * template.num) / template.den;
+
+          this.questions.push({
+            wholeNum,
+            fracNum: template.num,
+            fracDen: template.den,
+            answer: template.answer,
+            productNum: simplified.num,
+            productDen: simplified.den,
+            originalValue,
+            resultValue
+          });
+        }
+
+        // Shuffle questions to mix different types
+        this.questions = shuffle(this.questions);
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        // Reset button states
+        const allBtns = this.choicesContainer.querySelectorAll('.choice-btn');
+        allBtns.forEach(btn => {
+          btn.disabled = false;
+          btn.classList.remove('correct', 'incorrect', 'selected');
+        });
+
+        // Hide result bar initially
+        this.resultBar.classList.remove('revealed');
+        this.resultFill.style.width = '0%';
+        this.resultValue.textContent = '?';
+        this.exprResult.textContent = '= ?';
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        // Build question prompt
+        const promptText = this.buildPromptText(question);
+        this.questionPrompt.innerHTML = promptText;
+
+        // Update expression display
+        this.exprNumber.textContent = question.wholeNum;
+        this.exprFraction.innerHTML = this.formatFractionHTML(question.fracNum, question.fracDen);
+
+        // Update visual model
+        this.updateVisualModel(question);
+
+        this.renderProgress();
+      },
+
+      buildPromptText(question) {
+        // Build a sentence like "8 × 1/2 is ____ than 8"
+        const fractionText = this.formatFractionText(question.fracNum, question.fracDen);
+        const numberText = `<strong>${question.wholeNum}</strong>`;
+        const fractionHTML = this.formatFractionHTML(question.fracNum, question.fracDen);
+
+        const promptTemplate = this.getTranslation(
+          'section.activities.fraction-scaling.prompt',
+          '{number} × {fraction} will be ____?'
+        );
+
+        // Replace placeholders
+        let prompt = promptTemplate
+          .replace('{number}', numberText)
+          .replace('{fraction}', `<span class="inline-fraction">${this.formatFractionHTML(question.fracNum, question.fracDen)}</span>`);
+
+        return `<div class="prompt-text">${prompt}</div>`;
+      },
+
+      updateVisualModel(question) {
+        // Set original bar to 100% (represents the whole number)
+        this.originalFill.style.width = '100%';
+        this.originalValue.textContent = question.wholeNum;
+
+        // Update labels
+        const originalText = this.getTranslation('section.activities.fraction-scaling.original', 'Original');
+        const resultText = this.getTranslation('section.activities.fraction-scaling.result', 'Result');
+        this.originalLabel.textContent = originalText + ': ' + question.wholeNum;
+        this.resultLabel.textContent = resultText + ': ?';
+      },
+
+      revealResult(question) {
+        // Calculate the width ratio based on fraction
+        const ratio = question.fracNum / question.fracDen;
+        const widthPercent = Math.min(ratio * 100, 150); // Cap at 150% for display
+
+        // Animate the result bar
+        this.resultBar.classList.add('revealed');
+        this.resultFill.style.width = `${widthPercent}%`;
+
+        // Show the result value
+        let resultDisplay;
+        if (question.productDen === 1) {
+          resultDisplay = question.productNum;
+        } else {
+          // Show as mixed number if > 1
+          const whole = Math.floor(question.productNum / question.productDen);
+          const remainder = question.productNum % question.productDen;
+          if (whole > 0 && remainder > 0) {
+            resultDisplay = `${whole} ${remainder}/${question.productDen}`;
+          } else if (whole > 0) {
+            resultDisplay = whole;
+          } else {
+            resultDisplay = `${question.productNum}/${question.productDen}`;
+          }
+        }
+
+        this.resultValue.textContent = resultDisplay;
+        this.resultLabel.textContent = this.getTranslation('section.activities.fraction-scaling.result', 'Result') + ': ' + resultDisplay;
+
+        // Update expression result
+        this.exprResult.textContent = '= ' + resultDisplay;
+      },
+
+      checkAnswer(selected, btn) {
+        if (this.isAnswered) return;
+
+        this.isAnswered = true;
+        const question = this.questions[this.currentQuestion];
+        const isCorrect = selected === question.answer;
+
+        // Disable all buttons
+        const allBtns = this.choicesContainer.querySelectorAll('.choice-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        // Reveal the result visually
+        this.revealResult(question);
+
+        if (isCorrect) {
+          this.correctCount++;
+          btn.classList.add('correct');
+
+          // Build feedback message
+          const feedbackKey = this.getFeedbackKey(question);
+          const feedbackText = this.getTranslation(
+            `section.activities.fraction-scaling.${feedbackKey}`,
+            this.getDefaultFeedback(question)
+          );
+
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          btn.classList.add('incorrect');
+
+          // Highlight correct answer
+          const correctBtn = this.choicesContainer.querySelector(`[data-value="${question.answer}"]`);
+          if (correctBtn) {
+            correctBtn.classList.add('correct');
+          }
+
+          // Build wrong feedback message
+          const wrongKey = this.getWrongFeedbackKey(question);
+          const wrongText = this.getTranslation(
+            `section.activities.fraction-scaling.${wrongKey}`,
+            this.getDefaultWrongFeedback(question)
+          );
+
+          this.feedback.textContent = wrongText;
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+        this.scheduleAdvance();
+      },
+
+      getFeedbackKey(question) {
+        if (question.answer === 'smaller') return 'correctSmaller';
+        if (question.answer === 'same') return 'correctSame';
+        return 'correctBigger';
+      },
+
+      getDefaultFeedback(question) {
+        const fractionText = this.formatFractionText(question.fracNum, question.fracDen);
+        if (question.answer === 'smaller') {
+          return `Correct! ${fractionText} < 1, so the product is smaller.`;
+        } else if (question.answer === 'same') {
+          return `Correct! ${fractionText} = 1, so the product is the same.`;
+        } else {
+          return `Correct! ${fractionText} > 1, so the product is bigger.`;
+        }
+      },
+
+      getWrongFeedbackKey(question) {
+        if (question.answer === 'smaller') return 'wrongSmaller';
+        if (question.answer === 'same') return 'wrongSame';
+        return 'wrongBigger';
+      },
+
+      getDefaultWrongFeedback(question) {
+        const fractionText = this.formatFractionText(question.fracNum, question.fracDen);
+        if (question.answer === 'smaller') {
+          return `${fractionText} < 1 makes the product smaller.`;
+        } else if (question.answer === 'same') {
+          return `${fractionText} = 1 keeps the product the same.`;
+        } else {
+          return `${fractionText} > 1 makes the product bigger.`;
+        }
+      },
+
+      scheduleAdvance() {
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+
+        // Update button labels
+        const smallerText = this.getTranslation('section.activities.fraction-scaling.smaller', 'Smaller');
+        const sameText = this.getTranslation('section.activities.fraction-scaling.same', 'Same');
+        const biggerText = this.getTranslation('section.activities.fraction-scaling.bigger', 'Bigger');
+
+        this.btnSmaller.querySelector('.choice-text').textContent = smallerText;
+        this.btnSame.querySelector('.choice-text').textContent = sameText;
+        this.btnBigger.querySelector('.choice-text').textContent = biggerText;
+
+        // Update current question if not answered
+        if (!this.isAnswered && this.questions[this.currentQuestion]) {
+          const question = this.questions[this.currentQuestion];
+          this.questionPrompt.innerHTML = this.buildPromptText(question);
+          this.updateVisualModel(question);
+        }
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.fraction-scaling.perfect',
+            'Perfect! You mastered fraction scaling!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.fraction-scaling.great',
+            'Great work with fraction scaling!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.fraction-scaling.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.fraction-scaling.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => FractionScaling.init());
+      } else {
+        FractionScaling.init();
+      }
+    });
+  </script>
+  <style>
+    /* Fraction Scaling specific styles */
+
+    .question-container {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .question-prompt {
+      margin-bottom: var(--space-4);
+    }
+
+    .prompt-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-medium);
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    .prompt-text strong {
+      color: #2563eb;
+      font-weight: var(--weight-bold);
+    }
+
+    .inline-fraction {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 var(--space-1);
+    }
+
+    .inline-fraction .frac-display {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+      vertical-align: middle;
+    }
+
+    .inline-fraction .frac-num,
+    .inline-fraction .frac-den {
+      font-size: 0.8em;
+      font-weight: var(--weight-bold);
+      color: #7c3aed;
+    }
+
+    .inline-fraction .frac-bar {
+      width: 100%;
+      height: 2px;
+      background: #7c3aed;
+      margin: 2px 0;
+    }
+
+    /* Expression Display */
+    .expression-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #8b5cf6;
+      margin-bottom: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .expression-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #2563eb;
+    }
+
+    .expression-operator {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #6b7280;
+    }
+
+    .expression-fraction {
+      display: inline-block;
+    }
+
+    .expression-fraction .frac-display {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .expression-fraction .frac-num,
+    .expression-fraction .frac-den {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #7c3aed;
+    }
+
+    .expression-fraction .frac-bar {
+      width: 100%;
+      height: 3px;
+      background: #7c3aed;
+      margin: 2px 0;
+    }
+
+    .expression-fraction .whole-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #7c3aed;
+    }
+
+    .expression-result {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #059669;
+      transition: all 0.3s ease;
+    }
+
+    /* Visual Model */
+    .visual-model {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 2px solid #e5e7eb;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      overflow: hidden;
+    }
+
+    .model-bar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+    }
+
+    .model-bar:last-child {
+      margin-bottom: 0;
+    }
+
+    .bar-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: #6b7280;
+    }
+
+    .bar-wrapper {
+      position: relative;
+      height: 40px;
+      background: #f3f4f6;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: var(--radius-md);
+      transition: width 0.5s ease-out;
+      position: relative;
+      min-width: 0;
+    }
+
+    .model-bar.original .bar-fill {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      width: 100%;
+    }
+
+    .model-bar.result .bar-fill {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      width: 0%;
+    }
+
+    .model-bar.result.revealed .bar-fill {
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+    }
+
+    .bar-value {
+      position: absolute;
+      right: var(--space-2);
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: white;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      white-space: nowrap;
+    }
+
+    .model-bar.original .bar-value {
+      color: white;
+    }
+
+    .model-bar.result .bar-value {
+      color: white;
+      opacity: 0;
+      transition: opacity 0.3s ease 0.3s;
+    }
+
+    .model-bar.result.revealed .bar-value {
+      opacity: 1;
+    }
+
+    /* When bar is small, show value outside */
+    .model-bar.result .bar-fill[data-small="true"] .bar-value {
+      right: auto;
+      left: calc(100% + var(--space-2));
+      color: #166534;
+      text-shadow: none;
+    }
+
+    /* Answer Choices */
+    .choices-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+      max-width: 500px;
+      margin: 0 auto var(--space-4);
+    }
+
+    .choice-btn.scaling-choice {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-2);
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #1e3a5f;
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 3px solid #22c55e;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 90px;
+    }
+
+    .choice-btn.scaling-choice:hover:not(:disabled) {
+      transform: scale(1.03);
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #16a34a;
+    }
+
+    .choice-btn.scaling-choice:active:not(:disabled) {
+      transform: scale(0.97);
+    }
+
+    .choice-btn.scaling-choice:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn.scaling-choice:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .choice-btn.scaling-choice:focus-visible {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn.scaling-choice:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .choice-btn.scaling-choice.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .choice-btn.scaling-choice.incorrect {
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border-color: #ef4444;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    .choice-icon {
+      font-size: var(--text-2xl);
+    }
+
+    .choice-text {
+      font-size: var(--text-base);
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+      20%, 40%, 60%, 80% { transform: translateX(4px); }
+    }
+
+    /* Feedback and layout */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Fraction display in choices */
+    .frac-display {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .frac-num,
+    .frac-den {
+      font-size: 0.8em;
+    }
+
+    .frac-bar {
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      margin: 2px 0;
+    }
+
+    .whole-number {
+      vertical-align: middle;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .prompt-text {
+        font-size: var(--text-lg);
+      }
+
+      .expression-display {
+        padding: var(--space-2) var(--space-3);
+        gap: var(--space-2);
+      }
+
+      .expression-number,
+      .expression-operator {
+        font-size: var(--text-xl);
+      }
+
+      .expression-fraction .frac-num,
+      .expression-fraction .frac-den {
+        font-size: var(--text-lg);
+      }
+
+      .expression-result {
+        font-size: var(--text-xl);
+      }
+
+      .visual-model {
+        padding: var(--space-3);
+        max-width: 100%;
+      }
+
+      .bar-fill {
+        height: 35px;
+      }
+
+      .bar-value {
+        font-size: var(--text-base);
+      }
+
+      .choices-container {
+        gap: var(--space-2);
+        max-width: 100%;
+      }
+
+      .choice-btn.scaling-choice {
+        padding: var(--space-2);
+        min-height: 80px;
+        font-size: var(--text-base);
+      }
+
+      .choice-icon {
+        font-size: var(--text-xl);
+      }
+
+      .choice-text {
+        font-size: var(--text-sm);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .prompt-text {
+        font-size: var(--text-base);
+      }
+
+      .expression-display {
+        gap: var(--space-1);
+      }
+
+      .expression-number,
+      .expression-operator,
+      .expression-result {
+        font-size: var(--text-lg);
+      }
+
+      .expression-fraction .frac-num,
+      .expression-fraction .frac-den {
+        font-size: var(--text-base);
+      }
+
+      .bar-fill {
+        height: 30px;
+      }
+
+      .bar-value {
+        font-size: var(--text-sm);
+      }
+
+      .choice-btn.scaling-choice {
+        min-height: 70px;
+        padding: var(--space-2) var(--space-1);
+      }
+
+      .choice-icon {
+        font-size: var(--text-lg);
+      }
+
+      .choice-text {
+        font-size: var(--text-xs);
+      }
+    }
+
+    @media (max-width: 360px) {
+      .choices-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .choice-btn.scaling-choice {
+        min-height: 65px;
+      }
+
+      .bar-label {
+        font-size: var(--text-xs);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

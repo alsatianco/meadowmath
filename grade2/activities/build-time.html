@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Build the Time - Grade 2 Math Activity - Meadow Math">
+  <title>Build the Time - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade2">Grade 2</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🕒</span>
+            <span data-i18n="section.activities.build-time.title">Build the Time</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.build-time.instruction">Set the clock hands to match the time!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Target Time Display -->
+          <div class="target-time-container" id="target-time-container">
+            <span class="target-label" data-i18n="section.activities.build-time.setClockTo">Set the clock to:</span>
+            <span class="target-time" id="target-time">7:45</span>
+          </div>
+
+          <!-- Interactive Clock -->
+          <div class="clock-container">
+            <div class="clock interactive-clock" id="clock">
+              <!-- Clock face -->
+              <div class="clock-face">
+                <!-- Hour numbers -->
+                <div class="clock-number" data-hour="12" style="top: 8%; left: 50%; transform: translate(-50%, 0);">12</div>
+                <div class="clock-number" data-hour="1" style="top: 20%; right: 16%;">1</div>
+                <div class="clock-number" data-hour="2" style="top: 38%; right: 8%;">2</div>
+                <div class="clock-number" data-hour="3" style="top: 50%; right: 8%; transform: translateY(-50%);">3</div>
+                <div class="clock-number" data-hour="4" style="bottom: 38%; right: 8%;">4</div>
+                <div class="clock-number" data-hour="5" style="bottom: 20%; right: 16%;">5</div>
+                <div class="clock-number" data-hour="6" style="bottom: 8%; left: 50%; transform: translate(-50%, 0);">6</div>
+                <div class="clock-number" data-hour="7" style="bottom: 20%; left: 16%;">7</div>
+                <div class="clock-number" data-hour="8" style="bottom: 38%; left: 8%;">8</div>
+                <div class="clock-number" data-hour="9" style="top: 50%; left: 8%; transform: translateY(-50%);">9</div>
+                <div class="clock-number" data-hour="10" style="top: 38%; left: 8%;">10</div>
+                <div class="clock-number" data-hour="11" style="top: 20%; left: 16%;">11</div>
+
+                <!-- Minute tick marks -->
+                <div class="minute-ticks" id="minute-ticks"></div>
+
+                <!-- Center dot -->
+                <div class="clock-center"></div>
+
+                <!-- Clock hands - draggable -->
+                <div class="hour-hand draggable" id="hour-hand" role="slider" aria-label="Hour hand - use arrow keys to adjust" aria-valuemin="1" aria-valuemax="12" aria-valuenow="12" tabindex="0"></div>
+                <div class="minute-hand draggable" id="minute-hand" role="slider" aria-label="Minute hand - use arrow keys to adjust" aria-valuemin="0" aria-valuemax="55" aria-valuenow="0" tabindex="0"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Current Time Display -->
+          <div class="current-time-display" id="current-time-display">
+            <span class="current-label" data-i18n="section.activities.build-time.yourTime">Your time:</span>
+            <span class="current-time" id="current-time">12:00</span>
+          </div>
+
+          <!-- Check Button -->
+          <div class="check-button-container">
+            <button class="btn-activity btn-primary check-btn" id="btn-check" data-i18n="section.activities.build-time.checkTime">Check Time</button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job building time!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Build the Time Activity - Grade 2 Level 4
+    const BuildTime = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      targetHour: 12,
+      targetMinute: 0,
+      currentHour: 12,
+      currentMinute: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+      isDragging: null,
+
+      // DOM elements
+      clock: null,
+      hourHand: null,
+      minuteHand: null,
+      targetTimeEl: null,
+      currentTimeEl: null,
+      feedback: null,
+      progress: null,
+      btnCheck: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.clock = document.getElementById('clock');
+        this.hourHand = document.getElementById('hour-hand');
+        this.minuteHand = document.getElementById('minute-hand');
+        this.targetTimeEl = document.getElementById('target-time');
+        this.currentTimeEl = document.getElementById('current-time');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnCheck = document.getElementById('btn-check');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnCheck.addEventListener('click', () => this.checkAnswer());
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Set up drag handlers
+        this.setupDragHandlers();
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        // Handle resize for responsive clock
+        window.addEventListener('resize', () => {
+          this.updateMinuteTickOrigins();
+        });
+
+        // Create minute tick marks
+        this.createMinuteTicks();
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      createMinuteTicks() {
+        const ticksContainer = document.getElementById('minute-ticks');
+        let ticksHtml = '';
+
+        for (let i = 0; i < 60; i++) {
+          const angle = i * 6; // 360 / 60 = 6 degrees per minute
+          const isMajor = i % 5 === 0;
+          ticksHtml += `<div class="minute-tick ${isMajor ? 'major' : ''}" style="transform: rotate(${angle}deg);"></div>`;
+        }
+
+        ticksContainer.innerHTML = ticksHtml;
+        this.updateMinuteTickOrigins();
+      },
+
+      updateMinuteTickOrigins() {
+        // Update tick transform-origin based on current clock size
+        const clock = this.clock;
+        if (!clock) return;
+        const clockHeight = clock.offsetHeight;
+        const tickOrigin = (clockHeight / 2) - 6; // Account for top offset
+        document.querySelectorAll('.minute-tick').forEach(tick => {
+          tick.style.transformOrigin = `50% ${tickOrigin}px`;
+        });
+      },
+
+      setupDragHandlers() {
+        // Mouse events
+        this.hourHand.addEventListener('mousedown', (e) => this.startDrag(e, 'hour'));
+        this.minuteHand.addEventListener('mousedown', (e) => this.startDrag(e, 'minute'));
+        document.addEventListener('mousemove', (e) => this.handleDrag(e));
+        document.addEventListener('mouseup', () => this.stopDrag());
+
+        // Touch events
+        this.hourHand.addEventListener('touchstart', (e) => this.startDrag(e, 'hour'), { passive: false });
+        this.minuteHand.addEventListener('touchstart', (e) => this.startDrag(e, 'minute'), { passive: false });
+        document.addEventListener('touchmove', (e) => this.handleDrag(e), { passive: false });
+        document.addEventListener('touchend', () => this.stopDrag());
+
+        // Keyboard events for accessibility
+        this.hourHand.addEventListener('keydown', (e) => this.handleKeyboard(e, 'hour'));
+        this.minuteHand.addEventListener('keydown', (e) => this.handleKeyboard(e, 'minute'));
+      },
+
+      startDrag(e, handType) {
+        if (this.isAnswered) return;
+        e.preventDefault();
+        this.isDragging = handType;
+
+        // Add dragging class for visual feedback
+        if (handType === 'hour') {
+          this.hourHand.classList.add('dragging');
+        } else {
+          this.minuteHand.classList.add('dragging');
+        }
+      },
+
+      handleDrag(e) {
+        if (!this.isDragging || this.isAnswered) return;
+        e.preventDefault();
+
+        const clockRect = this.clock.getBoundingClientRect();
+        const centerX = clockRect.left + clockRect.width / 2;
+        const centerY = clockRect.top + clockRect.height / 2;
+
+        let clientX, clientY;
+        if (e.touches) {
+          clientX = e.touches[0].clientX;
+          clientY = e.touches[0].clientY;
+        } else {
+          clientX = e.clientX;
+          clientY = e.clientY;
+        }
+
+        // Calculate angle from center
+        const angle = Math.atan2(clientY - centerY, clientX - centerX) * (180 / Math.PI) + 90;
+        let normalizedAngle = (angle + 360) % 360;
+
+        if (this.isDragging === 'minute') {
+          // Snap to 5-minute intervals
+          const minuteValue = Math.round(normalizedAngle / 6);
+          this.currentMinute = (minuteValue % 12) * 5;
+          if (this.currentMinute === 60) this.currentMinute = 0;
+        } else {
+          // Hour hand - snap to hours with minute offset
+          const hourValue = normalizedAngle / 30;
+          this.currentHour = Math.round(hourValue);
+          if (this.currentHour === 0 || this.currentHour > 12) this.currentHour = 12;
+        }
+
+        this.updateClockDisplay();
+      },
+
+      stopDrag() {
+        if (this.isDragging) {
+          this.hourHand.classList.remove('dragging');
+          this.minuteHand.classList.remove('dragging');
+          this.isDragging = null;
+        }
+      },
+
+      handleKeyboard(e, handType) {
+        if (this.isAnswered) return;
+
+        let handled = false;
+        if (handType === 'minute') {
+          if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+            this.currentMinute = (this.currentMinute + 5) % 60;
+            handled = true;
+          } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+            this.currentMinute = (this.currentMinute - 5 + 60) % 60;
+            handled = true;
+          }
+        } else {
+          if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+            this.currentHour = this.currentHour % 12 + 1;
+            handled = true;
+          } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+            this.currentHour = this.currentHour === 1 ? 12 : this.currentHour - 1;
+            handled = true;
+          }
+        }
+
+        if (handled) {
+          e.preventDefault();
+          this.updateClockDisplay();
+        }
+      },
+
+      updateTranslations() {
+        // Dynamic translations handled via data-i18n
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      generateQuestion() {
+        // Generate random hour (1-12)
+        this.targetHour = this.randomInt(1, 12);
+
+        // Generate random minute (0, 5, 10, 15, ... 55) - multiples of 5
+        this.targetMinute = this.randomInt(0, 11) * 5;
+
+        // Reset current time to 12:00
+        this.currentHour = 12;
+        this.currentMinute = 0;
+
+        this.isAnswered = false;
+      },
+
+      startQuestion() {
+        this.generateQuestion();
+        this.updateTargetDisplay();
+        this.updateClockDisplay();
+        this.feedback.classList.remove('show', 'error');
+        this.btnCheck.disabled = false;
+        this.renderProgress();
+      },
+
+      updateTargetDisplay() {
+        const timeStr = this.formatTime(this.targetHour, this.targetMinute);
+        this.targetTimeEl.textContent = timeStr;
+      },
+
+      updateClockDisplay() {
+        // Hour hand: 30 degrees per hour + 0.5 degrees per minute (360 / 12 = 30, 30 / 60 = 0.5)
+        const hourDegrees = ((this.currentHour % 12) * 30) + (this.currentMinute * 0.5);
+
+        // Minute hand: 6 degrees per minute (360 / 60 = 6)
+        const minuteDegrees = this.currentMinute * 6;
+
+        this.hourHand.style.transform = `translateX(-50%) rotate(${hourDegrees}deg)`;
+        this.minuteHand.style.transform = `translateX(-50%) rotate(${minuteDegrees}deg)`;
+
+        // Update aria attributes for accessibility
+        this.hourHand.setAttribute('aria-valuenow', this.currentHour);
+        this.minuteHand.setAttribute('aria-valuenow', this.currentMinute);
+
+        // Update current time display
+        this.currentTimeEl.textContent = this.formatTime(this.currentHour, this.currentMinute);
+      },
+
+      formatTime(hour, minute) {
+        const h = hour.toString();
+        const m = minute.toString().padStart(2, '0');
+        return `${h}:${m}`;
+      },
+
+      checkAnswer() {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+        this.btnCheck.disabled = true;
+
+        const isCorrect = this.currentHour === this.targetHour && this.currentMinute === this.targetMinute;
+        const targetTimeStr = this.formatTime(this.targetHour, this.targetMinute);
+
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = window.i18n
+            ? i18n.t('section.activities.build-time.correct').replace('{time}', targetTimeStr)
+            : `✓ Correct! ${targetTimeStr}`;
+          this.feedback.textContent = msg;
+          this.feedback.classList.remove('error');
+
+          // Celebrate
+          if (typeof celebrate === 'function') {
+            celebrate(this.clock);
+          }
+        } else {
+          this.incorrectCount++;
+          const currentTimeStr = this.formatTime(this.currentHour, this.currentMinute);
+          const msg = window.i18n
+            ? i18n.t('section.activities.build-time.wrong').replace('{target}', targetTimeStr).replace('{current}', currentTimeStr)
+            : `The target was ${targetTimeStr}. You set ${currentTimeStr}.`;
+          this.feedback.textContent = msg;
+          this.feedback.classList.add('error');
+
+          // Show correct position
+          this.showCorrectTime();
+        }
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      showCorrectTime() {
+        // Animate to correct position
+        this.currentHour = this.targetHour;
+        this.currentMinute = this.targetMinute;
+        this.updateClockDisplay();
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.currentHour = 12;
+        this.currentMinute = 0;
+        this.isAnswered = false;
+        this.btnCheck.disabled = false;
+        this.updateClockDisplay();
+        this.feedback.classList.remove('show', 'error');
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.build-time.perfect')
+            : 'Amazing time-building skills!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🕐';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.build-time.great')
+            : 'Great job building time!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.build-time.keepPracticing')
+            : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => BuildTime.init());
+      } else {
+        BuildTime.init();
+      }
+    });
+  </script>
+  <style>
+    /* Build the Time specific styles */
+
+    /* Target Time Display */
+    .target-time-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+      padding: var(--space-4) var(--space-6);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-radius: var(--radius-lg);
+      border: 3px solid #3b82f6;
+    }
+
+    .target-label {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+    }
+
+    .target-time {
+      font-family: var(--font-secondary);
+      font-size: var(--text-5xl);
+      font-weight: var(--weight-bold);
+      color: #1e40af;
+      letter-spacing: 2px;
+    }
+
+    /* Clock Container */
+    .clock-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: var(--space-4) auto var(--space-4);
+    }
+
+    .clock {
+      width: 280px;
+      height: 280px;
+      position: relative;
+      background: linear-gradient(145deg, #ffffff, #f8fafc);
+      border-radius: 50%;
+      border: 8px solid #3b82f6;
+      box-shadow: 0 8px 0 rgba(59, 130, 246, 0.3),
+                  0 12px 24px rgba(0, 0, 0, 0.15),
+                  inset 0 0 30px rgba(59, 130, 246, 0.05);
+    }
+
+    .interactive-clock {
+      cursor: pointer;
+    }
+
+    .clock-face {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .clock-number {
+      position: absolute;
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      user-select: none;
+    }
+
+    /* Minute tick marks */
+    .minute-ticks {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .minute-tick {
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      width: 2px;
+      height: 8px;
+      background: var(--color-neutral-300);
+      /* transform-origin is set dynamically by JavaScript based on clock size */
+      margin-left: -1px;
+    }
+
+    .minute-tick.major {
+      width: 3px;
+      height: 12px;
+      background: var(--color-neutral-500);
+      margin-left: -1.5px;
+    }
+
+    .clock-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .hour-hand,
+    .minute-hand {
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      transform-origin: bottom center;
+      border-radius: 4px;
+      transition: transform 0.1s ease-out;
+    }
+
+    .hour-hand {
+      width: 10px;
+      height: 70px;
+      background: linear-gradient(to top, #3b82f6, #2563eb);
+      transform: translateX(-50%);
+      z-index: 6;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      border-radius: 5px 5px 3px 3px;
+      cursor: grab;
+    }
+
+    .minute-hand {
+      width: 6px;
+      height: 100px;
+      background: linear-gradient(to top, #10b981, #059669);
+      transform: translateX(-50%);
+      z-index: 7;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      border-radius: 3px 3px 2px 2px;
+      cursor: grab;
+    }
+
+    .hour-hand:hover,
+    .minute-hand:hover {
+      filter: brightness(1.1);
+    }
+
+    .hour-hand.dragging,
+    .minute-hand.dragging {
+      cursor: grabbing;
+      filter: brightness(1.15);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .hour-hand:focus,
+    .minute-hand:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Current Time Display */
+    .current-time-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      margin: var(--space-3) auto;
+      padding: var(--space-3) var(--space-5);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-lg);
+      border: 3px solid #f59e0b;
+      max-width: 280px;
+    }
+
+    .current-label {
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+    }
+
+    .current-time {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #b45309;
+    }
+
+    /* Check Button */
+    .check-button-container {
+      display: flex;
+      justify-content: center;
+      margin: var(--space-4) auto;
+    }
+
+    .check-btn {
+      padding: var(--space-4) var(--space-8);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      min-width: 200px;
+      min-height: 64px;
+      border-radius: var(--radius-lg);
+    }
+
+    .check-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback positioning */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .clock {
+        width: 240px;
+        height: 240px;
+        border-width: 6px;
+      }
+
+      .clock-number {
+        font-size: var(--text-lg);
+      }
+
+      .minute-tick {
+        height: 6px;
+      }
+
+      .minute-tick.major {
+        height: 10px;
+      }
+
+      .hour-hand {
+        width: 8px;
+        height: 56px;
+      }
+
+      .minute-hand {
+        width: 5px;
+        height: 80px;
+      }
+
+      .clock-center {
+        width: 16px;
+        height: 16px;
+      }
+
+      .target-time {
+        font-size: var(--text-4xl);
+      }
+
+      .target-time-container {
+        padding: var(--space-3) var(--space-4);
+      }
+
+      .current-time-display {
+        padding: var(--space-2) var(--space-4);
+        max-width: 240px;
+      }
+
+      .current-time {
+        font-size: var(--text-xl);
+      }
+
+      .check-btn {
+        min-width: 180px;
+        min-height: 60px;
+        font-size: var(--text-lg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .clock {
+        width: 200px;
+        height: 200px;
+      }
+
+      .clock-number {
+        font-size: var(--text-base);
+      }
+
+      .minute-tick {
+        height: 5px;
+      }
+
+      .minute-tick.major {
+        height: 8px;
+      }
+
+      .hour-hand {
+        width: 7px;
+        height: 46px;
+      }
+
+      .minute-hand {
+        width: 4px;
+        height: 66px;
+      }
+
+      .clock-center {
+        width: 14px;
+        height: 14px;
+      }
+
+      .target-time {
+        font-size: var(--text-3xl);
+      }
+
+      .current-time-display {
+        max-width: 200px;
+        flex-direction: column;
+        gap: var(--space-1);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Partial Products Builder - Grade 5 Math Activity - Meadow Math">
+  <title>Partial Products Builder - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧱</span>
+            <span data-i18n="section.activities.partial-products-multiply.title">Partial Products Builder</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.partial-products-multiply.instruction">Build an area model to multiply!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Problem Display -->
+          <div class="problem-display" id="problem-display">
+            <span class="factor" id="factor-a">34</span>
+            <span class="operator">×</span>
+            <span class="factor" id="factor-b">26</span>
+          </div>
+
+          <!-- Area Model Container -->
+          <div class="area-model-wrapper">
+            <!-- Column Headers (factor B split) -->
+            <div class="area-header-row">
+              <div class="area-corner"></div>
+              <div class="area-header" id="header-b-tens">20</div>
+              <div class="area-header" id="header-b-ones">6</div>
+            </div>
+
+            <!-- Row 1: Factor A tens -->
+            <div class="area-row">
+              <div class="area-row-header" id="header-a-tens">30</div>
+              <div class="area-cell" id="cell-00" data-row="0" data-col="0">
+                <span class="cell-label">30 × 20</span>
+                <span class="cell-value">?</span>
+              </div>
+              <div class="area-cell" id="cell-01" data-row="0" data-col="1">
+                <span class="cell-label">30 × 6</span>
+                <span class="cell-value">?</span>
+              </div>
+            </div>
+
+            <!-- Row 2: Factor A ones -->
+            <div class="area-row">
+              <div class="area-row-header" id="header-a-ones">4</div>
+              <div class="area-cell" id="cell-10" data-row="1" data-col="0">
+                <span class="cell-label">4 × 20</span>
+                <span class="cell-value">?</span>
+              </div>
+              <div class="area-cell" id="cell-11" data-row="1" data-col="1">
+                <span class="cell-label">4 × 6</span>
+                <span class="cell-value">?</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sum Display -->
+          <div class="sum-display" id="sum-display">
+            <span class="sum-label" data-i18n="section.activities.partial-products-multiply.sumLabel">Sum:</span>
+            <span class="sum-parts" id="sum-parts"></span>
+            <span class="sum-equals">=</span>
+            <span class="sum-total" id="sum-total">?</span>
+          </div>
+
+          <!-- Step Prompt -->
+          <div class="step-prompt" id="step-prompt">
+            <span data-i18n="section.activities.partial-products-multiply.fillCell">Fill in the partial product:</span>
+            <span class="current-cell" id="current-cell-label">30 × 20 = ?</span>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <!-- Buttons will be generated dynamically -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.partial-products-multiply.great">Great multiplication work!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Partial Products Builder Activity - Grade 5 Level 2
+    const PartialProducts = {
+      currentQuestion: 0,
+      totalQuestions: 6,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      currentStep: 0, // 0-3 for cells, 4 for sum
+      cellValues: [], // filled partial products
+      isAnswered: false,
+      advanceTimeout: null,
+
+      // Cell order: top-left, top-right, bottom-left, bottom-right
+      cellOrder: [
+        { row: 0, col: 0, id: 'cell-00' },
+        { row: 0, col: 1, id: 'cell-01' },
+        { row: 1, col: 0, id: 'cell-10' },
+        { row: 1, col: 1, id: 'cell-11' }
+      ],
+
+      // DOM elements
+      problemDisplay: null,
+      factorA: null,
+      factorB: null,
+      headerATens: null,
+      headerAOnes: null,
+      headerBTens: null,
+      headerBOnes: null,
+      cells: null,
+      sumDisplay: null,
+      sumParts: null,
+      sumTotal: null,
+      stepPrompt: null,
+      currentCellLabel: null,
+      choicesContainer: null,
+      btnReset: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.problemDisplay = document.getElementById('problem-display');
+        this.factorA = document.getElementById('factor-a');
+        this.factorB = document.getElementById('factor-b');
+        this.headerATens = document.getElementById('header-a-tens');
+        this.headerAOnes = document.getElementById('header-a-ones');
+        this.headerBTens = document.getElementById('header-b-tens');
+        this.headerBOnes = document.getElementById('header-b-ones');
+        this.sumDisplay = document.getElementById('sum-display');
+        this.sumParts = document.getElementById('sum-parts');
+        this.sumTotal = document.getElementById('sum-total');
+        this.stepPrompt = document.getElementById('step-prompt');
+        this.currentCellLabel = document.getElementById('current-cell-label');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.btnReset = document.getElementById('btn-reset');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.cells = this.cellOrder.map(c => document.getElementById(c.id));
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      splitNumber(n) {
+        // Split a 2-digit number into tens and ones
+        const tens = Math.floor(n / 10) * 10;
+        const ones = n % 10;
+        return { tens, ones };
+      },
+
+      generateQuestions() {
+        // Generate 6 multiplication problems with increasing difficulty
+        const problems = [
+          // Easy: small 2-digit × 2-digit
+          { a: 12, b: 14 },
+          { a: 23, b: 15 },
+          { a: 34, b: 26 },
+          // Medium
+          { a: 45, b: 38 },
+          { a: 56, b: 47 },
+          // Harder
+          { a: 67, b: 58 }
+        ];
+
+        this.questions = shuffle(problems).slice(0, this.totalQuestions).map(p => {
+          const splitA = this.splitNumber(p.a);
+          const splitB = this.splitNumber(p.b);
+
+          // Calculate partial products
+          const partials = [
+            { aPart: splitA.tens, bPart: splitB.tens, value: splitA.tens * splitB.tens },
+            { aPart: splitA.tens, bPart: splitB.ones, value: splitA.tens * splitB.ones },
+            { aPart: splitA.ones, bPart: splitB.tens, value: splitA.ones * splitB.tens },
+            { aPart: splitA.ones, bPart: splitB.ones, value: splitA.ones * splitB.ones }
+          ];
+
+          const total = p.a * p.b;
+
+          return {
+            a: p.a,
+            b: p.b,
+            splitA,
+            splitB,
+            partials,
+            total
+          };
+        });
+      },
+
+      generateChoices(correctValue, step) {
+        const choices = new Set();
+        choices.add(correctValue);
+
+        // Generate distractors
+        if (step < 4) {
+          // Partial product distractors
+          choices.add(correctValue + 10);
+          choices.add(correctValue - 10);
+          choices.add(Math.floor(correctValue / 2));
+          choices.add(correctValue * 2);
+          choices.add(correctValue + correctValue % 10);
+        } else {
+          // Sum distractors
+          choices.add(correctValue + 100);
+          choices.add(correctValue - 100);
+          choices.add(correctValue + 50);
+          choices.add(Math.floor(correctValue * 0.9));
+        }
+
+        // Filter valid positive values and limit to 4
+        let choiceArr = Array.from(choices)
+          .filter(c => c > 0 && Number.isInteger(c))
+          .slice(0, 4);
+
+        // Ensure we have 4 choices
+        while (choiceArr.length < 4) {
+          const offset = (choiceArr.length + 1) * 5;
+          const newVal = correctValue + offset;
+          if (!choiceArr.includes(newVal) && newVal > 0) {
+            choiceArr.push(newVal);
+          }
+        }
+
+        return shuffle(choiceArr.map(c => ({
+          value: c,
+          isCorrect: c === correctValue
+        })));
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      renderAreaModel(question) {
+        // Update headers
+        this.headerATens.textContent = question.splitA.tens;
+        this.headerAOnes.textContent = question.splitA.ones;
+        this.headerBTens.textContent = question.splitB.tens;
+        this.headerBOnes.textContent = question.splitB.ones;
+
+        // Update cells
+        this.cells.forEach((cell, index) => {
+          const partial = question.partials[index];
+          const labelEl = cell.querySelector('.cell-label');
+          const valueEl = cell.querySelector('.cell-value');
+
+          labelEl.textContent = `${partial.aPart} × ${partial.bPart}`;
+
+          if (this.cellValues[index] !== undefined) {
+            valueEl.textContent = this.cellValues[index];
+            cell.classList.add('filled');
+            cell.classList.remove('current');
+          } else {
+            valueEl.textContent = '?';
+            cell.classList.remove('filled');
+            cell.classList.remove('current');
+          }
+        });
+
+        // Highlight current cell
+        if (this.currentStep < 4) {
+          this.cells[this.currentStep].classList.add('current');
+        }
+
+        // Update sum display
+        if (this.currentStep >= 4) {
+          const filledValues = this.cellValues.filter(v => v !== undefined);
+          this.sumParts.textContent = filledValues.join(' + ');
+          this.sumTotal.textContent = this.cellValues[4] !== undefined ? this.cellValues[4] : '?';
+          this.sumDisplay.classList.add('active');
+        } else if (this.cellValues.length >= 4 && this.cellValues.slice(0, 4).every(v => v !== undefined)) {
+          const filledValues = this.cellValues.slice(0, 4);
+          this.sumParts.textContent = filledValues.join(' + ');
+          this.sumTotal.textContent = '?';
+          this.sumDisplay.classList.add('active');
+        } else {
+          this.sumDisplay.classList.remove('active');
+        }
+      },
+
+      updateStepPrompt(question) {
+        if (this.currentStep < 4) {
+          const partial = question.partials[this.currentStep];
+          this.currentCellLabel.textContent = `${partial.aPart} × ${partial.bPart} = ?`;
+          const fillText = this.getTranslation('section.activities.partial-products-multiply.fillCell', 'Fill in the partial product:');
+          this.stepPrompt.querySelector('[data-i18n]').textContent = fillText;
+        } else {
+          const sumText = this.getTranslation('section.activities.partial-products-multiply.addPartials', 'Add the partial products:');
+          this.stepPrompt.querySelector('[data-i18n]').textContent = sumText;
+          const parts = this.cellValues.slice(0, 4).join(' + ');
+          this.currentCellLabel.textContent = `${parts} = ?`;
+        }
+      },
+
+      renderChoices(choices) {
+        this.choicesContainer.innerHTML = '';
+
+        choices.forEach((choice) => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn partial-choice';
+          btn.type = 'button';
+          btn.textContent = choice.value.toLocaleString();
+          btn.dataset.value = choice.value;
+          btn.dataset.correct = choice.isCorrect;
+          btn.setAttribute('aria-pressed', 'false');
+          btn.addEventListener('click', () => this.selectAnswer(btn, choice));
+
+          this.choicesContainer.appendChild(btn);
+        });
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.currentStep = 0;
+        this.cellValues = [];
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+        this.sumDisplay.classList.remove('active');
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        // Update problem display
+        this.factorA.textContent = question.a;
+        this.factorB.textContent = question.b;
+
+        // Render area model
+        this.renderAreaModel(question);
+
+        // Show step prompt and choices
+        this.updateStepPrompt(question);
+        const correctValue = question.partials[0].value;
+        const choices = this.generateChoices(correctValue, 0);
+        this.renderChoices(choices);
+
+        this.renderProgress();
+      },
+
+      selectAnswer(btn, choice) {
+        if (this.isAnswered) return;
+
+        const question = this.questions[this.currentQuestion];
+        let correctValue;
+
+        if (this.currentStep < 4) {
+          correctValue = question.partials[this.currentStep].value;
+        } else {
+          correctValue = question.total;
+        }
+
+        const isCorrect = choice.value === correctValue;
+
+        // Disable all buttons
+        const buttons = this.choicesContainer.querySelectorAll('.partial-choice');
+        buttons.forEach(b => {
+          b.disabled = true;
+          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
+
+        btn.classList.add('selected');
+
+        if (isCorrect) {
+          btn.classList.add('correct');
+          this.cellValues[this.currentStep] = choice.value;
+          this.renderAreaModel(question);
+
+          if (this.currentStep < 4) {
+            // Move to next cell or sum step
+            const nextText = this.getTranslation('section.activities.partial-products-multiply.correctNext', 'Correct!');
+            this.feedback.textContent = nextText;
+            this.feedback.classList.remove('error');
+            this.feedback.classList.add('show');
+
+            setTimeout(() => {
+              this.currentStep++;
+              this.feedback.classList.remove('show');
+
+              if (this.currentStep < 4) {
+                // Next partial product
+                this.updateStepPrompt(question);
+                this.renderAreaModel(question);
+                const nextCorrectValue = question.partials[this.currentStep].value;
+                const choices = this.generateChoices(nextCorrectValue, this.currentStep);
+                this.renderChoices(choices);
+              } else {
+                // Sum step
+                this.updateStepPrompt(question);
+                this.renderAreaModel(question);
+                const choices = this.generateChoices(question.total, 4);
+                this.renderChoices(choices);
+              }
+            }, 800);
+          } else {
+            // Completed all steps
+            this.isAnswered = true;
+            this.correctCount++;
+
+            const template = this.getTranslation(
+              'section.activities.partial-products-multiply.complete',
+              '{a} × {b} = {total}'
+            );
+            this.feedback.textContent = template
+              .replace('{a}', question.a)
+              .replace('{b}', question.b)
+              .replace('{total}', question.total.toLocaleString());
+            this.feedback.classList.remove('error');
+            this.feedback.classList.add('show');
+
+            this.advanceTimeout = setTimeout(() => {
+              this.advanceTimeout = null;
+              if (this.currentQuestion < this.totalQuestions - 1) {
+                this.nextQuestion();
+              } else {
+                this.showStats();
+              }
+            }, this.autoAdvanceDelay);
+          }
+        } else {
+          this.isAnswered = true;
+          this.incorrectCount++;
+          btn.classList.add('incorrect');
+
+          // Show correct answer
+          buttons.forEach(b => {
+            if (b.dataset.correct === 'true') {
+              b.classList.add('correct');
+            }
+          });
+
+          let feedbackText;
+          if (this.currentStep < 4) {
+            const partial = question.partials[this.currentStep];
+            const template = this.getTranslation(
+              'section.activities.partial-products-multiply.wrongPartial',
+              '{a} × {b} = {value}'
+            );
+            feedbackText = template
+              .replace('{a}', partial.aPart)
+              .replace('{b}', partial.bPart)
+              .replace('{value}', correctValue.toLocaleString());
+          } else {
+            const template = this.getTranslation(
+              'section.activities.partial-products-multiply.wrongSum',
+              'The sum is {value}.'
+            );
+            feedbackText = template.replace('{value}', correctValue.toLocaleString());
+          }
+
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.add('error');
+          this.feedback.classList.add('show');
+
+          this.advanceTimeout = setTimeout(() => {
+            this.advanceTimeout = null;
+            if (this.currentQuestion < this.totalQuestions - 1) {
+              this.nextQuestion();
+            } else {
+              this.showStats();
+            }
+          }, this.autoAdvanceDelay);
+        }
+
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        const question = this.questions[this.currentQuestion];
+        if (question) {
+          this.updateStepPrompt(question);
+        }
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+
+        this.updateProgressLabel();
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.partial-products-multiply.perfect',
+            'Perfect multiplication!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.partial-products-multiply.great',
+            'Great multiplication work!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.partial-products-multiply.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.partial-products-multiply.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => PartialProducts.init());
+      } else {
+        PartialProducts.init();
+      }
+    });
+  </script>
+  <style>
+    /* Partial Products Builder specific styles */
+
+    .problem-display {
+      text-align: center;
+      margin-bottom: var(--space-4);
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+      border-radius: var(--radius-xl);
+      border: 3px solid #8b5cf6;
+      box-shadow: 0 3px 0 #7c3aed;
+    }
+
+    .problem-display .factor {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: #5b21b6;
+    }
+
+    .problem-display .operator {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #7c3aed;
+      margin: 0 var(--space-3);
+    }
+
+    .area-model-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: var(--space-4);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border-radius: var(--radius-xl);
+      border: 3px solid #22c55e;
+    }
+
+    .area-header-row {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-1);
+      margin-bottom: var(--space-1);
+    }
+
+    .area-corner {
+      width: 50px;
+      height: 40px;
+    }
+
+    .area-header {
+      width: 110px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid #f59e0b;
+      border-radius: var(--radius-md);
+      color: #92400e;
+    }
+
+    .area-row {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-1);
+      margin-bottom: var(--space-1);
+    }
+
+    .area-row-header {
+      width: 50px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid #f59e0b;
+      border-radius: var(--radius-md);
+      color: #92400e;
+    }
+
+    .area-cell {
+      width: 110px;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      border: 3px solid #d1d5db;
+      border-radius: var(--radius-lg);
+      transition: all 0.3s ease;
+    }
+
+    .area-cell .cell-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      color: #6b7280;
+      margin-bottom: var(--space-1);
+    }
+
+    .area-cell .cell-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #374151;
+    }
+
+    .area-cell.current {
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border-color: #0ea5e9;
+      border-style: solid;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .area-cell.current .cell-value {
+      color: #0369a1;
+    }
+
+    .area-cell.filled {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+    }
+
+    .area-cell.filled .cell-value {
+      color: #166534;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4); }
+      50% { transform: scale(1.02); box-shadow: 0 0 0 6px rgba(14, 165, 233, 0); }
+    }
+
+    .sum-display {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+      box-shadow: 0 3px 0 #d97706;
+    }
+
+    .sum-display.active {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .sum-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #92400e;
+    }
+
+    .sum-parts {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #78350f;
+    }
+
+    .sum-equals {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+    }
+
+    .sum-total {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #78350f;
+      background: white;
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-md);
+      border: 2px solid #f59e0b;
+    }
+
+    .step-prompt {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .step-prompt span[data-i18n] {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      color: var(--color-neutral-600);
+    }
+
+    .current-cell-label {
+      display: block;
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #0369a1;
+      margin-top: var(--space-1);
+    }
+
+    .choices-container {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .partial-choice {
+      min-width: 80px;
+      min-height: 80px;
+      padding: var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 4px solid #0ea5e9;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #0284c7;
+      color: #0369a1;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .partial-choice:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 #0284c7;
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+    }
+
+    .partial-choice:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 #0284c7;
+    }
+
+    .partial-choice:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.35), 0 4px 0 #0284c7;
+    }
+
+    .partial-choice:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .partial-choice:disabled.selected {
+      opacity: 1;
+    }
+
+    .partial-choice.selected {
+      background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+      border-color: #8b5cf6;
+      box-shadow: 0 4px 0 #7c3aed;
+      color: #5b21b6;
+    }
+
+    .partial-choice.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      color: #166534;
+    }
+
+    .partial-choice.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      box-shadow: 0 4px 0 #dc2626;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 767px) {
+      .problem-display .factor {
+        font-size: var(--text-2xl);
+      }
+
+      .problem-display .operator {
+        font-size: var(--text-xl);
+      }
+
+      .area-corner {
+        width: 40px;
+        height: 35px;
+      }
+
+      .area-header {
+        width: 90px;
+        height: 35px;
+        font-size: var(--text-base);
+      }
+
+      .area-row-header {
+        width: 40px;
+        height: 70px;
+        font-size: var(--text-base);
+      }
+
+      .area-cell {
+        width: 90px;
+        height: 70px;
+      }
+
+      .area-cell .cell-label {
+        font-size: var(--text-xs);
+      }
+
+      .area-cell .cell-value {
+        font-size: var(--text-lg);
+      }
+
+      .partial-choice {
+        min-width: 70px;
+        min-height: 70px;
+        font-size: var(--text-lg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .problem-display {
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .problem-display .factor {
+        font-size: var(--text-xl);
+      }
+
+      .area-model-wrapper {
+        padding: var(--space-2);
+      }
+
+      .area-corner {
+        width: 32px;
+        height: 30px;
+      }
+
+      .area-header {
+        width: 70px;
+        height: 30px;
+        font-size: var(--text-sm);
+      }
+
+      .area-row-header {
+        width: 32px;
+        height: 60px;
+        font-size: var(--text-sm);
+      }
+
+      .area-cell {
+        width: 70px;
+        height: 60px;
+      }
+
+      .area-cell .cell-label {
+        font-size: 10px;
+      }
+
+      .area-cell .cell-value {
+        font-size: var(--text-base);
+      }
+
+      .sum-display {
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .sum-parts,
+      .sum-equals,
+      .sum-total {
+        font-size: var(--text-base);
+      }
+
+      .current-cell-label {
+        font-size: var(--text-lg);
+      }
+
+      .partial-choice {
+        min-width: 60px;
+        min-height: 60px;
+        font-size: var(--text-base);
+        border-width: 3px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

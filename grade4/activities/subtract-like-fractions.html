@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Subtract Like Fractions - Grade 4 Math Activity - Meadow Math">
+  <title>Subtract Like Fractions - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade4">Grade 4</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧊</span>
+            <span data-i18n="section.activities.subtract-like-fractions.title">Subtract Like Fractions</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.subtract-like-fractions.instruction">Subtract the fractions!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <div class="difference-prompt" id="difference-prompt" data-i18n="section.activities.subtract-like-fractions.prompt">Choose the difference.</div>
+
+          <div class="subtraction-layout" id="subtraction-layout">
+            <div class="fraction-card left-card">
+              <div class="card-label" data-i18n="section.activities.subtract-like-fractions.firstFraction">Starting fraction</div>
+              <div class="fraction-readout">
+                <span class="fraction-numerator" id="left-numerator">3</span>
+                <span class="fraction-denominator" id="left-denominator">8</span>
+              </div>
+              <div class="fraction-strip" id="left-strip" aria-hidden="true"></div>
+            </div>
+
+            <div class="operator" aria-hidden="true">−</div>
+
+            <div class="fraction-card right-card">
+              <div class="card-label" data-i18n="section.activities.subtract-like-fractions.secondFraction">Subtract</div>
+              <div class="fraction-readout">
+                <span class="fraction-numerator" id="right-numerator">2</span>
+                <span class="fraction-denominator" id="right-denominator">8</span>
+              </div>
+              <div class="fraction-strip" id="right-strip" aria-hidden="true"></div>
+            </div>
+
+            <div class="operator equals" aria-hidden="true">=</div>
+
+            <div class="fraction-card result-card" id="result-card">
+              <div class="card-label" data-i18n="section.activities.subtract-like-fractions.differenceFraction">Difference</div>
+              <div class="fraction-readout result">
+                <span class="fraction-numerator" id="result-numerator">?</span>
+                <span class="fraction-denominator" id="result-denominator">?</span>
+              </div>
+              <div class="fraction-strip result-strip" id="result-strip" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="choices-container" id="choices-container" role="group"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.subtract-like-fractions.great">Great subtracting!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Subtract Like Fractions Activity - Grade 4 Level 3
+    const SubtractLikeFractions = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      lastResult: null,
+      advanceTimeout: null,
+
+      leftNumerator: null,
+      leftDenominator: null,
+      rightNumerator: null,
+      rightDenominator: null,
+      resultNumerator: null,
+      resultDenominator: null,
+      leftStrip: null,
+      rightStrip: null,
+      resultStrip: null,
+      resultCard: null,
+      choicesContainer: null,
+      choiceButtons: [],
+      btnReset: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.leftNumerator = document.getElementById('left-numerator');
+        this.leftDenominator = document.getElementById('left-denominator');
+        this.rightNumerator = document.getElementById('right-numerator');
+        this.rightDenominator = document.getElementById('right-denominator');
+        this.resultNumerator = document.getElementById('result-numerator');
+        this.resultDenominator = document.getElementById('result-denominator');
+        this.leftStrip = document.getElementById('left-strip');
+        this.rightStrip = document.getElementById('right-strip');
+        this.resultStrip = document.getElementById('result-strip');
+        this.resultCard = document.getElementById('result-card');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.btnReset = document.getElementById('btn-reset');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+        this.updateTranslations();
+      },
+
+      generateQuestions() {
+        const denominators = [4, 5, 6, 8, 10, 12];
+        const pool = [];
+
+        denominators.forEach((den) => {
+          for (let a = 2; a < den; a++) {
+            for (let b = 1; b < a; b++) {
+              const difference = a - b;
+              if (difference <= 0) continue;
+              pool.push({ num1: a, num2: b, den, difference });
+            }
+          }
+        });
+
+        this.questions = shuffle(pool).slice(0, this.totalQuestions);
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) {
+            return text;
+          }
+        }
+        return fallback;
+      },
+
+      getActivityText(key, fallback) {
+        return this.getTranslation(`section.activities.subtract-like-fractions.${key}`, fallback);
+      },
+
+      getChoiceLabel(numerator, denominator) {
+        const template = this.getActivityText('choiceLabel', 'Fraction {numerator} over {denominator}');
+        return template.replace('{numerator}', numerator).replace('{denominator}', denominator);
+      },
+
+      updateTranslations() {
+        const choicesLabel = this.getActivityText('answerChoicesLabel', 'Answer choices');
+        this.choicesContainer.setAttribute('aria-label', choicesLabel);
+        this.choiceButtons.forEach((button) => {
+          const numerator = Number(button.dataset.numerator);
+          const denominator = Number(button.dataset.denominator);
+          button.setAttribute('aria-label', this.getChoiceLabel(numerator, denominator));
+        });
+
+        if (this.lastResult && this.feedback.classList.contains('show')) {
+          if (this.lastResult.isCorrect) {
+            this.feedback.textContent = this.getActivityText('correct', 'Correct!');
+            this.feedback.classList.remove('error');
+          } else {
+            const template = this.getActivityText('incorrect', 'The difference is {numerator}/{denominator}.');
+            this.feedback.textContent = template
+              .replace('{numerator}', this.lastResult.correctNumerator)
+              .replace('{denominator}', this.lastResult.denominator);
+            this.feedback.classList.add('error');
+          }
+        }
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+
+        this.renderProgress();
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.lastResult = null;
+        this.feedback.classList.remove('show', 'error');
+        this.resultStrip.classList.remove('show');
+        this.resultCard.classList.remove('correct', 'incorrect');
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        this.leftNumerator.textContent = question.num1;
+        this.leftDenominator.textContent = question.den;
+        this.rightNumerator.textContent = question.num2;
+        this.rightDenominator.textContent = question.den;
+        this.resultNumerator.textContent = '?';
+        this.resultDenominator.textContent = question.den;
+
+        this.renderStrip(this.leftStrip, question.num1, question.den);
+        this.renderStrip(this.rightStrip, question.num2, question.den);
+        this.renderStrip(this.resultStrip, question.difference, question.den);
+
+        this.renderChoices(question);
+        this.renderProgress();
+        this.updateTranslations();
+      },
+
+      renderStrip(container, numerator, denominator) {
+        container.innerHTML = '';
+        for (let i = 0; i < denominator; i++) {
+          const part = document.createElement('div');
+          part.className = 'fraction-part';
+          if (i < numerator) {
+            part.classList.add('shaded');
+          }
+          container.appendChild(part);
+        }
+      },
+
+      buildChoices(correctDifference, denominator) {
+        const options = new Set([correctDifference]);
+        const deltas = shuffle([-3, -2, -1, 1, 2, 3]);
+
+        deltas.forEach((delta) => {
+          if (options.size >= 4) return;
+          const candidate = correctDifference + delta;
+          if (candidate >= 1 && candidate < denominator) {
+            options.add(candidate);
+          }
+        });
+
+        while (options.size < 4) {
+          const candidate = randomInt(1, denominator - 1);
+          options.add(candidate);
+        }
+
+        const choices = Array.from(options).map((value) => ({
+          numerator: value,
+          denominator
+        }));
+
+        return shuffle(choices);
+      },
+
+      renderChoices(question) {
+        const choices = this.buildChoices(question.difference, question.den);
+        this.choicesContainer.innerHTML = '';
+
+        this.choiceButtons = choices.map((choice) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'choice-btn fraction-choice';
+          button.dataset.numerator = choice.numerator;
+          button.dataset.denominator = choice.denominator;
+          button.innerHTML = `
+            <span class="fraction-numerator">${choice.numerator}</span>
+            <span class="fraction-denominator">${choice.denominator}</span>
+          `;
+          button.addEventListener('click', () => this.selectChoice(button, question));
+          this.choicesContainer.appendChild(button);
+          return button;
+        });
+      },
+
+      selectChoice(button, question) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+        this.clearAdvanceTimeout();
+
+        const selectedNumerator = Number(button.dataset.numerator);
+        const correctNumerator = question.difference;
+
+        this.choiceButtons.forEach((btn) => {
+          btn.disabled = true;
+        });
+
+        button.classList.add('selected');
+        this.resultStrip.classList.add('show');
+        this.resultNumerator.textContent = correctNumerator;
+        this.resultDenominator.textContent = question.den;
+
+        if (selectedNumerator === correctNumerator) {
+          this.correctCount++;
+          button.classList.add('correct');
+          this.resultCard.classList.add('correct');
+          this.feedback.textContent = this.getActivityText('correct', 'Correct!');
+          this.feedback.classList.remove('error');
+          this.lastResult = { isCorrect: true, correctNumerator, denominator: question.den };
+        } else {
+          this.incorrectCount++;
+          button.classList.add('incorrect');
+          this.resultCard.classList.add('incorrect');
+
+          this.choiceButtons.forEach((btn) => {
+            if (Number(btn.dataset.numerator) === correctNumerator) {
+              btn.classList.add('correct');
+            }
+          });
+
+          const template = this.getActivityText('incorrect', 'The difference is {numerator}/{denominator}.');
+          this.feedback.textContent = template
+            .replace('{numerator}', correctNumerator)
+            .replace('{denominator}', question.den);
+          this.feedback.classList.add('error');
+          this.lastResult = { isCorrect: false, correctNumerator, denominator: question.den };
+        }
+
+        this.feedback.classList.add('show');
+        this.renderProgress();
+
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getActivityText('perfect', 'Perfect fraction subtraction!');
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getActivityText('great', 'Great subtracting!');
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getActivityText('good', 'Nice work!');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getActivityText('keepPracticing', 'Keep practicing!');
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        const progressLabel = this.getActivityText('progressLabel', 'Progress');
+        const progressItemTemplate = this.getActivityText(
+          'progressItemLabel',
+          'Question {current} of {total}: {status}'
+        );
+        const statusLabels = {
+          completed: this.getActivityText('progressStatusCompleted', 'completed'),
+          current: this.getActivityText('progressStatusCurrent', 'current'),
+          pending: this.getActivityText('progressStatusPending', 'up next')
+        };
+
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          let status = statusLabels.pending;
+          if (i < this.currentQuestion) {
+            className += ' completed';
+            status = statusLabels.completed;
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+            status = statusLabels.current;
+          }
+          const label = progressItemTemplate
+            .replace('{current}', i + 1)
+            .replace('{total}', this.totalQuestions)
+            .replace('{status}', status);
+          html += `<div class="${className}" role="listitem" aria-label="${label}"></div>`;
+        }
+        this.progress.setAttribute('role', 'list');
+        this.progress.setAttribute('aria-label', progressLabel);
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => SubtractLikeFractions.init());
+      } else {
+        SubtractLikeFractions.init();
+      }
+    });
+  </script>
+  <style>
+    /* Subtract Like Fractions specific styles */
+
+    .difference-prompt {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-5);
+      text-align: center;
+    }
+
+    .subtraction-layout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-6);
+    }
+
+    .fraction-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      border-radius: var(--radius-xl);
+      border: 4px solid transparent;
+      min-width: 140px;
+      box-shadow: 0 4px 0 rgba(15, 23, 42, 0.15);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .fraction-card.left-card {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: #3b82f6;
+      color: #1e3a8a;
+    }
+
+    .fraction-card.right-card {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-color: #8b5cf6;
+      color: #4c1d95;
+      box-shadow: 0 4px 0 rgba(124, 58, 237, 0.35);
+    }
+
+    .fraction-card.result-card {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 rgba(34, 197, 94, 0.4);
+    }
+
+    .fraction-card.result-card.correct {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 rgba(22, 163, 74, 0.45);
+    }
+
+    .fraction-card.result-card.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      color: #92400e;
+      box-shadow: 0 4px 0 rgba(217, 119, 6, 0.4);
+    }
+
+    .card-label {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      opacity: 0.8;
+    }
+
+    .fraction-readout {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      line-height: 1;
+    }
+
+    .fraction-readout .fraction-numerator {
+      border-bottom: 4px solid currentColor;
+      padding-bottom: 6px;
+      min-width: 42px;
+      text-align: center;
+    }
+
+    .fraction-readout .fraction-denominator {
+      padding-top: 6px;
+      min-width: 42px;
+      text-align: center;
+    }
+
+    .fraction-strip {
+      width: 130px;
+      height: 32px;
+      display: flex;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 3px solid rgba(15, 23, 42, 0.2);
+      background: #f8fafc;
+    }
+
+    .fraction-strip.result-strip {
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .fraction-strip.result-strip.show {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .fraction-part {
+      flex: 1;
+      border-right: 1px solid rgba(15, 23, 42, 0.2);
+    }
+
+    .fraction-part:last-child {
+      border-right: none;
+    }
+
+    .left-card .fraction-part.shaded {
+      background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    }
+
+    .right-card .fraction-part.shaded {
+      background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+    }
+
+    .result-card .fraction-part.shaded {
+      background: linear-gradient(135deg, #34d399, #22c55e);
+    }
+
+    .operator {
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #f97316;
+      text-shadow: 0 3px 0 rgba(249, 115, 22, 0.4);
+    }
+
+    .operator.equals {
+      color: #0ea5e9;
+      text-shadow: 0 3px 0 rgba(14, 165, 233, 0.4);
+    }
+
+    .choices-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .fraction-choice {
+      width: 84px;
+      height: 84px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 4px solid #0ea5e9;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #0284c7;
+      color: #0369a1;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .fraction-choice .fraction-numerator {
+      border-bottom: 3px solid currentColor;
+      padding-bottom: 4px;
+      min-width: 32px;
+      text-align: center;
+    }
+
+    .fraction-choice .fraction-denominator {
+      padding-top: 4px;
+      min-width: 32px;
+      text-align: center;
+    }
+
+    .fraction-choice:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 #0284c7;
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+    }
+
+    .fraction-choice:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 #0284c7;
+    }
+
+    .fraction-choice:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.35), 0 4px 0 #0284c7;
+    }
+
+    .fraction-choice:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .fraction-choice.selected {
+      background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+      border-color: #8b5cf6;
+      box-shadow: 0 4px 0 #7c3aed;
+      color: #5b21b6;
+    }
+
+    .fraction-choice.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      color: #166534;
+    }
+
+    .fraction-choice.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      box-shadow: 0 4px 0 #dc2626;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    @media (max-width: 767px) {
+      .fraction-card {
+        min-width: 120px;
+        padding: var(--space-3);
+      }
+
+      .fraction-readout {
+        font-size: var(--text-2xl);
+      }
+
+      .fraction-strip {
+        width: 110px;
+        height: 26px;
+      }
+
+      .fraction-choice {
+        width: 72px;
+        height: 72px;
+        font-size: var(--text-xl);
+        border-width: 3px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .fraction-card {
+        min-width: 100px;
+        padding: var(--space-2);
+      }
+
+      .fraction-readout {
+        font-size: var(--text-xl);
+      }
+
+      .fraction-readout .fraction-numerator {
+        border-bottom-width: 3px;
+        padding-bottom: 4px;
+      }
+
+      .fraction-readout .fraction-denominator {
+        padding-top: 4px;
+      }
+
+      .fraction-strip {
+        width: 90px;
+        height: 22px;
+      }
+
+      .fraction-choice {
+        width: 64px;
+        height: 64px;
+        font-size: var(--text-lg);
+      }
+
+      .operator {
+        font-size: var(--text-3xl);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

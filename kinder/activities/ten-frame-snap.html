@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ten-Frame Snap - Kindergarten Math Activity - Meadow Math">
+  <title>Ten-Frame Snap - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🟦</span>
+            <span data-i18n="section.activities.ten-frame-snap.title">Ten-Frame Snap</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.ten-frame-snap.instruction">Look quick! How many dots?</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Ten Frame Display -->
+          <div class="frame-display" id="frame-display">
+            <div class="ten-frame" id="ten-frame">
+              <!-- 10 cells -->
+            </div>
+          </div>
+
+          <!-- Question -->
+          <p class="question-text" id="question-text" data-i18n="section.activities.ten-frame-snap.question">How many dots?</p>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices">
+            <!-- Choices generated by JS -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Ten-Frame Snap Styles */
+    .frame-display {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: var(--space-4);
+      min-height: 160px;
+    }
+
+    .ten-frame {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 6px;
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      padding: 12px;
+      border: 4px solid #3b82f6;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #2563eb, 0 6px 15px rgba(0, 0, 0, 0.1);
+      transition: opacity 0.3s ease;
+    }
+
+    .ten-frame.hidden {
+      opacity: 0;
+    }
+
+    .frame-cell {
+      width: 50px;
+      height: 50px;
+      background: white;
+      border: 3px solid #93c5fd;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .frame-cell.filled {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+    }
+
+    .cell-dot {
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      border-radius: 50%;
+      box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .answer-choices {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-3);
+      padding: var(--space-2);
+    }
+
+    .answer-btn {
+      width: 80px;
+      height: 80px;
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 4px solid #0ea5e9;
+      border-radius: var(--radius-xl);
+      color: #0369a1;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 0 #0284c7, 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 0 #0284c7, 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .answer-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #0284c7;
+    }
+
+    .answer-btn:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .answer-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPulse 0.5s ease;
+    }
+
+    .answer-btn.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      color: #92400e;
+      box-shadow: 0 4px 0 #d97706;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Flash effect */
+    .frame-display.flash::before {
+      content: '👀';
+      position: absolute;
+      font-size: 48px;
+      animation: flashIcon 0.8s ease-out;
+    }
+
+    @keyframes flashIcon {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1.5); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .frame-cell {
+        width: 40px;
+        height: 40px;
+      }
+
+      .cell-dot {
+        width: 24px;
+        height: 24px;
+      }
+
+      .ten-frame {
+        gap: 4px;
+        padding: 8px;
+      }
+
+      .answer-btn {
+        width: 65px;
+        height: 65px;
+        font-size: var(--text-2xl);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Ten-Frame Snap Activity
+    const TenFrameSnap = {
+      // Game state
+      round: 1,
+      maxRounds: 8,
+      targetNumber: 0,
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1800,
+      flashDuration: 1500, // How long to show the frame
+
+      // DOM elements
+      progress: null,
+      frameDisplay: null,
+      tenFrame: null,
+      questionText: null,
+      answerChoices: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.frameDisplay = document.getElementById('frame-display');
+        this.tenFrame = document.getElementById('ten-frame');
+        this.questionText = document.getElementById('question-text');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Get flash duration based on round
+       */
+      getFlashDuration() {
+        // Progressive: longer at first, shorter later
+        if (this.round <= 2) {
+          return 2000;
+        } else if (this.round <= 4) {
+          return 1500;
+        } else if (this.round <= 6) {
+          return 1200;
+        } else {
+          return 1000;
+        }
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+
+        // Generate target (1-10)
+        this.targetNumber = randomInt(1, 10);
+
+        // Reset UI
+        this.feedback.classList.remove('show', 'error');
+        this.answerChoices.innerHTML = '';
+        this.tenFrame.classList.remove('hidden');
+
+        // Render the ten-frame
+        this.renderTenFrame();
+
+        // Show frame briefly, then hide and show choices
+        setTimeout(() => {
+          this.tenFrame.classList.add('hidden');
+          this.renderChoices();
+        }, this.getFlashDuration());
+
+        this.renderProgress();
+      },
+
+      /**
+       * Render ten-frame
+       */
+      renderTenFrame() {
+        this.tenFrame.innerHTML = '';
+
+        for (let i = 0; i < 10; i++) {
+          const cell = document.createElement('div');
+          cell.className = 'frame-cell';
+
+          if (i < this.targetNumber) {
+            cell.classList.add('filled');
+            const dot = document.createElement('div');
+            dot.className = 'cell-dot';
+            cell.appendChild(dot);
+          }
+
+          this.tenFrame.appendChild(cell);
+        }
+      },
+
+      /**
+       * Render answer choices
+       */
+      renderChoices() {
+        this.answerChoices.innerHTML = '';
+
+        const choices = this.generateChoices(this.targetNumber);
+
+        choices.forEach(num => {
+          const btn = document.createElement('button');
+          btn.className = 'answer-btn';
+          btn.textContent = num;
+          btn.addEventListener('click', () => this.checkAnswer(num, btn));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.checkAnswer(num, btn);
+            }
+          });
+          this.answerChoices.appendChild(btn);
+        });
+      },
+
+      /**
+       * Generate answer choices
+       */
+      generateChoices(correct) {
+        const choices = [correct];
+
+        // Pre-calculate all valid wrong answers to avoid infinite loop
+        const possibleWrong = [];
+        for (const offset of [-2, -1, 1, 2]) {
+          const wrong = correct + offset;
+          if (wrong >= 1 && wrong <= 10) {
+            possibleWrong.push(wrong);
+          }
+        }
+
+        // Shuffle and take up to 3 wrong answers
+        shuffle(possibleWrong);
+        const numWrong = Math.min(3, possibleWrong.length);
+        choices.push(...possibleWrong.slice(0, numWrong));
+
+        return shuffle(choices);
+      },
+
+      /**
+       * Check the answer
+       */
+      checkAnswer(selected, button) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        const buttons = this.answerChoices.querySelectorAll('.answer-btn');
+        buttons.forEach(btn => btn.disabled = true);
+
+        // Show the frame again
+        this.tenFrame.classList.remove('hidden');
+
+        if (selected === this.targetNumber) {
+          button.classList.add('correct');
+          const msg = i18n.t('section.activities.ten-frame-snap.correct') || 'Yes! {{count}} dots!';
+          this.feedback.textContent = msg.replace('{{count}}', this.targetNumber);
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          if (typeof celebrate === 'function') {
+            celebrate(button);
+          }
+        } else {
+          button.classList.add('incorrect');
+          buttons.forEach(btn => {
+            if (parseInt(btn.textContent) === this.targetNumber) {
+              btn.classList.add('correct');
+            }
+          });
+          const msg = i18n.t('section.activities.ten-frame-snap.incorrect') || 'Not quite! It was {{count}}.';
+          this.feedback.textContent = msg.replace('{{count}}', this.targetNumber);
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.ten-frame-snap.perfect') || "Quick Eyes!";
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.ten-frame-snap.great') || 'Great subitizing!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.ten-frame-snap.keepPracticing') || 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      TenFrameSnap.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

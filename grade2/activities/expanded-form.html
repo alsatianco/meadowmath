@@ -220,12 +220,12 @@
         const h = Math.floor(num / 100);
         const t = Math.floor((num % 100) / 10);
         const o = num % 10;
-        
+
         const parts = [];
         if (h > 0) parts.push(h * 100);
         if (t > 0) parts.push(t * 10);
         if (o > 0) parts.push(o);
-        
+
         return parts.join(' + ');
       },
 
@@ -259,22 +259,22 @@
       startQuestion() {
         this.generateNumber();
         this.bigNumber.textContent = this.currentNumber;
-        
+
         // Update hint
         const h = Math.floor(this.currentNumber / 100);
         const t = Math.floor((this.currentNumber % 100) / 10);
         const o = this.currentNumber % 10;
-        
+
         const parts = [];
         if (h > 0) parts.push('?');
         if (t > 0) parts.push('?');
         if (o > 0) parts.push('?');
-        
+
         this.formHint.innerHTML = `
           <span class="hint-equals">=</span>
           <span class="hint-placeholder">${parts.join(' + ')}</span>
         `;
-        
+
         this.renderChoices();
         this.feedback.classList.remove('show', 'error');
         this.renderProgress();
@@ -284,9 +284,9 @@
         const h = Math.floor(num / 100);
         const t = Math.floor((num % 100) / 10);
         const o = num % 10;
-        
+
         const wrongs = [];
-        
+
         // Swap digits
         if (h !== t && t > 0) {
           wrongs.push(this.toExpandedForm(t * 100 + h * 10 + o));
@@ -294,23 +294,23 @@
         if (t !== o && o > 0) {
           wrongs.push(this.toExpandedForm(h * 100 + o * 10 + t));
         }
-        
+
         // Missing the correct place value understanding
         // E.g., for 352, show "3 + 5 + 2" instead of "300 + 50 + 2"
         const wrongPlaceValue = [h, t, o].filter(d => d > 0).join(' + ');
         if (wrongPlaceValue !== this.toExpandedForm(num)) {
           wrongs.push(wrongPlaceValue);
         }
-        
+
         // Off by 10 or 100
         if (num > 110) wrongs.push(this.toExpandedForm(num - 10));
         if (num < 980) wrongs.push(this.toExpandedForm(num + 10));
         if (num > 200) wrongs.push(this.toExpandedForm(num - 100));
         if (num < 900) wrongs.push(this.toExpandedForm(num + 100));
-        
+
         // Double a digit
         if (h > 0 && h < 5) wrongs.push(this.toExpandedForm((h * 2) * 100 + t * 10 + o));
-        
+
         return wrongs;
       },
 
@@ -324,7 +324,7 @@
 
         // Generate distractors
         const distractors = this.generateWrongExpanded(this.currentNumber);
-        
+
         // Filter valid unique distractors
         const validDistractors = distractors.filter(d => 
           d && d !== correctAnswer && !choices.includes(d)
@@ -648,5 +648,5 @@
       }
     }
   </style>
-</body>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
 </html>

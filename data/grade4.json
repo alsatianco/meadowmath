@@ -1,0 +1,455 @@
+{
+  "region": "grade4",
+  "title": "Grade 4 Activities",
+  "description": "Place value, operations, fractions, decimals, and geometry",
+  "levels": [
+    {
+      "id": "level-1",
+      "number": 1,
+      "title": "Place Value, Rounding & Add/Sub Algorithms",
+      "icon": "🟢",
+      "goal": "Represent, compare, and round numbers to 1,000,000 and add/subtract multi-digit numbers with meaning.",
+      "skills": [
+        "Place value through 1,000,000",
+        "Read/write in standard and expanded form",
+        "Compare and order multi-digit numbers",
+        "Round to any place (10 to 100,000)",
+        "Add and subtract multi-digit numbers with regrouping"
+      ],
+      "activities": [
+        {
+          "id": "place-value-to-million",
+          "title": "Place Value to 1,000,000 Telescope",
+          "description": "Build big numbers using a place-value chart.",
+          "icon": "🔭",
+          "path": "activities/place-value-to-million.html",
+          "type": "interactive"
+        },
+        {
+          "id": "expanded-form-million",
+          "title": "Expanded Form Million Match",
+          "description": "Match a number to its expanded form.",
+          "icon": "🧩",
+          "path": "activities/expanded-form-million.html",
+          "type": "interactive"
+        },
+        {
+          "id": "compare-order-big",
+          "title": "Compare & Order Big Numbers",
+          "description": "Compare and sort large numbers.",
+          "icon": "🏔️",
+          "path": "activities/compare-order-big.html",
+          "type": "interactive"
+        },
+        {
+          "id": "round-any-place",
+          "title": "Round Anywhere",
+          "description": "Round a number to the nearest 10, 100, 1,000, 10,000, or 100,000.",
+          "icon": "🎯",
+          "path": "activities/round-any-place.html",
+          "type": "interactive"
+        },
+        {
+          "id": "add-sub-multi-digit",
+          "title": "Add & Subtract Multi-Digit",
+          "description": "Add and subtract big numbers with regrouping.",
+          "icon": "🧮",
+          "path": "activities/add-sub-multi-digit.html",
+          "type": "interactive"
+        },
+        {
+          "id": "estimate-sum-diff",
+          "title": "Estimate First",
+          "description": "Estimate by rounding, then solve exactly.",
+          "icon": "🔎",
+          "path": "activities/estimate-sum-diff.html",
+          "type": "interactive"
+        },
+        {
+          "id": "number-line-zoom",
+          "title": "Number Line Zoom",
+          "description": "Place a number on a zoomed number line.",
+          "icon": "➡️",
+          "path": "activities/number-line-zoom.html",
+          "type": "interactive"
+        },
+        {
+          "id": "add-sub-word-problems",
+          "title": "Two-Step Add/Sub Stories",
+          "description": "Solve short stories with big numbers.",
+          "icon": "🧾",
+          "path": "activities/add-sub-word-problems.html",
+          "type": "interactive"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {"id": "g4-l1-big-idea", "icon": "💡", "title": "Big idea"},
+          {"id": "g4-l1-notice", "icon": "👀", "title": "What to notice"},
+          {"id": "g4-l1-home", "icon": "🏡", "title": "Try at home"},
+          {"id": "g4-l1-videos", "icon": "📺", "title": "Optional videos"}
+        ]
+      }
+    },
+    {
+      "id": "level-2",
+      "number": 2,
+      "title": "Factors, Multiples & Multi-Digit Multiply/Divide",
+      "icon": "🟡",
+      "goal": "Use structure (factors/multiples) and models to multiply and divide larger numbers, then connect to efficient methods.",
+      "skills": [
+        "Find factor pairs; identify multiples",
+        "Prime vs composite",
+        "Multiply: area model to partial products to algorithm",
+        "Divide: place-value reasoning to partial quotients",
+        "Solve multi-step word problems"
+      ],
+      "activities": [
+        {
+          "id": "factor-pairs",
+          "title": "Factor Pairs Garden",
+          "description": "Grow rectangles to find factor pairs.",
+          "icon": "🌿",
+          "path": "activities/factor-pairs.html",
+          "type": "interactive"
+        },
+        {
+          "id": "prime-composite",
+          "title": "Prime or Composite Sort",
+          "description": "Sort numbers into prime or composite.",
+          "icon": "🪨",
+          "path": "activities/prime-composite.html",
+          "type": "interactive"
+        },
+        {
+          "id": "area-model-multiply",
+          "title": "Area Model Multiply",
+          "description": "Multiply using a rectangle split into tens and ones.",
+          "icon": "🟩",
+          "path": "activities/area-model-multiply.html",
+          "type": "interactive"
+        },
+        {
+          "id": "partial-products",
+          "title": "Partial Products Builder",
+          "description": "Build partial products and add them up.",
+          "icon": "🧱",
+          "path": "activities/partial-products.html",
+          "type": "interactive"
+        },
+        {
+          "id": "multiply-2x2",
+          "title": "Multi-Digit Multiplication",
+          "description": "Practice 2-digit by 2-digit multiplication.",
+          "icon": "🐝",
+          "path": "activities/multiply-2x2.html",
+          "type": "interactive"
+        },
+        {
+          "id": "divide-place-value",
+          "title": "Divide with Place Value",
+          "description": "Share a big number into equal groups.",
+          "icon": "🧺",
+          "path": "activities/divide-place-value.html",
+          "type": "interactive"
+        },
+        {
+          "id": "division-remainders",
+          "title": "Remainder Stories",
+          "description": "Decide what the remainder means in a story.",
+          "icon": "🧁",
+          "path": "activities/division-remainders.html",
+          "type": "interactive"
+        },
+        {
+          "id": "multi-step-md",
+          "title": "Multi-Step Multiply/Divide Problems",
+          "description": "Solve 1-2 step word problems with multiply and divide.",
+          "icon": "🧭",
+          "path": "activities/multi-step-md.html",
+          "type": "interactive"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {"id": "g4-l2-big-idea", "icon": "💡", "title": "Big idea"},
+          {"id": "g4-l2-notice", "icon": "👀", "title": "What to notice"},
+          {"id": "g4-l2-home", "icon": "🏡", "title": "Try at home"},
+          {"id": "g4-l2-videos", "icon": "📺", "title": "Optional videos"}
+        ]
+      }
+    },
+    {
+      "id": "level-3",
+      "number": 3,
+      "title": "Fractions & Mixed Numbers",
+      "icon": "🔵",
+      "goal": "Understand fractions as numbers, find equivalent fractions, compare them, and add/subtract with like denominators.",
+      "skills": [
+        "Fractions on number lines (including beyond 1)",
+        "Equivalent fractions",
+        "Compare fractions",
+        "Add/subtract fractions with like denominators",
+        "Mixed numbers and improper fractions",
+        "Multiply a fraction by a whole number"
+      ],
+      "activities": [
+        {
+          "id": "fraction-number-line",
+          "title": "Fraction Number Line Walk",
+          "description": "Place fractions on number lines (0-1 and 0-2).",
+          "icon": "🚶",
+          "path": "activities/fraction-number-line.html",
+          "type": "interactive"
+        },
+        {
+          "id": "equivalent-fractions",
+          "title": "Equivalent Fractions Builder",
+          "description": "Build equivalent fractions with strips.",
+          "icon": "🧱",
+          "path": "activities/equivalent-fractions.html",
+          "type": "interactive"
+        },
+        {
+          "id": "compare-fractions",
+          "title": "Compare Fractions",
+          "description": "Choose >, <, or = using visual help.",
+          "icon": "⚖️",
+          "path": "activities/compare-fractions.html",
+          "type": "interactive"
+        },
+        {
+          "id": "add-like-fractions",
+          "title": "Add Like Fractions",
+          "description": "Add fractions with the same denominator.",
+          "icon": "🍰",
+          "path": "activities/add-like-fractions.html",
+          "type": "interactive"
+        },
+        {
+          "id": "subtract-like-fractions",
+          "title": "Subtract Like Fractions",
+          "description": "Subtract fractions with the same denominator.",
+          "icon": "🧊",
+          "path": "activities/subtract-like-fractions.html",
+          "type": "interactive"
+        },
+        {
+          "id": "mixed-numbers",
+          "title": "Mixed Numbers Bridge",
+          "description": "Make and use mixed numbers and improper fractions.",
+          "icon": "🌉",
+          "path": "activities/mixed-numbers.html",
+          "type": "interactive"
+        },
+        {
+          "id": "fraction-times-whole",
+          "title": "Fraction x Whole Number",
+          "description": "Multiply a fraction by a whole number as repeated addition.",
+          "icon": "🧮",
+          "path": "activities/fraction-times-whole.html",
+          "type": "interactive"
+        },
+        {
+          "id": "fraction-word-problems",
+          "title": "Fraction Word Problems",
+          "description": "Solve fraction stories (recipes, measuring, sharing).",
+          "icon": "🥗",
+          "path": "activities/fraction-word-problems.html",
+          "type": "interactive"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {"id": "g4-l3-big-idea", "icon": "💡", "title": "Big idea"},
+          {"id": "g4-l3-notice", "icon": "👀", "title": "What to notice"},
+          {"id": "g4-l3-home", "icon": "🏡", "title": "Try at home"},
+          {"id": "g4-l3-videos", "icon": "📺", "title": "Optional videos"}
+        ]
+      }
+    },
+    {
+      "id": "level-4",
+      "number": 4,
+      "title": "Decimals, Measurement & Data",
+      "icon": "🟣",
+      "goal": "Connect fractions to decimals (tenths/hundredths), convert units within a system, and solve measurement/data problems.",
+      "skills": [
+        "Decimal place value (tenths, hundredths)",
+        "Compare decimals to hundredths",
+        "Connect tenths/hundredths fractions to decimals",
+        "Convert units within a system",
+        "Area & perimeter (rectangles; missing side)",
+        "Line plots including fractional measurements"
+      ],
+      "activities": [
+        {
+          "id": "decimals-place-value",
+          "title": "Tenths & Hundredths Aquarium",
+          "description": "Build decimals using a 10x10 grid.",
+          "icon": "🐠",
+          "path": "activities/decimals-place-value.html",
+          "type": "interactive"
+        },
+        {
+          "id": "compare-decimals",
+          "title": "Compare Decimals",
+          "description": "Choose >, <, or = for decimals to hundredths.",
+          "icon": "🏁",
+          "path": "activities/compare-decimals.html",
+          "type": "interactive"
+        },
+        {
+          "id": "fraction-decimal-match",
+          "title": "Fraction to Decimal Match",
+          "description": "Match tenths/hundredths fractions to decimals.",
+          "icon": "🔁",
+          "path": "activities/fraction-decimal-match.html",
+          "type": "interactive"
+        },
+        {
+          "id": "unit-conversion",
+          "title": "Unit Conversion Trail",
+          "description": "Convert units (like feet to inches, kg to g).",
+          "icon": "🧭",
+          "path": "activities/unit-conversion.html",
+          "type": "interactive"
+        },
+        {
+          "id": "area-perimeter",
+          "title": "Area & Perimeter Builder",
+          "description": "Build rectangles and find area and perimeter.",
+          "icon": "🧱",
+          "path": "activities/area-perimeter.html",
+          "type": "interactive"
+        },
+        {
+          "id": "missing-side",
+          "title": "Find the Missing Side",
+          "description": "Find a missing side length from area or perimeter.",
+          "icon": "🕵️",
+          "path": "activities/missing-side.html",
+          "type": "interactive"
+        },
+        {
+          "id": "line-plot-fractions",
+          "title": "Line Plot with Fractions",
+          "description": "Make and read a line plot with 1/2 and 1/4 units.",
+          "icon": "📍",
+          "path": "activities/line-plot-fractions.html",
+          "type": "interactive"
+        },
+        {
+          "id": "measurement-word-problems",
+          "title": "Measurement Word Problems",
+          "description": "Solve multi-step measurement stories.",
+          "icon": "🧰",
+          "path": "activities/measurement-word-problems.html",
+          "type": "interactive"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {"id": "g4-l4-big-idea", "icon": "💡", "title": "Big idea"},
+          {"id": "g4-l4-notice", "icon": "👀", "title": "What to notice"},
+          {"id": "g4-l4-home", "icon": "🏡", "title": "Try at home"},
+          {"id": "g4-l4-videos", "icon": "📺", "title": "Optional videos"}
+        ]
+      }
+    },
+    {
+      "id": "level-5",
+      "number": 5,
+      "title": "Angles & Shape Properties",
+      "icon": "🩵",
+      "goal": "Measure and draw angles, understand lines and symmetry, and classify shapes by properties.",
+      "skills": [
+        "Points, lines, segments, rays",
+        "Classify angles (acute/right/obtuse); measure in degrees",
+        "Draw angles with a protractor",
+        "Parallel and perpendicular lines",
+        "Classify quadrilaterals by properties",
+        "Lines of symmetry"
+      ],
+      "activities": [
+        {
+          "id": "points-lines-rays",
+          "title": "Points, Lines, Rays Explorer",
+          "description": "Identify points, lines, segments, and rays.",
+          "icon": "✨",
+          "path": "activities/points-lines-rays.html",
+          "type": "interactive"
+        },
+        {
+          "id": "angle-types",
+          "title": "Angle Types Zoo",
+          "description": "Sort angles into acute, right, or obtuse.",
+          "icon": "🦒",
+          "path": "activities/angle-types.html",
+          "type": "interactive"
+        },
+        {
+          "id": "measure-angles",
+          "title": "Measure Angles",
+          "description": "Measure angles with a protractor tool.",
+          "icon": "📐",
+          "path": "activities/measure-angles.html",
+          "type": "interactive"
+        },
+        {
+          "id": "draw-angles",
+          "title": "Draw an Angle",
+          "description": "Make an angle of a given size.",
+          "icon": "🎨",
+          "path": "activities/draw-angles.html",
+          "type": "interactive"
+        },
+        {
+          "id": "parallel-perpendicular",
+          "title": "Parallel & Perpendicular Streets",
+          "description": "Find parallel and perpendicular lines in a city map.",
+          "icon": "🏙️",
+          "path": "activities/parallel-perpendicular.html",
+          "type": "interactive"
+        },
+        {
+          "id": "classify-quads",
+          "title": "Classify Quadrilaterals",
+          "description": "Classify squares, rectangles, rhombi, trapezoids, and kites.",
+          "icon": "🏷️",
+          "path": "activities/classify-quads.html",
+          "type": "interactive"
+        },
+        {
+          "id": "symmetry-lines",
+          "title": "Symmetry Mirror",
+          "description": "Draw a line of symmetry (if it exists).",
+          "icon": "🪞",
+          "path": "activities/symmetry-lines.html",
+          "type": "interactive"
+        },
+        {
+          "id": "shape-attributes-g4",
+          "title": "Build a Shape Challenge",
+          "description": "Choose a shape that matches the clues.",
+          "icon": "🧩",
+          "path": "activities/shape-attributes-g4.html",
+          "type": "interactive"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {"id": "g4-l5-big-idea", "icon": "💡", "title": "Big idea"},
+          {"id": "g4-l5-notice", "icon": "👀", "title": "What to notice"},
+          {"id": "g4-l5-home", "icon": "🏡", "title": "Try at home"},
+          {"id": "g4-l5-videos", "icon": "📺", "title": "Optional videos"}
+        ]
+      }
+    }
+  ]
+}

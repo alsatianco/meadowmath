@@ -1,0 +1,11 @@
+/**
+ * Grade 5 Shared Activity Utilities
+ *
+ * This file imports the shared activity utilities from the central CSS folder.
+ * Add any Grade 5 specific overrides below the import.
+ */
+
+@import url('../../css/activity-shared.css');
+
+/* ========== GRADE 5 SPECIFIC OVERRIDES ========== */
+/* Add Grade 5 specific utility styles here if needed */

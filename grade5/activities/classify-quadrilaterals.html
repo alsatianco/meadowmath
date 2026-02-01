@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Classify Quadrilaterals - Grade 5 Math Activity - Meadow Math">
+  <title>Classify Quadrilaterals - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧩</span>
+            <span data-i18n="section.activities.classify-quadrilaterals.title">Classify Quadrilaterals</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.classify-quadrilaterals.instruction">Sort the quadrilaterals by their properties!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Shape Display -->
+          <div class="shape-display" id="shape-display">
+            <svg class="shape-svg" id="shape-svg" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
+              <!-- Shape will be drawn here -->
+            </svg>
+          </div>
+
+          <!-- Properties Card -->
+          <div class="properties-card" id="properties-card">
+            <span class="properties-label" id="properties-label">Properties:</span>
+            <div class="properties-list" id="properties-list">
+              <!-- Properties will be listed here -->
+            </div>
+          </div>
+
+          <!-- Question Card -->
+          <div class="question-card" id="question-card">
+            <span class="question-text" id="question-text">What type of quadrilateral is this?</span>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <!-- Choices will be rendered here -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.classify-quadrilaterals.great">Great shape classification!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Classify Quadrilaterals Activity - Grade 5 Level 5
+    const ClassifyQuadrilaterals = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 2000,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+
+      // DOM elements
+      shapeDisplay: null,
+      shapeSvg: null,
+      propertiesCard: null,
+      propertiesLabel: null,
+      propertiesList: null,
+      questionCard: null,
+      questionText: null,
+      choicesContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Shape definitions with SVG points and properties
+      shapes: [
+        {
+          name: 'square',
+          points: [[50, 30], [150, 30], [150, 130], [50, 130]],
+          properties: ['4equalSides', '4rightAngles', '2pairsParallel'],
+          color: '#3b82f6'
+        },
+        {
+          name: 'square',
+          points: [[40, 50], [120, 30], [140, 110], [60, 130]], // rotated
+          properties: ['4equalSides', '4rightAngles', '2pairsParallel'],
+          color: '#3b82f6'
+        },
+        {
+          name: 'rectangle',
+          points: [[30, 50], [170, 50], [170, 130], [30, 130]],
+          properties: ['oppositeSidesEqual', '4rightAngles', '2pairsParallel'],
+          color: '#22c55e'
+        },
+        {
+          name: 'rectangle',
+          points: [[40, 40], [140, 80], [116, 140], [16, 100]], // rotated (verified perpendicular)
+          properties: ['oppositeSidesEqual', '4rightAngles', '2pairsParallel'],
+          color: '#22c55e'
+        },
+        {
+          name: 'rhombus',
+          points: [[100, 20], [170, 90], [100, 160], [30, 90]],
+          properties: ['4equalSides', 'oppAnglesEqual', '2pairsParallel'],
+          color: '#f59e0b'
+        },
+        {
+          name: 'rhombus',
+          points: [[100, 40], [160, 90], [100, 140], [40, 90]], // narrower (verified equal sides)
+          properties: ['4equalSides', 'oppAnglesEqual', '2pairsParallel'],
+          color: '#f59e0b'
+        },
+        {
+          name: 'parallelogram',
+          points: [[40, 50], [160, 50], [180, 130], [60, 130]],
+          properties: ['oppositeSidesEqual', 'oppAnglesEqual', '2pairsParallel'],
+          color: '#8b5cf6'
+        },
+        {
+          name: 'parallelogram',
+          points: [[30, 60], [140, 30], [170, 120], [60, 150]], // tilted
+          properties: ['oppositeSidesEqual', 'oppAnglesEqual', '2pairsParallel'],
+          color: '#8b5cf6'
+        },
+        {
+          name: 'trapezoid',
+          points: [[60, 40], [140, 40], [170, 140], [30, 140]],
+          properties: ['exactly1pairParallel', 'sidesNotEqual'],
+          color: '#ef4444'
+        },
+        {
+          name: 'trapezoid',
+          points: [[50, 50], [150, 50], [180, 130], [20, 130]], // wider bottom
+          properties: ['exactly1pairParallel', 'sidesNotEqual'],
+          color: '#ef4444'
+        },
+        {
+          name: 'kite',
+          points: [[100, 20], [160, 80], [100, 170], [40, 80]],
+          properties: ['2pairsAdjEqualSides', 'noParallelSides'],
+          color: '#06b6d4'
+        },
+        {
+          name: 'kite',
+          points: [[100, 30], [150, 70], [100, 160], [50, 70]], // different proportions
+          properties: ['2pairsAdjEqualSides', 'noParallelSides'],
+          color: '#06b6d4'
+        }
+      ],
+
+      shapeNames: ['square', 'rectangle', 'rhombus', 'parallelogram', 'trapezoid', 'kite'],
+
+      init() {
+        this.shapeDisplay = document.getElementById('shape-display');
+        this.shapeSvg = document.getElementById('shape-svg');
+        this.propertiesCard = document.getElementById('properties-card');
+        this.propertiesLabel = document.getElementById('properties-label');
+        this.propertiesList = document.getElementById('properties-list');
+        this.questionCard = document.getElementById('question-card');
+        this.questionText = document.getElementById('question-text');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      generateQuestions() {
+        const shuffled = shuffle([...this.shapes]);
+        this.questions = shuffled.slice(0, this.totalQuestions);
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        const q = this.questions[this.currentQuestion];
+        if (!q) {
+          this.showStats();
+          return;
+        }
+
+        // Draw shape
+        this.drawShape(q);
+
+        // Update properties
+        this.updateProperties(q);
+
+        // Update question
+        this.questionText.textContent = this.getTranslation(
+          'section.activities.classify-quadrilaterals.question',
+          'What type of quadrilateral is this?'
+        );
+
+        // Render choices
+        this.renderChoices(q);
+
+        this.renderProgress();
+      },
+
+      drawShape(q) {
+        this.shapeSvg.innerHTML = '';
+
+        // Create polygon
+        const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+        const pointsStr = q.points.map(p => `${p[0]},${p[1]}`).join(' ');
+        polygon.setAttribute('points', pointsStr);
+        polygon.setAttribute('fill', q.color + '33'); // 20% opacity
+        polygon.setAttribute('stroke', q.color);
+        polygon.setAttribute('stroke-width', '3');
+        polygon.setAttribute('stroke-linejoin', 'round');
+        this.shapeSvg.appendChild(polygon);
+
+        // Draw vertices
+        q.points.forEach(p => {
+          const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          circle.setAttribute('cx', p[0]);
+          circle.setAttribute('cy', p[1]);
+          circle.setAttribute('r', '5');
+          circle.setAttribute('fill', q.color);
+          this.shapeSvg.appendChild(circle);
+        });
+      },
+
+      getPropertyText(propKey) {
+        const key = `section.activities.classify-quadrilaterals.prop${propKey}`;
+        const fallbacks = {
+          '4equalSides': '4 equal sides',
+          '4rightAngles': '4 right angles',
+          '2pairsParallel': '2 pairs of parallel sides',
+          'oppositeSidesEqual': 'Opposite sides equal',
+          'oppAnglesEqual': 'Opposite angles equal',
+          'exactly1pairParallel': 'Exactly 1 pair of parallel sides',
+          'sidesNotEqual': 'Sides not all equal',
+          '2pairsAdjEqualSides': '2 pairs of adjacent equal sides',
+          'noParallelSides': 'No parallel sides'
+        };
+        return this.getTranslation(key, fallbacks[propKey] || propKey);
+      },
+
+      updateProperties(q) {
+        this.propertiesLabel.textContent = this.getTranslation(
+          'section.activities.classify-quadrilaterals.properties',
+          'Properties:'
+        );
+
+        this.propertiesList.innerHTML = '';
+        q.properties.forEach(prop => {
+          const span = document.createElement('span');
+          span.className = 'property-item';
+          span.textContent = this.getPropertyText(prop);
+          this.propertiesList.appendChild(span);
+        });
+      },
+
+      getShapeName(shapeName) {
+        const key = `section.activities.classify-quadrilaterals.shape${shapeName.charAt(0).toUpperCase() + shapeName.slice(1)}`;
+        const fallbacks = {
+          square: 'Square',
+          rectangle: 'Rectangle',
+          rhombus: 'Rhombus',
+          parallelogram: 'Parallelogram',
+          trapezoid: 'Trapezoid',
+          kite: 'Kite'
+        };
+        return this.getTranslation(key, fallbacks[shapeName] || shapeName);
+      },
+
+      renderChoices(q) {
+        this.choicesContainer.innerHTML = '';
+
+        // Get correct answer and distractors
+        const correct = q.name;
+        const distractors = this.shapeNames.filter(s => s !== correct);
+        const shuffledDistractors = shuffle(distractors).slice(0, 3);
+        const choices = shuffle([correct, ...shuffledDistractors]);
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.setAttribute('tabindex', '0');
+          btn.textContent = this.getShapeName(choice);
+          btn.setAttribute('data-value', choice);
+
+          btn.addEventListener('click', () => this.checkAnswer(choice, correct));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.checkAnswer(choice, correct);
+            }
+          });
+
+          this.choicesContainer.appendChild(btn);
+        });
+      },
+
+      checkAnswer(selected, correct) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const buttons = this.choicesContainer.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => btn.disabled = true);
+
+        const isCorrect = selected === correct;
+
+        buttons.forEach(btn => {
+          const btnValue = btn.getAttribute('data-value');
+          if (btnValue === correct) {
+            btn.classList.add('correct');
+          } else if (btnValue === selected) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+          this.feedback.textContent = this.getTranslation(
+            'section.activities.classify-quadrilaterals.correct',
+            "Correct! It's a {shape}!"
+          ).replace('{shape}', this.getShapeName(correct));
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          this.feedback.textContent = this.getTranslation(
+            'section.activities.classify-quadrilaterals.wrong',
+            "It's a {shape}."
+          ).replace('{shape}', this.getShapeName(correct));
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+        this.scheduleAdvance();
+      },
+
+      scheduleAdvance() {
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+
+        const q = this.questions[this.currentQuestion];
+        if (q && !this.isAnswered) {
+          this.updateProperties(q);
+          this.questionText.textContent = this.getTranslation(
+            'section.activities.classify-quadrilaterals.question',
+            'What type of quadrilateral is this?'
+          );
+          this.renderChoices(q);
+        }
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.classify-quadrilaterals.perfect',
+            'Perfect! You are a quadrilateral expert!'
+          );
+        } else if (percent >= 0.75) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.classify-quadrilaterals.great',
+            'Great shape classification!'
+          );
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.classify-quadrilaterals.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.classify-quadrilaterals.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => ClassifyQuadrilaterals.init());
+      } else {
+        ClassifyQuadrilaterals.init();
+      }
+    });
+  </script>
+  <style>
+    /* Classify Quadrilaterals specific styles */
+
+    /* Shape Display */
+    .shape-display {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 3px solid #e2e8f0;
+      padding: var(--space-3);
+      margin-bottom: var(--space-2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .shape-svg {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+    }
+
+    /* Properties Card */
+    .properties-card {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+      padding: var(--space-3);
+      margin-bottom: var(--space-2);
+    }
+
+    .properties-label {
+      display: block;
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+      margin-bottom: var(--space-2);
+    }
+
+    .properties-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .property-item {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xs);
+      color: #78350f;
+      background: white;
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-md);
+      border: 2px solid #fbbf24;
+    }
+
+    /* Question Card */
+    .question-card {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #3b82f6;
+      padding: var(--space-3);
+      margin-bottom: var(--space-3);
+      text-align: center;
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #1e40af;
+    }
+
+    /* Choices Container */
+    .choices-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .choice-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #374151;
+      background: white;
+      border: 3px solid #d1d5db;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 50px;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: #f3f4f6;
+      border-color: #9ca3af;
+      transform: scale(1.02);
+    }
+
+    .choice-btn:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn.correct {
+      background: #dcfce7;
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: #fee2e2;
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    /* Feedback and layout */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .shape-svg {
+        max-width: 160px;
+      }
+
+      .properties-card {
+        padding: var(--space-2);
+      }
+
+      .properties-label {
+        font-size: var(--text-xs);
+      }
+
+      .property-item {
+        font-size: 10px;
+        padding: 4px 8px;
+      }
+
+      .question-card {
+        padding: var(--space-2);
+      }
+
+      .question-text {
+        font-size: var(--text-sm);
+      }
+
+      .choices-container {
+        gap: var(--space-2);
+      }
+
+      .choice-btn {
+        padding: var(--space-2);
+        font-size: var(--text-sm);
+        min-height: 44px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .shape-svg {
+        max-width: 140px;
+      }
+
+      .choices-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

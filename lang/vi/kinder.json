@@ -1,0 +1,983 @@
+{
+  "title": "Hoạt động Mẫu giáo",
+  "description": "Phát triển kỹ năng về số qua vui chơi và khám phá",
+  "levels": {
+    "level1": {
+      "title": "Đếm & Gọi tên số (0–20 đến 100)",
+      "goal": "Xây dựng kỹ năng đếm chắc chắn, nhận biết chữ số và thói quen đếm mở rộng đến 100.",
+      "learnMore": {
+        "k-l1-big-idea": {
+          "title": "Ý tưởng lớn",
+          "content": "Đếm không chỉ là đọc số: trẻ em ghép **một số với một vật**, và số *cuối cùng* trả lời \"có bao nhiêu?\""
+        },
+        "k-l1-notice": {
+          "title": "Điều cần chú ý",
+          "content": "* Chạm vào từng vật đúng một lần (không bỏ qua, không đếm trùng)\n* Trả lời \"có bao nhiêu?\" mà không phải đếm lại từ đầu\n* Có thể bắt đầu đếm từ 7 (không chỉ từ 1)\n* Bắt đầu \"nhìn thấy\" các nhóm nhỏ nhanh (1–3; sau đó là cấu trúc khung 5)"
+        },
+        "k-l1-home": {
+          "title": "Thử ở nhà",
+          "content": "* **Trò chơi A: \"Đếm & Nói\"** Xếp 15–25 vật thành hàng; bé đếm, rồi bạn hỏi \"Có bao nhiêu?\"\n* **Trò chơi B: \"Đếm từ một số\"** Bắt đầu từ 13; lần lượt đếm đến 20 (sau đó 50)."
+        },
+        "k-l1-videos": {
+          "title": "Video gợi ý (tùy chọn)",
+          "content": "**Tìm trên YouTube:**\n* <a href='https://www.youtube.com/results?search_query=dem+so+1+den+100+cho+be' target='_blank' rel='noopener noreferrer'>đếm số 1 đến 100 cho bé</a>\n* <a href='https://www.youtube.com/results?search_query=tuong+ung+mot+mot+khi+dem' target='_blank' rel='noopener noreferrer'>tương ứng một–một khi đếm</a>\n* <a href='https://www.youtube.com/results?search_query=ten+so+0+den+20+cho+be' target='_blank' rel='noopener noreferrer'>tên số 0 đến 20 cho bé</a>\n* <a href='https://www.youtube.com/results?search_query=bang+so+100+mau+giao' target='_blank' rel='noopener noreferrer'>bảng số 100 mẫu giáo</a>"
+        }
+      }
+    },
+    "level2": {
+      "title": "So sánh, Sắp xếp, Khung mười & Số teen",
+      "goal": "Xây dựng ngôn ngữ so sánh và biểu diễn có cấu trúc (khung mười / trục số), bao gồm số teen dưới dạng 10 + mấy đơn vị.",
+      "learnMore": {
+        "k-l2-big-idea": {
+          "title": "Ý tưởng lớn",
+          "content": "So sánh là về mối quan hệ: trẻ có thể quyết định \"nhiều hơn/ít hơn/bằng nhau\" bằng cách **ghép cặp** (không phải lúc nào cũng cần đếm). Số teen là cây cầu quan trọng đến giá trị theo vị trí: **mười-và-mấy-đơn-vị**."
+        },
+        "k-l2-notice": {
+          "title": "Điều cần chú ý",
+          "content": "* Ghép cặp các vật (\"một cho bạn, một cho mình\")\n* Nhận ra mẫu khung mười mà không phải đếm từng chấm\n* Giải thích số teen (\"Đó là 10 và 4\")\n* Đặt số trên trục số 0–10 một cách tự tin"
+        },
+        "k-l2-home": {
+          "title": "Thử ở nhà",
+          "content": "* **Trò chơi A: \"Cân bằng đồ ăn\"** Di chuyển đồ ăn từng cái một cho đến khi hai bát bằng nhau.\n* **Trò chơi B: \"Chớp khung mười\"** Cho xem nhanh khung mười (0–10). Nói số; sau đó kiểm tra bằng cách đếm."
+        },
+        "k-l2-videos": {
+          "title": "Video gợi ý (tùy chọn)",
+          "content": "**Tìm trên YouTube:**\n* <a href='https://www.youtube.com/results?search_query=khung+muoi+mau+giao' target='_blank' rel='noopener noreferrer'>khung mười mẫu giáo</a>\n* <a href='https://www.youtube.com/results?search_query=nhieu+hon+it+hon+bang+nhau+cho+be' target='_blank' rel='noopener noreferrer'>nhiều hơn ít hơn bằng nhau cho bé</a>\n* <a href='https://www.youtube.com/results?search_query=so+teen+muoi+va+may' target='_blank' rel='noopener noreferrer'>số teen mười và mấy</a>\n* <a href='https://www.youtube.com/results?search_query=truc+so+0+den+20' target='_blank' rel='noopener noreferrer'>trục số 0 đến 20</a>"
+        }
+      }
+    },
+    "level3": {
+      "title": "Làm 10 & Tư duy Phần–Toàn thể",
+      "goal": "Giúp trẻ hiểu số được tạo thành từ các phần – đặc biệt là các tổ hợp tạo thành 5 và 10.",
+      "learnMore": {
+        "k-l3-big-idea": {
+          "title": "Ý tưởng lớn",
+          "content": "Khi trẻ học số được **tạo thành từ các phần**, cộng và trừ trở thành \"sắp xếp lại các phần\", chứ không phải học thuộc. \"Làm 10\" là cây cầu mạnh mẽ từ đếm đến tính nhẩm."
+        },
+        "k-l3-notice": {
+          "title": "Điều cần chú ý",
+          "content": "* Kể được nhiều cách tạo thành 6, 7, 8…\n* Dùng cấu trúc khung 5/10 (\"5 và thêm 2\")\n* Tìm \"đôi của 10\" nhanh (8 cần 2)\n* Nhận ra số kép (4+4) là \"giống + giống\""
+        },
+        "k-l3-home": {
+          "title": "Thử ở nhà",
+          "content": "* **Trò chơi A: \"Điền khung mười\"** Đặt 6 đồng xu vào khung mười; hỏi \"Cần thêm mấy để làm 10?\"\n* **Trò chơi B: \"Lắc & Đổ\"** Đổ quân hai màu; ghi lại: \"__ và __ tạo thành 10.\""
+        },
+        "k-l3-videos": {
+          "title": "Video gợi ý (tùy chọn)",
+          "content": "**Tìm trên YouTube:**\n* <a href='https://www.youtube.com/results?search_query=lam+10+mau+giao' target='_blank' rel='noopener noreferrer'>làm 10 mẫu giáo</a>\n* <a href='https://www.youtube.com/results?search_query=so+rang+buoc+den+10' target='_blank' rel='noopener noreferrer'>số ràng buộc đến 10</a>\n* <a href='https://www.youtube.com/results?search_query=khung+muoi+lam+10' target='_blank' rel='noopener noreferrer'>khung mười làm 10</a>\n* <a href='https://www.youtube.com/results?search_query=nhin+nhanh+den+10' target='_blank' rel='noopener noreferrer'>nhìn nhanh đến 10</a>"
+        }
+      }
+    },
+    "level4": {
+      "title": "Cộng & Trừ trong phạm vi 10 (Câu chuyện + Phương trình)",
+      "goal": "Giải các bài toán cộng/trừ trong phạm vi 10 bằng vật thật, hình ảnh và (nhẹ nhàng) phương trình.",
+      "learnMore": {
+        "k-l4-big-idea": {
+          "title": "Ý tưởng lớn",
+          "content": "Cộng và trừ bắt đầu từ **những câu chuyện thật** (gộp lại / tách ra). Phương trình chỉ là cách *ghi lại điều đã xảy ra*."
+        },
+        "k-l4-notice": {
+          "title": "Điều cần chú ý",
+          "content": "* Đóng vai câu chuyện trước khi giải\n* Dùng ngón tay/vật một cách tự nhiên (điều đó hoàn toàn ổn)\n* Có thể ghép câu chuyện với phương trình như 4 + 2 = 6\n* Giải bài toán tìm phần còn thiếu với hình ảnh"
+        },
+        "k-l4-home": {
+          "title": "Thử ở nhà",
+          "content": "* **Trò chơi A: \"Câu chuyện với đồ chơi\"** \"Con có 4 xe, mẹ cho thêm 2…\" đóng vai; sau đó viết 4+2=__.\n* **Trò chơi B: \"Che một phần\"** Đặt 8 đồng xu xuống; che một số; hỏi \"Có bao nhiêu đang bị che?\""
+        },
+        "k-l4-videos": {
+          "title": "Video gợi ý (tùy chọn)",
+          "content": "**Tìm trên YouTube:**\n* <a href='https://www.youtube.com/results?search_query=cong+tru+trong+10+mau+giao' target='_blank' rel='noopener noreferrer'>cộng trừ trong 10 mẫu giáo</a>\n* <a href='https://www.youtube.com/results?search_query=bai+toan+cau+chuyen+mau+giao' target='_blank' rel='noopener noreferrer'>bài toán câu chuyện mẫu giáo</a>\n* <a href='https://www.youtube.com/results?search_query=tim+so+hang+con+thieu+trong+10' target='_blank' rel='noopener noreferrer'>tìm số hạng còn thiếu trong 10</a>\n* <a href='https://www.youtube.com/results?search_query=so+rang+buoc+den+10' target='_blank' rel='noopener noreferrer'>số ràng buộc đến 10</a>"
+        }
+      }
+    },
+    "level5": {
+      "title": "Quy luật, Logic, Đo lường, Dữ liệu & Hình dạng",
+      "goal": "Phát triển ‘công cụ tư duy toán học’ (quy luật, logic, lập kế hoạch) khi khám phá toán học trong thế giới thực.",
+      "learnMore": {
+        "k-l5-big-idea": {
+          "title": "Ý tưởng lớn",
+          "content": "Đây là \"toán học có thể nhìn và chạm\": quy luật giúp trẻ nhận ra cấu trúc, và ngôn ngữ về đo lường/hình dạng giúp trẻ mô tả thế giới. Trò chuyện ngắn, vui trong các hoạt động hằng ngày là cách luyện tập tốt nhất."
+        },
+        "k-l5-notice": {
+          "title": "Điều cần chú ý",
+          "content": "* Giải thích được quy luật (\"nó luân phiên\")\n* Thử lại sau khi nhận phản hồi (không sợ sai)\n* So sánh bằng cách đặt thẳng hàng vật; dùng dài hơn/ngắn hơn/nặng hơn/nhẹ hơn\n* Phân loại nhất quán và đọc biểu đồ hình ảnh đơn giản (nhiều nhất/ít nhất)\n* Gọi tên hình theo đặc điểm (góc/cạnh), không theo hướng xoay"
+        },
+        "k-l5-home": {
+          "title": "Thử ở nhà",
+          "content": "* **Trò chơi A: \"Quy luật vỗ tay\"** Vỗ-chạm-chạm; bé tiếp tục hoặc sáng tạo quy luật mới.\n* **Trò chơi B: \"Săn tìm hình trong bếp + Biểu đồ\"** Tìm 3 hình tròn/3 hình chữ nhật; làm biểu đồ hình ảnh nhỏ và so sánh."
+        },
+        "k-l5-videos": {
+          "title": "Video gợi ý (tùy chọn)",
+          "content": "**Tìm trên YouTube:**\n* <a href='https://www.youtube.com/results?search_query=quy+luat+mau+giao' target='_blank' rel='noopener noreferrer'>quy luật mẫu giáo</a>\n* <a href='https://www.youtube.com/results?search_query=lap+trinh+khong+may+tinh+huong+dan+robot' target='_blank' rel='noopener noreferrer'>lập trình không máy tính hướng dẫn robot</a>\n* <a href='https://www.youtube.com/results?search_query=do+luong+dai+ngan+mau+giao' target='_blank' rel='noopener noreferrer'>đo lường dài ngắn mẫu giáo</a>\n* <a href='https://www.youtube.com/results?search_query=hinh+2D+va+3D+cho+be' target='_blank' rel='noopener noreferrer'>hình 2D và 3D cho bé</a>\n* <a href='https://www.youtube.com/results?search_query=bieu+do+hinh+anh+mau+giao' target='_blank' rel='noopener noreferrer'>biểu đồ hình ảnh mẫu giáo</a>"
+        }
+      }
+    }
+  },
+  "activities": {
+    "tap-count-20": {
+      "title": "Chạm & Đếm đến 20",
+      "description": "Chạm vào từng vật và đếm to!",
+      "instruction": "Chạm vào từng vật để đếm!",
+      "howMany": "Con đã đếm được bao nhiêu?",
+      "correct": "Đúng rồi! Con đã đếm được {{count}}!",
+      "incorrect": "Chưa đúng! Đáp án là {{count}}.",
+      "perfect": "Đếm tuyệt vời! Con là một ngôi sao!",
+      "great": "Đếm giỏi lắm!",
+      "keepPracticing": "Cố gắng nhé! Tiếp tục luyện tập!"
+    },
+    "count-on": {
+      "title": "Đếm tiếp",
+      "description": "Bắt đầu từ một số và đếm tiếp!",
+      "instruction": "Số tiếp theo là gì?",
+      "question": "Số tiếp theo là gì?",
+      "correct": "Đúng rồi! {{prev}} → {{answer}}!",
+      "incorrect": "Chưa đúng! Sau {{prev}} là {{answer}}.",
+      "perfect": "Tuyệt vời! Con là nhà vô địch đếm số!",
+      "great": "Đếm tiếp giỏi lắm!",
+      "keepPracticing": "Cố gắng nhé! Tiếp tục luyện tập!"
+    },
+    "missing-number-train": {
+      "title": "Tàu hỏa số bị thiếu",
+      "description": "Tìm số bị thiếu trên tàu!",
+      "instruction": "Số nào bị rơi? Hãy đặt lại!",
+      "whichNumber": "Số nào đang bị thiếu?",
+      "correct": "Đúng rồi! Số bị thiếu là {{number}}!",
+      "incorrect": "Chưa đúng! Đáp án là {{number}}.",
+      "perfect": "Tuyệt vời! Con là người lái tàu số!",
+      "great": "Tìm số giỏi lắm!",
+      "keepPracticing": "Cố gắng nhé! Tiếp tục luyện tập!"
+    },
+    "number-quantity-match-k": {
+      "title": "Ghép số",
+      "description": "Ghép số với nhóm!",
+      "instruction": "Ghép số với nhóm!",
+      "question": "Nhóm nào có bấy nhiêu?",
+      "correct": "Đúng rồi! Đó là {{number}}!",
+      "incorrect": "Chưa đúng! Đây là {{number}}.",
+      "perfect": "Tuyệt vời! Con là ngôi sao ghép số!",
+      "great": "Ghép số giỏi lắm!",
+      "keepPracticing": "Cố gắng nhé! Tiếp tục luyện tập!"
+    },
+    "counting-collections": {
+      "title": "Đếm bộ sưu tập",
+      "description": "Đếm các vật trong lọ!",
+      "instruction": "Chạm vào từng vật để đếm!",
+      "howMany": "Có bao nhiêu vật trong lọ?",
+      "hint": "Mẹo: Thử đếm theo nhóm {{size}}!",
+      "correct": "Đúng rồi! Con đã đếm được {{count}}!",
+      "incorrect": "Chưa đúng! Đáp án là {{count}}.",
+      "perfect": "Đếm tuyệt vời!",
+      "great": "Đếm bộ sưu tập giỏi lắm!",
+      "keepPracticing": "Cố gắng nhé! Tiếp tục luyện tập!"
+    },
+    "count-by-tens-k": {
+      "title": "Tên lửa đếm theo chục",
+      "description": "Giúp tên lửa bay bằng cách đếm theo chục!",
+      "instruction": "Chạm vào số tiếp theo để giúp tên lửa bay!",
+      "countLabel": "Đếm:",
+      "correct": "Đúng rồi! {{count}}!",
+      "incorrect": "Chưa đúng! Số tiếp theo là {{next}}.",
+      "perfect": "Bậc thầy tên lửa!",
+      "great": "Đếm theo chục giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "hundred-chart-k": {
+      "title": "Săn tìm bảng 100",
+      "description": "Tìm số trên bảng 100!",
+      "instruction": "Tìm số trên bảng!",
+      "find": "Tìm:",
+      "correct": "Tìm thấy rồi! {{number}}!",
+      "reveal": "Đây nè! {{number}} ở đây.",
+      "hintRow": "Gợi ý: Tìm ở hàng {{row}} ({{start}}–{{end}})",
+      "hintClose": "Gần đúng rồi! Chữ số hàng đơn vị là {{ones}}.",
+      "perfect": "Nhà vô địch bảng số!",
+      "great": "Săn tìm bảng số giỏi lắm!",
+      "keepPracticing": "Tiếp tục khám phá bảng số!"
+    },
+    "number-word-to-numeral": {
+      "title": "Từ số sang chữ số",
+      "description": "Ghép từ chỉ số với chữ số!",
+      "instruction": "Ghép từ với số!",
+      "wordLabel": "Từ:",
+      "question": "Đây là số mấy?",
+      "correct": "Đúng rồi! \"{{word}}\" là {{number}}!",
+      "incorrect": "Chưa đúng! \"{{word}}\" là {{number}}.",
+      "perfect": "Phù thủy từ số!",
+      "great": "Ghép từ giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "who-has-more-k": {
+      "title": "Ai có nhiều hơn?",
+      "description": "So sánh các nhóm và tìm nhóm có nhiều hơn!",
+      "instruction": "Chạm vào nhóm có nhiều hơn!",
+      "question": "Nhóm nào có nhiều hơn?",
+      "correct": "Đúng rồi! {{count}} là nhiều hơn!",
+      "incorrect": "Chưa đúng! {{count}} là nhiều hơn.",
+      "perfect": "Nhà vô địch so sánh!",
+      "great": "So sánh giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "compare-numbers-k": {
+      "title": "So sánh số",
+      "description": "Dùng < = > để so sánh số!",
+      "instruction": "Dấu nào đi vào giữa?",
+      "crocHint": "Cá sấu ăn số lớn hơn!",
+      "lessThan": "nhỏ hơn",
+      "equals": "bằng",
+      "greaterThan": "lớn hơn",
+      "correct": "Đúng rồi! {{left}} {{symbol}} {{right}}!",
+      "incorrect": "Chưa đúng! {{left}} {{symbol}} {{right}}.",
+      "perfect": "Chuyên gia so sánh số!",
+      "great": "So sánh giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "order-numbers-k": {
+      "title": "Sắp xếp số theo thứ tự",
+      "description": "Sắp xếp số từ nhỏ đến lớn!",
+      "instruction": "Chạm vào các số từ nhỏ đến lớn!",
+      "orderLabel": "Thứ tự:",
+      "correct": "Tuyệt vời! {{order}}",
+      "incorrect": "Thứ tự là {{order}}",
+      "perfect": "Chuyên gia sắp xếp!",
+      "great": "Sắp xếp giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "ten-frame-snap": {
+      "title": "Chớp khung mười",
+      "description": "Nhanh lên! Con thấy bao nhiêu chấm?",
+      "instruction": "Nhìn nhanh! Có bao nhiêu chấm?",
+      "question": "Có bao nhiêu chấm?",
+      "correct": "Đúng rồi! {{count}} chấm!",
+      "incorrect": "Chưa đúng! Đáp án là {{count}}.",
+      "perfect": "Mắt nhanh!",
+      "great": "Nhìn nhanh giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "number-line-place-k": {
+      "title": "Đặt số trên trục số",
+      "description": "Đặt số vào đúng vị trí trên trục số!",
+      "instruction": "Chạm vào vị trí của số!",
+      "place": "Đặt:",
+      "correct": "Đúng rồi! {{number}} ở đây!",
+      "incorrect": "{{number}} ở đây!",
+      "perfect": "Chuyên gia trục số!",
+      "great": "Đặt số giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "enough-seats": {
+      "title": "Đủ ghế không?",
+      "description": "Có đủ ghế cho tất cả mọi người không?",
+      "instruction": "Có đủ ghế cho tất cả mọi người không?",
+      "friends": "Bạn bè:",
+      "seats": "Ghế:",
+      "question": "Có đủ ghế không?",
+      "yes": "Có!",
+      "no": "Không",
+      "correctYes": "Đúng rồi! {{seats}} ghế cho {{animals}} bạn!",
+      "correctNo": "Đúng rồi! {{seats}} ghế là không đủ cho {{animals}} bạn.",
+      "incorrectYes": "Thực ra, {{seats}} ghế LÀ đủ cho {{animals}} bạn!",
+      "incorrectNo": "Thực ra, {{seats}} ghế KHÔNG đủ cho {{animals}} bạn.",
+      "perfect": "Nhà vô địch đếm ghế!",
+      "great": "So sánh giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "more-fewer-same": {
+      "title": "Nhiều hơn, ít hơn hay bằng nhau",
+      "description": "So sánh các nhóm và chọn đáp án!",
+      "instruction": "Nhóm đỏ có nhiều hơn, ít hơn hay bằng nhau?",
+      "question": "Nhóm đỏ có…",
+      "more": "Nhiều hơn",
+      "fewer": "Ít hơn",
+      "same": "Bằng nhau",
+      "correctMore": "Đúng rồi! Nhóm đỏ nhiều hơn!",
+      "correctFewer": "Đúng rồi! Nhóm đỏ ít hơn!",
+      "correctSame": "Đúng rồi! Hai nhóm bằng nhau!",
+      "incorrectMore": "Chưa đúng! Nhóm đỏ nhiều hơn.",
+      "incorrectFewer": "Chưa đúng! Nhóm đỏ ít hơn.",
+      "incorrectSame": "Chưa đúng! Hai nhóm bằng nhau.",
+      "perfect": "Tuyệt vời! Con là nhà vô địch so sánh!",
+      "great": "So sánh giỏi lắm!",
+      "keepPracticing": "Cố gắng nhé! Tiếp tục luyện tập!"
+    },
+    "ten-frame-builder": {
+      "title": "Xây khung mười",
+      "description": "Xây số trên khung mười!",
+      "instruction": "Chạm để xây số!",
+      "build": "Xây:",
+      "tapToAdd": "Chạm để thêm",
+      "correct": "Tuyệt vời! Con đã xây được {{number}}!",
+      "perfect": "Tuyệt vời! Con là bậc thầy khung mười!",
+      "great": "Xây số giỏi lắm!",
+      "keepPracticing": "Cố gắng nhé! Tiếp tục luyện tập!"
+    },
+    "teen-stories": {
+      "title": "Câu chuyện số teen",
+      "description": "10 và thêm một ít nữa — tất cả là bao nhiêu?",
+      "instruction": "10 và thêm một ít nữa — tất cả là bao nhiêu?",
+      "question": "Tất cả là bao nhiêu?",
+      "correct": "Đúng rồi! 10 + {{ones}} = {{total}}!",
+      "incorrect": "Chưa đúng! 10 + {{ones}} = {{total}}",
+      "perfect": "Tuyệt vời! Con là ngôi sao số teen!",
+      "great": "Làm tốt lắm với các số teen!",
+      "keepPracticing": "Cố gắng nhé! Tiếp tục luyện tập!"
+    },
+    "number-bonds-k": {
+      "title": "Xây số ràng buộc",
+      "description": "Tìm phần còn thiếu!",
+      "instruction": "Tìm phần còn thiếu!",
+      "whole": "toàn bộ",
+      "part": "phần",
+      "correct": "{{left}} và {{right}} tạo thành {{whole}}!",
+      "incorrect": "{{left}} + {{right}} = {{whole}}",
+      "perfect": "Nhà xây số!",
+      "great": "Làm tốt lắm với số ràng buộc!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "fill-five-frame": {
+      "title": "Điền khung năm",
+      "description": "Cần thêm bao nhiêu để được 5?",
+      "instruction": "Cần thêm bao nhiêu để được 5?",
+      "question": "Cần thêm bao nhiêu để được 5?",
+      "fiveFingers": "5 ngón tay!",
+      "filledLabel": "đã điền",
+      "correct": "Đúng rồi! {{filled}} + {{empty}} = 5!",
+      "incorrect": "{{filled}} cần thêm {{empty}} để được 5.",
+      "perfect": "Bậc thầy khung năm!",
+      "great": "Làm tốt lắm với số 5!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "fill-ten-frame": {
+      "title": "Điền khung mười",
+      "description": "Cần thêm bao nhiêu để được 10?",
+      "instruction": "Cần thêm bao nhiêu để được 10?",
+      "question": "Cần thêm bao nhiêu để được 10?",
+      "filledLabel": "đã điền",
+      "correct": "Đúng rồi! {{filled}} + {{empty}} = 10!",
+      "incorrect": "Chưa đúng! {{filled}} cần thêm {{empty}} để được 10.",
+      "perfect": "Tuyệt vời! Con là bậc thầy Làm 10!",
+      "great": "Tìm đôi của 10 giỏi lắm!",
+      "keepPracticing": "Cố gắng nhé! Tiếp tục luyện tập!"
+    },
+    "shake-spill": {
+      "title": "Lắc & Đổ",
+      "description": "Lắc quân và đếm từng màu!",
+      "instruction": "Chạm để lắc và đổ quân!",
+      "total": "Tổng:",
+      "counters": "quân",
+      "tapToShake": "Chạm để lắc!",
+      "howMany": "Mỗi màu có bao nhiêu?",
+      "correct": "{{red}} và {{yellow}} tạo thành {{total}}!",
+      "incorrect": "Nhìn nè! {{red}} đỏ + {{yellow}} vàng = {{total}}",
+      "perfect": "Ngôi sao Lắc & Đổ!",
+      "great": "Đếm giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "partners-to-10": {
+      "title": "Ghép đôi của 10",
+      "description": "Ghép các cặp số tạo thành 10!",
+      "instruction": "Ghép các số tạo thành 10!",
+      "targetText": "Tìm các cặp tạo thành",
+      "correct": "{{num1}} + {{num2}} = 10!",
+      "incorrect": "Chưa đúng! {{num1}} + {{num2}} = {{sum}}, không phải 10.",
+      "perfect": "Tuyệt vời! Con biết các đôi của 10!",
+      "great": "Ghép đôi giỏi lắm!",
+      "keepPracticing": "Cố gắng nhé! Tiếp tục luyện tập!"
+    },
+    "make-10-two-groups": {
+      "title": "Làm 10 với hai nhóm",
+      "description": "Cộng hai nhóm và tìm xem cần thêm bao nhiêu để làm 10!",
+      "instruction": "Cần thêm bao nhiêu để được 10?",
+      "total": "Tổng:",
+      "question": "Cần thêm bao nhiêu để được 10?",
+      "correct": "{{total}} + {{needed}} = 10!",
+      "incorrect": "{{total}} cần thêm {{needed}} để được 10.",
+      "perfect": "Bậc thầy Làm 10!",
+      "great": "Làm 10 giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "doubles-within-10": {
+      "title": "Số kép",
+      "description": "Giống + Giống = Bao nhiêu?",
+      "instruction": "Giống + Giống = Bao nhiêu?",
+      "question": "Tất cả là bao nhiêu?",
+      "correct": "{{num}} + {{num}} = {{total}}!",
+      "incorrect": "{{num}} + {{num}} = {{total}}",
+      "perfect": "Nhà vô địch số kép!",
+      "great": "Nhân đôi giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "quick-look-10": {
+      "title": "Nhìn nhanh đến 10",
+      "description": "Nhìn nhanh! Con thấy bao nhiêu?",
+      "instruction": "Nhìn nhanh! Con thấy bao nhiêu?",
+      "ready": "Sẵn sàng? Chạm!",
+      "question": "Con thấy bao nhiêu?",
+      "correct": "Đúng rồi! {{count}} chấm!",
+      "incorrect": "Có {{count}} chấm.",
+      "perfect": "Nhà vô địch mắt nhanh!",
+      "great": "Nhìn nhanh giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "add-with-pictures-k": {
+      "title": "Cộng với hình ảnh",
+      "description": "Đếm hình để tìm tổng!",
+      "instruction": "Đếm cả hai nhóm để tìm tổng!",
+      "question": "Tất cả là bao nhiêu?",
+      "correct": "Đúng rồi! {{a}} + {{b}} = {{total}}!",
+      "incorrect": "Chưa đúng! {{a}} + {{b}} = {{total}}",
+      "perfect": "Tuyệt vời! Con là ngôi sao phép cộng!",
+      "great": "Cộng giỏi lắm!",
+      "keepPracticing": "Cố gắng nhé! Tiếp tục luyện tập!"
+    },
+    "subtract-with-pictures-k": {
+      "title": "Trừ với hình ảnh",
+      "description": "Một số bay đi! Đếm xem còn lại bao nhiêu!",
+      "instruction": "Một số bay đi! Còn lại bao nhiêu?",
+      "storyTemplate": "{{start}} {{name}}. {{take}} {{action}}. Còn lại bao nhiêu?",
+      "question": "Còn lại bao nhiêu?",
+      "correct": "Đúng rồi! {{start}} - {{take}} = {{left}}!",
+      "incorrect": "{{start}} - {{take}} = {{left}}",
+      "perfect": "Ngôi sao phép trừ!",
+      "great": "Trừ giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "number-line-hops-k": {
+      "title": "Nhảy trên trục số",
+      "description": "Giúp chú ếch nhảy trên trục số!",
+      "instruction": "Giúp chú ếch nhảy trên trục số!",
+      "question": "Chú ếch đáp xuống đâu?",
+      "correct": "Đúng rồi! {{start}} {{op}} {{hop}} = {{end}}!",
+      "incorrect": "{{start}} {{op}} {{hop}} = {{end}}",
+      "perfect": "Nhà vô địch nhảy!",
+      "great": "Nhảy giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "story-problems-k": {
+      "title": "Bài toán câu chuyện",
+      "description": "Đọc câu chuyện và giải bài toán!",
+      "instruction": "Đọc câu chuyện và giải nhé!",
+      "question": "Tất cả là bao nhiêu?",
+      "correct": "Đúng rồi! {{a}} {{op}} {{b}} = {{answer}}!",
+      "incorrect": "{{a}} {{op}} {{b}} = {{answer}}",
+      "perfect": "Nhà giải câu chuyện!",
+      "great": "Giải bài toán giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "missing-part-k": {
+      "title": "Bí ẩn phần bị thiếu",
+      "description": "Tìm số bị thiếu trong phép tính!",
+      "instruction": "Số nào điền vào ô?",
+      "question": "Số bị thiếu là gì?",
+      "correct": "Đúng rồi! {{a}} + {{missing}} = {{total}}!",
+      "incorrect": "Chưa đúng! Phần bị thiếu là {{missing}}.",
+      "perfect": "Tuyệt vời! Con là thám tử số!",
+      "great": "Tìm phần bị thiếu giỏi lắm!",
+      "keepPracticing": "Cố gắng nhé! Tiếp tục luyện tập!"
+    },
+    "true-or-not-k": {
+      "title": "Đúng hay Sai?",
+      "description": "Kiểm tra phép tính có đúng không!",
+      "instruction": "Phép tính này đúng không?",
+      "question": "Đúng hay không đúng?",
+      "true": "Đúng",
+      "false": "Sai",
+      "correctTrue": "Đúng rồi! {{a}} {{op}} {{b}} = {{result}} là ĐÚNG!",
+      "correctFalse": "Chính xác! Nó KHÔNG đúng.",
+      "incorrectTrue": "Chưa đúng! Nó không đúng.",
+      "incorrectFalse": "Thực ra, nó ĐÚNG!",
+      "perfect": "Chuyên gia phương trình!",
+      "great": "Kiểm tra giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "make-10-to-add": {
+      "title": "Làm 10 để cộng",
+      "description": "Tìm cặp số tạo thành 10!",
+      "instruction": "Tìm số để tạo thành 10!",
+      "target": "Tạo",
+      "question": "Số nào cộng với {{num}} thành 10?",
+      "correct": "Đúng rồi! {{known}} + {{missing}} = 10!",
+      "incorrect": "{{known}} + {{missing}} = 10",
+      "perfect": "Bậc thầy Làm 10!",
+      "great": "Làm 10 giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "fluency-within-5": {
+      "title": "Thành thạo trong phạm vi 5",
+      "description": "Luyện cộng và trừ trong phạm vi 5!",
+      "instruction": "Từ từ nhé! Đáp án là gì?",
+      "correct": "Đúng rồi! {{a}} {{op}} {{b}} = {{answer}}",
+      "incorrect": "{{a}} {{op}} {{b}} = {{answer}}",
+      "perfect": "Ngôi sao Toán học!",
+      "great": "Luyện tập tốt lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "join-the-picnic": {
+      "title": "Dã ngoại vui vẻ",
+      "description": "Cộng đồ ăn ở buổi dã ngoại!",
+      "instruction": "Có bao nhiêu món ở buổi dã ngoại?",
+      "question": "Tất cả là bao nhiêu?",
+      "basket1": "Giỏ 1",
+      "basket2": "Giỏ 2",
+      "correct": "Hay quá! {{a}} + {{b}} = {{total}} món!",
+      "incorrect": "{{a}} + {{b}} = {{total}}",
+      "perfect": "Nhà vô địch dã ngoại!",
+      "great": "Toán dã ngoại giỏi lắm!",
+      "keepPracticing": "Tiếp tục đếm đồ ăn!"
+    },
+    "take-away-bunnies": {
+      "title": "Thỏ nhảy đi",
+      "description": "Một số chú thỏ nhảy đi! Còn lại bao nhiêu?",
+      "instruction": "Một số chú thỏ nhảy đi! Còn lại bao nhiêu?",
+      "question": "Còn lại bao nhiêu chú thỏ?",
+      "story": "{{start}} chú thỏ trong đồng cỏ. {{take}} chú nhảy đi. Còn lại bao nhiêu?",
+      "correct": "{{start}} - {{take}} = {{left}} chú thỏ!",
+      "incorrect": "{{start}} - {{take}} = {{left}}",
+      "perfect": "Ngôi sao toán thỏ!",
+      "great": "Đếm thỏ giỏi lắm!",
+      "keepPracticing": "Tiếp tục đếm thỏ!"
+    },
+    "k-dice-add": {
+      "title": "Cộng xúc xắc",
+      "description": "Lăn xúc xắc và cộng các chấm!",
+      "instruction": "Lăn xúc xắc và cộng các chấm!",
+      "roll": "Lăn xúc xắc!",
+      "question": "Tất cả có bao nhiêu chấm?",
+      "correct": "{{a}} + {{b}} = {{answer}}!",
+      "incorrect": "{{a}} + {{b}} = {{answer}}",
+      "perfect": "Bậc thầy xúc xắc!",
+      "great": "Cộng xúc xắc giỏi lắm!",
+      "keepPracticing": "Tiếp tục lăn!"
+    },
+    "balance-builder": {
+      "title": "Cân bằng",
+      "description": "Làm cho cân thăng bằng!",
+      "instruction": "Làm cho cân thăng bằng!",
+      "question": "Cần bao nhiêu ở bên phải?",
+      "correct": "Cân bằng! {{left}} = {{right}}",
+      "incorrect": "Chưa cân bằng! Cần {{answer}} để bằng {{left}}",
+      "perfect": "Bậc thầy cân bằng!",
+      "great": "Cân bằng giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "name-shapes-2d-k": {
+      "title": "Gọi tên hình",
+      "description": "Nhận biết các hình 2D!",
+      "instruction": "Đây là hình gì?",
+      "question": "Đây là hình gì?",
+      "correct": "Đúng rồi! Đó là {{shape}}!",
+      "incorrect": "Chưa đúng! Đó là {{shape}}.",
+      "perfect": "Tuyệt vời! Con là chuyên gia hình học!",
+      "great": "Gọi tên hình giỏi lắm!",
+      "keepPracticing": "Cố gắng nhé! Tiếp tục luyện tập!",
+      "shapes": {
+        "circle": "hình tròn",
+        "triangle": "hình tam giác",
+        "square": "hình vuông",
+        "rectangle": "hình chữ nhật",
+        "hexagon": "hình lục giác",
+        "oval": "hình bầu dục"
+      }
+    },
+    "find-the-pattern": {
+      "title": "Tìm quy luật",
+      "description": "Trong quy luật này, tiếp theo là gì?",
+      "instruction": "Tiếp theo là gì?",
+      "correct": "Đúng rồi! Quy luật tiếp tục!",
+      "incorrect": "Chưa đúng! Cái tiếp theo là {{answer}}.",
+      "pattern-ab": "Quy luật AB (luân phiên)",
+      "pattern-aab": "Quy luật AAB",
+      "pattern-abb": "Quy luật ABB",
+      "pattern-abc": "Quy luật ABC",
+      "pattern-aba": "Quy luật ABA",
+      "perfect": "Bậc thầy quy luật!",
+      "great": "Tìm quy luật giỏi lắm!",
+      "keepPracticing": "Tiếp tục khám phá quy luật!",
+      "patternsFound": "quy luật đã tìm"
+    },
+    "longer-shorter": {
+      "title": "Dài hơn hay ngắn hơn?",
+      "description": "Vật nào dài hơn?",
+      "instruction": "Chạm vào vật dài hơn!",
+      "questionLonger": "Cái nào dài hơn?",
+      "questionShorter": "Cái nào ngắn hơn?",
+      "correctLonger": "Đúng rồi! Cái này dài hơn!",
+      "correctShorter": "Đúng rồi! Cái này ngắn hơn!",
+      "incorrectLonger": "Chưa đúng! Cái này dài hơn.",
+      "incorrectShorter": "Chưa đúng! Cái này ngắn hơn.",
+      "perfect": "Bậc thầy đo lường!",
+      "great": "Đo lường giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "heavier-lighter": {
+      "title": "Nặng hơn hay nhẹ hơn?",
+      "description": "Bên nào của cân nặng hơn?",
+      "instruction": "Chạm vào bên nặng hơn!",
+      "questionHeavier": "Bên nào nặng hơn?",
+      "questionLighter": "Bên nào nhẹ hơn?",
+      "correctHeavier": "Đúng rồi! Bên này nặng hơn!",
+      "correctLighter": "Đúng rồi! Bên này nhẹ hơn!",
+      "incorrectHeavier": "Chưa đúng! Bên này nặng hơn.",
+      "incorrectLighter": "Chưa đúng! Bên này nhẹ hơn.",
+      "perfect": "Phù thủy cân nặng!",
+      "great": "Cân giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "holds-more-less": {
+      "title": "Đựng nhiều hay ít hơn?",
+      "description": "Bình nào đựng được nhiều hơn?",
+      "instruction": "Chạm vào bình đựng được nhiều hơn!",
+      "questionMore": "Bình nào đựng được nhiều hơn?",
+      "questionLess": "Bình nào đựng được ít hơn?",
+      "correctMore": "Đúng rồi! Bình này đựng được nhiều hơn!",
+      "correctLess": "Đúng rồi! Bình này đựng được ít hơn!",
+      "incorrectMore": "Chưa đúng! Bình này đựng được nhiều hơn.",
+      "incorrectLess": "Chưa đúng! Bình này đựng được ít hơn.",
+      "perfect": "Nhà vô địch dung tích!",
+      "great": "So sánh giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "sort-and-count": {
+      "title": "Phân loại & Đếm",
+      "description": "Phân loại đồ vật vào nhóm, rồi đếm!",
+      "instruction": "Phân loại đồ vật vào giỏ, rồi đếm!",
+      "sortPhase": "Chạm vào từng vật để phân loại!",
+      "countPhase": "Giờ hãy đếm! Mỗi giỏ có bao nhiêu?",
+      "question": "Có bao nhiêu {{emoji}}?",
+      "correct": "Đúng rồi! Có {{count}}!",
+      "incorrect": "Chưa đúng! Có {{count}}.",
+      "perfect": "Ngôi sao phân loại!",
+      "great": "Phân loại giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "picture-graph-k": {
+      "title": "Biểu đồ hình ảnh",
+      "description": "Đọc biểu đồ hình ảnh và trả lời câu hỏi!",
+      "instruction": "Nhìn biểu đồ và trả lời nhé!",
+      "howMany": "Có bao nhiêu {{emoji}}?",
+      "whichMost": "Cái nào nhiều nhất?",
+      "whichLeast": "Cái nào ít nhất?",
+      "correct": "Đúng rồi! Đọc biểu đồ giỏi lắm!",
+      "incorrect": "Chưa đúng! Đáp án là {{answer}}.",
+      "perfect": "Bậc thầy biểu đồ!",
+      "great": "Biểu đồ giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "name-shapes-3d-k": {
+      "title": "Tìm hình khối 3D",
+      "description": "Nhận biết các hình khối 3D!",
+      "instruction": "Đây là hình khối gì?",
+      "question": "Đây là hình gì?",
+      "realWorld": "Giống như:",
+      "correct": "Đúng rồi! Đó là {{shape}}!",
+      "incorrect": "Chưa đúng! Đó là {{shape}}.",
+      "perfect": "Bậc thầy hình khối 3D!",
+      "great": "Tìm hình khối giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!",
+      "shapes": {
+        "cube": "hình lập phương",
+        "sphere": "hình cầu",
+        "cylinder": "hình trụ",
+        "cone": "hình nón"
+      }
+    },
+    "compose-shapes-k": {
+      "title": "Tạo hình mới",
+      "description": "Ghép các hình lại để tạo hình lớn hơn!",
+      "instruction": "Chạm vào các mảnh để xây hình!",
+      "makeThis": "Tạo hình này:",
+      "usePieces": "Dùng các mảnh này:",
+      "placePiece": "Đặt mảnh vào đây",
+      "selectFirst": "Chạm vào một mảnh trước!",
+      "correct": "Con đã tạo được {{shape}}!",
+      "perfect": "Bậc thầy xây hình!",
+      "great": "Xây hình giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!",
+      "shapes": {
+        "square": "hình vuông",
+        "rectangle": "hình chữ nhật",
+        "house": "ngôi nhà",
+        "big-triangle": "tam giác lớn",
+        "hexagon": "lục giác",
+        "diamond": "hình thoi"
+      }
+    },
+    "dot-flash": {
+      "title": "Chớp chấm",
+      "description": "Nhanh lên! Con thấy bao nhiêu chấm?",
+      "instruction": "Con thấy bao nhiêu chấm?",
+      "ready": "Sẵn sàng? Chạm!",
+      "question": "Có bao nhiêu chấm?",
+      "correct": "Đúng rồi! {{count}} chấm!",
+      "incorrect": "Có {{count}} chấm.",
+      "perfect": "Mắt nhanh như chớp!",
+      "great": "Nhìn chấm giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "garden-tap-count": {
+      "title": "Đếm khu vườn",
+      "description": "Đếm hoa và bạn trong vườn!",
+      "instruction": "Đếm các bạn trong vườn!",
+      "howMany": "Có bao nhiêu bạn trong vườn?",
+      "correct": "Đúng rồi! Con đã đếm được {{count}} bạn trong vườn!",
+      "incorrect": "Chưa đúng! Có {{count}} bạn trong vườn.",
+      "perfect": "Ngôi sao đếm khu vườn!",
+      "great": "Đếm khu vườn giỏi lắm!",
+      "keepPracticing": "Tiếp tục lớn lên nhé!"
+    },
+    "k-number-match": {
+      "title": "Ghép số",
+      "description": "Ghép số với nhóm đồ vật!",
+      "instruction": "Tìm nhóm phù hợp!",
+      "question": "Nhóm nào có bấy nhiêu?",
+      "correct": "Đúng rồi! Đó là {{number}}!",
+      "incorrect": "Chưa đúng! Nhóm này có {{number}}.",
+      "perfect": "Ghép hoàn hảo!",
+      "great": "Ghép giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "find-the-number": {
+      "title": "Tìm số",
+      "description": "Đếm đồ vật và tìm số phù hợp!",
+      "instruction": "Đếm và tìm số phù hợp!",
+      "question": "Trong giỏ có bao nhiêu? Tìm số!",
+      "correct": "Đúng rồi! Có {{count}}!",
+      "incorrect": "Chưa đúng! Có {{count}}.",
+      "perfect": "Chuyên gia tìm số!",
+      "great": "Tìm số giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "ten-train": {
+      "title": "Tàu đếm theo chục",
+      "description": "Giúp tàu chạy bằng cách đếm theo chục!",
+      "instruction": "Chạm vào số tiếp theo để giúp tàu chạy!",
+      "countLabel": "Ga:",
+      "correct": "Xình xịch! Ga {{count}}!",
+      "incorrect": "Chưa đúng! Ga tiếp theo là {{next}}.",
+      "perfect": "Bác tài tàu hỏa!",
+      "great": "Chuyến tàu tuyệt vời!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "more-less-same": {
+      "title": "Nhiều hơn, ít hơn, bằng nhau",
+      "description": "So sánh nhóm — nhóm nào nhiều hơn, ít hơn hay bằng nhau?",
+      "instruction": "Nhóm xanh có nhiều hơn, ít hơn hay bằng nhau?",
+      "greenGroup": "Nhóm Xanh",
+      "orangeGroup": "Nhóm Cam",
+      "question": "Nhóm xanh có…",
+      "more": "Nhiều hơn",
+      "less": "Ít hơn",
+      "same": "Bằng nhau",
+      "correctMore": "Đúng rồi! Xanh nhiều hơn! ({{green}} > {{orange}})",
+      "correctLess": "Đúng rồi! Xanh ít hơn! ({{green}} < {{orange}})",
+      "correctSame": "Đúng rồi! Bằng nhau! ({{green}} = {{orange}})",
+      "incorrectMore": "Chưa đúng! Xanh nhiều hơn ({{green}} > {{orange}})",
+      "incorrectLess": "Chưa đúng! Xanh ít hơn ({{green}} < {{orange}})",
+      "incorrectSame": "Chưa đúng! Bằng nhau ({{green}} = {{orange}})",
+      "perfect": "Nhà vô địch cá sấu!",
+      "great": "So sánh giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "number-order-path": {
+      "title": "Đường mòn số",
+      "description": "Đi trên đường mòn bằng cách sắp xếp số từ nhỏ đến lớn!",
+      "instruction": "Giúp người đi bộ đi trên đường! Chạm đá từ số nhỏ nhất đến lớn nhất.",
+      "hint": "Chạm số nhỏ nhất trước!",
+      "correct": "Đi bộ tuyệt vời! {{order}}",
+      "incorrect": "Đường đi là {{order}}",
+      "perfect": "Bậc thầy đường mòn!",
+      "great": "Đi bộ giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "make-10-pairs": {
+      "title": "Ghép cặp làm 10",
+      "description": "Ghép trái cây cộng lại bằng 10!",
+      "instruction": "Chọn hai trái cây cộng lại bằng 10!",
+      "targetText": "Chọn trái cây cộng bằng",
+      "correct": "Ngon quá! {{num1}} + {{num2}} = 10!",
+      "incorrect": "Chưa đúng! {{num1}} + {{num2}} = {{sum}}, không phải 10.",
+      "perfect": "Chuyên gia ghép trái cây!",
+      "great": "Chọn trái cây giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "counting-rule": {
+      "title": "Quy tắc đếm",
+      "description": "Tìm quy luật đếm và hoàn thành dãy số!",
+      "instruction": "Tìm quy luật đếm và chọn số tiếp theo!",
+      "ruleHint": "Quy luật là gì?",
+      "rule1": "Đếm thêm 1",
+      "rule2": "Đếm thêm 2",
+      "rule5": "Đếm thêm 5",
+      "rule10": "Đếm thêm 10",
+      "correct": "Đúng rồi! Quy luật là +{{by}}!",
+      "incorrect": "Chưa đúng! Đáp án là {{answer}} (đếm thêm {{by}}).",
+      "perfect": "Bậc thầy quy luật!",
+      "great": "Quy luật đếm tuyệt vời!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "robot-steps": {
+      "title": "Bước đi Robot",
+      "description": "Lập kế hoạch đường đi để giúp robot tìm kho báu!",
+      "instruction": "Giúp robot đến được kho báu!",
+      "yourPlan": "Kế hoạch của con:",
+      "tapArrows": "Chạm mũi tên để lập kế hoạch!",
+      "clear": "Xóa",
+      "go": "ĐI!",
+      "tries": "Số lần thử",
+      "success": "Con đã tìm thấy kho báu!",
+      "tryAgain": "Gần đúng rồi! Thử đường khác nhé!",
+      "perfect": "Bậc thầy Robot!",
+      "great": "Lập kế hoạch giỏi lắm!",
+      "keepPracticing": "Tiếp tục khám phá!"
+    },
+    "shape-detective": {
+      "title": "Thám tử hình học",
+      "description": "Tìm hình không thuộc nhóm!",
+      "instruction": "Tìm hình không thuộc nhóm!",
+      "question": "Hình nào khác biệt?",
+      "correct": "Thám tử giỏi lắm!",
+      "incorrect": "Chưa đúng!",
+      "reasonShape": "Nó có hình dạng khác!",
+      "reasonColor": "Nó có màu khác!",
+      "reasonSize": "Nó có kích thước khác!",
+      "perfect": "Siêu thám tử!",
+      "great": "Quan sát giỏi lắm!",
+      "keepPracticing": "Tiếp tục tìm nhé!"
+    },
+    "timo-logic-tiles": {
+      "title": "Ô gạch Logic TIMO",
+      "description": "Tìm ô bị thiếu trong quy luật!",
+      "instruction": "Tìm ô bị thiếu!",
+      "question": "Ô này là gì?",
+      "correct": "Suy nghĩ giỏi lắm!",
+      "incorrect": "Chưa đúng! Nhìn quy luật nhé.",
+      "perfect": "Bậc thầy Logic!",
+      "great": "Suy nghĩ giỏi lắm!",
+      "keepPracticing": "Tiếp tục giải đố!"
+    },
+    "shape-builder": {
+      "title": "Xây hình",
+      "description": "Tạo tranh bằng các hình!",
+      "instruction": "Tạo tranh bằng các hình!",
+      "prompt": "Con sẽ tạo gì nào?",
+      "shapes": "Hình:",
+      "colors": "Màu:",
+      "undo": "Hoàn tác",
+      "clear": "Xóa",
+      "done": "Con xong rồi!",
+      "amazing": "Tác phẩm tuyệt vời!",
+      "shapesUsed": "hình đã dùng",
+      "newCreation": "Tạo mới",
+      "nice": "Đẹp!",
+      "great": "Tuyệt!",
+      "cool": "Hay!",
+      "wow": "Wow!",
+      "artist": "Con là hoạ sĩ giỏi!",
+      "beautiful": "Tranh đẹp quá!",
+      "creative": "Sáng tạo quá!"
+    },
+    "block-counter": {
+      "title": "Đếm khối",
+      "description": "Đếm tất cả các khối xếp chồng!",
+      "instruction": "Đếm tất cả các khối!",
+      "question": "Có bao nhiêu khối?",
+      "correct": "Đúng rồi! Có {{count}} khối!",
+      "incorrect": "Chưa đúng! Có {{count}} khối.",
+      "perfect": "Nhà vô địch đếm khối!",
+      "great": "Đếm giỏi lắm!",
+      "keepPracticing": "Tiếp tục xây nhé!"
+    },
+    "draw-the-map": {
+      "title": "Vẽ bản đồ",
+      "description": "Đặt đồ vật bằng từ chỉ vị trí!",
+      "instruction": "Đặt đồ vật vào đúng chỗ!",
+      "place": "Đặt:",
+      "prompt": "Đặt {{object}} {{direction}} {{landmark}}!",
+      "above": "PHÍA TRÊN",
+      "below": "PHÍA DƯỚI",
+      "left": "BÊN TRÁI CỦA",
+      "right": "BÊN PHẢI CỦA",
+      "nextTo": "BÊN CẠNH",
+      "correct": "Đặt đúng rồi!",
+      "incorrect": "Chưa đúng! Nhìn vị trí nhé.",
+      "perfect": "Bậc thầy bản đồ!",
+      "great": "Chỉ đường giỏi lắm!",
+      "keepPracticing": "Tiếp tục khám phá!"
+    },
+    "calendar-helper": {
+      "title": "Trợ lý lịch",
+      "description": "Học về các ngày trong tuần!",
+      "instruction": "Cùng học về các ngày nhé!",
+      "yesterday": "Hôm qua",
+      "today": "Hôm nay",
+      "tomorrow": "Ngày mai",
+      "whatIsToday": "HÔM NAY là thứ mấy?",
+      "whatWasYesterday": "HÔM QUA là thứ mấy?",
+      "whatIsTomorrow": "NGÀY MAI là thứ mấy?",
+      "dayBefore": "Ngày nào TRƯỚC {{day}}?",
+      "dayAfter": "Ngày nào SAU {{day}}?",
+      "days": {
+        "sunday": "Chủ nhật",
+        "monday": "Thứ Hai",
+        "tuesday": "Thứ Ba",
+        "wednesday": "Thứ Tư",
+        "thursday": "Thứ Năm",
+        "friday": "Thứ Sáu",
+        "saturday": "Thứ Bảy"
+      },
+      "correct": "Đúng rồi! Giỏi lắm!",
+      "incorrect": "Chưa đúng! Đáp án là {{answer}}.",
+      "perfect": "Chuyên gia lịch!",
+      "great": "Giỏi về các ngày lắm!",
+      "keepPracticing": "Tiếp tục học các ngày!"
+    },
+    "measure-and-compare": {
+      "title": "Đo lường & So sánh",
+      "description": "So sánh độ dài, cân nặng và kích thước!",
+      "instruction": "So sánh và tìm câu trả lời!",
+      "whichLonger": "Cái nào dài hơn?",
+      "whichShorter": "Cái nào ngắn hơn?",
+      "whichHeavier": "Cái nào nặng hơn?",
+      "whichLighter": "Cái nào nhẹ hơn?",
+      "whichHoldsMore": "Cái nào đựng được nhiều hơn?",
+      "whichHoldsLess": "Cái nào đựng được ít hơn?",
+      "correctLonger": "Đúng rồi! Cái này dài hơn!",
+      "correctShorter": "Đúng rồi! Cái này ngắn hơn!",
+      "correctHeavier": "Đúng rồi! Cái này nặng hơn!",
+      "correctLighter": "Đúng rồi! Cái này nhẹ hơn!",
+      "correctMore": "Đúng rồi! Cái này đựng được nhiều hơn!",
+      "correctLess": "Đúng rồi! Cái này đựng được ít hơn!",
+      "incorrectLonger": "Chưa đúng! Cái kia dài hơn.",
+      "incorrectShorter": "Chưa đúng! Cái kia ngắn hơn.",
+      "incorrectHeavier": "Chưa đúng! Cái kia nặng hơn.",
+      "incorrectLighter": "Chưa đúng! Cái kia nhẹ hơn.",
+      "incorrectMore": "Chưa đúng! Cái kia đựng được nhiều hơn.",
+      "incorrectLess": "Chưa đúng! Cái kia đựng được ít hơn.",
+      "perfect": "Chuyên gia đo lường!",
+      "great": "So sánh giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "timo-mixed-quest": {
+      "title": "TIMO – Nhiệm vụ tổng hợp",
+      "description": "Cuộc phiêu lưu giải đố tổng hợp!",
+      "instruction": "Thu thập huy hiệu bằng cách giải đố!",
+      "questComplete": "Hoàn thành nhiệm vụ!",
+      "findMissing": "Tìm mảnh ghép còn thiếu!",
+      "completePattern": "Tiếp theo là gì?",
+      "howMany": "Có bao nhiêu?",
+      "nameShape": "Đây là hình gì?",
+      "whichBigger": "Số nào lớn hơn?",
+      "shapes": {
+        "triangle": "Tam giác",
+        "square": "Hình vuông",
+        "circle": "Hình tròn",
+        "diamond": "Hình thoi",
+        "rectangle": "Hình chữ nhật"
+      },
+      "correct": "Con nhận được một huy hiệu!",
+      "tryAgain": "Tiếp tục cố gắng nhé!",
+      "champion": "Nhà vô địch nhiệm vụ!",
+      "great": "Nhà thám hiểm giỏi lắm!",
+      "keepGoing": "Tiếp tục khám phá!"
+    }
+  }
+}

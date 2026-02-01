@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fraction Story Problems - Grade 3 Math Activity - Meadow Math">
+  <title>Fraction Story Problems - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🥧</span>
+            <span data-i18n="section.activities.fraction-story-problems.title">Fraction Story Problems</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.fraction-story-problems.instruction">Solve the fraction story!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Story Container -->
+          <div class="story-container" id="story-container">
+            <!-- Story Visual -->
+            <div class="story-visual" id="story-visual">
+              <!-- Visual representation will be rendered here -->
+            </div>
+
+            <!-- Story Text -->
+            <div class="story-text" id="story-text">
+              <!-- Story text will be rendered here -->
+            </div>
+          </div>
+
+          <!-- Question -->
+          <div class="question-container" id="question-container">
+            <p class="question-text" id="question-text"></p>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <!-- Answer choices will be rendered here -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.fraction-story-problems.great">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Fraction Story Problems specific styles */
+
+    .story-container {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 4px solid #f59e0b;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #d97706;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .story-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-4);
+      min-height: 80px;
+    }
+
+    /* Shape containers for visual representation */
+    .shape-visual {
+      display: flex;
+      gap: var(--space-1);
+    }
+
+    /* Circle shape (like a pie or pizza) */
+    .shape-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid #92400e;
+      position: relative;
+      overflow: hidden;
+      background: #f8fafc;
+    }
+
+    .shape-circle .slice {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      transform-origin: 100% 100%;
+      left: 0;
+      top: 0;
+    }
+
+    .shape-circle .slice.shaded {
+      background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    }
+
+    .shape-circle .slice.unshaded {
+      background: #f8fafc;
+    }
+
+    /* Rectangle shape (like a candy bar or ribbon) */
+    .shape-bar {
+      display: flex;
+      width: 200px;
+      height: 50px;
+      border: 3px solid #92400e;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .shape-bar .part {
+      flex: 1;
+      border-right: 2px solid #d97706;
+      transition: background-color 0.3s ease;
+    }
+
+    .shape-bar .part:last-child {
+      border-right: none;
+    }
+
+    .shape-bar .part.shaded {
+      background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    }
+
+    .shape-bar .part.unshaded {
+      background: #f8fafc;
+    }
+
+    /* Grid of items (like cookies, flowers, etc) */
+    .items-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      justify-content: center;
+      max-width: 300px;
+    }
+
+    .item-icon {
+      font-size: var(--text-3xl);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .item-icon.used {
+      opacity: 0.3;
+      transform: scale(0.9);
+    }
+
+    .story-text {
+      font-size: var(--text-lg);
+      color: #78350f;
+      text-align: center;
+      line-height: 1.6;
+      font-family: var(--font-secondary);
+    }
+
+    .question-container {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .question-text {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-800);
+    }
+
+    /* Choices Container */
+    .choices-container {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .choice-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 90px;
+      min-height: 90px;
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 4px solid #0ea5e9;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #0284c7;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 #0284c7;
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 #0284c7;
+    }
+
+    .choice-btn:focus {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .choice-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      box-shadow: 0 4px 0 #dc2626;
+      animation: shake 0.5s ease;
+    }
+
+    /* Fraction display in choice button */
+    .choice-fraction {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #0369a1;
+      line-height: 1;
+    }
+
+    .choice-btn.correct .choice-fraction {
+      color: #166534;
+    }
+
+    .choice-btn.incorrect .choice-fraction {
+      color: #991b1b;
+    }
+
+    .choice-fraction .numerator {
+      border-bottom: 3px solid currentColor;
+      padding-bottom: 4px;
+      min-width: 24px;
+      text-align: center;
+    }
+
+    .choice-fraction .denominator {
+      padding-top: 4px;
+      min-width: 24px;
+      text-align: center;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    /* Activity area needs padding for feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    /* Feedback at bottom */
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .story-container {
+        padding: var(--space-3);
+      }
+
+      .shape-circle {
+        width: 80px;
+        height: 80px;
+      }
+
+      .shape-bar {
+        width: 160px;
+        height: 40px;
+      }
+
+      .story-text {
+        font-size: var(--text-base);
+      }
+
+      .question-text {
+        font-size: var(--text-lg);
+      }
+
+      .choice-btn {
+        min-width: 80px;
+        min-height: 80px;
+        padding: var(--space-2);
+      }
+
+      .choice-fraction {
+        font-size: var(--text-xl);
+      }
+
+      .item-icon {
+        font-size: var(--text-2xl);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .shape-circle {
+        width: 70px;
+        height: 70px;
+      }
+
+      .shape-bar {
+        width: 140px;
+        height: 36px;
+      }
+
+      .choice-btn {
+        min-width: 70px;
+        min-height: 70px;
+        border-width: 3px;
+      }
+
+      .choice-fraction {
+        font-size: var(--text-lg);
+      }
+
+      .choice-fraction .numerator {
+        border-bottom-width: 2px;
+        padding-bottom: 2px;
+      }
+
+      .choice-fraction .denominator {
+        padding-top: 2px;
+      }
+
+      .items-grid {
+        gap: var(--space-1);
+      }
+
+      .item-icon {
+        font-size: var(--text-xl);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Fraction Story Problems Activity - Grade 3 Level 4
+    const FractionStoryProblems = {
+      // Game state
+      currentRound: 1,
+      maxRounds: 8,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      currentQuestion: null,
+      isAnswered: false,
+
+      // DOM elements
+      storyVisual: null,
+      storyText: null,
+      questionText: null,
+      choicesContainer: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      /**
+       * Story templates for generating problems
+       */
+      storyTemplates: [
+        // Eating part of something
+        {
+          type: 'eating',
+          items: [
+            { name: 'pizza', namePlural: 'slices', icon: '🍕', shape: 'circle' },
+            { name: 'pie', namePlural: 'slices', icon: '🥧', shape: 'circle' },
+            { name: 'cake', namePlural: 'slices', icon: '🎂', shape: 'circle' }
+          ],
+          storyTemplate: 'A {item} is cut into {total} equal {parts}. You eat {used} {parts}.',
+          questionTemplate: 'What fraction did you eat?'
+        },
+        // Sharing items
+        {
+          type: 'sharing',
+          items: [
+            { name: 'sandwich', namePlural: 'pieces', icon: '🥪', shape: 'bar' },
+            { name: 'candy bar', namePlural: 'pieces', icon: '🍫', shape: 'bar' },
+            { name: 'ribbon', namePlural: 'parts', icon: '🎀', shape: 'bar' }
+          ],
+          storyTemplate: 'A {item} is divided into {total} equal {parts}. {friend} takes {used} {parts}.',
+          questionTemplate: 'What fraction did {friend} take?'
+        },
+        // Part of a whole (unit fraction)
+        {
+          type: 'unit',
+          items: [
+            { name: 'rope', namePlural: 'parts', icon: '🧵', shape: 'bar' },
+            { name: 'board', namePlural: 'pieces', icon: '🪵', shape: 'bar' },
+            { name: 'string', namePlural: 'parts', icon: '🧶', shape: 'bar' }
+          ],
+          storyTemplate: 'A {item} is cut into {total} equal {parts}.',
+          questionTemplate: 'How much is one part?'
+        },
+        // Remaining/left over
+        {
+          type: 'remaining',
+          items: [
+            { name: 'cookies', namePlural: 'cookies', icon: '🍪', shape: 'items' },
+            { name: 'cupcakes', namePlural: 'cupcakes', icon: '🧁', shape: 'items' },
+            { name: 'flowers', namePlural: 'flowers', icon: '🌸', shape: 'items' }
+          ],
+          storyTemplate: 'There are {total} {item}. {used} are given away.',
+          questionTemplate: 'What fraction is left?'
+        }
+      ],
+
+      /**
+       * Generate questions
+       */
+      generateQuestions() {
+        this.questions = [];
+        const friends = ['Sam', 'Mia', 'Leo', 'Ava', 'Ben', 'Zoe', 'Max', 'Lily'];
+
+        // Create varied questions
+        const denominators = [2, 3, 4, 6, 8];
+
+        for (let i = 0; i < this.maxRounds; i++) {
+          const template = this.storyTemplates[i % this.storyTemplates.length];
+          const item = template.items[Math.floor(Math.random() * template.items.length)];
+          const den = denominators[Math.floor(Math.random() * denominators.length)];
+          const friend = friends[Math.floor(Math.random() * friends.length)];
+
+          let num, correctAnswer;
+
+          if (template.type === 'unit') {
+            // Unit fraction: answer is always 1/total
+            num = 0;
+            correctAnswer = { num: 1, den: den };
+          } else if (template.type === 'remaining') {
+            // Remaining: answer is (total - used) / total
+            num = randomInt(1, den - 1);
+            correctAnswer = { num: den - num, den: den };
+          } else {
+            // Eating or sharing: answer is used / total
+            num = randomInt(1, den - 1);
+            correctAnswer = { num: num, den: den };
+          }
+
+          const question = {
+            template: template,
+            item: item,
+            total: den,
+            used: num,
+            friend: friend,
+            correctAnswer: correctAnswer
+          };
+
+          this.questions.push(question);
+        }
+
+        // Shuffle questions
+        this.questions = shuffle(this.questions);
+      },
+
+      /**
+       * Generate distractor fractions
+       */
+      generateDistractors(correct) {
+        const distractors = [];
+        const { num, den } = correct;
+
+        // Generate 3 distractors
+        const possibleDistractors = [];
+
+        // Swap numerator and denominator
+        if (num !== den) {
+          possibleDistractors.push({ num: den, den: num });
+        }
+
+        // Different numerator, same denominator
+        for (let i = 1; i < den; i++) {
+          if (i !== num) {
+            possibleDistractors.push({ num: i, den: den });
+          }
+        }
+
+        // Same numerator, different denominator
+        const otherDens = [2, 3, 4, 6, 8].filter(d => d !== den);
+        for (const d of otherDens) {
+          if (num <= d) {
+            possibleDistractors.push({ num: num, den: d });
+          }
+        }
+
+        // Common wrong answers
+        if (num + 1 <= den) {
+          possibleDistractors.push({ num: num + 1, den: den });
+        }
+        if (num - 1 >= 1) {
+          possibleDistractors.push({ num: num - 1, den: den });
+        }
+
+        // Filter out equivalent fractions and duplicates
+        const uniqueDistractors = possibleDistractors.filter(d => {
+          // Not equivalent to correct answer
+          if (d.num / d.den === num / den) return false;
+          // Not already in distractors
+          return !distractors.some(existing =>
+            existing.num === d.num && existing.den === d.den
+          );
+        });
+
+        // Shuffle and pick 3
+        const shuffled = shuffle(uniqueDistractors);
+        return shuffled.slice(0, 3);
+      },
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        // Get DOM elements
+        this.storyVisual = document.getElementById('story-visual');
+        this.storyText = document.getElementById('story-text');
+        this.questionText = document.getElementById('question-text');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Event listeners
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        // Generate questions and start
+        this.generateQuestions();
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Update translations when language changes
+       */
+      updateTranslations() {
+        // Regenerate current round to update text
+        if (this.currentQuestion) {
+          this.renderStory();
+          this.renderQuestion();
+        }
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.currentQuestion = this.questions[this.currentRound - 1];
+        this.isAnswered = false;
+
+        // Render the story
+        this.renderStory();
+        this.renderQuestion();
+        this.renderChoices();
+
+        // Reset UI
+        this.feedback.classList.remove('show', 'error');
+
+        this.renderProgress();
+      },
+
+      /**
+       * Render the story visual and text
+       */
+      renderStory() {
+        const q = this.currentQuestion;
+        const { template, item, total, used, friend } = q;
+
+        // Render visual
+        this.storyVisual.innerHTML = '';
+
+        if (item.shape === 'circle') {
+          this.renderCircleVisual(total, used);
+        } else if (item.shape === 'bar') {
+          this.renderBarVisual(total, used);
+        } else if (item.shape === 'items') {
+          this.renderItemsVisual(total, used, item.icon);
+        }
+
+        // Render story text
+        let storyStr = i18n.t(`section.activities.fraction-story-problems.stories.${template.type}.story`)
+          || template.storyTemplate;
+
+        // Get translated parts name
+        const translatedParts = i18n.t(`section.activities.fraction-story-problems.parts.${item.namePlural}`) || item.namePlural;
+
+        storyStr = storyStr
+          .replace('{item}', i18n.t(`section.activities.fraction-story-problems.items.${item.name}`) || item.name)
+          .replace('{total}', total)
+          .replace('{used}', used)
+          .replace(/{parts}/g, translatedParts)
+          .replace(/{friend}/g, friend);
+
+        this.storyText.textContent = storyStr;
+      },
+
+      /**
+       * Render a circle (pie) visual
+       */
+      renderCircleVisual(total, used) {
+        const container = document.createElement('div');
+        container.className = 'shape-circle';
+
+        // Create SVG for better slice rendering
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', '0 0 100 100');
+        svg.style.width = '100%';
+        svg.style.height = '100%';
+
+        const cx = 50, cy = 50, r = 48;
+
+        for (let i = 0; i < total; i++) {
+          const startAngle = (i / total) * 360 - 90;
+          const endAngle = ((i + 1) / total) * 360 - 90;
+
+          const startRad = (startAngle * Math.PI) / 180;
+          const endRad = (endAngle * Math.PI) / 180;
+
+          const x1 = cx + r * Math.cos(startRad);
+          const y1 = cy + r * Math.sin(startRad);
+          const x2 = cx + r * Math.cos(endRad);
+          const y2 = cy + r * Math.sin(endRad);
+
+          const largeArc = (endAngle - startAngle) > 180 ? 1 : 0;
+
+          const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          const d = `M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2} Z`;
+          path.setAttribute('d', d);
+          path.setAttribute('stroke', '#92400e');
+          path.setAttribute('stroke-width', '2');
+
+          if (i < used) {
+            path.setAttribute('fill', '#60a5fa');
+          } else {
+            path.setAttribute('fill', '#f8fafc');
+          }
+
+          svg.appendChild(path);
+        }
+
+        container.appendChild(svg);
+        this.storyVisual.appendChild(container);
+      },
+
+      /**
+       * Render a bar visual
+       */
+      renderBarVisual(total, used) {
+        const bar = document.createElement('div');
+        bar.className = 'shape-bar';
+
+        for (let i = 0; i < total; i++) {
+          const part = document.createElement('div');
+          part.className = 'part';
+          if (i < used) {
+            part.classList.add('shaded');
+          } else {
+            part.classList.add('unshaded');
+          }
+          bar.appendChild(part);
+        }
+
+        this.storyVisual.appendChild(bar);
+      },
+
+      /**
+       * Render items grid visual
+       */
+      renderItemsVisual(total, used, icon) {
+        const grid = document.createElement('div');
+        grid.className = 'items-grid';
+
+        for (let i = 0; i < total; i++) {
+          const item = document.createElement('span');
+          item.className = 'item-icon';
+          item.textContent = icon;
+          if (i < used) {
+            item.classList.add('used');
+          }
+          grid.appendChild(item);
+        }
+
+        this.storyVisual.appendChild(grid);
+      },
+
+      /**
+       * Render the question
+       */
+      renderQuestion() {
+        const q = this.currentQuestion;
+        const { template, friend } = q;
+
+        let questionStr = i18n.t(`section.activities.fraction-story-problems.stories.${template.type}.question`)
+          || template.questionTemplate;
+
+        questionStr = questionStr.replace(/{friend}/g, friend);
+
+        this.questionText.textContent = questionStr;
+      },
+
+      /**
+       * Render answer choices
+       */
+      renderChoices() {
+        const q = this.currentQuestion;
+        const correct = q.correctAnswer;
+        const distractors = this.generateDistractors(correct);
+
+        // Combine and shuffle
+        const choices = shuffle([correct, ...distractors]);
+
+        this.choicesContainer.innerHTML = '';
+
+        choices.forEach((choice, index) => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.dataset.num = choice.num;
+          btn.dataset.den = choice.den;
+          const ariaLabel = i18n.t('section.activities.fraction-story-problems.fractionLabel')
+            .replace('{num}', choice.num)
+            .replace('{den}', choice.den);
+          btn.setAttribute('aria-label', ariaLabel);
+
+          btn.innerHTML = `
+            <div class="choice-fraction">
+              <span class="numerator">${choice.num}</span>
+              <span class="denominator">${choice.den}</span>
+            </div>
+          `;
+
+          btn.addEventListener('click', () => this.selectAnswer(btn, choice));
+          this.choicesContainer.appendChild(btn);
+        });
+      },
+
+      /**
+       * Handle answer selection
+       */
+      selectAnswer(btn, choice) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const correct = this.currentQuestion.correctAnswer;
+        const isCorrect = (choice.num === correct.num && choice.den === correct.den);
+
+        // Disable all buttons
+        const buttons = this.choicesContainer.querySelectorAll('.choice-btn');
+        buttons.forEach(b => b.disabled = true);
+
+        if (isCorrect) {
+          this.correctCount++;
+          btn.classList.add('correct');
+          this.feedback.textContent = i18n.t('section.activities.fraction-story-problems.correct');
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+        } else {
+          this.wrongCount++;
+          btn.classList.add('incorrect');
+
+          // Show correct answer
+          buttons.forEach(b => {
+            const bNum = parseInt(b.dataset.num);
+            const bDen = parseInt(b.dataset.den);
+            if (bNum === correct.num && bDen === correct.den) {
+              b.classList.add('correct');
+            }
+          });
+
+          const msg = i18n.t('section.activities.fraction-story-problems.wrong')
+            .replace('{fraction}', `${correct.num}/${correct.den}`);
+          this.feedback.textContent = msg;
+          this.feedback.classList.add('show', 'error');
+        }
+
+        this.renderProgress();
+
+        // Auto-advance after delay
+        setTimeout(() => {
+          if (this.currentRound < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Go to next round
+       */
+      nextRound() {
+        this.currentRound++;
+        this.startRound();
+      },
+
+      /**
+       * Show completion stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = i18n.t('section.activities.fraction-story-problems.perfect');
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.fraction-story-problems.great');
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.fraction-story-problems.good');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = i18n.t('section.activities.fraction-story-problems.keepPracticing');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart the activity
+       */
+      restartActivity() {
+        this.currentRound = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Render progress indicator
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      FractionStoryProblems.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

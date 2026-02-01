@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Compare Lengths - Grade 2 Math Activity - Meadow Math">
+  <title>Compare Lengths - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade2">Grade 2</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🧵</span>
+            <span data-i18n="section.activities.compare-lengths.title">Compare Lengths</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.compare-lengths.instruction">Compare the lengths and find the difference!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Bars Display -->
+          <div class="bars-container" id="bars-container">
+            <div class="bar-row">
+              <div class="bar-label" id="bar-a-label">A</div>
+              <div class="bar-wrapper">
+                <div class="length-bar bar-a" id="bar-a"></div>
+                <div class="bar-measurement" id="bar-a-measure"></div>
+              </div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label" id="bar-b-label">B</div>
+              <div class="bar-wrapper">
+                <div class="length-bar bar-b" id="bar-b"></div>
+                <div class="bar-measurement" id="bar-b-measure"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question -->
+          <div class="question-section" id="question-section">
+            <div class="question-text" id="question-text"></div>
+            <!-- Choice Buttons -->
+            <div class="choice-container" id="choice-container"></div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great comparing!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Compare Lengths Activity - Grade 2 Level 4
+    const CompareLengths = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // Current question state
+      lengthA: 0,
+      lengthB: 0,
+      questionPhase: 'longer', // 'longer' or 'difference'
+      unit: 'cm',
+
+      // DOM elements
+      barA: null,
+      barB: null,
+      barAMeasure: null,
+      barBMeasure: null,
+      questionText: null,
+      choiceContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.barA = document.getElementById('bar-a');
+        this.barB = document.getElementById('bar-b');
+        this.barAMeasure = document.getElementById('bar-a-measure');
+        this.barBMeasure = document.getElementById('bar-b-measure');
+        this.questionText = document.getElementById('question-text');
+        this.choiceContainer = document.getElementById('choice-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        // Redraw bars on resize for responsive scaling
+        window.addEventListener('resize', () => {
+          this.renderBars();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Re-render question text on language change
+        if (!this.isAnswered) {
+          this.renderQuestion();
+        }
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      },
+
+      generateQuestion() {
+        // Generate two different lengths (3-15 cm range)
+        this.lengthA = this.randomInt(3, 15);
+        do {
+          this.lengthB = this.randomInt(3, 15);
+        } while (this.lengthB === this.lengthA);
+
+        // Alternate between cm and inches
+        this.unit = this.currentQuestion % 2 === 0 ? 'cm' : 'inches';
+
+        // First ask which is longer, then ask the difference
+        this.questionPhase = 'longer';
+        this.isAnswered = false;
+      },
+
+      startQuestion() {
+        this.generateQuestion();
+        this.renderBars();
+        this.renderQuestion();
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      renderBars() {
+        // Responsive scale: smaller on mobile to prevent overflow
+        const isMobile = window.innerWidth <= 480;
+        const pixelsPerUnit = this.unit === 'cm'
+          ? (isMobile ? 14 : 18)
+          : (isMobile ? 22 : 30);
+        const unitLabel = this.unit === 'cm'
+          ? (window.i18n ? i18n.t('section.activities.compare-lengths.cm') : 'cm')
+          : (window.i18n ? i18n.t('section.activities.compare-lengths.inches') : 'in');
+
+        // Render bar A
+        const widthA = this.lengthA * pixelsPerUnit;
+        this.barA.style.width = `${widthA}px`;
+        this.barAMeasure.textContent = `${this.lengthA} ${unitLabel}`;
+
+        // Render bar B
+        const widthB = this.lengthB * pixelsPerUnit;
+        this.barB.style.width = `${widthB}px`;
+        this.barBMeasure.textContent = `${this.lengthB} ${unitLabel}`;
+      },
+
+      renderQuestion() {
+        this.choiceContainer.innerHTML = '';
+
+        if (this.isAnswered) return;
+
+        const unitLabel = this.unit === 'cm'
+          ? (window.i18n ? i18n.t('section.activities.compare-lengths.cm') : 'cm')
+          : (window.i18n ? i18n.t('section.activities.compare-lengths.inches') : 'in');
+
+        if (this.questionPhase === 'longer') {
+          // Ask which is longer
+          this.questionText.textContent = window.i18n
+            ? i18n.t('section.activities.compare-lengths.whichLonger')
+            : 'Which bar is longer?';
+
+          // Create A and B choices
+          const choices = ['A', 'B'];
+          choices.forEach(choice => {
+            const btn = document.createElement('button');
+            btn.className = 'choice-btn choice-letter';
+            btn.textContent = choice;
+            btn.dataset.value = choice;
+            btn.addEventListener('click', () => this.selectLonger(choice));
+            this.choiceContainer.appendChild(btn);
+          });
+        } else {
+          // Ask for the difference
+          const diff = Math.abs(this.lengthA - this.lengthB);
+          this.questionText.textContent = window.i18n
+            ? i18n.t('section.activities.compare-lengths.howMuchLonger')
+            : 'How much longer is it?';
+
+          // Generate choices
+          const choices = [diff];
+          const distractors = new Set();
+
+          // Add nearby values as distractors
+          [-2, -1, 1, 2, 3].forEach(offset => {
+            const d = diff + offset;
+            if (d > 0 && d !== diff) {
+              distractors.add(d);
+            }
+          });
+
+          const distractorArray = Array.from(distractors);
+          this.shuffleArray(distractorArray);
+          choices.push(...distractorArray.slice(0, 3));
+
+          // Ensure we have 4 choices
+          while (choices.length < 4) {
+            const extra = this.randomInt(1, 12);
+            if (!choices.includes(extra)) {
+              choices.push(extra);
+            }
+          }
+
+          this.shuffleArray(choices);
+
+          choices.forEach(choice => {
+            const btn = document.createElement('button');
+            btn.className = 'choice-btn';
+            btn.textContent = `${choice} ${unitLabel}`;
+            btn.dataset.value = choice;
+            btn.addEventListener('click', () => this.selectDifference(choice));
+            this.choiceContainer.appendChild(btn);
+          });
+        }
+      },
+
+      selectLonger(choice) {
+        if (this.isAnswered) return;
+
+        const correctAnswer = this.lengthA > this.lengthB ? 'A' : 'B';
+        const isCorrect = choice === correctAnswer;
+
+        // Highlight buttons
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          if (btn.dataset.value === correctAnswer) {
+            btn.classList.add('correct');
+          } else if (btn.dataset.value === choice && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+          btn.disabled = true;
+        });
+
+        const longerLength = Math.max(this.lengthA, this.lengthB);
+        const unitLabel = this.unit === 'cm'
+          ? (window.i18n ? i18n.t('section.activities.compare-lengths.cm') : 'cm')
+          : (window.i18n ? i18n.t('section.activities.compare-lengths.inches') : 'in');
+
+        if (isCorrect) {
+          const msg = window.i18n
+            ? i18n.t('section.activities.compare-lengths.correctLonger')
+                .replace('{bar}', correctAnswer)
+                .replace('{length}', longerLength)
+                .replace('{unit}', unitLabel)
+            : `✓ Correct! Bar ${correctAnswer} is longer (${longerLength} ${unitLabel}).`;
+          this.feedback.textContent = msg;
+          this.feedback.classList.remove('error');
+        } else {
+          const msg = window.i18n
+            ? i18n.t('section.activities.compare-lengths.wrongLonger')
+                .replace('{bar}', correctAnswer)
+                .replace('{length}', longerLength)
+                .replace('{unit}', unitLabel)
+            : `Bar ${correctAnswer} is longer (${longerLength} ${unitLabel}).`;
+          this.feedback.textContent = msg;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        // Move to difference question after delay
+        setTimeout(() => {
+          this.questionPhase = 'difference';
+          this.isAnswered = false;
+          this.feedback.classList.remove('show', 'error');
+          this.renderQuestion();
+        }, this.autoAdvanceDelay);
+      },
+
+      selectDifference(value) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const diff = Math.abs(this.lengthA - this.lengthB);
+        const isCorrect = value === diff;
+
+        const unitLabel = this.unit === 'cm'
+          ? (window.i18n ? i18n.t('section.activities.compare-lengths.cm') : 'cm')
+          : (window.i18n ? i18n.t('section.activities.compare-lengths.inches') : 'in');
+
+        // Highlight buttons
+        this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
+          const btnValue = parseInt(btn.dataset.value);
+          if (btnValue === diff) {
+            btn.classList.add('correct');
+          } else if (btnValue === value && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+          btn.disabled = true;
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = window.i18n
+            ? i18n.t('section.activities.compare-lengths.correctDiff')
+                .replace('{diff}', diff)
+                .replace('{unit}', unitLabel)
+            : `✓ Correct! The difference is ${diff} ${unitLabel}.`;
+          this.feedback.textContent = msg;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const msg = window.i18n
+            ? i18n.t('section.activities.compare-lengths.wrongDiff')
+                .replace('{diff}', diff)
+                .replace('{unit}', unitLabel)
+            : `The difference is ${diff} ${unitLabel}.`;
+          this.feedback.textContent = msg;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.isAnswered = false;
+        this.questionPhase = 'longer';
+        this.renderQuestion();
+        this.feedback.classList.remove('show', 'error');
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.compare-lengths.perfect')
+            : 'Amazing comparison skills!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🧵';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.compare-lengths.great')
+            : 'Great comparing!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.compare-lengths.keepPracticing')
+            : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => CompareLengths.init());
+      } else {
+        CompareLengths.init();
+      }
+    });
+  </script>
+  <style>
+    /* Compare Lengths specific styles */
+
+    /* Bars Container */
+    .bars-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      margin: var(--space-6) auto;
+      padding: var(--space-6);
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border-radius: var(--radius-xl);
+      border: 3px solid #86efac;
+      max-width: 500px;
+    }
+
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .bar-label {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: white;
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      border-radius: var(--radius-full);
+      flex-shrink: 0;
+    }
+
+    .bar-wrapper {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex: 1;
+      min-width: 0;
+    }
+
+    .length-bar {
+      height: 36px;
+      border-radius: var(--radius-md);
+      transition: width 0.4s ease;
+      min-width: 20px;
+    }
+
+    .bar-a {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      border: 2px solid #c2410c;
+    }
+
+    .bar-b {
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      border: 2px solid #6d28d9;
+    }
+
+    .bar-measurement {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-600);
+      white-space: nowrap;
+    }
+
+    /* Question Section */
+    .question-section {
+      text-align: center;
+      margin: var(--space-4) 0;
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Choice Container */
+    .choice-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      margin: var(--space-4) auto;
+      max-width: 360px;
+    }
+
+    .choice-btn {
+      padding: var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #ffffff, #f8fafc);
+      border: 3px solid var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 0 var(--color-neutral-300);
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .choice-btn.choice-letter {
+      font-size: var(--text-2xl);
+      min-width: 100px;
+      min-height: 80px;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: #3b82f6;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 #2563eb;
+    }
+
+    .choice-btn:focus:not(:disabled) {
+      outline: none;
+      box-shadow: 0 3px 0 var(--color-neutral-300), 0 0 0 3px rgba(59, 130, 246, 0.4);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 1px 0 var(--color-neutral-300);
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      box-shadow: 0 3px 0 #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      box-shadow: 0 3px 0 #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    .choice-btn:disabled {
+      cursor: default;
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback positioning */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .bars-container {
+        padding: var(--space-4);
+        margin: var(--space-4) auto;
+      }
+
+      .bar-label {
+        width: 36px;
+        height: 36px;
+        font-size: var(--text-lg);
+      }
+
+      .length-bar {
+        height: 30px;
+      }
+
+      .bar-measurement {
+        font-size: var(--text-sm);
+      }
+
+      .question-text {
+        font-size: var(--text-lg);
+      }
+
+      .choice-container {
+        gap: var(--space-2);
+        max-width: 320px;
+      }
+
+      .choice-btn {
+        padding: var(--space-3);
+        font-size: var(--text-lg);
+        min-height: 64px;
+      }
+
+      .choice-btn.choice-letter {
+        font-size: var(--text-xl);
+        min-height: 70px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .bars-container {
+        padding: var(--space-3);
+      }
+
+      .choice-container {
+        max-width: 300px;
+      }
+
+      .choice-btn {
+        font-size: var(--text-base);
+        min-height: 64px;
+        padding: var(--space-3);
+      }
+
+      .choice-btn.choice-letter {
+        font-size: var(--text-lg);
+        min-height: 68px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,108 @@
+/* Array Builder Tool Styles */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-size: var(--text-xl);
+  color: var(--color-neutral-600);
+  background: white;
+  border: 2px solid var(--color-neutral-200);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.back-link:hover {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+/* Sliders */
+.slider {
+  width: 120px;
+  height: 8px;
+  -webkit-appearance: none;
+  background: linear-gradient(to right, var(--color-secondary), var(--color-accent-pink));
+  border-radius: var(--radius-full);
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  background: white;
+  border: 3px solid var(--color-secondary);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.slider-value {
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary-dark);
+  min-width: 30px;
+  text-align: center;
+}
+
+/* Array Container */
+.array-container {
+  display: grid;
+  gap: 4px;
+  padding: var(--space-4);
+  background: linear-gradient(135deg, rgba(0, 201, 201, 0.1), rgba(255, 105, 180, 0.1));
+  border-radius: var(--radius-xl);
+  border: 3px solid rgba(0, 201, 201, 0.3);
+}
+
+/* Array Cells */
+.array-cell {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #00C9C9, #00A3A3);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+  animation: cellPop 0.2s ease-out;
+}
+
+@keyframes cellPop {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Equation Display */
+#rows-display, #cols-display {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-secondary);
+}
+
+.total-value {
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-extrabold);
+  color: var(--color-accent-pink);
+  margin-left: var(--space-2);
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .slider {
+    width: 80px;
+  }
+
+  .array-cell {
+    width: 24px;
+    height: 24px;
+  }
+
+  .tool-options {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+}

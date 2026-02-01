@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Enough Seats? - Kindergarten Math Activity - Meadow Math">
+  <title>Enough Seats? - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🪑</span>
+            <span data-i18n="section.activities.enough-seats.title">Enough Seats?</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.enough-seats.instruction">Are there enough seats for everyone?</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Scene -->
+          <div class="scene-container">
+            <!-- Animals row -->
+            <div class="scene-row">
+              <div class="row-label" data-i18n="section.activities.enough-seats.friends">Friends:</div>
+              <div class="items-row" id="animals-row"></div>
+            </div>
+
+            <!-- Seats row -->
+            <div class="scene-row">
+              <div class="row-label" data-i18n="section.activities.enough-seats.seats">Seats:</div>
+              <div class="items-row" id="seats-row"></div>
+            </div>
+          </div>
+
+          <!-- Question -->
+          <p class="question-text" data-i18n="section.activities.enough-seats.question">Are there enough seats?</p>
+
+          <!-- Answer Buttons -->
+          <div class="answer-buttons" id="answer-buttons">
+            <button class="answer-btn yes-btn" id="btn-yes" tabindex="0">
+              <span class="answer-icon">✅</span>
+              <span class="answer-text" data-i18n="section.activities.enough-seats.yes">Yes!</span>
+            </button>
+            <button class="answer-btn no-btn" id="btn-no" tabindex="0">
+              <span class="answer-icon">❌</span>
+              <span class="answer-text" data-i18n="section.activities.enough-seats.no">No</span>
+            </button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Enough Seats Styles */
+    .scene-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+      padding: var(--space-4);
+      background: linear-gradient(180deg, #ecfdf5 0%, #d1fae5 100%);
+      border-radius: var(--radius-2xl);
+      border: 3px solid #a7f3d0;
+    }
+
+    .scene-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .row-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      min-width: 80px;
+    }
+
+    .items-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      min-height: 60px;
+      align-items: center;
+    }
+
+    .scene-item {
+      font-size: 40px;
+      line-height: 1;
+      animation: popIn 0.3s ease backwards;
+    }
+
+    .scene-item:nth-child(1) { animation-delay: 0.05s; }
+    .scene-item:nth-child(2) { animation-delay: 0.1s; }
+    .scene-item:nth-child(3) { animation-delay: 0.15s; }
+    .scene-item:nth-child(4) { animation-delay: 0.2s; }
+    .scene-item:nth-child(5) { animation-delay: 0.25s; }
+    .scene-item:nth-child(6) { animation-delay: 0.3s; }
+    .scene-item:nth-child(7) { animation-delay: 0.35s; }
+    .scene-item:nth-child(8) { animation-delay: 0.4s; }
+    .scene-item:nth-child(9) { animation-delay: 0.45s; }
+    .scene-item:nth-child(10) { animation-delay: 0.5s; }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .answer-buttons {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .answer-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-4) var(--space-6);
+      min-width: 120px;
+      border: 4px solid;
+      border-radius: var(--radius-2xl);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .answer-btn:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .answer-icon {
+      font-size: 36px;
+    }
+
+    .yes-btn {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #16a34a, 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .yes-btn:hover:not(:disabled) {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 0 #16a34a, 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .no-btn {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      color: #991b1b;
+      box-shadow: 0 4px 0 #dc2626, 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .no-btn:hover:not(:disabled) {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 0 #dc2626, 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .answer-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .answer-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPulse 0.5s ease;
+    }
+
+    .answer-btn.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      color: #92400e;
+      box-shadow: 0 4px 0 #d97706;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .scene-container {
+        padding: var(--space-3);
+      }
+
+      .row-label {
+        font-size: var(--text-base);
+        min-width: 65px;
+      }
+
+      .scene-item {
+        font-size: 32px;
+      }
+
+      .answer-btn {
+        padding: var(--space-3) var(--space-4);
+        min-width: 100px;
+      }
+
+      .answer-icon {
+        font-size: 28px;
+      }
+
+      .answer-btn .answer-text {
+        font-size: var(--text-lg);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Enough Seats Activity
+    const EnoughSeats = {
+      // Game state
+      round: 1,
+      maxRounds: 8,
+      animalCount: 0,
+      seatCount: 0,
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1800,
+
+      // DOM elements
+      progress: null,
+      animalsRow: null,
+      seatsRow: null,
+      btnYes: null,
+      btnNo: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Animals and seats to use
+      animals: ['🐻', '🐰', '🐸', '🦊', '🐱', '🐶', '🐼', '🐨', '🦁', '🐯'],
+      seats: ['🪑', '💺'],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.animalsRow = document.getElementById('animals-row');
+        this.seatsRow = document.getElementById('seats-row');
+        this.btnYes = document.getElementById('btn-yes');
+        this.btnNo = document.getElementById('btn-no');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnYes.addEventListener('click', () => this.selectAnswer(true));
+        this.btnNo.addEventListener('click', () => this.selectAnswer(false));
+
+        this.btnYes.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.selectAnswer(true);
+          }
+        });
+
+        this.btnNo.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.selectAnswer(false);
+          }
+        });
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Get count range based on round
+       */
+      getCountRange() {
+        // Progressive difficulty
+        if (this.round <= 3) {
+          return { min: 2, max: 5 };
+        } else if (this.round <= 6) {
+          return { min: 3, max: 7 };
+        } else {
+          return { min: 4, max: 9 };
+        }
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+
+        const range = this.getCountRange();
+
+        // Generate animal count
+        this.animalCount = randomInt(range.min, range.max);
+
+        // Generate seat count (different from animal count, can be more or less)
+        // Make roughly 50/50 chance of enough or not enough
+        if (Math.random() < 0.5) {
+          // Not enough seats
+          this.seatCount = randomInt(Math.max(1, this.animalCount - 3), this.animalCount - 1);
+        } else {
+          // Enough seats (equal or more)
+          this.seatCount = randomInt(this.animalCount, Math.min(range.max + 1, this.animalCount + 2));
+        }
+
+        // Make sure seatCount is at least 1
+        this.seatCount = Math.max(1, this.seatCount);
+
+        // Pick random animal for this round
+        const animal = this.animals[randomInt(0, this.animals.length - 1)];
+        const seat = this.seats[randomInt(0, this.seats.length - 1)];
+
+        // Reset UI
+        this.btnYes.classList.remove('correct', 'incorrect');
+        this.btnNo.classList.remove('correct', 'incorrect');
+        this.btnYes.disabled = false;
+        this.btnNo.disabled = false;
+        this.feedback.classList.remove('show', 'error');
+
+        // Render items
+        this.renderItems(this.animalsRow, this.animalCount, animal);
+        this.renderItems(this.seatsRow, this.seatCount, seat);
+
+        this.renderProgress();
+      },
+
+      /**
+       * Render items in a row
+       */
+      renderItems(container, count, emoji) {
+        container.innerHTML = '';
+        for (let i = 0; i < count; i++) {
+          const item = document.createElement('span');
+          item.className = 'scene-item';
+          item.textContent = emoji;
+          container.appendChild(item);
+        }
+      },
+
+      /**
+       * Select answer (yes = true, no = false)
+       */
+      selectAnswer(answeredYes) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        this.btnYes.disabled = true;
+        this.btnNo.disabled = true;
+
+        // Determine correct answer
+        const enoughSeats = this.seatCount >= this.animalCount;
+        const isCorrect = answeredYes === enoughSeats;
+
+        const selectedBtn = answeredYes ? this.btnYes : this.btnNo;
+        const correctBtn = enoughSeats ? this.btnYes : this.btnNo;
+
+        if (isCorrect) {
+          selectedBtn.classList.add('correct');
+          let msg;
+          if (enoughSeats) {
+            msg = i18n.t('section.activities.enough-seats.correctYes') || 'Yes! {{seats}} seats for {{animals}} friends!';
+          } else {
+            msg = i18n.t('section.activities.enough-seats.correctNo') || 'Right! {{seats}} seats is not enough for {{animals}} friends.';
+          }
+          this.feedback.textContent = msg.replace('{{seats}}', this.seatCount).replace('{{animals}}', this.animalCount);
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          if (typeof celebrate === 'function') {
+            celebrate(selectedBtn);
+          }
+        } else {
+          selectedBtn.classList.add('incorrect');
+          correctBtn.classList.add('correct');
+          let msg;
+          if (enoughSeats) {
+            msg = i18n.t('section.activities.enough-seats.incorrectYes') || 'Actually, {{seats}} seats IS enough for {{animals}} friends!';
+          } else {
+            msg = i18n.t('section.activities.enough-seats.incorrectNo') || 'Actually, {{seats}} seats is NOT enough for {{animals}} friends.';
+          }
+          this.feedback.textContent = msg.replace('{{seats}}', this.seatCount).replace('{{animals}}', this.animalCount);
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.enough-seats.perfect') || "Seat Counter Champion!";
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.enough-seats.great') || 'Great comparing!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.enough-seats.keepPracticing') || 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      EnoughSeats.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

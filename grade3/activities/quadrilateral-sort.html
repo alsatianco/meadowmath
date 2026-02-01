@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Quadrilateral Sort - Grade 3 Math Activity - Meadow Math">
+  <title>Quadrilateral Sort - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🟪</span>
+            <span data-i18n="section.activities.quadrilateral-sort.title">Quadrilateral Sort</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.quadrilateral-sort.instruction">Sort shapes into the right bins!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Sorting Rule Display -->
+          <div class="sorting-rule" id="sorting-rule"></div>
+
+          <!-- Sorting Bins -->
+          <div class="sorting-bins" id="sorting-bins"></div>
+
+          <!-- Shapes to Sort -->
+          <div class="shapes-tray" id="shapes-tray"></div>
+
+          <!-- Check Button -->
+          <div class="action-buttons">
+            <button class="btn-activity btn-primary" id="btn-check" data-i18n="section.activities.quadrilateral-sort.check">Check</button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.quadrilateral-sort.great">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Quadrilateral Sort specific styles */
+    .sorting-rule {
+      text-align: center;
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #5b21b6;
+      margin-bottom: var(--space-6);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #8b5cf6;
+    }
+
+    .sorting-bins {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+      margin-bottom: var(--space-6);
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .sorting-bin {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--space-4);
+      background: white;
+      border: 4px dashed #a8a29e;
+      border-radius: var(--radius-xl);
+      min-height: 180px;
+      transition: all 0.2s ease;
+    }
+
+    .sorting-bin.drag-over {
+      border-color: #7c3aed;
+      background-color: #f5f3ff;
+      border-style: solid;
+    }
+
+    .sorting-bin.correct-bin {
+      border-color: var(--color-success);
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-style: solid;
+    }
+
+    .sorting-bin.incorrect-bin {
+      border-color: var(--color-error);
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      border-style: solid;
+    }
+
+    .bin-label {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: var(--color-text);
+      margin-bottom: var(--space-3);
+      text-align: center;
+      padding: var(--space-2) var(--space-4);
+      background: #f5f3ff;
+      border-radius: var(--radius-lg);
+      min-width: 140px;
+    }
+
+    .bin-shapes {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-2);
+      min-height: 80px;
+      width: 100%;
+      padding: var(--space-2);
+    }
+
+    .shapes-tray {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-4);
+      padding: var(--space-4);
+      background: #f1f5f9;
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--space-6);
+      min-height: 100px;
+    }
+
+    .sortable-shape {
+      width: 80px;
+      height: 80px;
+      background: white;
+      border: 3px solid #8b5cf6;
+      border-radius: var(--radius-lg);
+      cursor: grab;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 0 rgba(139, 92, 246, 0.3), 0 4px 8px rgba(0, 0, 0, 0.1);
+      user-select: none;
+      touch-action: none;
+    }
+
+    .sortable-shape:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 5px 0 rgba(139, 92, 246, 0.3), 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .sortable-shape:active,
+    .sortable-shape.dragging {
+      cursor: grabbing;
+      transform: scale(1.1);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      opacity: 0.9;
+    }
+
+    .sortable-shape:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.4), 0 3px 0 rgba(139, 92, 246, 0.3), 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .sortable-shape.sorted {
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+    }
+
+    .sortable-shape.correct-shape {
+      border-color: var(--color-success);
+      background: #dcfce7;
+    }
+
+    .sortable-shape.incorrect-shape {
+      border-color: var(--color-error);
+      background: #fee2e2;
+    }
+
+    .sortable-shape svg {
+      width: 60px;
+      height: 60px;
+    }
+
+    .sortable-shape.sorted svg {
+      width: 45px;
+      height: 45px;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .action-buttons .btn-activity {
+      min-width: 160px;
+      min-height: 60px;
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      border-radius: var(--radius-xl);
+      padding: var(--space-4) var(--space-6);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-activity:active {
+      transform: scale(0.97);
+    }
+
+    .btn-activity:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.35);
+    }
+
+    .btn-activity:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 767px) {
+      .sorting-rule {
+        font-size: var(--text-lg);
+        padding: var(--space-3);
+      }
+
+      .sorting-bins {
+        gap: var(--space-4);
+      }
+
+      .sorting-bin {
+        padding: var(--space-3);
+        min-height: 150px;
+      }
+
+      .bin-label {
+        font-size: var(--text-base);
+        padding: var(--space-1) var(--space-3);
+        min-width: 120px;
+      }
+
+      .shapes-tray {
+        gap: var(--space-3);
+        padding: var(--space-3);
+      }
+
+      .sortable-shape {
+        width: 70px;
+        height: 70px;
+      }
+
+      .sortable-shape svg {
+        width: 50px;
+        height: 50px;
+      }
+
+      .sortable-shape.sorted {
+        width: 50px;
+        height: 50px;
+      }
+
+      .sortable-shape.sorted svg {
+        width: 35px;
+        height: 35px;
+      }
+
+      .action-buttons .btn-activity {
+        min-width: 140px;
+        min-height: 54px;
+        font-size: var(--text-base);
+        padding: var(--space-3) var(--space-4);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Quadrilateral Sort Activity - Grade 3 Level 5
+    const QuadrilateralSort = {
+      currentRound: 1,
+      maxRounds: 6,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1500,
+      currentChallenge: null,
+      challenges: [],
+      sortedShapes: { bin1: [], bin2: [] },
+
+      sortingRule: null,
+      sortingBins: null,
+      shapesTray: null,
+      feedback: null,
+      progress: null,
+      btnCheck: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      draggedShape: null,
+      dragClone: null,
+      dragOffsetX: 0,
+      dragOffsetY: 0,
+
+      shapes: {
+        square: {
+          rightAngles: true,
+          parallelPairs: 2,
+          equalSides: true,
+          svg: (color) => `<rect x="12" y="12" width="36" height="36" fill="${color}" stroke="#1f2937" stroke-width="2"/>`
+        },
+        rectangle: {
+          rightAngles: true,
+          parallelPairs: 2,
+          equalSides: false,
+          svg: (color) => `<rect x="6" y="16" width="48" height="28" fill="${color}" stroke="#1f2937" stroke-width="2"/>`
+        },
+        rhombus: {
+          rightAngles: false,
+          parallelPairs: 2,
+          equalSides: true,
+          svg: (color) => `<polygon points="30,6 54,30 30,54 6,30" fill="${color}" stroke="#1f2937" stroke-width="2"/>`
+        },
+        trapezoid: {
+          rightAngles: false,
+          parallelPairs: 1,
+          equalSides: false,
+          svg: (color) => `<polygon points="16,14 44,14 54,48 6,48" fill="${color}" stroke="#1f2937" stroke-width="2"/>`
+        },
+        kite: {
+          rightAngles: false,
+          parallelPairs: 0,
+          equalSides: false,
+          svg: (color) => `<polygon points="30,6 50,26 34,54 14,30" fill="${color}" stroke="#1f2937" stroke-width="2"/>`
+        }
+      },
+
+      colors: ['#f97316', '#f59e0b', '#22c55e', '#3b82f6', '#8b5cf6', '#ec4899'],
+
+      sortingRules: [
+        {
+          id: 'right-angles',
+          rule: (shape) => QuadrilateralSort.shapes[shape].rightAngles,
+          bin1Key: 'fourRightAngles',
+          bin2Key: 'notFourRightAngles'
+        },
+        {
+          id: 'parallel-pairs',
+          rule: (shape) => QuadrilateralSort.shapes[shape].parallelPairs === 2,
+          bin1Key: 'twoParallelPairs',
+          bin2Key: 'notTwoParallelPairs'
+        },
+        {
+          id: 'equal-sides',
+          rule: (shape) => QuadrilateralSort.shapes[shape].equalSides,
+          bin1Key: 'allSidesEqual',
+          bin2Key: 'notAllSidesEqual'
+        }
+      ],
+
+      init() {
+        this.sortingRule = document.getElementById('sorting-rule');
+        this.sortingBins = document.getElementById('sorting-bins');
+        this.shapesTray = document.getElementById('shapes-tray');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnCheck = document.getElementById('btn-check');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnCheck.addEventListener('click', () => this.checkAnswer());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.setupGlobalListeners();
+        this.generateChallengeSequence();
+        this.generateRound();
+        this.renderProgress();
+      },
+
+      generateChallengeSequence() {
+        const pool = shuffle([...this.sortingRules]);
+        this.challenges = [];
+        while (this.challenges.length < this.maxRounds) {
+          this.challenges.push(...shuffle([...pool]));
+        }
+        this.challenges = this.challenges.slice(0, this.maxRounds);
+      },
+
+      updateTranslations() {
+        if (this.currentChallenge) {
+          this.renderRule();
+          this.renderBins();
+          this.renderShapes();
+        }
+
+        if (this.feedback.classList.contains('show')) {
+          const isError = this.feedback.classList.contains('error');
+          this.feedback.textContent = isError
+            ? i18n.t('section.activities.quadrilateral-sort.tryAgain')
+            : i18n.t('section.activities.quadrilateral-sort.correct');
+        }
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+      },
+
+      generateRound() {
+        this.feedback.classList.remove('show');
+        this.sortedShapes = { bin1: [], bin2: [] };
+        this.btnCheck.disabled = false;
+
+        this.currentChallenge = this.challenges[this.currentRound - 1];
+        this.currentShapes = this.generateShapesForChallenge();
+
+        this.renderRule();
+        this.renderBins();
+        this.renderShapes();
+      },
+
+      generateShapesForChallenge() {
+        const allShapeNames = Object.keys(this.shapes);
+        const rule = this.currentChallenge.rule;
+
+        const matching = allShapeNames.filter(rule);
+        const notMatching = allShapeNames.filter((shape) => !rule(shape));
+
+        const selectedMatching = shuffle(matching).slice(0, Math.min(3, matching.length));
+        const selectedNotMatching = shuffle(notMatching).slice(0, Math.min(3, notMatching.length));
+
+        const shapes = [];
+        let id = 0;
+
+        selectedMatching.forEach((shapeName) => {
+          shapes.push({
+            id: id++,
+            name: shapeName,
+            color: this.colors[randomInt(0, this.colors.length - 1)],
+            matchesBin1: true
+          });
+        });
+
+        selectedNotMatching.forEach((shapeName) => {
+          shapes.push({
+            id: id++,
+            name: shapeName,
+            color: this.colors[randomInt(0, this.colors.length - 1)],
+            matchesBin1: false
+          });
+        });
+
+        return shuffle(shapes);
+      },
+
+      renderRule() {
+        this.sortingRule.textContent = i18n.t('section.activities.quadrilateral-sort.sortBy');
+      },
+
+      renderBins() {
+        const bin1Label = i18n.t(`section.activities.quadrilateral-sort.bins.${this.currentChallenge.bin1Key}`);
+        const bin2Label = i18n.t(`section.activities.quadrilateral-sort.bins.${this.currentChallenge.bin2Key}`);
+
+        this.sortingBins.innerHTML = `
+          <div class="sorting-bin" id="bin1" data-bin="bin1">
+            <div class="bin-label">${bin1Label}</div>
+            <div class="bin-shapes" id="bin1-shapes"></div>
+          </div>
+          <div class="sorting-bin" id="bin2" data-bin="bin2">
+            <div class="bin-label">${bin2Label}</div>
+            <div class="bin-shapes" id="bin2-shapes"></div>
+          </div>
+        `;
+
+        this.renderSortedShapes();
+      },
+
+      renderShapes() {
+        this.shapesTray.innerHTML = '';
+
+        const unsortedShapes = this.currentShapes.filter((shape) =>
+          !this.sortedShapes.bin1.includes(shape.id) &&
+          !this.sortedShapes.bin2.includes(shape.id)
+        );
+
+        unsortedShapes.forEach((shape) => {
+          const shapeEl = this.createShapeElement(shape);
+          this.shapesTray.appendChild(shapeEl);
+        });
+      },
+
+      createShapeElement(shape, isSorted = false) {
+        const shapeEl = document.createElement('div');
+        shapeEl.className = 'sortable-shape' + (isSorted ? ' sorted' : '');
+        shapeEl.dataset.shapeId = shape.id;
+        shapeEl.dataset.shapeName = shape.name;
+        shapeEl.innerHTML = `<svg viewBox="0 0 60 60">${this.shapes[shape.name].svg(shape.color)}</svg>`;
+
+        if (!isSorted) {
+          shapeEl.addEventListener('mousedown', (e) => this.startDrag(e, shapeEl, shape));
+          shapeEl.addEventListener('touchstart', (e) => this.startDrag(e, shapeEl, shape), { passive: false });
+
+          shapeEl.setAttribute('tabindex', '0');
+          shapeEl.setAttribute('role', 'button');
+          shapeEl.setAttribute('aria-label', i18n.t(`section.activities.quadrilateral-sort.shapes.${shape.name}`) || shape.name);
+          shapeEl.addEventListener('keydown', (e) => {
+            if (e.key === '1') {
+              e.preventDefault();
+              this.placeInBin(shape, 'bin1');
+            } else if (e.key === '2') {
+              e.preventDefault();
+              this.placeInBin(shape, 'bin2');
+            }
+          });
+        } else {
+          shapeEl.addEventListener('click', () => this.removeFromBin(shape));
+          shapeEl.setAttribute('tabindex', '0');
+          shapeEl.setAttribute('role', 'button');
+          shapeEl.setAttribute('aria-label', i18n.t('section.activities.quadrilateral-sort.clickToRemove'));
+          shapeEl.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.removeFromBin(shape);
+            }
+          });
+        }
+
+        return shapeEl;
+      },
+
+      renderSortedShapes() {
+        const bin1Shapes = document.getElementById('bin1-shapes');
+        const bin2Shapes = document.getElementById('bin2-shapes');
+
+        if (bin1Shapes) {
+          bin1Shapes.innerHTML = '';
+          this.sortedShapes.bin1.forEach((shapeId) => {
+            const shape = this.currentShapes.find((s) => s.id === shapeId);
+            if (shape) {
+              bin1Shapes.appendChild(this.createShapeElement(shape, true));
+            }
+          });
+        }
+
+        if (bin2Shapes) {
+          bin2Shapes.innerHTML = '';
+          this.sortedShapes.bin2.forEach((shapeId) => {
+            const shape = this.currentShapes.find((s) => s.id === shapeId);
+            if (shape) {
+              bin2Shapes.appendChild(this.createShapeElement(shape, true));
+            }
+          });
+        }
+      },
+
+      setupGlobalListeners() {
+        this.boundOnDrag = (e) => this.onDrag(e);
+        this.boundEndDrag = (e) => this.endDrag(e);
+
+        document.addEventListener('mousemove', this.boundOnDrag);
+        document.addEventListener('mouseup', this.boundEndDrag);
+        document.addEventListener('touchmove', this.boundOnDrag, { passive: false });
+        document.addEventListener('touchend', this.boundEndDrag);
+      },
+
+      startDrag(e, shapeEl, shape) {
+        e.preventDefault();
+
+        const touch = e.touches ? e.touches[0] : e;
+        const rect = shapeEl.getBoundingClientRect();
+
+        this.draggedShape = shape;
+        this.dragOffsetX = touch.clientX - rect.left;
+        this.dragOffsetY = touch.clientY - rect.top;
+
+        shapeEl.classList.add('dragging');
+
+        this.dragClone = shapeEl.cloneNode(true);
+        this.dragClone.style.position = 'fixed';
+        this.dragClone.style.pointerEvents = 'none';
+        this.dragClone.style.zIndex = '1000';
+        this.dragClone.style.width = shapeEl.offsetWidth + 'px';
+        this.dragClone.style.height = shapeEl.offsetHeight + 'px';
+        this.dragClone.style.left = (touch.clientX - this.dragOffsetX) + 'px';
+        this.dragClone.style.top = (touch.clientY - this.dragOffsetY) + 'px';
+        document.body.appendChild(this.dragClone);
+      },
+
+      onDrag(e) {
+        if (!this.draggedShape || !this.dragClone) return;
+
+        e.preventDefault();
+
+        const touch = e.touches ? e.touches[0] : e;
+        this.dragClone.style.left = (touch.clientX - this.dragOffsetX) + 'px';
+        this.dragClone.style.top = (touch.clientY - this.dragOffsetY) + 'px';
+
+        const bins = this.sortingBins.querySelectorAll('.sorting-bin');
+        bins.forEach((bin) => {
+          const binRect = bin.getBoundingClientRect();
+          const isOver = touch.clientX >= binRect.left && touch.clientX <= binRect.right &&
+            touch.clientY >= binRect.top && touch.clientY <= binRect.bottom;
+          bin.classList.toggle('drag-over', isOver);
+        });
+      },
+
+      endDrag(e) {
+        if (!this.draggedShape) return;
+
+        const touch = e.changedTouches ? e.changedTouches[0] : e;
+
+        const bins = this.sortingBins.querySelectorAll('.sorting-bin');
+        bins.forEach((bin) => {
+          const binRect = bin.getBoundingClientRect();
+          const isOver = touch.clientX >= binRect.left && touch.clientX <= binRect.right &&
+            touch.clientY >= binRect.top && touch.clientY <= binRect.bottom;
+
+          if (isOver) {
+            this.placeInBin(this.draggedShape, bin.dataset.bin);
+          }
+
+          bin.classList.remove('drag-over');
+        });
+
+        const draggingEl = this.shapesTray.querySelector('.dragging');
+        if (draggingEl) {
+          draggingEl.classList.remove('dragging');
+        }
+
+        if (this.dragClone) {
+          this.dragClone.remove();
+          this.dragClone = null;
+        }
+
+        this.draggedShape = null;
+      },
+
+      placeInBin(shape, binId) {
+        this.sortedShapes.bin1 = this.sortedShapes.bin1.filter((id) => id !== shape.id);
+        this.sortedShapes.bin2 = this.sortedShapes.bin2.filter((id) => id !== shape.id);
+
+        this.sortedShapes[binId].push(shape.id);
+
+        this.renderShapes();
+        this.renderSortedShapes();
+      },
+
+      removeFromBin(shape) {
+        this.sortedShapes.bin1 = this.sortedShapes.bin1.filter((id) => id !== shape.id);
+        this.sortedShapes.bin2 = this.sortedShapes.bin2.filter((id) => id !== shape.id);
+
+        this.renderShapes();
+        this.renderSortedShapes();
+      },
+
+      checkAnswer() {
+        const totalSorted = this.sortedShapes.bin1.length + this.sortedShapes.bin2.length;
+        if (totalSorted < this.currentShapes.length) {
+          this.feedback.textContent = i18n.t('section.activities.quadrilateral-sort.sortAll');
+          this.feedback.classList.add('show', 'error');
+          setTimeout(() => {
+            this.feedback.classList.remove('show');
+          }, 1500);
+          return;
+        }
+
+        this.btnCheck.disabled = true;
+
+        let allCorrect = true;
+        const bin1El = document.getElementById('bin1');
+        const bin2El = document.getElementById('bin2');
+
+        this.currentShapes.forEach((shape) => {
+          const inBin1 = this.sortedShapes.bin1.includes(shape.id);
+          const shouldBeInBin1 = shape.matchesBin1;
+          const isCorrect = inBin1 === shouldBeInBin1;
+
+          if (!isCorrect) {
+            allCorrect = false;
+          }
+
+          const shapeEl = this.sortingBins.querySelector(`[data-shape-id="${shape.id}"]`);
+          if (shapeEl) {
+            shapeEl.classList.add(isCorrect ? 'correct-shape' : 'incorrect-shape');
+          }
+        });
+
+        if (allCorrect) {
+          bin1El.classList.add('correct-bin');
+          bin2El.classList.add('correct-bin');
+          this.feedback.textContent = i18n.t('section.activities.quadrilateral-sort.correct');
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+        } else {
+          bin1El.classList.add('incorrect-bin');
+          bin2El.classList.add('incorrect-bin');
+          this.feedback.textContent = i18n.t('section.activities.quadrilateral-sort.tryAgain');
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.currentRound < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.maxRounds;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = i18n.t('section.activities.quadrilateral-sort.perfect');
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.quadrilateral-sort.great');
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.quadrilateral-sort.good');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = i18n.t('section.activities.quadrilateral-sort.keepPracticing');
+        }
+      },
+
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+        this.updateStatsMessage();
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentRound = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateChallengeSequence();
+        this.generateRound();
+        this.renderProgress();
+      },
+
+      nextRound() {
+        this.currentRound++;
+        this.generateRound();
+        this.renderProgress();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => QuadrilateralSort.init());
+      } else {
+        QuadrilateralSort.init();
+      }
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

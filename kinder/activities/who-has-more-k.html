@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Who Has More? - Kindergarten Math Activity - Meadow Math">
+  <title>Who Has More? - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">👀</span>
+            <span data-i18n="section.activities.who-has-more-k.title">Who Has More?</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.who-has-more-k.instruction">Tap the group that has more!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Question -->
+          <p class="question-text" data-i18n="section.activities.who-has-more-k.question">Which group has more?</p>
+
+          <!-- Comparison Groups -->
+          <div class="groups-container" id="groups-container">
+            <button class="group-card" id="group-left">
+              <div class="group-items" id="items-left"></div>
+              <div class="group-label" id="label-left"></div>
+            </button>
+
+            <div class="vs-badge">VS</div>
+
+            <button class="group-card" id="group-right">
+              <div class="group-items" id="items-right"></div>
+              <div class="group-label" id="label-right"></div>
+            </button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Who Has More Styles */
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .groups-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .group-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border: 4px solid #e2e8f0;
+      border-radius: var(--radius-2xl);
+      min-width: 140px;
+      min-height: 160px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 0 #cbd5e1, 0 6px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .group-card:hover:not(:disabled) {
+      transform: translateY(-4px) scale(1.02);
+      border-color: #3b82f6;
+      box-shadow: 0 8px 0 #2563eb, 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .group-card:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .group-card.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPulse 0.5s ease;
+    }
+
+    .group-card.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      box-shadow: 0 4px 0 #d97706;
+      animation: shake 0.5s ease;
+    }
+
+    .group-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      min-height: 80px;
+    }
+
+    .group-item {
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    .group-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-500);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .group-card.show-count .group-label {
+      opacity: 1;
+    }
+
+    .vs-badge {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: white;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-full);
+      box-shadow: 0 3px 0 #6d28d9;
+    }
+
+    @keyframes correctPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Color coding for left/right */
+    #group-left {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      border-color: #f87171;
+    }
+
+    #group-left:hover:not(:disabled) {
+      border-color: #ef4444;
+      box-shadow: 0 8px 0 #dc2626, 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    #group-left.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+    }
+
+    #group-right {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: #60a5fa;
+    }
+
+    #group-right:hover:not(:disabled) {
+      border-color: #3b82f6;
+      box-shadow: 0 8px 0 #2563eb, 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    #group-right.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .groups-container {
+        gap: var(--space-3);
+      }
+
+      .group-card {
+        min-width: 120px;
+        min-height: 140px;
+        padding: var(--space-3);
+      }
+
+      .group-item {
+        font-size: 26px;
+      }
+
+      .vs-badge {
+        font-size: var(--text-lg);
+        padding: var(--space-1) var(--space-2);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Who Has More Activity
+    const WhoHasMoreK = {
+      // Game state
+      round: 1,
+      maxRounds: 8,
+      leftCount: 0,
+      rightCount: 0,
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1800,
+
+      // DOM elements
+      progress: null,
+      groupLeft: null,
+      groupRight: null,
+      itemsLeft: null,
+      itemsRight: null,
+      labelLeft: null,
+      labelRight: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Items to use
+      items: ['🍎', '🍊', '🍋', '🍇', '🍓', '⭐', '🌸', '🦋', '🐸', '🍀', '🎈', '🔵', '🟡', '💎'],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.groupLeft = document.getElementById('group-left');
+        this.groupRight = document.getElementById('group-right');
+        this.itemsLeft = document.getElementById('items-left');
+        this.itemsRight = document.getElementById('items-right');
+        this.labelLeft = document.getElementById('label-left');
+        this.labelRight = document.getElementById('label-right');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.groupLeft.addEventListener('click', () => this.selectGroup('left'));
+        this.groupRight.addEventListener('click', () => this.selectGroup('right'));
+
+        this.groupLeft.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.selectGroup('left');
+          }
+        });
+
+        this.groupRight.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.selectGroup('right');
+          }
+        });
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Get count range based on round
+       */
+      getCountRange() {
+        // Progressive: 1-5, then 3-8, then 5-10
+        if (this.round <= 3) {
+          return { min: 1, max: 5 };
+        } else if (this.round <= 6) {
+          return { min: 3, max: 8 };
+        } else {
+          return { min: 5, max: 10 };
+        }
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+
+        const range = this.getCountRange();
+
+        // Generate counts ensuring they're different
+        this.leftCount = randomInt(range.min, range.max);
+        do {
+          this.rightCount = randomInt(range.min, range.max);
+        } while (this.rightCount === this.leftCount);
+
+        // Pick random items
+        const itemLeft = this.items[randomInt(0, this.items.length - 1)];
+        let itemRight;
+        do {
+          itemRight = this.items[randomInt(0, this.items.length - 1)];
+        } while (itemRight === itemLeft);
+
+        // Reset UI
+        this.groupLeft.classList.remove('correct', 'incorrect', 'show-count');
+        this.groupRight.classList.remove('correct', 'incorrect', 'show-count');
+        this.groupLeft.disabled = false;
+        this.groupRight.disabled = false;
+        this.feedback.classList.remove('show', 'error');
+
+        // Render items
+        this.renderItems(this.itemsLeft, this.leftCount, itemLeft);
+        this.renderItems(this.itemsRight, this.rightCount, itemRight);
+        this.labelLeft.textContent = this.leftCount;
+        this.labelRight.textContent = this.rightCount;
+
+        this.renderProgress();
+      },
+
+      /**
+       * Render items in a group
+       */
+      renderItems(container, count, emoji) {
+        container.innerHTML = '';
+        for (let i = 0; i < count; i++) {
+          const item = document.createElement('span');
+          item.className = 'group-item';
+          item.textContent = emoji;
+          container.appendChild(item);
+        }
+      },
+
+      /**
+       * Select a group
+       */
+      selectGroup(side) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        this.groupLeft.disabled = true;
+        this.groupRight.disabled = true;
+
+        // Show counts
+        this.groupLeft.classList.add('show-count');
+        this.groupRight.classList.add('show-count');
+
+        const selectedSide = side;
+        const isLeftMore = this.leftCount > this.rightCount;
+        const correctSide = isLeftMore ? 'left' : 'right';
+        const isCorrect = selectedSide === correctSide;
+
+        const selectedCard = side === 'left' ? this.groupLeft : this.groupRight;
+        const correctCard = correctSide === 'left' ? this.groupLeft : this.groupRight;
+        const moreCount = isLeftMore ? this.leftCount : this.rightCount;
+
+        if (isCorrect) {
+          selectedCard.classList.add('correct');
+          const msg = i18n.t('section.activities.who-has-more-k.correct') || 'Yes! {{count}} is more!';
+          this.feedback.textContent = msg.replace('{{count}}', moreCount);
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          if (typeof celebrate === 'function') {
+            celebrate(selectedCard);
+          }
+        } else {
+          selectedCard.classList.add('incorrect');
+          correctCard.classList.add('correct');
+          const msg = i18n.t('section.activities.who-has-more-k.incorrect') || 'Not quite! {{count}} is more.';
+          this.feedback.textContent = msg.replace('{{count}}', moreCount);
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.who-has-more-k.perfect') || "Comparison Champion!";
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.who-has-more-k.great') || 'Great comparing!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.who-has-more-k.keepPracticing') || 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      WhoHasMoreK.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

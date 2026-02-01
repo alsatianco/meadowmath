@@ -140,6 +140,10 @@
   box-shadow: 0 4px 0 var(--color-primary-light);
 }
 
+.choice-btn.choice-square {
+  min-width: 80px;
+}
+
 .choice-btn:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 6px 0 var(--color-primary-light);
@@ -241,6 +245,10 @@
     font-size: var(--text-2xl);
   }
 
+  .choice-btn.choice-square {
+    min-width: 70px;
+  }
+
   .feedback-message {
     font-size: var(--text-sm);
     padding: var(--space-2) var(--space-3);
@@ -269,5 +277,9 @@
   .choice-btn {
     min-height: 60px;
     font-size: var(--text-xl);
+  }
+
+  .choice-btn.choice-square {
+    min-width: 60px;
   }
 }

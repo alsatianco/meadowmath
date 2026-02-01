@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Geoboard - Create shapes with pegs and bands">
+  <title>Geoboard - Meadow Math</title>
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="../tool-shell.css">
+  <link rel="stylesheet" href="tool.css">
+</head>
+<body>
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+  <div class="sidebar-backdrop"></div>
+  <div class="app-container">
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item"><span class="nav-item-icon">🏠</span><span class="nav-item-text" data-i18n="nav.home">Home</span></a>
+        <a href="../../prek/index.html" class="nav-item"><span class="nav-item-icon">🪺</span><span class="nav-item-text" data-i18n="nav.prek">Pre-K</span></a>
+        <a href="../../kinder/index.html" class="nav-item"><span class="nav-item-icon">🌱</span><span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span></a>
+        <a href="../../grade1/index.html" class="nav-item"><span class="nav-item-icon">📐</span><span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span></a>
+        <a href="../../grade2/index.html" class="nav-item"><span class="nav-item-icon">➕</span><span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span></a>
+        <a href="../../grade3/index.html" class="nav-item"><span class="nav-item-icon">➖</span><span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span></a>
+        <a href="../../grade4/index.html" class="nav-item"><span class="nav-item-icon">✖️</span><span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span></a>
+        <a href="../../grade5/index.html" class="nav-item"><span class="nav-item-icon">➗</span><span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span></a>
+        <div class="nav-divider"></div>
+        <a href="../../tools/index.html" class="nav-item active"><span class="nav-item-icon">🧰</span><span class="nav-item-text" data-i18n="nav.tools">Tools</span></a>
+        <a href="../../about/index.html" class="nav-item"><span class="nav-item-icon">ℹ️</span><span class="nav-item-text" data-i18n="nav.about">About</span></a>
+      </nav>
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+    <main class="main-content">
+      <div class="tool-container">
+        <header class="tool-header">
+          <div class="tool-title-section">
+            <a href="../index.html" class="back-link" aria-label="Back to Tools">←</a>
+            <span class="tool-icon">📍</span>
+            <h1 class="tool-title" data-i18n="section.tools.geoboard.title">Geoboard</h1>
+          </div>
+          <div class="tool-controls">
+            <div class="mode-switch">
+              <button class="mode-btn active" data-mode="explore" data-i18n="section.modes.explore">Explore</button>
+              <button class="mode-btn" data-mode="challenges" data-i18n="section.modes.challenges">Challenges</button>
+            </div>
+            <button class="btn-reset"><span>↺</span><span data-i18n="section.common.reset">Reset</span></button>
+          </div>
+        </header>
+        <div class="tool-main">
+          <div class="tool-options">
+            <div class="option-group">
+              <label class="option-label">Grid:</label>
+              <select class="option-select" id="grid-select">
+                <option value="5">5 × 5</option>
+                <option value="7">7 × 7</option>
+              </select>
+            </div>
+            <div class="color-buttons">
+              <button class="color-btn active" data-color="#FF6B9D" style="background: #FF6B9D;"></button>
+              <button class="color-btn" data-color="#00C9C9" style="background: #00C9C9;"></button>
+              <button class="color-btn" data-color="#FFD700" style="background: #FFD700;"></button>
+              <button class="color-btn" data-color="#4ade80" style="background: #4ade80;"></button>
+            </div>
+          </div>
+          <div class="tool-canvas" id="tool-canvas">
+            <svg class="geoboard-svg" id="geoboard-svg"></svg>
+          </div>
+          <div class="tool-feedback" id="feedback-banner">
+            <p class="feedback-text" id="feedback-text">Click pegs to create shapes</p>
+          </div>
+          <div class="challenge-panel" id="challenge-panel" style="display: none;">
+            <div class="challenge-header">
+              <span class="challenge-progress" id="challenge-progress">Challenge 1 of 6</span>
+            </div>
+            <p class="challenge-prompt" id="challenge-prompt">Make a triangle</p>
+            <div class="challenge-actions">
+              <button class="btn-check" id="btn-check">Check!</button>
+              <button class="btn-skip" id="btn-skip">Skip →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="footer-content">
+          <div class="footer-links">
+            <a href="../../about/index.html" class="footer-link" data-i18n="footer.about">About</a>
+            <span class="footer-divider">•</span>
+            <a href="../../about/index.html#privacy" class="footer-link" data-i18n="footer.privacy">Privacy & Terms</a>
+          </div>
+
+        </div>
+      </footer>
+    </main>
+  </div>
+  <div class="completion-overlay" id="completion-overlay">
+    <div class="completion-modal">
+      <div class="completion-icon">🎉</div>
+      <h2 class="completion-title" data-i18n="section.common.allChallengesComplete">All Challenges Complete!</h2>
+      <p class="completion-message" data-i18n="section.common.greatJob">Great job!</p>
+      <button class="btn-continue" id="btn-restart" data-i18n="buttons.playAgain">Play Again</button>
+    </div>
+  </div>
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script src="tool.js"></script>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

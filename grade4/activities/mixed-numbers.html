@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mixed Numbers Bridge - Grade 4 Math Activity - Meadow Math">
+  <title>Mixed Numbers Bridge - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade4">Grade 4</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🌉</span>
+            <span data-i18n="section.activities.mixed-numbers.title">Mixed Numbers Bridge</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.mixed-numbers.instruction">Convert between mixed numbers and improper fractions!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <div class="prompt-banner" id="prompt-banner" data-i18n="section.activities.mixed-numbers.promptConvertMixed">Convert to a mixed number.</div>
+
+          <div class="question-display" id="question-display"></div>
+
+          <div class="choices-container" id="choices-container" role="group"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.mixed-numbers.great">Great conversions!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Mixed Numbers Bridge Activity - Grade 4 Level 3
+    const MixedNumbersBridge = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      lastResult: null,
+      advanceTimeout: null,
+
+      promptBanner: null,
+      questionDisplay: null,
+      choicesContainer: null,
+      choiceButtons: [],
+      btnReset: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.promptBanner = document.getElementById('prompt-banner');
+        this.questionDisplay = document.getElementById('question-display');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.btnReset = document.getElementById('btn-reset');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      generateQuestions() {
+        const denominators = [2, 3, 4, 5, 6, 8];
+        const toMixedPool = [];
+        const toImproperPool = [];
+        const addPool = [];
+        const subtractPool = [];
+
+        denominators.forEach((den) => {
+          for (let whole = 1; whole <= 3; whole++) {
+            for (let num = 1; num < den; num++) {
+              const improperNum = whole * den + num;
+              toMixedPool.push({
+                type: 'toMixed',
+                improper: { numerator: improperNum, denominator: den },
+                correct: { whole, numerator: num, denominator: den },
+                answerType: 'mixed'
+              });
+              toImproperPool.push({
+                type: 'toImproper',
+                mixed: { whole, numerator: num, denominator: den },
+                correct: { numerator: improperNum, denominator: den },
+                answerType: 'improper'
+              });
+            }
+          }
+
+          for (let wholeA = 1; wholeA <= 3; wholeA++) {
+            for (let wholeB = 1; wholeB <= 3; wholeB++) {
+              for (let numA = 1; numA < den; numA++) {
+                for (let numB = 1; numB < den; numB++) {
+                  if (numA + numB < den) {
+                    addPool.push({
+                      type: 'add',
+                      left: { whole: wholeA, numerator: numA, denominator: den },
+                      right: { whole: wholeB, numerator: numB, denominator: den },
+                      correct: { whole: wholeA + wholeB, numerator: numA + numB, denominator: den },
+                      answerType: 'mixed'
+                    });
+                  }
+
+                  if (wholeA > wholeB && numA > numB) {
+                    subtractPool.push({
+                      type: 'subtract',
+                      left: { whole: wholeA, numerator: numA, denominator: den },
+                      right: { whole: wholeB, numerator: numB, denominator: den },
+                      correct: { whole: wholeA - wholeB, numerator: numA - numB, denominator: den },
+                      answerType: 'mixed'
+                    });
+                  }
+                }
+              }
+            }
+          }
+        });
+
+        const toMixed = shuffle(toMixedPool).slice(0, 2);
+        const toImproper = shuffle(toImproperPool).slice(0, 2);
+        const adds = shuffle(addPool).slice(0, 2);
+        const subtracts = shuffle(subtractPool).slice(0, 2);
+
+        this.questions = shuffle([...toMixed, ...toImproper, ...adds, ...subtracts]);
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.lastResult = null;
+        this.feedback.classList.remove('show', 'error');
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        this.renderQuestion(question);
+        this.renderChoices(question);
+        this.renderProgress();
+      },
+
+      renderQuestion(question) {
+        const promptKey = {
+          toMixed: 'promptConvertMixed',
+          toImproper: 'promptConvertImproper',
+          add: 'promptAdd',
+          subtract: 'promptSubtract'
+        }[question.type];
+        this.promptBanner.textContent = this.getActivityText(promptKey, 'Convert the value.');
+
+        if (question.type === 'toMixed' || question.type === 'toImproper') {
+          const givenLabel = this.getActivityText('givenLabel', 'Given');
+          const targetLabel = question.type === 'toMixed'
+            ? this.getActivityText('mixedLabel', 'Mixed number')
+            : this.getActivityText('improperLabel', 'Improper fraction');
+          const givenMarkup = question.type === 'toMixed'
+            ? this.renderImproperDisplay(question.improper, false)
+            : this.renderMixedDisplay(question.mixed, false);
+          const visual = question.type === 'toMixed'
+            ? this.renderBarStack(question.correct.whole, question.correct.numerator, question.correct.denominator)
+            : this.renderBarStack(question.mixed.whole, question.mixed.numerator, question.mixed.denominator);
+
+          this.questionDisplay.innerHTML = `
+            <div class="conversion-row">
+              <div class="value-card given">
+                <div class="card-label">${givenLabel}</div>
+                ${givenMarkup}
+                ${visual}
+              </div>
+              <div class="bridge-arrow" aria-hidden="true">➡️</div>
+              <div class="value-card target">
+                <div class="card-label">${targetLabel}</div>
+                <div class="answer-placeholder" aria-hidden="true">?</div>
+              </div>
+            </div>
+          `;
+        } else {
+          const equationLabel = this.getActivityText('equationLabel', 'Equation');
+          const operator = question.type === 'add' ? '+' : '−';
+          this.questionDisplay.innerHTML = `
+            <div class="equation-card">
+              <div class="card-label">${equationLabel}</div>
+              <div class="equation-row">
+                ${this.renderMixedDisplay(question.left, true)}
+                <span class="operator" aria-hidden="true">${operator}</span>
+                ${this.renderMixedDisplay(question.right, true)}
+                <span class="operator" aria-hidden="true">=</span>
+                <div class="answer-placeholder" aria-hidden="true">?</div>
+              </div>
+            </div>
+          `;
+        }
+      },
+
+      renderChoices(question) {
+        const choices = question.answerType === 'mixed'
+          ? this.buildMixedChoices(question.correct)
+          : this.buildImproperChoices(question.correct);
+
+        this.choicesContainer.innerHTML = '';
+        this.choiceButtons = choices.map((choice) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'choice-btn';
+          button.dataset.type = choice.type;
+          button.dataset.denominator = choice.denominator;
+
+          if (choice.type === 'mixed') {
+            button.dataset.whole = choice.whole;
+            button.dataset.numerator = choice.numerator;
+            button.innerHTML = this.renderMixedDisplay(choice, true);
+          } else {
+            button.dataset.numerator = choice.numerator;
+            button.innerHTML = this.renderImproperDisplay(choice, true);
+          }
+
+          button.addEventListener('click', () => this.selectChoice(button, choice, question));
+          this.choicesContainer.appendChild(button);
+
+          return { button, choice };
+        });
+
+        this.updateChoiceLabels();
+      },
+
+      selectChoice(button, choice, question) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+        this.clearAdvanceTimeout();
+
+        this.choiceButtons.forEach(({ button: btn }) => {
+          btn.disabled = true;
+        });
+
+        button.classList.add('selected');
+
+        const isCorrect = this.isChoiceCorrect(choice, question);
+        this.lastResult = {
+          isCorrect,
+          answerType: question.answerType,
+          correct: question.correct
+        };
+
+        if (isCorrect) {
+          this.correctCount++;
+          button.classList.add('correct');
+          this.feedback.textContent = this.getActivityText('correct', 'Correct!');
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          button.classList.add('incorrect');
+          this.feedback.textContent = this.getIncorrectText(question);
+          this.feedback.classList.add('error');
+          this.choiceButtons.forEach(({ button: btn, choice: candidate }) => {
+            if (this.isChoiceCorrect(candidate, question)) {
+              btn.classList.add('correct');
+            }
+          });
+        }
+
+        this.feedback.classList.add('show');
+        this.renderProgress();
+
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      isChoiceCorrect(choice, question) {
+        if (question.answerType === 'mixed') {
+          return choice.type === 'mixed'
+            && choice.whole === question.correct.whole
+            && choice.numerator === question.correct.numerator
+            && choice.denominator === question.correct.denominator;
+        }
+        return choice.type === 'improper'
+          && choice.numerator === question.correct.numerator
+          && choice.denominator === question.correct.denominator;
+      },
+
+      buildMixedChoices(correct) {
+        const options = new Map();
+        const maxWhole = 6;
+
+        const addOption = (whole, numerator) => {
+          if (whole < 1 || whole > maxWhole) return;
+          if (numerator < 1 || numerator >= correct.denominator) return;
+          const key = `${whole}-${numerator}`;
+          if (!options.has(key)) {
+            options.set(key, {
+              type: 'mixed',
+              whole,
+              numerator,
+              denominator: correct.denominator
+            });
+          }
+        };
+
+        addOption(correct.whole, correct.numerator);
+
+        const deltas = shuffle([-2, -1, 1, 2]);
+        deltas.forEach((delta) => {
+          addOption(correct.whole + delta, correct.numerator);
+          addOption(correct.whole, correct.numerator + delta);
+        });
+
+        while (options.size < 4) {
+          const whole = Math.max(1, Math.min(maxWhole, correct.whole + randomInt(-2, 2)));
+          const numerator = Math.max(1, Math.min(correct.denominator - 1, correct.numerator + randomInt(-2, 2)));
+          addOption(whole, numerator);
+        }
+
+        return shuffle(Array.from(options.values()).slice(0, 4));
+      },
+
+      buildImproperChoices(correct) {
+        const options = new Map();
+        const den = correct.denominator;
+        const addOption = (numerator) => {
+          if (numerator <= den) return;
+          if (numerator % den === 0) return;
+          const key = `${numerator}`;
+          if (!options.has(key)) {
+            options.set(key, {
+              type: 'improper',
+              numerator,
+              denominator: den
+            });
+          }
+        };
+
+        addOption(correct.numerator);
+        const deltas = shuffle([-den, -2, -1, 1, 2, den]);
+        deltas.forEach((delta) => {
+          addOption(correct.numerator + delta);
+        });
+
+        let candidate = den + 1;
+        while (options.size < 4) {
+          addOption(candidate);
+          candidate += 1;
+        }
+
+        return shuffle(Array.from(options.values()).slice(0, 4));
+      },
+
+      renderMixedDisplay(mixed, compact) {
+        const sizeClass = compact ? ' compact' : '';
+        return `
+          <div class="mixed-display${sizeClass}">
+            <span class="mixed-whole">${mixed.whole}</span>
+            <span class="mixed-fraction">
+              <span class="fraction-numerator">${mixed.numerator}</span>
+              <span class="fraction-denominator">${mixed.denominator}</span>
+            </span>
+          </div>
+        `;
+      },
+
+      renderImproperDisplay(improper, compact) {
+        const sizeClass = compact ? ' compact' : '';
+        return `
+          <div class="fraction-display${sizeClass}">
+            <span class="fraction-numerator">${improper.numerator}</span>
+            <span class="fraction-denominator">${improper.denominator}</span>
+          </div>
+        `;
+      },
+
+      renderBarStack(whole, numerator, denominator) {
+        const bars = [];
+        for (let i = 0; i < whole; i++) {
+          bars.push(this.renderBar(denominator, denominator));
+        }
+        bars.push(this.renderBar(numerator, denominator));
+        return `<div class="bar-stack">${bars.join('')}</div>`;
+      },
+
+      renderBar(filled, denominator) {
+        let segments = '';
+        for (let i = 0; i < denominator; i++) {
+          const filledClass = i < filled ? ' filled' : '';
+          segments += `<span class="bar-segment${filledClass}"></span>`;
+        }
+        return `<div class="bar">${segments}</div>`;
+      },
+
+      getIncorrectText(question) {
+        if (question.answerType === 'mixed') {
+          const template = this.getActivityText(
+            'incorrectMixed',
+            'The mixed number is {whole} {numerator}/{denominator}.'
+          );
+          return template
+            .replace('{whole}', question.correct.whole)
+            .replace('{numerator}', question.correct.numerator)
+            .replace('{denominator}', question.correct.denominator);
+        }
+        const template = this.getActivityText(
+          'incorrectImproper',
+          'The improper fraction is {numerator}/{denominator}.'
+        );
+        return template
+          .replace('{numerator}', question.correct.numerator)
+          .replace('{denominator}', question.correct.denominator);
+      },
+
+      updateChoiceLabels() {
+        const label = this.getActivityText('answerChoicesLabel', 'Answer choices');
+        this.choicesContainer.setAttribute('aria-label', label);
+        this.choiceButtons.forEach(({ button, choice }) => {
+          const choiceLabel = choice.type === 'mixed'
+            ? this.getActivityText('choiceMixedLabel', 'Mixed number {whole} and {numerator} over {denominator}')
+                .replace('{whole}', choice.whole)
+                .replace('{numerator}', choice.numerator)
+                .replace('{denominator}', choice.denominator)
+            : this.getActivityText('choiceImproperLabel', 'Fraction {numerator} over {denominator}')
+                .replace('{numerator}', choice.numerator)
+                .replace('{denominator}', choice.denominator);
+          button.setAttribute('aria-label', choiceLabel);
+        });
+      },
+
+      getActivityText(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(`section.activities.mixed-numbers.${key}`);
+          if (text && text !== `section.activities.mixed-numbers.${key}`) {
+            return text;
+          }
+        }
+        return fallback;
+      },
+
+      updateTranslations() {
+        const question = this.questions[this.currentQuestion];
+        if (question) {
+          this.renderQuestion(question);
+        }
+        this.updateChoiceLabels();
+        this.updateFeedbackText();
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+      },
+
+      updateFeedbackText() {
+        if (!this.lastResult || !this.feedback.classList.contains('show')) return;
+        if (this.lastResult.isCorrect) {
+          this.feedback.textContent = this.getActivityText('correct', 'Correct!');
+          this.feedback.classList.remove('error');
+        } else {
+          this.feedback.textContent = this.getIncorrectText({ answerType: this.lastResult.answerType, correct: this.lastResult.correct });
+          this.feedback.classList.add('error');
+        }
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getActivityText('perfect', 'Perfect mixed number work!');
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getActivityText('great', 'Great conversions!');
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getActivityText('good', 'Nice work!');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getActivityText('keepPracticing', 'Keep practicing!');
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => MixedNumbersBridge.init());
+      } else {
+        MixedNumbersBridge.init();
+      }
+    });
+  </script>
+  <style>
+    /* Mixed Numbers Bridge specific styles */
+
+    .prompt-banner {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #0f172a;
+      text-align: center;
+      padding: var(--space-3) var(--space-5);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 3px solid #38bdf8;
+      box-shadow: 0 4px 0 #0ea5e9;
+      margin-bottom: var(--space-5);
+    }
+
+    .question-display {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-6);
+    }
+
+    .conversion-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .bridge-arrow {
+      font-size: var(--text-4xl);
+      color: #0ea5e9;
+      text-shadow: 0 3px 0 rgba(14, 165, 233, 0.35);
+    }
+
+    .value-card,
+    .equation-card {
+      border-radius: var(--radius-2xl);
+      padding: var(--space-4);
+      text-align: center;
+      min-width: 200px;
+      box-shadow: 0 4px 0 rgba(15, 23, 42, 0.15);
+      border: 4px solid transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .value-card.given {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: #3b82f6;
+      color: #1e3a8a;
+    }
+
+    .value-card.target {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .equation-card {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-color: #8b5cf6;
+      color: #4c1d95;
+    }
+
+    .card-label {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      opacity: 0.8;
+    }
+
+    .mixed-display,
+    .fraction-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      line-height: 1;
+    }
+
+    .mixed-display.compact,
+    .fraction-display.compact {
+      font-size: var(--text-3xl);
+    }
+
+    .mixed-whole {
+      font-size: var(--text-5xl);
+    }
+
+    .mixed-display.compact .mixed-whole {
+      font-size: var(--text-4xl);
+    }
+
+    .mixed-fraction,
+    .fraction-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .fraction-numerator {
+      border-bottom: 4px solid currentColor;
+      padding-bottom: 6px;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .fraction-display.compact .fraction-numerator {
+      border-bottom-width: 3px;
+      padding-bottom: 4px;
+    }
+
+    .fraction-denominator {
+      padding-top: 6px;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .fraction-display.compact .fraction-denominator {
+      padding-top: 4px;
+    }
+
+    .bar-stack {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      align-items: center;
+      width: 100%;
+    }
+
+    .bar {
+      display: flex;
+      width: 160px;
+      height: 20px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 2px solid rgba(15, 23, 42, 0.2);
+      background: #f8fafc;
+    }
+
+    .bar-segment {
+      flex: 1;
+      border-right: 1px solid rgba(15, 23, 42, 0.15);
+      background: #f8fafc;
+    }
+
+    .bar-segment:last-child {
+      border-right: none;
+    }
+
+    .bar-segment.filled {
+      background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    }
+
+    .value-card.target .bar-segment.filled {
+      background: linear-gradient(135deg, #34d399, #22c55e);
+    }
+
+    .equation-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .operator {
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #f97316;
+      text-shadow: 0 3px 0 rgba(249, 115, 22, 0.35);
+    }
+
+    .answer-placeholder {
+      width: 78px;
+      height: 78px;
+      border: 4px dashed #f59e0b;
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: #f59e0b;
+      background: #fef3c7;
+      box-shadow: 0 4px 0 rgba(217, 119, 6, 0.4);
+    }
+
+    .choices-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .choice-btn {
+      width: 120px;
+      height: 120px;
+      border-radius: var(--radius-xl);
+      border: 4px solid #0ea5e9;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      box-shadow: 0 4px 0 #0284c7;
+      color: #0369a1;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 #0284c7;
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 #0284c7;
+    }
+
+    .choice-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.35), 0 4px 0 #0284c7;
+    }
+
+    .choice-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .choice-btn.selected {
+      background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+      border-color: #8b5cf6;
+      box-shadow: 0 4px 0 #7c3aed;
+      color: #5b21b6;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      box-shadow: 0 4px 0 #dc2626;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    @media (max-width: 767px) {
+      .prompt-banner {
+        font-size: var(--text-base);
+      }
+
+      .value-card,
+      .equation-card {
+        min-width: 180px;
+      }
+
+      .bar {
+        width: 140px;
+        height: 18px;
+      }
+
+      .choice-btn {
+        width: 96px;
+        height: 96px;
+        border-width: 3px;
+      }
+
+      .mixed-display,
+      .fraction-display {
+        font-size: var(--text-3xl);
+      }
+
+      .mixed-whole {
+        font-size: var(--text-4xl);
+      }
+
+      .answer-placeholder {
+        width: 68px;
+        height: 68px;
+        font-size: var(--text-2xl);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .value-card,
+      .equation-card {
+        min-width: 160px;
+      }
+
+      .bridge-arrow {
+        font-size: var(--text-3xl);
+      }
+
+      .bar {
+        width: 120px;
+        height: 16px;
+      }
+
+      .choice-btn {
+        width: 84px;
+        height: 84px;
+      }
+
+      .mixed-display.compact,
+      .fraction-display.compact {
+        font-size: var(--text-2xl);
+      }
+
+      .mixed-display.compact .mixed-whole {
+        font-size: var(--text-3xl);
+      }
+
+      .fraction-numerator,
+      .fraction-denominator {
+        min-width: 30px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

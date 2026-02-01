@@ -2,19 +2,19 @@
 
 :root {
   /* ========== COLOR PALETTE - Habbo Hotel 2006 Inspired ========== */
-  
+
   /* Primary Colors - Deep Blue (like Habbo's interface) */
   --color-primary: #1E3A5F;
   --color-primary-light: #2D5A8A;
   --color-primary-lighter: #4A7DB5;
   --color-primary-dark: #0F2840;
-  
+
   /* Secondary Colors - Vibrant Cyan/Teal */
   --color-secondary: #00C9C9;
   --color-secondary-light: #33E5E5;
   --color-secondary-lighter: #99F2F2;
   --color-secondary-dark: #00A3A3;
-  
+
   /* Accent Colors - Bright & Playful */
   --color-accent-yellow: #FFD700;
   --color-accent-orange: #FF8C00;
@@ -22,7 +22,7 @@
   --color-accent-purple: #9B59B6;
   --color-accent-lime: #7FFF00;
   --color-accent-red: #FF4757;
-  
+
   /* Neutral Colors */
   --color-neutral-50: #FFFFFF;
   --color-neutral-100: #F8F9FA;
@@ -34,34 +34,34 @@
   --color-neutral-700: #343A40;
   --color-neutral-800: #212529;
   --color-neutral-900: #0D1117;
-  
+
   /* Text Colors - High Contrast */
   --color-text-dark: #1A1A2E;
   --color-text-light: #FFFFFF;
   --color-text-muted: #6B7280;
-  
+
   /* Semantic Colors */
   --color-success: #10B981;
   --color-error: #EF4444;
   --color-warning: #F59E0B;
   --color-info: #3B82F6;
-  
+
   /* Background Colors */
   --color-bg-primary: #F0F4F8;
   --color-bg-secondary: #E8F4F8;
   --color-bg-card: #FFFFFF;
   --color-bg-main: #F5F9FC;
-  
+
   /* ========== GRADIENTS ========== */
-  
+
   --gradient-sidebar: linear-gradient(180deg, #22c55e 0%, #15803d 100%);
   --gradient-header: linear-gradient(135deg, #00C9C9 0%, #00A3A3 100%);
   --gradient-button-primary: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
   --gradient-button-secondary: linear-gradient(135deg, #00C9C9 0%, #00A3A3 100%);
   --gradient-card-hover: linear-gradient(135deg, rgba(0, 201, 201, 0.1) 0%, rgba(30, 58, 95, 0.1) 100%);
-  
+
   /* ========== SPACING SCALE ========== */
-  
+
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -75,13 +75,13 @@
   --space-16: 64px;
   --space-20: 80px;
   --space-24: 96px;
-  
+
   /* ========== TYPOGRAPHY ========== */
-  
+
   /* Font Families */
   --font-primary: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-secondary: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  
+
   /* Font Sizes */
   --text-xs: 12px;
   --text-sm: 14px;
@@ -93,23 +93,23 @@
   --text-4xl: 32px;
   --text-5xl: 40px;
   --text-6xl: 48px;
-  
+
   /* Line Heights */
   --leading-tight: 1.25;
   --leading-snug: 1.375;
   --leading-normal: 1.5;
   --leading-relaxed: 1.625;
   --leading-loose: 2;
-  
+
   /* Font Weights */
   --weight-normal: 400;
   --weight-medium: 500;
   --weight-semibold: 600;
   --weight-bold: 700;
   --weight-extrabold: 800;
-  
+
   /* ========== BORDER RADIUS ========== */
-  
+
   --radius-sm: 6px;
   --radius-md: 8px;
   --radius-lg: 12px;
@@ -117,21 +117,21 @@
   --radius-2xl: 20px;
   --radius-3xl: 24px;
   --radius-full: 9999px;
-  
+
   /* ========== SHADOWS ========== */
-  
+
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  
+
   /* Soft, Colorful Shadows */
   --shadow-candy-yellow: 0 4px 12px rgba(255, 215, 0, 0.4);
   --shadow-candy-cyan: 0 4px 12px rgba(0, 201, 201, 0.4);
   --shadow-candy-pink: 0 4px 12px rgba(255, 105, 180, 0.4);
   --shadow-candy-blue: 0 4px 12px rgba(30, 58, 95, 0.3);
   --shadow-candy-green: 0 4px 12px rgba(51, 204, 102, 0.4);
-  
+
   /* 3D Candy Button Shadows */
   --shadow-3d-cyan: 0 4px 0 #00A3A3, 0 6px 8px rgba(0, 0, 0, 0.15);
   --shadow-3d-cyan-hover: 0 6px 0 #00A3A3, 0 8px 12px rgba(0, 0, 0, 0.2);
@@ -143,27 +143,27 @@
   --shadow-3d-orange: 0 4px 0 #E67700, 0 6px 8px rgba(0, 0, 0, 0.15);
   --shadow-3d-purple: 0 4px 0 #7C4799, 0 6px 8px rgba(0, 0, 0, 0.15);
   --shadow-3d-red: 0 4px 0 #D63447, 0 6px 8px rgba(0, 0, 0, 0.15);
-  
+
   /* Glow Effects */
   --glow-sm: 0 0 8px rgba(0, 201, 201, 0.5);
   --glow-md: 0 0 16px rgba(0, 201, 201, 0.6);
   --glow-lg: 0 0 24px rgba(0, 201, 201, 0.7);
-  
+
   /* ========== ANIMATION TIMINGS ========== */
-  
+
   --duration-fast: 150ms;
   --duration-normal: 200ms;
   --duration-medium: 300ms;
   --duration-slow: 400ms;
   --duration-slower: 600ms;
-  
+
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  
+
   /* ========== Z-INDEX SCALE ========== */
-  
+
   --z-base: 1;
   --z-dropdown: 100;
   --z-sticky: 200;
@@ -171,15 +171,15 @@
   --z-modal: 400;
   --z-toast: 500;
   --z-tooltip: 600;
-  
+
   /* ========== LAYOUT ========== */
-  
+
   --sidebar-width: 240px;
   --header-height: 60px;
   --max-content-width: 1200px;
-  
+
   /* ========== INTERACTIVE SIZES ========== */
-  
+
   --touch-target-min: 60px;
   --icon-sm: 16px;
   --icon-md: 24px;
@@ -187,13 +187,13 @@
   --icon-xl: 48px;
   --icon-2xl: 64px;
   --icon-3xl: 96px;
-  
+
   /* Activity Block Sizes */
   --activity-icon-size: 120px;
   --activity-card-width: 200px;
-  
+
   /* ========== BREAKPOINTS ========== */
-  
+
   /* These are used in media queries, not as CSS variables */
   /* Mobile: 0-767px */
   /* Tablet: 768-1023px */

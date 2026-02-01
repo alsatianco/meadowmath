@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Unit Conversion Chain - Grade 5 Math Activity - Meadow Math">
+  <title>Unit Conversion Chain - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🔁</span>
+            <span data-i18n="section.activities.unit-conversion-chain.title">Unit Conversion Chain</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.unit-conversion-chain.instruction">Convert to the new unit!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Conversion Display -->
+          <div class="conversion-container" id="conversion-container">
+            <div class="conversion-prompt" id="conversion-prompt">
+              <span data-i18n="section.activities.unit-conversion-chain.convert">Convert</span>:
+            </div>
+
+            <div class="conversion-chain">
+              <div class="chain-value source">
+                <span class="value-number" id="source-value">5</span>
+                <span class="value-unit" id="source-unit">km</span>
+              </div>
+              <div class="chain-arrow">→</div>
+              <div class="chain-value target">
+                <span class="value-number" id="target-value">?</span>
+                <span class="value-unit" id="target-unit">m</span>
+              </div>
+            </div>
+
+            <!-- Conversion Factor Display -->
+            <div class="factor-display" id="factor-display">
+              <div class="factor-hint" id="factor-hint">
+                <!-- Hint will be shown here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Visual Reference -->
+          <div class="reference-card" id="reference-card">
+            <div class="reference-title">
+              <span class="reference-icon">📏</span>
+              <span data-i18n="section.activities.unit-conversion-chain.reference">Reference</span>
+            </div>
+            <div class="reference-content" id="reference-content">
+              <!-- Reference will be shown here -->
+            </div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <!-- Choices will be generated here -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.unit-conversion-chain.great">Great work with unit conversions!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Unit Conversion Chain Activity - Grade 5 Level 4
+    const UnitConversionChain = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+
+      // Conversion data
+      conversionSystems: {
+        metric_length: {
+          name: 'Length (Metric)',
+          units: ['km', 'm', 'cm', 'mm'],
+          factors: [1000, 100, 10], // km→m, m→cm, cm→mm
+          icon: '📏'
+        },
+        metric_mass: {
+          name: 'Mass (Metric)',
+          units: ['kg', 'g', 'mg'],
+          factors: [1000, 1000], // kg→g, g→mg
+          icon: '⚖️'
+        },
+        metric_capacity: {
+          name: 'Capacity (Metric)',
+          units: ['L', 'mL'],
+          factors: [1000], // L→mL
+          icon: '🧪'
+        },
+        us_length: {
+          name: 'Length (US)',
+          units: ['mi', 'yd', 'ft', 'in'],
+          factors: [1760, 3, 12], // mi→yd, yd→ft, ft→in
+          icon: '📐'
+        },
+        us_weight: {
+          name: 'Weight (US)',
+          units: ['lb', 'oz'],
+          factors: [16], // lb→oz
+          icon: '🏋️'
+        },
+        time: {
+          name: 'Time',
+          units: ['hr', 'min', 'sec'],
+          factors: [60, 60], // hr→min, min→sec
+          icon: '⏱️'
+        }
+      },
+
+      // DOM elements
+      conversionContainer: null,
+      sourceValue: null,
+      sourceUnit: null,
+      targetValue: null,
+      targetUnit: null,
+      factorDisplay: null,
+      factorHint: null,
+      referenceCard: null,
+      referenceContent: null,
+      choicesContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.conversionContainer = document.getElementById('conversion-container');
+        this.sourceValue = document.getElementById('source-value');
+        this.sourceUnit = document.getElementById('source-unit');
+        this.targetValue = document.getElementById('target-value');
+        this.targetUnit = document.getElementById('target-unit');
+        this.factorDisplay = document.getElementById('factor-display');
+        this.factorHint = document.getElementById('factor-hint');
+        this.referenceCard = document.getElementById('reference-card');
+        this.referenceContent = document.getElementById('reference-content');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      generateQuestions() {
+        const templates = [];
+
+        // Metric length conversions
+        templates.push(
+          { system: 'metric_length', fromIdx: 0, toIdx: 1, value: 2 },     // km → m
+          { system: 'metric_length', fromIdx: 0, toIdx: 1, value: 3.5 },   // km → m
+          { system: 'metric_length', fromIdx: 1, toIdx: 2, value: 4 },     // m → cm
+          { system: 'metric_length', fromIdx: 1, toIdx: 2, value: 2.5 },   // m → cm
+          { system: 'metric_length', fromIdx: 2, toIdx: 3, value: 15 },    // cm → mm
+          { system: 'metric_length', fromIdx: 1, toIdx: 0, value: 5000 },  // m → km
+          { system: 'metric_length', fromIdx: 2, toIdx: 1, value: 300 },   // cm → m
+        );
+
+        // Metric mass conversions
+        templates.push(
+          { system: 'metric_mass', fromIdx: 0, toIdx: 1, value: 3 },       // kg → g
+          { system: 'metric_mass', fromIdx: 0, toIdx: 1, value: 1.5 },     // kg → g
+          { system: 'metric_mass', fromIdx: 1, toIdx: 0, value: 2500 },    // g → kg
+        );
+
+        // Metric capacity
+        templates.push(
+          { system: 'metric_capacity', fromIdx: 0, toIdx: 1, value: 2 },   // L → mL
+          { system: 'metric_capacity', fromIdx: 0, toIdx: 1, value: 0.5 }, // L → mL
+          { system: 'metric_capacity', fromIdx: 1, toIdx: 0, value: 750 }, // mL → L
+        );
+
+        // US length
+        templates.push(
+          { system: 'us_length', fromIdx: 2, toIdx: 3, value: 3 },         // ft → in
+          { system: 'us_length', fromIdx: 2, toIdx: 3, value: 5 },         // ft → in
+          { system: 'us_length', fromIdx: 3, toIdx: 2, value: 24 },        // in → ft
+        );
+
+        // US weight
+        templates.push(
+          { system: 'us_weight', fromIdx: 0, toIdx: 1, value: 2 },         // lb → oz
+          { system: 'us_weight', fromIdx: 0, toIdx: 1, value: 3 },         // lb → oz
+          { system: 'us_weight', fromIdx: 1, toIdx: 0, value: 32 },        // oz → lb
+        );
+
+        // Time
+        templates.push(
+          { system: 'time', fromIdx: 0, toIdx: 1, value: 2 },              // hr → min
+          { system: 'time', fromIdx: 0, toIdx: 1, value: 1.5 },            // hr → min
+          { system: 'time', fromIdx: 1, toIdx: 2, value: 3 },              // min → sec
+          { system: 'time', fromIdx: 1, toIdx: 0, value: 120 },            // min → hr
+        );
+
+        // Shuffle and pick questions
+        const shuffled = shuffle(templates);
+        this.questions = [];
+
+        for (let i = 0; i < this.totalQuestions; i++) {
+          const template = shuffled[i % shuffled.length];
+          const systemData = this.conversionSystems[template.system];
+
+          const fromUnit = systemData.units[template.fromIdx];
+          const toUnit = systemData.units[template.toIdx];
+
+          // Calculate answer
+          let answer;
+          let factor;
+          let operation;
+
+          if (template.fromIdx < template.toIdx) {
+            // Converting to smaller unit (multiply)
+            factor = 1;
+            for (let j = template.fromIdx; j < template.toIdx; j++) {
+              factor *= systemData.factors[j];
+            }
+            answer = template.value * factor;
+            operation = 'multiply';
+          } else {
+            // Converting to larger unit (divide)
+            factor = 1;
+            for (let j = template.toIdx; j < template.fromIdx; j++) {
+              factor *= systemData.factors[j];
+            }
+            answer = template.value / factor;
+            operation = 'divide';
+          }
+
+          this.questions.push({
+            system: template.system,
+            systemData: systemData,
+            fromValue: template.value,
+            fromUnit: fromUnit,
+            toUnit: toUnit,
+            answer: answer,
+            factor: factor,
+            operation: operation,
+            fromIdx: template.fromIdx,
+            toIdx: template.toIdx
+          });
+        }
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      formatNumber(num) {
+        // Avoid floating point errors
+        if (Number.isInteger(num)) {
+          return num.toLocaleString();
+        }
+        // Round to reasonable decimal places
+        const rounded = Math.round(num * 1000) / 1000;
+        return rounded.toLocaleString(undefined, { maximumFractionDigits: 3 });
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+        this.targetValue.textContent = '?';
+        this.targetValue.classList.remove('revealed');
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        // Update display
+        this.sourceValue.textContent = this.formatNumber(question.fromValue);
+        this.sourceUnit.textContent = question.fromUnit;
+        this.targetUnit.textContent = question.toUnit;
+
+        // Show conversion hint
+        this.buildFactorHint(question);
+
+        // Show reference
+        this.buildReference(question);
+
+        // Generate choices
+        this.generateChoices(question);
+
+        this.renderProgress();
+      },
+
+      buildFactorHint(question) {
+        const operatorText = question.operation === 'multiply' ? '×' : '÷';
+        const hintText = this.getTranslation(
+          `section.activities.unit-conversion-chain.${question.operation}`,
+          question.operation === 'multiply' ? 'Multiply' : 'Divide'
+        );
+
+        this.factorHint.innerHTML = `
+          <span class="hint-operation">${hintText} ${operatorText} ${question.factor.toLocaleString()}</span>
+        `;
+      },
+
+      buildReference(question) {
+        const systemData = question.systemData;
+        let referenceHTML = `<div class="reference-icon-badge">${systemData.icon}</div>`;
+
+        // Build reference chain
+        const refParts = [];
+        for (let i = 0; i < systemData.units.length - 1; i++) {
+          refParts.push(`1 ${systemData.units[i]} = ${systemData.factors[i].toLocaleString()} ${systemData.units[i + 1]}`);
+        }
+
+        referenceHTML += `<div class="reference-facts">${refParts.join('<br>')}</div>`;
+        this.referenceContent.innerHTML = referenceHTML;
+      },
+
+      generateChoices(question) {
+        this.choicesContainer.innerHTML = '';
+
+        const correctAnswer = question.answer;
+        const choices = new Set();
+        choices.add(correctAnswer);
+
+        // Generate distractors
+        // Wrong operation
+        if (question.operation === 'multiply') {
+          choices.add(question.fromValue / question.factor);
+        } else {
+          choices.add(question.fromValue * question.factor);
+        }
+
+        // Off by factor of 10
+        choices.add(correctAnswer * 10);
+        choices.add(correctAnswer / 10);
+
+        // Slightly wrong
+        choices.add(correctAnswer + question.factor);
+        choices.add(correctAnswer - question.factor);
+
+        // Filter out negatives and zeros, and convert to array
+        let choicesArray = Array.from(choices)
+          .filter(c => c > 0 && c !== correctAnswer)
+          .slice(0, 3);
+
+        // Add correct answer
+        choicesArray.push(correctAnswer);
+
+        // Shuffle
+        choicesArray = shuffle(choicesArray);
+
+        // Create buttons
+        choicesArray.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.innerHTML = `<span class="choice-value">${this.formatNumber(choice)}</span> <span class="choice-unit">${question.toUnit}</span>`;
+          btn.dataset.value = choice;
+          btn.addEventListener('click', () => this.checkAnswer(choice, btn, question));
+          this.choicesContainer.appendChild(btn);
+        });
+      },
+
+      checkAnswer(selected, btn, question) {
+        if (this.isAnswered) return;
+
+        this.isAnswered = true;
+        const isCorrect = Math.abs(selected - question.answer) < 0.0001;
+
+        // Disable all buttons
+        const allBtns = this.choicesContainer.querySelectorAll('.choice-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        // Reveal answer
+        this.targetValue.textContent = this.formatNumber(question.answer);
+        this.targetValue.classList.add('revealed');
+
+        if (isCorrect) {
+          this.correctCount++;
+          btn.classList.add('correct');
+
+          const operatorText = question.operation === 'multiply' ? '×' : '÷';
+          const feedbackText = this.getTranslation(
+            'section.activities.unit-conversion-chain.correct',
+            'Correct!'
+          ) + ` ${this.formatNumber(question.fromValue)} ${operatorText} ${question.factor.toLocaleString()} = ${this.formatNumber(question.answer)}`;
+
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          btn.classList.add('incorrect');
+
+          // Highlight correct answer
+          allBtns.forEach(b => {
+            const val = parseFloat(b.dataset.value);
+            if (Math.abs(val - question.answer) < 0.0001) {
+              b.classList.add('correct');
+            }
+          });
+
+          const feedbackText = this.getTranslation(
+            'section.activities.unit-conversion-chain.wrong',
+            'The answer is {answer}.'
+          ).replace('{answer}', `${this.formatNumber(question.answer)} ${question.toUnit}`);
+
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+        this.scheduleAdvance();
+      },
+
+      scheduleAdvance() {
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+
+        // Refresh current question if not answered
+        if (!this.isAnswered && this.questions[this.currentQuestion]) {
+          const question = this.questions[this.currentQuestion];
+          this.buildFactorHint(question);
+        }
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.unit-conversion-chain.perfect',
+            'Perfect! You mastered unit conversions!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.unit-conversion-chain.great',
+            'Great work with unit conversions!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.unit-conversion-chain.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.unit-conversion-chain.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => UnitConversionChain.init());
+      } else {
+        UnitConversionChain.init();
+      }
+    });
+  </script>
+  <style>
+    /* Unit Conversion Chain specific styles */
+
+    .conversion-container {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #3b82f6;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      text-align: center;
+    }
+
+    .conversion-prompt {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #1e40af;
+      margin-bottom: var(--space-3);
+    }
+
+    .conversion-chain {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-3);
+    }
+
+    .chain-value {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--space-3) var(--space-4);
+      min-width: 120px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .chain-value.source {
+      border: 3px solid #3b82f6;
+    }
+
+    .chain-value.target {
+      border: 3px solid #8b5cf6;
+    }
+
+    .value-number {
+      display: block;
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #1e3a5f;
+    }
+
+    .chain-value.target .value-number {
+      color: #7c3aed;
+    }
+
+    .chain-value.target .value-number.revealed {
+      color: #059669;
+    }
+
+    .value-unit {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-medium);
+      color: #6b7280;
+    }
+
+    .chain-arrow {
+      font-size: var(--text-3xl);
+      color: #6b7280;
+      font-weight: var(--weight-bold);
+    }
+
+    .factor-display {
+      margin-top: var(--space-2);
+    }
+
+    .factor-hint {
+      display: inline-block;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid #f59e0b;
+      border-radius: var(--radius-lg);
+      padding: var(--space-2) var(--space-3);
+    }
+
+    .hint-operation {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+    }
+
+    /* Reference Card */
+    .reference-card {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 2px solid #e5e7eb;
+      padding: var(--space-3);
+      margin-bottom: var(--space-4);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .reference-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-2);
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .reference-icon {
+      font-size: var(--text-lg);
+    }
+
+    .reference-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+    }
+
+    .reference-icon-badge {
+      font-size: var(--text-3xl);
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-radius: var(--radius-lg);
+      padding: var(--space-2);
+    }
+
+    .reference-facts {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-medium);
+      color: #374151;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    /* Answer Choices */
+    .choices-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      max-width: 420px;
+      margin: 0 auto var(--space-4);
+    }
+
+    .choice-btn {
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #1e3a5f;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 3px solid #0ea5e9;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-1);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: scale(1.03);
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+      border-color: #0284c7;
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: scale(0.97);
+    }
+
+    .choice-btn:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .choice-btn:focus-visible {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border-color: #ef4444;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    .choice-value {
+      font-size: var(--text-xl);
+    }
+
+    .choice-unit {
+      font-size: var(--text-sm);
+      color: #6b7280;
+      font-weight: var(--weight-medium);
+    }
+
+    .choice-btn.correct .choice-unit,
+    .choice-btn.incorrect .choice-unit {
+      color: inherit;
+      opacity: 0.8;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+      20%, 40%, 60%, 80% { transform: translateX(4px); }
+    }
+
+    /* Feedback and layout */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .conversion-container {
+        padding: var(--space-3);
+      }
+
+      .conversion-prompt {
+        font-size: var(--text-base);
+      }
+
+      .conversion-chain {
+        gap: var(--space-2);
+      }
+
+      .chain-value {
+        padding: var(--space-2) var(--space-3);
+        min-width: 100px;
+      }
+
+      .value-number {
+        font-size: var(--text-xl);
+      }
+
+      .value-unit {
+        font-size: var(--text-base);
+      }
+
+      .chain-arrow {
+        font-size: var(--text-2xl);
+      }
+
+      .hint-operation {
+        font-size: var(--text-base);
+      }
+
+      .reference-card {
+        padding: var(--space-2);
+        max-width: 100%;
+      }
+
+      .reference-content {
+        gap: var(--space-2);
+      }
+
+      .reference-icon-badge {
+        font-size: var(--text-2xl);
+        padding: var(--space-1);
+      }
+
+      .reference-facts {
+        font-size: var(--text-sm);
+      }
+
+      .choices-container {
+        gap: var(--space-2);
+        max-width: 340px;
+      }
+
+      .choice-btn {
+        padding: var(--space-2) var(--space-3);
+        min-height: 60px;
+      }
+
+      .choice-value {
+        font-size: var(--text-lg);
+      }
+
+      .choice-unit {
+        font-size: var(--text-xs);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .conversion-chain {
+        flex-direction: column;
+        gap: var(--space-1);
+      }
+
+      .chain-arrow {
+        transform: rotate(90deg);
+        font-size: var(--text-xl);
+      }
+
+      .chain-value {
+        min-width: 140px;
+      }
+
+      .value-number {
+        font-size: var(--text-lg);
+      }
+
+      .factor-hint {
+        padding: var(--space-1) var(--space-2);
+      }
+
+      .hint-operation {
+        font-size: var(--text-sm);
+      }
+
+      .reference-content {
+        flex-direction: column;
+        gap: var(--space-1);
+      }
+
+      .reference-facts {
+        text-align: center;
+      }
+
+      .choices-container {
+        max-width: 280px;
+      }
+
+      .choice-btn {
+        min-height: 55px;
+        padding: var(--space-2);
+      }
+
+      .choice-value {
+        font-size: var(--text-base);
+      }
+    }
+
+    @media (max-width: 360px) {
+      .choices-container {
+        grid-template-columns: 1fr 1fr;
+        max-width: 260px;
+      }
+
+      .choice-btn {
+        min-height: 50px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,52 +1,1142 @@
 {
   "title": "Hoạt động Lớp 4",
-  "description": "Học cách chia đều và phân chia",
+  "description": "Giá trị vị trí, phép tính, phân số, số thập phân và hình học",
   "levels": {
     "level1": {
-      "title": "Cấp 1",
-      "description": "Nhân số nhiều chữ số"
+      "title": "Giá trị vị trí, Làm tròn & Thuật toán Cộng/Trừ",
+      "goal": "Biểu diễn, so sánh và làm tròn số đến 1.000.000 và cộng/trừ số nhiều chữ số với ý nghĩa.",
+      "learnMore": {
+        "g4-l1-big-idea": {
+          "title": "Ý tưởng lớn",
+          "content": "Số nhiều chữ số được xây dựng từ các giá trị vị trí. Khi trẻ có thể *thấy* một số bao gồm trăm nghìn, chục nghìn, nghìn, trăm, chục và đơn vị, việc so sánh, làm tròn và cộng/trừ trở nên dễ dàng và đáng tin cậy hơn nhiều."
+        },
+        "g4-l1-notice": {
+          "title": "Những điều cần chú ý",
+          "content": "* So sánh bằng cách nhìn từ trái trước (giá trị vị trí lớn nhất).\n* Sử dụng số không như \"chỗ trống,\" không phải \"không có gì để bỏ qua.\"\n* Làm tròn bằng cách nghĩ \"bội số nào gần hơn?\"\n* Kiểm tra đáp án chính xác bằng ước lượng."
+        },
+        "g4-l1-home": {
+          "title": "Thử ở nhà",
+          "content": "* **Trò chơi A: \"Xây Một Số\"** Viết các chữ số 0-9 lên thẻ. Vẽ một bảng giá trị vị trí ghi rõ trăm nghìn, chục nghìn, nghìn, trăm, chục, đơn vị. Rút 6 thẻ để xây số lớn nhất, số nhỏ nhất và một số gần 500.000.\n* **Trò chơi B: \"Ước Lượng Rồi Kiểm Tra\"** Chọn hai giá tiền hoặc số đếm từ thực tế (mua sắm, bước đi, lượt xem). Làm tròn mỗi số, cộng/trừ các số đã làm tròn, rồi so sánh với tổng chính xác."
+        },
+        "g4-l1-videos": {
+          "title": "Video tùy chọn",
+          "content": "**Tìm trên YouTube:**\n* <a href=\"https://www.youtube.com/results?search_query=place+value+to+one+million+grade+4\" target=\"_blank\" rel=\"noopener noreferrer\">place value to one million (grade 4)</a>\n* <a href=\"https://www.youtube.com/results?search_query=rounding+multi+digit+numbers+to+any+place\" target=\"_blank\" rel=\"noopener noreferrer\">rounding multi-digit numbers to any place</a>\n* <a href=\"https://www.youtube.com/results?search_query=standard+algorithm+addition+subtraction+with+regrouping+grade+4\" target=\"_blank\" rel=\"noopener noreferrer\">addition & subtraction with regrouping (grade 4)</a>\n\n**Luyện tập thêm:**\n* <a href=\"https://www.khanacademy.org/math/cc-fourth-grade-math\" target=\"_blank\" rel=\"noopener noreferrer\">Khan Academy: Lớp 4 (Common Core)</a>"
+        }
+      }
     },
     "level2": {
-      "title": "Cấp 2",
-      "description": "Chia số dài"
+      "title": "Ước số, Bội số & Nhân/Chia số nhiều chữ số",
+      "goal": "Sử dụng cấu trúc (ước số/bội số) và mô hình để nhân và chia số lớn hơn, sau đó kết nối với phương pháp hiệu quả.",
+      "learnMore": {
+        "g4-l2-big-idea": {
+          "title": "Ý tưởng lớn",
+          "content": "Phép nhân và phép chia là về *nhóm* và *mảng*. Mô hình diện tích và tích riêng phần cho thấy tại sao các thuật toán hoạt động, để việc \"nhớ\" và \"hạ xuống\" không còn như phép thuật."
+        },
+        "g4-l2-notice": {
+          "title": "Những điều cần chú ý",
+          "content": "* Có thể tìm cặp ước số bằng cách tạo hình chữ nhật.\n* Sử dụng tư duy phân phối (20 x 14 cộng 3 x 14).\n* Trong phép chia, kiểm tra bằng cách nhân thương ngược lại.\n* Xử lý số dư dựa trên câu chuyện (số thừa hoặc \"cần thêm một hộp\")."
+        },
+        "g4-l2-home": {
+          "title": "Thử ở nhà",
+          "content": "* **Trò chơi A: \"Thám Tử Hình Chữ Nhật\"** Chọn một số (24, 30, 36). Tìm tất cả hình chữ nhật có thể xây bằng đồ vật nhỏ hoặc lưới vẽ. Mỗi hình chữ nhật là một cặp ước số.\n* **Trò chơi B: \"Gói Hàng Mua Sắm\"** Giả sử bạn mua 128 sticker trong gói 6 cái. Có bao nhiêu gói đầy? Còn bao nhiêu? Bạn có mua thêm một gói không?"
+        },
+        "g4-l2-videos": {
+          "title": "Video tùy chọn",
+          "content": "**Tìm trên YouTube:**\n* <a href=\"https://www.youtube.com/results?search_query=area+model+two+digit+by+two+digit+multiplication\" target=\"_blank\" rel=\"noopener noreferrer\">area model for 2-digit x 2-digit</a>\n* <a href=\"https://www.youtube.com/results?search_query=partial+quotients+division+grade+4\" target=\"_blank\" rel=\"noopener noreferrer\">partial quotients division (grade 4)</a>\n* <a href=\"https://www.youtube.com/results?search_query=factors+and+multiples+for+kids+grade+4\" target=\"_blank\" rel=\"noopener noreferrer\">factors and multiples (grade 4)</a>\n\n**Liên kết chương trình:**\n* <a href=\"https://curriculum.illustrativemathematics.org/K5/teachers/grade-4/units.html\" target=\"_blank\" rel=\"noopener noreferrer\">Illustrative Mathematics: Bài học Lớp 4</a>\n* <a href=\"https://resources.finalsite.net/images/v1727715667/issaquah/zzhjlpfaqluytiwngu3p/EurekaMathOverviewFourthGrade.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Eureka Math: Tổng quan mô-đun Lớp 4 (PDF)</a>"
+        }
+      }
     },
     "level3": {
-      "title": "Cấp 3",
-      "description": "Phân số tương đương"
+      "title": "Phân số & Hỗn số",
+      "goal": "Hiểu phân số là số, tìm phân số tương đương, so sánh chúng, và cộng/trừ với mẫu số giống nhau.",
+      "learnMore": {
+        "g4-l3-big-idea": {
+          "title": "Ý tưởng lớn",
+          "content": "Phân số là số có *vị trí* (trục số) và *kích thước*. Phân số tương đương đơn giản là các tên khác nhau cho cùng một kích thước. Khi mẫu số giống nhau, cộng và trừ là về việc gộp hoặc bỏ các phần bằng nhau."
+        },
+        "g4-l3-notice": {
+          "title": "Những điều cần chú ý",
+          "content": "* Đặt phân số đúng vị trí giữa 0 và 1 (hoặc quá 1).\n* Biết rằng nhân tử số và mẫu số với cùng một số giữ nguyên giá trị.\n* Sử dụng các mốc (1/2, 1) thay vì đoán.\n* Với mẫu số giống nhau, cộng/trừ tử số và giữ nguyên mẫu số."
+        },
+        "g4-l3-home": {
+          "title": "Thử ở nhà",
+          "content": "* **Trò chơi A: \"Cuộc Đua Dải Phân Số\"** Vẽ một dải cho 1 đơn vị. Gấp (hoặc đánh dấu) thành 2, 3, 4, 6, 8 phần bằng nhau. Tìm các cặp có kích thước bằng nhau (1/2 = 2/4 = 4/8).\n* **Trò chơi B: \"Gấp Đôi Công Thức\"** Chọn một bước công thức đơn giản: \"Dùng 2/3 cốc.\" Hỏi: \"2 x 2/3 là bao nhiêu?\" Dùng hình cốc đo hoặc vẽ phân số."
+        },
+        "g4-l3-videos": {
+          "title": "Video tùy chọn",
+          "content": "Tìm trên YouTube:\n* <a href=\"https://www.youtube.com/results?search_query=equivalent+fractions+using+number+lines+and+models\" target=\"_blank\" rel=\"noopener noreferrer\">equivalent fractions with models</a>\n* <a href=\"https://www.youtube.com/results?search_query=add+and+subtract+fractions+with+like+denominators+grade+4\" target=\"_blank\" rel=\"noopener noreferrer\">add/sub fractions with like denominators</a>\n* <a href=\"https://www.youtube.com/results?search_query=mixed+numbers+and+improper+fractions+grade+4\" target=\"_blank\" rel=\"noopener noreferrer\">mixed numbers and improper fractions</a>\n\nBài tập mở rộng:\n* <a href=\"https://nrich.maths.org/articles/exploring-fractions\" target=\"_blank\" rel=\"noopener noreferrer\">NRICH: Khám phá Phân số (bài tập)</a>\n* <a href=\"https://www.youcubed.org/wim/fraction-puzzles-4-7/\" target=\"_blank\" rel=\"noopener noreferrer\">YouCubed: Câu đố Phân số</a>"
+        }
+      }
     },
     "level4": {
-      "title": "Cấp 4",
-      "description": "Giới thiệu số thập phân"
+      "title": "Số thập phân, Đo lường & Dữ liệu",
+      "goal": "Kết nối phân số với số thập phân (phần mười/phần trăm), chuyển đổi đơn vị trong cùng hệ thống, và giải bài toán đo lường/dữ liệu.",
+      "learnMore": {
+        "g4-l4-big-idea": {
+          "title": "Ý tưởng lớn",
+          "content": "Số thập phân là cách khác để đặt tên cho phân số của 10 và 100. Bài toán đo lường trở nên dễ hơn khi trẻ theo dõi *đơn vị* và sử dụng chuyển đổi như \"nhân hoặc chia cho một hệ số đã biết.\""
+        },
+        "g4-l4-notice": {
+          "title": "Những điều cần chú ý",
+          "content": "* Đọc 0,4 là \"bốn phần mười,\" không phải \"không phẩy bốn.\"\n* So sánh số thập phân theo phần mười trước, rồi phần trăm.\n* Viết đơn vị với đáp án (cm, in, m, ft).\n* Phân biệt diện tích (đơn vị vuông) với chu vi (đơn vị)."
+        },
+        "g4-l4-home": {
+          "title": "Thử ở nhà",
+          "content": "* **Trò chơi A: \"Nghệ Thuật Lưới Trăm Ô\"** Tô 0,36, 0,5, 0,08 trên lưới 10x10. Viết mỗi số dưới dạng phân số trên 100 và trên 10 khi có thể.\n* **Trò chơi B: \"Đo + Chuyển Đổi\"** Đo cạnh bàn bằng inch. Chuyển sang feet và inch. Sau đó đo bằng centimeter và so sánh."
+        },
+        "g4-l4-videos": {
+          "title": "Video tùy chọn",
+          "content": "Tìm trên YouTube:\n* <a href=\"https://www.youtube.com/results?search_query=tenths+and+hundredths+decimals+for+kids\" target=\"_blank\" rel=\"noopener noreferrer\">tenths and hundredths decimals</a>\n* <a href=\"https://www.youtube.com/results?search_query=convert+units+grade+4+measurement\" target=\"_blank\" rel=\"noopener noreferrer\">unit conversions (grade 4)</a>\n* <a href=\"https://www.youtube.com/results?search_query=area+and+perimeter+grade+4\" target=\"_blank\" rel=\"noopener noreferrer\">area and perimeter (grade 4)</a>\n\nChương trình tùy chọn:\n* <a href=\"https://www.hmhco.com/programs/math-in-focus\" target=\"_blank\" rel=\"noopener noreferrer\">Math in Focus (phương pháp Toán Singapore)</a>"
+        }
+      }
     },
     "level5": {
-      "title": "Cấp 5",
-      "description": "Hình học"
-    },
-    "level6": {
-      "title": "Cấp 6",
-      "description": "Bài toán có lời văn"
+      "title": "Góc & Tính chất Hình",
+      "goal": "Đo và vẽ góc, hiểu đường thẳng và đối xứng, phân loại hình theo tính chất.",
+      "learnMore": {
+        "g4-l5-big-idea": {
+          "title": "Ý tưởng lớn",
+          "content": "Hình học là về *mối quan hệ*: cách các đường gặp nhau, cách góc đo \"độ quay,\" và cách phân loại hình theo tính chất. Khi học sinh có thể đặt tên tính chất, các em có thể giải thích *tại sao* một hình thuộc về một loại."
+        },
+        "g4-l5-notice": {
+          "title": "Những điều cần chú ý",
+          "content": "* Nhận ra góc vuông ngay cả khi xoay.\n* Đo góc bằng cách căn chỉnh đường cơ sở trước.\n* Dùng \"song song\" là \"không bao giờ gặp nhau\" và \"vuông góc\" là \"tạo góc vuông.\"\n* Phân loại hình vuông là hình chữ nhật đặc biệt (và là hình thoi đặc biệt)."
+        },
+        "g4-l5-home": {
+          "title": "Thử ở nhà",
+          "content": "* **Trò chơi A: \"Săn Góc\"** Tìm 5 góc trong nhà bạn (góc sách, bản lề cửa, bàn). Gắn nhãn mỗi góc là nhọn/vuông/tù.\n* **Trò chơi B: \"Gấp Đối Xứng\"** Cắt các hình đơn giản từ giấy. Gấp để kiểm tra đường đối xứng. Vẽ các đường gấp."
+        },
+        "g4-l5-videos": {
+          "title": "Video tùy chọn",
+          "content": "Tìm trên YouTube:\n* <a href=\"https://www.youtube.com/results?search_query=measuring+angles+with+a+protractor+grade+4\" target=\"_blank\" rel=\"noopener noreferrer\">measuring angles with a protractor</a>\n* <a href=\"https://www.youtube.com/results?search_query=parallel+and+perpendicular+lines+for+kids\" target=\"_blank\" rel=\"noopener noreferrer\">parallel and perpendicular lines</a>\n* <a href=\"https://www.youtube.com/results?search_query=classifying+quadrilaterals+grade+4\" target=\"_blank\" rel=\"noopener noreferrer\">classifying quadrilaterals</a>\n\nCâu đố thử thách:\n* <a href=\"https://beastacademy.com/books/4A\" target=\"_blank\" rel=\"noopener noreferrer\">Beast Academy Level 4 (nâng cao/kiểu câu đố)</a>"
+        }
+      }
     }
   },
   "activities": {
-    "multiDigitMultiply": {
-      "title": "Nhân số nhiều chữ số",
-      "description": "Nhân các số lớn hơn",
-      "instruction": "Tìm tích"
+    "place-value-to-million": {
+      "title": "Kính Viễn Vọng Giá Trị Vị Trí đến 1.000.000",
+      "description": "Xây số lớn bằng bảng giá trị vị trí.",
+      "instruction": "Xây số được hiển thị bằng bảng giá trị vị trí!",
+      "prompt": "Xây {number}",
+      "buildNumber": "Xây số này:",
+      "hundredThousands": "Trăm Nghìn",
+      "tenThousands": "Chục Nghìn",
+      "thousands": "Nghìn",
+      "hundreds": "Trăm",
+      "tens": "Chục",
+      "ones": "Đơn vị",
+      "perfect": "Tuyệt vời! Giá trị vị trí xuất sắc!",
+      "great": "Giỏi lắm! Xây số lớn tốt!",
+      "keepPracticing": "Tiếp tục luyện tập!"
     },
-    "longDivision": {
-      "title": "Chia số dài",
-      "description": "Chia từng bước",
-      "instruction": "Thương là bao nhiêu?"
+    "expanded-form-million": {
+      "title": "Ghép Dạng Khai Triển Triệu",
+      "description": "Ghép số với dạng khai triển của nó.",
+      "instruction": "Ghép mỗi số với dạng khai triển của nó!",
+      "selectPair": "Chọn một số, rồi chọn dạng khai triển của nó!",
+      "numbers": "Các số",
+      "expandedForms": "Dạng khai triển",
+      "matchesFound": "Đã ghép:",
+      "perfect": "Kỹ năng ghép hoàn hảo!",
+      "great": "Giỏi lắm! Ghép dạng khai triển tốt!",
+      "keepPracticing": "Tiếp tục luyện tập!"
     },
-    "equivalentFractions": {
-      "title": "Phân số tương đương",
-      "description": "Tìm các phân số bằng nhau",
-      "instruction": "Phân số nào bằng nhau?"
+    "compare-order-big": {
+      "title": "So Sánh & Sắp Xếp Số Lớn",
+      "description": "So sánh và sắp xếp các số lớn.",
+      "instruction": "So sánh các số bằng >, <, hoặc = rồi sắp xếp chúng!",
+      "partA": "Phần A: So sánh",
+      "partB": "Phần B: Sắp xếp",
+      "whichSymbol": "Ký hiệu nào làm đúng?",
+      "orderPrompt": "Sắp xếp các số từ bé đến lớn!",
+      "least": "Bé nhất",
+      "greatest": "Lớn nhất",
+      "slot": "Ô",
+      "empty": "trống",
+      "clickToRemove": "nhấn để xóa",
+      "perfect": "Kỹ năng so sánh tuyệt vời!",
+      "great": "Giỏi lắm! So sánh và sắp xếp số tốt!",
+      "keepPracticing": "Tiếp tục luyện tập!"
     },
-    "decimalPlace": {
-      "title": "Giá trị vị trí thập phân",
-      "description": "Học phần mười và phần trăm",
-      "instruction": "Số thập phân là gì?"
+    "round-any-place": {
+      "title": "Làm Tròn Bất Kỳ Nơi Nào",
+      "description": "Làm tròn số đến hàng 10, 100, 1.000, 10.000, hoặc 100.000 gần nhất.",
+      "instruction": "Làm tròn số đến hàng được chỉ định!",
+      "roundPrompt": "Làm tròn",
+      "toNearest": "đến hàng",
+      "hint": "Bội số nào gần hơn?",
+      "ten": "chục",
+      "hundred": "trăm",
+      "thousand": "nghìn",
+      "tenThousand": "chục nghìn",
+      "hundredThousand": "trăm nghìn",
+      "roundsTo": "làm tròn thành",
+      "perfect": "Kỹ năng làm tròn tuyệt vời!",
+      "great": "Làm tròn giỏi lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "add-sub-multi-digit": {
+      "title": "Cộng & Trừ Số Nhiều Chữ Số",
+      "description": "Cộng và trừ số lớn với nhóm lại.",
+      "instruction": "Giải bài toán từng bước!",
+      "whatIsAnswer": "Đáp án là gì?",
+      "addition": "Phép cộng",
+      "subtraction": "Phép trừ",
+      "showHint": "Hiện gợi ý",
+      "hideHint": "Ẩn gợi ý",
+      "onesLabel": "Đ",
+      "tensLabel": "C",
+      "hundredsLabel": "T",
+      "thousandsLabel": "N",
+      "ten thousandsLabel": "CN",
+      "hundred thousandsLabel": "TN",
+      "writeCarry": "Viết {digit}, nhớ {carry}",
+      "writeDigit": "Viết {digit}",
+      "borrowNote": "Mượn từ hàng tiếp theo",
+      "carryOver": "Nhớ",
+      "perfect": "Kỹ năng tính toán tuyệt vời!",
+      "great": "Làm tốt lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "estimate-sum-diff": {
+      "title": "Ước Lượng Trước",
+      "description": "Ước lượng bằng cách làm tròn, rồi giải chính xác.",
+      "instruction": "Ước lượng trước, rồi tìm đáp án chính xác!",
+      "step1": "Bước 1: Ước lượng trước!",
+      "step2": "Bước 2: Tìm đáp án chính xác!",
+      "step3": "Bước 3: Đáp án chính xác có gần với ước lượng không?",
+      "whatEstimate": "Ước lượng của bạn là bao nhiêu?",
+      "estimateLabel": "Ước tính:",
+      "whatExact": "Đáp án chính xác là bao nhiêu?",
+      "closeToEstimate": "Đáp án chính xác có gần với ước lượng không?",
+      "roundToNearest": "Làm tròn đến:",
+      "yes": "Có, gần lắm!",
+      "no": "Không, không gần",
+      "incorrectEstimate": "Ước lượng là {answer}",
+      "incorrectExact": "Đáp án chính xác là {answer}",
+      "yesClose": "Đúng rồi! {estimate} gần với {exact} (chênh lệch: {diff})",
+      "noNotClose": "Đúng vậy! {estimate} và {exact} cách nhau {diff}.",
+      "actuallyClose": "Thực ra, {estimate} gần với {exact} (chỉ cách {diff})!",
+      "actuallyNotClose": "Thực ra, {estimate} và {exact} cách nhau {diff} - khoảng cách lớn hơn.",
+      "perfect": "Kỹ năng ước lượng tuyệt vời!",
+      "great": "Làm tốt lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "number-line-zoom": {
+      "title": "Phóng To Trục Số",
+      "description": "Đặt số trên trục số phóng to.",
+      "instruction": "Chạm vào nơi số thuộc về trên trục số!",
+      "placeNumber": "Đặt số này:",
+      "checkAnswer": "Kiểm tra Đáp án",
+      "correctMsg": "Đặt đúng vị trí!",
+      "incorrectMsg": "Vị trí đúng là {target}",
+      "perfect": "Kỹ năng trục số tuyệt vời!",
+      "great": "Ước lượng tốt!",
+      "keepPracticing": "Tiếp tục luyện tập!",
+      "sliderLabel": "Trục số phóng to"
+    },
+    "add-sub-word-problems": {
+      "title": "Bài Toán Cộng/Trừ Hai Bước",
+      "description": "Giải các câu chuyện ngắn với số lớn.",
+      "instruction": "Đọc câu chuyện và giải!",
+      "step1": "Bước 1: Chọn phép tính đầu tiên",
+      "step2": "Bước 2: Chọn phép tính tiếp theo",
+      "step3": "Bước 3: Ước lượng khoảng bao nhiêu?",
+      "step4": "Bước 4: Đáp án cuối cùng là gì?",
+      "whatOperation1": "Phép tính nào ta dùng đầu tiên?",
+      "whatOperation2": "Phép tính nào ta dùng tiếp theo?",
+      "aboutHowMuch": "Ước lượng khoảng bao nhiêu?",
+      "roundToNearest": "Làm tròn đến:",
+      "whatAnswer": "Đáp án cuối cùng là gì?",
+      "stepLabel1": "Bước 1:",
+      "stepLabel2": "Bước 2:",
+      "operationChoicesLabel": "Lựa chọn phép tính",
+      "estimateChoicesLabel": "Lựa chọn ước lượng",
+      "answerChoicesLabel": "Lựa chọn đáp án",
+      "estimateChoiceLabel": "Ước lượng {value}",
+      "answerChoiceLabel": "Chọn {value}",
+      "loadingStory": "Đang tải câu chuyện...",
+      "someone": "Ai đó",
+      "pronouns": {
+        "they": "Bạn ấy",
+        "theyLower": "bạn ấy",
+        "he": "Bạn ấy",
+        "heLower": "bạn ấy",
+        "she": "Bạn ấy",
+        "sheLower": "bạn ấy"
+      },
+      "stories": {
+        "balloons": {
+          "template": "{name} có {a} quả bóng bay. {pronoun} mua thêm {b} quả, rồi tặng đi {c} quả.",
+          "question": "Bây giờ {name} có bao nhiêu quả bóng bay?"
+        },
+        "library": {
+          "template": "Một thư viện có {a} quyển sách. Họ mua thêm {b} quyển mới, rồi tặng {c} quyển cũ.",
+          "question": "Bây giờ thư viện có bao nhiêu quyển sách?"
+        },
+        "fieldTrip": {
+          "template": "{name} có {a} vé. {pronoun} bán {b} vé, rồi bán thêm {c} vé.",
+          "question": "Còn lại bao nhiêu vé?"
+        },
+        "stickers": {
+          "template": "{name} sưu tập {a} nhãn dán. {pronoun} đổi đi {b} nhãn dán rồi nhận thêm {c} nhãn mới.",
+          "question": "Bây giờ {name} có bao nhiêu nhãn dán?"
+        },
+        "busStops": {
+          "template": "Một chiếc xe buýt có {a} hành khách. Ở trạm đầu tiên, {b} người xuống. Ở trạm thứ hai, {c} người lên.",
+          "question": "Bây giờ trên xe có bao nhiêu hành khách?"
+        },
+        "savings": {
+          "template": "{name} tiết kiệm ${a}. {pronoun} tiêu ${b} cho một dự án và kiếm thêm ${c} từ việc làm việc nhà.",
+          "question": "Bây giờ {name} có bao nhiêu tiền?"
+        },
+        "birds": {
+          "template": "Có {a} con chim trong công viên. {b} con bay đi, rồi {c} con chim khác bay đến.",
+          "question": "Bây giờ trong công viên có bao nhiêu con chim?"
+        },
+        "candies": {
+          "template": "{name} có {a} viên kẹo. {pronoun} nhận thêm {b} viên từ một người bạn, rồi ăn {c} viên.",
+          "question": "Bây giờ {name} có bao nhiêu viên kẹo?"
+        }
+      },
+      "incorrectOp1": "Phép tính đầu tiên là {op}",
+      "incorrectOp2": "Phép tính tiếp theo là {op}",
+      "estimateCorrect": "Ước lượng tốt!",
+      "incorrectEstimate": "Ước lượng phù hợp là {answer}",
+      "incorrectAnswer": "Đáp án là {answer}",
+      "addition": "phép cộng (+)",
+      "subtraction": "phép trừ (-)",
+      "perfect": "Giải toán tuyệt vời!",
+      "great": "Tư duy tốt lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "factor-pairs": {
+      "title": "Vườn Cặp Ước Số",
+      "description": "Trồng hình chữ nhật để tìm cặp ước số.",
+      "instruction": "Tìm tất cả cặp ước số bằng cách xây hình chữ nhật!",
+      "targetNumber": "Số mục tiêu",
+      "buildRectangle": "Xây hình chữ nhật",
+      "rows": "Hàng",
+      "columns": "Cột",
+      "hint": "Hàng × Cột = Tổng",
+      "checkPair": "Kiểm tra cặp",
+      "gardenPlot": "Luống vườn",
+      "pairsFound": "Cặp đã tìm được",
+      "foundPair": "{rows} × {cols} là một cặp ước số.",
+      "notMatch": "Hình này bằng {product}, không phải {target}.",
+      "alreadyFound": "Bạn đã tìm {rows} × {cols} rồi. Hãy thử cặp khác!",
+      "allFound": "Bạn đã tìm đủ cặp của {target}!",
+      "perfect": "Tuyệt vời với ước số!",
+      "great": "Tìm cặp ước số rất tốt!",
+      "keepPracticing": "Hãy tiếp tục luyện tập!"
+    },
+    "prime-composite": {
+      "title": "Phân Loại Số Nguyên Tố hay Hợp Số",
+      "description": "Phân loại số thành nguyên tố hay hợp số.",
+      "instruction": "Phân loại mỗi số vào nguyên tố hay hợp số!",
+      "hint": "Thử xếp thành hình chữ nhật: nếu tạo được hình khác 1×N thì là hợp số.",
+      "primeLabel": "Nguyên tố",
+      "compositeLabel": "Hợp số",
+      "numbersLabel": "Các số cần phân loại",
+      "numberLabel": "Số {number}. Nhấn 1 cho Nguyên tố, 2 cho Hợp số.",
+      "clickToRemove": "Bấm để bỏ ra",
+      "sortAll": "Hãy phân loại hết các số trước!",
+      "correct": "Phân loại đúng rồi!",
+      "tryAgain": "Chưa đúng. Thử lại nhé!",
+      "perfect": "Siêu sao phân loại số!",
+      "great": "Phân loại nguyên tố/hợp số rất tốt!",
+      "keepPracticing": "Hãy tiếp tục luyện tập!"
+    },
+    "area-model-multiply": {
+      "title": "Nhân Mô Hình Diện Tích",
+      "description": "Nhân bằng hình chữ nhật chia thành chục và đơn vị.",
+      "instruction": "Điền vào mô hình diện tích để tìm tích!",
+      "problemLabel": "Nhân",
+      "breakdownLabel": "Tách ra",
+      "modelLabel": "Mô hình diện tích",
+      "totalLabel": "Kết quả nhân",
+      "partialLabel": "Tích riêng phần của {a} × {b}",
+      "fillAll": "Hãy điền đủ các ô trước!",
+      "correct": "Mô hình diện tích đúng rồi!",
+      "tryAgain": "Chưa đúng. Thử lại nhé!",
+      "perfect": "Bậc thầy mô hình diện tích!",
+      "great": "Làm phép nhân rất tốt!",
+      "keepPracticing": "Hãy tiếp tục luyện tập!"
+    },
+    "partial-products": {
+      "title": "Xây Dựng Tích Riêng Phần",
+      "description": "Xây dựng tích riêng phần và cộng chúng lại.",
+      "instruction": "Tách ra và nhân, rồi cộng!",
+      "problemLabel": "Nhân",
+      "breakdownLabel": "Tách ra",
+      "partialsLabel": "Tích riêng phần",
+      "sumLabel": "Cộng các tích riêng phần",
+      "totalLabel": "Kết quả nhân",
+      "partialLabel": "Tích riêng phần của {a} × {b}",
+      "fillAll": "Hãy điền đủ các ô trước!",
+      "correct": "Tích riêng phần đúng rồi!",
+      "tryAgain": "Chưa đúng. Thử lại nhé!",
+      "perfect": "Chuyên gia tích riêng phần!",
+      "great": "Làm phép nhân rất tốt!",
+      "keepPracticing": "Hãy tiếp tục luyện tập!"
+    },
+    "multiply-2x2": {
+      "title": "Nhân Số Nhiều Chữ Số",
+      "description": "Luyện tập nhân số 2 chữ số với số 2 chữ số.",
+      "instruction": "Nhân các số!",
+      "problemLabel": "Nhân",
+      "scaffoldTitle": "Khung tích riêng phần",
+      "scaffoldChip": "Dùng các phần",
+      "algorithmLabel": "Thuật toán chuẩn",
+      "onesRowLabel": "Hàng đơn vị (× {digit})",
+      "finalLabel": "Kết quả cuối",
+      "onesRowPrompt": "Tìm hàng đơn vị khi nhân với {digit}.",
+      "finalPrompt": "Tìm kết quả cuối.",
+      "answerLabel": "Câu trả lời của bạn",
+      "answerAria": "Câu trả lời cho {step}",
+      "enterAnswer": "Hãy nhập câu trả lời trước!",
+      "correct": "Nhân đúng rồi!",
+      "tryAgain": "Chưa đúng. Thử lại nhé!",
+      "perfect": "Bậc thầy phép nhân!",
+      "great": "Làm rất tốt!",
+      "keepPracticing": "Hãy tiếp tục luyện tập!"
+    },
+    "divide-place-value": {
+      "title": "Chia với Giá Trị Vị Trí",
+      "description": "Chia số lớn thành các nhóm bằng nhau.",
+      "instruction": "Chia bằng cách lấy từng phần ở mỗi giá trị vị trí!",
+      "problemLabel": "Chia",
+      "chunkTitle": "Các phần theo giá trị vị trí",
+      "chunkHint": "Tìm số nhóm trong từng phần.",
+      "divisorChip": "Chia cho {divisor}",
+      "hundredsLabel": "Hàng trăm",
+      "tensLabel": "Hàng chục",
+      "onesLabel": "Hàng đơn vị",
+      "chunkEquation": "{chunk} ÷ {divisor} =",
+      "chunkInputLabel": "Số nhóm cho {chunk}",
+      "totalLabel": "Tổng thương",
+      "remainderLabel": "Số dư",
+      "remainderNote": "Ghi 0 nếu không có.",
+      "leftoverLabel": "Các khối còn lại",
+      "leftoverNone": "Không còn dư",
+      "fillAll": "Hãy điền đủ tất cả ô!",
+      "correct": "Chia đúng rồi!",
+      "tryAgain": "Chưa đúng. Thử lại nhé!",
+      "perfect": "Nhà vô địch phép chia!",
+      "great": "Chia rất tốt!",
+      "keepPracticing": "Hãy tiếp tục luyện tập!"
+    },
+    "division-remainders": {
+      "title": "Câu Chuyện Số Dư",
+      "description": "Quyết định số dư có ý nghĩa gì trong câu chuyện.",
+      "instruction": "Đọc câu chuyện và quyết định làm gì với số dư!",
+      "loadingStory": "Đang tải câu chuyện...",
+      "divisionTitle": "Giải phép chia:",
+      "divisionAriaLabel": "Phép chia",
+      "remainderShort": "dư",
+      "decisionTitle": "Số dư nói lên điều gì?",
+      "choicesAriaLabel": "Các lựa chọn về số dư",
+      "choices": {
+        "leftover": "Số dư là phần còn lại",
+        "extraGroup": "Cần thêm một nhóm nữa",
+        "roundDown": "Chỉ tính nhóm đầy đủ"
+      },
+      "explain": {
+        "leftover": "Số dư cho biết phần còn lại. Còn {remainder} phần.",
+        "extraGroup": "Cần thêm một nhóm vì còn {remainder} chưa xếp vào nhóm.",
+        "roundDown": "Chỉ đếm nhóm đầy đủ. {remainder} còn lại không tính."
+      },
+      "perfect": "Chuyên gia số dư!",
+      "great": "Lập luận số dư rất tốt!",
+      "keepPracticing": "Tiếp tục luyện tập!",
+      "stories": {
+        "cupcakes": {
+          "template": "{total} chiếc bánh cupcake được chia vào các hộp, mỗi hộp {group} chiếc.",
+          "question": "Còn thừa bao nhiêu chiếc cupcake?"
+        },
+        "stickers": {
+          "template": "{total} nhãn dán được chia thành các gói {group} chiếc.",
+          "question": "Còn thừa bao nhiêu nhãn dán?"
+        },
+        "apples": {
+          "template": "{total} quả táo được đặt vào giỏ, mỗi giỏ {group} quả.",
+          "question": "Còn thừa bao nhiêu quả táo?"
+        },
+        "buses": {
+          "template": "{total} học sinh đi tham quan. Mỗi xe buýt chở {group} học sinh.",
+          "question": "Cần bao nhiêu xe buýt?"
+        },
+        "tables": {
+          "template": "{total} khách ngồi vào bàn, mỗi bàn {group} chỗ.",
+          "question": "Cần bao nhiêu bàn?"
+        },
+        "gift-bags": {
+          "template": "{total} phần quà được cho vào túi, mỗi túi {group} phần.",
+          "question": "Cần bao nhiêu túi?"
+        },
+        "teams": {
+          "template": "{total} người chơi lập đội, mỗi đội {group} người.",
+          "question": "Có thể lập được bao nhiêu đội đầy đủ?"
+        },
+        "shelves": {
+          "template": "{total} quyển sách được xếp lên kệ, mỗi kệ chứa {group} quyển.",
+          "question": "Có thể xếp đầy bao nhiêu kệ?"
+        }
+      }
+    },
+    "multi-step-md": {
+      "title": "Bài Toán Nhân/Chia Nhiều Bước",
+      "description": "Giải bài toán có lời văn 1-2 bước với nhân và chia.",
+      "instruction": "Đọc kỹ và giải từng bước!",
+      "step1": "Bước 1: Chọn phép tính đầu tiên",
+      "step2": "Bước 2: Chọn phép tính thứ hai",
+      "step3": "Bước 3: Kết quả cuối cùng là bao nhiêu?",
+      "whatOperation1": "Đầu tiên dùng phép tính nào?",
+      "whatOperation2": "Tiếp theo dùng phép tính nào?",
+      "whatAnswer": "Kết quả cuối cùng là bao nhiêu?",
+      "stepLabel1": "Bước 1:",
+      "stepLabel2": "Bước 2:",
+      "loadingStory": "Đang tải câu chuyện...",
+      "operationChoicesLabel": "Lựa chọn phép tính",
+      "answerChoicesLabel": "Lựa chọn đáp án",
+      "answerChoiceLabel": "Chọn {value}",
+      "barModelTitle": "Mô hình đoạn thẳng",
+      "barGroupsOf": "{groups} nhóm, mỗi nhóm {each}",
+      "barDivideLabel": "Chia thành {groups} nhóm",
+      "barTotalLabel": "Tổng {total}",
+      "multiplication": "phép nhân (×)",
+      "division": "phép chia (÷)",
+      "incorrectOp1": "Phép tính đầu tiên là {op}",
+      "incorrectOp2": "Phép tính thứ hai là {op}",
+      "incorrectAnswer": "Đáp án là {answer}",
+      "perfect": "Tuyệt vời!",
+      "great": "Làm rất tốt!",
+      "keepPracticing": "Hãy luyện tập thêm nhé!",
+      "stories": {
+        "gardenPots": {
+          "template": "{name} trồng {a} khay, mỗi khay có {b} bông hoa. Số hoa được chia đều cho {c} người hàng xóm.",
+          "question": "Mỗi người hàng xóm nhận được bao nhiêu bông hoa?"
+        },
+        "classArtwork": {
+          "template": "Một lớp có {a} bức vẽ cho một hành lang. Họ dán {b} bức trên mỗi bức tường. Có {c} hành lang giống nhau.",
+          "question": "Tổng cộng cần bao nhiêu bức tường trưng bày?"
+        },
+        "sportsBottles": {
+          "template": "{name} huấn luyện {a} đội, mỗi đội có {b} bạn. Mỗi bạn nhận {c} chai nước.",
+          "question": "Cần bao nhiêu chai nước tất cả?"
+        },
+        "pizzaSlices": {
+          "template": "Một tiệm pizza nướng {a} khay, mỗi khay {b} miếng. Họ chia các miếng vào {c} hộp.",
+          "question": "Mỗi hộp có bao nhiêu miếng?"
+        },
+        "museumTickets": {
+          "template": "Một bảo tàng in {a} vé cho mỗi ngày sự kiện. Họ gói {b} vé mỗi bó. Có {c} ngày sự kiện.",
+          "question": "Tổng cộng có bao nhiêu bó vé?"
+        },
+        "bookFair": {
+          "template": "Hội sách bày {a} kệ, mỗi kệ có {b} cuốn sách. Số sách được chia cho {c} lớp học.",
+          "question": "Mỗi lớp nhận được bao nhiêu cuốn sách?"
+        },
+        "gardenFences": {
+          "template": "Một người làm vườn làm {a} hàng, mỗi hàng có {b} cọc rào. Họ làm {c} khu vườn như vậy.",
+          "question": "Cần bao nhiêu cọc rào?"
+        },
+        "marathonMedals": {
+          "template": "Một cuộc đua có {a} huy chương cho mỗi ngày. Họ đặt {b} huy chương vào mỗi hộp. Có {c} ngày thi.",
+          "question": "Tổng cộng cần bao nhiêu hộp huy chương?"
+        }
+      }
+    },
+    "fraction-number-line": {
+      "title": "Đi Bộ Trục Số Phân Số",
+      "description": "Đặt phân số trên trục số (0-1 và 0-2).",
+      "instruction": "Chạm vào nơi phân số thuộc về!",
+      "placeFraction": "Đặt phân số này:",
+      "checkAnswer": "Kiểm tra Đáp án",
+      "correctMsg": "Đặt hoàn hảo!",
+      "incorrectMsg": "Vị trí đúng là {fraction}",
+      "perfect": "Đặt phân số tuyệt vời!",
+      "great": "Làm trục số tốt lắm!",
+      "good": "Tốt lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!",
+      "sliderLabel": "Trục số từ 0 đến {max}"
+    },
+    "equivalent-fractions": {
+      "title": "Xây Dựng Phân Số Tương Đương",
+      "description": "Xây phân số tương đương với các dải.",
+      "instruction": "Xây một phân số bằng với phân số được hiển thị!",
+      "targetLabel": "Phân số mục tiêu",
+      "buildLabel": "Tạo phân số tương đương",
+      "shadedLabel": "Số phần đã tô",
+      "hint": "Dùng + và − để tô thêm hoặc bớt phần.",
+      "addPartLabel": "Thêm 1 phần đã tô",
+      "removePartLabel": "Bớt 1 phần đã tô",
+      "correctMsg": "Tuyệt! Phân số tương đương rồi!",
+      "incorrectMsg": "Chưa đúng. Phân số tương đương là {numerator}/{denominator}.",
+      "perfect": "Xuất sắc! Con xây phân số rất giỏi!",
+      "great": "Làm tốt lắm với phân số tương đương!",
+      "good": "Làm tốt!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "compare-fractions": {
+      "title": "So Sánh Phân Số",
+      "description": "Chọn >, <, hoặc = với hỗ trợ hình ảnh.",
+      "instruction": "Ký hiệu nào làm cho phép so sánh đúng?",
+      "showHint": "Hiện thanh phân số",
+      "hideHint": "Ẩn thanh phân số",
+      "correct": "Chính xác!",
+      "wrong": "Đáp án là {symbol}",
+      "perfect": "Kỹ năng so sánh tuyệt vời!",
+      "great": "Làm tốt lắm!",
+      "good": "Tốt lắm!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "add-like-fractions": {
+      "title": "Cộng Phân Số Cùng Mẫu",
+      "description": "Cộng các phân số có cùng mẫu số.",
+      "instruction": "Cộng các phân số!",
+      "prompt": "Chọn tổng.",
+      "firstFraction": "Phân số thứ nhất",
+      "secondFraction": "Phân số thứ hai",
+      "sumFraction": "Tổng",
+      "answerChoicesLabel": "Các lựa chọn đáp án",
+      "choiceLabel": "Phân số {numerator} trên {denominator}",
+      "correct": "Chính xác!",
+      "incorrect": "Tổng là {numerator}/{denominator}.",
+      "perfect": "Cộng phân số thật hoàn hảo!",
+      "great": "Cộng tốt lắm!",
+      "good": "Làm tốt!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "subtract-like-fractions": {
+      "title": "Trừ Phân Số Cùng Mẫu",
+      "description": "Trừ các phân số có cùng mẫu số.",
+      "instruction": "Trừ các phân số!",
+      "prompt": "Chọn hiệu.",
+      "firstFraction": "Phân số ban đầu",
+      "secondFraction": "Trừ đi",
+      "differenceFraction": "Hiệu",
+      "answerChoicesLabel": "Các lựa chọn đáp án",
+      "choiceLabel": "Phân số {numerator} trên {denominator}",
+      "correct": "Chính xác!",
+      "incorrect": "Hiệu là {numerator}/{denominator}.",
+      "perfect": "Trừ phân số thật hoàn hảo!",
+      "great": "Trừ tốt lắm!",
+      "good": "Làm tốt!",
+      "keepPracticing": "Tiếp tục luyện tập!",
+      "progressLabel": "Tiến độ",
+      "progressItemLabel": "Câu {current} trên {total}: {status}",
+      "progressStatusCompleted": "đã xong",
+      "progressStatusCurrent": "đang làm",
+      "progressStatusPending": "sắp tới"
+    },
+    "mixed-numbers": {
+      "title": "Cầu Nối Hỗn Số",
+      "description": "Tạo và sử dụng hỗn số và phân số không đúng.",
+      "instruction": "Chuyển đổi giữa hỗn số và phân số không đúng!",
+      "promptConvertMixed": "Chuyển sang hỗn số.",
+      "promptConvertImproper": "Chuyển sang phân số không đúng.",
+      "promptAdd": "Cộng các hỗn số.",
+      "promptSubtract": "Trừ các hỗn số.",
+      "givenLabel": "Đã cho",
+      "resultLabel": "Đáp án của bạn",
+      "mixedLabel": "Hỗn số",
+      "improperLabel": "Phân số không đúng",
+      "equationLabel": "Phép tính",
+      "answerChoicesLabel": "Các lựa chọn đáp án",
+      "choiceMixedLabel": "Hỗn số {whole} và {numerator} trên {denominator}",
+      "choiceImproperLabel": "Phân số {numerator} trên {denominator}",
+      "correct": "Chính xác!",
+      "incorrectMixed": "Hỗn số là {whole} {numerator}/{denominator}.",
+      "incorrectImproper": "Phân số không đúng là {numerator}/{denominator}.",
+      "perfect": "Hỗn số thật chuẩn!",
+      "great": "Đổi rất tốt!",
+      "good": "Làm tốt!",
+      "keepPracticing": "Tiếp tục luyện tập!"
+    },
+    "fraction-times-whole": {
+      "title": "Phân Số x Số Nguyên",
+      "description": "Nhân phân số với số nguyên như phép cộng lặp lại.",
+      "instruction": "Nhân phân số với số nguyên!",
+      "prompt": "Giá trị của {whole} × {numerator}/{denominator} là bao nhiêu?",
+      "equationLabel": "Phép tính",
+      "groupsLabel": "Nhóm cộng lặp lại",
+      "answerChoicesLabel": "Các lựa chọn đáp án",
+      "choiceLabel": "Phân số {numerator} trên {denominator}",
+      "correct": "Chính xác!",
+      "incorrect": "Kết quả là {numerator}/{denominator}.",
+      "perfect": "Nhân rất chuẩn!",
+      "great": "Cộng lặp lại rất tốt!",
+      "good": "Làm tốt!",
+      "keepPracticing": "Tiếp tục luyện tập!",
+      "progressLabel": "Tiến độ",
+      "progressItemLabel": "Câu {current} trên {total}: {status}",
+      "progressStatusCompleted": "đã xong",
+      "progressStatusCurrent": "đang làm",
+      "progressStatusPending": "sắp tới"
+    },
+    "fraction-word-problems": {
+      "title": "Bài Toán Có Lời Văn Phân Số",
+      "description": "Giải các câu chuyện phân số (công thức, đo lường, chia sẻ).",
+      "instruction": "Đọc câu chuyện và giải bằng phân số!",
+      "prompt": "Chọn phân số giải đúng câu chuyện.",
+      "equationLabel": "Phép tính",
+      "answerChoicesLabel": "Các lựa chọn đáp án",
+      "choiceLabel": "Phân số {numerator} trên {denominator}",
+      "loadingStory": "Đang tải câu chuyện...",
+      "correct": "Chính xác!",
+      "incorrect": "Đáp án là {numerator}/{denominator}.",
+      "perfect": "Giải câu chuyện phân số thật xuất sắc!",
+      "great": "Tư duy phân số rất tốt!",
+      "good": "Làm tốt!",
+      "keepPracticing": "Tiếp tục luyện tập!",
+      "stories": {
+        "recipe": {
+          "template": "Bạn dùng {a} cốc bột. Bạn thêm {b} cốc nữa.",
+          "question": "Tổng lượng bột là bao nhiêu?"
+        },
+        "garden": {
+          "template": "{a} khu vườn đã được trồng. Bạn trồng thêm {b} nữa.",
+          "question": "Tổng phần đã trồng là bao nhiêu?"
+        },
+        "pizza": {
+          "template": "Bạn ăn {a} chiếc pizza. Bạn ăn thêm {b} nữa.",
+          "question": "Bạn đã ăn bao nhiêu pizza?"
+        },
+        "paint": {
+          "template": "Một bức tường đã sơn {a}. Bạn sơn thêm {b} nữa.",
+          "question": "Tổng phần đã sơn là bao nhiêu?"
+        },
+        "ribbon": {
+          "template": "Một dải ruy băng dài {a} mét. Bạn cắt đi {b} mét.",
+          "question": "Còn lại bao nhiêu ruy băng?"
+        },
+        "trail": {
+          "template": "Bạn đi {a} dặm ra xa và {b} dặm quay lại.",
+          "question": "Bạn còn cách điểm xuất phát bao xa?"
+        },
+        "sand": {
+          "template": "Một chiếc xô đầy {a} cát. Bạn dùng {b} lượng cát.",
+          "question": "Còn lại bao nhiêu cát?"
+        },
+        "water": {
+          "template": "Một bình đầy {a}. Bạn đổ ra {b}.",
+          "question": "Bình còn đầy bao nhiêu?"
+        }
+      }
+    },
+    "decimals-place-value": {
+      "title": "Bể Cá Phần Mười & Phần Trăm",
+      "description": "Xây số thập phân bằng lưới 10x10.",
+      "instruction": "Tô lưới để hiển thị số thập phân!",
+      "prompt": "Tô lưới để hiển thị:",
+      "fractionLabel": "Phân số:",
+      "hint": "Mỗi cột là 0.1. Mỗi ô là 0.01.",
+      "columnHint": "Chạm vào nhãn phía trên để tô cả cột (phần mười).",
+      "shadedLabel": "Đã tô:",
+      "squareUnit": "ô",
+      "squareUnits": "ô",
+      "columnGroupLabel": "Các cột phần mười",
+      "columnLabel": "Tô/bỏ tô cột {column}",
+      "cellLabel": "Ô lưới hàng {row}, cột {column}",
+      "gridLabel": "Lưới phần trăm",
+      "checkAnswer": "Kiểm Tra Đáp Án",
+      "correct": "Đúng rồi! Bạn đã tạo {decimal}.",
+      "incorrect": "Mục tiêu là {decimal} ({fraction}).",
+      "perfect": "Tô số thập phân xuất sắc!",
+      "great": "Rất giỏi về số thập phân!",
+      "good": "Làm tốt!",
+      "keepPracticing": "Tiếp tục luyện tập nhé!"
+    },
+    "compare-decimals": {
+      "title": "So Sánh Số Thập Phân",
+      "description": "Chọn >, <, hoặc = cho số thập phân đến phần trăm.",
+      "instruction": "So sánh các số thập phân!",
+      "prompt": "Ký hiệu nào làm phép so sánh đúng?",
+      "hint": "So sánh phần mười trước, rồi đến phần trăm.",
+      "onesLabel": "Hàng đơn vị",
+      "tenthsLabel": "Hàng phần mười",
+      "hundredthsLabel": "Hàng phần trăm",
+      "lessThanLabel": "Nhỏ hơn",
+      "equalLabel": "Bằng",
+      "greaterThanLabel": "Lớn hơn",
+      "correct": "Đúng rồi!",
+      "wrong": "Đáp án là {symbol}.",
+      "perfect": "So sánh số thập phân xuất sắc!",
+      "great": "So sánh rất tốt!",
+      "good": "Làm tốt!",
+      "keepPracticing": "Tiếp tục luyện tập nhé!"
+    },
+    "fraction-decimal-match": {
+      "title": "Ghép Phân Số với Số Thập Phân",
+      "description": "Ghép phân số phần mười/phần trăm với số thập phân.",
+      "instruction": "Ghép mỗi phân số với số thập phân của nó!",
+      "selectPair": "Chọn một phân số, rồi chọn số thập phân của nó.",
+      "fractionsLabel": "Phân số",
+      "decimalsLabel": "Số thập phân",
+      "matchesFound": "Số cặp đã ghép:",
+      "fractionCardLabel": "Phân số {numerator} trên {denominator}",
+      "decimalCardLabel": "Số thập phân {decimal}",
+      "perfect": "Ghép cặp xuất sắc!",
+      "great": "Ghép phân số và số thập phân rất tốt!",
+      "good": "Làm tốt!",
+      "keepPracticing": "Tiếp tục luyện tập nhé!"
+    },
+    "unit-conversion": {
+      "title": "Đường Đua Chuyển Đổi Đơn Vị",
+      "description": "Chuyển đổi đơn vị (như feet sang inch, kg sang g).",
+      "instruction": "Chuyển sang đơn vị mới!",
+      "prompt": "Đổi {value} {fromUnit} sang {toUnit}.",
+      "mapTitle": "Bản Đồ Chuyển Đổi",
+      "mapHint": "Dùng bản đồ để kiểm tra hệ số chuyển đổi.",
+      "trailTitle": "Đường Đua Chuyển Đổi",
+      "stepMultiply": "× {factor}",
+      "stepDivide": "÷ {factor}",
+      "choicesLabel": "Các lựa chọn",
+      "choiceLabel": "{value} {unit}",
+      "mapEquation": "1 {fromUnit} = {factor} {toUnit}",
+      "correct": "Đúng rồi! {value} {fromUnit} = {answer} {toUnit}.",
+      "wrong": "Đáp án đúng là {answer} {toUnit}.",
+      "perfect": "Chuyển đổi xuất sắc!",
+      "great": "Kỹ năng chuyển đổi rất tốt!",
+      "good": "Làm tốt!",
+      "keepPracticing": "Tiếp tục luyện tập nhé!",
+      "units": {
+        "mm": "mm",
+        "cm": "cm",
+        "m": "m",
+        "km": "km",
+        "in": "in",
+        "ft": "ft",
+        "yd": "yd",
+        "g": "g",
+        "kg": "kg",
+        "mL": "mL",
+        "L": "L"
+      }
+    },
+    "area-perimeter": {
+      "title": "Xây Dựng Diện Tích & Chu Vi",
+      "description": "Xây hình chữ nhật và tìm diện tích và chu vi.",
+      "instruction": "Xây hình chữ nhật rồi chọn diện tích hoặc chu vi.",
+      "questionArea": "Diện tích của hình chữ nhật này là bao nhiêu?",
+      "questionPerimeter": "Chu vi của hình chữ nhật này là bao nhiêu?",
+      "areaHint": "Diện tích = dài × rộng",
+      "perimeterHint": "Chu vi = 2 × (dài + rộng)",
+      "widthLabel": "Chiều rộng",
+      "heightLabel": "Chiều cao",
+      "gridLabel": "Lưới hình chữ nhật",
+      "widthTag": "Rộng: {value} đơn vị",
+      "heightTag": "Cao: {value} đơn vị",
+      "unitLabel": "đơn vị",
+      "squareUnitLabel": "đơn vị vuông",
+      "choiceGroupLabel": "Lựa chọn đáp án",
+      "choiceLabel": "{value} {unit}",
+      "gridAria": "Lưới hình chữ nhật {width} x {height}",
+      "correctArea": "Đúng rồi! Diện tích là {value} đơn vị vuông.",
+      "correctPerimeter": "Đúng rồi! Chu vi là {value} đơn vị.",
+      "wrongArea": "Diện tích là {value} đơn vị vuông.",
+      "wrongPerimeter": "Chu vi là {value} đơn vị.",
+      "controls": {
+        "increaseWidth": "Tăng chiều rộng",
+        "decreaseWidth": "Giảm chiều rộng",
+        "increaseHeight": "Tăng chiều cao",
+        "decreaseHeight": "Giảm chiều cao"
+      },
+      "perfect": "Xây hình xuất sắc!",
+      "great": "Đo lường rất tốt!",
+      "good": "Làm tốt!",
+      "keepPracticing": "Tiếp tục luyện tập nhé!"
+    },
+    "missing-side": {
+      "title": "Tìm Cạnh Thiếu",
+      "description": "Tìm độ dài cạnh thiếu từ diện tích hoặc chu vi.",
+      "instruction": "Dùng những gì bạn biết để tìm cạnh thiếu!",
+      "promptArea": "Diện tích = {area} {squareUnits}. Một cạnh dài {known} {units}. Cạnh còn lại dài bao nhiêu?",
+      "promptPerimeter": "Chu vi = {perimeter} {units}. Một cạnh dài {known} {units}. Cạnh còn lại dài bao nhiêu?",
+      "areaHint": "Diện tích = dài × rộng",
+      "perimeterHint": "Chu vi = 2 × (dài + rộng)",
+      "shapeTitle": "Hình Chữ Nhật Bí Ẩn",
+      "shapeHint": "Hai cạnh đối diện bằng nhau.",
+      "shapeAria": "Hình chữ nhật có một cạnh thiếu và một cạnh dài {known} {units}",
+      "unitsLabel": "đơn vị",
+      "squareUnitsLabel": "đơn vị vuông",
+      "choicesLabel": "Các lựa chọn đáp án",
+      "choiceLabel": "{value} {units}",
+      "correct": "Đúng rồi! Cạnh thiếu dài {value} {units}.",
+      "wrong": "Cạnh thiếu dài {value} {units}.",
+      "perfect": "Tìm cạnh hoàn hảo!",
+      "great": "Suy luận rất tốt!",
+      "good": "Làm tốt!",
+      "keepPracticing": "Tiếp tục luyện tập nhé!"
+    },
+    "line-plot-fractions": {
+      "title": "Biểu Đồ Điểm với Phân Số",
+      "description": "Tạo và đọc biểu đồ điểm với đơn vị 1/2 và 1/4.",
+      "instruction": "Hãy lập biểu đồ điểm và trả lời câu hỏi!",
+      "dataTitle": "Đây là các số đo:",
+      "plotHint": "Mỗi vạch là 1/4.",
+      "buildInstruction": "Nhấp vào biểu đồ điểm để thêm chấm!",
+      "checkPlot": "Kiểm Tra Biểu Đồ",
+      "plotCorrect": "✓ Biểu đồ đúng rồi! Bây giờ trả lời câu hỏi nhé!",
+      "plotWrong": "Hãy kiểm tra dữ liệu và thử lại!",
+      "dotLabel": "Thêm chấm tại {value}",
+      "questionHowMany": "Có bao nhiêu ở {value}?",
+      "questionMost": "Giá trị nào có nhiều chấm nhất?",
+      "questionLeast": "Giá trị nào có ít chấm nhất?",
+      "questionTotal": "Tổng cộng có bao nhiêu chấm?",
+      "correct": "✓ Đúng rồi! Đáp án là {answer}.",
+      "wrong": "Đáp án là {answer}.",
+      "perfect": "Kỹ năng biểu đồ điểm tuyệt vời!",
+      "great": "Làm rất tốt với biểu đồ điểm!",
+      "good": "Làm tốt!",
+      "keepPracticing": "Tiếp tục luyện tập nhé!",
+      "themes": {
+        "ribbonLengths": "Chiều Dài Dải Ruy Băng",
+        "frogJumps": "Bước Nhảy Của Ếch",
+        "gardenPaths": "Lối Đi Trong Vườn",
+        "paintCups": "Cốc Sơn"
+      },
+      "units": {
+        "in": "in",
+        "ft": "ft",
+        "cups": "cốc"
+      }
+    },
+    "measurement-word-problems": {
+      "title": "Bài Toán Có Lời Văn Đo Lường",
+      "description": "Giải các câu chuyện đo lường nhiều bước.",
+      "instruction": "Đọc câu chuyện và giải!",
+      "step1": "Bước 1: Giải phần đầu tiên",
+      "step2": "Bước 2: Trả lời câu hỏi",
+      "step1Result": "Kết quả bước 1:",
+      "loadingStory": "Đang tải câu chuyện...",
+      "hintTitle": "Gợi ý hữu ích",
+      "prompts": {
+        "convert": "Đổi {value} {fromUnit} sang {toUnit}.",
+        "total": "Tổng cộng là bao nhiêu {unit}?",
+        "left": "Còn lại bao nhiêu {unit}?",
+        "perimeter": "Tính chu vi bằng {unit}.",
+        "area": "Tính diện tích bằng {unit}.",
+        "uncovered": "Phần diện tích chưa phủ là bao nhiêu {unit}?",
+        "multiply": "Tính tổng chiều dài bằng {unit}."
+      },
+      "hints": {
+        "convert": "Dùng 1 {fromUnit} = {factor} {toUnit}.",
+        "perimeterConvert": "Chu vi = 2 × (dài + rộng). Sau đó dùng 1 {fromUnit} = {factor} {toUnit}.",
+        "areaSubtract": "Diện tích = dài × rộng. Sau đó trừ phần đã phủ.",
+        "multiplyConvert": "Tổng = số nhóm × chiều dài. Sau đó dùng 1 {fromUnit} = {factor} {toUnit}."
+      },
+      "choiceLabel": "Chọn {value} {unit}",
+      "stepChoicesLabel": "Các lựa chọn cho bước {step}",
+      "wrongAnswer": "Đáp án đúng là {value} {unit}.",
+      "perfect": "Đo lường xuất sắc!",
+      "great": "Tư duy đo lường rất tốt!",
+      "keepPracticing": "Tiếp tục luyện tập nhé!",
+      "stories": {
+        "ribbon": {
+          "template": "Một dải ruy băng dài {a} {unit1}. Bạn thêm {b} {unit2}.",
+          "question": "Tổng chiều dài là bao nhiêu {unit2}?"
+        },
+        "aquarium": {
+          "template": "Một bể cá chứa {a} {unit1}. Bạn đổ ra {b} {unit2}.",
+          "question": "Còn lại bao nhiêu nước {unit2}?"
+        },
+        "backpack": {
+          "template": "Một chiếc ba lô nặng {a} {unit1}. Bạn thêm {b} {unit2} sách.",
+          "question": "Tổng khối lượng là bao nhiêu {unit2}?"
+        },
+        "garden": {
+          "template": "Một khu vườn dài {a} {unit1} và rộng {b} {unit1}.",
+          "question": "Chu vi là bao nhiêu {unit2}?"
+        },
+        "blanket": {
+          "template": "Một tấm thảm picnic dài {a} {unit1} và rộng {b} {unit1}. Một tấm lót phủ {c} {unit2}.",
+          "question": "Còn bao nhiêu diện tích chưa phủ {unit2}?"
+        },
+        "board": {
+          "template": "Một tấm ván dài {a} {unit1}. Bạn cắt đi {b} {unit2}.",
+          "question": "Tấm ván còn dài bao nhiêu {unit2}?"
+        },
+        "runner": {
+          "template": "Một vận động viên chạy {a} {unit1} rồi chạy thêm {b} {unit2}.",
+          "question": "Tổng quãng đường là bao nhiêu {unit2}?"
+        },
+        "ribbonGroup": {
+          "template": "{a} dải ruy băng mỗi dải dài {b} {unit1}.",
+          "question": "Tổng chiều dài là bao nhiêu {unit2}?"
+        }
+      },
+      "units": {
+        "in": "in",
+        "ft": "ft",
+        "cm": "cm",
+        "m": "m",
+        "g": "g",
+        "kg": "kg",
+        "mL": "mL",
+        "L": "L",
+        "squareMeters": "mét vuông"
+      }
+    },
+    "points-lines-rays": {
+      "title": "Khám Phá Điểm, Đường, Tia",
+      "description": "Nhận biết điểm, đường thẳng, đoạn thẳng và tia.",
+      "instruction": "Đặt tên những gì bạn thấy!",
+      "prompt": "Đây là gì?",
+      "types": {
+        "point": "Điểm",
+        "line": "Đường thẳng",
+        "segment": "Đoạn thẳng",
+        "ray": "Tia"
+      },
+      "hintPoint": "Một vị trí trong không gian.",
+      "hintLine": "Kéo dài vô tận theo cả hai hướng.",
+      "hintSegment": "Có hai điểm đầu mút.",
+      "hintRay": "Có một điểm đầu mút và kéo dài vô tận theo một hướng.",
+      "correct": "Đúng rồi! Đây là {type}.",
+      "wrong": "Đây là {type}.",
+      "perfect": "Nhà thám hiểm hình học hoàn hảo!",
+      "great": "Kỹ năng hình học tuyệt vời!",
+      "good": "Làm tốt lắm!",
+      "keepPracticing": "Hãy tiếp tục luyện tập!"
+    },
+    "angle-types": {
+      "title": "Vườn Thú Loại Góc",
+      "description": "Phân loại góc thành nhọn, vuông, hoặc tù.",
+      "instruction": "Phân loại mỗi góc theo loại!",
+      "prompt": "Đây là loại góc gì?",
+      "hint": "Nhìn xem góc mở rộng như thế nào!",
+      "types": {
+        "acute": "Góc nhọn",
+        "right": "Góc vuông",
+        "obtuse": "Góc tù"
+      },
+      "acuteDesc": "Nhỏ hơn 90°",
+      "rightDesc": "Đúng 90°",
+      "obtuseDesc": "Lớn hơn 90°",
+      "correct": "Đúng rồi! Đây là {type}.",
+      "wrong": "Đây là {type} ({degrees}°).",
+      "perfect": "Phân loại góc hoàn hảo!",
+      "great": "Phân loại góc tuyệt vời!",
+      "good": "Làm tốt lắm!",
+      "keepPracticing": "Hãy tiếp tục luyện tập!"
+    },
+    "measure-angles": {
+      "title": "Đo Góc",
+      "description": "Đo góc bằng công cụ thước đo góc.",
+      "instruction": "Căn chỉnh thước đo góc và đo!",
+      "prompt": "Góc này đo được bao nhiêu độ?",
+      "hint": "Đọc số độ nơi tia cắt thang đo trên thước đo góc.",
+      "correct": "Đúng rồi! Góc này là {angle}°.",
+      "wrong": "Góc này là {angle}°.",
+      "perfect": "Đo hoàn hảo!",
+      "great": "Kỹ năng đo tuyệt vời!",
+      "good": "Làm tốt lắm!",
+      "keepPracticing": "Hãy tiếp tục luyện tập!"
+    },
+    "draw-angles": {
+      "title": "Vẽ Một Góc",
+      "description": "Tạo một góc có kích thước cho trước.",
+      "instruction": "Kéo để tạo góc được hiển thị!",
+      "drawAngle": "Vẽ góc có số đo:",
+      "yourAngle": "Góc của bạn:",
+      "dragToAdjust": "Kéo để điều chỉnh góc:",
+      "correct": "Tuyệt vời! Bạn vẽ được {drawn}° (mục tiêu là {target}°).",
+      "wrong": "Mục tiêu là {target}°. Bạn vẽ {drawn}°.",
+      "perfect": "Vẽ góc hoàn hảo!",
+      "great": "Vẽ góc tuyệt vời!",
+      "good": "Làm tốt lắm!",
+      "keepPracticing": "Hãy tiếp tục luyện tập!"
+    },
+    "parallel-perpendicular": {
+      "title": "Đường Song Song & Vuông Góc",
+      "description": "Tìm đường song song và vuông góc trong bản đồ thành phố.",
+      "instruction": "Tìm các con đường song song và vuông góc!",
+      "findParallel": "Chạm vào hai đường SONG SONG!",
+      "findPerpendicular": "Chạm vào hai đường VUÔNG GÓC!",
+      "selectTwo": "Chọn hai con đường",
+      "selected": "Đã chọn: Đường {name} - hãy chọn thêm một đường!",
+      "parallelHint": "Song song: Không bao giờ gặp nhau",
+      "perpendicularHint": "Vuông góc: Gặp nhau tại góc 90°",
+      "parallel": "song song",
+      "perpendicular": "vuông góc",
+      "correctParallel": "Đúng rồi! Đường {name1} và Đường {name2} song song với nhau.",
+      "correctPerpendicular": "Đúng rồi! Đường {name1} và Đường {name2} vuông góc với nhau.",
+      "wrong": "Đường {name1} và Đường {name2} là {actual}, không phải {expected}.",
+      "perfect": "Điều hướng đường phố hoàn hảo!",
+      "great": "Điều hướng đường phố tuyệt vời!",
+      "good": "Làm tốt lắm!",
+      "keepPracticing": "Hãy tiếp tục luyện tập!"
+    },
+    "classify-quads": {
+      "title": "Phân Loại Tứ Giác",
+      "description": "Phân loại hình vuông, hình chữ nhật, hình thoi, hình thang và hình diều.",
+      "instruction": "Phân loại tứ giác theo tính chất của chúng!",
+      "whatShape": "Đây là loại tứ giác nào?",
+      "types": {
+        "square": "Hình vuông",
+        "rectangle": "Hình chữ nhật",
+        "rhombus": "Hình thoi",
+        "trapezoid": "Hình thang",
+        "parallelogram": "Hình bình hành"
+      },
+      "hintSquare": "4 cạnh bằng nhau, 4 góc vuông",
+      "hintRectangle": "2 cặp cạnh bằng nhau, 4 góc vuông",
+      "hintRhombus": "4 cạnh bằng nhau, góc đối bằng nhau",
+      "hintTrapezoid": "Đúng 1 cặp cạnh song song",
+      "hintParallelogram": "2 cặp cạnh song song",
+      "correct": "Đúng rồi! Đây là {shape}.",
+      "wrong": "Đây là {shape}.",
+      "perfect": "Phân loại hình hoàn hảo!",
+      "great": "Phân loại hình tuyệt vời!",
+      "good": "Làm tốt lắm!",
+      "keepPracticing": "Hãy tiếp tục luyện tập!"
+    },
+    "symmetry-lines": {
+      "title": "Gương Đối Xứng",
+      "description": "Vẽ đường đối xứng (nếu có).",
+      "instruction": "Vẽ (các) đường đối xứng!",
+      "prompt": "Hình này có trục đối xứng không?",
+      "hint": "Trục đối xứng chia hình thành hai nửa giống nhau.",
+      "types": {
+        "vertical": "Dọc",
+        "horizontal": "Ngang",
+        "both": "Cả hai",
+        "none": "Không có"
+      },
+      "correct": "Đúng rồi! Hình này có đối xứng {type}.",
+      "wrong": "Hình này có đối xứng {type}.",
+      "perfect": "Kỹ năng đối xứng hoàn hảo!",
+      "great": "Kỹ năng đối xứng tuyệt vời!",
+      "good": "Làm tốt lắm!",
+      "keepPracticing": "Hãy tiếp tục luyện tập!"
+    },
+    "shape-attributes-g4": {
+      "title": "Thử Thách Xây Hình",
+      "description": "Chọn hình phù hợp với các gợi ý.",
+      "instruction": "Đọc gợi ý và chọn hình đúng!",
+      "mysteryShape": "Gợi ý về hình bí ẩn:",
+      "whichShape": "Tôi là hình gì?",
+      "shapes": {
+        "square": "Hình vuông",
+        "rectangle": "Hình chữ nhật",
+        "rhombus": "Hình thoi",
+        "trapezoid": "Hình thang",
+        "parallelogram": "Hình bình hành",
+        "equilateral-triangle": "Tam giác đều",
+        "right-triangle": "Tam giác vuông",
+        "pentagon": "Ngũ giác",
+        "hexagon": "Lục giác",
+        "circle": "Hình tròn"
+      },
+      "correct": "Đúng rồi! Đó là {shape}!",
+      "wrong": "Đáp án là {shape}.",
+      "perfect": "Thám tử hình học hoàn hảo!",
+      "great": "Thám tử hình học tuyệt vời!",
+      "good": "Làm tốt lắm!",
+      "keepPracticing": "Hãy tiếp tục luyện tập!"
     }
   }
 }

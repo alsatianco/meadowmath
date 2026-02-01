@@ -71,7 +71,7 @@ function initNavigation() {
 function setActiveNavItem() {
   const navItems = document.querySelectorAll('.nav-item');
   const currentPath = window.location.pathname.toLowerCase();
-  
+
   // Extract the section from the current path
   // e.g., "/meadow-math/grade1/index.html" -> "grade1"
   // e.g., "/meadow-math/prek/index.html" -> "prek"
@@ -82,10 +82,10 @@ function setActiveNavItem() {
   navItems.forEach(item => {
     const href = item.getAttribute('href');
     if (!href) return;
-    
+
     // Remove active class from all items
     item.classList.remove('active');
-    
+
     // Extract section from href
     // e.g., "grade1/index.html" -> "grade1"
     // e.g., "prek/index.html" -> "prek"
@@ -93,7 +93,7 @@ function setActiveNavItem() {
     const hrefLower = href.toLowerCase();
     const hrefParts = hrefLower.split('/').filter(part => part && part !== 'index.html');
     const hrefSection = hrefParts[hrefParts.length - 1] || 'index';
-    
+
     // Match sections
     if (currentSection === hrefSection) {
       item.classList.add('active');
@@ -159,7 +159,7 @@ function initKeyboardNavigation() {
       if (sidebar && sidebar.classList.contains('open')) {
         const hamburger = document.querySelector('.hamburger');
         const backdrop = document.querySelector('.sidebar-backdrop');
-        
+
         hamburger?.classList.remove('open');
         sidebar.classList.remove('open');
         backdrop?.classList.remove('active');

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Parallel & Perpendicular Streets - Grade 4 Math Activity - Meadow Math">
+  <title>Parallel & Perpendicular Streets - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link">
+            <span data-i18n="activity.backTo">← Back to</span>
+            <span data-i18n="nav.grade4">Grade 4</span>
+          </a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🏙️</span>
+            <span data-i18n="section.activities.parallel-perpendicular.title">Parallel & Perpendicular Streets</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.parallel-perpendicular.description">Find parallel and perpendicular lines in a city map.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Task Prompt -->
+          <div class="task-card">
+            <div class="task-prompt" id="task-prompt">Tap two parallel streets!</div>
+            <div class="selection-info" id="selection-info"></div>
+          </div>
+
+          <!-- City Map -->
+          <div class="map-card">
+            <div class="map-canvas" id="map-canvas" aria-label="City street map">
+              <svg id="map-svg" viewBox="0 0 320 280" aria-hidden="true">
+                <!-- Map will be drawn here -->
+              </svg>
+            </div>
+            <div class="map-legend">
+              <div class="legend-item">
+                <span class="legend-color parallel"></span>
+                <span data-i18n="section.activities.parallel-perpendicular.parallelHint">Parallel: Never meet</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-color perpendicular"></span>
+                <span data-i18n="section.activities.parallel-perpendicular.perpendicularHint">Perpendicular: Meet at 90°</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.parallel-perpendicular.great">Great street navigation!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Parallel & Perpendicular Streets Activity - Grade 4 Level 5
+    const ParallelPerpendicular = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1800,
+      isAnswered: false,
+      currentTask: null, // 'parallel' or 'perpendicular'
+      selectedStreets: [],
+      streets: [],
+      advanceTimeout: null,
+
+      // Street names
+      streetNames: ['Oak', 'Elm', 'Pine', 'Maple', 'Cedar', 'Birch', 'Willow', 'Ash'],
+
+      init() {
+        this.mapSvg = document.getElementById('map-svg');
+        this.taskPrompt = document.getElementById('task-prompt');
+        this.selectionInfo = document.getElementById('selection-info');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(key);
+          return translated !== key ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      },
+
+      generateMap() {
+        this.streets = [];
+
+        // Shuffle street names
+        const names = this.shuffle(this.streetNames);
+
+        // Create 4 horizontal streets (parallel to each other)
+        const hStreets = [
+          { id: 'h1', name: names[0], x1: 20, y1: 50, x2: 300, y2: 50, orientation: 'h' },
+          { id: 'h2', name: names[1], x1: 20, y1: 110, x2: 300, y2: 110, orientation: 'h' },
+          { id: 'h3', name: names[2], x1: 20, y1: 170, x2: 300, y2: 170, orientation: 'h' },
+          { id: 'h4', name: names[3], x1: 20, y1: 230, x2: 300, y2: 230, orientation: 'h' }
+        ];
+
+        // Create 4 vertical streets (parallel to each other, perpendicular to horizontal)
+        const vStreets = [
+          { id: 'v1', name: names[4], x1: 50, y1: 20, x2: 50, y2: 260, orientation: 'v' },
+          { id: 'v2', name: names[5], x1: 120, y1: 20, x2: 120, y2: 260, orientation: 'v' },
+          { id: 'v3', name: names[6], x1: 200, y1: 20, x2: 200, y2: 260, orientation: 'v' },
+          { id: 'v4', name: names[7], x1: 270, y1: 20, x2: 270, y2: 260, orientation: 'v' }
+        ];
+
+        this.streets = [...hStreets, ...vStreets];
+      },
+
+      drawMap() {
+        const svg = this.mapSvg;
+
+        // Build city blocks (green areas)
+        let blocks = '';
+        const hY = [50, 110, 170, 230];
+        const vX = [50, 120, 200, 270];
+
+        for (let i = 0; i < hY.length - 1; i++) {
+          for (let j = 0; j < vX.length - 1; j++) {
+            const x = vX[j] + 8;
+            const y = hY[i] + 8;
+            const width = vX[j + 1] - vX[j] - 16;
+            const height = hY[i + 1] - hY[i] - 16;
+            blocks += `<rect x="${x}" y="${y}" width="${width}" height="${height}" fill="#86efac" rx="4" />`;
+          }
+        }
+
+        // Build streets
+        let streetsSvg = '';
+        this.streets.forEach(st => {
+          const isSelected = this.selectedStreets.includes(st.id);
+          const strokeColor = isSelected ? '#6366f1' : '#94a3b8';
+          const strokeWidth = isSelected ? 10 : 8;
+
+          streetsSvg += `
+            <line class="street-line" data-id="${st.id}"
+                  x1="${st.x1}" y1="${st.y1}" x2="${st.x2}" y2="${st.y2}"
+                  stroke="${strokeColor}" stroke-width="${strokeWidth}" stroke-linecap="round"
+                  style="cursor: pointer;" />
+          `;
+
+          // Street label
+          const labelX = st.orientation === 'h' ? (st.x1 + st.x2) / 2 : st.x1 - 2;
+          const labelY = st.orientation === 'h' ? st.y1 - 10 : (st.y1 + st.y2) / 2;
+          const transform = st.orientation === 'v' ? `rotate(-90, ${labelX}, ${labelY})` : '';
+
+          streetsSvg += `
+            <text x="${labelX}" y="${labelY}" text-anchor="middle" font-size="10" fill="#374151"
+                  font-weight="500" transform="${transform}" style="pointer-events: none;">
+              ${st.name} St
+            </text>
+          `;
+        });
+
+        svg.innerHTML = `
+          <!-- City background -->
+          <rect width="320" height="280" fill="#fef3c7" />
+
+          <!-- City blocks (parks/buildings) -->
+          ${blocks}
+
+          <!-- Streets -->
+          ${streetsSvg}
+        `;
+
+        // Add click listeners
+        const streetLines = svg.querySelectorAll('.street-line');
+        streetLines.forEach(line => {
+          line.addEventListener('click', (e) => this.handleStreetClick(e.target.dataset.id));
+        });
+      },
+
+      handleStreetClick(streetId) {
+        if (this.isAnswered) return;
+
+        const idx = this.selectedStreets.indexOf(streetId);
+        if (idx > -1) {
+          // Deselect
+          this.selectedStreets.splice(idx, 1);
+        } else {
+          // Select (max 2)
+          if (this.selectedStreets.length < 2) {
+            this.selectedStreets.push(streetId);
+          }
+        }
+
+        this.drawMap();
+        this.updateSelectionInfo();
+
+        // Check if 2 streets selected
+        if (this.selectedStreets.length === 2) {
+          this.checkAnswer();
+        }
+      },
+
+      updateSelectionInfo() {
+        if (this.selectedStreets.length === 0) {
+          const msg = this.getTranslation(
+            'section.activities.parallel-perpendicular.selectTwo',
+            'Select two streets'
+          );
+          this.selectionInfo.textContent = msg;
+        } else if (this.selectedStreets.length === 1) {
+          const street = this.streets.find(s => s.id === this.selectedStreets[0]);
+          const msg = this.getTranslation(
+            'section.activities.parallel-perpendicular.selected',
+            'Selected: {name} St - now pick another!'
+          );
+          this.selectionInfo.textContent = msg.replace('{name}', street.name);
+        } else {
+          this.selectionInfo.textContent = '';
+        }
+      },
+
+      startQuestion() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+
+        this.isAnswered = false;
+        this.selectedStreets = [];
+        this.feedback.classList.remove('show', 'error');
+
+        // Alternate between parallel and perpendicular tasks
+        this.currentTask = this.currentQuestion % 2 === 0 ? 'parallel' : 'perpendicular';
+
+        // Set prompt
+        if (this.currentTask === 'parallel') {
+          this.taskPrompt.textContent = this.getTranslation(
+            'section.activities.parallel-perpendicular.findParallel',
+            'Tap two PARALLEL streets!'
+          );
+        } else {
+          this.taskPrompt.textContent = this.getTranslation(
+            'section.activities.parallel-perpendicular.findPerpendicular',
+            'Tap two PERPENDICULAR streets!'
+          );
+        }
+
+        this.generateMap();
+        this.drawMap();
+        this.updateSelectionInfo();
+        this.renderProgress();
+      },
+
+      checkAnswer() {
+        this.isAnswered = true;
+
+        const s1 = this.streets.find(s => s.id === this.selectedStreets[0]);
+        const s2 = this.streets.find(s => s.id === this.selectedStreets[1]);
+
+        // Check if they are parallel (same orientation) or perpendicular (different orientation)
+        const sameOrientation = s1.orientation === s2.orientation;
+        const isParallel = sameOrientation;
+        const isPerpendicular = !sameOrientation;
+
+        const isCorrect = (this.currentTask === 'parallel' && isParallel) ||
+                          (this.currentTask === 'perpendicular' && isPerpendicular);
+
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = this.currentTask === 'parallel'
+            ? this.getTranslation('section.activities.parallel-perpendicular.correctParallel',
+                'Correct! {name1} St and {name2} St are parallel.')
+            : this.getTranslation('section.activities.parallel-perpendicular.correctPerpendicular',
+                'Correct! {name1} St and {name2} St are perpendicular.');
+          this.feedback.textContent = msg.replace('{name1}', s1.name).replace('{name2}', s2.name);
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const actual = isParallel ? 'parallel' : 'perpendicular';
+          const actualLabel = this.getTranslation(`section.activities.parallel-perpendicular.${actual}`, actual);
+          const msg = this.getTranslation('section.activities.parallel-perpendicular.wrong',
+            '{name1} St and {name2} St are {actual}, not {expected}.');
+          const expectedLabel = this.getTranslation(`section.activities.parallel-perpendicular.${this.currentTask}`, this.currentTask);
+          this.feedback.textContent = msg
+            .replace('{name1}', s1.name)
+            .replace('{name2}', s2.name)
+            .replace('{actual}', actualLabel)
+            .replace('{expected}', expectedLabel);
+          this.feedback.classList.add('error');
+
+          if (typeof wiggle === 'function') {
+            wiggle(this.mapSvg.parentElement);
+          }
+        }
+
+        this.feedback.classList.add('show');
+
+        this.advanceTimeout = setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.selectedStreets = [];
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+        this.drawMap();
+        this.updateSelectionInfo();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.parallel-perpendicular.perfect',
+            'Perfect street navigation!'
+          );
+        } else if (percent >= 0.75) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.parallel-perpendicular.great',
+            'Great street navigation!'
+          );
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.parallel-perpendicular.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.parallel-perpendicular.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      },
+
+      updateTranslations() {
+        // Update task prompt
+        if (this.currentTask === 'parallel') {
+          this.taskPrompt.textContent = this.getTranslation(
+            'section.activities.parallel-perpendicular.findParallel',
+            'Tap two PARALLEL streets!'
+          );
+        } else {
+          this.taskPrompt.textContent = this.getTranslation(
+            'section.activities.parallel-perpendicular.findPerpendicular',
+            'Tap two PERPENDICULAR streets!'
+          );
+        }
+        this.updateSelectionInfo();
+        this.updateProgressLabel();
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => ParallelPerpendicular.init());
+      } else {
+        ParallelPerpendicular.init();
+      }
+    });
+  </script>
+  <style>
+    /* Parallel & Perpendicular Streets specific styles */
+
+    .task-card {
+      text-align: center;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid #f59e0b;
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      box-shadow: 0 4px 0 #d97706;
+    }
+
+    .task-prompt {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #78350f;
+      margin-bottom: var(--space-2);
+    }
+
+    .selection-info {
+      font-size: var(--text-base);
+      color: #92400e;
+    }
+
+    .map-card {
+      width: min(480px, 100%);
+      text-align: center;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 3px solid #0ea5e9;
+      border-radius: var(--radius-2xl);
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      box-shadow: 0 6px 0 #0284c7;
+    }
+
+    .map-canvas {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 3px solid #7dd3fc;
+      overflow: hidden;
+      margin-bottom: var(--space-3);
+    }
+
+    #map-svg {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .map-legend {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: #0c4a6e;
+    }
+
+    .legend-color {
+      width: 24px;
+      height: 6px;
+      border-radius: 3px;
+    }
+
+    .legend-color.parallel {
+      background: linear-gradient(90deg, #94a3b8, #94a3b8);
+      position: relative;
+    }
+
+    .legend-color.parallel::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 0;
+      width: 24px;
+      height: 6px;
+      background: #94a3b8;
+      border-radius: 3px;
+    }
+
+    .legend-color.perpendicular {
+      background: #94a3b8;
+      position: relative;
+      width: 6px;
+      height: 24px;
+    }
+
+    .legend-color.perpendicular::after {
+      content: '';
+      position: absolute;
+      top: 9px;
+      left: -9px;
+      width: 24px;
+      height: 6px;
+      background: #94a3b8;
+      border-radius: 3px;
+    }
+
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Street hover effect */
+    .street-line {
+      transition: stroke 0.2s ease, stroke-width 0.2s ease;
+    }
+
+    .street-line:hover {
+      stroke: #818cf8 !important;
+      stroke-width: 12 !important;
+    }
+
+    @media (max-width: 480px) {
+      .task-card {
+        padding: var(--space-3);
+      }
+
+      .task-prompt {
+        font-size: var(--text-lg);
+      }
+
+      .map-card {
+        padding: var(--space-3);
+      }
+
+      .map-legend {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-2);
+      }
+
+      .legend-item {
+        font-size: var(--text-xs);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

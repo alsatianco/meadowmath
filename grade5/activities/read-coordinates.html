@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read the Coordinates - Grade 5 Math Activity - Meadow Math">
+  <title>Read the Coordinates - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">👀</span>
+            <span data-i18n="section.activities.read-coordinates.title">Read the Coordinates</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.read-coordinates.instruction">What are the coordinates?</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Prompt Card -->
+          <div class="prompt-card" id="prompt-card">
+            <span class="prompt-text" data-i18n="section.activities.read-coordinates.prompt">What are the coordinates of the red point?</span>
+          </div>
+
+          <!-- Coordinate Grid -->
+          <div class="grid-container" id="grid-container">
+            <svg class="coordinate-grid" id="coordinate-grid" viewBox="0 0 340 340" preserveAspectRatio="xMidYMid meet">
+              <!-- Grid will be drawn here -->
+            </svg>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <!-- Choices will be rendered here -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.read-coordinates.great">Great coordinate reading!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Read the Coordinates Activity - Grade 5 Level 5
+    const ReadCoordinates = {
+      currentQuestion: 0,
+      totalQuestions: 12,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+      gridSize: 10,
+      cellSize: 30,
+      padding: 40,
+
+      // DOM elements
+      promptCard: null,
+      gridContainer: null,
+      gridSvg: null,
+      choicesContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.promptCard = document.getElementById('prompt-card');
+        this.gridContainer = document.getElementById('grid-container');
+        this.gridSvg = document.getElementById('coordinate-grid');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.drawGrid();
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      drawGrid() {
+        const svg = this.gridSvg;
+        svg.innerHTML = '';
+
+        const gridGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+        // Draw grid lines
+        for (let i = 0; i <= this.gridSize; i++) {
+          const x = this.padding + i * this.cellSize;
+          const y = this.padding + (this.gridSize - i) * this.cellSize;
+
+          // Vertical lines
+          const vLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          vLine.setAttribute('x1', x);
+          vLine.setAttribute('y1', this.padding);
+          vLine.setAttribute('x2', x);
+          vLine.setAttribute('y2', this.padding + this.gridSize * this.cellSize);
+          vLine.setAttribute('stroke', i === 0 ? '#374151' : '#d1d5db');
+          vLine.setAttribute('stroke-width', i === 0 ? '2' : '1');
+          gridGroup.appendChild(vLine);
+
+          // Horizontal lines
+          const hLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          hLine.setAttribute('x1', this.padding);
+          hLine.setAttribute('y1', y);
+          hLine.setAttribute('x2', this.padding + this.gridSize * this.cellSize);
+          hLine.setAttribute('y2', y);
+          hLine.setAttribute('stroke', i === 0 ? '#374151' : '#d1d5db');
+          hLine.setAttribute('stroke-width', i === 0 ? '2' : '1');
+          gridGroup.appendChild(hLine);
+
+          // X-axis labels
+          const xLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          xLabel.setAttribute('x', this.padding + i * this.cellSize);
+          xLabel.setAttribute('y', this.padding + this.gridSize * this.cellSize + 20);
+          xLabel.setAttribute('text-anchor', 'middle');
+          xLabel.setAttribute('fill', '#374151');
+          xLabel.setAttribute('font-size', '12');
+          xLabel.setAttribute('font-family', 'var(--font-secondary)');
+          xLabel.textContent = i;
+          gridGroup.appendChild(xLabel);
+
+          // Y-axis labels
+          const yLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          yLabel.setAttribute('x', this.padding - 15);
+          yLabel.setAttribute('y', this.padding + (this.gridSize - i) * this.cellSize + 4);
+          yLabel.setAttribute('text-anchor', 'middle');
+          yLabel.setAttribute('fill', '#374151');
+          yLabel.setAttribute('font-size', '12');
+          yLabel.setAttribute('font-family', 'var(--font-secondary)');
+          yLabel.textContent = i;
+          gridGroup.appendChild(yLabel);
+        }
+
+        // Add axis labels
+        const xAxisLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        xAxisLabel.setAttribute('x', this.padding + this.gridSize * this.cellSize + 15);
+        xAxisLabel.setAttribute('y', this.padding + this.gridSize * this.cellSize + 4);
+        xAxisLabel.setAttribute('fill', '#3b82f6');
+        xAxisLabel.setAttribute('font-size', '14');
+        xAxisLabel.setAttribute('font-weight', 'bold');
+        xAxisLabel.textContent = 'x';
+        gridGroup.appendChild(xAxisLabel);
+
+        const yAxisLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        yAxisLabel.setAttribute('x', this.padding - 4);
+        yAxisLabel.setAttribute('y', this.padding - 10);
+        yAxisLabel.setAttribute('fill', '#22c55e');
+        yAxisLabel.setAttribute('font-size', '14');
+        yAxisLabel.setAttribute('font-weight', 'bold');
+        yAxisLabel.textContent = 'y';
+        gridGroup.appendChild(yAxisLabel);
+
+        svg.appendChild(gridGroup);
+
+        // Create point group
+        this.pointGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        this.pointGroup.setAttribute('id', 'point-group');
+        svg.appendChild(this.pointGroup);
+      },
+
+      generateQuestions() {
+        const questions = [];
+        const usedPoints = new Set();
+
+        // Include some "tricky" cases with points on axes
+        const trickyPoints = [
+          { x: 0, y: 5 },  // On y-axis
+          { x: 7, y: 0 },  // On x-axis
+          { x: 0, y: 0 }   // Origin (only sometimes)
+        ];
+
+        // Add 2-3 tricky points
+        const numTricky = 2 + Math.floor(Math.random() * 2);
+        const shuffledTricky = shuffle([...trickyPoints]).slice(0, numTricky);
+
+        for (const pt of shuffledTricky) {
+          const key = `${pt.x},${pt.y}`;
+          if (!usedPoints.has(key)) {
+            usedPoints.add(key);
+            questions.push(pt);
+          }
+        }
+
+        // Fill the rest with random points
+        while (questions.length < this.totalQuestions) {
+          const x = Math.floor(Math.random() * (this.gridSize + 1));
+          const y = Math.floor(Math.random() * (this.gridSize + 1));
+          const key = `${x},${y}`;
+
+          if (!usedPoints.has(key)) {
+            usedPoints.add(key);
+            questions.push({ x, y });
+          }
+        }
+
+        this.questions = shuffle(questions);
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        const q = this.questions[this.currentQuestion];
+        if (!q) {
+          this.showStats();
+          return;
+        }
+
+        // Draw the point
+        this.drawPoint(q.x, q.y);
+
+        // Generate choices
+        const choices = this.generateChoices(q.x, q.y);
+        this.renderChoices(choices, q.x, q.y);
+
+        this.renderProgress();
+      },
+
+      drawPoint(x, y) {
+        const pointGroup = document.getElementById('point-group');
+        pointGroup.innerHTML = '';
+
+        const svgX = this.padding + x * this.cellSize;
+        const svgY = this.padding + (this.gridSize - y) * this.cellSize;
+
+        // Draw point
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', svgX);
+        circle.setAttribute('cy', svgY);
+        circle.setAttribute('r', '10');
+        circle.setAttribute('fill', '#ef4444');
+        circle.setAttribute('stroke', 'white');
+        circle.setAttribute('stroke-width', '2');
+        pointGroup.appendChild(circle);
+
+        // Add "?" label
+        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label.setAttribute('x', svgX);
+        label.setAttribute('y', svgY - 18);
+        label.setAttribute('text-anchor', 'middle');
+        label.setAttribute('fill', '#ef4444');
+        label.setAttribute('font-size', '14');
+        label.setAttribute('font-weight', 'bold');
+        label.textContent = '?';
+        pointGroup.appendChild(label);
+      },
+
+      generateChoices(correctX, correctY) {
+        const choices = [{ x: correctX, y: correctY, isCorrect: true }];
+        const usedKeys = new Set([`${correctX},${correctY}`]);
+
+        // Common mistakes: swapped x and y
+        if (correctX !== correctY) {
+          const swapped = { x: correctY, y: correctX, isCorrect: false };
+          const key = `${swapped.x},${swapped.y}`;
+          if (swapped.x >= 0 && swapped.x <= this.gridSize &&
+              swapped.y >= 0 && swapped.y <= this.gridSize &&
+              !usedKeys.has(key)) {
+            choices.push(swapped);
+            usedKeys.add(key);
+          }
+        }
+
+        // Off by one errors
+        const offByOne = [
+          { x: correctX + 1, y: correctY },
+          { x: correctX - 1, y: correctY },
+          { x: correctX, y: correctY + 1 },
+          { x: correctX, y: correctY - 1 }
+        ];
+
+        for (const pt of shuffle(offByOne)) {
+          if (choices.length >= 4) break;
+          const key = `${pt.x},${pt.y}`;
+          if (pt.x >= 0 && pt.x <= this.gridSize &&
+              pt.y >= 0 && pt.y <= this.gridSize &&
+              !usedKeys.has(key)) {
+            choices.push({ ...pt, isCorrect: false });
+            usedKeys.add(key);
+          }
+        }
+
+        // Fill with random if needed
+        while (choices.length < 4) {
+          const x = Math.floor(Math.random() * (this.gridSize + 1));
+          const y = Math.floor(Math.random() * (this.gridSize + 1));
+          const key = `${x},${y}`;
+          if (!usedKeys.has(key)) {
+            choices.push({ x, y, isCorrect: false });
+            usedKeys.add(key);
+          }
+        }
+
+        return shuffle(choices);
+      },
+
+      renderChoices(choices, correctX, correctY) {
+        this.choicesContainer.innerHTML = '';
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.setAttribute('tabindex', '0');
+          btn.textContent = `(${choice.x}, ${choice.y})`;
+
+          btn.addEventListener('click', () => this.checkAnswer(choice, correctX, correctY));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.checkAnswer(choice, correctX, correctY);
+            }
+          });
+
+          this.choicesContainer.appendChild(btn);
+        });
+      },
+
+      checkAnswer(selected, correctX, correctY) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const buttons = this.choicesContainer.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => btn.disabled = true);
+
+        const isCorrect = selected.isCorrect;
+
+        buttons.forEach(btn => {
+          const text = btn.textContent;
+          if (text === `(${correctX}, ${correctY})`) {
+            btn.classList.add('correct');
+          } else if (text === `(${selected.x}, ${selected.y})` && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        // Update point label
+        this.updatePointLabel(correctX, correctY, isCorrect);
+
+        if (isCorrect) {
+          this.correctCount++;
+          this.feedback.textContent = this.getTranslation(
+            'section.activities.read-coordinates.correct',
+            'Correct! The point is at ({x}, {y}).'
+          )
+            .replace('{x}', correctX)
+            .replace('{y}', correctY);
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          this.feedback.textContent = this.getTranslation(
+            'section.activities.read-coordinates.wrong',
+            'The coordinates are ({x}, {y}).'
+          )
+            .replace('{x}', correctX)
+            .replace('{y}', correctY);
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+        this.scheduleAdvance();
+      },
+
+      updatePointLabel(x, y, isCorrect) {
+        const pointGroup = document.getElementById('point-group');
+        const label = pointGroup.querySelector('text');
+        if (label) {
+          label.textContent = `(${x}, ${y})`;
+          label.setAttribute('fill', isCorrect ? '#22c55e' : '#ef4444');
+        }
+
+        const circle = pointGroup.querySelector('circle');
+        if (circle) {
+          circle.setAttribute('fill', isCorrect ? '#22c55e' : '#ef4444');
+        }
+      },
+
+      scheduleAdvance() {
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.read-coordinates.perfect',
+            'Perfect! You read coordinates like a pro!'
+          );
+        } else if (percent >= 0.75) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.read-coordinates.great',
+            'Great coordinate reading!'
+          );
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.read-coordinates.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.read-coordinates.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => ReadCoordinates.init());
+      } else {
+        ReadCoordinates.init();
+      }
+    });
+  </script>
+  <style>
+    /* Read the Coordinates specific styles */
+
+    /* Prompt Card */
+    .prompt-card {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #3b82f6;
+      padding: var(--space-3);
+      margin-bottom: var(--space-2);
+      text-align: center;
+    }
+
+    .prompt-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #1e3a8a;
+    }
+
+    /* Grid Container */
+    .grid-container {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 2px solid #e2e8f0;
+      padding: var(--space-2);
+      margin-bottom: var(--space-3);
+      display: flex;
+      justify-content: center;
+    }
+
+    .coordinate-grid {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+    }
+
+    /* Choices Container */
+    .choices-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .choice-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #374151;
+      background: white;
+      border: 3px solid #d1d5db;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 60px;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: #f3f4f6;
+      border-color: #9ca3af;
+      transform: scale(1.02);
+    }
+
+    .choice-btn:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn.correct {
+      background: #dcfce7;
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: #fee2e2;
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    /* Feedback and layout */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .prompt-card {
+        padding: var(--space-2);
+      }
+
+      .prompt-text {
+        font-size: var(--text-sm);
+      }
+
+      .coordinate-grid {
+        max-width: 300px;
+      }
+
+      .choices-container {
+        gap: var(--space-2);
+      }
+
+      .choice-btn {
+        padding: var(--space-2);
+        font-size: var(--text-lg);
+        min-height: 55px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .coordinate-grid {
+        max-width: 280px;
+      }
+
+      .choice-btn {
+        font-size: var(--text-base);
+        min-height: 50px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

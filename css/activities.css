@@ -404,6 +404,10 @@
   border-bottom-color: var(--color-primary-dark);
 }
 
+.youtube-search-link:focus-visible {
+  border-bottom-color: var(--color-primary-dark);
+}
+
 .youtube-search-link:active {
   transform: scale(0.98);
 }
@@ -464,20 +468,20 @@
     grid-template-columns: 1fr;
     gap: var(--space-4);
   }
-  
+
   .activity-card {
     min-height: 250px;
   }
-  
+
   .level-title {
     font-size: var(--text-2xl);
   }
-  
+
   .tabs-list {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  
+
   .tab-button {
     white-space: nowrap;
     font-size: var(--text-base);

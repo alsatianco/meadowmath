@@ -438,7 +438,7 @@
        */
       renderChoices() {
         const answer = this.currentProblem.answer;
-        
+
         // Generate wrong answers (close to correct answer)
         const wrongAnswers = new Set();
         while (wrongAnswers.size < 3) {
@@ -448,9 +448,9 @@
             wrongAnswers.add(wrong);
           }
         }
-        
+
         const choices = this.shuffleArray([answer, ...wrongAnswers]);
-        
+
         this.choicesContainer.innerHTML = '';
         choices.forEach(choice => {
           const btn = document.createElement('button');
@@ -513,7 +513,7 @@
               b.classList.add('correct');
             }
           });
-          
+
           const wrongMsg = getTranslation(
             'section.activities.draw-to-solve.tryAgain',
             'Not quite! The answer is {answer}. ({a} {op} {b} = {answer})'

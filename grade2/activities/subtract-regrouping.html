@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Regrouping Practice: Subtract - Grade 2 Math Activity - Meadow Math">
+  <title>Regrouping Practice: Subtract - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade2">Grade 2</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🧩</span>
+            <span data-i18n="section.activities.subtract-regrouping.title">Regrouping Practice: Subtract</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.subtract-regrouping.description">Practice subtracting with regrouping.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Question -->
+          <div class="question-text" id="question">
+            <span data-i18n="section.activities.subtract-regrouping.instruction">When you can't subtract ones, borrow from tens!</span>
+          </div>
+
+          <!-- Place Value Display -->
+          <div class="place-value-display" id="place-value-display">
+            <!-- Column headers -->
+            <div class="pv-header">
+              <div class="pv-col-header" data-i18n="section.activities.subtract-regrouping.tens">Tens</div>
+              <div class="pv-col-header" data-i18n="section.activities.subtract-regrouping.ones">Ones</div>
+            </div>
+
+            <!-- First number row (minuend) with regrouping display -->
+            <div class="pv-row" id="row1">
+              <div class="pv-cell tens-cell" id="num1-tens-cell">
+                <span class="pv-digit crossed" id="num1-tens-crossed"></span>
+                <span class="pv-digit" id="num1-tens-digit">5</span>
+                <span class="pv-digit regrouped" id="num1-tens-new"></span>
+              </div>
+              <div class="pv-cell ones-cell" id="num1-ones-cell">
+                <span class="pv-digit crossed" id="num1-ones-crossed"></span>
+                <span class="pv-digit" id="num1-ones-digit">2</span>
+                <span class="pv-digit regrouped" id="num1-ones-new"></span>
+              </div>
+            </div>
+
+            <!-- Minus sign and second number row (subtrahend) -->
+            <div class="pv-row with-operator">
+              <div class="pv-operator">−</div>
+              <div class="pv-cell tens-cell" id="num2-tens-cell">
+                <span class="pv-digit" id="num2-tens-digit">2</span>
+              </div>
+              <div class="pv-cell ones-cell" id="num2-ones-cell">
+                <span class="pv-digit" id="num2-ones-digit">8</span>
+              </div>
+            </div>
+
+            <!-- Divider line -->
+            <div class="pv-divider"></div>
+
+            <!-- Result row with regrouping indicator -->
+            <div class="pv-row result-row">
+              <div class="regroup-indicator" id="regroup-indicator">
+                <span class="regroup-arrow">↓10</span>
+              </div>
+              <div class="pv-cell tens-cell result-cell" id="result-tens-cell">
+                <span class="pv-digit result-digit" id="result-tens-digit">?</span>
+              </div>
+              <div class="pv-cell ones-cell result-cell" id="result-ones-cell">
+                <span class="pv-digit result-digit" id="result-ones-digit">?</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Regrouping explanation -->
+          <div class="regroup-explanation" id="regroup-explanation">
+            <span id="borrow-text"></span>
+          </div>
+
+          <!-- Choice Buttons -->
+          <div class="choice-container" id="choice-container"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Subtract Regrouping Activity - Grade 2
+    const SubtractRegrouping = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      num1: 0,
+      num2: 0,
+      correctAnswer: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // DOM elements
+      num1TensDigit: null,
+      num1OnesDigit: null,
+      num1TensCrossed: null,
+      num1OnesCrossed: null,
+      num1TensNew: null,
+      num1OnesNew: null,
+      num2TensDigit: null,
+      num2OnesDigit: null,
+      resultTensDigit: null,
+      resultOnesDigit: null,
+      regroupIndicator: null,
+      regroupExplanation: null,
+      borrowText: null,
+      choiceContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.num1TensDigit = document.getElementById('num1-tens-digit');
+        this.num1OnesDigit = document.getElementById('num1-ones-digit');
+        this.num1TensCrossed = document.getElementById('num1-tens-crossed');
+        this.num1OnesCrossed = document.getElementById('num1-ones-crossed');
+        this.num1TensNew = document.getElementById('num1-tens-new');
+        this.num1OnesNew = document.getElementById('num1-ones-new');
+        this.num2TensDigit = document.getElementById('num2-tens-digit');
+        this.num2OnesDigit = document.getElementById('num2-ones-digit');
+        this.resultTensDigit = document.getElementById('result-tens-digit');
+        this.resultOnesDigit = document.getElementById('result-ones-digit');
+        this.regroupIndicator = document.getElementById('regroup-indicator');
+        this.regroupExplanation = document.getElementById('regroup-explanation');
+        this.borrowText = document.getElementById('borrow-text');
+        this.choiceContainer = document.getElementById('choice-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Update explanation text
+        if (this.num1 && this.num2) {
+          this.updateExplanationText();
+        }
+        // Update stats message if visible
+        if (this.statsOverlay.classList.contains('show')) {
+          const percentage = (this.correctCount / this.totalQuestions) * 100;
+          if (percentage >= 80) {
+            this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.subtract-regrouping.perfect') : 'Amazing regrouping skills!';
+          } else if (percentage >= 50) {
+            this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.subtract-regrouping.great') : 'Great regrouping!';
+          } else {
+            this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.subtract-regrouping.keepPracticing') : 'Keep practicing!';
+          }
+        }
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      },
+
+      generateProblem() {
+        // Generate problems that require regrouping (ones in minuend < ones in subtrahend)
+        let t1, o1, t2, o2;
+
+        if (this.currentQuestion < 4) {
+          // Early questions: smaller numbers, clear regrouping
+          t1 = this.randomInt(3, 5);
+          o1 = this.randomInt(0, 4);
+          t2 = this.randomInt(1, t1 - 1);
+          o2 = this.randomInt(o1 + 1, 9); // Ensure o2 > o1 for regrouping
+        } else if (this.currentQuestion < 7) {
+          // Medium: moderate numbers
+          t1 = this.randomInt(4, 7);
+          o1 = this.randomInt(0, 5);
+          t2 = this.randomInt(1, t1 - 1);
+          o2 = this.randomInt(Math.max(o1 + 1, 3), 9);
+        } else {
+          // Later questions: larger numbers
+          t1 = this.randomInt(5, 9);
+          o1 = this.randomInt(0, 6);
+          t2 = this.randomInt(2, t1 - 1);
+          o2 = this.randomInt(Math.max(o1 + 1, 4), 9);
+        }
+
+        this.num1 = t1 * 10 + o1;
+        this.num2 = t2 * 10 + o2;
+
+        // Ensure we need regrouping: o1 < o2
+        const finalO1 = this.num1 % 10;
+        const finalO2 = this.num2 % 10;
+
+        if (finalO1 >= finalO2) {
+          // Adjust to require regrouping
+          const newO1 = this.randomInt(0, Math.min(3, finalO2 - 1));
+          this.num1 = Math.floor(this.num1 / 10) * 10 + newO1;
+        }
+
+        // Make sure num1 > num2
+        if (this.num1 <= this.num2) {
+          // Increase num1's tens
+          const diff = this.num2 - this.num1 + 10;
+          this.num1 += Math.ceil(diff / 10) * 10;
+        }
+
+        // Safety check: ensure result is non-negative
+        if (this.num1 - this.num2 < 0) {
+          // Fallback to a known good problem
+          this.num1 = 52;
+          this.num2 = 28;
+        }
+
+        this.correctAnswer = this.num1 - this.num2;
+        this.isAnswered = false;
+      },
+
+      startQuestion() {
+        this.generateProblem();
+        this.renderDisplay();
+        this.renderChoices();
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      updateExplanationText() {
+        const t1 = Math.floor(this.num1 / 10);
+        const o1 = this.num1 % 10;
+        const o2 = this.num2 % 10;
+        const newOnes = o1 + 10;
+
+        const cantSubtractText = window.i18n
+          ? i18n.t('section.activities.subtract-regrouping.cantSubtract')
+              .replace('{o1}', o1)
+              .replace('{o2}', o2)
+          : `Can't take ${o2} from ${o1}`;
+
+        const borrowText = window.i18n
+          ? i18n.t('section.activities.subtract-regrouping.borrowTen')
+              .replace('{t1}', t1)
+              .replace('{newTens}', t1 - 1)
+          : `Borrow 1 ten from ${t1} tens → ${t1 - 1} tens`;
+
+        const nowHaveText = window.i18n
+          ? i18n.t('section.activities.subtract-regrouping.nowHave')
+              .replace('{newOnes}', newOnes)
+          : `Now have ${newOnes} ones`;
+
+        this.borrowText.innerHTML = `<strong>${cantSubtractText}</strong> → ${borrowText}, <strong>${nowHaveText}</strong>`;
+      },
+
+      renderDisplay() {
+        const t1 = Math.floor(this.num1 / 10);
+        const o1 = this.num1 % 10;
+        const t2 = Math.floor(this.num2 / 10);
+        const o2 = this.num2 % 10;
+
+        // Update main digits
+        this.num1TensDigit.textContent = t1;
+        this.num1OnesDigit.textContent = o1;
+        this.num2TensDigit.textContent = t2;
+        this.num2OnesDigit.textContent = o2;
+        this.resultTensDigit.textContent = '?';
+        this.resultOnesDigit.textContent = '?';
+
+        // Show regrouping visualization (cross out and show new values)
+        if (o1 < o2) {
+          // Show crossed out original and new regrouped values
+          this.num1TensCrossed.textContent = t1;
+          this.num1TensCrossed.classList.add('show');
+          this.num1TensDigit.classList.add('hidden');
+          this.num1TensNew.textContent = t1 - 1;
+          this.num1TensNew.classList.add('show');
+
+          this.num1OnesCrossed.textContent = o1;
+          this.num1OnesCrossed.classList.add('show');
+          this.num1OnesDigit.classList.add('hidden');
+          this.num1OnesNew.textContent = o1 + 10;
+          this.num1OnesNew.classList.add('show');
+
+          this.regroupIndicator.classList.add('show');
+        } else {
+          // Hide regrouping visuals
+          this.num1TensCrossed.classList.remove('show');
+          this.num1TensDigit.classList.remove('hidden');
+          this.num1TensNew.classList.remove('show');
+          this.num1OnesCrossed.classList.remove('show');
+          this.num1OnesDigit.classList.remove('hidden');
+          this.num1OnesNew.classList.remove('show');
+          this.regroupIndicator.classList.remove('show');
+        }
+
+        // Update explanation
+        this.updateExplanationText();
+      },
+
+      renderChoices() {
+        this.choiceContainer.innerHTML = '';
+
+        if (this.isAnswered) return;
+
+        const choices = [this.correctAnswer];
+
+        // Generate distractors based on common mistakes
+        const distractors = [];
+        const t1 = Math.floor(this.num1 / 10);
+        const o1 = this.num1 % 10;
+        const t2 = Math.floor(this.num2 / 10);
+        const o2 = this.num2 % 10;
+
+        // Mistake: Subtracted smaller from larger in ones (no borrow)
+        const noBorrow = (t1 - t2) * 10 + Math.abs(o1 - o2);
+        if (noBorrow !== this.correctAnswer && noBorrow > 0) distractors.push(noBorrow);
+
+        // Mistake: Forgot to reduce tens after borrowing
+        const forgotReduceTens = (t1 - t2) * 10 + (o1 + 10 - o2);
+        if (forgotReduceTens !== this.correctAnswer && forgotReduceTens > 0 && forgotReduceTens < 100) distractors.push(forgotReduceTens);
+
+        // Mistake: Borrowed but subtracted wrong
+        const wrongSubtract = ((t1 - 1) - t2) * 10 + (o1 + 10 - o2 + 1);
+        if (wrongSubtract !== this.correctAnswer && wrongSubtract > 0 && wrongSubtract < 100) distractors.push(wrongSubtract);
+
+        // Off by 10
+        if (this.correctAnswer + 10 < 100) distractors.push(this.correctAnswer + 10);
+        if (this.correctAnswer > 10) distractors.push(this.correctAnswer - 10);
+
+        // Off by 1
+        distractors.push(this.correctAnswer + 1);
+        if (this.correctAnswer > 1) distractors.push(this.correctAnswer - 1);
+
+        // Filter valid unique distractors
+        const validDistractors = distractors.filter(d =>
+          d > 0 && d < 100 && !choices.includes(d)
+        );
+        this.shuffleArray(validDistractors);
+        choices.push(...validDistractors.slice(0, 3));
+
+        // Fill remaining with random if needed
+        while (choices.length < 4) {
+          const d = this.randomInt(
+            Math.max(1, this.correctAnswer - 15),
+            Math.min(99, this.correctAnswer + 15)
+          );
+          if (!choices.includes(d) && d > 0) choices.push(d);
+        }
+
+        this.shuffleArray(choices);
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.textContent = choice;
+          btn.dataset.value = choice;
+          btn.setAttribute('aria-label', `${this.num1} − ${this.num2} = ${choice}`);
+          btn.addEventListener('click', () => this.selectChoice(choice));
+          this.choiceContainer.appendChild(btn);
+        });
+      },
+
+      selectChoice(value) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const isCorrect = value === this.correctAnswer;
+
+        // Show correct answer in display
+        const resultTens = Math.floor(this.correctAnswer / 10);
+        const resultOnes = this.correctAnswer % 10;
+        this.resultTensDigit.textContent = resultTens;
+        this.resultOnesDigit.textContent = resultOnes;
+
+        // Highlight selection
+        const buttons = this.choiceContainer.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => {
+          btn.disabled = true;
+          const btnValue = parseInt(btn.dataset.value);
+          if (btnValue === this.correctAnswer) {
+            btn.classList.add('correct');
+          } else if (btnValue === value && !isCorrect) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = window.i18n ? i18n.t('section.activities.subtract-regrouping.correct') : 'Correct!';
+          this.feedback.textContent = '✓ ' + msg.replace('{a}', this.num1).replace('{b}', this.num2).replace('{diff}', this.correctAnswer);
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const msg = window.i18n ? i18n.t('section.activities.subtract-regrouping.wrong') : `The answer is ${this.correctAnswer}`;
+          this.feedback.textContent = msg.replace('{a}', this.num1).replace('{b}', this.num2).replace('{diff}', this.correctAnswer);
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.subtract-regrouping.perfect') : 'Amazing regrouping skills!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🧩';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.subtract-regrouping.great') : 'Great regrouping!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.subtract-regrouping.keepPracticing') : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => SubtractRegrouping.init());
+      } else {
+        SubtractRegrouping.init();
+      }
+    });
+  </script>
+  <style>
+    /* Subtract Regrouping specific styles */
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-4);
+      text-align: center;
+    }
+
+    /* Place Value Display */
+    .place-value-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      margin: var(--space-4) auto;
+      padding: var(--space-4);
+      max-width: 280px;
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border-radius: var(--radius-xl);
+      border: 3px solid var(--color-neutral-300);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .pv-header {
+      display: grid;
+      grid-template-columns: 80px 80px;
+      gap: var(--space-3);
+      margin-bottom: var(--space-2);
+    }
+
+    .pv-col-header {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-600);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .pv-row {
+      display: grid;
+      grid-template-columns: 80px 80px;
+      gap: var(--space-3);
+    }
+
+    .pv-row.with-operator {
+      position: relative;
+    }
+
+    .pv-operator {
+      position: absolute;
+      left: -30px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #dc2626;
+    }
+
+    .pv-cell {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-lg);
+      border: 3px solid;
+      position: relative;
+    }
+
+    .tens-cell {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: #3b82f6;
+    }
+
+    .ones-cell {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+    }
+
+    .result-cell {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+    }
+
+    .pv-digit {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      line-height: 1;
+    }
+
+    .pv-digit.hidden {
+      display: none;
+    }
+
+    .pv-digit.crossed {
+      display: none;
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: var(--text-lg);
+      color: #9ca3af;
+      text-decoration: line-through;
+      text-decoration-color: #dc2626;
+      text-decoration-thickness: 2px;
+    }
+
+    .pv-digit.crossed.show {
+      display: block;
+    }
+
+    .pv-digit.regrouped {
+      display: none;
+      font-size: var(--text-2xl);
+      color: #dc2626;
+    }
+
+    .pv-digit.regrouped.show {
+      display: block;
+    }
+
+    .result-digit {
+      color: var(--color-neutral-500);
+    }
+
+    .pv-divider {
+      width: 100%;
+      height: 4px;
+      background: var(--color-neutral-400);
+      border-radius: 2px;
+      margin: var(--space-2) 0;
+    }
+
+    .result-row {
+      position: relative;
+    }
+
+    /* Regrouping indicator */
+    .regroup-indicator {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .regroup-indicator.show {
+      display: flex;
+      animation: bounce-in 0.5s ease;
+    }
+
+    .regroup-arrow {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #dc2626;
+      background: #fee2e2;
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-md);
+      border: 2px solid #fca5a5;
+    }
+
+    @keyframes bounce-in {
+      0% { opacity: 0; transform: translateY(-50%) scale(0.5); }
+      60% { transform: translateY(-50%) scale(1.1); }
+      100% { opacity: 1; transform: translateY(-50%) scale(1); }
+    }
+
+    /* Regrouping explanation */
+    .regroup-explanation {
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      color: var(--color-neutral-600);
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      border-radius: var(--radius-lg);
+      border: 2px solid #f87171;
+      margin: var(--space-3) auto;
+      max-width: 340px;
+    }
+
+    .regroup-explanation strong {
+      color: #dc2626;
+    }
+
+    /* Choice Container */
+    .choice-container {
+      display: grid;
+      grid-template-columns: repeat(2, 80px);
+      justify-content: center;
+      gap: var(--space-4);
+      margin: var(--space-4) auto;
+    }
+
+    .choice-btn {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 3px solid var(--color-primary-light);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 var(--color-primary-light);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--color-primary-light);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 var(--color-primary-light);
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      color: #166534;
+      animation: pop 0.4s ease;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .place-value-display {
+        padding: var(--space-3);
+        max-width: 240px;
+      }
+
+      .pv-header {
+        grid-template-columns: 65px 65px;
+        gap: var(--space-2);
+      }
+
+      .pv-row {
+        grid-template-columns: 65px 65px;
+        gap: var(--space-2);
+      }
+
+      .pv-cell {
+        width: 65px;
+        height: 65px;
+      }
+
+      .pv-digit {
+        font-size: var(--text-2xl);
+      }
+
+      .pv-digit.crossed {
+        font-size: var(--text-sm);
+        top: 3px;
+      }
+
+      .pv-digit.regrouped {
+        font-size: var(--text-xl);
+      }
+
+      .pv-operator {
+        left: -25px;
+        font-size: var(--text-xl);
+      }
+
+      .regroup-indicator {
+        left: 5px;
+      }
+
+      .regroup-arrow {
+        font-size: var(--text-sm);
+        padding: 2px 6px;
+      }
+
+      .regroup-explanation {
+        font-size: var(--text-sm);
+        padding: var(--space-2) var(--space-3);
+        max-width: 280px;
+      }
+
+      .choice-container {
+        grid-template-columns: repeat(2, 70px);
+        gap: var(--space-3);
+      }
+
+      .choice-btn {
+        width: 70px;
+        height: 70px;
+        font-size: var(--text-xl);
+      }
+    }
+
+    @media (max-width: 400px) {
+      .place-value-display {
+        max-width: 200px;
+      }
+
+      .pv-header {
+        grid-template-columns: 55px 55px;
+      }
+
+      .pv-row {
+        grid-template-columns: 55px 55px;
+      }
+
+      .pv-cell {
+        width: 55px;
+        height: 55px;
+      }
+
+      .pv-digit {
+        font-size: var(--text-xl);
+      }
+
+      .pv-digit.crossed {
+        font-size: var(--text-xs);
+      }
+
+      .pv-digit.regrouped {
+        font-size: var(--text-lg);
+      }
+
+      .choice-container {
+        grid-template-columns: repeat(2, 60px);
+      }
+
+      .choice-btn {
+        width: 60px;
+        height: 60px;
+        font-size: var(--text-lg);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

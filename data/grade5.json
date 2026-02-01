@@ -1,0 +1,472 @@
+{
+  "region": "grade5",
+  "title": "Grade 5 Activities",
+  "description": "Decimals, multi-digit operations, fractions, volume, and coordinate geometry",
+  "levels": [
+    {
+      "id": "level-1",
+      "number": 1,
+      "title": "Place Value & Decimals",
+      "icon": "🟢",
+      "goal": "Understand decimal place value to thousandths, compare/round decimals, and use powers of 10.",
+      "skills": [
+        "Read/write decimals to thousandths",
+        "Compare decimals using place value",
+        "Round decimals to a given place",
+        "Use ×10/÷10 to shift digits",
+        "Use expanded form",
+        "Estimate decimal sums"
+      ],
+      "activities": [
+        {
+          "id": "powers-of-ten-shift",
+          "title": "Powers of Ten Shift",
+          "description": "Multiply or divide by 10, 100, 1000 and watch the digits move.",
+          "icon": "✨",
+          "path": "activities/powers-of-ten-shift.html",
+          "type": "interactive"
+        },
+        {
+          "id": "read-write-decimals",
+          "title": "Build the Decimal",
+          "description": "Drag digits into places to match the number.",
+          "icon": "🧩",
+          "path": "activities/read-write-decimals.html",
+          "type": "interactive"
+        },
+        {
+          "id": "compare-decimals",
+          "title": "Decimal Compare Duel",
+          "description": "Which is bigger? Use >, <, or =.",
+          "icon": "⚖️",
+          "path": "activities/compare-decimals.html",
+          "type": "interactive"
+        },
+        {
+          "id": "rounding-decimals",
+          "title": "Rounding Roller",
+          "description": "Round to the nearest tenth, hundredth, or whole number.",
+          "icon": "🎢",
+          "path": "activities/rounding-decimals.html",
+          "type": "interactive"
+        },
+        {
+          "id": "expanded-form-decimals",
+          "title": "Expanded Form Match",
+          "description": "Match standard, expanded, and word form.",
+          "icon": "🧠",
+          "path": "activities/expanded-form-decimals.html",
+          "type": "interactive"
+        },
+        {
+          "id": "decimal-grids",
+          "title": "Decimal Grids Lab",
+          "description": "Shade the grid to show a decimal (and see the fraction).",
+          "icon": "🟦",
+          "path": "activities/decimal-grids.html",
+          "type": "interactive"
+        },
+        {
+          "id": "estimate-decimal-sums",
+          "title": "Estimate the Sum",
+          "description": "Estimate first. Then check.",
+          "icon": "🔍",
+          "path": "activities/estimate-decimal-sums.html",
+          "type": "interactive"
+        },
+        {
+          "id": "decimal-patterns",
+          "title": "Decimal Patterns",
+          "description": "Follow the rule to grow a decimal pattern.",
+          "icon": "🌱",
+          "path": "activities/decimal-patterns.html",
+          "type": "interactive"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {"id": "g5-l1-big-idea", "icon": "💡", "title": "Big idea"},
+          {"id": "g5-l1-notice", "icon": "👀", "title": "What to notice"},
+          {"id": "g5-l1-home", "icon": "🏡", "title": "Try at home"},
+          {"id": "g5-l1-videos", "icon": "📺", "title": "Optional videos"}
+        ]
+      }
+    },
+    {
+      "id": "level-2",
+      "number": 2,
+      "title": "Multi-Digit & Decimal Operations + Expressions",
+      "icon": "🟡",
+      "goal": "Fluently multiply and divide multi-digit whole numbers, operate with decimals, and write/interpret expressions.",
+      "skills": [
+        "Multiply multi-digit whole numbers",
+        "Divide by two-digit divisors",
+        "Add/subtract decimals to hundredths",
+        "Multiply/divide decimals by whole numbers",
+        "Write and interpret numerical expressions"
+      ],
+      "activities": [
+        {
+          "id": "partial-products-multiply",
+          "title": "Partial Products Builder",
+          "description": "Build an area model and add the partial products.",
+          "icon": "🧱",
+          "path": "activities/partial-products-multiply.html",
+          "type": "interactive"
+        },
+        {
+          "id": "multiply-algorithm-check",
+          "title": "Algorithm Check",
+          "description": "Choose which multiplication work is correct.",
+          "icon": "✅",
+          "path": "activities/multiply-algorithm-check.html",
+          "type": "interactive"
+        },
+        {
+          "id": "division-estimate-quotient",
+          "title": "Division: First Estimate",
+          "description": "Estimate the quotient before dividing.",
+          "icon": "🎯",
+          "path": "activities/division-estimate-quotient.html",
+          "type": "interactive"
+        },
+        {
+          "id": "partial-quotients-division",
+          "title": "Partial Quotients Path",
+          "description": "Subtract chunks to reach the quotient.",
+          "icon": "🪜",
+          "path": "activities/partial-quotients-division.html",
+          "type": "interactive"
+        },
+        {
+          "id": "decimal-add-sub",
+          "title": "Decimal Add/Sub Align",
+          "description": "Line up decimals and solve.",
+          "icon": "➕",
+          "path": "activities/decimal-add-sub.html",
+          "type": "interactive"
+        },
+        {
+          "id": "decimal-times-whole",
+          "title": "Decimal × Whole",
+          "description": "Multiply a decimal by a whole number using models.",
+          "icon": "✖️",
+          "path": "activities/decimal-times-whole.html",
+          "type": "interactive"
+        },
+        {
+          "id": "decimal-divide-whole",
+          "title": "Decimal ÷ Whole",
+          "description": "Share a decimal amount equally.",
+          "icon": "➗",
+          "path": "activities/decimal-divide-whole.html",
+          "type": "interactive"
+        },
+        {
+          "id": "expression-builder",
+          "title": "Expression Builder",
+          "description": "Turn words into an expression (and evaluate).",
+          "icon": "🧠",
+          "path": "activities/expression-builder.html",
+          "type": "interactive"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {"id": "g5-l2-big-idea", "icon": "💡", "title": "Big idea"},
+          {"id": "g5-l2-notice", "icon": "👀", "title": "What to notice"},
+          {"id": "g5-l2-home", "icon": "🏡", "title": "Try at home"},
+          {"id": "g5-l2-videos", "icon": "📺", "title": "Optional videos"}
+        ]
+      }
+    },
+    {
+      "id": "level-3",
+      "number": 3,
+      "title": "Fractions Toolkit",
+      "icon": "🔵",
+      "goal": "Treat fractions as numbers on the number line and as operators. Understand fractions as division, add/subtract unlike denominators, multiply fractions, and explore division with unit fractions.",
+      "skills": [
+        "Understand fractions as division",
+        "Generate equivalent fractions",
+        "Find common denominators",
+        "Add/subtract unlike denominators",
+        "Multiply fractions and fraction × whole",
+        "Reason about scaling",
+        "Divide in unit-fraction cases"
+      ],
+      "activities": [
+        {
+          "id": "equivalent-fractions-lab",
+          "title": "Equivalent Fractions Lab",
+          "description": "Stretch and shrink fraction bars to make equivalents.",
+          "icon": "🧪",
+          "path": "activities/equivalent-fractions-lab.html",
+          "type": "interactive"
+        },
+        {
+          "id": "fraction-as-division",
+          "title": "Fraction as Division",
+          "description": "See that a/b means a divided by b.",
+          "icon": "🍕",
+          "path": "activities/fraction-as-division.html",
+          "type": "interactive"
+        },
+        {
+          "id": "common-denominator-maker",
+          "title": "Common Denominator Maker",
+          "description": "Choose a common denominator to compare or add.",
+          "icon": "🧰",
+          "path": "activities/common-denominator-maker.html",
+          "type": "interactive"
+        },
+        {
+          "id": "add-unlike-fractions",
+          "title": "Add Unlike Fractions",
+          "description": "Add fractions with different denominators (with models).",
+          "icon": "➕",
+          "path": "activities/add-unlike-fractions.html",
+          "type": "interactive"
+        },
+        {
+          "id": "subtract-mixed-numbers",
+          "title": "Subtract Mixed Numbers",
+          "description": "Subtract with regrouping (borrow a whole into fractions).",
+          "icon": "➖",
+          "path": "activities/subtract-mixed-numbers.html",
+          "type": "interactive"
+        },
+        {
+          "id": "multiply-fractions-area",
+          "title": "Multiply Fractions Area",
+          "description": "Find \"a fraction of a fraction\" using an area model.",
+          "icon": "🟩",
+          "path": "activities/multiply-fractions-area.html",
+          "type": "interactive"
+        },
+        {
+          "id": "fraction-scaling",
+          "title": "Fraction Scaling",
+          "description": "Will the product get bigger or smaller?",
+          "icon": "🔎",
+          "path": "activities/fraction-scaling.html",
+          "type": "interactive"
+        },
+        {
+          "id": "divide-unit-fractions",
+          "title": "Divide Unit Fractions",
+          "description": "How many 1/3s are in 2?",
+          "icon": "🍕",
+          "path": "activities/divide-unit-fractions.html",
+          "type": "interactive"
+        },
+        {
+          "id": "fraction-word-problems-bar-model",
+          "title": "Fraction Word Problems",
+          "description": "Draw a tape diagram to solve.",
+          "icon": "🧱",
+          "path": "activities/fraction-word-problems-bar-model.html",
+          "type": "interactive"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {"id": "g5-l3-big-idea", "icon": "💡", "title": "Big idea"},
+          {"id": "g5-l3-notice", "icon": "👀", "title": "What to notice"},
+          {"id": "g5-l3-home", "icon": "🏡", "title": "Try at home"},
+          {"id": "g5-l3-videos", "icon": "📺", "title": "Optional videos"}
+        ]
+      }
+    },
+    {
+      "id": "level-4",
+      "number": 4,
+      "title": "Measurement, Data & Volume",
+      "icon": "🟣",
+      "goal": "Convert units, interpret line plots with fractional measurements, and understand volume through unit cubes and formulas.",
+      "skills": [
+        "Convert units within a system",
+        "Use fraction operations to answer line plot questions",
+        "Understand volume as an attribute",
+        "Find volume using formulas",
+        "Add volumes of composed solids"
+      ],
+      "activities": [
+        {
+          "id": "unit-conversion-chain",
+          "title": "Unit Conversion Chain",
+          "description": "Convert step-by-step (km to m to cm, etc.).",
+          "icon": "🔁",
+          "path": "activities/unit-conversion-chain.html",
+          "type": "interactive"
+        },
+        {
+          "id": "multi-step-conversions",
+          "title": "Multi-Step Conversions",
+          "description": "Solve real-world problems with conversions.",
+          "icon": "🧾",
+          "path": "activities/multi-step-conversions.html",
+          "type": "interactive"
+        },
+        {
+          "id": "line-plot-build",
+          "title": "Build a Line Plot",
+          "description": "Place X marks for each measurement.",
+          "icon": "📍",
+          "path": "activities/line-plot-build.html",
+          "type": "interactive"
+        },
+        {
+          "id": "line-plot-questions",
+          "title": "Line Plot Questions",
+          "description": "Use the plot to answer fraction questions.",
+          "icon": "❓",
+          "path": "activities/line-plot-questions.html",
+          "type": "interactive"
+        },
+        {
+          "id": "volume-unit-cubes",
+          "title": "Volume with Unit Cubes",
+          "description": "Count cubes by layers to find volume.",
+          "icon": "🧊",
+          "path": "activities/volume-unit-cubes.html",
+          "type": "interactive"
+        },
+        {
+          "id": "volume-formula",
+          "title": "Volume Formula Finder",
+          "description": "Use V = l × w × h (and explain what each means).",
+          "icon": "📐",
+          "path": "activities/volume-formula.html",
+          "type": "interactive"
+        },
+        {
+          "id": "volume-compose-prisms",
+          "title": "Compose Volumes",
+          "description": "Add volumes of two prisms stuck together.",
+          "icon": "🧱",
+          "path": "activities/volume-compose-prisms.html",
+          "type": "interactive"
+        },
+        {
+          "id": "measurement-reasonableness",
+          "title": "Reasonableness & Units",
+          "description": "Pick the best unit and spot impossible answers.",
+          "icon": "🧭",
+          "path": "activities/measurement-reasonableness.html",
+          "type": "interactive"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {"id": "g5-l4-big-idea", "icon": "💡", "title": "Big idea"},
+          {"id": "g5-l4-notice", "icon": "👀", "title": "What to notice"},
+          {"id": "g5-l4-home", "icon": "🏡", "title": "Try at home"},
+          {"id": "g5-l4-videos", "icon": "📺", "title": "Optional videos"}
+        ]
+      }
+    },
+    {
+      "id": "level-5",
+      "number": 5,
+      "title": "Coordinate Plane & Geometry",
+      "icon": "🩵",
+      "goal": "Use coordinates to solve problems on a grid and classify 2D figures based on properties.",
+      "skills": [
+        "Plot points and read coordinates (first quadrant)",
+        "Use coordinates to find horizontal/vertical distances",
+        "Solve coordinate map problems",
+        "Generate and graph pattern pairs",
+        "Classify quadrilaterals and triangles by properties",
+        "Understand shape hierarchy"
+      ],
+      "activities": [
+        {
+          "id": "plot-points",
+          "title": "Plot the Point",
+          "description": "Plot (x, y) points to hit targets.",
+          "icon": "🎯",
+          "path": "activities/plot-points.html",
+          "type": "interactive"
+        },
+        {
+          "id": "read-coordinates",
+          "title": "Read the Coordinates",
+          "description": "Click the point and name its (x, y).",
+          "icon": "👀",
+          "path": "activities/read-coordinates.html",
+          "type": "interactive"
+        },
+        {
+          "id": "coordinate-distance",
+          "title": "Coordinate Distance",
+          "description": "How far apart are two points (horizontally or vertically)?",
+          "icon": "📏",
+          "path": "activities/coordinate-distance.html",
+          "type": "interactive"
+        },
+        {
+          "id": "coordinate-mystery-shape",
+          "title": "Mystery Shape",
+          "description": "Plot points to reveal a shape. What is it?",
+          "icon": "🕵️",
+          "path": "activities/coordinate-mystery-shape.html",
+          "type": "interactive"
+        },
+        {
+          "id": "coordinate-word-problems",
+          "title": "Coordinate Word Problems",
+          "description": "Use the grid like a map to solve problems.",
+          "icon": "🗺️",
+          "path": "activities/coordinate-word-problems.html",
+          "type": "interactive"
+        },
+        {
+          "id": "pattern-pairs",
+          "title": "Pattern Pairs & Graphing",
+          "description": "Make two patterns and graph the pairs.",
+          "icon": "📊",
+          "path": "activities/pattern-pairs.html",
+          "type": "interactive"
+        },
+        {
+          "id": "classify-quadrilaterals",
+          "title": "Classify Quadrilaterals",
+          "description": "Sort shapes by properties (parallel sides, right angles...).",
+          "icon": "🧩",
+          "path": "activities/classify-quadrilaterals.html",
+          "type": "interactive"
+        },
+        {
+          "id": "shape-hierarchy",
+          "title": "Shape Hierarchy Tree",
+          "description": "Build the \"family tree\" of shapes.",
+          "icon": "🌳",
+          "path": "activities/shape-hierarchy.html",
+          "type": "interactive"
+        },
+        {
+          "id": "always-sometimes-never",
+          "title": "Always / Sometimes / Never",
+          "description": "Decide if a statement is always, sometimes, or never true.",
+          "icon": "🤔",
+          "path": "activities/always-sometimes-never.html",
+          "type": "interactive"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {"id": "g5-l5-big-idea", "icon": "💡", "title": "Big idea"},
+          {"id": "g5-l5-notice", "icon": "👀", "title": "What to notice"},
+          {"id": "g5-l5-home", "icon": "🏡", "title": "Try at home"},
+          {"id": "g5-l5-videos", "icon": "📺", "title": "Optional videos"}
+        ]
+      }
+    }
+  ]
+}

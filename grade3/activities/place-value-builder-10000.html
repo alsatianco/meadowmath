@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Place Value Builder (to 10,000) - Grade 3 Math Activity - Meadow Math">
+  <title>Place Value Builder (to 10,000) - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🧱</span>
+            <span data-i18n="section.activities.place-value-builder-10000.title">Place Value Builder (to 10,000)</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.place-value-builder-10000.description">Build the number using thousands, hundreds, tens, and ones.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Target Number Display -->
+          <div class="target-section">
+            <div class="target-label" data-i18n="section.activities.place-value-builder-10000.buildNumber">Build this number:</div>
+            <div class="target-number" id="target-number">0</div>
+          </div>
+
+          <!-- Blocks Builder -->
+          <div class="builder-section">
+            <!-- Place Value Columns -->
+            <div class="place-value-columns">
+              <!-- Thousands -->
+              <div class="place-column" data-place="thousands">
+                <div class="place-header">
+                  <span class="place-name" data-i18n="section.activities.place-value-builder-10000.thousands">Thousands</span>
+                  <span class="place-count" id="count-thousands">0</span>
+                </div>
+                <div class="blocks-area" id="blocks-thousands"></div>
+                <div class="place-controls">
+                  <button class="control-btn minus" data-place="thousands" data-action="minus" aria-label="Remove thousand">−</button>
+                  <button class="control-btn plus" data-place="thousands" data-action="plus" aria-label="Add thousand">+</button>
+                </div>
+              </div>
+
+              <!-- Hundreds -->
+              <div class="place-column" data-place="hundreds">
+                <div class="place-header">
+                  <span class="place-name" data-i18n="section.activities.place-value-builder-10000.hundreds">Hundreds</span>
+                  <span class="place-count" id="count-hundreds">0</span>
+                </div>
+                <div class="blocks-area" id="blocks-hundreds"></div>
+                <div class="place-controls">
+                  <button class="control-btn minus" data-place="hundreds" data-action="minus" aria-label="Remove hundred">−</button>
+                  <button class="control-btn plus" data-place="hundreds" data-action="plus" aria-label="Add hundred">+</button>
+                </div>
+              </div>
+
+              <!-- Tens -->
+              <div class="place-column" data-place="tens">
+                <div class="place-header">
+                  <span class="place-name" data-i18n="section.activities.place-value-builder-10000.tens">Tens</span>
+                  <span class="place-count" id="count-tens">0</span>
+                </div>
+                <div class="blocks-area" id="blocks-tens"></div>
+                <div class="place-controls">
+                  <button class="control-btn minus" data-place="tens" data-action="minus" aria-label="Remove ten">−</button>
+                  <button class="control-btn plus" data-place="tens" data-action="plus" aria-label="Add ten">+</button>
+                </div>
+              </div>
+
+              <!-- Ones -->
+              <div class="place-column" data-place="ones">
+                <div class="place-header">
+                  <span class="place-name" data-i18n="section.activities.place-value-builder-10000.ones">Ones</span>
+                  <span class="place-count" id="count-ones">0</span>
+                </div>
+                <div class="blocks-area" id="blocks-ones"></div>
+                <div class="place-controls">
+                  <button class="control-btn minus" data-place="ones" data-action="minus" aria-label="Remove one">−</button>
+                  <button class="control-btn plus" data-place="ones" data-action="plus" aria-label="Add one">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Readout -->
+            <div class="live-readout" id="live-readout" aria-live="polite" aria-atomic="true">
+              <span class="readout-value" id="readout-thousands">0</span>
+              <span class="readout-label" data-i18n="section.activities.place-value-builder-10000.thousandsWord">thousands</span>
+              <span class="readout-value" id="readout-hundreds">0</span>
+              <span class="readout-label" data-i18n="section.activities.place-value-builder-10000.hundredsWord">hundreds</span>
+              <span class="readout-value" id="readout-tens">0</span>
+              <span class="readout-label" data-i18n="section.activities.place-value-builder-10000.tensWord">tens</span>
+              <span class="readout-value" id="readout-ones">0</span>
+              <span class="readout-label" data-i18n="section.activities.place-value-builder-10000.onesWord">ones</span>
+              <span class="readout-equals">=</span>
+              <span class="readout-total" id="readout-total">0</span>
+            </div>
+          </div>
+
+          <!-- Check Button -->
+          <div class="check-section">
+            <button class="btn-activity btn-primary" id="btn-check" data-i18n="buttons.check">Check</button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" aria-live="assertive" aria-atomic="true"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.place-value-builder-10000.great">Great job building numbers!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Place Value Builder (to 10,000) Activity - Grade 3 Level 1
+    const PlaceValueBuilder = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      targetNumber: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // Current block counts
+      thousands: 0,
+      hundreds: 0,
+      tens: 0,
+      ones: 0,
+
+      // DOM elements
+      targetDisplay: null,
+      progress: null,
+      feedback: null,
+      btnCheck: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        // Get DOM elements
+        this.targetDisplay = document.getElementById('target-number');
+        this.progress = document.getElementById('progress');
+        this.feedback = document.getElementById('feedback');
+        this.btnCheck = document.getElementById('btn-check');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up control button listeners
+        document.querySelectorAll('.control-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            if (this.isAnswered) return;
+            const place = btn.dataset.place;
+            const action = btn.dataset.action;
+            this.adjustBlocks(place, action);
+          });
+        });
+
+        // Set up other listeners
+        this.btnCheck.addEventListener('click', () => this.checkAnswer());
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Dynamic translations handled via data-i18n
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      generateTargetNumber() {
+        // Progressive difficulty
+        // Questions 0-1: 3-digit numbers (no thousands, for warm-up)
+        // Questions 2-4: 4-digit numbers with all non-zero digits
+        // Questions 5-7: Include zero digits (e.g., 4,005 or 2,040)
+
+        if (this.currentQuestion < 2) {
+          // 3-digit numbers: 100-999
+          return this.randomInt(100, 999);
+        } else if (this.currentQuestion < 5) {
+          // 4-digit numbers with all places likely non-zero
+          const th = this.randomInt(1, 9);
+          const h = this.randomInt(1, 9);
+          const t = this.randomInt(1, 9);
+          const o = this.randomInt(1, 9);
+          return th * 1000 + h * 100 + t * 10 + o;
+        } else {
+          // 4-digit numbers with some zeros
+          const th = this.randomInt(1, 9);
+          const zeroPositions = this.randomInt(1, 2); // 1 or 2 zero positions
+          let h = this.randomInt(0, 9);
+          let t = this.randomInt(0, 9);
+          let o = this.randomInt(0, 9);
+
+          // Force at least one zero
+          if (zeroPositions === 1) {
+            const zeroPos = this.randomInt(0, 2);
+            if (zeroPos === 0) h = 0;
+            else if (zeroPos === 1) t = 0;
+            else o = 0;
+          } else {
+            // Two zeros
+            const positions = [0, 1, 2];
+            this.shuffleArray(positions);
+            const zeroPosA = positions[0];
+            const zeroPosB = positions[1];
+            if (zeroPosA === 0 || zeroPosB === 0) h = 0;
+            if (zeroPosA === 1 || zeroPosB === 1) t = 0;
+            if (zeroPosA === 2 || zeroPosB === 2) o = 0;
+          }
+
+          return th * 1000 + h * 100 + t * 10 + o;
+        }
+      },
+
+      shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      },
+
+      startQuestion() {
+        this.targetNumber = this.generateTargetNumber();
+        this.thousands = 0;
+        this.hundreds = 0;
+        this.tens = 0;
+        this.ones = 0;
+        this.isAnswered = false;
+
+        // Display target number with commas
+        this.targetDisplay.textContent = this.targetNumber.toLocaleString();
+
+        // Reset UI
+        this.updateBlocksDisplay();
+        this.updateReadout();
+        this.feedback.classList.remove('show', 'error');
+        this.btnCheck.disabled = false;
+        this.enableControls(true);
+        this.renderProgress();
+      },
+
+      adjustBlocks(place, action) {
+        const delta = action === 'plus' ? 1 : -1;
+        const maxValues = { thousands: 9, hundreds: 9, tens: 9, ones: 9 };
+
+        if (action === 'plus' && this[place] >= maxValues[place]) return;
+        if (action === 'minus' && this[place] <= 0) return;
+
+        this[place] += delta;
+        this.updateBlocksDisplay();
+        this.updateReadout();
+      },
+
+      updateBlocksDisplay() {
+        this.renderBlocks('thousands', this.thousands);
+        this.renderBlocks('hundreds', this.hundreds);
+        this.renderBlocks('tens', this.tens);
+        this.renderBlocks('ones', this.ones);
+
+        // Update counts
+        document.getElementById('count-thousands').textContent = this.thousands;
+        document.getElementById('count-hundreds').textContent = this.hundreds;
+        document.getElementById('count-tens').textContent = this.tens;
+        document.getElementById('count-ones').textContent = this.ones;
+      },
+
+      renderBlocks(place, count) {
+        const container = document.getElementById(`blocks-${place}`);
+        container.innerHTML = '';
+
+        for (let i = 0; i < count; i++) {
+          const block = document.createElement('div');
+          block.className = `block block-${place}`;
+
+          if (place === 'thousands') {
+            // Thousand cube - a 3D-looking cube
+            block.innerHTML = '<div class="cube-face front"></div><div class="cube-face top"></div><div class="cube-face right"></div>';
+          } else if (place === 'hundreds') {
+            // Hundred flat - a square grid
+            for (let j = 0; j < 10; j++) {
+              const row = document.createElement('div');
+              row.className = 'flat-row';
+              for (let k = 0; k < 10; k++) {
+                const cell = document.createElement('div');
+                cell.className = 'flat-cell';
+                row.appendChild(cell);
+              }
+              block.appendChild(row);
+            }
+          } else if (place === 'tens') {
+            // Ten rod - vertical stack
+            for (let j = 0; j < 10; j++) {
+              const unit = document.createElement('div');
+              unit.className = 'rod-unit';
+              block.appendChild(unit);
+            }
+          } else {
+            // One unit - single small cube
+            block.classList.add('unit');
+          }
+
+          container.appendChild(block);
+        }
+      },
+
+      updateReadout() {
+        document.getElementById('readout-thousands').textContent = this.thousands;
+        document.getElementById('readout-hundreds').textContent = this.hundreds;
+        document.getElementById('readout-tens').textContent = this.tens;
+        document.getElementById('readout-ones').textContent = this.ones;
+
+        const total = this.thousands * 1000 + this.hundreds * 100 + this.tens * 10 + this.ones;
+        document.getElementById('readout-total').textContent = total.toLocaleString();
+      },
+
+      enableControls(enabled) {
+        document.querySelectorAll('.control-btn').forEach(btn => {
+          btn.disabled = !enabled;
+        });
+      },
+
+      checkAnswer() {
+        if (this.isAnswered) return;
+
+        const builtNumber = this.thousands * 1000 + this.hundreds * 100 + this.tens * 10 + this.ones;
+        const isCorrect = builtNumber === this.targetNumber;
+
+        this.isAnswered = true;
+        this.btnCheck.disabled = true;
+        this.enableControls(false);
+
+        if (isCorrect) {
+          this.correctCount++;
+          const correctMsg = window.i18n ? i18n.t('feedback.correct') : 'Correct!';
+          this.feedback.textContent = `${correctMsg} 🧱`;
+          this.feedback.classList.remove('error');
+
+          // Highlight blocks as correct
+          document.querySelectorAll('.place-column').forEach(col => {
+            col.classList.add('correct');
+          });
+        } else {
+          this.incorrectCount++;
+          const tryAgainMsg = window.i18n ? i18n.t('feedback.tryAgain') : 'Try again!';
+          const targetTh = Math.floor(this.targetNumber / 1000);
+          const targetH = Math.floor((this.targetNumber % 1000) / 100);
+          const targetT = Math.floor((this.targetNumber % 100) / 10);
+          const targetO = this.targetNumber % 10;
+
+          this.feedback.textContent = `${tryAgainMsg} ${this.targetNumber.toLocaleString()} = ${targetTh} thousands, ${targetH} hundreds, ${targetT} tens, ${targetO} ones`;
+          this.feedback.classList.add('error');
+
+          // Show the correct answer
+          this.thousands = targetTh;
+          this.hundreds = targetH;
+          this.tens = targetT;
+          this.ones = targetO;
+          this.updateBlocksDisplay();
+          this.updateReadout();
+        }
+
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          document.querySelectorAll('.place-column').forEach(col => {
+            col.classList.remove('correct');
+          });
+
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.thousands = 0;
+        this.hundreds = 0;
+        this.tens = 0;
+        this.ones = 0;
+        this.isAnswered = false;
+
+        this.updateBlocksDisplay();
+        this.updateReadout();
+        this.feedback.classList.remove('show', 'error');
+        this.btnCheck.disabled = false;
+        this.enableControls(true);
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.place-value-builder-10000.perfect') : 'Amazing number building!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🧱';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.place-value-builder-10000.great') : 'Great place value work!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.place-value-builder-10000.keepPracticing') : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => PlaceValueBuilder.init());
+      } else {
+        PlaceValueBuilder.init();
+      }
+    });
+  </script>
+  <style>
+    /* Place Value Builder specific styles */
+
+    .target-section {
+      text-align: center;
+      margin-bottom: var(--space-6);
+    }
+
+    .target-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      margin-bottom: var(--space-2);
+    }
+
+    .target-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border: 3px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      padding: var(--space-3) var(--space-6);
+      display: inline-block;
+      box-shadow: 0 4px 0 var(--color-primary-dark);
+    }
+
+    /* Builder Section */
+    .builder-section {
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Place Value Columns */
+    .place-value-columns {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .place-column {
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border: 2px solid var(--color-neutral-200);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .place-column.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+    }
+
+    .place-header {
+      text-align: center;
+      margin-bottom: var(--space-2);
+    }
+
+    .place-name {
+      display: block;
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+    }
+
+    .place-count {
+      display: block;
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-800);
+    }
+
+    /* Blocks Area */
+    .blocks-area {
+      min-height: 120px;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-1);
+      justify-content: center;
+      align-content: flex-start;
+      margin-bottom: var(--space-2);
+    }
+
+    /* Block Styles */
+    .block {
+      transition: all 0.2s ease;
+    }
+
+    /* Thousand cube - 3D cube appearance */
+    .block-thousands {
+      width: 40px;
+      height: 40px;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+
+    .block-thousands .cube-face {
+      position: absolute;
+      background: linear-gradient(135deg, #ec4899, #db2777);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .block-thousands .front {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      top: 4px;
+      left: 0;
+    }
+
+    .block-thousands .top {
+      width: 36px;
+      height: 8px;
+      background: linear-gradient(135deg, #f472b6, #ec4899);
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      top: 0;
+      left: 4px;
+      transform: skewX(-45deg);
+    }
+
+    .block-thousands .right {
+      width: 8px;
+      height: 36px;
+      background: linear-gradient(135deg, #be185d, #9d174d);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      top: 4px;
+      right: 0;
+      transform: skewY(-45deg);
+    }
+
+    /* Hundred flat - 10x10 grid */
+    .block-hundreds {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      border-radius: var(--radius-sm);
+      padding: 2px;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      box-shadow: 0 2px 0 #1d4ed8;
+    }
+
+    .flat-row {
+      display: flex;
+      gap: 1px;
+      flex: 1;
+    }
+
+    .flat-cell {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 1px;
+    }
+
+    /* Ten rod - vertical */
+    .block-tens {
+      width: 20px;
+      height: 100px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border-radius: var(--radius-sm);
+      padding: 2px;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      box-shadow: 0 2px 0 #15803d;
+    }
+
+    .rod-unit {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 1px;
+    }
+
+    /* One unit - small cube */
+    .block-ones {
+      width: 22px;
+      height: 22px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 2px 0 #b45309;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    /* Control Buttons */
+    .place-controls {
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    .control-btn {
+      width: 44px;
+      height: 44px;
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      border: 3px solid var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 0 var(--color-neutral-300);
+    }
+
+    .control-btn.plus {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      color: #166534;
+      border-color: #22c55e;
+      box-shadow: 0 3px 0 #16a34a;
+    }
+
+    .control-btn.minus {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      color: #991b1b;
+      border-color: #ef4444;
+      box-shadow: 0 3px 0 #dc2626;
+    }
+
+    .control-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+    }
+
+    .control-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 1px 0 var(--color-neutral-300);
+    }
+
+    .control-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .control-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4), 0 3px 0 var(--color-neutral-300);
+    }
+
+    /* Live Readout */
+    .live-readout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--color-primary-light);
+    }
+
+    .readout-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      background: white;
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-md);
+      min-width: 32px;
+      text-align: center;
+    }
+
+    .readout-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      color: var(--color-neutral-600);
+    }
+
+    .readout-equals {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-500);
+      margin: 0 var(--space-1);
+    }
+
+    .readout-total {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-md);
+      border: 2px solid var(--color-primary);
+    }
+
+    /* Check Section */
+    .check-section {
+      text-align: center;
+      margin: var(--space-4) 0;
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .place-value-columns {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-2);
+      }
+
+      .blocks-area {
+        min-height: 80px;
+      }
+
+      .block-thousands {
+        width: 32px;
+        height: 32px;
+      }
+
+      .block-thousands .front {
+        width: 28px;
+        height: 28px;
+      }
+
+      .block-thousands .top {
+        width: 28px;
+        height: 6px;
+      }
+
+      .block-thousands .right {
+        width: 6px;
+        height: 28px;
+      }
+
+      .block-hundreds {
+        width: 36px;
+        height: 36px;
+      }
+
+      .block-tens {
+        width: 16px;
+        height: 80px;
+      }
+
+      .block-ones {
+        width: 18px;
+        height: 18px;
+      }
+
+      .control-btn {
+        width: 40px;
+        height: 40px;
+        font-size: var(--text-xl);
+      }
+
+      .target-number {
+        font-size: var(--text-3xl);
+        padding: var(--space-2) var(--space-4);
+      }
+
+      .live-readout {
+        padding: var(--space-2);
+        gap: var(--space-1);
+      }
+
+      .readout-value {
+        font-size: var(--text-lg);
+        padding: var(--space-1);
+        min-width: 28px;
+      }
+
+      .readout-label {
+        font-size: var(--text-xs);
+      }
+
+      .readout-total {
+        font-size: var(--text-xl);
+        padding: var(--space-1) var(--space-2);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .place-name {
+        font-size: var(--text-xs);
+      }
+
+      .place-count {
+        font-size: var(--text-xl);
+      }
+
+      .blocks-area {
+        min-height: 50px;
+        max-height: 90px;
+        overflow-y: auto;
+      }
+
+      .block-thousands {
+        width: 24px;
+        height: 24px;
+      }
+
+      .block-thousands .front {
+        width: 20px;
+        height: 20px;
+      }
+
+      .block-thousands .top {
+        width: 20px;
+        height: 4px;
+      }
+
+      .block-thousands .right {
+        width: 4px;
+        height: 20px;
+      }
+
+      .block-hundreds {
+        width: 26px;
+        height: 26px;
+      }
+
+      .block-tens {
+        width: 12px;
+        height: 50px;
+      }
+
+      .block-ones {
+        width: 14px;
+        height: 14px;
+      }
+
+      .control-btn {
+        width: 44px;
+        height: 44px;
+        font-size: var(--text-lg);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Compare & Order Big Numbers - Grade 4 Math Activity - Meadow Math">
+  <title>Compare & Order Big Numbers - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade4">Grade 4</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🏔️</span>
+            <span data-i18n="section.activities.compare-order-big.title">Compare & Order Big Numbers</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.compare-order-big.description">Compare and sort large numbers.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Phase Indicator -->
+          <div class="phase-indicator" id="phase-indicator">
+            <span class="phase-label" data-i18n="section.activities.compare-order-big.partA">Part A: Compare</span>
+          </div>
+
+          <!-- Compare Section (Part A) -->
+          <div class="compare-section" id="compare-section">
+            <div class="compare-prompt" data-i18n="section.activities.compare-order-big.whichSymbol">Which symbol makes this true?</div>
+
+            <div class="compare-numbers">
+              <div class="compare-number left" id="left-number">0</div>
+              <div class="symbol-slot" id="symbol-slot">?</div>
+              <div class="compare-number right" id="right-number">0</div>
+            </div>
+
+            <div class="symbol-choices">
+              <button class="symbol-btn" data-symbol="<" aria-label="Less than">&lt;</button>
+              <button class="symbol-btn" data-symbol="=" aria-label="Equal to">=</button>
+              <button class="symbol-btn" data-symbol=">" aria-label="Greater than">&gt;</button>
+            </div>
+          </div>
+
+          <!-- Order Section (Part B) -->
+          <div class="order-section" id="order-section" style="display: none;">
+            <div class="order-prompt" data-i18n="section.activities.compare-order-big.orderPrompt">Put these numbers in order from least to greatest!</div>
+
+            <div class="order-instruction">
+              <span class="order-label least" data-i18n="section.activities.compare-order-big.least">Least</span>
+              <span class="order-arrow">→</span>
+              <span class="order-label greatest" data-i18n="section.activities.compare-order-big.greatest">Greatest</span>
+            </div>
+
+            <!-- Number cards to drag/click -->
+            <div class="number-pool" id="number-pool"></div>
+
+            <!-- Order slots -->
+            <div class="order-slots" id="order-slots"></div>
+
+            <!-- Check Order Button -->
+            <div class="check-section">
+              <button class="btn-activity btn-primary" id="btn-check-order" data-i18n="buttons.check">Check</button>
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" aria-live="assertive" aria-atomic="true"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.compare-order-big.great">Great job comparing and ordering numbers!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Compare & Order Big Numbers Activity - Grade 4 Level 1
+    const CompareOrderBig = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // Phase: 'compare' (Part A) or 'order' (Part B)
+      phase: 'compare',
+      compareQuestionsCount: 5, // First 5 are compare, last 3 are order
+
+      // Compare state
+      leftNum: 0,
+      rightNum: 0,
+
+      // Order state
+      numbersToOrder: [],
+      orderedNumbers: [],
+      selectedNumberCard: null,
+
+      // DOM elements
+      progress: null,
+      phaseIndicator: null,
+      compareSection: null,
+      orderSection: null,
+      leftNumber: null,
+      rightNumber: null,
+      symbolSlot: null,
+      symbolBtns: null,
+      numberPool: null,
+      orderSlots: null,
+      btnCheckOrder: null,
+      feedback: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        // Get DOM elements
+        this.progress = document.getElementById('progress');
+        this.phaseIndicator = document.getElementById('phase-indicator');
+        this.compareSection = document.getElementById('compare-section');
+        this.orderSection = document.getElementById('order-section');
+        this.leftNumber = document.getElementById('left-number');
+        this.rightNumber = document.getElementById('right-number');
+        this.symbolSlot = document.getElementById('symbol-slot');
+        this.symbolBtns = document.querySelectorAll('.symbol-btn');
+        this.numberPool = document.getElementById('number-pool');
+        this.orderSlots = document.getElementById('order-slots');
+        this.btnCheckOrder = document.getElementById('btn-check-order');
+        this.feedback = document.getElementById('feedback');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up symbol button listeners
+        this.symbolBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            if (this.isAnswered) return;
+            this.checkCompareAnswer(btn.dataset.symbol);
+          });
+        });
+
+        // Set up other listeners
+        this.btnCheckOrder.addEventListener('click', () => this.checkOrderAnswer());
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Update phase indicator
+        this.updatePhaseIndicator();
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      shuffleArray(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      },
+
+      // Generate a number based on difficulty
+      generateNumber(difficulty) {
+        // difficulty 0-1: 4-digit (1,000-9,999)
+        // difficulty 2-3: 5-digit (10,000-99,999)
+        // difficulty 4+: 6-digit (100,000-999,999)
+
+        if (difficulty < 2) {
+          return this.randomInt(1000, 9999);
+        } else if (difficulty < 4) {
+          return this.randomInt(10000, 99999);
+        } else {
+          return this.randomInt(100000, 999999);
+        }
+      },
+
+      // Generate a pair of numbers for comparison
+      generateComparePair() {
+        const difficulty = this.currentQuestion;
+        const num1 = this.generateNumber(difficulty);
+        let num2;
+
+        // Sometimes make them equal, sometimes different
+        const makeEqual = Math.random() < 0.15; // 15% chance equal
+
+        if (makeEqual) {
+          num2 = num1;
+        } else {
+          // Generate a different number, sometimes close, sometimes far
+          const makeClose = Math.random() < 0.4; // 40% chance close
+
+          if (makeClose) {
+            // Generate a number close to num1
+            const digitCount = num1.toString().length;
+            const variance = Math.pow(10, Math.max(0, digitCount - 2));
+            const delta = this.randomInt(-variance, variance);
+            num2 = Math.max(1000, num1 + delta);
+
+            // Make sure they're not accidentally equal
+            if (num2 === num1) {
+              num2 = num1 + (delta > 0 ? 1 : -1) * this.randomInt(1, variance);
+            }
+          } else {
+            num2 = this.generateNumber(difficulty);
+            // Make sure they're not accidentally equal
+            while (num2 === num1) {
+              num2 = this.generateNumber(difficulty);
+            }
+          }
+        }
+
+        return { left: num1, right: num2 };
+      },
+
+      // Generate numbers for ordering
+      generateOrderNumbers() {
+        const difficulty = this.currentQuestion;
+        const count = difficulty >= 6 ? 5 : 4; // 4-5 numbers to order
+        const numbers = new Set();
+
+        while (numbers.size < count) {
+          numbers.add(this.generateNumber(difficulty));
+        }
+
+        return Array.from(numbers);
+      },
+
+      startQuestion() {
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        // Determine phase based on current question
+        if (this.currentQuestion < this.compareQuestionsCount) {
+          this.phase = 'compare';
+          this.showCompareSection();
+          this.startCompareQuestion();
+        } else {
+          this.phase = 'order';
+          this.showOrderSection();
+          this.startOrderQuestion();
+        }
+
+        this.updatePhaseIndicator();
+        this.renderProgress();
+      },
+
+      updatePhaseIndicator() {
+        const phaseLabel = this.phaseIndicator.querySelector('.phase-label');
+        if (this.phase === 'compare') {
+          const text = window.i18n ? i18n.t('section.activities.compare-order-big.partA') : 'Part A: Compare';
+          phaseLabel.textContent = text;
+          phaseLabel.setAttribute('data-i18n', 'section.activities.compare-order-big.partA');
+        } else {
+          const text = window.i18n ? i18n.t('section.activities.compare-order-big.partB') : 'Part B: Order';
+          phaseLabel.textContent = text;
+          phaseLabel.setAttribute('data-i18n', 'section.activities.compare-order-big.partB');
+        }
+      },
+
+      showCompareSection() {
+        this.compareSection.style.display = 'block';
+        this.orderSection.style.display = 'none';
+      },
+
+      showOrderSection() {
+        this.compareSection.style.display = 'none';
+        this.orderSection.style.display = 'block';
+      },
+
+      startCompareQuestion() {
+        const pair = this.generateComparePair();
+        this.leftNum = pair.left;
+        this.rightNum = pair.right;
+
+        this.leftNumber.textContent = this.leftNum.toLocaleString();
+        this.rightNumber.textContent = this.rightNum.toLocaleString();
+        this.symbolSlot.textContent = '?';
+        this.symbolSlot.classList.remove('correct', 'incorrect');
+
+        // Enable symbol buttons
+        this.symbolBtns.forEach(btn => {
+          btn.disabled = false;
+          btn.classList.remove('selected', 'correct', 'incorrect');
+        });
+      },
+
+      checkCompareAnswer(symbol) {
+        if (this.isAnswered) return;
+
+        this.isAnswered = true;
+
+        // Determine correct answer
+        let correctSymbol;
+        if (this.leftNum < this.rightNum) {
+          correctSymbol = '<';
+        } else if (this.leftNum > this.rightNum) {
+          correctSymbol = '>';
+        } else {
+          correctSymbol = '=';
+        }
+
+        const isCorrect = symbol === correctSymbol;
+
+        // Disable all buttons
+        this.symbolBtns.forEach(btn => {
+          btn.disabled = true;
+          if (btn.dataset.symbol === symbol) {
+            btn.classList.add('selected');
+          }
+          if (btn.dataset.symbol === correctSymbol) {
+            btn.classList.add('correct');
+          }
+        });
+
+        // Update symbol slot
+        this.symbolSlot.textContent = correctSymbol;
+
+        if (isCorrect) {
+          this.correctCount++;
+          this.symbolSlot.classList.add('correct');
+          const correctMsg = window.i18n ? i18n.t('feedback.correct') : 'Correct!';
+          this.feedback.textContent = `${correctMsg} 🏔️`;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          this.symbolSlot.classList.add('incorrect');
+          const tryAgainMsg = window.i18n ? i18n.t('feedback.tryAgain') : 'Try again!';
+          this.feedback.textContent = `${tryAgainMsg} ${this.leftNum.toLocaleString()} ${correctSymbol} ${this.rightNum.toLocaleString()}`;
+          this.feedback.classList.add('error');
+
+          // Mark selected as incorrect
+          this.symbolBtns.forEach(btn => {
+            if (btn.dataset.symbol === symbol && symbol !== correctSymbol) {
+              btn.classList.add('incorrect');
+            }
+          });
+        }
+
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      startOrderQuestion() {
+        this.numbersToOrder = this.generateOrderNumbers();
+        this.orderedNumbers = [];
+        this.selectedNumberCard = null;
+
+        this.renderNumberPool();
+        this.renderOrderSlots();
+        this.btnCheckOrder.disabled = true;
+      },
+
+      renderNumberPool() {
+        // Shuffle for display
+        const shuffled = this.shuffleArray(this.numbersToOrder);
+
+        this.numberPool.innerHTML = shuffled.map(num => `
+          <button class="number-card" data-number="${num}" aria-label="${num.toLocaleString()}">
+            ${num.toLocaleString()}
+          </button>
+        `).join('');
+
+        // Add click handlers
+        this.numberPool.querySelectorAll('.number-card').forEach(card => {
+          card.addEventListener('click', () => this.handleNumberCardClick(card));
+        });
+      },
+
+      renderOrderSlots() {
+        const slotCount = this.numbersToOrder.length;
+        const slotLabel = window.i18n ? i18n.t('section.activities.compare-order-big.slot') : 'Slot';
+        const emptyLabel = window.i18n ? i18n.t('section.activities.compare-order-big.empty') : 'empty';
+        const clickToRemove = window.i18n ? i18n.t('section.activities.compare-order-big.clickToRemove') : 'click to remove';
+
+        this.orderSlots.innerHTML = Array(slotCount).fill(0).map((_, i) => `
+          <button class="order-slot" data-index="${i}" role="button"
+                  aria-label="${slotLabel} ${i + 1}, ${emptyLabel}"
+                  aria-describedby="order-slot-desc">
+            <span class="slot-number">${i + 1}</span>
+            <span class="slot-value"></span>
+          </button>
+        `).join('');
+
+        // Add click and keyboard handlers for removing numbers from slots
+        this.orderSlots.querySelectorAll('.order-slot').forEach(slot => {
+          slot.addEventListener('click', () => this.handleSlotClick(slot));
+          slot.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.handleSlotClick(slot);
+            }
+          });
+        });
+      },
+
+      updateSlotAriaLabel(slot, value) {
+        const slotLabel = window.i18n ? i18n.t('section.activities.compare-order-big.slot') : 'Slot';
+        const emptyLabel = window.i18n ? i18n.t('section.activities.compare-order-big.empty') : 'empty';
+        const clickToRemove = window.i18n ? i18n.t('section.activities.compare-order-big.clickToRemove') : 'click to remove';
+        const index = parseInt(slot.dataset.index) + 1;
+
+        if (value) {
+          slot.setAttribute('aria-label', `${slotLabel} ${index}: ${value.toLocaleString()}, ${clickToRemove}`);
+        } else {
+          slot.setAttribute('aria-label', `${slotLabel} ${index}, ${emptyLabel}`);
+        }
+      },
+
+      handleNumberCardClick(card) {
+        if (this.isAnswered) return;
+        if (card.classList.contains('used')) return;
+
+        const num = parseInt(card.dataset.number);
+
+        // Find next empty slot
+        const slots = this.orderSlots.querySelectorAll('.order-slot');
+        let nextEmptySlot = null;
+
+        for (const slot of slots) {
+          if (!slot.classList.contains('filled')) {
+            nextEmptySlot = slot;
+            break;
+          }
+        }
+
+        if (!nextEmptySlot) return;
+
+        // Place number in slot
+        card.classList.add('used');
+        card.setAttribute('aria-disabled', 'true');
+        nextEmptySlot.classList.add('filled');
+        nextEmptySlot.querySelector('.slot-value').textContent = num.toLocaleString();
+        nextEmptySlot.dataset.value = num;
+        this.orderedNumbers.push(num);
+
+        // Update ARIA label for the slot
+        this.updateSlotAriaLabel(nextEmptySlot, num);
+
+        // Check if all slots filled
+        this.updateCheckButton();
+      },
+
+      handleSlotClick(slot) {
+        if (this.isAnswered) return;
+        if (!slot.classList.contains('filled')) return;
+
+        const num = parseInt(slot.dataset.value);
+
+        // Remove from slot
+        slot.classList.remove('filled', 'correct', 'incorrect');
+        slot.querySelector('.slot-value').textContent = '';
+        delete slot.dataset.value;
+        this.updateSlotAriaLabel(slot, null);
+
+        // Remove from orderedNumbers
+        const index = this.orderedNumbers.indexOf(num);
+        if (index > -1) {
+          this.orderedNumbers.splice(index, 1);
+        }
+
+        // Make the card available again
+        const card = this.numberPool.querySelector(`.number-card[data-number="${num}"]`);
+        if (card) {
+          card.classList.remove('used');
+          card.removeAttribute('aria-disabled');
+        }
+
+        // Reorder the remaining numbers to fill gaps
+        this.reorderSlots();
+
+        this.updateCheckButton();
+      },
+
+      reorderSlots() {
+        // Get all filled slots and their values
+        const slots = this.orderSlots.querySelectorAll('.order-slot');
+        const values = [];
+
+        slots.forEach(slot => {
+          if (slot.classList.contains('filled')) {
+            values.push(parseInt(slot.dataset.value));
+          }
+        });
+
+        // Clear all slots
+        slots.forEach(slot => {
+          slot.classList.remove('filled', 'correct', 'incorrect');
+          slot.querySelector('.slot-value').textContent = '';
+          delete slot.dataset.value;
+          this.updateSlotAriaLabel(slot, null);
+        });
+
+        // Refill slots with values in order
+        values.forEach((val, i) => {
+          const slot = slots[i];
+          slot.classList.add('filled');
+          slot.querySelector('.slot-value').textContent = val.toLocaleString();
+          slot.dataset.value = val;
+          this.updateSlotAriaLabel(slot, val);
+        });
+
+        this.orderedNumbers = values;
+      },
+
+      updateCheckButton() {
+        const allFilled = this.orderedNumbers.length === this.numbersToOrder.length;
+        this.btnCheckOrder.disabled = !allFilled;
+      },
+
+      checkOrderAnswer() {
+        if (this.isAnswered) return;
+        if (this.orderedNumbers.length !== this.numbersToOrder.length) return;
+
+        this.isAnswered = true;
+        this.btnCheckOrder.disabled = true;
+
+        // Get correct order (least to greatest)
+        const correctOrder = [...this.numbersToOrder].sort((a, b) => a - b);
+
+        // Check if answer is correct
+        let allCorrect = true;
+        const slots = this.orderSlots.querySelectorAll('.order-slot');
+
+        slots.forEach((slot, i) => {
+          const value = parseInt(slot.dataset.value);
+          if (value === correctOrder[i]) {
+            slot.classList.add('correct');
+          } else {
+            slot.classList.add('incorrect');
+            allCorrect = false;
+          }
+        });
+
+        // Disable number cards
+        this.numberPool.querySelectorAll('.number-card').forEach(card => {
+          card.disabled = true;
+        });
+
+        if (allCorrect) {
+          this.correctCount++;
+          const correctMsg = window.i18n ? i18n.t('feedback.correct') : 'Correct!';
+          this.feedback.textContent = `${correctMsg} 🏔️`;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const tryAgainMsg = window.i18n ? i18n.t('feedback.tryAgain') : 'Try again!';
+          const correctOrderStr = correctOrder.map(n => n.toLocaleString()).join(' < ');
+          this.feedback.textContent = `${tryAgainMsg} ${correctOrderStr}`;
+          this.feedback.classList.add('error');
+
+          // Show correct order after a moment
+          setTimeout(() => {
+            slots.forEach((slot, i) => {
+              slot.classList.remove('incorrect');
+              slot.classList.add('correct');
+              slot.querySelector('.slot-value').textContent = correctOrder[i].toLocaleString();
+              slot.dataset.value = correctOrder[i];
+            });
+          }, 800);
+        }
+
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        if (this.phase === 'compare') {
+          // Reset symbol buttons
+          this.symbolBtns.forEach(btn => {
+            btn.disabled = false;
+            btn.classList.remove('selected', 'correct', 'incorrect');
+          });
+          this.symbolSlot.textContent = '?';
+          this.symbolSlot.classList.remove('correct', 'incorrect');
+        } else {
+          // Reset order section
+          this.orderedNumbers = [];
+          this.renderNumberPool();
+          this.renderOrderSlots();
+          this.btnCheckOrder.disabled = true;
+        }
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.compare-order-big.perfect') : 'Amazing comparison skills!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🏔️';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.compare-order-big.great') : 'Great job comparing and ordering numbers!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.compare-order-big.keepPracticing') : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          // Add phase indicator
+          if (i < this.compareQuestionsCount) {
+            className += ' compare';
+          } else {
+            className += ' order';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => CompareOrderBig.init());
+      } else {
+        CompareOrderBig.init();
+      }
+    });
+  </script>
+  <style>
+    /* Compare & Order Big Numbers specific styles */
+
+    /* Phase Indicator */
+    .phase-indicator {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .phase-label {
+      display: inline-block;
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--color-primary);
+    }
+
+    /* Compare Section */
+    .compare-section {
+      text-align: center;
+    }
+
+    .compare-prompt {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      margin-bottom: var(--space-4);
+    }
+
+    .compare-numbers {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .compare-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      padding: var(--space-3) var(--space-5);
+      border-radius: var(--radius-xl);
+      min-width: 140px;
+      text-align: center;
+    }
+
+    .compare-number.left {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #92400e;
+      border: 3px solid #f59e0b;
+      box-shadow: 0 4px 0 #d97706;
+    }
+
+    .compare-number.right {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      color: var(--color-primary-dark);
+      border: 3px solid var(--color-primary);
+      box-shadow: 0 4px 0 var(--color-primary-dark);
+    }
+
+    .symbol-slot {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-500);
+      background: white;
+      border: 3px dashed var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .symbol-slot.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border: 3px solid #22c55e;
+      color: #166534;
+    }
+
+    .symbol-slot.incorrect {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      border: 3px solid #ef4444;
+      color: #991b1b;
+    }
+
+    /* Symbol Choice Buttons */
+    .symbol-choices {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .symbol-btn {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      border: 3px solid var(--color-neutral-300);
+      color: var(--color-neutral-700);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 var(--color-neutral-400);
+    }
+
+    .symbol-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--color-neutral-400);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border-color: var(--color-primary);
+    }
+
+    .symbol-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 var(--color-neutral-400);
+    }
+
+    .symbol-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .symbol-btn.selected {
+      border-color: #8b5cf6;
+      box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.3), 0 4px 0 #7c3aed;
+    }
+
+    .symbol-btn.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #16a34a;
+    }
+
+    .symbol-btn.incorrect {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+
+    .symbol-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4), 0 4px 0 var(--color-neutral-400);
+    }
+
+    /* Order Section */
+    .order-section {
+      text-align: center;
+    }
+
+    .order-prompt {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      margin-bottom: var(--space-3);
+    }
+
+    .order-instruction {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .order-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-md);
+    }
+
+    .order-label.least {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      color: #166534;
+    }
+
+    .order-label.greatest {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #92400e;
+    }
+
+    .order-arrow {
+      font-size: var(--text-xl);
+      color: var(--color-neutral-400);
+    }
+
+    /* Number Pool */
+    .number-pool {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+      min-height: 60px;
+    }
+
+    .number-card {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border: 3px solid var(--color-primary);
+      color: var(--color-primary-dark);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 0 var(--color-primary-dark);
+      min-width: 100px;
+      min-height: 48px;
+    }
+
+    .number-card:hover:not(.used):not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 var(--color-primary-dark);
+    }
+
+    .number-card:active:not(.used):not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 var(--color-primary-dark);
+    }
+
+    .number-card.used {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: scale(0.95);
+    }
+
+    .number-card:disabled {
+      cursor: not-allowed;
+    }
+
+    .number-card:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4), 0 3px 0 var(--color-primary-dark);
+    }
+
+    /* Order Slots */
+    .order-slots {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .order-slot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 110px;
+      height: 80px;
+      border: 3px dashed var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .order-slot:hover {
+      border-color: var(--color-primary);
+      background: rgba(219, 234, 254, 0.3);
+    }
+
+    .order-slot.filled {
+      border-style: solid;
+      border-color: var(--color-primary);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    }
+
+    .order-slot.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+    }
+
+    .order-slot.incorrect {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      border-color: #ef4444;
+      animation: shake 0.3s ease;
+    }
+
+    .order-slot:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+      border-color: var(--color-primary);
+    }
+
+    .order-slot.filled:focus-visible {
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4), 0 2px 0 var(--color-primary-dark);
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      75% { transform: translateX(4px); }
+    }
+
+    .slot-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-400);
+      margin-bottom: var(--space-1);
+    }
+
+    .slot-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary-dark);
+    }
+
+    /* Check Section */
+    .check-section {
+      text-align: center;
+      margin-top: var(--space-4);
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    .progress-dot.compare {
+      border: 2px solid #f59e0b;
+    }
+
+    .progress-dot.order {
+      border: 2px solid #8b5cf6;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive - Tablet */
+    @media (max-width: 900px) {
+      .compare-number {
+        font-size: var(--text-2xl);
+        padding: var(--space-2) var(--space-4);
+        min-width: 120px;
+      }
+
+      .symbol-slot {
+        width: 56px;
+        height: 56px;
+        font-size: var(--text-3xl);
+      }
+
+      .symbol-btn {
+        width: 70px;
+        height: 70px;
+        font-size: var(--text-2xl);
+      }
+
+      .number-card {
+        font-size: var(--text-base);
+        padding: var(--space-2) var(--space-3);
+        min-width: 90px;
+        min-height: 48px;
+      }
+
+      .order-slot {
+        width: 100px;
+        height: 70px;
+      }
+
+      .slot-value {
+        font-size: var(--text-base);
+      }
+    }
+
+    /* Responsive - Mobile */
+    @media (max-width: 767px) {
+      .compare-numbers {
+        gap: var(--space-2);
+      }
+
+      .compare-number {
+        font-size: var(--text-xl);
+        padding: var(--space-2) var(--space-3);
+        min-width: 100px;
+      }
+
+      .symbol-slot {
+        width: 48px;
+        height: 48px;
+        font-size: var(--text-2xl);
+      }
+
+      .symbol-choices {
+        gap: var(--space-3);
+      }
+
+      .symbol-btn {
+        width: 64px;
+        height: 64px;
+        font-size: var(--text-2xl);
+      }
+
+      .number-pool {
+        gap: var(--space-2);
+      }
+
+      .number-card {
+        font-size: var(--text-sm);
+        padding: var(--space-2);
+        min-width: 80px;
+        min-height: 48px;
+      }
+
+      .order-slots {
+        gap: var(--space-2);
+      }
+
+      .order-slot {
+        width: 85px;
+        height: 60px;
+      }
+
+      .slot-value {
+        font-size: var(--text-sm);
+      }
+
+      .order-instruction {
+        gap: var(--space-2);
+      }
+
+      .order-label {
+        font-size: var(--text-sm);
+        padding: var(--space-1) var(--space-2);
+      }
+
+      .phase-label {
+        font-size: var(--text-base);
+        padding: var(--space-1) var(--space-3);
+      }
+    }
+
+    /* Responsive - Small Mobile */
+    @media (max-width: 480px) {
+      .compare-number {
+        font-size: var(--text-lg);
+        min-width: 85px;
+        padding: var(--space-2);
+      }
+
+      .symbol-btn {
+        width: 56px;
+        height: 56px;
+        font-size: var(--text-xl);
+      }
+
+      .number-card {
+        font-size: var(--text-sm);
+        min-width: 70px;
+        min-height: 48px;
+      }
+
+      .order-slot {
+        width: 70px;
+        height: 52px;
+      }
+
+      .slot-number {
+        font-size: var(--text-xs);
+      }
+
+      .slot-value {
+        font-size: var(--text-sm);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

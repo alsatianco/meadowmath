@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Counting Rule - Kindergarten Math Activity - Meadow Math">
+  <title>Counting Rule - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">⏭️</span>
+            <span data-i18n="section.activities.counting-rule.title">Counting Rule</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.counting-rule.instruction">Find the counting pattern and pick the next number!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Rule Hint -->
+          <div class="rule-hint" id="rule-hint">
+            <span class="rule-icon">🔢</span>
+            <span class="rule-text" id="rule-text" data-i18n="section.activities.counting-rule.ruleHint">What's the pattern?</span>
+          </div>
+
+          <!-- Number Sequence Display -->
+          <div class="sequence-display" id="sequence-display">
+            <!-- Numbers will be generated -->
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices">
+            <!-- Choices generated by JS -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Counting Rule Activity Styles */
+    .rule-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border-radius: var(--radius-xl);
+      border: 3px solid #0ea5e9;
+    }
+
+    .rule-icon {
+      font-size: var(--text-2xl);
+    }
+
+    .rule-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #0369a1;
+    }
+
+    .sequence-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-5);
+      flex-wrap: wrap;
+    }
+
+    .sequence-number {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border: 4px solid #3b82f6;
+      border-radius: var(--radius-xl);
+      color: #1e40af;
+      box-shadow: 0 4px 0 #2563eb;
+      transition: all 0.3s ease;
+    }
+
+    .sequence-arrow {
+      font-size: var(--text-2xl);
+      color: var(--color-neutral-400);
+    }
+
+    .sequence-number.mystery {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 4px dashed #f59e0b;
+      color: #92400e;
+      animation: mysteryPulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes mysteryPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .sequence-number.revealed {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border: 4px solid #22c55e;
+      color: #166534;
+      animation: revealPop 0.5s ease;
+    }
+
+    @keyframes revealPop {
+      0% { transform: scale(0.8); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .answer-choices {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-3);
+      padding: var(--space-2);
+    }
+
+    .answer-btn {
+      width: 80px;
+      height: 80px;
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 4px solid #22c55e;
+      border-radius: var(--radius-xl);
+      color: #166534;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 0 #16a34a, 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 0 #16a34a, 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .answer-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #16a34a;
+    }
+
+    .answer-btn:focus {
+      outline: 3px solid #22c55e;
+      outline-offset: 2px;
+    }
+
+    .answer-btn:focus-visible {
+      outline: 3px solid #22c55e;
+      outline-offset: 2px;
+    }
+
+    .answer-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPulse 0.5s ease;
+    }
+
+    .answer-btn.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      color: #92400e;
+      box-shadow: 0 4px 0 #d97706;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .sequence-number {
+        width: 55px;
+        height: 55px;
+        font-size: var(--text-2xl);
+      }
+
+      .sequence-arrow {
+        font-size: var(--text-lg);
+      }
+
+      .answer-btn {
+        width: 70px;
+        height: 70px;
+        font-size: var(--text-2xl);
+      }
+
+      .rule-text {
+        font-size: var(--text-base);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Counting Rule Activity
+    const CountingRule = {
+      // Game state
+      round: 1,
+      maxRounds: 8,
+      currentSequence: [],
+      correctAnswer: 0,
+      countBy: 1,
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+
+      // DOM elements
+      progress: null,
+      ruleText: null,
+      sequenceDisplay: null,
+      answerChoices: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Counting rules for different rounds
+      countingRules: [
+        { by: 1, start: 1, label: 'Count by 1s' },
+        { by: 1, start: 5, label: 'Count by 1s' },
+        { by: 2, start: 2, label: 'Count by 2s' },
+        { by: 2, start: 4, label: 'Count by 2s' },
+        { by: 5, start: 5, label: 'Count by 5s' },
+        { by: 5, start: 10, label: 'Count by 5s' },
+        { by: 10, start: 10, label: 'Count by 10s' },
+        { by: 10, start: 20, label: 'Count by 10s' }
+      ],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.ruleText = document.getElementById('rule-text');
+        this.sequenceDisplay = document.getElementById('sequence-display');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Shuffle rules for variety
+        this.shuffledRules = shuffle([...this.countingRules]);
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+
+        // Get rule for this round
+        const rule = this.shuffledRules[(this.round - 1) % this.shuffledRules.length];
+        this.countBy = rule.by;
+
+        // Generate sequence (4 numbers shown + 1 mystery)
+        const start = rule.start;
+        this.currentSequence = [];
+        for (let i = 0; i < 4; i++) {
+          this.currentSequence.push(start + (i * this.countBy));
+        }
+        this.correctAnswer = start + (4 * this.countBy);
+
+        // Update rule hint
+        const ruleLabel = i18n.t('section.activities.counting-rule.rule' + this.countBy) || rule.label;
+        this.ruleText.textContent = ruleLabel;
+
+        // Reset UI
+        this.feedback.classList.remove('show', 'error');
+        this.renderSequence();
+        this.renderChoices();
+        this.renderProgress();
+      },
+
+      /**
+       * Render the number sequence
+       */
+      renderSequence() {
+        this.sequenceDisplay.innerHTML = '';
+
+        this.currentSequence.forEach((num, index) => {
+          if (index > 0) {
+            const arrow = document.createElement('span');
+            arrow.className = 'sequence-arrow';
+            arrow.textContent = '→';
+            this.sequenceDisplay.appendChild(arrow);
+          }
+
+          const numEl = document.createElement('div');
+          numEl.className = 'sequence-number';
+          numEl.textContent = num;
+          this.sequenceDisplay.appendChild(numEl);
+        });
+
+        // Add arrow before mystery
+        const arrow = document.createElement('span');
+        arrow.className = 'sequence-arrow';
+        arrow.textContent = '→';
+        this.sequenceDisplay.appendChild(arrow);
+
+        // Add mystery box
+        const mystery = document.createElement('div');
+        mystery.className = 'sequence-number mystery';
+        mystery.textContent = '?';
+        mystery.id = 'mystery-number';
+        this.sequenceDisplay.appendChild(mystery);
+      },
+
+      /**
+       * Render answer choices
+       */
+      renderChoices() {
+        this.answerChoices.innerHTML = '';
+
+        const choices = this.generateChoices();
+
+        choices.forEach(num => {
+          const btn = document.createElement('button');
+          btn.className = 'answer-btn';
+          btn.textContent = num;
+          btn.setAttribute('aria-label', num);
+          btn.addEventListener('click', () => this.checkAnswer(num, btn));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.checkAnswer(num, btn);
+            }
+          });
+          this.answerChoices.appendChild(btn);
+        });
+      },
+
+      /**
+       * Generate answer choices
+       */
+      generateChoices() {
+        const choices = [this.correctAnswer];
+
+        // Add nearby wrong answers
+        const possibleWrong = [
+          this.correctAnswer - this.countBy,
+          this.correctAnswer + this.countBy,
+          this.correctAnswer - 1,
+          this.correctAnswer + 1
+        ].filter(n => n > 0 && n !== this.correctAnswer && !choices.includes(n));
+
+        // Shuffle and take 3 wrong answers
+        shuffle(possibleWrong);
+        choices.push(...possibleWrong.slice(0, 3));
+
+        return shuffle(choices);
+      },
+
+      /**
+       * Check the answer
+       */
+      checkAnswer(selected, button) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        const buttons = this.answerChoices.querySelectorAll('.answer-btn');
+        buttons.forEach(btn => btn.disabled = true);
+
+        // Reveal mystery number
+        const mystery = document.getElementById('mystery-number');
+        mystery.textContent = this.correctAnswer;
+        mystery.classList.remove('mystery');
+        mystery.classList.add('revealed');
+
+        if (selected === this.correctAnswer) {
+          // Correct!
+          button.classList.add('correct');
+          this.correctCount++;
+
+          const msg = i18n.t('section.activities.counting-rule.correct') || 'Yes! The pattern is +{{by}}!';
+          this.feedback.textContent = msg.replace('{{by}}', this.countBy);
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+
+          if (typeof celebrate === 'function') {
+            celebrate(mystery);
+          }
+        } else {
+          // Incorrect
+          button.classList.add('incorrect');
+          buttons.forEach(btn => {
+            if (parseInt(btn.textContent) === this.correctAnswer) {
+              btn.classList.add('correct');
+            }
+          });
+          this.wrongCount++;
+
+          const msg = i18n.t('section.activities.counting-rule.incorrect') || 'Not quite! The answer is {{answer}} (counting by {{by}}s).';
+          this.feedback.textContent = msg.replace('{{answer}}', this.correctAnswer).replace('{{by}}', this.countBy);
+          this.feedback.classList.add('show', 'error');
+        }
+
+        this.renderProgress();
+
+        // Auto-advance
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '⏭️';
+          this.statsMessage.textContent = i18n.t('section.activities.counting-rule.perfect') || 'Pattern Pro!';
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.counting-rule.great') || 'Great counting patterns!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.counting-rule.keepPracticing') || 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.shuffledRules = shuffle([...this.countingRules]);
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      CountingRule.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

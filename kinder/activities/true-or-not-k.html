@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="True or Not? - Kindergarten Math Activity - Meadow Math">
+  <title>True or Not? - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">✅</span>
+            <span data-i18n="section.activities.true-or-not-k.title">True or Not?</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.true-or-not-k.instruction">Is this equation true?</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Equation Card -->
+          <div class="equation-card" id="equation-card">
+            <div class="equation-display" id="equation-display">
+              <!-- Equation rendered by JS -->
+              <span class="eq-part num">3</span>
+              <span class="eq-part op">+</span>
+              <span class="eq-part num">2</span>
+              <span class="eq-part op">=</span>
+              <span class="eq-part num result">5</span>
+            </div>
+          </div>
+
+          <!-- Question -->
+          <p class="question-text" data-i18n="section.activities.true-or-not-k.question">Is this true or not true?</p>
+
+          <!-- True/False Buttons -->
+          <div class="tf-buttons" id="tf-buttons">
+            <button class="tf-btn true-btn" id="btn-true" data-value="true">
+              <span class="tf-icon">✅</span>
+              <span class="tf-label" data-i18n="section.activities.true-or-not-k.true">True</span>
+            </button>
+            <button class="tf-btn false-btn" id="btn-false" data-value="false">
+              <span class="tf-icon">❌</span>
+              <span class="tf-label" data-i18n="section.activities.true-or-not-k.false">Not True</span>
+            </button>
+          </div>
+
+          <!-- Correction Display -->
+          <div class="correction-display" id="correction-display">
+            <!-- Shows correct equation when wrong -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* True or Not Activity Styles */
+    .equation-card {
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 4px solid #0ea5e9;
+      border-radius: var(--radius-2xl);
+      padding: var(--space-5) var(--space-6);
+      margin-bottom: var(--space-5);
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.2);
+    }
+
+    .equation-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .eq-part {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+    }
+
+    .eq-part.num {
+      padding: var(--space-2) var(--space-4);
+      background: white;
+      color: #1e40af;
+      border: 3px solid #3b82f6;
+      border-radius: var(--radius-xl);
+      min-width: 60px;
+      text-align: center;
+    }
+
+    .eq-part.result {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #92400e;
+      border-color: #f59e0b;
+    }
+
+    .eq-part.op {
+      color: var(--color-neutral-500);
+    }
+
+    /* Equation card states */
+    .equation-card.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      animation: correctPulse 0.5s ease;
+    }
+
+    .equation-card.correct .eq-part.result {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      color: #166534;
+      border-color: #22c55e;
+    }
+
+    .equation-card.incorrect {
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border-color: #ef4444;
+      animation: shake 0.5s ease;
+    }
+
+    .equation-card.incorrect .eq-part.result {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      color: #991b1b;
+      border-color: #ef4444;
+      text-decoration: line-through;
+    }
+
+    @keyframes correctPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Question text */
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    /* True/False buttons */
+    .tf-buttons {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .tf-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      width: 130px;
+      height: 130px;
+      border-radius: var(--radius-2xl);
+      font-family: var(--font-secondary);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .tf-btn .tf-icon {
+      font-size: 40px;
+    }
+
+    .tf-btn .tf-label {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+    }
+
+    /* True button */
+    .true-btn {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border: 4px solid #22c55e;
+      color: #166534;
+      box-shadow: 0 6px 0 #16a34a, 0 8px 20px rgba(34, 197, 94, 0.2);
+    }
+
+    .true-btn:hover:not(:disabled) {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 10px 0 #16a34a, 0 14px 30px rgba(34, 197, 94, 0.25);
+    }
+
+    .true-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 3px 0 #16a34a;
+    }
+
+    /* False button */
+    .false-btn {
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border: 4px solid #ef4444;
+      color: #991b1b;
+      box-shadow: 0 6px 0 #dc2626, 0 8px 20px rgba(239, 68, 68, 0.2);
+    }
+
+    .false-btn:hover:not(:disabled) {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 10px 0 #dc2626, 0 14px 30px rgba(239, 68, 68, 0.25);
+    }
+
+    .false-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 3px 0 #dc2626;
+    }
+
+    /* Focus styles for accessibility */
+    .tf-btn:focus {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .tf-btn:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .tf-btn:focus-visible {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    /* Button selected states */
+    .tf-btn.selected {
+      transform: scale(1.05);
+    }
+
+    .tf-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 6px 0 #16a34a;
+      animation: correctBounce 0.5s ease;
+    }
+
+    .tf-btn.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      box-shadow: 0 6px 0 #d97706;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctBounce {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1.05); }
+    }
+
+    .tf-btn:disabled {
+      cursor: not-allowed;
+    }
+
+    /* Correction display */
+    .correction-display {
+      text-align: center;
+      margin-top: var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #166534;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+
+    .correction-display.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .correction-display .correct-answer {
+      display: inline-block;
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 2px solid #22c55e;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .equation-card {
+        padding: var(--space-4);
+      }
+
+      .eq-part {
+        font-size: var(--text-3xl);
+      }
+
+      .eq-part.num {
+        min-width: 50px;
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .tf-btn {
+        width: 110px;
+        height: 110px;
+      }
+
+      .tf-btn .tf-icon {
+        font-size: 32px;
+      }
+
+      .tf-btn .tf-label {
+        font-size: var(--text-base);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // True or Not Activity
+    const TrueOrNotK = {
+      // Game state
+      round: 1,
+      maxRounds: 10,
+      numA: 0,
+      numB: 0,
+      shownResult: 0,
+      correctResult: 0,
+      isTrue: false,
+      operation: '+',
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+
+      // DOM elements
+      progress: null,
+      equationCard: null,
+      equationDisplay: null,
+      btnTrue: null,
+      btnFalse: null,
+      correctionDisplay: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.equationCard = document.getElementById('equation-card');
+        this.equationDisplay = document.getElementById('equation-display');
+        this.btnTrue = document.getElementById('btn-true');
+        this.btnFalse = document.getElementById('btn-false');
+        this.correctionDisplay = document.getElementById('correction-display');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnTrue.addEventListener('click', () => this.selectAnswer(true));
+        this.btnFalse.addEventListener('click', () => this.selectAnswer(false));
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Get config based on round (progressive difficulty)
+       */
+      getConfig() {
+        if (this.round <= 3) {
+          // Early: simple addition within 5, mostly true
+          return { maxNum: 5, maxResult: 5, canSubtract: false, trueProbability: 0.6 };
+        } else if (this.round <= 6) {
+          // Middle: addition within 10, mix of true/false
+          return { maxNum: 6, maxResult: 10, canSubtract: false, trueProbability: 0.5 };
+        } else {
+          // Later: addition and some subtraction within 10
+          return { maxNum: 7, maxResult: 10, canSubtract: true, trueProbability: 0.5 };
+        }
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+
+        const config = this.getConfig();
+
+        // Decide if this equation will be true or false
+        this.isTrue = Math.random() < config.trueProbability;
+
+        // Decide operation
+        this.operation = config.canSubtract && Math.random() > 0.7 ? '-' : '+';
+
+        if (this.operation === '+') {
+          // Addition
+          this.numA = randomInt(1, config.maxNum);
+          this.numB = randomInt(1, Math.min(config.maxNum, config.maxResult - this.numA));
+          this.correctResult = this.numA + this.numB;
+        } else {
+          // Subtraction
+          this.numA = randomInt(3, config.maxNum + 2);
+          this.numB = randomInt(1, Math.min(config.maxNum - 1, this.numA - 1));
+          this.correctResult = this.numA - this.numB;
+        }
+
+        // Set shown result
+        if (this.isTrue) {
+          this.shownResult = this.correctResult;
+        } else {
+          // Create a wrong answer (off by 1 or 2)
+          const offset = randomInt(1, 2) * (Math.random() > 0.5 ? 1 : -1);
+          this.shownResult = this.correctResult + offset;
+          // Make sure it's valid (positive and within 10)
+          if (this.shownResult < 0) this.shownResult = this.correctResult + Math.abs(offset);
+          if (this.shownResult > 10) this.shownResult = this.correctResult - Math.abs(offset);
+          // Make sure it's actually different and still valid
+          if (this.shownResult === this.correctResult) {
+            this.shownResult = this.correctResult >= 10 ? this.correctResult - 1 : this.correctResult + 1;
+          }
+        }
+
+        // Update equation display
+        this.renderEquation();
+
+        // Reset UI
+        this.equationCard.classList.remove('correct', 'incorrect');
+        this.btnTrue.classList.remove('correct', 'incorrect', 'selected');
+        this.btnFalse.classList.remove('correct', 'incorrect', 'selected');
+        this.btnTrue.disabled = false;
+        this.btnFalse.disabled = false;
+        this.correctionDisplay.classList.remove('show');
+        this.correctionDisplay.innerHTML = '';
+        this.feedback.classList.remove('show', 'error');
+
+        this.renderProgress();
+      },
+
+      /**
+       * Render the equation
+       */
+      renderEquation() {
+        const opSymbol = this.operation === '+' ? '+' : '−';
+        this.equationDisplay.innerHTML = `
+          <span class="eq-part num">${this.numA}</span>
+          <span class="eq-part op">${opSymbol}</span>
+          <span class="eq-part num">${this.numB}</span>
+          <span class="eq-part op">=</span>
+          <span class="eq-part num result">${this.shownResult}</span>
+        `;
+      },
+
+      /**
+       * Select answer (true or false)
+       */
+      selectAnswer(selectedTrue) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        // Disable buttons
+        this.btnTrue.disabled = true;
+        this.btnFalse.disabled = true;
+
+        const isCorrect = selectedTrue === this.isTrue;
+        const opSymbol = this.operation === '+' ? '+' : '−';
+
+        // Mark selected button
+        if (selectedTrue) {
+          this.btnTrue.classList.add('selected');
+        } else {
+          this.btnFalse.classList.add('selected');
+        }
+
+        if (isCorrect) {
+          // Correct answer!
+          this.correctCount++;
+
+          if (selectedTrue) {
+            // They correctly said TRUE
+            this.btnTrue.classList.add('correct');
+            this.equationCard.classList.add('correct');
+            const msg = i18n.t('section.activities.true-or-not-k.correctTrue') || 'Yes! {{a}} {{op}} {{b}} = {{result}} is TRUE!';
+            this.feedback.textContent = msg
+              .replace('{{a}}', this.numA)
+              .replace('{{op}}', opSymbol)
+              .replace('{{b}}', this.numB)
+              .replace('{{result}}', this.shownResult);
+          } else {
+            // They correctly said FALSE
+            this.btnFalse.classList.add('correct');
+            this.equationCard.classList.add('incorrect');
+            const msg = i18n.t('section.activities.true-or-not-k.correctFalse') || 'Right! It\'s NOT true.';
+            this.feedback.textContent = msg;
+            // Show the correct answer
+            this.showCorrection();
+          }
+
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+
+          if (typeof celebrate === 'function') {
+            celebrate(selectedTrue ? this.btnTrue : this.btnFalse);
+          }
+        } else {
+          // Incorrect answer
+          this.wrongCount++;
+
+          if (selectedTrue) {
+            // They incorrectly said TRUE
+            this.btnTrue.classList.add('incorrect');
+            this.btnFalse.classList.add('correct');
+            this.equationCard.classList.add('incorrect');
+            const msg = i18n.t('section.activities.true-or-not-k.incorrectTrue') || 'Not quite! It\'s not true.';
+            this.feedback.textContent = msg;
+            this.showCorrection();
+          } else {
+            // They incorrectly said FALSE
+            this.btnFalse.classList.add('incorrect');
+            this.btnTrue.classList.add('correct');
+            this.equationCard.classList.add('correct');
+            const msg = i18n.t('section.activities.true-or-not-k.incorrectFalse') || 'Actually, it IS true!';
+            this.feedback.textContent = msg;
+          }
+
+          this.feedback.classList.add('show', 'error');
+        }
+
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show the correct equation
+       */
+      showCorrection() {
+        const opSymbol = this.operation === '+' ? '+' : '−';
+        this.correctionDisplay.innerHTML = `
+          <span class="correct-answer">${this.numA} ${opSymbol} ${this.numB} = ${this.correctResult}</span>
+        `;
+        this.correctionDisplay.classList.add('show');
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.true-or-not-k.perfect') || 'Equation Expert!';
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.true-or-not-k.great') || 'Great checking!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.true-or-not-k.keepPracticing') || 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      TrueOrNotK.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

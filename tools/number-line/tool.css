@@ -1,0 +1,229 @@
+/* Number Line Explorer Styles */
+
+/* ========== BACK LINK ========== */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-size: var(--text-xl);
+  color: var(--color-neutral-600);
+  background: white;
+  border: 2px solid var(--color-neutral-200);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.back-link:hover {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+/* ========== NUMBER LINE SVG ========== */
+
+.number-line-svg {
+  width: 100%;
+  height: 200px;
+  max-width: 900px;
+}
+
+/* Main line */
+.number-line {
+  stroke: var(--color-primary-dark);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+/* Tick marks */
+.tick-major {
+  stroke: var(--color-primary-dark);
+  stroke-width: 2;
+}
+
+.tick-minor {
+  stroke: var(--color-neutral-400);
+  stroke-width: 1;
+}
+
+/* Tick labels */
+.tick-label {
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  fill: var(--color-primary-dark);
+  text-anchor: middle;
+  user-select: none;
+}
+
+.tick-label.highlight {
+  fill: var(--color-secondary);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Zero marker */
+.zero-marker {
+  fill: var(--color-secondary);
+}
+
+/* ========== DRAGGABLE POINT ========== */
+
+.point-marker {
+  cursor: grab;
+  transition: transform 0.1s ease-out;
+}
+
+.point-marker:active {
+  cursor: grabbing;
+}
+
+.point-circle {
+  fill: var(--color-accent-pink);
+  stroke: white;
+  stroke-width: 3;
+  filter: drop-shadow(0 3px 6px rgba(255, 105, 180, 0.4));
+  transition: r 0.2s ease-out;
+}
+
+.point-marker:hover .point-circle {
+  r: 18;
+}
+
+.point-label {
+  font-family: var(--font-secondary);
+  font-size: 16px;
+  font-weight: 700;
+  fill: var(--color-primary-dark);
+  text-anchor: middle;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ========== HOP ARCS ========== */
+
+.hop-arc {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0;
+  animation: hopAppear 0.4s ease-out forwards;
+}
+
+@keyframes hopAppear {
+  from {
+    opacity: 0;
+    stroke-dashoffset: var(--path-length, 100);
+  }
+  to {
+    opacity: 0.7;
+    stroke-dashoffset: 0;
+  }
+}
+
+.hop-arc.positive {
+  stroke: var(--color-success);
+}
+
+.hop-arc.negative {
+  stroke: var(--color-accent-red);
+}
+
+.hop-label {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  text-anchor: middle;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hop-label.positive {
+  fill: var(--color-success);
+}
+
+.hop-label.negative {
+  fill: var(--color-accent-red);
+}
+
+/* ========== ARROW HEADS ========== */
+
+.arrow-left,
+.arrow-right {
+  fill: var(--color-primary-dark);
+}
+
+/* ========== POSITION DISPLAY ========== */
+
+#current-position {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-extrabold);
+  color: var(--color-accent-pink);
+  margin-left: var(--space-2);
+}
+
+/* ========== CHALLENGE FEEDBACK STATES ========== */
+
+.tool-feedback.checking {
+  background: linear-gradient(to bottom, #fef3c7, #fde68a);
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+.tool-feedback.correct {
+  background: linear-gradient(to bottom, #d1fae5, #a7f3d0);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.tool-feedback.incorrect {
+  background: linear-gradient(to bottom, #fee2e2, #fecaca);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* ========== RANGE-SPECIFIC STYLES ========== */
+
+/* For larger ranges, smaller text */
+.number-line-svg.range-large .tick-label {
+  font-size: 11px;
+}
+
+.number-line-svg.range-large .tick-label.highlight {
+  font-size: 13px;
+}
+
+/* ========== TOUCH FRIENDLY ========== */
+
+@media (pointer: coarse) {
+  .point-circle {
+    r: 18;
+  }
+
+  .point-marker:hover .point-circle {
+    r: 20;
+  }
+}
+
+/* ========== MOBILE RESPONSIVE ========== */
+
+@media (max-width: 767px) {
+  .number-line-svg {
+    height: 160px;
+  }
+
+  .tick-label {
+    font-size: 11px;
+  }
+
+  .tick-label.highlight {
+    font-size: 13px;
+  }
+
+  .point-label {
+    font-size: 14px;
+  }
+
+  #current-position {
+    font-size: var(--text-xl);
+  }
+}

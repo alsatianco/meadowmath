@@ -1,0 +1,592 @@
+{
+  "region": "kinder",
+  "title": "Kindergarten Activities",
+  "description": "Growing number skills through play and discovery",
+  "levels": [
+    {
+      "id": "level-1",
+      "number": 1,
+      "title": "Counting & Number Names (0-20 to 100)",
+      "icon": "1️⃣",
+      "goal": "Build reliable counting, numeral recognition, and counting routines that scale to 100.",
+      "skills": [
+        "Count to 100 by ones and tens",
+        "Count objects with one-to-one and answer 'how many?'",
+        "Read numerals 0-20 (extend through patterns)",
+        "Count on; fill missing numbers"
+      ],
+      "activities": [
+        {
+          "id": "tap-count-20",
+          "icon": "⭐",
+          "path": "activities/tap-count-20.html",
+          "type": "tap-to-count"
+        },
+        {
+          "id": "count-on",
+          "icon": "🚶",
+          "path": "activities/count-on.html",
+          "type": "sequence"
+        },
+        {
+          "id": "missing-number-train",
+          "icon": "🚂",
+          "path": "activities/missing-number-train.html",
+          "type": "sequence"
+        },
+        {
+          "id": "number-quantity-match-k",
+          "icon": "🎯",
+          "path": "activities/number-quantity-match-k.html",
+          "type": "matching"
+        },
+        {
+          "id": "counting-collections",
+          "icon": "🫙",
+          "path": "activities/counting-collections.html",
+          "type": "tap-to-count"
+        },
+        {
+          "id": "count-by-tens-k",
+          "icon": "🚀",
+          "path": "activities/count-by-tens-k.html",
+          "type": "sequence"
+        },
+        {
+          "id": "hundred-chart-k",
+          "icon": "🧩",
+          "path": "activities/hundred-chart-k.html",
+          "type": "choice"
+        },
+        {
+          "id": "number-word-to-numeral",
+          "icon": "🔤",
+          "path": "activities/number-word-to-numeral.html",
+          "type": "choice"
+        },
+        {
+          "id": "dot-flash",
+          "icon": "⚡",
+          "path": "activities/dot-flash.html",
+          "type": "subitizing"
+        },
+        {
+          "id": "garden-tap-count",
+          "icon": "🌼",
+          "path": "activities/garden-tap-count.html",
+          "type": "tap-to-count"
+        },
+        {
+          "id": "k-number-match",
+          "icon": "🎯",
+          "path": "activities/k-number-match.html",
+          "type": "matching"
+        },
+        {
+          "id": "find-the-number",
+          "icon": "🧺",
+          "path": "activities/find-the-number.html",
+          "type": "choice"
+        },
+        {
+          "id": "ten-train",
+          "icon": "🚂",
+          "path": "activities/ten-train.html",
+          "type": "sequence"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {
+            "id": "k-l1-big-idea",
+            "icon": "💡",
+            "title": "Big idea"
+          },
+          {
+            "id": "k-l1-notice",
+            "icon": "👀",
+            "title": "What to notice"
+          },
+          {
+            "id": "k-l1-home",
+            "icon": "🏡",
+            "title": "Try at home"
+          },
+          {
+            "id": "k-l1-videos",
+            "icon": "📺",
+            "title": "Optional videos"
+          }
+        ]
+      }
+    },
+    {
+      "id": "level-2",
+      "number": 2,
+      "title": "Compare, Order, Ten-Frames & Teen Numbers",
+      "icon": "2️⃣",
+      "goal": "Build comparison language and structured representations (ten-frames / number line), including teen numbers as 10 + ones.",
+      "skills": [
+        "Use 'more, fewer, same' with sets",
+        "Compare numerals 0-10 (extend to 20 when ready)",
+        "Order numbers; place them on a number line",
+        "Understand teen numbers 11-19 as '10 and some ones'"
+      ],
+      "activities": [
+        {
+          "id": "who-has-more-k",
+          "icon": "👀",
+          "path": "activities/who-has-more-k.html",
+          "type": "choice"
+        },
+        {
+          "id": "more-fewer-same",
+          "icon": "⚖️",
+          "path": "activities/more-fewer-same.html",
+          "type": "choice"
+        },
+        {
+          "id": "compare-numbers-k",
+          "icon": "🐊",
+          "path": "activities/compare-numbers-k.html",
+          "type": "choice"
+        },
+        {
+          "id": "order-numbers-k",
+          "icon": "🧩",
+          "path": "activities/order-numbers-k.html",
+          "type": "sorting"
+        },
+        {
+          "id": "ten-frame-snap",
+          "icon": "🟦",
+          "path": "activities/ten-frame-snap.html",
+          "type": "ten-frame"
+        },
+        {
+          "id": "number-line-place-k",
+          "icon": "📍",
+          "path": "activities/number-line-place-k.html",
+          "type": "number-line"
+        },
+        {
+          "id": "ten-frame-builder",
+          "icon": "🟦",
+          "path": "activities/ten-frame-builder.html",
+          "type": "ten-frame"
+        },
+        {
+          "id": "teen-stories",
+          "icon": "🌟",
+          "path": "activities/teen-stories.html",
+          "type": "choice"
+        },
+        {
+          "id": "enough-seats",
+          "icon": "🪑",
+          "path": "activities/enough-seats.html",
+          "type": "choice"
+        },
+        {
+          "id": "more-less-same",
+          "icon": "🐊",
+          "path": "activities/more-less-same.html",
+          "type": "choice"
+        },
+        {
+          "id": "number-order-path",
+          "icon": "🥾",
+          "path": "activities/number-order-path.html",
+          "type": "sorting"
+        },
+        {
+          "id": "make-10-pairs",
+          "icon": "🍓",
+          "path": "activities/make-10-pairs.html",
+          "type": "matching"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {
+            "id": "k-l2-big-idea",
+            "icon": "💡",
+            "title": "Big idea"
+          },
+          {
+            "id": "k-l2-notice",
+            "icon": "👀",
+            "title": "What to notice"
+          },
+          {
+            "id": "k-l2-home",
+            "icon": "🏡",
+            "title": "Try at home"
+          },
+          {
+            "id": "k-l2-videos",
+            "icon": "📺",
+            "title": "Optional videos"
+          }
+        ]
+      }
+    },
+    {
+      "id": "level-3",
+      "number": 3,
+      "title": "Make 10 & Part-Whole Thinking",
+      "icon": "3️⃣",
+      "goal": "Help children see numbers as made of parts—especially combinations that make 5 and 10.",
+      "skills": [
+        "Compose/decompose numbers up to 10",
+        "Find partners that make 10 (and 5)",
+        "Use five/ten-frames and number bonds",
+        "Notice doubles within 10"
+      ],
+      "activities": [
+        {
+          "id": "number-bonds-k",
+          "icon": "🔗",
+          "path": "activities/number-bonds-k.html",
+          "type": "choice"
+        },
+        {
+          "id": "fill-five-frame",
+          "icon": "🖐️",
+          "path": "activities/fill-five-frame.html",
+          "type": "five-frame"
+        },
+        {
+          "id": "fill-ten-frame",
+          "icon": "🔟",
+          "path": "activities/fill-ten-frame.html",
+          "type": "ten-frame"
+        },
+        {
+          "id": "partners-to-10",
+          "icon": "🧠",
+          "path": "activities/partners-to-10.html",
+          "type": "matching"
+        },
+        {
+          "id": "shake-spill",
+          "icon": "🟥🟨",
+          "path": "activities/shake-spill.html",
+          "type": "choice"
+        },
+        {
+          "id": "make-10-two-groups",
+          "icon": "🧺",
+          "path": "activities/make-10-two-groups.html",
+          "type": "choice"
+        },
+        {
+          "id": "doubles-within-10",
+          "icon": "👯",
+          "path": "activities/doubles-within-10.html",
+          "type": "choice"
+        },
+        {
+          "id": "quick-look-10",
+          "icon": "⚡",
+          "path": "activities/quick-look-10.html",
+          "type": "choice"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {
+            "id": "k-l3-big-idea",
+            "icon": "💡",
+            "title": "Big idea"
+          },
+          {
+            "id": "k-l3-notice",
+            "icon": "👀",
+            "title": "What to notice"
+          },
+          {
+            "id": "k-l3-home",
+            "icon": "🏡",
+            "title": "Try at home"
+          },
+          {
+            "id": "k-l3-videos",
+            "icon": "📺",
+            "title": "Optional videos"
+          }
+        ]
+      }
+    },
+    {
+      "id": "level-4",
+      "number": 4,
+      "title": "Add & Subtract Within 10 (Stories + Equations)",
+      "icon": "4️⃣",
+      "goal": "Solve add/sub problems within 10 using objects, pictures, and (lightly) equations.",
+      "skills": [
+        "Represent addition/subtraction with objects, drawings, or equations",
+        "Solve story problems within 10",
+        "Find unknowns in simple equations (within 10)",
+        "Build comfort with facts within 5 (no pressure)"
+      ],
+      "activities": [
+        {
+          "id": "add-with-pictures-k",
+          "icon": "🍎",
+          "path": "activities/add-with-pictures-k.html",
+          "type": "choice"
+        },
+        {
+          "id": "subtract-with-pictures-k",
+          "icon": "🎈",
+          "path": "activities/subtract-with-pictures-k.html",
+          "type": "choice"
+        },
+        {
+          "id": "number-line-hops-k",
+          "icon": "➡️",
+          "path": "activities/number-line-hops-k.html",
+          "type": "number-line"
+        },
+        {
+          "id": "story-problems-k",
+          "icon": "📖",
+          "path": "activities/story-problems-k.html",
+          "type": "choice"
+        },
+        {
+          "id": "missing-part-k",
+          "icon": "🕵️",
+          "path": "activities/missing-part-k.html",
+          "type": "choice"
+        },
+        {
+          "id": "true-or-not-k",
+          "icon": "✅",
+          "path": "activities/true-or-not-k.html",
+          "type": "choice"
+        },
+        {
+          "id": "make-10-to-add",
+          "icon": "🧩",
+          "path": "activities/make-10-to-add.html",
+          "type": "choice"
+        },
+        {
+          "id": "fluency-within-5",
+          "icon": "🌟",
+          "path": "activities/fluency-within-5.html",
+          "type": "choice"
+        },
+        {
+          "id": "join-the-picnic",
+          "icon": "🧺",
+          "path": "activities/join-the-picnic.html",
+          "type": "choice"
+        },
+        {
+          "id": "take-away-bunnies",
+          "icon": "🐰",
+          "path": "activities/take-away-bunnies.html",
+          "type": "choice"
+        },
+        {
+          "id": "k-dice-add",
+          "icon": "🎲",
+          "path": "activities/k-dice-add.html",
+          "type": "choice"
+        },
+        {
+          "id": "balance-builder",
+          "icon": "⚖️",
+          "path": "activities/balance-builder.html",
+          "type": "choice"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {
+            "id": "k-l4-big-idea",
+            "icon": "💡",
+            "title": "Big idea"
+          },
+          {
+            "id": "k-l4-notice",
+            "icon": "👀",
+            "title": "What to notice"
+          },
+          {
+            "id": "k-l4-home",
+            "icon": "🏡",
+            "title": "Try at home"
+          },
+          {
+            "id": "k-l4-videos",
+            "icon": "📺",
+            "title": "Optional videos"
+          }
+        ]
+      }
+    },
+    {
+      "id": "level-5",
+      "number": 5,
+      "title": "Patterns, Logic, Measurement, Data & Shapes",
+      "icon": "5️⃣",
+      "goal": "Grow 'math thinking tools' (patterns, logic, planning) while exploring math in the real world.",
+      "skills": [
+        "Continue simple repeating patterns (AB, AAB, ABB, ABC)",
+        "Use spatial planning and sequencing (routes/steps)",
+        "Compare measurable attributes (length/weight/capacity)",
+        "Sort into categories; count and compare categories",
+        "Name/describe 2D & 3D shapes; compose shapes"
+      ],
+      "activities": [
+        {
+          "id": "longer-shorter",
+          "icon": "📏",
+          "path": "activities/longer-shorter.html",
+          "type": "choice"
+        },
+        {
+          "id": "heavier-lighter",
+          "icon": "⚖️",
+          "path": "activities/heavier-lighter.html",
+          "type": "choice"
+        },
+        {
+          "id": "holds-more-less",
+          "icon": "🥤",
+          "path": "activities/holds-more-less.html",
+          "type": "choice"
+        },
+        {
+          "id": "sort-and-count",
+          "icon": "🧺",
+          "path": "activities/sort-and-count.html",
+          "type": "sorting"
+        },
+        {
+          "id": "picture-graph-k",
+          "icon": "📊",
+          "path": "activities/picture-graph-k.html",
+          "type": "graphing"
+        },
+        {
+          "id": "name-shapes-3d-k",
+          "icon": "🧱",
+          "path": "activities/name-shapes-3d-k.html",
+          "type": "choice"
+        },
+        {
+          "id": "name-shapes-2d-k",
+          "icon": "🔺",
+          "path": "activities/name-shapes-2d-k.html",
+          "type": "choice"
+        },
+        {
+          "id": "compose-shapes-k",
+          "icon": "🧩",
+          "path": "activities/compose-shapes-k.html",
+          "type": "compose"
+        },
+        {
+          "id": "find-the-pattern",
+          "icon": "🌀",
+          "path": "activities/find-the-pattern.html",
+          "type": "pattern"
+        },
+        {
+          "id": "counting-rule",
+          "icon": "⏭️",
+          "path": "activities/counting-rule.html",
+          "type": "sequence"
+        },
+        {
+          "id": "robot-steps",
+          "icon": "🤖",
+          "path": "activities/robot-steps.html",
+          "type": "planning"
+        },
+        {
+          "id": "shape-detective",
+          "icon": "🔎",
+          "path": "activities/shape-detective.html",
+          "type": "classification"
+        },
+        {
+          "id": "timo-logic-tiles",
+          "icon": "🧠",
+          "path": "activities/timo-logic-tiles.html",
+          "type": "logic"
+        },
+        {
+          "id": "shape-builder",
+          "icon": "👑",
+          "path": "activities/shape-builder.html",
+          "type": "creative"
+        },
+        {
+          "id": "block-counter",
+          "icon": "🧊",
+          "path": "activities/block-counter.html",
+          "type": "counting"
+        },
+        {
+          "id": "draw-the-map",
+          "icon": "🗺️",
+          "path": "activities/draw-the-map.html",
+          "type": "spatial"
+        },
+        {
+          "id": "calendar-helper",
+          "icon": "📅",
+          "path": "activities/calendar-helper.html",
+          "type": "time"
+        },
+        {
+          "id": "measure-and-compare",
+          "icon": "🧵",
+          "path": "activities/measure-and-compare.html",
+          "type": "measurement"
+        },
+        {
+          "id": "timo-mixed-quest",
+          "icon": "🎓",
+          "path": "activities/timo-mixed-quest.html",
+          "type": "review"
+        }
+      ],
+      "learnMore": {
+        "type": "cards",
+        "cards": [
+          {
+            "id": "k-l5-big-idea",
+            "icon": "💡",
+            "title": "Big idea"
+          },
+          {
+            "id": "k-l5-notice",
+            "icon": "👀",
+            "title": "What to notice"
+          },
+          {
+            "id": "k-l5-home",
+            "icon": "🏡",
+            "title": "Try at home"
+          },
+          {
+            "id": "k-l5-videos",
+            "icon": "📺",
+            "title": "Optional videos"
+          }
+        ]
+      }
+    }
+  ]
+}

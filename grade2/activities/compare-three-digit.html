@@ -232,7 +232,7 @@
       generateNumbers() {
         // Progressive difficulty
         let num1, num2;
-        
+
         if (this.currentQuestion < 3) {
           // Obvious differences (different hundreds)
           num1 = this.randomInt(100, 400);
@@ -262,10 +262,10 @@
             if (num2 > 999) num2 = 999;
           }
         }
-        
+
         this.leftNum = num1;
         this.rightNum = num2;
-        
+
         if (num1 < num2) {
           this.correctSymbol = '<';
         } else if (num1 > num2) {
@@ -273,7 +273,7 @@
         } else {
           this.correctSymbol = '=';
         }
-        
+
         this.isAnswered = false;
       },
 
@@ -283,16 +283,16 @@
         this.rightNumber.textContent = this.rightNum;
         this.symbolBox.textContent = '?';
         this.symbolBox.className = 'symbol-box';
-        
+
         // Reset scale
         this.scaleBeam.className = 'scale-beam';
-        
+
         // Reset buttons
         this.choiceContainer.querySelectorAll('.choice-btn').forEach(btn => {
           btn.disabled = false;
           btn.classList.remove('correct', 'incorrect', 'selected');
         });
-        
+
         this.feedback.classList.remove('show', 'error');
         this.renderProgress();
       },
@@ -644,5 +644,5 @@
       }
     }
   </style>
-</body>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
 </html>

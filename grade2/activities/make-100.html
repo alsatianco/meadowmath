@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Make 100 Pairs - Grade 2 Math Activity - Meadow Math">
+  <title>Make 100 Pairs - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade2">Grade 2</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">💯</span>
+            <span data-i18n="section.activities.make-100.title">Make 100 Pairs</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.make-100.description">Find pairs of numbers that make 100.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Question -->
+          <div class="question-text" id="question">
+            <span data-i18n="section.activities.make-100.instruction">Match cards to make 100!</span>
+          </div>
+
+          <!-- Target Display -->
+          <div class="target-display">
+            <span class="target-label" data-i18n="section.activities.make-100.target">Target:</span>
+            <span class="target-number">100</span>
+          </div>
+
+          <!-- Cards Container -->
+          <div class="cards-container" id="cards-container">
+            <!-- Will be populated by JS -->
+          </div>
+
+          <!-- Matched Pairs Display -->
+          <div class="matched-pairs" id="matched-pairs">
+            <span class="matched-label" data-i18n="section.activities.make-100.matched">Matched:</span>
+            <span class="matched-count" id="matched-count">0</span>
+            <span class="matched-total">/ <span id="total-pairs">3</span></span>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Make 100 Pairs Activity - Grade 2
+    const Make100 = {
+      currentRound: 0,
+      totalRounds: 6,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+
+      // Current round state
+      pairs: [],          // Array of {a, b} pairs where a + b = 100
+      cards: [],          // Array of card values to display
+      selectedCard: null, // Currently selected card element
+      matchedPairs: 0,    // Pairs matched in current round
+      totalPairsInRound: 0, // Total pairs needed to complete round
+
+      // DOM elements
+      cardsContainer: null,
+      matchedCount: null,
+      totalPairsEl: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.cardsContainer = document.getElementById('cards-container');
+        this.matchedCount = document.getElementById('matched-count');
+        this.totalPairsEl = document.getElementById('total-pairs');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentRound());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      },
+
+      updateTranslations() {
+        // Update any dynamic text if needed
+      },
+
+      generatePairs() {
+        // Define pairs that make 100 - grouped by difficulty
+        const easyPairs = [
+          { a: 50, b: 50 },
+          { a: 40, b: 60 },
+          { a: 30, b: 70 },
+          { a: 20, b: 80 },
+          { a: 10, b: 90 },
+        ];
+
+        const mediumPairs = [
+          { a: 25, b: 75 },
+          { a: 35, b: 65 },
+          { a: 45, b: 55 },
+          { a: 15, b: 85 },
+          { a: 5, b: 95 },
+        ];
+
+        const hardPairs = [
+          { a: 37, b: 63 },
+          { a: 28, b: 72 },
+          { a: 47, b: 53 },
+          { a: 18, b: 82 },
+          { a: 33, b: 67 },
+          { a: 42, b: 58 },
+          { a: 23, b: 77 },
+          { a: 12, b: 88 },
+          { a: 38, b: 62 },
+          { a: 17, b: 83 },
+        ];
+
+        let availablePairs;
+        let numPairs;
+
+        if (this.currentRound < 2) {
+          // Rounds 1-2: Easy pairs, 3 pairs per round
+          availablePairs = [...easyPairs];
+          numPairs = 3;
+        } else if (this.currentRound < 4) {
+          // Rounds 3-4: Mix of easy and medium, 3-4 pairs
+          availablePairs = [...easyPairs, ...mediumPairs];
+          numPairs = this.currentRound < 3 ? 3 : 4;
+        } else {
+          // Rounds 5-6: Mix of all including hard, 4 pairs
+          availablePairs = [...easyPairs, ...mediumPairs, ...hardPairs];
+          numPairs = 4;
+        }
+
+        this.shuffleArray(availablePairs);
+        this.pairs = availablePairs.slice(0, numPairs);
+        this.totalPairsInRound = numPairs;
+
+        // Create cards array with all values
+        this.cards = [];
+        this.pairs.forEach(pair => {
+          this.cards.push(pair.a);
+          this.cards.push(pair.b);
+        });
+        this.shuffleArray(this.cards);
+      },
+
+      startRound() {
+        this.generatePairs();
+        this.selectedCard = null;
+        this.matchedPairs = 0;
+        this.renderCards();
+        this.updateMatchedDisplay();
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      renderCards() {
+        this.cardsContainer.innerHTML = '';
+
+        this.cards.forEach((value, index) => {
+          const card = document.createElement('button');
+          card.className = 'number-card';
+          card.textContent = value;
+          card.dataset.value = value;
+          card.dataset.index = index;
+          card.setAttribute('aria-label', `Number ${value}`);
+          card.addEventListener('click', () => this.selectCard(card));
+          this.cardsContainer.appendChild(card);
+        });
+
+        // Focus first card for keyboard users
+        const firstCard = this.cardsContainer.querySelector('.number-card');
+        if (firstCard) {
+          requestAnimationFrame(() => firstCard.focus());
+        }
+      },
+
+      updateMatchedDisplay() {
+        this.matchedCount.textContent = this.matchedPairs;
+        this.totalPairsEl.textContent = this.totalPairsInRound;
+      },
+
+      selectCard(card) {
+        // Ignore if card is already matched
+        if (card.classList.contains('matched')) return;
+
+        const value = parseInt(card.dataset.value);
+
+        if (!this.selectedCard) {
+          // First selection
+          this.selectedCard = card;
+          card.classList.add('selected');
+          card.setAttribute('aria-pressed', 'true');
+        } else if (this.selectedCard === card) {
+          // Clicked same card - deselect
+          card.classList.remove('selected');
+          card.setAttribute('aria-pressed', 'false');
+          this.selectedCard = null;
+        } else {
+          // Second selection - check for match
+          const firstValue = parseInt(this.selectedCard.dataset.value);
+          const secondValue = value;
+
+          if (firstValue + secondValue === 100) {
+            // Match found!
+            this.handleMatch(this.selectedCard, card, firstValue, secondValue);
+          } else {
+            // No match
+            this.handleNoMatch(this.selectedCard, card, firstValue, secondValue);
+          }
+        }
+      },
+
+      handleMatch(card1, card2, val1, val2) {
+        // Mark as matched
+        card1.classList.add('matched');
+        card1.classList.remove('selected');
+        card2.classList.add('matched');
+        card1.setAttribute('aria-pressed', 'false');
+        card1.disabled = true;
+        card2.disabled = true;
+
+        this.selectedCard = null;
+        this.matchedPairs++;
+        this.correctCount++;
+        this.updateMatchedDisplay();
+
+        // Show feedback
+        const msg = window.i18n
+          ? i18n.t('section.activities.make-100.pairFound')
+              .replace('{a}', val1)
+              .replace('{b}', val2)
+          : `${val1} + ${val2} = 100`;
+
+        this.feedback.textContent = '✓ ' + msg;
+        this.feedback.classList.remove('error');
+        this.feedback.classList.add('show');
+
+        // Check if round is complete
+        if (this.matchedPairs >= this.totalPairsInRound) {
+          setTimeout(() => this.completeRound(), this.autoAdvanceDelay);
+        } else {
+          setTimeout(() => {
+            this.feedback.classList.remove('show');
+          }, 1200);
+        }
+      },
+
+      handleNoMatch(card1, card2, val1, val2) {
+        // Visual feedback for wrong match
+        card1.classList.add('wrong');
+        card2.classList.add('wrong');
+        this.incorrectCount++;
+
+        // Show feedback
+        const sum = val1 + val2;
+        const msg = window.i18n
+          ? i18n.t('section.activities.make-100.notPair')
+              .replace('{a}', val1)
+              .replace('{b}', val2)
+              .replace('{sum}', sum)
+          : `${val1} + ${val2} = ${sum}, not 100`;
+
+        this.feedback.textContent = msg;
+        this.feedback.classList.add('error', 'show');
+
+        setTimeout(() => {
+          card1.classList.remove('selected', 'wrong');
+          card2.classList.remove('wrong');
+          card1.setAttribute('aria-pressed', 'false');
+          this.selectedCard = null;
+          this.feedback.classList.remove('show');
+        }, 1200);
+      },
+
+      completeRound() {
+        if (this.currentRound < this.totalRounds - 1) {
+          this.currentRound++;
+          this.startRound();
+        } else {
+          this.showStats();
+        }
+      },
+
+      resetCurrentRound() {
+        this.startRound();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const totalPossible = this.correctCount + this.incorrectCount;
+        const percentage = totalPossible > 0 ? (this.correctCount / totalPossible) * 100 : 0;
+
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.make-100.perfect')
+            : 'Amazing matching skills!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '💯';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.make-100.great')
+            : 'Great job making 100!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n
+            ? i18n.t('section.activities.make-100.keepPracticing')
+            : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentRound = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalRounds; i++) {
+          let className = 'progress-dot';
+          let status = 'pending';
+          if (i < this.currentRound) {
+            className += ' completed';
+            status = 'completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+            status = 'current';
+          }
+          html += `<div class="${className}" role="listitem" aria-label="Round ${i + 1} of ${this.totalRounds}: ${status}"></div>`;
+        }
+        this.progress.setAttribute('role', 'list');
+        this.progress.setAttribute('aria-label', 'Progress');
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => Make100.init());
+      } else {
+        Make100.init();
+      }
+    });
+  </script>
+  <style>
+    /* Make 100 Pairs - Grade 2 specific styles */
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-3);
+      text-align: center;
+    }
+
+    /* Target Display */
+    .target-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      margin: var(--space-3) auto;
+      padding: var(--space-3) var(--space-5);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid #f59e0b;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #d97706;
+      max-width: 200px;
+    }
+
+    .target-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #92400e;
+    }
+
+    .target-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+    }
+
+    /* Cards Container */
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-3);
+      margin: var(--space-4) auto;
+      max-width: 400px;
+      justify-items: center;
+    }
+
+    .number-card {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 3px solid var(--color-primary-light);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 var(--color-primary-light);
+    }
+
+    .number-card:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--color-primary-light);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    }
+
+    .number-card:focus {
+      outline: none;
+      box-shadow: 0 4px 0 var(--color-primary-light), 0 0 0 4px rgba(59, 130, 246, 0.5);
+      border-color: #2563eb;
+    }
+
+    .number-card:focus-visible {
+      outline: none;
+      box-shadow: 0 4px 0 var(--color-primary-light), 0 0 0 4px rgba(59, 130, 246, 0.6);
+      border-color: #2563eb;
+    }
+
+    .number-card:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 var(--color-primary-light);
+    }
+
+    .number-card.selected {
+      background: linear-gradient(135deg, #bfdbfe, #93c5fd);
+      border-color: #2563eb;
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 6px 0 #2563eb, 0 8px 20px rgba(59, 130, 246, 0.3);
+    }
+
+    .number-card.matched {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #16a34a;
+      color: #166534;
+      cursor: default;
+      animation: matchPop 0.5s ease;
+    }
+
+    .number-card.wrong {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #dc2626;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes matchPop {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.15); }
+      60% { transform: scale(0.95); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+      20%, 40%, 60%, 80% { transform: translateX(4px); }
+    }
+
+    /* Matched Pairs Display */
+    .matched-pairs {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin: var(--space-3) auto;
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      color: var(--color-neutral-600);
+    }
+
+    .matched-label {
+      font-weight: var(--weight-semibold);
+    }
+
+    .matched-count {
+      font-weight: var(--weight-bold);
+      font-size: var(--text-xl);
+      color: #22c55e;
+    }
+
+    .matched-total {
+      color: var(--color-neutral-500);
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback at bottom */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .cards-container {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-2);
+        max-width: 320px;
+      }
+
+      .number-card {
+        width: 65px;
+        height: 65px;
+        font-size: var(--text-xl);
+      }
+
+      .target-display {
+        padding: var(--space-2) var(--space-4);
+      }
+
+      .target-label {
+        font-size: var(--text-base);
+      }
+
+      .target-number {
+        font-size: var(--text-2xl);
+      }
+    }
+
+    @media (max-width: 400px) {
+      .cards-container {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-2);
+        max-width: 260px;
+      }
+
+      .number-card {
+        width: 52px;
+        height: 52px;
+        font-size: var(--text-base);
+        border-width: 2px;
+        box-shadow: 0 3px 0 var(--color-primary-light);
+      }
+
+      .question-text {
+        font-size: var(--text-lg);
+      }
+
+      .target-display {
+        padding: var(--space-2) var(--space-3);
+        max-width: 180px;
+      }
+
+      .target-label {
+        font-size: var(--text-sm);
+      }
+
+      .target-number {
+        font-size: var(--text-xl);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Decimal ÷ Whole - Grade 5 Math Activity - Meadow Math">
+  <title>Decimal ÷ Whole - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">➗</span>
+            <span data-i18n="section.activities.decimal-divide-whole.title">Decimal ÷ Whole</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.decimal-divide-whole.instruction">Divide the decimal equally!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Problem Display -->
+          <div class="problem-display" id="problem-display">
+            <span class="decimal-number" id="decimal-number">1.25</span>
+            <span class="divide-sign">÷</span>
+            <span class="whole-number" id="whole-number">5</span>
+            <span class="equals-sign">=</span>
+            <span class="answer-blank" id="answer-blank">?</span>
+          </div>
+
+          <!-- Visual Model: Sharing/Partition -->
+          <div class="model-container" id="model-container">
+            <div class="model-label" id="model-label">
+              <span data-i18n="section.activities.decimal-divide-whole.share">Share</span>
+              <span class="share-amount" id="share-amount">1.25</span>
+              <span data-i18n="section.activities.decimal-divide-whole.into">into</span>
+              <span class="share-groups" id="share-groups">5</span>
+              <span data-i18n="section.activities.decimal-divide-whole.equalGroups">equal groups</span>
+            </div>
+            <div class="sharing-display" id="sharing-display">
+              <!-- Visual sharing model will be generated here -->
+            </div>
+            <div class="sharing-result" id="sharing-result">
+              <span data-i18n="section.activities.decimal-divide-whole.eachGets">Each group gets:</span>
+              <span class="result-value" id="result-value">?</span>
+            </div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <!-- Choices will be generated here -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.decimal-divide-whole.great">Great division work!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Decimal ÷ Whole Activity - Grade 5 Level 2
+    const DecimalDivideWhole = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+
+      // DOM elements
+      decimalNumber: null,
+      wholeNumber: null,
+      answerBlank: null,
+      modelContainer: null,
+      modelLabel: null,
+      shareAmount: null,
+      shareGroups: null,
+      sharingDisplay: null,
+      sharingResult: null,
+      resultValue: null,
+      choicesContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.decimalNumber = document.getElementById('decimal-number');
+        this.wholeNumber = document.getElementById('whole-number');
+        this.answerBlank = document.getElementById('answer-blank');
+        this.modelContainer = document.getElementById('model-container');
+        this.shareAmount = document.getElementById('share-amount');
+        this.shareGroups = document.getElementById('share-groups');
+        this.sharingDisplay = document.getElementById('sharing-display');
+        this.sharingResult = document.getElementById('sharing-result');
+        this.resultValue = document.getElementById('result-value');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      generateQuestions() {
+        // Mix of problems: sharing decimals by small whole numbers (2-6)
+        // Focus on dividends that divide evenly or result in clean decimals
+        const problemSet = [
+          // Simpler: tenths that divide cleanly
+          { decimal: 0.6, whole: 2 },    // 0.3
+          { decimal: 0.8, whole: 4 },    // 0.2
+          { decimal: 0.9, whole: 3 },    // 0.3
+          { decimal: 1.2, whole: 4 },    // 0.3
+          { decimal: 1.5, whole: 3 },    // 0.5
+          { decimal: 1.8, whole: 6 },    // 0.3
+          { decimal: 2.4, whole: 4 },    // 0.6
+          { decimal: 2.5, whole: 5 },    // 0.5
+          // Moderate: include regrouping cases
+          { decimal: 1.25, whole: 5 },   // 0.25
+          { decimal: 1.44, whole: 4 },   // 0.36
+          { decimal: 1.68, whole: 4 },   // 0.42
+          { decimal: 2.16, whole: 6 },   // 0.36
+          { decimal: 3.15, whole: 5 },   // 0.63
+          { decimal: 3.24, whole: 6 },   // 0.54
+          // More challenging
+          { decimal: 4.2, whole: 6 },    // 0.7
+          { decimal: 4.8, whole: 3 },    // 1.6
+          { decimal: 5.4, whole: 2 },    // 2.7
+          { decimal: 6.3, whole: 3 },    // 2.1
+          { decimal: 7.2, whole: 4 },    // 1.8
+          { decimal: 8.4, whole: 6 },    // 1.4
+        ];
+
+        // Shuffle and pick totalQuestions
+        const shuffled = shuffle(problemSet);
+        this.questions = shuffled.slice(0, this.totalQuestions).map(p => {
+          const answer = this.formatDecimal(p.decimal / p.whole);
+          return {
+            decimal: p.decimal,
+            whole: p.whole,
+            answer: answer
+          };
+        });
+      },
+
+      formatDecimal(num) {
+        // Format to avoid floating point errors
+        const rounded = Math.round(num * 100) / 100;
+        if (rounded === Math.floor(rounded)) {
+          return rounded.toString();
+        }
+        if (rounded * 10 === Math.floor(rounded * 10)) {
+          return rounded.toFixed(1);
+        }
+        return rounded.toFixed(2);
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+        this.answerBlank.textContent = '?';
+        this.answerBlank.classList.remove('revealed');
+        this.resultValue.textContent = '?';
+        this.resultValue.classList.remove('revealed');
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        // Update problem display
+        this.decimalNumber.textContent = question.decimal;
+        this.wholeNumber.textContent = question.whole;
+
+        // Update model labels
+        this.shareAmount.textContent = question.decimal;
+        this.shareGroups.textContent = question.whole;
+
+        // Generate visual sharing model
+        this.renderSharingModel(question.decimal, question.whole);
+
+        // Generate answer choices
+        this.renderChoices(question.answer, question.decimal, question.whole);
+
+        this.renderProgress();
+      },
+
+      renderSharingModel(decimal, whole) {
+        this.sharingDisplay.innerHTML = '';
+
+        // Determine grid representation
+        // Show the total amount as a grid (wholes + hundredths)
+        const wholes = Math.floor(decimal);
+        const hundredths = Math.round((decimal - wholes) * 100);
+
+        // Create a container showing "total to share"
+        const totalContainer = document.createElement('div');
+        totalContainer.className = 'total-container';
+        totalContainer.setAttribute('aria-label', `${decimal} to share among ${whole} groups`);
+
+        // Render wholes as full grids
+        for (let w = 0; w < wholes; w++) {
+          const wholeGrid = this.createMiniGrid(100, 'whole-grid');
+          totalContainer.appendChild(wholeGrid);
+        }
+
+        // Render remaining hundredths as partial grid
+        if (hundredths > 0) {
+          const partialGrid = this.createMiniGrid(hundredths, 'partial-grid');
+          totalContainer.appendChild(partialGrid);
+        }
+
+        this.sharingDisplay.appendChild(totalContainer);
+
+        // Create groups display
+        const groupsContainer = document.createElement('div');
+        groupsContainer.className = 'groups-container';
+
+        // Arrow showing division
+        const divisionArrow = document.createElement('div');
+        divisionArrow.className = 'division-arrow';
+        divisionArrow.innerHTML = '➜';
+        divisionArrow.setAttribute('aria-hidden', 'true');
+        this.sharingDisplay.appendChild(divisionArrow);
+
+        // Create placeholders for each group
+        for (let g = 0; g < whole; g++) {
+          const groupBox = document.createElement('div');
+          groupBox.className = 'group-box';
+          groupBox.setAttribute('aria-label', `Group ${g + 1}`);
+
+          const groupLabel = document.createElement('span');
+          groupLabel.className = 'group-number';
+          groupLabel.textContent = g + 1;
+
+          const groupContent = document.createElement('div');
+          groupContent.className = 'group-content';
+          groupContent.innerHTML = '<span class="group-placeholder">?</span>';
+
+          groupBox.appendChild(groupLabel);
+          groupBox.appendChild(groupContent);
+          groupsContainer.appendChild(groupBox);
+
+          // Animate entry
+          groupBox.style.animationDelay = `${g * 100}ms`;
+          groupBox.classList.add('animate-in');
+        }
+
+        this.sharingDisplay.appendChild(groupsContainer);
+      },
+
+      createMiniGrid(squaresToShade, className = '') {
+        const grid = document.createElement('div');
+        grid.className = `mini-grid ${className}`;
+        for (let i = 0; i < 100; i++) {
+          const square = document.createElement('div');
+          square.className = 'mini-square';
+          if (i < squaresToShade) {
+            square.classList.add('shaded');
+          }
+          grid.appendChild(square);
+        }
+        return grid;
+      },
+
+      renderChoices(correctAnswer, decimal, whole) {
+        this.choicesContainer.innerHTML = '';
+
+        // Generate distractors
+        const distractors = this.generateDistractors(correctAnswer, decimal, whole);
+        const allChoices = shuffle([correctAnswer, ...distractors]);
+
+        const choiceLetters = ['A', 'B', 'C', 'D'];
+        allChoices.forEach((choice, index) => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.textContent = choice;
+          btn.setAttribute('aria-label', `Choice ${choiceLetters[index]}: ${choice}`);
+          btn.addEventListener('click', () => this.checkAnswer(choice, btn));
+          this.choicesContainer.appendChild(btn);
+        });
+      },
+
+      generateDistractors(correct, decimal, whole) {
+        const correctNum = parseFloat(correct);
+        const distractors = new Set();
+
+        // Common errors:
+        // 1. Just the decimal (forgot to divide)
+        distractors.add(this.formatDecimal(decimal));
+
+        // 2. Multiplied instead of divided
+        distractors.add(this.formatDecimal(decimal * whole));
+
+        // 3. Off by factor of 10 (decimal place error)
+        if (correctNum < 1) {
+          distractors.add(this.formatDecimal(correctNum * 10));
+        }
+        if (correctNum >= 0.1) {
+          distractors.add(this.formatDecimal(correctNum / 10));
+        }
+
+        // 4. Wrong by one group
+        if (whole > 2) {
+          distractors.add(this.formatDecimal(decimal / (whole - 1)));
+        }
+        distractors.add(this.formatDecimal(decimal / (whole + 1)));
+
+        // 5. Small variations
+        distractors.add(this.formatDecimal(correctNum + 0.1));
+        distractors.add(this.formatDecimal(correctNum - 0.1));
+        distractors.add(this.formatDecimal(correctNum + 0.05));
+        distractors.add(this.formatDecimal(correctNum - 0.05));
+
+        // 6. Swapped numerator/denominator style error
+        if (decimal < whole) {
+          distractors.add(this.formatDecimal(whole / decimal));
+        }
+
+        // 7. Double/half
+        distractors.add(this.formatDecimal(correctNum * 2));
+        if (correctNum >= 0.2) {
+          distractors.add(this.formatDecimal(correctNum / 2));
+        }
+
+        // Remove correct answer and invalid values
+        distractors.delete(correct);
+        distractors.delete(this.formatDecimal(0));
+
+        // Filter to only positive, sensible values
+        const validDistractors = [...distractors].filter(d => {
+          const num = parseFloat(d);
+          return num > 0 && num !== correctNum && num < decimal * 2;
+        });
+
+        // Shuffle and take 3 unique distractors
+        const shuffled = shuffle(validDistractors);
+        let result = shuffled.slice(0, 3);
+
+        // Ensure we always have exactly 3 distractors
+        let offset = 0.15;
+        while (result.length < 3) {
+          const candidate = this.formatDecimal(correctNum + offset);
+          if (!result.includes(candidate) && candidate !== correct && parseFloat(candidate) > 0) {
+            result.push(candidate);
+          }
+          offset += 0.1;
+          if (offset > 5) break;
+        }
+
+        return result;
+      },
+
+      checkAnswer(selected, btn) {
+        if (this.isAnswered) return;
+
+        const question = this.questions[this.currentQuestion];
+        const isCorrect = selected === question.answer;
+
+        this.isAnswered = true;
+
+        // Disable all buttons
+        const allBtns = this.choicesContainer.querySelectorAll('.choice-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        // Show answer in blanks
+        this.answerBlank.textContent = question.answer;
+        this.answerBlank.classList.add('revealed');
+        this.resultValue.textContent = question.answer;
+        this.resultValue.classList.add('revealed');
+
+        // Update group boxes to show the answer
+        this.revealGroupAnswers(question.answer, question.whole);
+
+        if (isCorrect) {
+          this.correctCount++;
+          btn.classList.add('correct');
+
+          const feedbackText = this.getTranslation(
+            'section.activities.decimal-divide-whole.correct',
+            'Correct!'
+          ).replace('{decimal}', question.decimal)
+           .replace('{whole}', question.whole)
+           .replace('{answer}', question.answer);
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          btn.classList.add('incorrect');
+
+          // Highlight correct answer
+          allBtns.forEach(b => {
+            if (b.textContent === question.answer) {
+              b.classList.add('correct');
+            }
+          });
+
+          const feedbackText = this.getTranslation(
+            'section.activities.decimal-divide-whole.wrong',
+            '{decimal} ÷ {whole} = {answer}'
+          ).replace('{decimal}', question.decimal)
+           .replace('{whole}', question.whole)
+           .replace('{answer}', question.answer);
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+
+        this.renderProgress();
+      },
+
+      revealGroupAnswers(answer, groups) {
+        // Show the answer in each group box
+        const groupBoxes = this.sharingDisplay.querySelectorAll('.group-box .group-content');
+        groupBoxes.forEach((box, index) => {
+          box.innerHTML = `<span class="group-answer">${answer}</span>`;
+          box.classList.add('revealed');
+          // Stagger animation
+          box.style.animationDelay = `${index * 100}ms`;
+        });
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+        this.answerBlank.textContent = '?';
+        this.answerBlank.classList.remove('revealed');
+        this.resultValue.textContent = '?';
+        this.resultValue.classList.remove('revealed');
+
+        const question = this.questions[this.currentQuestion];
+        if (question) {
+          this.renderSharingModel(question.decimal, question.whole);
+          this.renderChoices(question.answer, question.decimal, question.whole);
+        }
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.decimal-divide-whole.perfect',
+            'Perfect decimal division!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.decimal-divide-whole.great',
+            'Great division work!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.decimal-divide-whole.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.decimal-divide-whole.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => DecimalDivideWhole.init());
+      } else {
+        DecimalDivideWhole.init();
+      }
+    });
+  </script>
+  <style>
+    /* Decimal ÷ Whole specific styles */
+
+    .problem-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+      margin: 0 auto var(--space-4);
+      max-width: fit-content;
+      flex-wrap: wrap;
+    }
+
+    .decimal-number,
+    .whole-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #92400e;
+    }
+
+    .divide-sign,
+    .equals-sign {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: #b45309;
+    }
+
+    .answer-blank {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #9ca3af;
+      min-width: 80px;
+      text-align: center;
+      padding: var(--space-2) var(--space-3);
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 3px dashed #d1d5db;
+      transition: all 0.3s ease;
+    }
+
+    .answer-blank.revealed {
+      color: #059669;
+      border-color: #10b981;
+      border-style: solid;
+      background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    }
+
+    /* Model Container */
+    .model-container {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 2px solid #e5e7eb;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .model-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-medium);
+      color: #374151;
+      text-align: center;
+      margin-bottom: var(--space-3);
+    }
+
+    .model-label .share-amount {
+      color: #b45309;
+      font-weight: var(--weight-bold);
+      font-size: var(--text-xl);
+    }
+
+    .model-label .share-groups {
+      color: #059669;
+      font-weight: var(--weight-bold);
+      font-size: var(--text-xl);
+    }
+
+    /* Sharing Display */
+    .sharing-display {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      justify-content: center;
+      align-items: center;
+      padding: var(--space-3);
+    }
+
+    .total-container {
+      display: flex;
+      gap: var(--space-2);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-lg);
+      border: 2px solid #f59e0b;
+    }
+
+    .division-arrow {
+      font-size: var(--text-3xl);
+      color: #6b7280;
+      display: flex;
+      align-items: center;
+      padding: 0 var(--space-2);
+    }
+
+    .groups-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      justify-content: center;
+    }
+
+    .group-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-2);
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border-radius: var(--radius-lg);
+      border: 2px solid #10b981;
+      min-width: 50px;
+      opacity: 0;
+      transform: scale(0.8);
+      animation: groupAppear 0.3s ease forwards;
+    }
+
+    @keyframes groupAppear {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .group-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      color: #059669;
+      background: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .group-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 32px;
+    }
+
+    .group-placeholder {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #9ca3af;
+    }
+
+    .group-answer {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #059669;
+      animation: revealAnswer 0.3s ease;
+    }
+
+    @keyframes revealAnswer {
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .group-content.revealed .group-answer {
+      animation: revealAnswer 0.3s ease forwards;
+    }
+
+    /* Sharing Result */
+    .sharing-result {
+      text-align: center;
+      margin-top: var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-medium);
+      color: #374151;
+    }
+
+    .result-value {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #9ca3af;
+      padding: var(--space-1) var(--space-2);
+      background: #f3f4f6;
+      border-radius: var(--radius-md);
+      margin-left: var(--space-2);
+      transition: all 0.3s ease;
+    }
+
+    .result-value.revealed {
+      color: #059669;
+      background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    }
+
+    /* Mini Grid for hundredths */
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 1px;
+      width: 50px;
+      height: 50px;
+      background: #e5e7eb;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    .mini-square {
+      background: white;
+      transition: background 0.2s ease;
+    }
+
+    .mini-square.shaded {
+      background: #f59e0b;
+    }
+
+    .whole-grid .mini-square.shaded {
+      background: #f59e0b;
+    }
+
+    .partial-grid {
+      opacity: 0.85;
+    }
+
+    /* Answer Choices */
+    .choices-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      max-width: 400px;
+      margin: 0 auto var(--space-4);
+    }
+
+    .choice-btn {
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #1e3a5f;
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 3px solid #0ea5e9;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 60px;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: scale(1.02);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border-color: #0284c7;
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border-color: #ef4444;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+      20%, 40%, 60%, 80% { transform: translateX(4px); }
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .problem-display {
+        padding: var(--space-3);
+        gap: var(--space-2);
+      }
+
+      .decimal-number,
+      .whole-number {
+        font-size: var(--text-3xl);
+      }
+
+      .divide-sign,
+      .equals-sign {
+        font-size: var(--text-2xl);
+      }
+
+      .answer-blank {
+        font-size: var(--text-3xl);
+        min-width: 60px;
+        padding: var(--space-1) var(--space-2);
+      }
+
+      .model-container {
+        padding: var(--space-3);
+      }
+
+      .sharing-display {
+        gap: var(--space-2);
+        padding: var(--space-2);
+      }
+
+      .total-container {
+        padding: var(--space-2);
+        gap: var(--space-1);
+      }
+
+      .mini-grid {
+        width: 40px;
+        height: 40px;
+      }
+
+      .division-arrow {
+        font-size: var(--text-xl);
+        padding: 0 var(--space-1);
+      }
+
+      .group-box {
+        padding: var(--space-1);
+        min-width: 40px;
+      }
+
+      .groups-container {
+        gap: var(--space-1);
+      }
+
+      .choices-container {
+        gap: var(--space-2);
+        max-width: 320px;
+      }
+
+      .choice-btn {
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--text-lg);
+        min-height: 50px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .problem-display {
+        padding: var(--space-2);
+      }
+
+      .decimal-number,
+      .whole-number {
+        font-size: var(--text-2xl);
+      }
+
+      .divide-sign,
+      .equals-sign {
+        font-size: var(--text-xl);
+      }
+
+      .answer-blank {
+        font-size: var(--text-2xl);
+        min-width: 50px;
+      }
+
+      .model-label {
+        font-size: var(--text-base);
+      }
+
+      .model-label .share-amount,
+      .model-label .share-groups {
+        font-size: var(--text-lg);
+      }
+
+      .mini-grid {
+        width: 35px;
+        height: 35px;
+      }
+
+      .group-number {
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+      }
+
+      .group-placeholder,
+      .group-answer {
+        font-size: var(--text-base);
+      }
+
+      .choice-btn {
+        font-size: var(--text-base);
+        min-height: 44px;
+        padding: var(--space-2);
+      }
+    }
+
+    @media (max-width: 360px) {
+      .choices-container {
+        grid-template-columns: 1fr;
+        max-width: 200px;
+      }
+
+      .mini-grid {
+        width: 30px;
+        height: 30px;
+      }
+
+      .sharing-display {
+        flex-direction: column;
+      }
+
+      .division-arrow {
+        transform: rotate(90deg);
+      }
+
+      .group-box {
+        min-width: 35px;
+        padding: 2px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

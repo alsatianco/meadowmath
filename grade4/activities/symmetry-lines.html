@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Symmetry Mirror - Grade 4 Math Activity - Meadow Math">
+  <title>Symmetry Mirror - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link">
+            <span data-i18n="activity.backTo">← Back to</span>
+            <span data-i18n="nav.grade4">Grade 4</span>
+          </a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🪞</span>
+            <span data-i18n="section.activities.symmetry-lines.title">Symmetry Mirror</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.symmetry-lines.description">Draw a line of symmetry (if it exists).</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Shape Display -->
+          <div class="symmetry-card">
+            <div class="symmetry-prompt" data-i18n="section.activities.symmetry-lines.prompt">Does this shape have a line of symmetry?</div>
+            <div class="symmetry-canvas" id="symmetry-canvas" aria-label="Shape for symmetry">
+              <svg id="symmetry-svg" viewBox="0 0 200 200" aria-hidden="true">
+                <!-- Shape will be drawn here -->
+              </svg>
+            </div>
+            <p class="symmetry-hint" data-i18n="section.activities.symmetry-lines.hint">A line of symmetry divides a shape into two matching halves.</p>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container">
+            <div class="choices-grid" id="choices-grid" role="group" aria-label="Symmetry line choices">
+              <button class="choice-btn" data-type="vertical">
+                <span class="choice-icon" aria-hidden="true">|</span>
+                <span class="choice-label" data-i18n="section.activities.symmetry-lines.types.vertical">Vertical</span>
+              </button>
+              <button class="choice-btn" data-type="horizontal">
+                <span class="choice-icon" aria-hidden="true">—</span>
+                <span class="choice-label" data-i18n="section.activities.symmetry-lines.types.horizontal">Horizontal</span>
+              </button>
+              <button class="choice-btn" data-type="both">
+                <span class="choice-icon" aria-hidden="true">+</span>
+                <span class="choice-label" data-i18n="section.activities.symmetry-lines.types.both">Both</span>
+              </button>
+              <button class="choice-btn" data-type="none">
+                <span class="choice-icon" aria-hidden="true">✕</span>
+                <span class="choice-label" data-i18n="section.activities.symmetry-lines.types.none">None</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.symmetry-lines.great">Great symmetry skills!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Symmetry Mirror Activity - Grade 4 Level 5
+    const SymmetryLines = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1800,
+      isAnswered: false,
+      currentShape: null,
+      currentAnswer: null,
+      lastShapeIndex: -1,
+      advanceTimeout: null,
+
+      // Shape definitions with symmetry properties
+      shapes: [
+        {
+          name: 'Square',
+          symmetry: 'both',
+          draw: (svg) => {
+            const size = 100;
+            const x = 50, y = 50;
+            svg.innerHTML = `<rect x="${x}" y="${y}" width="${size}" height="${size}" fill="#a78bfa" stroke="#6366f1" stroke-width="3" />`;
+          }
+        },
+        {
+          name: 'Rectangle',
+          symmetry: 'both',
+          draw: (svg) => {
+            const w = 140, h = 80;
+            const x = 30, y = 60;
+            svg.innerHTML = `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#93c5fd" stroke="#3b82f6" stroke-width="3" />`;
+          }
+        },
+        {
+          name: 'Circle',
+          symmetry: 'both',
+          draw: (svg) => {
+            svg.innerHTML = `<circle cx="100" cy="100" r="60" fill="#fcd34d" stroke="#f59e0b" stroke-width="3" />`;
+          }
+        },
+        {
+          name: 'Heart',
+          symmetry: 'vertical',
+          draw: (svg) => {
+            svg.innerHTML = `<path d="M100,160 C60,130 30,90 40,60 C50,30 80,30 100,50 C120,30 150,30 160,60 C170,90 140,130 100,160 Z" fill="#f472b6" stroke="#ec4899" stroke-width="3" />`;
+          }
+        },
+        {
+          name: 'Arrow Up',
+          symmetry: 'vertical',
+          draw: (svg) => {
+            svg.innerHTML = `<polygon points="100,30 140,100 120,100 120,170 80,170 80,100 60,100" fill="#86efac" stroke="#22c55e" stroke-width="3" />`;
+          }
+        },
+        {
+          name: 'Butterfly',
+          symmetry: 'vertical',
+          draw: (svg) => {
+            svg.innerHTML = `
+              <ellipse cx="60" cy="80" rx="40" ry="50" fill="#c4b5fd" stroke="#8b5cf6" stroke-width="2" />
+              <ellipse cx="140" cy="80" rx="40" ry="50" fill="#c4b5fd" stroke="#8b5cf6" stroke-width="2" />
+              <ellipse cx="60" cy="140" rx="30" ry="40" fill="#ddd6fe" stroke="#8b5cf6" stroke-width="2" />
+              <ellipse cx="140" cy="140" rx="30" ry="40" fill="#ddd6fe" stroke="#8b5cf6" stroke-width="2" />
+              <ellipse cx="100" cy="100" rx="8" ry="60" fill="#4c1d95" />
+            `;
+          }
+        },
+        {
+          name: 'Horizontal Arrow',
+          symmetry: 'horizontal',
+          draw: (svg) => {
+            svg.innerHTML = `<polygon points="170,100 100,60 100,80 30,80 30,120 100,120 100,140" fill="#fbbf24" stroke="#f59e0b" stroke-width="3" />`;
+          }
+        },
+        {
+          name: 'Bow Tie',
+          symmetry: 'both',
+          draw: (svg) => {
+            svg.innerHTML = `
+              <polygon points="30,50 100,100 30,150" fill="#f9a8d4" stroke="#ec4899" stroke-width="3" />
+              <polygon points="170,50 100,100 170,150" fill="#f9a8d4" stroke="#ec4899" stroke-width="3" />
+            `;
+          }
+        },
+        {
+          name: 'Scalene Triangle',
+          symmetry: 'none',
+          draw: (svg) => {
+            svg.innerHTML = `<polygon points="50,150 170,150 120,40" fill="#fed7aa" stroke="#f97316" stroke-width="3" />`;
+          }
+        },
+        {
+          name: 'Irregular Shape',
+          symmetry: 'none',
+          draw: (svg) => {
+            svg.innerHTML = `<polygon points="40,80 80,40 140,60 160,120 120,160 60,140" fill="#a5f3fc" stroke="#06b6d4" stroke-width="3" />`;
+          }
+        },
+        {
+          name: 'Letter P',
+          symmetry: 'none',
+          draw: (svg) => {
+            svg.innerHTML = `
+              <rect x="60" y="40" width="30" height="130" fill="#c4b5fd" stroke="#8b5cf6" stroke-width="3" />
+              <path d="M90,40 Q150,40 150,85 Q150,130 90,130" fill="#c4b5fd" stroke="#8b5cf6" stroke-width="3" />
+            `;
+          }
+        },
+        {
+          name: 'Isosceles Triangle',
+          symmetry: 'vertical',
+          draw: (svg) => {
+            svg.innerHTML = `<polygon points="100,30 40,170 160,170" fill="#bbf7d0" stroke="#22c55e" stroke-width="3" />`;
+          }
+        }
+      ],
+
+      init() {
+        this.symmetrySvg = document.getElementById('symmetry-svg');
+        this.choicesGrid = document.getElementById('choices-grid');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.choiceButtons = this.choicesGrid.querySelectorAll('.choice-btn');
+
+        this.choiceButtons.forEach(btn => {
+          btn.addEventListener('click', () => this.checkAnswer(btn.dataset.type));
+        });
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(key);
+          return translated !== key ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      generateQuestion() {
+        // Pick a shape, avoiding repeating
+        let idx;
+        do {
+          idx = this.randomInt(0, this.shapes.length - 1);
+        } while (idx === this.lastShapeIndex);
+
+        this.lastShapeIndex = idx;
+        this.currentShape = this.shapes[idx];
+        this.currentAnswer = this.currentShape.symmetry;
+      },
+
+      drawShape() {
+        this.currentShape.draw(this.symmetrySvg);
+      },
+
+      startQuestion() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        // Reset button states
+        this.choiceButtons.forEach(btn => {
+          btn.disabled = false;
+          btn.classList.remove('correct', 'wrong');
+        });
+
+        this.generateQuestion();
+        this.drawShape();
+        this.renderProgress();
+      },
+
+      getTypeLabel(type) {
+        return this.getTranslation(`section.activities.symmetry-lines.types.${type}`, type);
+      },
+
+      checkAnswer(selectedType) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const isCorrect = selectedType === this.currentAnswer;
+
+        this.choiceButtons.forEach(btn => {
+          btn.disabled = true;
+          if (btn.dataset.type === this.currentAnswer) {
+            btn.classList.add('correct');
+          } else if (btn.dataset.type === selectedType && !isCorrect) {
+            btn.classList.add('wrong');
+          }
+        });
+
+        // Draw symmetry lines on the shape
+        this.drawSymmetryLines();
+
+        if (isCorrect) {
+          this.correctCount++;
+          const msg = this.getTranslation(
+            'section.activities.symmetry-lines.correct',
+            'Correct! This shape has {type} symmetry.'
+          );
+          this.feedback.textContent = msg.replace('{type}', this.getTypeLabel(this.currentAnswer).toLowerCase());
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const msg = this.getTranslation(
+            'section.activities.symmetry-lines.wrong',
+            'This shape has {type} symmetry.'
+          );
+          this.feedback.textContent = msg.replace('{type}', this.getTypeLabel(this.currentAnswer).toLowerCase());
+          this.feedback.classList.add('error');
+
+          const wrongBtn = this.choicesGrid.querySelector(`[data-type="${selectedType}"]`);
+          if (wrongBtn && typeof wiggle === 'function') {
+            wiggle(wrongBtn);
+          }
+        }
+
+        this.feedback.classList.add('show');
+
+        this.advanceTimeout = setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      drawSymmetryLines() {
+        const svg = this.symmetrySvg;
+        const currentContent = svg.innerHTML;
+
+        let lines = '';
+        if (this.currentAnswer === 'vertical' || this.currentAnswer === 'both') {
+          lines += `<line x1="100" y1="10" x2="100" y2="190" stroke="#ef4444" stroke-width="3" stroke-dasharray="8,4" />`;
+        }
+        if (this.currentAnswer === 'horizontal' || this.currentAnswer === 'both') {
+          lines += `<line x1="10" y1="100" x2="190" y2="100" stroke="#ef4444" stroke-width="3" stroke-dasharray="8,4" />`;
+        }
+
+        svg.innerHTML = currentContent + lines;
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.symmetry-lines.perfect',
+            'Perfect symmetry skills!'
+          );
+        } else if (percent >= 0.75) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.symmetry-lines.great',
+            'Great symmetry skills!'
+          );
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.symmetry-lines.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.symmetry-lines.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.lastShapeIndex = -1;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      },
+
+      updateTranslations() {
+        this.updateProgressLabel();
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => SymmetryLines.init());
+      } else {
+        SymmetryLines.init();
+      }
+    });
+  </script>
+  <style>
+    /* Symmetry Mirror specific styles */
+
+    .symmetry-card {
+      width: min(400px, 100%);
+      text-align: center;
+      background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+      border: 3px solid #ec4899;
+      border-radius: var(--radius-2xl);
+      padding: var(--space-5);
+      margin-bottom: var(--space-5);
+      box-shadow: 0 6px 0 #be185d;
+    }
+
+    .symmetry-prompt {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #9d174d;
+      margin-bottom: var(--space-4);
+    }
+
+    .symmetry-canvas {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 3px solid #f9a8d4;
+      padding: var(--space-3);
+      margin-bottom: var(--space-3);
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #symmetry-svg {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+    }
+
+    .symmetry-hint {
+      font-size: var(--text-sm);
+      color: #9d174d;
+      font-style: italic;
+      margin: 0;
+    }
+
+    .choices-container {
+      width: min(480px, 100%);
+      margin-bottom: var(--space-4);
+    }
+
+    .choices-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+    }
+
+    .choice-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-4) var(--space-3);
+      min-height: 90px;
+      border-radius: var(--radius-xl);
+      border: 3px solid #c4b5fd;
+      background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+      color: #4c1d95;
+      font-family: var(--font-secondary);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      box-shadow: 0 4px 0 rgba(76, 29, 149, 0.2);
+    }
+
+    .choice-icon {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+    }
+
+    .choice-label {
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 rgba(76, 29, 149, 0.25);
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 rgba(76, 29, 149, 0.2);
+    }
+
+    .choice-btn:focus-visible {
+      outline: 3px solid rgba(139, 92, 246, 0.5);
+      outline-offset: 2px;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 rgba(22, 101, 52, 0.3);
+    }
+
+    .choice-btn.wrong {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      color: #991b1b;
+      box-shadow: 0 4px 0 rgba(153, 27, 27, 0.3);
+    }
+
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 480px) {
+      .symmetry-card {
+        padding: var(--space-4);
+      }
+
+      .symmetry-prompt {
+        font-size: var(--text-lg);
+      }
+
+      .choices-grid {
+        gap: var(--space-2);
+      }
+
+      .choice-btn {
+        min-height: 70px;
+        padding: var(--space-3);
+      }
+
+      .choice-icon {
+        font-size: var(--text-xl);
+      }
+
+      .choice-label {
+        font-size: var(--text-sm);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Area as Multiply - Grade 3 Math Activity - Meadow Math">
+  <title>Area as Multiply - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">✖️</span>
+            <span data-i18n="section.activities.area-multiply.title">Area as Multiply</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.area-multiply.instruction">Use multiplication to find area!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Prompt -->
+          <div class="prompt-card">
+            <span class="prompt-title" data-i18n="section.activities.area-multiply.findArea">Find the area of this rectangle!</span>
+            <span class="prompt-subtitle" data-i18n="section.activities.area-multiply.rowsTimesColumns">Rows × columns gives the area.</span>
+          </div>
+
+          <!-- Area Board -->
+          <div class="area-card">
+            <div class="dimension-row">
+              <div class="dimension-badge">
+                <span class="dimension-value" id="rows-count">4</span>
+                <span class="dimension-label" data-i18n="section.activities.area-multiply.rows">rows</span>
+              </div>
+              <span class="dimension-operator" aria-hidden="true">×</span>
+              <div class="dimension-badge">
+                <span class="dimension-value" id="cols-count">6</span>
+                <span class="dimension-label" data-i18n="section.activities.area-multiply.columns">columns</span>
+              </div>
+            </div>
+
+            <div class="grid-wrapper">
+              <div class="area-grid" id="area-grid" role="img"></div>
+            </div>
+
+            <div class="equation-row">
+              <span class="equation-value" id="equation-rows">4</span>
+              <span class="equation-symbol" aria-hidden="true">×</span>
+              <span class="equation-value" id="equation-cols">6</span>
+              <span class="equation-symbol" aria-hidden="true">=</span>
+              <span class="equation-result" id="equation-result">?</span>
+              <span class="equation-unit" id="equation-unit" data-i18n="section.activities.area-multiply.squareUnits">square units</span>
+            </div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices" aria-label="Answer choices"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.area-multiply.great">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Area as Multiply specific styles */
+    .prompt-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--space-2);
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      border: 3px solid #14b8a6;
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .prompt-title {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #0f766e;
+    }
+
+    .prompt-subtitle {
+      font-size: var(--text-base);
+      color: var(--color-neutral-700);
+    }
+
+    .area-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-4);
+      background: white;
+      border-radius: var(--radius-2xl);
+      border: 4px solid #e2e8f0;
+      padding: var(--space-5);
+      margin-bottom: var(--space-4);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .dimension-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .dimension-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+      border-radius: var(--radius-lg);
+      border: 2px solid #14b8a6;
+      padding: var(--space-2) var(--space-3);
+      color: #0f766e;
+      font-weight: var(--weight-semibold);
+    }
+
+    .dimension-value {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #0f766e;
+      min-width: 32px;
+      text-align: center;
+    }
+
+    .dimension-label {
+      font-size: var(--text-base);
+    }
+
+    .dimension-operator {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #0f766e;
+    }
+
+    .grid-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .area-grid {
+      display: grid;
+      gap: 4px;
+      background: #f8fafc;
+      padding: var(--space-3);
+      border-radius: var(--radius-xl);
+      border: 3px solid #e2e8f0;
+      --cell-size: 32px;
+    }
+
+    .grid-cell {
+      width: var(--cell-size);
+      height: var(--cell-size);
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #5eead4, #2dd4bf);
+      border: 2px solid #0d9488;
+      box-shadow: 0 2px 0 rgba(13, 148, 136, 0.35);
+    }
+
+    .equation-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #10b981;
+      border-radius: var(--radius-lg);
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-lg);
+      color: #0f766e;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .equation-value {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #0f766e;
+    }
+
+    .equation-result {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #0f766e;
+      min-width: 32px;
+      text-align: center;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .equation-result.revealed {
+      color: #0f172a;
+      transform: scale(1.05);
+    }
+
+    .equation-unit {
+      font-size: var(--text-base);
+      color: var(--color-neutral-600);
+    }
+
+    .answer-choices {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-3);
+      max-width: 520px;
+      margin: 0 auto var(--space-4);
+    }
+
+    .choice-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-3) var(--space-2);
+      min-height: 84px;
+      background: white;
+      border: 4px solid #e2e8f0;
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.08);
+      font-family: inherit;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      border-color: #14b8a6;
+      box-shadow: 0 6px 0 rgba(20, 184, 166, 0.2), 0 8px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .choice-btn:focus {
+      outline: 3px solid #14b8a6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn.correct {
+      border-color: var(--color-success);
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      box-shadow: 0 4px 0 rgba(34, 197, 94, 0.3), 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .choice-btn.incorrect {
+      border-color: var(--color-error);
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      animation: wiggle 0.5s ease;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.78;
+    }
+
+    .choice-value {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-text);
+    }
+
+    .choice-unit {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 767px) {
+      .prompt-title {
+        font-size: var(--text-lg);
+      }
+
+      .area-card {
+        padding: var(--space-4);
+      }
+
+      .area-grid {
+        --cell-size: 26px;
+        gap: 3px;
+      }
+
+      .dimension-value {
+        font-size: var(--text-xl);
+      }
+
+      .equation-row {
+        font-size: var(--text-base);
+      }
+
+      .equation-result {
+        font-size: var(--text-xl);
+      }
+
+      .answer-choices {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-2);
+      }
+
+      .choice-btn {
+        min-height: 72px;
+        padding: var(--space-2);
+      }
+
+      .choice-value {
+        font-size: var(--text-xl);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .area-grid {
+        --cell-size: 22px;
+      }
+
+      .choice-btn {
+        min-height: 66px;
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Area as Multiply Activity - Grade 3 Level 5
+    const AreaMultiply = {
+      currentRound: 1,
+      maxRounds: 10,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1500,
+      currentQuestion: null,
+      isAnswered: false,
+      lastResult: null,
+      lastSignature: null,
+
+      // DOM elements
+      rowsCount: null,
+      colsCount: null,
+      equationRows: null,
+      equationCols: null,
+      equationResult: null,
+      equationUnit: null,
+      areaGrid: null,
+      answerChoices: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.rowsCount = document.getElementById('rows-count');
+        this.colsCount = document.getElementById('cols-count');
+        this.equationRows = document.getElementById('equation-rows');
+        this.equationCols = document.getElementById('equation-cols');
+        this.equationResult = document.getElementById('equation-result');
+        this.equationUnit = document.getElementById('equation-unit');
+        this.areaGrid = document.getElementById('area-grid');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        const unitText = this.getTranslation('squareUnits', 'square units');
+        if (this.equationUnit) {
+          this.equationUnit.textContent = unitText;
+        }
+
+        const buttons = this.answerChoices ? this.answerChoices.querySelectorAll('.choice-btn') : [];
+        buttons.forEach(btn => {
+          const unitEl = btn.querySelector('.choice-unit');
+          if (unitEl) {
+            unitEl.textContent = unitText;
+          }
+          if (btn.dataset.value) {
+            btn.setAttribute('aria-label', `${btn.dataset.value} ${unitText}`);
+          }
+        });
+
+        const cellLabel = this.getTranslation('squareUnit', 'Square unit');
+        const gridLabelTemplate = this.getTranslation('gridLabel', 'Area grid');
+        if (this.areaGrid && this.currentQuestion) {
+          const gridLabel = gridLabelTemplate
+            .replace('{rows}', this.currentQuestion.rows)
+            .replace('{cols}', this.currentQuestion.cols);
+          this.areaGrid.setAttribute('aria-label', gridLabel);
+        }
+
+        const cells = this.areaGrid ? this.areaGrid.querySelectorAll('.grid-cell') : [];
+        cells.forEach(cell => {
+          cell.setAttribute('aria-label', cellLabel);
+        });
+
+        if (this.feedback.classList.contains('show') && this.lastResult) {
+          if (this.lastResult.isCorrect) {
+            this.feedback.textContent = this.getTranslation('correct', 'Correct!');
+            this.feedback.classList.remove('error');
+          } else {
+            const wrongTemplate = this.getTranslation('wrong', 'The area is {area} square units.');
+            this.feedback.textContent = wrongTemplate.replace('{area}', this.lastResult.area);
+            this.feedback.classList.add('error');
+          }
+        }
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.showStats();
+        }
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.area-multiply.${key}`);
+          return translated !== `section.activities.area-multiply.${key}` ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      generateQuestion() {
+        let minDim = 2;
+        let maxDim = 5;
+
+        if (this.currentRound > 3 && this.currentRound <= 7) {
+          minDim = 3;
+          maxDim = 7;
+        } else if (this.currentRound > 7) {
+          minDim = 4;
+          maxDim = 9;
+        }
+
+        let rows = 0;
+        let cols = 0;
+        let area = 0;
+        let attempts = 0;
+        let signature = '';
+
+        do {
+          rows = randomInt(minDim, maxDim);
+          cols = randomInt(minDim, maxDim);
+          area = rows * cols;
+          signature = `${rows}x${cols}`;
+          attempts++;
+        } while ((area < 6 || area > 81 || signature === this.lastSignature) && attempts < 40);
+
+        this.lastSignature = signature;
+        return { rows, cols, area };
+      },
+
+      startRound() {
+        this.currentQuestion = this.generateQuestion();
+        this.isAnswered = false;
+        this.lastResult = null;
+
+        this.rowsCount.textContent = this.currentQuestion.rows;
+        this.colsCount.textContent = this.currentQuestion.cols;
+        this.equationRows.textContent = this.currentQuestion.rows;
+        this.equationCols.textContent = this.currentQuestion.cols;
+        this.equationResult.textContent = '?';
+        this.equationResult.classList.remove('revealed');
+
+        this.buildGrid();
+        this.renderChoices();
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      buildGrid() {
+        const { rows, cols } = this.currentQuestion;
+        const cellLabel = this.getTranslation('squareUnit', 'Square unit');
+        const gridLabelTemplate = this.getTranslation('gridLabel', 'Area grid');
+        const gridLabel = gridLabelTemplate
+          .replace('{rows}', rows)
+          .replace('{cols}', cols);
+
+        this.areaGrid.style.gridTemplateColumns = `repeat(${cols}, var(--cell-size))`;
+        this.areaGrid.style.gridTemplateRows = `repeat(${rows}, var(--cell-size))`;
+        this.areaGrid.setAttribute('aria-label', gridLabel);
+
+        let html = '';
+        for (let i = 0; i < rows * cols; i++) {
+          html += `<div class="grid-cell" aria-label="${cellLabel}"></div>`;
+        }
+        this.areaGrid.innerHTML = html;
+      },
+
+      buildChoices(area, rows, cols) {
+        const choices = new Set([area]);
+        const strategies = [
+          () => rows + cols,
+          () => (rows + 1) * cols,
+          () => rows * (cols + 1),
+          () => rows * Math.max(1, cols - 1),
+          () => Math.max(1, rows - 1) * cols,
+          () => area + randomInt(1, 6),
+          () => area - randomInt(1, 6)
+        ];
+
+        let attempts = 0;
+        while (choices.size < 4 && attempts < 30) {
+          const strategy = strategies[randomInt(0, strategies.length - 1)];
+          const value = strategy();
+          if (value > 0 && value !== area && value <= 100) {
+            choices.add(value);
+          }
+          attempts++;
+        }
+
+        while (choices.size < 4) {
+          const offset = randomInt(-8, 8);
+          const value = area + offset;
+          if (value > 0 && value !== area && value <= 100) {
+            choices.add(value);
+          }
+        }
+
+        return shuffle(Array.from(choices));
+      },
+
+      renderChoices() {
+        const { rows, cols, area } = this.currentQuestion;
+        const unitText = this.getTranslation('squareUnits', 'square units');
+        const choices = this.buildChoices(area, rows, cols);
+
+        this.answerChoices.innerHTML = choices.map(value => `
+          <button class="choice-btn" type="button" data-value="${value}" aria-label="${value} ${unitText}">
+            <span class="choice-value">${value}</span>
+            <span class="choice-unit">${unitText}</span>
+          </button>
+        `).join('');
+
+        const buttons = this.answerChoices.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const value = parseInt(btn.dataset.value, 10);
+            this.handleAnswer(value, btn);
+          });
+        });
+      },
+
+      handleAnswer(value, selectedBtn) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const buttons = this.answerChoices.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => {
+          btn.disabled = true;
+        });
+
+        const correctArea = this.currentQuestion.area;
+        if (value === correctArea) {
+          selectedBtn.classList.add('correct');
+          this.feedback.textContent = this.getTranslation('correct', 'Correct!');
+          this.feedback.classList.remove('error');
+          this.correctCount++;
+          this.lastResult = { isCorrect: true, area: correctArea };
+        } else {
+          selectedBtn.classList.add('incorrect');
+          buttons.forEach(btn => {
+            if (parseInt(btn.dataset.value, 10) === correctArea) {
+              btn.classList.add('correct');
+            }
+          });
+          const wrongTemplate = this.getTranslation('wrong', 'The area is {area} square units.');
+          this.feedback.textContent = wrongTemplate.replace('{area}', correctArea);
+          this.feedback.classList.add('error');
+          this.wrongCount++;
+          this.lastResult = { isCorrect: false, area: correctArea };
+        }
+
+        this.equationResult.textContent = correctArea;
+        this.equationResult.classList.add('revealed');
+        this.feedback.classList.add('show');
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.currentRound < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation('perfect', 'Perfect area multiplication!');
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation('great', 'Great area work!');
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation('good', 'Good job!');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation('keepPracticing', 'Keep practicing!');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentRound = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      nextRound() {
+        this.currentRound++;
+        this.startRound();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => AreaMultiply.init());
+      } else {
+        AreaMultiply.init();
+      }
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

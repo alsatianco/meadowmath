@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Build the Perimeter - Grade 3 Math Activity - Meadow Math">
+  <title>Build the Perimeter - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧰</span>
+            <span data-i18n="section.activities.build-perimeter.title">Build the Perimeter</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.build-perimeter.instruction">Add all the sides!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Question -->
+          <div class="question-text" id="question-text">
+            <span data-i18n="section.activities.build-perimeter.question">What is the perimeter?</span>
+          </div>
+
+          <!-- Shape Display -->
+          <div class="shape-card">
+            <div class="shape-display" id="shape-display"></div>
+            <div class="hint-banner" id="missing-hint" hidden data-i18n="section.activities.build-perimeter.missingHint">One side is missing. Use the opposite side!</div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-section" id="choices"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.build-perimeter.great">Great adding!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Build the Perimeter Activity - Grade 3 Level 5
+    const BuildPerimeter = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      questions: [],
+      currentShape: null,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+      lastResult: null,
+      polygonIndex: 0,
+
+      polygonShapes: [
+        {
+          id: 'l-shape-a',
+          points: [
+            [0, 0],
+            [5, 0],
+            [5, 2],
+            [3, 2],
+            [3, 5],
+            [0, 5]
+          ]
+        },
+        {
+          id: 'l-shape-b',
+          points: [
+            [0, 0],
+            [6, 0],
+            [6, 3],
+            [2, 3],
+            [2, 6],
+            [0, 6]
+          ]
+        },
+        {
+          id: 'step-shape',
+          points: [
+            [0, 0],
+            [4, 0],
+            [4, 2],
+            [7, 2],
+            [7, 5],
+            [0, 5]
+          ]
+        }
+      ],
+
+      // DOM elements
+      shapeDisplay: null,
+      missingHint: null,
+      choices: null,
+      progress: null,
+      feedback: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.shapeDisplay = document.getElementById('shape-display');
+        this.missingHint = document.getElementById('missing-hint');
+        this.choices = document.getElementById('choices');
+        this.progress = document.getElementById('progress');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        const unitText = this.getTranslation('units', 'units');
+        const buttons = this.choices.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => {
+          const unitEl = btn.querySelector('.choice-unit');
+          if (unitEl) {
+            unitEl.textContent = unitText;
+          }
+          if (btn.dataset.value) {
+            btn.setAttribute('aria-label', `${btn.dataset.value} ${unitText}`);
+          }
+        });
+
+        if (this.feedback.classList.contains('show') && this.lastResult) {
+          if (this.lastResult.isCorrect) {
+            this.feedback.textContent = this.getTranslation('correct', 'Correct!');
+            this.feedback.classList.remove('error');
+          } else {
+            const wrongTemplate = this.getTranslation('wrong', 'The perimeter is {perimeter} units.');
+            this.feedback.textContent = wrongTemplate.replace('{perimeter}', this.lastResult.perimeter);
+            this.feedback.classList.add('error');
+          }
+        }
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.showStats();
+        }
+
+        const shapeLabel = this.getTranslation('shapeLabel', 'Shape with side lengths');
+        const svg = this.shapeDisplay.querySelector('svg');
+        if (svg) {
+          svg.setAttribute('aria-label', shapeLabel);
+        }
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.build-perimeter.${key}`);
+          return translated !== `section.activities.build-perimeter.${key}` ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      generateQuestions() {
+        this.questions = [];
+        for (let i = 0; i < this.totalQuestions; i++) {
+          this.questions.push(this.createQuestion());
+        }
+      },
+
+      createQuestion() {
+        const usePolygon = Math.random() < 0.4;
+        if (usePolygon) {
+          const shape = this.polygonShapes[this.polygonIndex % this.polygonShapes.length];
+          this.polygonIndex++;
+          const sides = this.getSideLengths(shape.points);
+          const perimeter = sides.reduce((sum, value) => sum + value, 0);
+          return {
+            type: 'polygon',
+            points: shape.points,
+            sides,
+            perimeter,
+            missingSideIndex: null
+          };
+        }
+
+        const width = randomInt(3, 8);
+        const height = randomInt(2, 7);
+        const points = [
+          [0, 0],
+          [width, 0],
+          [width, height],
+          [0, height]
+        ];
+        const sides = [width, height, width, height];
+        const perimeter = 2 * (width + height);
+        const showMissingSide = Math.random() < 0.4;
+        const missingSideIndex = showMissingSide ? randomInt(0, 3) : null;
+
+        return {
+          type: 'rectangle',
+          points,
+          sides,
+          perimeter,
+          width,
+          height,
+          missingSideIndex
+        };
+      },
+
+      getSideLengths(points) {
+        const lengths = [];
+        for (let i = 0; i < points.length; i++) {
+          const [x1, y1] = points[i];
+          const [x2, y2] = points[(i + 1) % points.length];
+          const dx = x2 - x1;
+          const dy = y2 - y1;
+          lengths.push(Math.round(Math.hypot(dx, dy)));
+        }
+        return lengths;
+      },
+
+      startQuestion() {
+        this.isAnswered = false;
+        this.lastResult = null;
+        this.feedback.classList.remove('show', 'error');
+
+        this.currentShape = this.questions[this.currentQuestion];
+        this.renderShape(this.currentShape);
+        this.renderChoices(this.generateChoices(this.currentShape));
+        this.updateHint(this.currentShape);
+        this.renderProgress();
+      },
+
+      renderShape(question) {
+        this.shapeDisplay.innerHTML = '';
+
+        const scale = 30;
+        const margin = 26;
+        const points = question.points;
+        const xs = points.map(point => point[0]);
+        const ys = points.map(point => point[1]);
+        const minX = Math.min(...xs);
+        const maxX = Math.max(...xs);
+        const minY = Math.min(...ys);
+        const maxY = Math.max(...ys);
+
+        const widthPx = (maxX - minX) * scale + margin * 2;
+        const heightPx = (maxY - minY) * scale + margin * 2;
+        const offsetX = margin - minX * scale;
+        const offsetY = margin - minY * scale;
+
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', `0 0 ${widthPx} ${heightPx}`);
+        svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+        svg.setAttribute('role', 'img');
+        svg.setAttribute('aria-label', this.getTranslation('shapeLabel', 'Shape with side lengths'));
+        svg.classList.add('shape-svg');
+
+        const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+        const polygonPoints = points.map(([x, y]) => {
+          const px = x * scale + offsetX;
+          const py = y * scale + offsetY;
+          return `${px},${py}`;
+        }).join(' ');
+
+        polygon.setAttribute('points', polygonPoints);
+        polygon.setAttribute('class', 'shape-outline');
+        svg.appendChild(polygon);
+
+        const centerX = points.reduce((sum, point) => sum + point[0], 0) / points.length;
+        const centerY = points.reduce((sum, point) => sum + point[1], 0) / points.length;
+        const labelOffset = 0.6;
+
+        question.sides.forEach((length, index) => {
+          const [x1, y1] = points[index];
+          const [x2, y2] = points[(index + 1) % points.length];
+          const midX = (x1 + x2) / 2;
+          const midY = (y1 + y2) / 2;
+          const isHorizontal = y1 === y2;
+
+          let labelX = midX;
+          let labelY = midY;
+
+          if (isHorizontal) {
+            labelY = midY + (midY < centerY ? -labelOffset : labelOffset);
+          } else {
+            labelX = midX + (midX < centerX ? -labelOffset : labelOffset);
+          }
+
+          const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          text.setAttribute('x', labelX * scale + offsetX);
+          text.setAttribute('y', labelY * scale + offsetY);
+          text.setAttribute('text-anchor', 'middle');
+          text.setAttribute('dominant-baseline', 'middle');
+          text.setAttribute('class', `side-label${question.missingSideIndex === index ? ' missing' : ''}`);
+          text.dataset.sideIndex = index;
+          text.textContent = question.missingSideIndex === index ? '?' : length;
+          svg.appendChild(text);
+        });
+
+        this.shapeDisplay.appendChild(svg);
+      },
+
+      updateHint(question) {
+        if (question.missingSideIndex !== null) {
+          this.missingHint.hidden = false;
+        } else {
+          this.missingHint.hidden = true;
+        }
+      },
+
+      generateChoices(question) {
+        const wrongAnswers = new Set();
+        if (question.type === 'rectangle') {
+          const area = question.width * question.height;
+          if (area !== question.perimeter) {
+            wrongAnswers.add(area);
+          }
+        }
+
+        const deltas = [-10, -8, -6, -4, -2, 2, 4, 6, 8, 10, 12];
+        while (wrongAnswers.size < 3) {
+          const delta = deltas[randomInt(0, deltas.length - 1)];
+          const candidate = question.perimeter + delta;
+          if (candidate > 4 && candidate !== question.perimeter) {
+            wrongAnswers.add(candidate);
+          }
+        }
+
+        return shuffle([question.perimeter, ...wrongAnswers]);
+      },
+
+      renderChoices(choiceValues) {
+        this.choices.innerHTML = '';
+        const unitText = this.getTranslation('units', 'units');
+
+        choiceValues.forEach(value => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.type = 'button';
+          btn.dataset.value = value;
+          btn.setAttribute('aria-label', `${value} ${unitText}`);
+
+          const valueSpan = document.createElement('span');
+          valueSpan.className = 'choice-value';
+          valueSpan.textContent = value;
+
+          const unitSpan = document.createElement('span');
+          unitSpan.className = 'choice-unit';
+          unitSpan.textContent = unitText;
+
+          btn.appendChild(valueSpan);
+          btn.appendChild(unitSpan);
+          btn.addEventListener('click', () => {
+            if (!this.isAnswered) {
+              this.checkAnswer(parseInt(value, 10), btn);
+            }
+          });
+
+          this.choices.appendChild(btn);
+        });
+      },
+
+      revealMissingSide() {
+        if (this.currentShape.missingSideIndex === null) return;
+        const label = this.shapeDisplay.querySelector(
+          `text[data-side-index="${this.currentShape.missingSideIndex}"]`
+        );
+        if (!label) return;
+        label.textContent = this.currentShape.sides[this.currentShape.missingSideIndex];
+        label.classList.remove('missing');
+        label.classList.add('revealed');
+      },
+
+      checkAnswer(selectedValue, btnElement) {
+        if (this.isAnswered) return;
+
+        this.isAnswered = true;
+        const isCorrect = selectedValue === this.currentShape.perimeter;
+        this.lastResult = { isCorrect, perimeter: this.currentShape.perimeter };
+        this.revealMissingSide();
+
+        const buttons = this.choices.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => {
+          btn.disabled = true;
+          if (parseInt(btn.dataset.value, 10) === this.currentShape.perimeter) {
+            btn.classList.add('correct');
+          }
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+          btnElement.classList.add('correct');
+          this.feedback.textContent = this.getTranslation('correct', 'Correct!');
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          btnElement.classList.add('incorrect');
+          const wrongTemplate = this.getTranslation('wrong', 'The perimeter is {perimeter} units.');
+          this.feedback.textContent = wrongTemplate.replace('{perimeter}', this.currentShape.perimeter);
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 90) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation('perfect', 'Perfect perimeter builder!');
+        } else if (percentage >= 70) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation('great', 'Great adding!');
+        } else if (percentage >= 40) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation('good', 'Nice work!');
+        } else {
+          this.statsIcon.textContent = '🌱';
+          this.statsMessage.textContent = this.getTranslation('keepPracticing', 'Keep practicing!');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => BuildPerimeter.init());
+      } else {
+        BuildPerimeter.init();
+      }
+    });
+  </script>
+  <style>
+    /* Build the Perimeter specific styles */
+    .question-text {
+      text-align: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-4);
+    }
+
+    .shape-card {
+      width: 100%;
+      max-width: 520px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius-2xl);
+      border: 3px solid #e2e8f0;
+      padding: var(--space-4);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .shape-display {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+      border-radius: var(--radius-xl);
+      border: 2px dashed #bae6fd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-3);
+    }
+
+    .shape-svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .shape-outline {
+      fill: #fef9c3;
+      stroke: #2563eb;
+      stroke-width: 4;
+      stroke-linejoin: round;
+    }
+
+    .side-label {
+      font-family: var(--font-secondary);
+      font-size: 18px;
+      font-weight: var(--weight-bold);
+      fill: #1f2937;
+      paint-order: stroke;
+      stroke: #ffffff;
+      stroke-width: 4px;
+    }
+
+    .side-label.missing {
+      fill: #dc2626;
+      font-size: 20px;
+    }
+
+    .side-label.revealed {
+      fill: #2563eb;
+    }
+
+    .hint-banner {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid #f59e0b;
+      color: #92400e;
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-lg);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      text-align: center;
+    }
+
+    .choices-section {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(140px, 1fr));
+      gap: var(--space-3);
+      width: 100%;
+      max-width: 420px;
+      margin-bottom: var(--space-4);
+    }
+
+    .choice-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-1);
+      padding: var(--space-3) var(--space-2);
+      min-height: 72px;
+      font-family: var(--font-secondary);
+      font-weight: var(--weight-bold);
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      border: 3px solid var(--color-neutral-300);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: var(--color-neutral-700);
+      box-shadow: 0 4px 0 var(--color-neutral-400);
+    }
+
+    .choice-value {
+      font-size: var(--text-2xl);
+    }
+
+    .choice-unit {
+      font-size: var(--text-sm);
+      text-transform: lowercase;
+      letter-spacing: 0.02em;
+      color: var(--color-neutral-500);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: var(--color-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 var(--color-neutral-400);
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.85;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #15803d;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border-color: #ef4444;
+      color: #991b1b;
+      box-shadow: 0 4px 0 #dc2626;
+      animation: wiggle 0.5s ease;
+    }
+
+    .choice-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 4px 0 var(--color-neutral-400), 0 0 0 3px rgba(59, 130, 246, 0.5);
+    }
+
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 90%;
+      text-align: center;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-6px); }
+      80% { transform: translateX(6px); }
+    }
+
+    @media (max-width: 768px) {
+      .shape-card {
+        padding: var(--space-3);
+      }
+
+      .shape-display {
+        aspect-ratio: 4 / 3;
+      }
+
+      .choices-section {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .choice-btn {
+        min-height: 68px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .shape-display {
+        max-width: 320px;
+      }
+
+      .choices-section {
+        gap: var(--space-2);
+      }
+
+      .choice-btn {
+        min-height: 64px;
+      }
+
+      .side-label {
+        font-size: 16px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

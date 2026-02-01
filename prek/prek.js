@@ -8,65 +8,62 @@ const PreKPage = {
   // Data storage
   data: null,
   currentLang: 'en',
-  
+
   // DOM elements
   container: null,
-  
+
   /**
    * Initialize the Pre-K page
    */
   async init() {
     this.container = document.getElementById('levels-container');
-    
+
     if (!this.container) {
       console.error('Levels container not found');
       return;
     }
-    
+
     // Wait for i18n to be ready
     await this.waitForI18n();
-    
+
     // Get current language
     this.currentLang = window.i18n?.currentLang || 'en';
-    
+
     // Load data and render
     await this.loadData();
-    
+
     // Listen for language changes
     this.setupLanguageListener();
   },
-  
+
   /**
    * Wait for i18n system to be initialized
    */
   waitForI18n() {
+    // Use i18n.ready() which resolves when init() completes
+    if (window.i18n?.ready) {
+      return window.i18n.ready();
+    }
+    // Fallback: wait for i18n to exist
     return new Promise((resolve) => {
-      const isReady = () => {
-        return window.i18n && 
-               window.i18n.translations[window.i18n.currentLang] &&
-               window.i18n.translations[window.i18n.currentLang].section;
-      };
-      
-      if (isReady()) {
+      if (window.i18n) {
         resolve();
       } else {
-        // Poll for i18n readiness (including section data)
         const checkInterval = setInterval(() => {
-          if (isReady()) {
+          if (window.i18n) {
             clearInterval(checkInterval);
             resolve();
           }
         }, 50);
-        
-        // Timeout after 3 seconds
+        // Short timeout - i18n should load quickly
         setTimeout(() => {
           clearInterval(checkInterval);
           resolve();
-        }, 3000);
+        }, 500);
       }
     });
   },
-  
+
   /**
    * Load activity data from JSON
    */
@@ -75,11 +72,11 @@ const PreKPage = {
       // Determine base path for data
       const basePath = this.getBasePath();
       const response = await fetch(`${basePath}/data/prek.json`);
-      
+
       if (!response.ok) {
         throw new Error(`Failed to load data: ${response.status}`);
       }
-      
+
       this.data = await response.json();
       this.render();
     } catch (error) {
@@ -87,52 +84,52 @@ const PreKPage = {
       this.renderError();
     }
   },
-  
+
   /**
    * Get base path for data files
    */
   getBasePath() {
     const path = window.location.pathname;
-    
+
     // Check if we're in file:// protocol
     if (window.location.protocol === 'file:') {
       return '..';
     }
-    
+
     // For HTTP, return empty for root-relative paths
     return '..';
   },
-  
+
   /**
    * Get translated text for an activity or resource
    */
   getTranslation(type, id, field) {
     const i18nKey = `section.${type}.${id}.${field}`;
     const translated = window.i18n?.t(i18nKey);
-    
+
     // If translation found and it's not the key itself, use it
     if (translated && translated !== i18nKey) {
       return translated;
     }
-    
+
     // Fallback to data from JSON
     return null;
   },
-  
+
   /**
    * Get level translation
    */
   getLevelTranslation(levelId, field) {
     const i18nKey = `section.levels.level${levelId.replace('level-', '')}.${field}`;
     const translated = window.i18n?.t(i18nKey);
-    
+
     if (translated && translated !== i18nKey) {
       return translated;
     }
-    
+
     return null;
   },
-  
+
   /**
    * Render all levels
    */
@@ -141,29 +138,29 @@ const PreKPage = {
       this.renderError();
       return;
     }
-    
+
     const html = this.data.levels.map(level => this.renderLevel(level)).join('');
     this.container.innerHTML = html;
-    
+
     // Set up tab functionality
     this.setupTabs();
   },
-  
+
   /**
    * Render a single level section
    */
   renderLevel(level) {
     const levelNumber = level.number;
     const levelClass = `level-${levelNumber}`;
-    
+
     // Get translated title and goal
     const title = this.getLevelTranslation(level.id, 'title') || level.title;
     const goal = this.getLevelTranslation(level.id, 'goal') || level.goal;
-    
+
     // Get tab translations
     const activitiesTab = window.i18n?.t('tabs.exercises') || 'Activities';
     const learnMoreTab = window.i18n?.t('tabs.learnMore') || 'Learn More';
-    
+
     return `
       <section class="level-section ${levelClass}" data-level="${levelNumber}">
         <header class="level-header">
@@ -171,7 +168,7 @@ const PreKPage = {
           <h2 class="level-title">${this.escapeHtml(title)}</h2>
           <p class="level-goal">${this.escapeHtml(goal)}</p>
         </header>
-        
+
         <div class="tabs-container">
           <div class="tabs-list" role="tablist">
             <button 
@@ -195,7 +192,7 @@ const PreKPage = {
               ${this.escapeHtml(learnMoreTab)}
             </button>
           </div>
-          
+
           <div 
             class="tab-panel active" 
             role="tabpanel" 
@@ -206,7 +203,7 @@ const PreKPage = {
               ${level.activities.map(activity => this.renderActivityCard(activity)).join('')}
             </div>
           </div>
-          
+
           <div 
             class="tab-panel" 
             role="tabpanel" 
@@ -219,7 +216,7 @@ const PreKPage = {
       </section>
     `;
   },
-  
+
   /**
    * Render an activity card
    */
@@ -227,7 +224,7 @@ const PreKPage = {
     // Get translated title and description
     const title = this.getTranslation('activities', activity.id, 'title') || activity.title;
     const description = this.getTranslation('activities', activity.id, 'description') || activity.description;
-    
+
     return `
       <a href="${this.escapeHtml(activity.path)}" class="activity-card" data-activity="${activity.id}">
         <div class="activity-icon">${activity.icon}</div>
@@ -236,7 +233,7 @@ const PreKPage = {
       </a>
     `;
   },
-  
+
   /**
    * Render Learn More content as field guide cards
    */
@@ -244,11 +241,11 @@ const PreKPage = {
     if (!level.learnMore) {
       return '<p>No learning resources available for this level.</p>';
     }
-    
+
     // Get the level key for translations (level-1 → level1)
     const levelKey = level.id.replace('-', '');
     const levelNum = level.id.replace('level-', '');
-    
+
     // Card definitions with their translation keys
     const cardDefs = [
       { id: 'big-idea', icon: '💡', titleKey: 'bigIdea', contentKey: 'bigIdea' },
@@ -256,31 +253,31 @@ const PreKPage = {
       { id: 'try-at-home', icon: '🏡', titleKey: 'tryAtHome', contentKey: 'tryAtHome' },
       { id: 'optional-videos', icon: '📺', titleKey: 'optionalVideos', contentKey: 'optionalVideos' }
     ];
-    
+
     const cardsHtml = cardDefs.map(card => {
       // Get translated title
       const titleI18nKey = `section.learnMoreCards.${card.titleKey}.title`;
       const title = window.i18n?.t(titleI18nKey) || this.getDefaultCardTitle(card.id);
-      
+
       // Get translated content for this level (use getRaw for object data)
       const contentI18nKey = `section.levels.${levelKey}.learnMore.${card.contentKey}`;
       const content = window.i18n?.getRaw?.(contentI18nKey);
-      
+
       if (!content) {
         return ''; // Skip if no content
       }
-      
+
       // Special rendering for optional-videos card
       if (card.id === 'optional-videos') {
         return this.renderOptionalVideosCard(card, title, content);
       }
-      
+
       // Determine card type class based on card id
       let cardTypeClass = '';
       if (card.id.includes('big-idea')) cardTypeClass = 'learn-more-card-big-idea';
       else if (card.id.includes('notice')) cardTypeClass = 'learn-more-card-notice';
       else if (card.id.includes('home')) cardTypeClass = 'learn-more-card-home';
-      
+
       // Regular card rendering
       return `
         <div class="learn-more-card ${cardTypeClass}" data-card="${card.id}">
@@ -294,14 +291,14 @@ const PreKPage = {
         </div>
       `;
     }).filter(html => html).join('');
-    
+
     return `
       <div class="learn-more-cards">
         ${cardsHtml}
       </div>
     `;
   },
-  
+
   /**
    * Render card content based on card type
    */
@@ -313,7 +310,7 @@ const PreKPage = {
       ).join('');
       return `<ul class="learn-more-bullets">${bulletsHtml}</ul>`;
     }
-    
+
     if (cardId === 'try-at-home' && content.games) {
       // Render games with bold titles and descriptions (simple format)
       return content.games.map(game => `
@@ -323,19 +320,19 @@ const PreKPage = {
         </div>
       `).join('');
     }
-    
+
     // Default: render as paragraph(s)
     if (typeof content === 'string') {
       return `<p>${this.escapeHtml(content)}</p>`;
     }
-    
+
     if (content.text) {
       return `<p>${this.escapeHtml(content.text)}</p>`;
     }
-    
+
     return '';
   },
-  
+
   /**
    * Render the optional videos card with YouTube search links
    */
@@ -343,16 +340,16 @@ const PreKPage = {
     if (!content.searches || content.searches.length === 0) {
       return '';
     }
-    
+
     // Get translated intro text
     const introKey = 'section.learnMoreCards.optionalVideos.intro';
     const intro = window.i18n?.t(introKey) || 'Search YouTube for:';
-    
+
     const linksHtml = content.searches.map(query => {
       const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query).replace(/%20/g, '+')}`;
       return `<li><a href="${searchUrl}" target="_blank" rel="noopener noreferrer" class="youtube-search-link">${this.escapeHtml(query)}</a></li>`;
     }).join('');
-    
+
     return `
       <div class="learn-more-card learn-more-card-videos" data-card="${card.id}">
         <div class="learn-more-card-header">
@@ -368,7 +365,7 @@ const PreKPage = {
       </div>
     `;
   },
-  
+
   /**
    * Get default card title if translation not found
    */
@@ -381,7 +378,7 @@ const PreKPage = {
     };
     return defaults[cardId] || cardId;
   },
-  
+
   /**
    * Convert YouTube search queries to clickable links (DEPRECATED - kept for compatibility)
    * Pattern: 'query text' → <a href="https://www.youtube.com/results?search_query=query+text">query text</a>
@@ -389,16 +386,16 @@ const PreKPage = {
   addYouTubeLinks(text) {
     // Match patterns like 'Numberblocks ...' within the text
     const pattern = /'([^']+)'/g;
-    
+
     return text.replace(pattern, (match, query) => {
       // Convert query to URL-safe format
       const searchQuery = encodeURIComponent(query);
       const youtubeUrl = `https://www.youtube.com/results?search_query=${searchQuery}`;
-      
+
       return `<a href="${youtubeUrl}" target="_blank" rel="noopener noreferrer" class="youtube-search-link">${this.escapeHtml(query)}</a>`;
     });
   },
-  
+
   /**
    * Generate a resource ID from title for i18n
    */
@@ -418,7 +415,7 @@ const PreKPage = {
       if (title.includes('Ep 14') || title.includes('Holes')) return 'numberblocks-holes';
       if (title.includes('Ep 32') || title.includes('Blockzilla')) return 'numberblocks-blockzilla';
     }
-    
+
     // Default: convert to kebab-case
     return title.toLowerCase()
       .replace(/[^a-z0-9\s-]/g, '')
@@ -426,18 +423,18 @@ const PreKPage = {
       .replace(/-+/g, '-')
       .trim();
   },
-  
+
   /**
    * Set up tab switching functionality
    */
   setupTabs() {
     const tabButtons = this.container.querySelectorAll('.tab-button');
-    
+
     tabButtons.forEach(button => {
       button.addEventListener('click', (e) => {
         const tabId = button.dataset.tab;
         const tabsContainer = button.closest('.tabs-container');
-        
+
         // Update button states
         tabsContainer.querySelectorAll('.tab-button').forEach(btn => {
           btn.classList.remove('active');
@@ -445,12 +442,12 @@ const PreKPage = {
         });
         button.classList.add('active');
         button.setAttribute('aria-selected', 'true');
-        
+
         // Update panel visibility
         tabsContainer.querySelectorAll('.tab-panel').forEach(panel => {
           panel.classList.remove('active');
         });
-        
+
         const targetPanel = tabsContainer.querySelector(`#panel-${tabId}`);
         if (targetPanel) {
           targetPanel.classList.add('active');
@@ -458,7 +455,7 @@ const PreKPage = {
       });
     });
   },
-  
+
   /**
    * Set up language change listener
    */
@@ -474,7 +471,7 @@ const PreKPage = {
       });
     });
   },
-  
+
   /**
    * Render error state
    */
@@ -486,7 +483,7 @@ const PreKPage = {
       </div>
     `;
   },
-  
+
   /**
    * Escape HTML to prevent XSS
    */

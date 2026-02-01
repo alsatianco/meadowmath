@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Divide Unit Fractions - Grade 5 Math Activity - Meadow Math">
+  <title>Divide Unit Fractions - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🍕</span>
+            <span data-i18n="section.activities.divide-unit-fractions.title">Divide Unit Fractions</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.divide-unit-fractions.instruction">How many groups fit?</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Question Display -->
+          <div class="question-container" id="question-container">
+            <div class="question-prompt" id="question-prompt">
+              <!-- Question text will be inserted here -->
+            </div>
+
+            <!-- Division Expression Display -->
+            <div class="expression-display" id="expression-display">
+              <span class="expression-part dividend" id="expr-dividend"></span>
+              <span class="expression-operator">÷</span>
+              <span class="expression-part divisor" id="expr-divisor"></span>
+              <span class="expression-equals">=</span>
+              <span class="expression-part result" id="expr-result">?</span>
+            </div>
+
+            <!-- Visual Model - Fraction Strips -->
+            <div class="visual-model" id="visual-model">
+              <div class="model-label" id="model-label">
+                <!-- Label will be set dynamically based on question type -->
+              </div>
+              <div class="strips-wrapper" id="strips-wrapper">
+                <!-- Strips will be generated here -->
+              </div>
+              <div class="group-counter" id="group-counter">
+                <span data-i18n="section.activities.divide-unit-fractions.groups">Groups</span>: <span id="group-count">0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <!-- Choices will be generated here -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.divide-unit-fractions.great">Great work with unit fraction division!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Divide Unit Fractions Activity - Grade 5 Level 3
+    const DivideUnitFractions = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+
+      // DOM elements
+      questionPrompt: null,
+      expressionDisplay: null,
+      exprDividend: null,
+      exprDivisor: null,
+      exprResult: null,
+      visualModel: null,
+      modelLabel: null,
+      stripsWrapper: null,
+      groupCounter: null,
+      groupCount: null,
+      choicesContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.questionPrompt = document.getElementById('question-prompt');
+        this.expressionDisplay = document.getElementById('expression-display');
+        this.exprDividend = document.getElementById('expr-dividend');
+        this.exprDivisor = document.getElementById('expr-divisor');
+        this.exprResult = document.getElementById('expr-result');
+        this.visualModel = document.getElementById('visual-model');
+        this.modelLabel = document.getElementById('model-label');
+        this.stripsWrapper = document.getElementById('strips-wrapper');
+        this.groupCounter = document.getElementById('group-counter');
+        this.groupCount = document.getElementById('group-count');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      // Format fraction for HTML display
+      formatFractionHTML(num, den) {
+        if (den === 1) return `<span class="whole-number">${num}</span>`;
+        return `<span class="frac-display"><span class="frac-num">${num}</span><span class="frac-bar"></span><span class="frac-den">${den}</span></span>`;
+      },
+
+      // Format fraction as text
+      formatFractionText(num, den) {
+        if (den === 1) return `${num}`;
+        return `${num}/${den}`;
+      },
+
+      generateQuestions() {
+        // Two types of questions:
+        // Type A: Whole ÷ unit fraction (e.g., 2 ÷ 1/3 = 6)
+        // Type B: Unit fraction ÷ whole (e.g., 1/2 ÷ 4 = 1/8)
+
+        const typeAProblems = [
+          // whole ÷ 1/den = whole × den
+          { whole: 2, unitDen: 3, answer: 6 },    // 2 ÷ 1/3 = 6
+          { whole: 3, unitDen: 4, answer: 12 },   // 3 ÷ 1/4 = 12
+          { whole: 2, unitDen: 5, answer: 10 },   // 2 ÷ 1/5 = 10
+          { whole: 4, unitDen: 2, answer: 8 },    // 4 ÷ 1/2 = 8
+          { whole: 3, unitDen: 2, answer: 6 },    // 3 ÷ 1/2 = 6
+          { whole: 2, unitDen: 4, answer: 8 },    // 2 ÷ 1/4 = 8
+          { whole: 5, unitDen: 2, answer: 10 },   // 5 ÷ 1/2 = 10
+          { whole: 2, unitDen: 6, answer: 12 },   // 2 ÷ 1/6 = 12
+        ];
+
+        const typeBProblems = [
+          // 1/num ÷ den = 1/(num×den)
+          { unitNum: 2, whole: 3, answerNum: 1, answerDen: 6 },   // 1/2 ÷ 3 = 1/6
+          { unitNum: 3, whole: 2, answerNum: 1, answerDen: 6 },   // 1/3 ÷ 2 = 1/6
+          { unitNum: 4, whole: 2, answerNum: 1, answerDen: 8 },   // 1/4 ÷ 2 = 1/8
+          { unitNum: 2, whole: 4, answerNum: 1, answerDen: 8 },   // 1/2 ÷ 4 = 1/8
+          { unitNum: 3, whole: 4, answerNum: 1, answerDen: 12 },  // 1/3 ÷ 4 = 1/12
+          { unitNum: 5, whole: 2, answerNum: 1, answerDen: 10 },  // 1/5 ÷ 2 = 1/10
+          { unitNum: 4, whole: 3, answerNum: 1, answerDen: 12 },  // 1/4 ÷ 3 = 1/12
+          { unitNum: 6, whole: 2, answerNum: 1, answerDen: 12 },  // 1/6 ÷ 2 = 1/12
+        ];
+
+        // Mix: 5 type A + 3 type B (more whole ÷ fraction since it's more intuitive)
+        const shuffledA = shuffle(typeAProblems).slice(0, 5);
+        const shuffledB = shuffle(typeBProblems).slice(0, 3);
+
+        this.questions = [];
+
+        // Add Type A questions
+        shuffledA.forEach(p => {
+          this.questions.push({
+            type: 'wholeDivideUnit',
+            whole: p.whole,
+            unitDen: p.unitDen,
+            answer: p.answer,
+            answerNum: p.answer,
+            answerDen: 1
+          });
+        });
+
+        // Add Type B questions
+        shuffledB.forEach(p => {
+          this.questions.push({
+            type: 'unitDivideWhole',
+            unitNum: p.unitNum,
+            whole: p.whole,
+            answer: p.answerNum / p.answerDen, // For comparison
+            answerNum: p.answerNum,
+            answerDen: p.answerDen
+          });
+        });
+
+        // Shuffle all questions
+        this.questions = shuffle(this.questions);
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+        this.exprResult.textContent = '?';
+        this.groupCount.textContent = '0';
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        // Build question display
+        this.buildQuestionDisplay(question);
+
+        // Generate visual model
+        this.buildVisualModel(question);
+
+        // Generate answer choices
+        this.generateChoices(question);
+
+        this.renderProgress();
+      },
+
+      buildQuestionDisplay(question) {
+        let promptText = '';
+
+        if (question.type === 'wholeDivideUnit') {
+          // e.g., "How many 1/3s are in 2?"
+          const fracText = this.formatFractionText(1, question.unitDen);
+          promptText = this.getTranslation(
+            'section.activities.divide-unit-fractions.promptWholeDivUnit',
+            'How many {frac}s are in {whole}?'
+          ).replace('{frac}', fracText).replace('{whole}', question.whole);
+
+          this.exprDividend.innerHTML = question.whole;
+          this.exprDivisor.innerHTML = this.formatFractionHTML(1, question.unitDen);
+        } else {
+          // e.g., "1/2 shared among 4 equals what?"
+          const fracText = this.formatFractionText(1, question.unitNum);
+          promptText = this.getTranslation(
+            'section.activities.divide-unit-fractions.promptUnitDivWhole',
+            'What is {frac} divided by {whole}?'
+          ).replace('{frac}', fracText).replace('{whole}', question.whole);
+
+          this.exprDividend.innerHTML = this.formatFractionHTML(1, question.unitNum);
+          this.exprDivisor.innerHTML = question.whole;
+        }
+
+        this.questionPrompt.innerHTML = `<div class="prompt-text">${promptText}</div>`;
+      },
+
+      buildVisualModel(question) {
+        this.stripsWrapper.innerHTML = '';
+
+        if (question.type === 'wholeDivideUnit') {
+          // Set label for Type A: "How many 1/3 fit in 2?"
+          const howManyText = this.getTranslation('section.activities.divide-unit-fractions.howMany', 'How many');
+          const fitInText = this.getTranslation('section.activities.divide-unit-fractions.fitIn', 'fit in');
+          this.modelLabel.innerHTML = `${howManyText} ${this.formatFractionHTML(1, question.unitDen)} ${fitInText} <strong>${question.whole}</strong>?`;
+
+          // Show whole number as fraction strips divided into unit fractions
+          // e.g., 2 ÷ 1/3: show 2 wholes, each divided into thirds
+          const strips = [];
+
+          for (let w = 0; w < question.whole; w++) {
+            const strip = document.createElement('div');
+            strip.className = 'fraction-strip whole-strip';
+            strip.innerHTML = `<div class="strip-label">${w + 1}</div>`;
+
+            const partsContainer = document.createElement('div');
+            partsContainer.className = 'strip-parts';
+
+            for (let p = 0; p < question.unitDen; p++) {
+              const part = document.createElement('div');
+              part.className = 'strip-part';
+              part.dataset.group = w * question.unitDen + p;
+              partsContainer.appendChild(part);
+            }
+
+            strip.appendChild(partsContainer);
+            strips.push(strip);
+          }
+
+          strips.forEach(s => this.stripsWrapper.appendChild(s));
+
+        } else {
+          // Set label for Type B: "Divide 1/2 into 4 equal parts"
+          const divideText = this.getTranslation('section.activities.divide-unit-fractions.divide', 'Divide');
+          const intoEqualParts = this.getTranslation('section.activities.divide-unit-fractions.intoEqualParts', 'into {n} equal parts').replace('{n}', question.whole);
+          this.modelLabel.innerHTML = `${divideText} ${this.formatFractionHTML(1, question.unitNum)} ${intoEqualParts}`;
+
+          // Type B: Show unit fraction being divided further
+          // e.g., 1/2 ÷ 4: show 1/2 (half a strip), then divide it into 4 parts
+          const strip = document.createElement('div');
+          strip.className = 'fraction-strip unit-divide-strip';
+
+          const partsContainer = document.createElement('div');
+          partsContainer.className = 'strip-parts';
+
+          // Show the unit fraction portion being divided
+          const shadedPortion = document.createElement('div');
+          shadedPortion.className = 'shaded-portion';
+          shadedPortion.style.width = `${100 / question.unitNum}%`;
+
+          // Divide the shaded portion into parts
+          for (let p = 0; p < question.whole; p++) {
+            const part = document.createElement('div');
+            part.className = 'strip-part shaded';
+            part.dataset.group = p;
+            shadedPortion.appendChild(part);
+          }
+
+          // Show the remaining unshaded portion
+          const unshadedPortion = document.createElement('div');
+          unshadedPortion.className = 'unshaded-portion';
+          unshadedPortion.style.width = `${100 - (100 / question.unitNum)}%`;
+
+          partsContainer.appendChild(shadedPortion);
+          partsContainer.appendChild(unshadedPortion);
+          strip.appendChild(partsContainer);
+
+          // Add label showing 1 whole
+          const wholeLabel = document.createElement('div');
+          wholeLabel.className = 'strip-label';
+          wholeLabel.textContent = '1 ' + this.getTranslation('section.activities.divide-unit-fractions.whole', 'whole');
+          strip.appendChild(wholeLabel);
+
+          this.stripsWrapper.appendChild(strip);
+        }
+      },
+
+      generateChoices(question) {
+        this.choicesContainer.innerHTML = '';
+
+        let correctAnswer;
+        let choices = [];
+
+        if (question.type === 'wholeDivideUnit') {
+          correctAnswer = question.answer.toString();
+
+          // Generate distractors
+          const distractors = new Set();
+          distractors.add((question.answer + 1).toString());
+          distractors.add((question.answer - 1).toString());
+          distractors.add((question.answer * 2).toString());
+          if (question.answer > 2) distractors.add(Math.floor(question.answer / 2).toString());
+          distractors.add((question.whole * (question.unitDen - 1)).toString());
+          distractors.add((question.whole * (question.unitDen + 1)).toString());
+
+          distractors.delete(correctAnswer);
+          distractors.delete('0');
+
+          choices = [correctAnswer, ...Array.from(distractors).slice(0, 3)];
+        } else {
+          // Type B: answer is a fraction
+          correctAnswer = this.formatFractionText(question.answerNum, question.answerDen);
+
+          // Generate fraction distractors - ensure valid denominators > 1
+          const distractors = new Set();
+          if (question.answerDen > 2) {
+            distractors.add(this.formatFractionText(1, question.answerDen - 1));
+          }
+          distractors.add(this.formatFractionText(1, question.answerDen + 1));
+          distractors.add(this.formatFractionText(1, question.answerDen + 2));
+          distractors.add(this.formatFractionText(1, question.answerDen + 3));
+          if (question.unitNum * 2 > 1) {
+            distractors.add(this.formatFractionText(1, question.unitNum * 2));
+          }
+          if (question.whole > 1) {
+            distractors.add(this.formatFractionText(1, question.whole));
+          }
+          // Add more common mistake: just the unitNum denominator
+          distractors.add(this.formatFractionText(1, question.unitNum));
+
+          distractors.delete(correctAnswer);
+          distractors.delete('1/1');
+          distractors.delete('1/0');
+
+          choices = [correctAnswer, ...Array.from(distractors).slice(0, 3)];
+        }
+
+        // Shuffle choices
+        choices = shuffle(choices);
+
+        // Create buttons
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+
+          // Parse and format the choice for display
+          if (choice.includes('/')) {
+            const [num, den] = choice.split('/').map(Number);
+            btn.innerHTML = this.formatFractionHTML(num, den);
+          } else {
+            btn.textContent = choice;
+          }
+
+          btn.dataset.value = choice;
+          btn.addEventListener('click', () => this.checkAnswer(choice, btn, question));
+          this.choicesContainer.appendChild(btn);
+        });
+      },
+
+      checkAnswer(selected, btn, question) {
+        if (this.isAnswered) return;
+
+        this.isAnswered = true;
+        const correctAnswer = question.type === 'wholeDivideUnit'
+          ? question.answer.toString()
+          : this.formatFractionText(question.answerNum, question.answerDen);
+
+        const isCorrect = selected === correctAnswer;
+
+        // Disable all buttons
+        const allBtns = this.choicesContainer.querySelectorAll('.choice-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        // Animate the visual model to show the answer
+        this.animateGroups(question);
+
+        // Update expression result
+        if (question.type === 'wholeDivideUnit') {
+          this.exprResult.textContent = question.answer;
+        } else {
+          this.exprResult.innerHTML = this.formatFractionHTML(question.answerNum, question.answerDen);
+        }
+
+        if (isCorrect) {
+          this.correctCount++;
+          btn.classList.add('correct');
+
+          let feedbackText;
+          if (question.type === 'wholeDivideUnit') {
+            feedbackText = this.getTranslation(
+              'section.activities.divide-unit-fractions.correctWholeDivUnit',
+              'Correct! There are {answer} groups of {frac} in {whole}.'
+            ).replace('{answer}', question.answer)
+             .replace('{frac}', this.formatFractionText(1, question.unitDen))
+             .replace('{whole}', question.whole);
+          } else {
+            feedbackText = this.getTranslation(
+              'section.activities.divide-unit-fractions.correctUnitDivWhole',
+              'Correct! {frac} ÷ {whole} = {answer}'
+            ).replace('{frac}', this.formatFractionText(1, question.unitNum))
+             .replace('{whole}', question.whole)
+             .replace('{answer}', this.formatFractionText(question.answerNum, question.answerDen));
+          }
+
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          btn.classList.add('incorrect');
+
+          // Highlight correct answer
+          allBtns.forEach(b => {
+            if (b.dataset.value === correctAnswer) {
+              b.classList.add('correct');
+            }
+          });
+
+          let feedbackText;
+          if (question.type === 'wholeDivideUnit') {
+            feedbackText = this.getTranslation(
+              'section.activities.divide-unit-fractions.wrongWholeDivUnit',
+              '{whole} ÷ {frac} = {answer}'
+            ).replace('{whole}', question.whole)
+             .replace('{frac}', this.formatFractionText(1, question.unitDen))
+             .replace('{answer}', question.answer);
+          } else {
+            feedbackText = this.getTranslation(
+              'section.activities.divide-unit-fractions.wrongUnitDivWhole',
+              '{frac} ÷ {whole} = {answer}'
+            ).replace('{frac}', this.formatFractionText(1, question.unitNum))
+             .replace('{whole}', question.whole)
+             .replace('{answer}', this.formatFractionText(question.answerNum, question.answerDen));
+          }
+
+          this.feedback.textContent = feedbackText;
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+        this.scheduleAdvance();
+      },
+
+      animateGroups(question) {
+        const parts = this.stripsWrapper.querySelectorAll('.strip-part');
+        let groupCounter = 0;
+
+        // Animate parts with color to show groups
+        parts.forEach((part, index) => {
+          setTimeout(() => {
+            part.classList.add('highlighted');
+            groupCounter++;
+            this.groupCount.textContent = groupCounter;
+          }, index * 100);
+        });
+
+        // Final count
+        setTimeout(() => {
+          if (question.type === 'wholeDivideUnit') {
+            this.groupCount.textContent = question.answer;
+          } else {
+            // For type B, show each part is 1/(original×divisor)
+            this.groupCount.innerHTML = `1 ${this.getTranslation('section.activities.divide-unit-fractions.part', 'part')} = ` +
+              this.formatFractionHTML(question.answerNum, question.answerDen);
+          }
+        }, parts.length * 100 + 200);
+      },
+
+      scheduleAdvance() {
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+
+        // Refresh current question if not answered
+        if (!this.isAnswered && this.questions[this.currentQuestion]) {
+          const question = this.questions[this.currentQuestion];
+          this.buildQuestionDisplay(question);
+        }
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.divide-unit-fractions.perfect',
+            'Perfect! You mastered unit fraction division!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.divide-unit-fractions.great',
+            'Great work with unit fraction division!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.divide-unit-fractions.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.divide-unit-fractions.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => DivideUnitFractions.init());
+      } else {
+        DivideUnitFractions.init();
+      }
+    });
+  </script>
+  <style>
+    /* Divide Unit Fractions specific styles */
+
+    .question-container {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .question-prompt {
+      margin-bottom: var(--space-3);
+    }
+
+    .prompt-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-medium);
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    /* Expression Display */
+    .expression-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+      margin-bottom: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .expression-part {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+    }
+
+    .expression-part.dividend {
+      color: #2563eb;
+    }
+
+    .expression-operator,
+    .expression-equals {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #6b7280;
+    }
+
+    .expression-part.divisor {
+      color: #7c3aed;
+    }
+
+    .expression-part.result {
+      color: #059669;
+      min-width: 50px;
+    }
+
+    .expression-part .frac-display {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .expression-part .frac-num,
+    .expression-part .frac-den {
+      font-size: var(--text-xl);
+    }
+
+    .expression-part .frac-bar {
+      width: 100%;
+      height: 3px;
+      background: currentColor;
+      margin: 2px 0;
+    }
+
+    /* Visual Model */
+    .visual-model {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 2px solid #e5e7eb;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .model-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-medium);
+      color: #6b7280;
+      margin-bottom: var(--space-3);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+
+    .unit-fraction-label,
+    .whole-amount-label {
+      font-weight: var(--weight-bold);
+      color: #7c3aed;
+    }
+
+    .unit-fraction-label .frac-display {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+      vertical-align: middle;
+    }
+
+    .unit-fraction-label .frac-num,
+    .unit-fraction-label .frac-den {
+      font-size: 0.9em;
+    }
+
+    .unit-fraction-label .frac-bar {
+      width: 100%;
+      height: 2px;
+      background: #7c3aed;
+      margin: 1px 0;
+    }
+
+    .strips-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin-bottom: var(--space-3);
+    }
+
+    .fraction-strip {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .fraction-strip .strip-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: #6b7280;
+      text-align: left;
+    }
+
+    .strip-parts {
+      display: flex;
+      height: 50px;
+      border: 2px solid #d1d5db;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #f9fafb;
+    }
+
+    .strip-part {
+      flex: 1;
+      border-right: 1px solid #d1d5db;
+      background: linear-gradient(180deg, #e0f2fe, #bae6fd);
+      transition: all 0.3s ease;
+    }
+
+    .strip-part:last-child {
+      border-right: none;
+    }
+
+    .strip-part.highlighted {
+      background: linear-gradient(180deg, #a78bfa, #8b5cf6);
+    }
+
+    .strip-part.shaded {
+      background: linear-gradient(180deg, #fde68a, #fcd34d);
+    }
+
+    .strip-part.shaded.highlighted {
+      background: linear-gradient(180deg, #34d399, #10b981);
+    }
+
+    /* Type B specific - unit fraction divided */
+    .unit-divide-strip .strip-parts {
+      position: relative;
+    }
+
+    .shaded-portion {
+      display: flex;
+      height: 100%;
+    }
+
+    .shaded-portion .strip-part {
+      flex: 1;
+      border-right: 1px dashed #d97706;
+      background: linear-gradient(180deg, #fde68a, #fcd34d);
+    }
+
+    .shaded-portion .strip-part:last-child {
+      border-right: 2px solid #d97706;
+    }
+
+    .unshaded-portion {
+      height: 100%;
+      background: #f3f4f6;
+    }
+
+    .group-counter {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #059669;
+      text-align: center;
+      padding: var(--space-2);
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-radius: var(--radius-lg);
+      border: 2px solid #22c55e;
+    }
+
+    .group-counter .frac-display {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+      vertical-align: middle;
+    }
+
+    .group-counter .frac-num,
+    .group-counter .frac-den {
+      font-size: 0.9em;
+    }
+
+    .group-counter .frac-bar {
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      margin: 1px 0;
+    }
+
+    /* Answer Choices */
+    .choices-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      max-width: 400px;
+      margin: 0 auto var(--space-4);
+    }
+
+    .choice-btn {
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #1e3a5f;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 3px solid #0ea5e9;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: scale(1.03);
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+      border-color: #0284c7;
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: scale(0.97);
+    }
+
+    .choice-btn:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .choice-btn:focus-visible {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border-color: #ef4444;
+      color: #991b1b;
+      animation: shake 0.5s ease;
+    }
+
+    .choice-btn .frac-display {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .choice-btn .frac-num,
+    .choice-btn .frac-den {
+      font-size: 0.8em;
+    }
+
+    .choice-btn .frac-bar {
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      margin: 2px 0;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+      20%, 40%, 60%, 80% { transform: translateX(4px); }
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    .whole-number {
+      vertical-align: middle;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .prompt-text {
+        font-size: var(--text-lg);
+      }
+
+      .expression-display {
+        padding: var(--space-2) var(--space-3);
+        gap: var(--space-2);
+      }
+
+      .expression-part {
+        font-size: var(--text-xl);
+      }
+
+      .expression-part .frac-num,
+      .expression-part .frac-den {
+        font-size: var(--text-lg);
+      }
+
+      .expression-operator,
+      .expression-equals {
+        font-size: var(--text-xl);
+      }
+
+      .visual-model {
+        padding: var(--space-3);
+      }
+
+      .strip-parts {
+        height: 40px;
+      }
+
+      .model-label {
+        font-size: var(--text-sm);
+      }
+
+      .choices-container {
+        gap: var(--space-2);
+        max-width: 320px;
+      }
+
+      .choice-btn {
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--text-lg);
+        min-height: 60px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .prompt-text {
+        font-size: var(--text-base);
+      }
+
+      .expression-display {
+        gap: var(--space-1);
+      }
+
+      .expression-part {
+        font-size: var(--text-lg);
+      }
+
+      .expression-part .frac-num,
+      .expression-part .frac-den {
+        font-size: var(--text-base);
+      }
+
+      .expression-operator,
+      .expression-equals {
+        font-size: var(--text-lg);
+      }
+
+      .strip-parts {
+        height: 35px;
+      }
+
+      .choice-btn {
+        font-size: var(--text-base);
+        min-height: 50px;
+        padding: var(--space-2);
+      }
+
+      .group-counter {
+        font-size: var(--text-base);
+      }
+    }
+
+    @media (max-width: 360px) {
+      .choices-container {
+        grid-template-columns: 1fr 1fr;
+        max-width: 280px;
+      }
+
+      .choice-btn {
+        min-height: 50px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

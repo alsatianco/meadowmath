@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Count by Tens Rocket - Kindergarten Math Activity - Meadow Math">
+  <title>Count by Tens Rocket - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🚀</span>
+            <span data-i18n="section.activities.count-by-tens-k.title">Count by Tens Rocket</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.count-by-tens-k.instruction">Tap the next number to help the rocket fly!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Rocket Scene -->
+          <div class="rocket-scene" id="rocket-scene">
+            <!-- Number Path (vertical track) -->
+            <div class="number-path" id="number-path">
+              <!-- Numbers from 10 to 100 -->
+            </div>
+
+            <!-- Rocket -->
+            <div class="rocket" id="rocket">
+              <div class="rocket-body">🚀</div>
+              <div class="rocket-flame" id="rocket-flame"></div>
+            </div>
+          </div>
+
+          <!-- Current Count Display -->
+          <div class="count-display" id="count-display">
+            <span class="count-label" data-i18n="section.activities.count-by-tens-k.countLabel">Count:</span>
+            <span class="count-value" id="count-value">0</span>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices">
+            <!-- Choices generated by JS -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Count by Tens Rocket Styles */
+    .rocket-scene {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      height: 300px;
+      margin: 0 auto var(--space-4);
+      background: linear-gradient(180deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Stars background */
+    .rocket-scene::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(2px 2px at 20px 30px, white, transparent),
+        radial-gradient(2px 2px at 40px 70px, white, transparent),
+        radial-gradient(2px 2px at 50px 160px, white, transparent),
+        radial-gradient(2px 2px at 90px 40px, white, transparent),
+        radial-gradient(2px 2px at 130px 80px, white, transparent),
+        radial-gradient(2px 2px at 160px 120px, white, transparent),
+        radial-gradient(2px 2px at 200px 20px, white, transparent),
+        radial-gradient(2px 2px at 220px 100px, white, transparent),
+        radial-gradient(2px 2px at 260px 60px, white, transparent),
+        radial-gradient(2px 2px at 300px 150px, white, transparent),
+        radial-gradient(2px 2px at 340px 40px, white, transparent),
+        radial-gradient(2px 2px at 360px 180px, white, transparent);
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    .number-path {
+      position: absolute;
+      right: 40px;
+      top: 20px;
+      bottom: 20px;
+      width: 60px;
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .path-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: rgba(255, 255, 255, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .path-number.reached {
+      color: #fde047;
+      text-shadow: 0 0 10px #fde047;
+      transform: scale(1.2);
+    }
+
+    .path-number.current {
+      color: #fde047;
+      animation: pulse 0.8s ease-in-out infinite;
+    }
+
+    .rocket {
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      transform: translateX(-50%);
+      transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 10;
+    }
+
+    .rocket-body {
+      font-size: 56px;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    }
+
+    .rocket-flame {
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 30px;
+      background: linear-gradient(180deg, #f97316 0%, #fde047 50%, transparent 100%);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      opacity: 0;
+      animation: flame 0.1s ease-in-out infinite alternate;
+    }
+
+    .rocket-flame.active {
+      opacity: 1;
+    }
+
+    @keyframes flame {
+      0% { transform: translateX(-50%) scaleY(0.8); }
+      100% { transform: translateX(-50%) scaleY(1.2); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    .count-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .count-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+    }
+
+    .count-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-xl);
+      border: 3px solid var(--color-primary-light);
+      box-shadow: 0 3px 0 var(--color-primary-light);
+      min-width: 80px;
+      text-align: center;
+    }
+
+    .answer-choices {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-3);
+      padding: var(--space-2);
+    }
+
+    .answer-btn {
+      width: 90px;
+      height: 90px;
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 4px solid #0ea5e9;
+      border-radius: var(--radius-xl);
+      color: #0369a1;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 0 #0284c7, 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 0 #0284c7, 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .answer-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #0284c7;
+    }
+
+    .answer-btn:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .answer-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPulse 0.5s ease;
+    }
+
+    .answer-btn.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      color: #92400e;
+      box-shadow: 0 4px 0 #d97706;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Celebration effect */
+    .rocket-scene.celebrate::after {
+      content: '🎉✨🌟';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 40px;
+      animation: celebrateText 1s ease-out forwards;
+    }
+
+    @keyframes celebrateText {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(1.5); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .rocket-scene {
+        height: 240px;
+        max-width: 320px;
+      }
+
+      .rocket-body {
+        font-size: 44px;
+      }
+
+      .number-path {
+        right: 25px;
+        width: 50px;
+      }
+
+      .path-number {
+        font-size: var(--text-base);
+      }
+
+      .count-value {
+        font-size: var(--text-3xl);
+        min-width: 70px;
+      }
+
+      .answer-btn {
+        width: 75px;
+        height: 75px;
+        font-size: var(--text-2xl);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Count by Tens Rocket Activity
+    const CountByTensK = {
+      // Game state
+      round: 1,
+      maxRounds: 6,
+      currentCount: 0,
+      targetCount: 0,
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1800,
+
+      // DOM elements
+      progress: null,
+      rocketScene: null,
+      numberPath: null,
+      rocket: null,
+      rocketFlame: null,
+      countValue: null,
+      answerChoices: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.rocketScene = document.getElementById('rocket-scene');
+        this.numberPath = document.getElementById('number-path');
+        this.rocket = document.getElementById('rocket');
+        this.rocketFlame = document.getElementById('rocket-flame');
+        this.countValue = document.getElementById('count-value');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Get target count range based on round
+       */
+      getTargetRange() {
+        // Progressive: first rounds go to 50, later to 100
+        if (this.round <= 2) {
+          return { max: 50 };
+        } else if (this.round <= 4) {
+          return { max: 70 };
+        } else {
+          return { max: 100 };
+        }
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.currentCount = 0;
+        this.hasAnswered = false;
+
+        const range = this.getTargetRange();
+        this.targetCount = range.max;
+
+        // Reset UI
+        this.countValue.textContent = '0';
+        this.feedback.classList.remove('show', 'error');
+        this.rocketScene.classList.remove('celebrate');
+
+        // Render number path
+        this.renderNumberPath();
+        this.updateRocketPosition();
+        this.renderChoices();
+        this.renderProgress();
+      },
+
+      /**
+       * Render the number path (vertical track of tens)
+       */
+      renderNumberPath() {
+        this.numberPath.innerHTML = '';
+
+        for (let num = 10; num <= this.targetCount; num += 10) {
+          const pathNum = document.createElement('div');
+          pathNum.className = 'path-number';
+          pathNum.textContent = num;
+          pathNum.dataset.value = num;
+          this.numberPath.appendChild(pathNum);
+        }
+      },
+
+      /**
+       * Update rocket position based on current count
+       */
+      updateRocketPosition() {
+        const totalSteps = this.targetCount / 10;
+        const currentStep = this.currentCount / 10;
+
+        // Calculate position (20px at bottom, up to (height - 60px) at top)
+        const sceneHeight = this.rocketScene.offsetHeight;
+        const minBottom = 20;
+        const maxBottom = sceneHeight - 80;
+        const stepHeight = (maxBottom - minBottom) / totalSteps;
+
+        const newBottom = minBottom + (currentStep * stepHeight);
+        this.rocket.style.bottom = newBottom + 'px';
+
+        // Update path numbers (mark reached)
+        const pathNums = this.numberPath.querySelectorAll('.path-number');
+        pathNums.forEach(num => {
+          const value = parseInt(num.dataset.value);
+          num.classList.remove('reached', 'current');
+          if (value <= this.currentCount) {
+            num.classList.add('reached');
+          } else if (value === this.currentCount + 10) {
+            num.classList.add('current');
+          }
+        });
+      },
+
+      /**
+       * Render answer choices
+       */
+      renderChoices() {
+        this.answerChoices.innerHTML = '';
+
+        if (this.currentCount >= this.targetCount) {
+          // Round complete, will auto-advance
+          return;
+        }
+
+        const nextNumber = this.currentCount + 10;
+        const choices = this.generateChoices(nextNumber);
+
+        choices.forEach(num => {
+          const btn = document.createElement('button');
+          btn.className = 'answer-btn';
+          btn.textContent = num;
+          btn.addEventListener('click', () => this.checkAnswer(num, btn));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.checkAnswer(num, btn);
+            }
+          });
+          this.answerChoices.appendChild(btn);
+        });
+      },
+
+      /**
+       * Generate answer choices
+       */
+      generateChoices(correct) {
+        const choices = [correct];
+
+        // Add wrong answers (nearby multiples of 10)
+        const possibleWrong = [];
+        for (let offset of [-20, -10, 10, 20]) {
+          const wrong = correct + offset;
+          if (wrong > 0 && wrong <= 110 && !choices.includes(wrong)) {
+            possibleWrong.push(wrong);
+          }
+        }
+
+        // Shuffle and take 3
+        shuffle(possibleWrong);
+        choices.push(...possibleWrong.slice(0, 3));
+
+        return shuffle(choices);
+      },
+
+      /**
+       * Check the answer
+       */
+      checkAnswer(selected, button) {
+        if (this.hasAnswered) return;
+
+        const correct = this.currentCount + 10;
+        const buttons = this.answerChoices.querySelectorAll('.answer-btn');
+
+        if (selected === correct) {
+          // Correct!
+          button.classList.add('correct');
+          this.hasAnswered = true;
+
+          // Activate flame and move rocket
+          this.rocketFlame.classList.add('active');
+          this.currentCount = correct;
+          this.countValue.textContent = this.currentCount;
+
+          setTimeout(() => {
+            this.updateRocketPosition();
+            this.rocketFlame.classList.remove('active');
+          }, 100);
+
+          // Show brief feedback
+          const msg = i18n.t('section.activities.count-by-tens-k.correct') || 'Yes! {{count}}!';
+          this.feedback.textContent = msg.replace('{{count}}', this.currentCount);
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+
+          // Check if round complete
+          if (this.currentCount >= this.targetCount) {
+            this.correctCount++;
+            this.rocketScene.classList.add('celebrate');
+
+            if (typeof celebrate === 'function') {
+              celebrate(this.rocket);
+            }
+
+            setTimeout(() => {
+              if (this.round < this.maxRounds) {
+                this.nextRound();
+              } else {
+                this.showStats();
+              }
+            }, this.autoAdvanceDelay);
+          } else {
+            // Continue counting
+            setTimeout(() => {
+              this.hasAnswered = false;
+              this.feedback.classList.remove('show');
+              this.renderChoices();
+            }, 800);
+          }
+        } else {
+          // Incorrect
+          button.classList.add('incorrect');
+          buttons.forEach(btn => {
+            if (parseInt(btn.textContent) === correct) {
+              btn.classList.add('correct');
+            }
+          });
+
+          const msg = i18n.t('section.activities.count-by-tens-k.incorrect') || 'Not quite! Next is {{next}}.';
+          this.feedback.textContent = msg.replace('{{next}}', correct);
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+
+          // Move to next round after mistake
+          this.hasAnswered = true;
+          buttons.forEach(btn => btn.disabled = true);
+
+          setTimeout(() => {
+            if (this.round < this.maxRounds) {
+              this.nextRound();
+            } else {
+              this.showStats();
+            }
+          }, this.autoAdvanceDelay);
+        }
+
+        this.renderProgress();
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.count-by-tens-k.perfect') || "Rocket Master!";
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.count-by-tens-k.great') || 'Great counting by tens!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.count-by-tens-k.keepPracticing') || 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      CountByTensK.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

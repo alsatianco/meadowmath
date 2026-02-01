@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Heavier or Lighter? - Kindergarten Math Activity - Meadow Math">
+  <title>Heavier or Lighter? - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">⚖️</span>
+            <span data-i18n="section.activities.heavier-lighter.title">Heavier or Lighter?</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.heavier-lighter.instruction">Tap the side that is heavier!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Question -->
+          <p class="question-text" id="question-text" data-i18n="section.activities.heavier-lighter.questionHeavier">Which side is heavier?</p>
+
+          <!-- Scale Visual -->
+          <div class="scale-scene">
+            <div class="scale-visual">
+              <!-- Scale Beam -->
+              <div class="scale-beam" id="scale-beam"></div>
+
+              <!-- Fulcrum -->
+              <div class="scale-fulcrum">
+                <div class="fulcrum-triangle"></div>
+              </div>
+
+              <!-- Left Pan Button -->
+              <button class="pan-btn" id="pan-left">
+                <div class="pan-plate">
+                  <div class="pan-items" id="items-left"></div>
+                </div>
+                <div class="pan-chain"></div>
+              </button>
+
+              <!-- Right Pan Button -->
+              <button class="pan-btn" id="pan-right">
+                <div class="pan-plate">
+                  <div class="pan-items" id="items-right"></div>
+                </div>
+                <div class="pan-chain"></div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">⚖️</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great weighing!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Heavier or Lighter Styles */
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .scale-scene {
+      display: flex;
+      justify-content: center;
+      padding: var(--space-4) 0;
+      margin-bottom: var(--space-4);
+    }
+
+    .scale-visual {
+      position: relative;
+      width: 340px;
+      height: 200px;
+    }
+
+    /* Scale Beam */
+    .scale-beam {
+      position: absolute;
+      top: 50px;
+      left: 30px;
+      width: 280px;
+      height: 12px;
+      background: linear-gradient(135deg, #64748b, #475569);
+      border-radius: var(--radius-full);
+      transform-origin: center;
+      transition: transform 0.5s ease;
+      z-index: 2;
+    }
+
+    .scale-beam.tilt-left {
+      transform: rotate(-12deg);
+    }
+
+    .scale-beam.tilt-right {
+      transform: rotate(12deg);
+    }
+
+    .scale-beam.balanced {
+      transform: rotate(0deg);
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+    }
+
+    /* Fulcrum */
+    .scale-fulcrum {
+      position: absolute;
+      top: 62px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .fulcrum-triangle {
+      width: 0;
+      height: 0;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-bottom: 50px solid #475569;
+    }
+
+    /* Pan Buttons */
+    .pan-btn {
+      position: absolute;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: all 0.5s ease;
+      z-index: 3;
+    }
+
+    #pan-left {
+      left: 0;
+      top: 50px;
+    }
+
+    #pan-right {
+      right: 0;
+      top: 50px;
+    }
+
+    /* tilt-left: left is heavier (goes DOWN), right goes UP */
+    .scale-beam.tilt-left ~ #pan-left {
+      top: 62px;
+    }
+
+    .scale-beam.tilt-left ~ #pan-right {
+      top: 38px;
+    }
+
+    /* tilt-right: right is heavier (goes DOWN), left goes UP */
+    .scale-beam.tilt-right ~ #pan-left {
+      top: 38px;
+    }
+
+    .scale-beam.tilt-right ~ #pan-right {
+      top: 62px;
+    }
+
+    .pan-chain {
+      width: 4px;
+      height: 30px;
+      background: linear-gradient(to bottom, #94a3b8, #64748b);
+      border-radius: 2px;
+    }
+
+    .pan-plate {
+      width: 100px;
+      height: 70px;
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      border: 4px solid #94a3b8;
+      border-radius: var(--radius-xl) var(--radius-xl) 50% 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 0 #64748b, inset 0 -4px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease;
+    }
+
+    .pan-btn:hover:not(:disabled) .pan-plate {
+      border-color: #3b82f6;
+      transform: scale(1.05);
+      box-shadow: 0 6px 0 #2563eb, inset 0 -4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .pan-btn:focus {
+      outline: none;
+    }
+
+    .pan-btn:focus .pan-plate {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .pan-btn:focus:not(:focus-visible) .pan-plate {
+      outline: none;
+    }
+
+    .pan-btn:focus-visible .pan-plate {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .pan-btn:disabled {
+      cursor: not-allowed;
+    }
+
+    .pan-btn.correct .pan-plate {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPop 0.5s ease;
+    }
+
+    .pan-btn.incorrect .pan-plate {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      box-shadow: 0 4px 0 #d97706;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    .pan-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+    }
+
+    .pan-item {
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .scale-visual {
+        width: 300px;
+        height: 180px;
+      }
+
+      .scale-beam {
+        width: 240px;
+        left: 30px;
+      }
+
+      .pan-plate {
+        width: 85px;
+        height: 60px;
+      }
+
+      .pan-item {
+        font-size: 20px;
+      }
+
+      .fulcrum-triangle {
+        border-left-width: 20px;
+        border-right-width: 20px;
+        border-bottom-width: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .scale-visual {
+        width: 260px;
+        height: 160px;
+      }
+
+      .scale-beam {
+        width: 200px;
+        left: 30px;
+      }
+
+      .pan-plate {
+        width: 75px;
+        height: 55px;
+      }
+
+      .pan-item {
+        font-size: 18px;
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Heavier or Lighter Activity
+    const HeavierLighter = {
+      // Game state
+      round: 1,
+      maxRounds: 8,
+      leftWeight: 0,
+      rightWeight: 0,
+      askingForHeavier: true, // alternates
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+
+      // DOM elements
+      progress: null,
+      questionText: null,
+      scaleBeam: null,
+      panLeft: null,
+      panRight: null,
+      itemsLeft: null,
+      itemsRight: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Heavy objects (visualized as multiple items = heavier)
+      objects: ['🍎', '🍊', '🪨', '📦', '🧸', '🎈', '🎁', '🌰'],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.questionText = document.getElementById('question-text');
+        this.scaleBeam = document.getElementById('scale-beam');
+        this.panLeft = document.getElementById('pan-left');
+        this.panRight = document.getElementById('pan-right');
+        this.itemsLeft = document.getElementById('items-left');
+        this.itemsRight = document.getElementById('items-right');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.panLeft.addEventListener('click', () => this.selectPan('left'));
+        this.panRight.addEventListener('click', () => this.selectPan('right'));
+
+        this.panLeft.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.selectPan('left');
+          }
+        });
+
+        this.panRight.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.selectPan('right');
+          }
+        });
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+
+        // Alternate between asking for heavier and lighter
+        this.askingForHeavier = this.round % 2 === 1;
+
+        // Update question text
+        if (this.askingForHeavier) {
+          this.questionText.textContent = i18n.t('section.activities.heavier-lighter.questionHeavier') || 'Which side is heavier?';
+        } else {
+          this.questionText.textContent = i18n.t('section.activities.heavier-lighter.questionLighter') || 'Which side is lighter?';
+        }
+
+        // Generate different weights (1-5 items)
+        this.leftWeight = randomInt(1, 5);
+        do {
+          this.rightWeight = randomInt(1, 5);
+        } while (this.rightWeight === this.leftWeight);
+
+        // Pick random object
+        const obj = this.objects[randomInt(0, this.objects.length - 1)];
+
+        // Render items
+        this.renderItems(this.itemsLeft, this.leftWeight, obj);
+        this.renderItems(this.itemsRight, this.rightWeight, obj);
+
+        // Set scale tilt (heavier side goes down)
+        this.scaleBeam.classList.remove('tilt-left', 'tilt-right', 'balanced');
+        if (this.leftWeight > this.rightWeight) {
+          this.scaleBeam.classList.add('tilt-left');
+        } else {
+          this.scaleBeam.classList.add('tilt-right');
+        }
+
+        // Reset UI
+        this.panLeft.classList.remove('correct', 'incorrect');
+        this.panRight.classList.remove('correct', 'incorrect');
+        this.panLeft.disabled = false;
+        this.panRight.disabled = false;
+        this.feedback.classList.remove('show', 'error');
+
+        this.renderProgress();
+      },
+
+      /**
+       * Render items in a pan
+       */
+      renderItems(container, count, emoji) {
+        container.innerHTML = '';
+        for (let i = 0; i < count; i++) {
+          const item = document.createElement('span');
+          item.className = 'pan-item';
+          item.textContent = emoji;
+          container.appendChild(item);
+        }
+      },
+
+      /**
+       * Select a pan
+       */
+      selectPan(side) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        this.panLeft.disabled = true;
+        this.panRight.disabled = true;
+
+        const leftIsHeavier = this.leftWeight > this.rightWeight;
+
+        let correctSide;
+        if (this.askingForHeavier) {
+          correctSide = leftIsHeavier ? 'left' : 'right';
+        } else {
+          // Asking for lighter
+          correctSide = leftIsHeavier ? 'right' : 'left';
+        }
+
+        const isCorrect = side === correctSide;
+
+        const selectedPan = side === 'left' ? this.panLeft : this.panRight;
+        const correctPan = correctSide === 'left' ? this.panLeft : this.panRight;
+
+        if (isCorrect) {
+          selectedPan.classList.add('correct');
+
+          let msg;
+          if (this.askingForHeavier) {
+            msg = i18n.t('section.activities.heavier-lighter.correctHeavier') || 'Yes! This side is heavier!';
+          } else {
+            msg = i18n.t('section.activities.heavier-lighter.correctLighter') || 'Yes! This side is lighter!';
+          }
+          this.feedback.textContent = msg;
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          if (typeof celebrate === 'function') {
+            celebrate(selectedPan);
+          }
+        } else {
+          selectedPan.classList.add('incorrect');
+          correctPan.classList.add('correct');
+
+          let msg;
+          if (this.askingForHeavier) {
+            msg = i18n.t('section.activities.heavier-lighter.incorrectHeavier') || 'Not quite! This side is heavier.';
+          } else {
+            msg = i18n.t('section.activities.heavier-lighter.incorrectLighter') || 'Not quite! This side is lighter.';
+          }
+          this.feedback.textContent = msg;
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '⚖️';
+          this.statsMessage.textContent = i18n.t('section.activities.heavier-lighter.perfect') || 'Weight Wizard!';
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.heavier-lighter.great') || 'Great weighing!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.heavier-lighter.keepPracticing') || 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      HeavierLighter.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

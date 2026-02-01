@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shape Builder - Kindergarten Math Activity - Meadow Math">
+  <title>Shape Builder - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">👑</span>
+            <span data-i18n="section.activities.shape-builder.title">Shape Builder</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.shape-builder.instruction">Build a picture using shapes!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Creative Prompt -->
+          <div class="creative-prompt">
+            <span class="creative-icon">🎨</span>
+            <span class="creative-text" data-i18n="section.activities.shape-builder.prompt">What will you create?</span>
+          </div>
+
+          <!-- Building Canvas -->
+          <div class="canvas-container">
+            <div class="building-canvas" id="building-canvas">
+              <!-- Shapes placed by user -->
+            </div>
+          </div>
+
+          <!-- Shape Palette -->
+          <div class="shape-palette">
+            <div class="palette-label" data-i18n="section.activities.shape-builder.shapes">Shapes:</div>
+            <div class="palette-shapes" id="palette-shapes">
+              <!-- Shape buttons -->
+            </div>
+          </div>
+
+          <!-- Color Picker -->
+          <div class="color-palette">
+            <div class="palette-label" data-i18n="section.activities.shape-builder.colors">Colors:</div>
+            <div class="palette-colors" id="palette-colors">
+              <!-- Color buttons -->
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons">
+            <button class="action-btn undo-btn" id="btn-undo" aria-label="Undo">
+              <span>↩️</span>
+              <span data-i18n="section.activities.shape-builder.undo">Undo</span>
+            </button>
+            <button class="action-btn clear-btn" id="btn-clear" aria-label="Clear all">
+              <span>🗑️</span>
+              <span data-i18n="section.activities.shape-builder.clear">Clear</span>
+            </button>
+            <button class="action-btn done-btn" id="btn-done" aria-label="I'm done">
+              <span>✨</span>
+              <span data-i18n="section.activities.shape-builder.done">I'm Done!</span>
+            </button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Celebration Overlay -->
+      <div class="stats-overlay" id="celebration-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon">🎉</div>
+          <h2 class="stats-title" data-i18n="section.activities.shape-builder.amazing">Amazing Creation!</h2>
+          <div class="shape-count-display">
+            <span id="shape-count">0</span>
+            <span data-i18n="section.activities.shape-builder.shapesUsed">shapes used</span>
+          </div>
+          <p class="stats-message" id="celebration-message">You're a great artist!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-new-creation" data-i18n="section.activities.shape-builder.newCreation">New Creation</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Shape Builder Activity Styles */
+    .creative-prompt {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+      padding: var(--space-2);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+    }
+
+    .creative-icon {
+      font-size: var(--text-2xl);
+    }
+
+    .creative-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #92400e;
+    }
+
+    .canvas-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-3);
+    }
+
+    .building-canvas {
+      width: 300px;
+      height: 250px;
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 4px solid #22c55e;
+      border-radius: var(--radius-xl);
+      position: relative;
+      overflow: hidden;
+      cursor: crosshair;
+    }
+
+    .placed-shape {
+      position: absolute;
+      font-size: 40px;
+      cursor: move;
+      user-select: none;
+      transition: transform 0.1s ease;
+    }
+
+    .placed-shape:hover {
+      transform: scale(1.1);
+    }
+
+    .placed-shape.dragging {
+      opacity: 0.7;
+      z-index: 100;
+    }
+
+    .shape-palette,
+    .color-palette {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-2);
+      flex-wrap: wrap;
+    }
+
+    .palette-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+    }
+
+    .palette-shapes,
+    .palette-colors {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .shape-btn {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-2xl);
+      background: white;
+      border: 3px solid #d1d5db;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .shape-btn:hover {
+      transform: scale(1.1);
+      border-color: #6366f1;
+    }
+
+    .shape-btn.selected {
+      border-color: #6366f1;
+      background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+    }
+
+    .shape-btn:focus {
+      outline: 3px solid #6366f1;
+      outline-offset: 2px;
+    }
+
+    .color-btn {
+      width: 35px;
+      height: 35px;
+      border: 3px solid #d1d5db;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .color-btn:hover {
+      transform: scale(1.15);
+    }
+
+    .color-btn.selected {
+      border-color: #1f2937;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+    }
+
+    .color-btn:focus {
+      outline: 3px solid #6366f1;
+      outline-offset: 2px;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-2) var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .undo-btn {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid #f59e0b;
+      color: #92400e;
+    }
+
+    .clear-btn {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      border: 3px solid #ef4444;
+      color: #b91c1c;
+    }
+
+    .done-btn {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border: 3px solid #22c55e;
+      color: #166534;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .action-btn:focus {
+      outline: 3px solid currentColor;
+      outline-offset: 2px;
+    }
+
+    .shape-count-display {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      color: var(--color-neutral-600);
+      margin: var(--space-3) 0;
+    }
+
+    .shape-count-display span:first-child {
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #6366f1;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .building-canvas {
+        width: 280px;
+        height: 220px;
+      }
+
+      .shape-btn {
+        width: 44px;
+        height: 44px;
+        font-size: var(--text-xl);
+      }
+
+      .color-btn {
+        width: 30px;
+        height: 30px;
+      }
+
+      .placed-shape {
+        font-size: 32px;
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Shape Builder Activity
+    const ShapeBuilder = {
+      // State
+      selectedShape: null,
+      selectedColor: '#ef4444',
+      placedShapes: [],
+      isDragging: false,
+      dragTarget: null,
+      dragOffset: { x: 0, y: 0 },
+
+      // Available shapes
+      shapes: [
+        { id: 'circle', emoji: '⭕' },
+        { id: 'square', emoji: '🟦' },
+        { id: 'triangle', emoji: '🔺' },
+        { id: 'star', emoji: '⭐' },
+        { id: 'heart', emoji: '❤️' },
+        { id: 'diamond', emoji: '🔷' },
+        { id: 'moon', emoji: '🌙' },
+        { id: 'sun', emoji: '☀️' }
+      ],
+
+      // Available colors (for future SVG shapes)
+      colors: [
+        '#ef4444', // red
+        '#f97316', // orange
+        '#eab308', // yellow
+        '#22c55e', // green
+        '#3b82f6', // blue
+        '#a855f7', // purple
+        '#ec4899', // pink
+        '#6b7280'  // gray
+      ],
+
+      // DOM elements
+      canvas: null,
+      paletteShapes: null,
+      paletteColors: null,
+      btnUndo: null,
+      btnClear: null,
+      btnDone: null,
+      feedback: null,
+      celebrationOverlay: null,
+      shapeCount: null,
+      btnNewCreation: null,
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.canvas = document.getElementById('building-canvas');
+        this.paletteShapes = document.getElementById('palette-shapes');
+        this.paletteColors = document.getElementById('palette-colors');
+        this.btnUndo = document.getElementById('btn-undo');
+        this.btnClear = document.getElementById('btn-clear');
+        this.btnDone = document.getElementById('btn-done');
+        this.feedback = document.getElementById('feedback');
+        this.celebrationOverlay = document.getElementById('celebration-overlay');
+        this.shapeCount = document.getElementById('shape-count');
+        this.btnNewCreation = document.getElementById('btn-new-creation');
+
+        this.renderShapePalette();
+        this.renderColorPalette();
+        this.setupEventListeners();
+      },
+
+      /**
+       * Render shape palette
+       */
+      renderShapePalette() {
+        this.paletteShapes.innerHTML = '';
+
+        this.shapes.forEach((shape, index) => {
+          const btn = document.createElement('button');
+          btn.className = 'shape-btn';
+          btn.textContent = shape.emoji;
+          btn.dataset.shape = shape.id;
+          btn.setAttribute('aria-label', `Select ${shape.id}`);
+
+          if (index === 0) {
+            btn.classList.add('selected');
+            this.selectedShape = shape;
+          }
+
+          btn.addEventListener('click', () => this.selectShape(shape, btn));
+          this.paletteShapes.appendChild(btn);
+        });
+      },
+
+      /**
+       * Render color palette
+       */
+      renderColorPalette() {
+        this.paletteColors.innerHTML = '';
+
+        this.colors.forEach((color, index) => {
+          const btn = document.createElement('button');
+          btn.className = 'color-btn';
+          btn.style.backgroundColor = color;
+          btn.dataset.color = color;
+          btn.setAttribute('aria-label', `Select color`);
+
+          if (index === 0) {
+            btn.classList.add('selected');
+          }
+
+          btn.addEventListener('click', () => this.selectColor(color, btn));
+          this.paletteColors.appendChild(btn);
+        });
+      },
+
+      /**
+       * Setup event listeners
+       */
+      setupEventListeners() {
+        // Canvas click to place shape
+        this.canvas.addEventListener('click', (e) => {
+          if (!this.isDragging && this.selectedShape) {
+            const rect = this.canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left - 20; // Center shape
+            const y = e.clientY - rect.top - 20;
+            this.placeShape(x, y);
+          }
+        });
+
+        // Touch support for canvas
+        this.canvas.addEventListener('touchstart', (e) => {
+          if (e.target === this.canvas && this.selectedShape) {
+            const touch = e.touches[0];
+            const rect = this.canvas.getBoundingClientRect();
+            const x = touch.clientX - rect.left - 20;
+            const y = touch.clientY - rect.top - 20;
+            this.placeShape(x, y);
+          }
+        }, { passive: true });
+
+        // Action buttons
+        this.btnUndo.addEventListener('click', () => this.undo());
+        this.btnClear.addEventListener('click', () => this.clearCanvas());
+        this.btnDone.addEventListener('click', () => this.celebrate());
+        this.btnNewCreation.addEventListener('click', () => this.newCreation());
+
+        this.celebrationOverlay.addEventListener('click', (e) => {
+          if (e.target === this.celebrationOverlay) this.newCreation();
+        });
+
+        // Drag support for placed shapes
+        this.canvas.addEventListener('mousedown', (e) => this.startDrag(e));
+        this.canvas.addEventListener('mousemove', (e) => this.drag(e));
+        this.canvas.addEventListener('mouseup', () => this.endDrag());
+        this.canvas.addEventListener('mouseleave', () => this.endDrag());
+
+        // Touch drag support
+        this.canvas.addEventListener('touchstart', (e) => this.startDrag(e), { passive: false });
+        this.canvas.addEventListener('touchmove', (e) => this.drag(e), { passive: false });
+        this.canvas.addEventListener('touchend', () => this.endDrag());
+      },
+
+      /**
+       * Select a shape
+       */
+      selectShape(shape, btn) {
+        this.paletteShapes.querySelectorAll('.shape-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        this.selectedShape = shape;
+      },
+
+      /**
+       * Select a color
+       */
+      selectColor(color, btn) {
+        this.paletteColors.querySelectorAll('.color-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        this.selectedColor = color;
+      },
+
+      /**
+       * Place a shape on the canvas
+       */
+      placeShape(x, y) {
+        if (!this.selectedShape) return;
+
+        const shapeEl = document.createElement('div');
+        shapeEl.className = 'placed-shape';
+        shapeEl.textContent = this.selectedShape.emoji;
+        shapeEl.style.left = `${Math.max(0, Math.min(x, this.canvas.offsetWidth - 40))}px`;
+        shapeEl.style.top = `${Math.max(0, Math.min(y, this.canvas.offsetHeight - 40))}px`;
+        shapeEl.dataset.index = this.placedShapes.length;
+
+        this.canvas.appendChild(shapeEl);
+        this.placedShapes.push({
+          shape: this.selectedShape,
+          color: this.selectedColor,
+          x, y,
+          element: shapeEl
+        });
+
+        // Quick feedback
+        this.showFeedback();
+      },
+
+      /**
+       * Start dragging a placed shape
+       */
+      startDrag(e) {
+        const target = e.target;
+        if (!target.classList.contains('placed-shape')) return;
+
+        e.preventDefault();
+        this.isDragging = true;
+        this.dragTarget = target;
+        target.classList.add('dragging');
+
+        const rect = this.canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+        this.dragOffset = {
+          x: clientX - rect.left - parseInt(target.style.left),
+          y: clientY - rect.top - parseInt(target.style.top)
+        };
+      },
+
+      /**
+       * Drag a shape
+       */
+      drag(e) {
+        if (!this.isDragging || !this.dragTarget) return;
+
+        e.preventDefault();
+        const rect = this.canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+        let x = clientX - rect.left - this.dragOffset.x;
+        let y = clientY - rect.top - this.dragOffset.y;
+
+        // Keep within bounds
+        x = Math.max(0, Math.min(x, this.canvas.offsetWidth - 40));
+        y = Math.max(0, Math.min(y, this.canvas.offsetHeight - 40));
+
+        this.dragTarget.style.left = `${x}px`;
+        this.dragTarget.style.top = `${y}px`;
+      },
+
+      /**
+       * End dragging
+       */
+      endDrag() {
+        if (this.dragTarget) {
+          this.dragTarget.classList.remove('dragging');
+        }
+        this.isDragging = false;
+        this.dragTarget = null;
+      },
+
+      /**
+       * Undo last shape
+       */
+      undo() {
+        if (this.placedShapes.length === 0) return;
+
+        const last = this.placedShapes.pop();
+        if (last.element) {
+          last.element.remove();
+        }
+      },
+
+      /**
+       * Clear all shapes
+       */
+      clearCanvas() {
+        this.placedShapes.forEach(shape => {
+          if (shape.element) shape.element.remove();
+        });
+        this.placedShapes = [];
+      },
+
+      /**
+       * Show quick feedback
+       */
+      showFeedback() {
+        const messages = [
+          i18n.t('section.activities.shape-builder.nice') || 'Nice!',
+          i18n.t('section.activities.shape-builder.great') || 'Great!',
+          i18n.t('section.activities.shape-builder.cool') || 'Cool!',
+          i18n.t('section.activities.shape-builder.wow') || 'Wow!'
+        ];
+        const msg = messages[Math.floor(Math.random() * messages.length)];
+        this.feedback.textContent = msg;
+        this.feedback.classList.add('show');
+        this.feedback.classList.remove('error');
+
+        setTimeout(() => {
+          this.feedback.classList.remove('show');
+        }, 800);
+      },
+
+      /**
+       * Celebrate the creation
+       */
+      celebrate() {
+        this.shapeCount.textContent = this.placedShapes.length;
+
+        const messages = [
+          i18n.t('section.activities.shape-builder.artist') || "You're a great artist!",
+          i18n.t('section.activities.shape-builder.beautiful') || 'What a beautiful picture!',
+          i18n.t('section.activities.shape-builder.creative') || 'So creative!'
+        ];
+        document.getElementById('celebration-message').textContent =
+          messages[Math.floor(Math.random() * messages.length)];
+
+        this.celebrationOverlay.classList.add('show');
+
+        if (typeof celebrate === 'function' && this.placedShapes.length > 0) {
+          celebrate(this.canvas);
+        }
+      },
+
+      /**
+       * Start a new creation
+       */
+      newCreation() {
+        this.clearCanvas();
+        this.celebrationOverlay.classList.remove('show');
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      ShapeBuilder.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

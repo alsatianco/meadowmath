@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Odd/Even on Number Line - Grade 2 Math Activity - Meadow Math">
+  <title>Odd/Even on Number Line - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade2">Grade 2</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">📍</span>
+            <span data-i18n="section.activities.odd-even-number-line.title">Odd/Even on Number Line</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.odd-even-number-line.description">Find even or odd numbers on the number line.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Task Prompt -->
+          <div class="task-prompt" id="task-prompt">
+            <span class="task-icon" id="task-icon">🔵</span>
+            <span class="task-text" id="task-text">Tap all the EVEN numbers!</span>
+          </div>
+
+          <!-- Found Counter -->
+          <div class="found-counter" id="found-counter">
+            <span data-i18n="section.activities.odd-even-number-line.found">Found:</span>
+            <span class="found-count" id="found-count">0</span>
+            <span>/</span>
+            <span class="target-count" id="target-count">0</span>
+          </div>
+
+          <!-- Number Line Container -->
+          <div class="number-line-container" id="number-line-container">
+            <div class="number-line" id="number-line"></div>
+          </div>
+
+          <!-- Pattern Display (shown after completion) -->
+          <div class="pattern-display" id="pattern-display" style="display: none;">
+            <span class="pattern-label" data-i18n="section.activities.odd-even-number-line.pattern">Pattern:</span>
+            <span class="pattern-numbers" id="pattern-numbers"></span>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great pattern recognition!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Odd/Even on Number Line Activity - Grade 2 Level 3
+    const OddEvenNumberLine = {
+      currentQuestion: 0,
+      totalQuestions: 6,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      isCompleted: false,
+
+      // Current round data
+      findEven: true, // true = find even, false = find odd
+      rangeStart: 1,
+      rangeEnd: 10,
+      targetNumbers: [],
+      foundNumbers: [],
+      wrongClicks: 0,
+
+      // DOM elements
+      taskPrompt: null,
+      taskIcon: null,
+      taskText: null,
+      foundCount: null,
+      targetCount: null,
+      numberLine: null,
+      patternDisplay: null,
+      patternNumbers: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.taskPrompt = document.getElementById('task-prompt');
+        this.taskIcon = document.getElementById('task-icon');
+        this.taskText = document.getElementById('task-text');
+        this.foundCount = document.getElementById('found-count');
+        this.targetCount = document.getElementById('target-count');
+        this.numberLine = document.getElementById('number-line');
+        this.patternDisplay = document.getElementById('pattern-display');
+        this.patternNumbers = document.getElementById('pattern-numbers');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Update dynamic task text on language change
+        this.updateTaskText();
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      generateRound() {
+        // Alternate between finding even and odd
+        // Also vary the range as questions progress
+        this.findEven = this.currentQuestion % 2 === 0;
+
+        // Progressive difficulty with different ranges
+        const ranges = [
+          { start: 1, end: 10 },   // Round 1: 1-10
+          { start: 1, end: 10 },   // Round 2: 1-10
+          { start: 11, end: 20 },  // Round 3: 11-20
+          { start: 11, end: 20 },  // Round 4: 11-20
+          { start: 1, end: 20 },   // Round 5: 1-20
+          { start: 1, end: 20 },   // Round 6: 1-20
+        ];
+
+        const range = ranges[this.currentQuestion] || { start: 1, end: 20 };
+        this.rangeStart = range.start;
+        this.rangeEnd = range.end;
+
+        // Calculate target numbers
+        this.targetNumbers = [];
+        for (let i = this.rangeStart; i <= this.rangeEnd; i++) {
+          const isEven = i % 2 === 0;
+          if ((this.findEven && isEven) || (!this.findEven && !isEven)) {
+            this.targetNumbers.push(i);
+          }
+        }
+
+        this.foundNumbers = [];
+        this.wrongClicks = 0;
+        this.isCompleted = false;
+      },
+
+      startQuestion() {
+        this.generateRound();
+        this.updateTaskText();
+        this.foundCount.textContent = '0';
+        this.targetCount.textContent = this.targetNumbers.length;
+        this.renderNumberLine();
+        this.patternDisplay.style.display = 'none';
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      updateTaskText() {
+        const evenText = window.i18n ? i18n.t('section.activities.odd-even-number-line.tapEven') : 'Tap all the EVEN numbers!';
+        const oddText = window.i18n ? i18n.t('section.activities.odd-even-number-line.tapOdd') : 'Tap all the ODD numbers!';
+
+        this.taskText.textContent = this.findEven ? evenText : oddText;
+        this.taskIcon.textContent = this.findEven ? '🔵' : '🟣';
+
+        // Update task prompt styling
+        this.taskPrompt.className = 'task-prompt ' + (this.findEven ? 'find-even' : 'find-odd');
+      },
+
+      renderNumberLine() {
+        this.numberLine.innerHTML = '';
+
+        for (let i = this.rangeStart; i <= this.rangeEnd; i++) {
+          const numBtn = document.createElement('button');
+          numBtn.className = 'number-btn';
+          numBtn.textContent = i;
+          numBtn.dataset.number = i;
+
+          // Add even/odd class for visual hint (subtle background difference)
+          numBtn.classList.add(i % 2 === 0 ? 'is-even' : 'is-odd');
+
+          numBtn.addEventListener('click', () => this.selectNumber(i, numBtn));
+          this.numberLine.appendChild(numBtn);
+        }
+      },
+
+      selectNumber(num, btn) {
+        if (this.isCompleted || btn.classList.contains('selected') || btn.classList.contains('wrong')) return;
+
+        const isTarget = this.targetNumbers.includes(num);
+
+        if (isTarget) {
+          // Correct selection
+          btn.classList.add('selected', 'correct');
+          this.foundNumbers.push(num);
+          this.foundCount.textContent = this.foundNumbers.length;
+
+          // Check if all found
+          if (this.foundNumbers.length === this.targetNumbers.length) {
+            this.completeRound(true);
+          }
+        } else {
+          // Wrong selection
+          btn.classList.add('wrong');
+          this.wrongClicks++;
+
+          // Shake animation
+          btn.classList.add('shake');
+          setTimeout(() => btn.classList.remove('shake'), 500);
+        }
+      },
+
+      completeRound(success) {
+        this.isCompleted = true;
+
+        // Show pattern
+        this.patternNumbers.textContent = this.targetNumbers.join(', ');
+        this.patternDisplay.style.display = 'block';
+
+        // Calculate score - round is successful if found all with minimal wrong clicks
+        if (success && this.wrongClicks <= 2) {
+          this.correctCount++;
+          const typeText = this.findEven
+            ? (window.i18n ? i18n.t('section.activities.odd-even-number-line.even') : 'even')
+            : (window.i18n ? i18n.t('section.activities.odd-even-number-line.odd') : 'odd');
+          const correctText = window.i18n ? i18n.t('feedback.correct') : '✓ Correct!';
+          this.feedback.textContent = `${correctText} ${window.i18n ? i18n.t('section.activities.odd-even-number-line.foundAll') : 'Found all'} ${typeText}!`;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          const typeText = this.findEven
+            ? (window.i18n ? i18n.t('section.activities.odd-even-number-line.evenNumbers') : 'even numbers')
+            : (window.i18n ? i18n.t('section.activities.odd-even-number-line.oddNumbers') : 'odd numbers');
+          const tryAgainText = window.i18n ? i18n.t('feedback.tryAgain') : '✗ Try again!';
+          this.feedback.textContent = `${tryAgainText} ${window.i18n ? i18n.t('section.activities.odd-even-number-line.theseAre') : 'These are the'} ${typeText}.`;
+          this.feedback.classList.add('error');
+
+          // Highlight all correct answers
+          const buttons = this.numberLine.querySelectorAll('.number-btn');
+          buttons.forEach(btn => {
+            const num = parseInt(btn.dataset.number);
+            if (this.targetNumbers.includes(num) && !btn.classList.contains('selected')) {
+              btn.classList.add('missed');
+            }
+          });
+        }
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.foundNumbers = [];
+        this.wrongClicks = 0;
+        this.isCompleted = false;
+        this.foundCount.textContent = '0';
+        this.renderNumberLine();
+        this.patternDisplay.style.display = 'none';
+        this.feedback.classList.remove('show', 'error');
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.odd-even-number-line.perfect') : 'Amazing pattern recognition!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '📍';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.odd-even-number-line.great') : 'Great job with even and odd!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.odd-even-number-line.keepPracticing') : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => OddEvenNumberLine.init());
+      } else {
+        OddEvenNumberLine.init();
+      }
+    });
+  </script>
+  <style>
+    /* Odd/Even on Number Line specific styles */
+
+    /* Task Prompt */
+    .task-prompt {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      padding: var(--space-4) var(--space-6);
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--space-4);
+      transition: all 0.3s ease;
+    }
+
+    .task-prompt.find-even {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border: 3px solid #3b82f6;
+    }
+
+    .task-prompt.find-odd {
+      background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+      border: 3px solid #a855f7;
+    }
+
+    .task-icon {
+      font-size: var(--text-3xl);
+    }
+
+    .task-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+    }
+
+    /* Found Counter */
+    .found-counter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      margin-bottom: var(--space-4);
+    }
+
+    .found-count {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #22c55e;
+    }
+
+    .target-count {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-500);
+    }
+
+    /* Number Line Container */
+    .number-line-container {
+      width: 100%;
+      max-width: 700px;
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border-radius: var(--radius-xl);
+      border: 3px solid var(--color-neutral-200);
+      overflow-x: auto;
+    }
+
+    .number-line {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-2);
+      min-width: fit-content;
+    }
+
+    .number-btn {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #ffffff, #f8fafc);
+      border: 3px solid var(--color-neutral-300);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 0 var(--color-neutral-300);
+    }
+
+    .number-btn:hover:not(.selected):not(.wrong):not(.missed) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 var(--color-neutral-300);
+      border-color: var(--color-primary);
+    }
+
+    .number-btn:active:not(.selected):not(.wrong):not(.missed) {
+      transform: translateY(1px);
+      box-shadow: 0 1px 0 var(--color-neutral-300);
+    }
+
+    /* Subtle visual hint for even/odd (very light) */
+    .number-btn.is-even {
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    }
+
+    .number-btn.is-odd {
+      background: linear-gradient(135deg, #faf5ff, #f3e8ff);
+    }
+
+    /* Selected (correct) */
+    .number-btn.selected {
+      background: linear-gradient(135deg, #86efac, #4ade80);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 3px 0 #16a34a;
+      cursor: default;
+      animation: correctPop 0.3s ease;
+    }
+
+    @keyframes correctPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    /* Wrong click */
+    .number-btn.wrong {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      color: #991b1b;
+      box-shadow: 0 3px 0 #dc2626;
+      cursor: default;
+    }
+
+    /* Missed (shown at end) */
+    .number-btn.missed {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      color: #92400e;
+      box-shadow: 0 3px 0 #d97706;
+      cursor: default;
+    }
+
+    /* Shake animation */
+    .number-btn.shake {
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+
+    /* Pattern Display */
+    .pattern-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+      padding: var(--space-3) var(--space-6);
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-radius: var(--radius-lg);
+      border: 2px solid #22c55e;
+    }
+
+    .pattern-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #166534;
+    }
+
+    .pattern-numbers {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #166534;
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .task-prompt {
+        padding: var(--space-3) var(--space-4);
+        flex-direction: column;
+        gap: var(--space-2);
+      }
+
+      .task-text {
+        font-size: var(--text-lg);
+        text-align: center;
+      }
+
+      .number-btn {
+        width: 50px;
+        height: 50px;
+        font-size: var(--text-lg);
+      }
+
+      .number-line-container {
+        padding: var(--space-3);
+      }
+
+      .number-line {
+        gap: var(--space-1);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .number-btn {
+        width: 48px;
+        height: 48px;
+        font-size: var(--text-base);
+        border-width: 2px;
+      }
+
+      .task-icon {
+        font-size: var(--text-2xl);
+      }
+
+      .task-text {
+        font-size: var(--text-base);
+      }
+
+      .number-line {
+        gap: 6px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

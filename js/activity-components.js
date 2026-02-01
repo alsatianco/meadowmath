@@ -16,7 +16,7 @@ const ActivityComponents = {
   grades: [
     { id: 'home', icon: '🏠', path: 'index.html', i18nKey: 'nav.home' },
     { id: 'prek', icon: '🪺', path: 'prek/index.html', i18nKey: 'nav.prek' },
-    { id: 'kindergarten', icon: '🌱', path: 'kindergarten/index.html', i18nKey: 'nav.kindergarten' },
+    { id: 'kinder', icon: '🌱', path: 'kinder/index.html', i18nKey: 'nav.kindergarten', aliases: ['kindergarten'] },
     { id: 'grade1', icon: '📐', path: 'grade1/index.html', i18nKey: 'nav.grade1' },
     { id: 'grade2', icon: '➕', path: 'grade2/index.html', i18nKey: 'nav.grade2' },
     { id: 'grade3', icon: '➖', path: 'grade3/index.html', i18nKey: 'nav.grade3' },
@@ -35,10 +35,12 @@ const ActivityComponents = {
     const { basePath = '../../', activeGrade = '' } = config;
 
     const navItems = this.grades.map(grade => {
-      const isActive = grade.id === activeGrade ? ' active' : '';
+      // Check if this grade is active (by id or alias)
+      const isActive = grade.id === activeGrade ||
+                       (grade.aliases && grade.aliases.includes(activeGrade)) ? ' active' : '';
       const path = grade.id === 'home' ? `${basePath}index.html` : `${basePath}${grade.path}`;
       const defaultText = grade.id.charAt(0).toUpperCase() + grade.id.slice(1).replace(/(\d)/, ' $1');
-      
+
       return `
         <a href="${path}" class="nav-item${isActive}">
           <span class="nav-item-icon">${grade.icon}</span>

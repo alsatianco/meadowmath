@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Equal Groups Stories - Grade 3 Math Activity - Meadow Math">
+  <title>Equal Groups Stories - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade3">Grade 3</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧺</span>
+            <span data-i18n="section.activities.equal-groups-multiply.title">Equal Groups Stories</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.equal-groups-multiply.description">Use equal groups to solve story problems.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Story Section -->
+          <div class="story-section">
+            <p class="story-text" id="story-text"></p>
+          </div>
+
+          <!-- Visual Groups Section -->
+          <div class="groups-visual" id="groups-visual"></div>
+
+          <!-- Question Section -->
+          <div class="question-section">
+            <p class="question-text" id="question-text"></p>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-section" id="choices"></div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.equal-groups-multiply.great">Great equal groups work!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Equal Groups Stories Activity - Grade 3 Level 3
+    const EqualGroupsMultiply = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      groups: 0,
+      itemsPerGroup: 0,
+      correctAnswer: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+
+      // Story templates with items and containers
+      storyTemplates: [
+        { container: 'bag', containerPlural: 'bags', item: 'marble', itemPlural: 'marbles', emoji: '🎱', containerEmoji: '👜' },
+        { container: 'box', containerPlural: 'boxes', item: 'crayon', itemPlural: 'crayons', emoji: '🖍️', containerEmoji: '📦' },
+        { container: 'basket', containerPlural: 'baskets', item: 'apple', itemPlural: 'apples', emoji: '🍎', containerEmoji: '🧺' },
+        { container: 'jar', containerPlural: 'jars', item: 'cookie', itemPlural: 'cookies', emoji: '🍪', containerEmoji: '🏺' },
+        { container: 'plate', containerPlural: 'plates', item: 'strawberry', itemPlural: 'strawberries', emoji: '🍓', containerEmoji: '🍽️' },
+        { container: 'nest', containerPlural: 'nests', item: 'egg', itemPlural: 'eggs', emoji: '🥚', containerEmoji: '🪺' },
+        { container: 'vase', containerPlural: 'vases', item: 'flower', itemPlural: 'flowers', emoji: '🌸', containerEmoji: '🏺' },
+        { container: 'tank', containerPlural: 'tanks', item: 'fish', itemPlural: 'fish', emoji: '🐟', containerEmoji: '🐠' },
+        { container: 'shelf', containerPlural: 'shelves', item: 'book', itemPlural: 'books', emoji: '📕', containerEmoji: '📚' },
+        { container: 'row', containerPlural: 'rows', item: 'chair', itemPlural: 'chairs', emoji: '🪑', containerEmoji: '🪑' }
+      ],
+
+      currentStory: null,
+
+      // DOM elements
+      storyText: null,
+      groupsVisual: null,
+      questionText: null,
+      choices: null,
+      progress: null,
+      feedback: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        // Get DOM elements
+        this.storyText = document.getElementById('story-text');
+        this.groupsVisual = document.getElementById('groups-visual');
+        this.questionText = document.getElementById('question-text');
+        this.choices = document.getElementById('choices');
+        this.progress = document.getElementById('progress');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up listeners
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        // Dynamic translations - will update on next question
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n) {
+          const translated = i18n.t(`section.activities.equal-groups-multiply.${key}`);
+          return translated !== `section.activities.equal-groups-multiply.${key}` ? translated : fallback;
+        }
+        return fallback;
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      shuffle(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      },
+
+      generateProblem() {
+        // Progressive difficulty
+        // Questions 0-2: Small (2-4 groups, 2-4 items)
+        // Questions 3-5: Medium (3-6 groups, 3-6 items)
+        // Questions 6-7: Larger (4-8 groups, 4-8 items) with product <= 64
+
+        let minGroups, maxGroups, minItems, maxItems;
+        if (this.currentQuestion < 3) {
+          minGroups = 2;
+          maxGroups = 4;
+          minItems = 2;
+          maxItems = 4;
+        } else if (this.currentQuestion < 6) {
+          minGroups = 3;
+          maxGroups = 6;
+          minItems = 3;
+          maxItems = 6;
+        } else {
+          minGroups = 4;
+          maxGroups = 8;
+          minItems = 4;
+          maxItems = 8;
+        }
+
+        // Generate numbers ensuring product <= 64 for reasonable visual display
+        do {
+          this.groups = this.randomInt(minGroups, maxGroups);
+          this.itemsPerGroup = this.randomInt(minItems, maxItems);
+        } while (this.groups * this.itemsPerGroup > 64);
+
+        this.correctAnswer = this.groups * this.itemsPerGroup;
+
+        // Pick a random story template
+        this.currentStory = this.storyTemplates[this.randomInt(0, this.storyTemplates.length - 1)];
+      },
+
+      buildStoryText() {
+        const story = this.currentStory;
+        const containerWord = this.groups === 1 ? story.container : story.containerPlural;
+        const itemWord = this.itemsPerGroup === 1 ? story.item : story.itemPlural;
+
+        // Build story text
+        const storyPattern = this.getTranslation('storyPattern', 'There are {groups} {containers}. Each {container} has {items} {itemName}. How many {itemPlural} in all?');
+
+        return storyPattern
+          .replace('{groups}', this.groups)
+          .replace('{containers}', containerWord)
+          .replace('{container}', story.container)
+          .replace('{items}', this.itemsPerGroup)
+          .replace('{itemName}', itemWord)
+          .replace('{itemPlural}', story.itemPlural);
+      },
+
+      buildVisualGroups() {
+        const story = this.currentStory;
+        let html = '';
+
+        for (let g = 0; g < this.groups; g++) {
+          html += '<div class="group-container">';
+          html += `<div class="group-label">${story.containerEmoji}</div>`;
+          html += '<div class="group-items">';
+          for (let i = 0; i < this.itemsPerGroup; i++) {
+            html += `<span class="group-item">${story.emoji}</span>`;
+          }
+          html += '</div>';
+          html += '</div>';
+        }
+
+        return html;
+      },
+
+      generateChoices() {
+        const choices = new Set();
+        choices.add(this.correctAnswer);
+
+        // Generate plausible wrong answers
+        const wrongStrategies = [
+          () => this.groups + this.itemsPerGroup,         // Addition mistake
+          () => this.correctAnswer + this.groups,        // Off by one group
+          () => this.correctAnswer - this.itemsPerGroup, // Missing one group
+          () => this.correctAnswer + this.randomInt(1, 5),
+          () => this.correctAnswer - this.randomInt(1, 5),
+          () => (this.groups + 1) * this.itemsPerGroup,
+          () => this.groups * (this.itemsPerGroup + 1),
+          () => (this.groups - 1) * this.itemsPerGroup
+        ];
+
+        let attempts = 0;
+        while (choices.size < 4 && attempts < 20) {
+          const strategy = wrongStrategies[this.randomInt(0, wrongStrategies.length - 1)];
+          const wrongAnswer = strategy();
+          if (wrongAnswer > 0 && wrongAnswer !== this.correctAnswer && wrongAnswer <= 100) {
+            choices.add(wrongAnswer);
+          }
+          attempts++;
+        }
+
+        // Fill remaining with nearby values
+        while (choices.size < 4) {
+          const offset = this.randomInt(-10, 10);
+          const newChoice = this.correctAnswer + offset;
+          if (newChoice > 0 && !choices.has(newChoice)) {
+            choices.add(newChoice);
+          }
+        }
+
+        return this.shuffle(Array.from(choices));
+      },
+
+      startQuestion() {
+        this.generateProblem();
+        this.isAnswered = false;
+
+        // Update story text
+        this.storyText.textContent = this.buildStoryText();
+
+        // Build visual representation
+        this.groupsVisual.innerHTML = this.buildVisualGroups();
+
+        // Update question
+        const questionPattern = this.getTranslation('howManyTotal', 'How many {items} in all?');
+        this.questionText.textContent = questionPattern.replace('{items}', this.currentStory.itemPlural);
+
+        // Generate and render choices
+        const choiceValues = this.generateChoices();
+        this.renderChoices(choiceValues);
+
+        // Reset UI
+        this.feedback.classList.remove('show', 'error');
+        this.renderProgress();
+      },
+
+      renderChoices(choiceValues) {
+        this.choices.innerHTML = '';
+
+        choiceValues.forEach(value => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.textContent = value;
+          btn.dataset.value = value;
+          btn.addEventListener('click', () => {
+            if (!this.isAnswered) {
+              this.checkAnswer(value, btn);
+            }
+          });
+          this.choices.appendChild(btn);
+        });
+      },
+
+      checkAnswer(selectedValue, btnElement) {
+        if (this.isAnswered) return;
+
+        this.isAnswered = true;
+        const isCorrect = selectedValue === this.correctAnswer;
+
+        // Disable all buttons and show correct answer
+        const allBtns = this.choices.querySelectorAll('.choice-btn');
+        allBtns.forEach(btn => {
+          btn.disabled = true;
+          if (parseInt(btn.dataset.value) === this.correctAnswer) {
+            btn.classList.add('correct');
+          }
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+          btnElement.classList.add('correct');
+          const correctMsg = window.i18n ? i18n.t('feedback.correct') : 'Correct!';
+          // Show the equation
+          this.feedback.textContent = `${correctMsg} ${this.groups} × ${this.itemsPerGroup} = ${this.correctAnswer}`;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          btnElement.classList.add('incorrect');
+          const tryAgainMsg = window.i18n ? i18n.t('feedback.tryAgain') : 'Try again!';
+          this.feedback.textContent = `${tryAgainMsg} ${this.groups} × ${this.itemsPerGroup} = ${this.correctAnswer}`;
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation('perfect', 'Amazing multiplication stories!');
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '🧺';
+          this.statsMessage.textContent = this.getTranslation('great', 'Great equal groups work!');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation('keepPracticing', 'Keep practicing!');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => EqualGroupsMultiply.init());
+      } else {
+        EqualGroupsMultiply.init();
+      }
+    });
+  </script>
+  <style>
+    /* Equal Groups Stories specific styles */
+
+    /* Story Section */
+    .story-section {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid #f59e0b;
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      text-align: center;
+    }
+
+    .story-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-medium);
+      color: var(--color-neutral-700);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Visual Groups */
+    .groups-visual {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+      padding: var(--space-4);
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: var(--radius-xl);
+      min-height: 120px;
+    }
+
+    .group-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-2);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 2px solid #0ea5e9;
+      border-radius: var(--radius-lg);
+      min-width: 60px;
+    }
+
+    .group-label {
+      font-size: var(--text-xl);
+    }
+
+    .group-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2px;
+      max-width: 80px;
+    }
+
+    .group-item {
+      font-size: var(--text-lg);
+      display: inline-block;
+    }
+
+    /* Question Section */
+    .question-section {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      margin: 0;
+    }
+
+    /* Choices Section */
+    .choices-section {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      max-width: 400px;
+      margin: 0 auto var(--space-4);
+    }
+
+    .choice-btn {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      padding: var(--space-4) var(--space-3);
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      border: 3px solid var(--color-neutral-300);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: var(--color-neutral-700);
+      box-shadow: 0 4px 0 var(--color-neutral-400);
+      min-height: 72px;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-color: var(--color-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--color-primary-dark);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 var(--color-neutral-400);
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #15803d;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fef2f2, #fecaca);
+      border-color: #ef4444;
+      color: #991b1b;
+      box-shadow: 0 4px 0 #dc2626;
+      animation: wiggle 0.5s ease;
+    }
+
+    .choice-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 4px 0 var(--color-neutral-400), 0 0 0 3px rgba(59, 130, 246, 0.5);
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Wiggle animation */
+    @keyframes wiggle {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-6px); }
+      80% { transform: translateX(6px); }
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .story-text {
+        font-size: var(--text-base);
+      }
+
+      .groups-visual {
+        gap: var(--space-2);
+        padding: var(--space-3);
+      }
+
+      .group-container {
+        padding: var(--space-1);
+        min-width: 50px;
+      }
+
+      .group-label {
+        font-size: var(--text-lg);
+      }
+
+      .group-items {
+        max-width: 60px;
+      }
+
+      .group-item {
+        font-size: var(--text-base);
+      }
+
+      .question-text {
+        font-size: var(--text-lg);
+      }
+
+      .choices-section {
+        gap: var(--space-2);
+      }
+
+      .choice-btn {
+        font-size: var(--text-xl);
+        padding: var(--space-3) var(--space-2);
+        min-height: 64px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .story-section {
+        padding: var(--space-3);
+      }
+
+      .story-text {
+        font-size: var(--text-base);
+      }
+
+      .groups-visual {
+        padding: var(--space-2);
+      }
+
+      .group-container {
+        min-width: 44px;
+        padding: var(--space-1);
+      }
+
+      .group-label {
+        font-size: var(--text-base);
+      }
+
+      .group-item {
+        font-size: var(--text-sm);
+      }
+
+      .choice-btn {
+        font-size: var(--text-lg);
+        padding: var(--space-3);
+        min-height: 60px;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

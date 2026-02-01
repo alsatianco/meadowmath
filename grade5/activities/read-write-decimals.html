@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Build the Decimal - Grade 5 Math Activity - Meadow Math">
+  <title>Build the Decimal - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🧩</span>
+            <span data-i18n="section.activities.read-write-decimals.title">Build the Decimal</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.read-write-decimals.instruction">Build the decimal by placing digits in the correct places!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Mode Badge -->
+          <div class="mode-badge" id="mode-badge">Standard Form</div>
+
+          <!-- Prompt Display -->
+          <div class="prompt-display" id="prompt-display">
+            <div class="prompt-label" data-i18n="section.activities.read-write-decimals.buildThis">Build this number:</div>
+            <div class="prompt-value" id="prompt-value">12.307</div>
+          </div>
+
+          <!-- Place Value Chart for building -->
+          <div class="build-chart" id="build-chart">
+            <div class="chart-column" data-place="hundreds">
+              <div class="chart-label" data-i18n="section.activities.read-write-decimals.hundreds">Hundreds</div>
+              <div class="chart-slot drop-zone" data-place="hundreds" tabindex="0" role="button" aria-label="Hundreds place"></div>
+            </div>
+            <div class="chart-column" data-place="tens">
+              <div class="chart-label" data-i18n="section.activities.read-write-decimals.tens">Tens</div>
+              <div class="chart-slot drop-zone" data-place="tens" tabindex="0" role="button" aria-label="Tens place"></div>
+            </div>
+            <div class="chart-column" data-place="ones">
+              <div class="chart-label" data-i18n="section.activities.read-write-decimals.ones">Ones</div>
+              <div class="chart-slot drop-zone" data-place="ones" tabindex="0" role="button" aria-label="Ones place"></div>
+            </div>
+            <div class="decimal-point-marker">.</div>
+            <div class="chart-column" data-place="tenths">
+              <div class="chart-label" data-i18n="section.activities.read-write-decimals.tenths">Tenths</div>
+              <div class="chart-slot drop-zone" data-place="tenths" tabindex="0" role="button" aria-label="Tenths place"></div>
+            </div>
+            <div class="chart-column" data-place="hundredths">
+              <div class="chart-label" data-i18n="section.activities.read-write-decimals.hundredths">Hundredths</div>
+              <div class="chart-slot drop-zone" data-place="hundredths" tabindex="0" role="button" aria-label="Hundredths place"></div>
+            </div>
+            <div class="chart-column" data-place="thousandths">
+              <div class="chart-label" data-i18n="section.activities.read-write-decimals.thousandths">Thousandths</div>
+              <div class="chart-slot drop-zone" data-place="thousandths" tabindex="0" role="button" aria-label="Thousandths place"></div>
+            </div>
+          </div>
+
+          <!-- Current Build Display -->
+          <div class="current-build" id="current-build">
+            <span class="build-label" data-i18n="section.activities.read-write-decimals.yourNumber">Your number:</span>
+            <span class="build-value" id="build-value">___.___</span>
+          </div>
+
+          <!-- Digit Bank -->
+          <div class="digit-bank" id="digit-bank">
+            <div class="bank-label" data-i18n="section.activities.read-write-decimals.digitBank">Digit Bank:</div>
+            <div class="bank-digits" id="bank-digits">
+              <!-- Digits will be generated dynamically -->
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button class="btn-activity btn-primary check-btn" id="btn-check" data-i18n="buttons.check">Check</button>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-clear" data-i18n="section.activities.read-write-decimals.clear">Clear</button>
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.read-write-decimals.great">Great decimal building!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Build the Decimal Activity - Grade 5 Level 1
+    const BuildDecimal = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      lastResult: null,
+      lastStatsKey: null,
+      advanceTimeout: null,
+      selectedDigit: null,
+      placedDigits: {},
+
+      // DOM elements
+      modeBadge: null,
+      promptValue: null,
+      buildChart: null,
+      dropZones: [],
+      currentBuild: null,
+      buildValue: null,
+      digitBank: null,
+      bankDigits: null,
+      btnCheck: null,
+      btnClear: null,
+      btnReset: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        // Cache DOM elements
+        this.modeBadge = document.getElementById('mode-badge');
+        this.promptValue = document.getElementById('prompt-value');
+        this.buildChart = document.getElementById('build-chart');
+        this.dropZones = Array.from(this.buildChart.querySelectorAll('.drop-zone'));
+        this.buildValue = document.getElementById('build-value');
+        this.digitBank = document.getElementById('digit-bank');
+        this.bankDigits = document.getElementById('bank-digits');
+        this.btnCheck = document.getElementById('btn-check');
+        this.btnClear = document.getElementById('btn-clear');
+        this.btnReset = document.getElementById('btn-reset');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Event listeners
+        this.btnCheck.addEventListener('click', () => this.checkAnswer());
+        this.btnClear.addEventListener('click', () => this.clearChart());
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Drop zone click handlers
+        this.dropZones.forEach(zone => {
+          zone.addEventListener('click', () => this.handleDropZoneClick(zone));
+          zone.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.handleDropZoneClick(zone);
+            }
+          });
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      // Number to word form conversion
+      numberToWords(num) {
+        const ones = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+        const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+        const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+
+        const numStr = num.toString();
+        const parts = numStr.split('.');
+        const wholePart = parseInt(parts[0]) || 0;
+        const decimalPart = parts[1] || '';
+
+        let result = '';
+
+        // Whole part
+        if (wholePart === 0 && decimalPart) {
+          result = 'zero';
+        } else if (wholePart > 0) {
+          if (wholePart >= 100) {
+            result += ones[Math.floor(wholePart / 100)] + ' hundred';
+            const remainder = wholePart % 100;
+            if (remainder > 0) {
+              result += ' ';
+              if (remainder < 10) {
+                result += ones[remainder];
+              } else if (remainder < 20) {
+                result += teens[remainder - 10];
+              } else {
+                result += tens[Math.floor(remainder / 10)];
+                if (remainder % 10 > 0) {
+                  result += '-' + ones[remainder % 10];
+                }
+              }
+            }
+          } else if (wholePart >= 20) {
+            result += tens[Math.floor(wholePart / 10)];
+            if (wholePart % 10 > 0) {
+              result += '-' + ones[wholePart % 10];
+            }
+          } else if (wholePart >= 10) {
+            result += teens[wholePart - 10];
+          } else {
+            result += ones[wholePart];
+          }
+        }
+
+        // Decimal part
+        if (decimalPart) {
+          result += ' and ';
+          const decNum = parseInt(decimalPart);
+          let placeName = '';
+
+          if (decimalPart.length === 1) {
+            placeName = decNum === 1 ? 'tenth' : 'tenths';
+          } else if (decimalPart.length === 2) {
+            placeName = decNum === 1 ? 'hundredth' : 'hundredths';
+          } else if (decimalPart.length === 3) {
+            placeName = decNum === 1 ? 'thousandth' : 'thousandths';
+          }
+
+          // Convert decimal number to words
+          if (decNum >= 100) {
+            result += ones[Math.floor(decNum / 100)] + ' hundred';
+            const remainder = decNum % 100;
+            if (remainder > 0) {
+              result += ' ';
+              if (remainder < 10) {
+                result += ones[remainder];
+              } else if (remainder < 20) {
+                result += teens[remainder - 10];
+              } else {
+                result += tens[Math.floor(remainder / 10)];
+                if (remainder % 10 > 0) {
+                  result += '-' + ones[remainder % 10];
+                }
+              }
+            }
+          } else if (decNum >= 20) {
+            result += tens[Math.floor(decNum / 10)];
+            if (decNum % 10 > 0) {
+              result += '-' + ones[decNum % 10];
+            }
+          } else if (decNum >= 10) {
+            result += teens[decNum - 10];
+          } else {
+            result += ones[decNum];
+          }
+
+          result += ' ' + placeName;
+        }
+
+        return result;
+      },
+
+      // Number to expanded form conversion
+      numberToExpanded(num) {
+        const numStr = num.toString();
+        const parts = numStr.split('.');
+        const wholePart = parts[0] || '0';
+        const decimalPart = parts[1] || '';
+
+        const expandedParts = [];
+
+        // Whole part digits
+        for (let i = 0; i < wholePart.length; i++) {
+          const digit = parseInt(wholePart[i]);
+          if (digit > 0) {
+            const placeValue = Math.pow(10, wholePart.length - 1 - i);
+            expandedParts.push((digit * placeValue).toString());
+          }
+        }
+
+        // Decimal part digits
+        for (let i = 0; i < decimalPart.length; i++) {
+          const digit = parseInt(decimalPart[i]);
+          if (digit > 0) {
+            const placeValue = 1 / Math.pow(10, i + 1);
+            expandedParts.push((digit * placeValue).toFixed(i + 1));
+          }
+        }
+
+        return expandedParts.join(' + ');
+      },
+
+      generateQuestions() {
+        const questions = [];
+        const modes = ['standard', 'word', 'expanded'];
+
+        // Generate varied decimal numbers
+        const numbers = [
+          12.307,  // standard
+          45.02,   // word
+          3.456,   // expanded
+          100.05,  // standard - has zeros
+          7.809,   // word
+          26.4,    // expanded
+          0.235,   // standard - starts with 0
+          50.007,  // word
+        ];
+
+        numbers.forEach((num, index) => {
+          const mode = modes[index % 3];
+          let prompt;
+
+          switch (mode) {
+            case 'standard':
+              prompt = num.toString();
+              break;
+            case 'word':
+              prompt = this.numberToWords(num);
+              break;
+            case 'expanded':
+              prompt = this.numberToExpanded(num);
+              break;
+          }
+
+          questions.push({
+            targetNumber: num,
+            mode: mode,
+            prompt: prompt
+          });
+        });
+
+        this.questions = shuffle(questions);
+      },
+
+      parseDigits(num) {
+        const numStr = num.toString();
+        const parts = numStr.split('.');
+        const wholePart = parts[0].padStart(3, '0');
+        const decimalPart = (parts[1] || '').padEnd(3, '0');
+
+        return {
+          hundreds: wholePart[wholePart.length - 3],
+          tens: wholePart[wholePart.length - 2],
+          ones: wholePart[wholePart.length - 1],
+          tenths: decimalPart[0],
+          hundredths: decimalPart[1],
+          thousandths: decimalPart[2]
+        };
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) {
+            return text;
+          }
+        }
+        return fallback;
+      },
+
+      getModeLabel(mode) {
+        switch (mode) {
+          case 'standard':
+            return this.getTranslation('section.activities.read-write-decimals.modeStandard', 'Standard Form');
+          case 'word':
+            return this.getTranslation('section.activities.read-write-decimals.modeWord', 'Word Form');
+          case 'expanded':
+            return this.getTranslation('section.activities.read-write-decimals.modeExpanded', 'Expanded Form');
+          default:
+            return mode;
+        }
+      },
+
+      renderDigitBank(targetNumber) {
+        this.bankDigits.innerHTML = '';
+
+        // Get the required digits
+        const digits = this.parseDigits(targetNumber);
+        const digitList = Object.values(digits);
+
+        // Add extra zeros for flexibility
+        const digitCounts = {};
+        digitList.forEach(d => {
+          digitCounts[d] = (digitCounts[d] || 0) + 1;
+        });
+
+        // Create digit buttons
+        for (let i = 0; i <= 9; i++) {
+          const count = digitCounts[i.toString()] || 0;
+          // Add at least 1 of each digit, or more if needed
+          const buttonCount = Math.max(1, count);
+
+          for (let j = 0; j < buttonCount; j++) {
+            const btn = document.createElement('button');
+            btn.className = 'digit-btn';
+            btn.type = 'button';
+            btn.textContent = i;
+            btn.dataset.digit = i;
+            btn.setAttribute('aria-label', `Digit ${i}`);
+            btn.addEventListener('click', () => this.selectDigit(btn));
+            this.bankDigits.appendChild(btn);
+          }
+        }
+      },
+
+      selectDigit(btn) {
+        if (this.isAnswered) return;
+
+        // Deselect previous
+        const prevSelected = this.bankDigits.querySelector('.digit-btn.selected');
+        if (prevSelected) {
+          prevSelected.classList.remove('selected');
+        }
+
+        // Select new
+        btn.classList.add('selected');
+        this.selectedDigit = btn;
+      },
+
+      handleDropZoneClick(zone) {
+        if (this.isAnswered) return;
+
+        const place = zone.dataset.place;
+
+        // If there's already a digit, return it to the bank
+        if (this.placedDigits[place] !== undefined) {
+          const existingDigit = this.placedDigits[place];
+          delete this.placedDigits[place];
+          zone.textContent = '';
+          zone.classList.remove('filled');
+
+          // Re-enable the digit in the bank
+          const bankBtn = Array.from(this.bankDigits.querySelectorAll('.digit-btn.used')).find(
+            btn => btn.dataset.digit === existingDigit.toString()
+          );
+          if (bankBtn) {
+            bankBtn.classList.remove('used');
+            bankBtn.disabled = false;
+          }
+        }
+
+        // If a digit is selected, place it
+        if (this.selectedDigit && !this.selectedDigit.classList.contains('used')) {
+          const digit = this.selectedDigit.dataset.digit;
+          this.placedDigits[place] = parseInt(digit);
+          zone.textContent = digit;
+          zone.classList.add('filled');
+
+          // Mark digit as used
+          this.selectedDigit.classList.add('used');
+          this.selectedDigit.classList.remove('selected');
+          this.selectedDigit.disabled = true;
+          this.selectedDigit = null;
+        }
+
+        this.updateBuildDisplay();
+      },
+
+      updateBuildDisplay() {
+        const hundreds = this.placedDigits.hundreds !== undefined ? this.placedDigits.hundreds : '_';
+        const tens = this.placedDigits.tens !== undefined ? this.placedDigits.tens : '_';
+        const ones = this.placedDigits.ones !== undefined ? this.placedDigits.ones : '_';
+        const tenths = this.placedDigits.tenths !== undefined ? this.placedDigits.tenths : '_';
+        const hundredths = this.placedDigits.hundredths !== undefined ? this.placedDigits.hundredths : '_';
+        const thousandths = this.placedDigits.thousandths !== undefined ? this.placedDigits.thousandths : '_';
+
+        this.buildValue.textContent = `${hundreds}${tens}${ones}.${tenths}${hundredths}${thousandths}`;
+      },
+
+      clearChart() {
+        if (this.isAnswered) return;
+
+        // Clear all placed digits
+        this.placedDigits = {};
+
+        // Clear drop zones
+        this.dropZones.forEach(zone => {
+          zone.textContent = '';
+          zone.classList.remove('filled', 'correct', 'incorrect');
+        });
+
+        // Re-enable all digit buttons
+        this.bankDigits.querySelectorAll('.digit-btn').forEach(btn => {
+          btn.classList.remove('used', 'selected');
+          btn.disabled = false;
+        });
+
+        this.selectedDigit = null;
+        this.updateBuildDisplay();
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.lastResult = null;
+        this.placedDigits = {};
+        this.selectedDigit = null;
+        this.feedback.classList.remove('show', 'error');
+        this.btnCheck.disabled = false;
+
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        // Update mode badge
+        this.modeBadge.textContent = this.getModeLabel(question.mode);
+        this.modeBadge.className = 'mode-badge mode-' + question.mode;
+
+        // Update prompt
+        this.promptValue.textContent = question.prompt;
+
+        // Clear chart
+        this.dropZones.forEach(zone => {
+          zone.textContent = '';
+          zone.classList.remove('filled', 'correct', 'incorrect');
+        });
+
+        // Render digit bank
+        this.renderDigitBank(question.targetNumber);
+
+        this.updateBuildDisplay();
+        this.renderProgress();
+      },
+
+      checkAnswer() {
+        if (this.isAnswered) return;
+
+        const question = this.questions[this.currentQuestion];
+        const expectedDigits = this.parseDigits(question.targetNumber);
+
+        // Check if all places are filled
+        const allPlaces = ['hundreds', 'tens', 'ones', 'tenths', 'hundredths', 'thousandths'];
+        let allFilled = true;
+        let allCorrect = true;
+
+        allPlaces.forEach(place => {
+          const expected = parseInt(expectedDigits[place]);
+          const placed = this.placedDigits[place];
+          const zone = this.dropZones.find(z => z.dataset.place === place);
+
+          if (placed === undefined) {
+            allFilled = false;
+          } else if (placed !== expected) {
+            allCorrect = false;
+            if (zone) zone.classList.add('incorrect');
+          } else {
+            if (zone) zone.classList.add('correct');
+          }
+        });
+
+        if (!allFilled) {
+          // Show hint to fill all places
+          this.feedback.textContent = this.getTranslation(
+            'section.activities.read-write-decimals.fillAll',
+            'Fill all the places!'
+          );
+          this.feedback.classList.add('error', 'show');
+          return;
+        }
+
+        this.isAnswered = true;
+        this.btnCheck.disabled = true;
+
+        if (allCorrect) {
+          this.correctCount++;
+          this.feedback.textContent = this.getTranslation(
+            'section.activities.read-write-decimals.correct',
+            'Correct! Great decimal building!'
+          );
+          this.feedback.classList.remove('error');
+          this.lastResult = { isCorrect: true };
+        } else {
+          this.incorrectCount++;
+
+          // Show the correct answer
+          allPlaces.forEach(place => {
+            const expected = parseInt(expectedDigits[place]);
+            const zone = this.dropZones.find(z => z.dataset.place === place);
+            if (zone && !zone.classList.contains('correct')) {
+              zone.textContent = expected;
+              zone.classList.add('correct');
+            }
+          });
+
+          const template = this.getTranslation(
+            'section.activities.read-write-decimals.wrong',
+            'The number is {number}.'
+          );
+          this.feedback.textContent = template.replace('{number}', question.targetNumber);
+          this.feedback.classList.add('error');
+          this.lastResult = { isCorrect: false, correctAnswer: question.targetNumber };
+        }
+
+        this.feedback.classList.add('show');
+        this.renderProgress();
+
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      updateTranslations() {
+        // Update mode badge
+        const question = this.questions[this.currentQuestion];
+        if (question) {
+          this.modeBadge.textContent = this.getModeLabel(question.mode);
+        }
+
+        if (this.lastResult && this.feedback.classList.contains('show')) {
+          if (this.lastResult.isCorrect) {
+            this.feedback.textContent = this.getTranslation(
+              'section.activities.read-write-decimals.correct',
+              'Correct! Great decimal building!'
+            );
+          } else {
+            const template = this.getTranslation(
+              'section.activities.read-write-decimals.wrong',
+              'The number is {number}.'
+            );
+            this.feedback.textContent = template.replace('{number}', this.lastResult.correctAnswer);
+          }
+        }
+
+        if (this.statsOverlay.classList.contains('show') && this.lastStatsKey) {
+          this.updateStatsMessage();
+        }
+
+        this.updateProgressLabel();
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearChart();
+        this.feedback.classList.remove('show', 'error');
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.lastStatsKey = 'perfect';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.read-write-decimals.perfect',
+            'Perfect! You mastered decimal building!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.lastStatsKey = 'great';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.read-write-decimals.great',
+            'Great decimal building!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.lastStatsKey = 'good';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.read-write-decimals.good',
+            'Good job! Keep practicing!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.lastStatsKey = 'keepPracticing';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.read-write-decimals.keepPracticing',
+            'Keep practicing decimal building!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.lastStatsKey = null;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => BuildDecimal.init());
+      } else {
+        BuildDecimal.init();
+      }
+    });
+  </script>
+  <style>
+    /* Build the Decimal specific styles */
+
+    .mode-badge {
+      display: inline-block;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: var(--space-3);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      color: #0369a1;
+      border: 2px solid #0ea5e9;
+    }
+
+    .mode-badge.mode-word {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #92400e;
+      border-color: #f59e0b;
+    }
+
+    .mode-badge.mode-expanded {
+      background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+      color: #6b21a8;
+      border-color: #a855f7;
+    }
+
+    .prompt-display {
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 3px solid #22c55e;
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      margin-bottom: var(--space-5);
+      text-align: center;
+    }
+
+    .prompt-label {
+      font-size: var(--text-sm);
+      color: var(--color-neutral-500);
+      margin-bottom: var(--space-2);
+    }
+
+    .prompt-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #166534;
+      line-height: 1.4;
+    }
+
+    .build-chart {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: var(--space-1);
+      margin-bottom: var(--space-4);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border-radius: var(--radius-2xl);
+      border: 3px solid var(--color-neutral-200);
+      overflow-x: auto;
+    }
+
+    .chart-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      min-width: 52px;
+    }
+
+    .chart-label {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-500);
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .chart-slot {
+      width: 48px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-400);
+      background: white;
+      border: 3px dashed #94a3b8;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .chart-slot:hover {
+      border-color: #3b82f6;
+      background: #eff6ff;
+    }
+
+    .chart-slot:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.35);
+      border-color: #3b82f6;
+    }
+
+    .chart-slot.filled {
+      color: #1e40af;
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border: 3px solid #3b82f6;
+      border-style: solid;
+    }
+
+    .chart-slot.correct {
+      color: #166534;
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+    }
+
+    .chart-slot.incorrect {
+      color: #991b1b;
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+    }
+
+    .decimal-point-marker {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: #dc2626;
+      align-self: flex-end;
+      padding-bottom: var(--space-2);
+      margin: 0 var(--space-1);
+    }
+
+    .current-build {
+      text-align: center;
+      margin-bottom: var(--space-4);
+      padding: var(--space-3);
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--color-neutral-200);
+    }
+
+    .build-label {
+      font-size: var(--text-sm);
+      color: var(--color-neutral-500);
+      margin-right: var(--space-2);
+    }
+
+    .build-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #0f766e;
+      letter-spacing: 2px;
+    }
+
+    .digit-bank {
+      margin-bottom: var(--space-4);
+    }
+
+    .bank-label {
+      font-size: var(--text-sm);
+      color: var(--color-neutral-500);
+      text-align: center;
+      margin-bottom: var(--space-2);
+    }
+
+    .bank-digits {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-2);
+    }
+
+    .digit-btn {
+      width: 48px;
+      height: 48px;
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 3px solid #0ea5e9;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 3px 0 #0284c7;
+      color: #0369a1;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .digit-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 0 #0284c7;
+    }
+
+    .digit-btn:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 1px 0 #0284c7;
+    }
+
+    .digit-btn.selected {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      box-shadow: 0 3px 0 #d97706;
+      color: #92400e;
+      transform: scale(1.1);
+    }
+
+    .digit-btn.used {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .digit-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.35), 0 3px 0 #0284c7;
+    }
+
+    .check-btn {
+      display: block;
+      margin: 0 auto var(--space-4);
+      min-width: 120px;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    .activity-actions {
+      display: flex;
+      gap: var(--space-3);
+      justify-content: center;
+    }
+
+    @media (max-width: 767px) {
+      .prompt-value {
+        font-size: var(--text-xl);
+      }
+
+      .build-chart {
+        padding: var(--space-3);
+        gap: 2px;
+      }
+
+      .chart-column {
+        min-width: 40px;
+      }
+
+      .chart-label {
+        font-size: 9px;
+      }
+
+      .chart-slot {
+        width: 40px;
+        height: 48px;
+        font-size: var(--text-xl);
+        border-width: 2px;
+      }
+
+      .decimal-point-marker {
+        font-size: var(--text-2xl);
+      }
+
+      .digit-btn {
+        width: 40px;
+        height: 40px;
+        font-size: var(--text-lg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .prompt-value {
+        font-size: var(--text-lg);
+      }
+
+      .chart-column {
+        min-width: 34px;
+      }
+
+      .chart-label {
+        font-size: 8px;
+      }
+
+      .chart-slot {
+        width: 34px;
+        height: 42px;
+        font-size: var(--text-lg);
+      }
+
+      .digit-btn {
+        width: 36px;
+        height: 36px;
+        font-size: var(--text-base);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

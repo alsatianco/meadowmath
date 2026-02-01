@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Partial Quotients Path - Grade 5 Math Activity - Meadow Math">
+  <title>Partial Quotients Path - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">🪜</span>
+            <span data-i18n="section.activities.partial-quotients-division.title">Partial Quotients Path</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.partial-quotients-division.instruction">Subtract multiples to find the quotient!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Problem Display -->
+          <div class="problem-display" id="problem-display">
+            <span class="dividend" id="dividend">936</span>
+            <span class="operator">÷</span>
+            <span class="divisor" id="divisor">24</span>
+          </div>
+
+          <!-- Division Workspace -->
+          <div class="division-workspace">
+            <!-- Left side: Subtraction steps -->
+            <div class="subtraction-panel">
+              <div class="panel-header" data-i18n="section.activities.partial-quotients-division.subtractChunks">Subtract chunks:</div>
+              <div class="subtraction-steps" id="subtraction-steps">
+                <!-- Steps will be added dynamically -->
+              </div>
+              <div class="current-remainder">
+                <span class="remainder-label" data-i18n="section.activities.partial-quotients-division.remaining">Remaining:</span>
+                <span class="remainder-value" id="remaining-value">936</span>
+              </div>
+            </div>
+
+            <!-- Right side: Quotient tracker -->
+            <div class="quotient-panel">
+              <div class="panel-header" data-i18n="section.activities.partial-quotients-division.quotientSoFar">Quotient so far:</div>
+              <div class="quotient-parts" id="quotient-parts">
+                <!-- Parts will be added dynamically -->
+              </div>
+              <div class="quotient-total">
+                <span class="total-label" data-i18n="section.activities.partial-quotients-division.total">Total:</span>
+                <span class="total-value" id="quotient-total">0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chunk Choices -->
+          <div class="step-prompt" id="step-prompt">
+            <span data-i18n="section.activities.partial-quotients-division.chooseChunk">Choose a chunk to subtract:</span>
+          </div>
+
+          <div class="chunk-choices" id="chunk-choices">
+            <!-- Buttons will be generated dynamically -->
+          </div>
+
+          <!-- Check Display (shown at end) -->
+          <div class="check-display" id="check-display">
+            <div class="check-equation" id="check-equation"></div>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.partial-quotients-division.great">Great division work!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Partial Quotients Path Activity - Grade 5 Level 2
+    const PartialQuotients = {
+      currentQuestion: 0,
+      totalQuestions: 6,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+
+      // Current problem state
+      currentRemainder: 0,
+      quotientParts: [],
+      subtractionSteps: [],
+      isComplete: false,
+      wrongChoiceCount: 0,
+      advanceTimeout: null,
+
+      // DOM elements
+      dividend: null,
+      divisor: null,
+      subtractionStepsEl: null,
+      remainingValue: null,
+      quotientPartsEl: null,
+      quotientTotal: null,
+      stepPrompt: null,
+      chunkChoices: null,
+      checkDisplay: null,
+      checkEquation: null,
+      btnReset: null,
+      feedback: null,
+      progress: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.dividend = document.getElementById('dividend');
+        this.divisor = document.getElementById('divisor');
+        this.subtractionStepsEl = document.getElementById('subtraction-steps');
+        this.remainingValue = document.getElementById('remaining-value');
+        this.quotientPartsEl = document.getElementById('quotient-parts');
+        this.quotientTotal = document.getElementById('quotient-total');
+        this.stepPrompt = document.getElementById('step-prompt');
+        this.chunkChoices = document.getElementById('chunk-choices');
+        this.checkDisplay = document.getElementById('check-display');
+        this.checkEquation = document.getElementById('check-equation');
+        this.btnReset = document.getElementById('btn-reset');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      generateQuestions() {
+        // Division problems with 2-digit divisors (mix of even divisions and small remainders)
+        const problems = [
+          { dividend: 936, divisor: 24 },   // quotient: 39, remainder: 0
+          { dividend: 725, divisor: 25 },   // quotient: 29, remainder: 0
+          { dividend: 864, divisor: 32 },   // quotient: 27, remainder: 0
+          { dividend: 756, divisor: 18 },   // quotient: 42, remainder: 0
+          { dividend: 952, divisor: 28 },   // quotient: 34, remainder: 0
+          { dividend: 1050, divisor: 35 },  // quotient: 30, remainder: 0
+          { dividend: 850, divisor: 24 },   // quotient: 35, remainder: 10
+          { dividend: 978, divisor: 32 },   // quotient: 30, remainder: 18
+          { dividend: 689, divisor: 25 },   // quotient: 27, remainder: 14
+          { dividend: 1143, divisor: 40 },  // quotient: 28, remainder: 23
+        ];
+
+        this.questions = shuffle(problems).slice(0, this.totalQuestions).map(p => {
+          const quotient = Math.floor(p.dividend / p.divisor);
+          const remainder = p.dividend % p.divisor;
+
+          return {
+            dividend: p.dividend,
+            divisor: p.divisor,
+            quotient: quotient,
+            remainder: remainder
+          };
+        });
+      },
+
+      generateChunkOptions(divisor, remaining) {
+        // Generate meaningful chunk options based on divisor and what's left
+        const options = [];
+        const maxMultiplier = Math.floor(remaining / divisor);
+
+        if (maxMultiplier <= 0) return options;
+
+        // Always try to include useful multipliers
+        const usefulMultipliers = [1, 2, 5, 10, 20, 30, 50];
+
+        usefulMultipliers.forEach(m => {
+          if (m <= maxMultiplier && m * divisor <= remaining) {
+            options.push({
+              multiplier: m,
+              product: m * divisor
+            });
+          }
+        });
+
+        // If we have too few options, add some more
+        if (options.length < 4) {
+          // Add the max possible (if not already included)
+          if (!options.find(o => o.multiplier === maxMultiplier)) {
+            options.push({
+              multiplier: maxMultiplier,
+              product: maxMultiplier * divisor
+            });
+          }
+
+          // Add half of max if reasonable
+          const halfMax = Math.floor(maxMultiplier / 2);
+          if (halfMax > 0 && !options.find(o => o.multiplier === halfMax)) {
+            options.push({
+              multiplier: halfMax,
+              product: halfMax * divisor
+            });
+          }
+        }
+
+        // Sort by multiplier descending (bigger chunks first)
+        options.sort((a, b) => b.multiplier - a.multiplier);
+
+        // Limit to 5 options max
+        return options.slice(0, 5);
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      renderSubtractionSteps() {
+        this.subtractionStepsEl.innerHTML = '';
+
+        this.subtractionSteps.forEach((step, index) => {
+          const stepEl = document.createElement('div');
+          stepEl.className = 'subtraction-step';
+          stepEl.innerHTML = `
+            <span class="step-start">${step.from.toLocaleString()}</span>
+            <span class="step-minus">−</span>
+            <span class="step-chunk">${step.chunk.toLocaleString()}</span>
+            <span class="step-multiplier">(${this.questions[this.currentQuestion].divisor} × ${step.multiplier})</span>
+          `;
+          this.subtractionStepsEl.appendChild(stepEl);
+        });
+
+        this.remainingValue.textContent = this.currentRemainder.toLocaleString();
+      },
+
+      renderQuotientParts() {
+        this.quotientPartsEl.innerHTML = '';
+
+        this.quotientParts.forEach((part, index) => {
+          const partEl = document.createElement('div');
+          partEl.className = 'quotient-part';
+          partEl.textContent = `+${part}`;
+          this.quotientPartsEl.appendChild(partEl);
+        });
+
+        const total = this.quotientParts.reduce((sum, p) => sum + p, 0);
+        this.quotientTotal.textContent = total;
+      },
+
+      renderChunkChoices() {
+        const question = this.questions[this.currentQuestion];
+        const options = this.generateChunkOptions(question.divisor, this.currentRemainder);
+
+        this.chunkChoices.innerHTML = '';
+
+        if (options.length === 0 || this.currentRemainder < question.divisor) {
+          // Division complete
+          this.completeQuestion();
+          return;
+        }
+
+        options.forEach((option) => {
+          const btn = document.createElement('button');
+          btn.className = 'chunk-btn';
+          btn.type = 'button';
+          btn.innerHTML = `
+            <span class="chunk-multiplier">${question.divisor} × ${option.multiplier}</span>
+            <span class="chunk-equals">=</span>
+            <span class="chunk-product">${option.product.toLocaleString()}</span>
+          `;
+          btn.dataset.multiplier = option.multiplier;
+          btn.dataset.product = option.product;
+          btn.addEventListener('click', () => this.selectChunk(btn, option));
+          this.chunkChoices.appendChild(btn);
+        });
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        const question = this.questions[this.currentQuestion];
+        if (!question) {
+          this.showStats();
+          return;
+        }
+
+        // Reset state
+        this.currentRemainder = question.dividend;
+        this.quotientParts = [];
+        this.subtractionSteps = [];
+        this.isComplete = false;
+        this.wrongChoiceCount = 0;
+        this.feedback.classList.remove('show', 'error');
+        this.checkDisplay.classList.remove('show');
+        this.stepPrompt.style.display = '';
+        this.chunkChoices.style.display = '';
+
+        // Update display
+        this.dividend.textContent = question.dividend.toLocaleString();
+        this.divisor.textContent = question.divisor;
+
+        this.renderSubtractionSteps();
+        this.renderQuotientParts();
+        this.renderChunkChoices();
+        this.renderProgress();
+      },
+
+      selectChunk(btn, option) {
+        if (this.isComplete) return;
+
+        const question = this.questions[this.currentQuestion];
+
+        // Check if this chunk can be subtracted
+        if (option.product > this.currentRemainder) {
+          // Too big - show feedback
+          this.wrongChoiceCount++;
+          btn.classList.add('too-big');
+
+          const tooBigText = this.getTranslation(
+            'section.activities.partial-quotients-division.tooBig',
+            '{product} is too big! Only {remaining} left.'
+          ).replace('{product}', option.product.toLocaleString())
+           .replace('{remaining}', this.currentRemainder.toLocaleString());
+
+          this.feedback.textContent = tooBigText;
+          this.feedback.classList.add('error');
+          this.feedback.classList.add('show');
+
+          setTimeout(() => {
+            btn.classList.remove('too-big');
+            this.feedback.classList.remove('show');
+          }, 1200);
+          return;
+        }
+
+        // Valid chunk - animate and update
+        btn.classList.add('selected');
+
+        // Add to subtraction steps
+        this.subtractionSteps.push({
+          from: this.currentRemainder,
+          chunk: option.product,
+          multiplier: option.multiplier
+        });
+
+        // Update remainder
+        this.currentRemainder -= option.product;
+
+        // Add to quotient parts
+        this.quotientParts.push(option.multiplier);
+
+        // Update displays
+        this.renderSubtractionSteps();
+        this.renderQuotientParts();
+
+        // Small delay before rendering new choices
+        setTimeout(() => {
+          this.renderChunkChoices();
+        }, 300);
+      },
+
+      completeQuestion() {
+        this.isComplete = true;
+        const question = this.questions[this.currentQuestion];
+        const totalQuotient = this.quotientParts.reduce((sum, p) => sum + p, 0);
+
+        // Hide choices and prompt
+        this.stepPrompt.style.display = 'none';
+        this.chunkChoices.style.display = 'none';
+
+        // Show check equation
+        let checkText;
+        if (this.currentRemainder > 0) {
+          checkText = `(${question.divisor} × ${totalQuotient}) + ${this.currentRemainder} = ${(question.divisor * totalQuotient + this.currentRemainder).toLocaleString()}`;
+        } else {
+          checkText = `${question.divisor} × ${totalQuotient} = ${(question.divisor * totalQuotient).toLocaleString()}`;
+        }
+        this.checkEquation.textContent = checkText;
+        this.checkDisplay.classList.add('show');
+
+        // Determine success
+        const isCorrect = totalQuotient === question.quotient && this.currentRemainder === question.remainder;
+
+        if (isCorrect && this.wrongChoiceCount === 0) {
+          this.correctCount++;
+        } else {
+          this.incorrectCount++;
+        }
+
+        // Show completion feedback
+        let feedbackText;
+        if (totalQuotient === question.quotient) {
+          feedbackText = this.getTranslation(
+            'section.activities.partial-quotients-division.complete',
+            '{dividend} ÷ {divisor} = {quotient}'
+          ).replace('{dividend}', question.dividend.toLocaleString())
+           .replace('{divisor}', question.divisor)
+           .replace('{quotient}', totalQuotient);
+
+          if (this.currentRemainder > 0) {
+            feedbackText += ` R${this.currentRemainder}`;
+          }
+          this.feedback.classList.remove('error');
+        } else {
+          feedbackText = this.getTranslation(
+            'section.activities.partial-quotients-division.notQuite',
+            'Not quite. The answer is {quotient}.'
+          ).replace('{quotient}', question.quotient);
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.textContent = feedbackText;
+        this.feedback.classList.add('show');
+
+        // Auto-advance
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay + 500); // Extra time to see the check
+
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.partial-quotients-division.perfect',
+            'Perfect division!'
+          );
+        } else if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.partial-quotients-division.great',
+            'Great division work!'
+          );
+        } else if (percent >= 0.6) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.partial-quotients-division.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.partial-quotients-division.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => PartialQuotients.init());
+      } else {
+        PartialQuotients.init();
+      }
+    });
+  </script>
+  <style>
+    /* Partial Quotients Path specific styles */
+
+    .problem-display {
+      text-align: center;
+      margin-bottom: var(--space-4);
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+      border-radius: var(--radius-xl);
+      border: 3px solid #8b5cf6;
+      box-shadow: 0 3px 0 #7c3aed;
+    }
+
+    .problem-display .dividend,
+    .problem-display .divisor {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: #5b21b6;
+    }
+
+    .problem-display .operator {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #7c3aed;
+      margin: 0 var(--space-3);
+    }
+
+    .division-workspace {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .subtraction-panel,
+    .quotient-panel {
+      padding: var(--space-3);
+      border-radius: var(--radius-xl);
+      border: 3px solid;
+    }
+
+    .subtraction-panel {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+    }
+
+    .quotient-panel {
+      background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+      border-color: #10b981;
+    }
+
+    .panel-header {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      margin-bottom: var(--space-2);
+      text-align: center;
+    }
+
+    .subtraction-steps {
+      min-height: 60px;
+      margin-bottom: var(--space-2);
+    }
+
+    .subtraction-step {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-1);
+      padding: var(--space-1) 0;
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .step-start {
+      font-weight: var(--weight-bold);
+      color: #92400e;
+    }
+
+    .step-minus {
+      color: #d97706;
+    }
+
+    .step-chunk {
+      font-weight: var(--weight-bold);
+      color: #b45309;
+    }
+
+    .step-multiplier {
+      font-size: var(--text-xs);
+      color: #78350f;
+      opacity: 0.8;
+    }
+
+    .current-remainder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-2);
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 2px solid #f59e0b;
+    }
+
+    .remainder-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      color: #92400e;
+    }
+
+    .remainder-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #78350f;
+    }
+
+    .quotient-parts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-1);
+      min-height: 40px;
+      margin-bottom: var(--space-2);
+    }
+
+    .quotient-part {
+      padding: var(--space-1) var(--space-2);
+      background: white;
+      border: 2px solid #10b981;
+      border-radius: var(--radius-md);
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #059669;
+      animation: pop 0.3s ease;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.8); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .quotient-total {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-2);
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 2px solid #10b981;
+    }
+
+    .total-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      color: #047857;
+    }
+
+    .total-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: #065f46;
+    }
+
+    .step-prompt {
+      text-align: center;
+      margin-bottom: var(--space-3);
+    }
+
+    .step-prompt span {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      color: var(--color-neutral-600);
+    }
+
+    .chunk-choices {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-4);
+    }
+
+    .chunk-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      min-width: 100px;
+      min-height: 70px;
+      padding: var(--space-2) var(--space-3);
+      font-family: var(--font-secondary);
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 3px solid #0ea5e9;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #0284c7;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .chunk-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 #0284c7;
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+    }
+
+    .chunk-btn:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 0 #0284c7;
+    }
+
+    .chunk-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.35), 0 4px 0 #0284c7;
+    }
+
+    .chunk-btn.selected {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      box-shadow: 0 4px 0 #16a34a;
+      pointer-events: none;
+    }
+
+    .chunk-btn.too-big {
+      background: linear-gradient(135deg, #fecaca, #fca5a5);
+      border-color: #ef4444;
+      box-shadow: 0 4px 0 #dc2626;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+      20%, 40%, 60%, 80% { transform: translateX(4px); }
+    }
+
+    .chunk-multiplier {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: #0369a1;
+    }
+
+    .chunk-equals {
+      font-size: var(--text-xs);
+      color: #0284c7;
+    }
+
+    .chunk-product {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #0369a1;
+    }
+
+    .check-display {
+      display: none;
+      text-align: center;
+      margin-bottom: var(--space-4);
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+      border-radius: var(--radius-xl);
+      border: 3px solid #10b981;
+      box-shadow: 0 3px 0 #059669;
+    }
+
+    .check-display.show {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .check-equation {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #065f46;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    @media (max-width: 767px) {
+      .problem-display .dividend,
+      .problem-display .divisor {
+        font-size: var(--text-2xl);
+      }
+
+      .problem-display .operator {
+        font-size: var(--text-xl);
+        margin: 0 var(--space-2);
+      }
+
+      .division-workspace {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+      }
+
+      .subtraction-panel,
+      .quotient-panel {
+        padding: var(--space-2);
+      }
+
+      .chunk-btn {
+        min-width: 85px;
+        min-height: 60px;
+        padding: var(--space-2);
+      }
+
+      .chunk-multiplier {
+        font-size: var(--text-xs);
+      }
+
+      .chunk-product {
+        font-size: var(--text-base);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .problem-display {
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .problem-display .dividend,
+      .problem-display .divisor {
+        font-size: var(--text-xl);
+      }
+
+      .subtraction-step {
+        font-size: var(--text-xs);
+        flex-wrap: wrap;
+      }
+
+      .step-multiplier {
+        font-size: 10px;
+      }
+
+      .remainder-value,
+      .total-value {
+        font-size: var(--text-lg);
+      }
+
+      .chunk-btn {
+        min-width: 75px;
+        min-height: 55px;
+        padding: var(--space-1) var(--space-2);
+        border-width: 2px;
+        box-shadow: 0 3px 0 #0284c7;
+      }
+
+      .chunk-multiplier {
+        font-size: 10px;
+      }
+
+      .chunk-equals {
+        font-size: 10px;
+      }
+
+      .chunk-product {
+        font-size: var(--text-sm);
+      }
+
+      .check-equation {
+        font-size: var(--text-base);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

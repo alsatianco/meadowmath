@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Make 10 to Add - Kindergarten Math Activity - Meadow Math">
+  <title>Make 10 to Add - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tieng Viet">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.kindergarten">Kinder</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🧩</span>
+            <span data-i18n="section.activities.make-10-to-add.title">Make 10 to Add</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.make-10-to-add.instruction">Find the number that makes 10!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Target Display -->
+          <div class="target-display">
+            <span class="target-icon">🎯</span>
+            <span class="target-text" data-i18n="section.activities.make-10-to-add.target">Make</span>
+            <span class="target-number">10</span>
+          </div>
+
+          <!-- Ten Frame Visual -->
+          <div class="ten-frame-container">
+            <div class="ten-frame" id="ten-frame">
+              <!-- 10 cells rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Equation Display -->
+          <div class="equation-display" id="equation-display">
+            <span class="eq-part num known" id="known-num">6</span>
+            <span class="eq-part op">+</span>
+            <span class="eq-part num missing" id="missing-num">?</span>
+            <span class="eq-part op">=</span>
+            <span class="eq-part num total">10</span>
+          </div>
+
+          <!-- Question -->
+          <p class="question-text" id="question-text">What number goes with <strong id="question-num">6</strong> to make 10?</p>
+
+          <!-- Answer Choices -->
+          <div class="answer-choices" id="answer-choices">
+            <!-- Generated by JS -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Make 10 to Add Activity Styles */
+    .target-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+      padding: var(--space-3);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: var(--radius-xl);
+      border: 3px solid #f59e0b;
+    }
+
+    .target-icon {
+      font-size: var(--text-2xl);
+    }
+
+    .target-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-medium);
+      color: var(--color-neutral-700);
+    }
+
+    .target-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #d97706;
+      background: white;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-lg);
+      border: 3px solid #f59e0b;
+    }
+
+    /* Ten Frame */
+    .ten-frame-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .ten-frame {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 4px;
+      padding: var(--space-2);
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 4px solid #0ea5e9;
+      border-radius: var(--radius-xl);
+    }
+
+    .frame-cell {
+      width: 44px;
+      height: 44px;
+      background: white;
+      border: 2px solid #bae6fd;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .frame-cell.filled {
+      background: linear-gradient(135deg, #dbeafe, #93c5fd);
+      border-color: #3b82f6;
+      animation: popIn 0.3s ease backwards;
+    }
+
+    .frame-cell.filled.partner {
+      background: linear-gradient(135deg, #dcfce7, #86efac);
+      border-color: #22c55e;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0); }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    /* Equation Display */
+    .equation-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .eq-part {
+      font-family: var(--font-secondary);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+    }
+
+    .eq-part.num {
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-xl);
+      min-width: 55px;
+      text-align: center;
+    }
+
+    .eq-part.known {
+      background: linear-gradient(135deg, #dbeafe, #93c5fd);
+      color: #1e40af;
+      border: 3px solid #3b82f6;
+    }
+
+    .eq-part.missing {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #d97706;
+      border: 3px dashed #f59e0b;
+      animation: pulse 1.5s ease infinite;
+    }
+
+    .eq-part.missing.revealed {
+      background: linear-gradient(135deg, #dcfce7, #86efac);
+      color: #166534;
+      border: 3px solid #22c55e;
+      animation: none;
+    }
+
+    .eq-part.total {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #92400e;
+      border: 3px solid #f59e0b;
+    }
+
+    .eq-part.op {
+      color: var(--color-neutral-500);
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Question text */
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-700);
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .question-text strong {
+      color: #1e40af;
+    }
+
+    /* Answer choices */
+    .answer-choices {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .answer-btn {
+      width: 75px;
+      height: 75px;
+      border: 4px solid #e2e8f0;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 0 #cbd5e1, 0 6px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      transform: translateY(-4px);
+      border-color: #3b82f6;
+      box-shadow: 0 8px 0 #2563eb, 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .answer-btn:focus {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .answer-btn:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .answer-btn:focus-visible {
+      outline: 4px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .answer-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .answer-btn.correct {
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #16a34a;
+      animation: correctPop 0.5s ease;
+    }
+
+    .answer-btn.incorrect {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      color: #92400e;
+      box-shadow: 0 4px 0 #d97706;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes correctPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 767px) {
+      .frame-cell {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+      }
+
+      .eq-part {
+        font-size: var(--text-2xl);
+      }
+
+      .eq-part.num {
+        min-width: 45px;
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .answer-btn {
+        width: 65px;
+        height: 65px;
+        font-size: var(--text-xl);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Make 10 to Add Activity
+    const Make10ToAdd = {
+      // Game state
+      round: 1,
+      maxRounds: 10,
+      knownNum: 0,
+      missingNum: 0,
+      hasAnswered: false,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 2000,
+
+      // DOM elements
+      progress: null,
+      tenFrame: null,
+      knownNumEl: null,
+      missingNumEl: null,
+      questionText: null,
+      answerChoices: null,
+      feedback: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        this.progress = document.getElementById('progress');
+        this.tenFrame = document.getElementById('ten-frame');
+        this.knownNumEl = document.getElementById('known-num');
+        this.missingNumEl = document.getElementById('missing-num');
+        this.questionText = document.getElementById('question-text');
+        this.answerChoices = document.getElementById('answer-choices');
+        this.feedback = document.getElementById('feedback');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        this.startRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Start a new round
+       */
+      startRound() {
+        this.hasAnswered = false;
+
+        // Generate a known number (1-9 so partner is also 1-9)
+        // Progressive: start with easier pairs (5+5, 6+4, etc.)
+        if (this.round <= 3) {
+          // Easier: numbers close to 5
+          this.knownNum = randomInt(4, 6);
+        } else if (this.round <= 6) {
+          // Medium: any number 2-8
+          this.knownNum = randomInt(2, 8);
+        } else {
+          // Harder: include edge cases 1 and 9
+          this.knownNum = randomInt(1, 9);
+        }
+        this.missingNum = 10 - this.knownNum;
+
+        // Update display
+        this.knownNumEl.textContent = this.knownNum;
+        this.missingNumEl.textContent = '?';
+        this.missingNumEl.classList.remove('revealed');
+
+        // Update question text with i18n
+        const questionTemplate = i18n.t('section.activities.make-10-to-add.question') || 'What number goes with <strong>{{num}}</strong> to make 10?';
+        this.questionText.innerHTML = questionTemplate.replace('{{num}}', `<strong>${this.knownNum}</strong>`);
+
+        // Render ten frame
+        this.renderTenFrame(false);
+
+        // Reset UI
+        this.feedback.classList.remove('show', 'error');
+
+        this.renderChoices();
+        this.renderProgress();
+      },
+
+      /**
+       * Render ten frame visual
+       */
+      renderTenFrame(showPartner) {
+        this.tenFrame.innerHTML = '';
+
+        for (let i = 0; i < 10; i++) {
+          const cell = document.createElement('div');
+          cell.className = 'frame-cell';
+
+          if (i < this.knownNum) {
+            // Fill with known number's dots
+            cell.classList.add('filled');
+            cell.innerHTML = '🔵';
+            cell.style.animationDelay = `${i * 0.05}s`;
+          } else if (showPartner) {
+            // Fill with partner's dots (revealed)
+            cell.classList.add('filled', 'partner');
+            cell.innerHTML = '🟢';
+            cell.style.animationDelay = `${(i - this.knownNum) * 0.1}s`;
+          }
+
+          this.tenFrame.appendChild(cell);
+        }
+      },
+
+      /**
+       * Render answer choices
+       */
+      renderChoices() {
+        this.answerChoices.innerHTML = '';
+
+        // Generate choices including the correct answer
+        const choices = new Set([this.missingNum]);
+
+        // Add distractors
+        while (choices.size < 4) {
+          let distractor;
+          if (Math.random() > 0.5) {
+            // Close distractor (within ±2)
+            distractor = this.missingNum + randomInt(-2, 2);
+          } else {
+            // Random distractor 1-9
+            distractor = randomInt(1, 9);
+          }
+          if (distractor >= 1 && distractor <= 9 && distractor !== this.missingNum) {
+            choices.add(distractor);
+          }
+        }
+
+        // Convert to array and shuffle
+        const choicesArray = Array.from(choices);
+        this.shuffleArray(choicesArray);
+
+        // Create buttons
+        choicesArray.forEach(num => {
+          const btn = document.createElement('button');
+          btn.className = 'answer-btn';
+          btn.textContent = num;
+          btn.setAttribute('tabindex', '0');
+          btn.addEventListener('click', () => this.selectAnswer(num, btn));
+          this.answerChoices.appendChild(btn);
+        });
+      },
+
+      /**
+       * Shuffle array
+       */
+      shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      },
+
+      /**
+       * Select answer
+       */
+      selectAnswer(num, btn) {
+        if (this.hasAnswered) return;
+        this.hasAnswered = true;
+
+        // Disable all buttons
+        const allBtns = this.answerChoices.querySelectorAll('.answer-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        // Reveal missing number
+        this.missingNumEl.textContent = this.missingNum;
+        this.missingNumEl.classList.add('revealed');
+
+        // Reveal partner dots in ten frame
+        this.renderTenFrame(true);
+
+        const isCorrect = num === this.missingNum;
+
+        if (isCorrect) {
+          btn.classList.add('correct');
+          const msg = i18n.t('section.activities.make-10-to-add.correct') || 'Yes! {{known}} + {{missing}} = 10!';
+          this.feedback.textContent = msg
+            .replace('{{known}}', this.knownNum)
+            .replace('{{missing}}', this.missingNum);
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          if (typeof celebrate === 'function') {
+            celebrate(btn);
+          }
+        } else {
+          btn.classList.add('incorrect');
+          // Highlight correct answer
+          allBtns.forEach(b => {
+            if (parseInt(b.textContent) === this.missingNum) {
+              b.classList.add('correct');
+            }
+          });
+          const msg = i18n.t('section.activities.make-10-to-add.incorrect') || '{{known}} + {{missing}} = 10';
+          this.feedback.textContent = msg
+            .replace('{{known}}', this.knownNum)
+            .replace('{{missing}}', this.missingNum);
+          this.feedback.classList.add('show', 'error');
+          this.wrongCount++;
+        }
+
+        this.renderProgress();
+
+        setTimeout(() => {
+          if (this.round < this.maxRounds) {
+            this.nextRound();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      /**
+       * Show stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+        if (percent >= 0.8) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.make-10-to-add.perfect') || 'Make 10 Master!';
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '🎉';
+          this.statsMessage.textContent = i18n.t('section.activities.make-10-to-add.great') || 'Great making 10!';
+        } else {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.make-10-to-add.keepPracticing') || 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart
+       */
+      restartActivity() {
+        this.round = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startRound();
+      },
+
+      /**
+       * Next round
+       */
+      nextRound() {
+        this.round++;
+        this.startRound();
+      },
+
+      /**
+       * Render progress
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.round || (i === this.round && this.hasAnswered)) {
+            className += ' completed';
+          } else if (i === this.round) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      Make10ToAdd.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

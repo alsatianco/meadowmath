@@ -1,52 +1,908 @@
 {
   "title": "Grade 3 Activities",
-  "description": "Understanding times tables and groups",
+  "description": "Times and groups",
   "levels": {
     "level1": {
-      "title": "Level 1",
-      "description": "Multiplication basics"
+      "title": "Place Value to 10,000",
+      "goal": "Understand thousands/hundreds/tens/ones, represent numbers in multiple ways, and round sensibly.",
+      "learnMore": {
+        "g3-l1-big-idea": {
+          "title": "Big idea",
+          "content": "Place value is a *map*: each step left is 10x bigger (ones -> tens -> hundreds -> thousands). When kids can say a number in parts (6 thousands, 3 hundreds...), comparing and rounding become calm and logical."
+        },
+        "g3-l1-notice": {
+          "title": "What to notice",
+          "content": "* Compares thousands first, then hundreds, then tens.\n* Reads 4-digit numbers smoothly (no \"sixty-three hundred\" unless intended).\n* Can explain rounding as \"which benchmark is it closer to?\"\n* Understands digit value (the 5 in 7,532 is 500, not 5)."
+        },
+        "g3-l1-home": {
+          "title": "Try at home",
+          "content": "* **Game A (core idea): \"Bundle 10, Bundle 10\"**\nMake 100 with 10 bundles of 10 (straws, sticks, coins). Then trade 10 bundles for 1 \"hundred\" card.\n* **Game B (second representation): \"Number Builder Cards\"**\nWrite 0-9 on small cards. Draw 4 cards to make a number. Ask: \"What's the biggest you can make? The smallest? What changes if you swap two cards?\""
+        },
+        "g3-l1-videos": {
+          "title": "Optional videos",
+          "content": "Search for <a href='https://www.youtube.com/results?search_query=place+value+to+10000+for+kids' target='_blank' rel='noopener noreferrer'>place value to 10,000 for kids</a> on YouTube.\nSearch for <a href='https://www.youtube.com/results?search_query=rounding+to+nearest+10+100+1000+number+line' target='_blank' rel='noopener noreferrer'>rounding to nearest 10/100/1000 number line</a> on YouTube.\nPractice with <a href='https://www.khanacademy.org/math/cc-third-grade-math/cc-3rd-place-value-and-rounding' target='_blank' rel='noopener noreferrer'>Khan Academy: place value & rounding</a>."
+        }
+      }
     },
     "level2": {
-      "title": "Level 2",
-      "description": "Times tables practice"
+      "title": "Add/Subtract Within 1,000",
+      "goal": "Add and subtract within 1,000 using place-value reasoning, regrouping, and estimation.",
+      "learnMore": {
+        "g3-l2-big-idea": {
+          "title": "Big idea",
+          "content": "Adding and subtracting within 1,000 is about *trading* (10 ones <-> 1 ten, 10 tens <-> 1 hundred). Estimation helps kids feel: \"Is my answer sensible?\""
+        },
+        "g3-l2-notice": {
+          "title": "What to notice",
+          "content": "* Uses place value language: \"300 + 40 + 7\".\n* Trades calmly when needed (not random borrowing).\n* Checks answers with estimation (\"about 600\").\n* Can tell whether a story needs +, -, or both."
+        },
+        "g3-l2-home": {
+          "title": "Try at home",
+          "content": "* **\"Trade Bank\"**: Use coins/buttons. 10 ones trade for 1 ten card; 10 tens trade for 1 hundred card. Make numbers, then trade to subtract.\n* **\"Estimate Jar\"**: Guess about how many in a small jar. Then count by tens. Compare estimate vs actual."
+        },
+        "g3-l2-videos": {
+          "title": "Optional videos",
+          "content": "Search for <a href='https://www.youtube.com/results?search_query=addition+and+subtraction+within+1000+base+ten+blocks' target='_blank' rel='noopener noreferrer'>addition and subtraction within 1000 base ten blocks</a>.\nSearch for <a href='https://www.youtube.com/results?search_query=regrouping+with+zeros+subtraction+for+kids' target='_blank' rel='noopener noreferrer'>regrouping with zeros subtraction for kids</a>.\nPractice with <a href='https://www.khanacademy.org/math/cc-third-grade-math/cc-3rd-add-sub-topic' target='_blank' rel='noopener noreferrer'>Khan Academy: add & subtract within 1,000</a>."
+        }
+      }
     },
     "level3": {
-      "title": "Level 3",
-      "description": "Division introduction"
+      "title": "Multiply & Divide Within 100",
+      "goal": "Understand multiplication and division as equal groups and arrays, and build fluent strategies.",
+      "learnMore": {
+        "g3-l3-big-idea": {
+          "title": "Big idea",
+          "content": "Multiplication is \"equal groups,\" and division is \"equal sharing\" or \"how many groups.\" Arrays help kids *see* the structure, not just memorize facts."
+        },
+        "g3-l3-notice": {
+          "title": "What to notice",
+          "content": "* Counts by groups instead of counting one-by-one.\n* Uses known facts to get new ones (double/halve, 5s and 10s).\n* Reads 6x4 as \"6 groups of 4\" and \"4 groups of 6.\"\n* For division, can explain what the answer *means* (per group vs number of groups)."
+        },
+        "g3-l3-home": {
+          "title": "Try at home",
+          "content": "* **\"Array Snacks\"**: Put crackers in rows (e.g., 4 rows of 6). Ask: \"How many? What's the equation?\"\n* **\"Share & Check\"**: Share 18 grapes among 3 bowls. Count each bowl. Then ask: \"What if we had 6 bowls?\""
+        },
+        "g3-l3-videos": {
+          "title": "Optional videos",
+          "content": "Search for <a href='https://www.youtube.com/results?search_query=arrays+and+equal+groups+for+kids+multiplication' target='_blank' rel='noopener noreferrer'>arrays and equal groups for kids multiplication</a>.\nSearch for <a href='https://www.youtube.com/results?search_query=division+as+sharing+for+kids' target='_blank' rel='noopener noreferrer'>division as sharing for kids</a>.\nPractice with <a href='https://www.khanacademy.org/math/cc-third-grade-math/cc-3rd-mult-div-topic' target='_blank' rel='noopener noreferrer'>Khan Academy: multiplication & division</a>."
+        }
+      }
     },
     "level4": {
-      "title": "Level 4",
-      "description": "Fractions basics"
+      "title": "Fractions as Numbers",
+      "goal": "Understand fractions as equal parts of a whole and as numbers on the number line, including equivalence and comparisons.",
+      "learnMore": {
+        "g3-l4-big-idea": {
+          "title": "Big idea",
+          "content": "A fraction is a number made from *equal parts*. \"Three fourths\" means 3 pieces where each piece is 1/4. Number lines help fractions feel real and ordered."
+        },
+        "g3-l4-notice": {
+          "title": "What to notice",
+          "content": "* Checks parts are equal before naming the fraction.\n* Can explain numerator vs denominator in simple language (\"how many parts\" / \"what size parts\").\n* Places fractions on a number line using the partitions.\n* Compares fractions by reasoning (same denominator -> compare numerators)."
+        },
+        "g3-l4-home": {
+          "title": "Try at home",
+          "content": "* **\"Fold & Label\"**: Fold paper into 2, 4, 8 equal parts. Shade some parts and label (3/8).\n* **\"Snack Fractions\"**: Cut fruit into equal slices. Ask: \"If we eat 2 out of 6 slices, what fraction did we eat?\""
+        },
+        "g3-l4-videos": {
+          "title": "Optional videos",
+          "content": "Search for <a href='https://www.youtube.com/results?search_query=fractions+on+a+number+line+grade+3' target='_blank' rel='noopener noreferrer'>fractions on a number line grade 3</a>.\nSearch for <a href='https://www.youtube.com/results?search_query=equivalent+fractions+visual+models+for+kids' target='_blank' rel='noopener noreferrer'>equivalent fractions visual models for kids</a>.\nPractice with <a href='https://www.khanacademy.org/math/cc-third-grade-math/cc-3rd-fractions-topic' target='_blank' rel='noopener noreferrer'>Khan Academy: fractions</a>."
+        }
+      }
     },
     "level5": {
-      "title": "Level 5",
-      "description": "Word problems"
-    },
-    "level6": {
-      "title": "Level 6",
-      "description": "Mixed practice"
+      "title": "Measurement & Geometry",
+      "goal": "Measure and reason about area and perimeter, read time problems, interpret scaled graphs, and classify quadrilaterals.",
+      "learnMore": {
+        "g3-l5-big-idea": {
+          "title": "Big idea",
+          "content": "Perimeter is the *distance around*, area is the *space covered*. Counting squares builds meaning, and multiplication makes it efficient. Graphs and shape sorting are about noticing structure."
+        },
+        "g3-l5-notice": {
+          "title": "What to notice",
+          "content": "* Counts only the *outside* for perimeter (not interior lines).\n* For area, counts square units without gaps or overlaps.\n* Uses rows x columns for rectangles.\n* Reads the scale on a bar graph before answering.\n* Understands \"square is a rectangle\" as a category idea."
+        },
+        "g3-l5-home": {
+          "title": "Try at home",
+          "content": "* **\"Tape Perimeter\"**: Use string/tape to outline a book. Measure the string with a ruler (or count hand spans).\n* **\"Area Tiles\"**: Cover a small rectangle with coins or tiles. Count rows and columns, then multiply."
+        },
+        "g3-l5-videos": {
+          "title": "Optional videos",
+          "content": "Search for <a href='https://www.youtube.com/results?search_query=area+and+perimeter+for+kids+grade+3' target='_blank' rel='noopener noreferrer'>area and perimeter for kids grade 3</a>.\nSearch for <a href='https://www.youtube.com/results?search_query=elapsed+time+number+line+for+kids' target='_blank' rel='noopener noreferrer'>elapsed time number line for kids</a>.\nSearch for <a href='https://www.youtube.com/results?search_query=scaled+bar+graphs+for+kids' target='_blank' rel='noopener noreferrer'>scaled bar graphs for kids</a>.\nPractice with <a href='https://www.khanacademy.org/math/cc-third-grade-math/cc-3rd-measurement-data' target='_blank' rel='noopener noreferrer'>Khan Academy: measurement & data</a>."
+        }
+      }
     }
   },
   "activities": {
-    "multiplicationArrays": {
-      "title": "Multiplication Arrays",
-      "description": "See multiplication as groups",
-      "instruction": "How many in all?"
+    "count-to-10000": {
+      "title": "Count to 10,000 Trail",
+      "description": "Fill in missing numbers as you climb to 10,000.",
+      "instruction": "Fill in the missing numbers to complete the trail!",
+      "countBy": "Count by:",
+      "thePatternIs": "The pattern is:",
+      "perfect": "Amazing counting skills!",
+      "great": "Great trail climbing!",
+      "keepPracticing": "Keep practicing!"
     },
-    "timesTablesDrill": {
-      "title": "Times Tables",
-      "description": "Practice multiplication facts",
-      "instruction": "What is the product?"
+    "place-value-builder-10000": {
+      "title": "Place Value Builder (to 10,000)",
+      "description": "Build the number using thousands, hundreds, tens, and ones.",
+      "instruction": "Build the number using place value blocks!",
+      "buildNumber": "Build this number:",
+      "thousands": "Thousands",
+      "hundreds": "Hundreds",
+      "tens": "Tens",
+      "ones": "Ones",
+      "thousandsWord": "thousands",
+      "hundredsWord": "hundreds",
+      "tensWord": "tens",
+      "onesWord": "ones",
+      "perfect": "Amazing number building!",
+      "great": "Great place value work!",
+      "keepPracticing": "Keep practicing!"
     },
-    "divisionSharing": {
-      "title": "Fair Sharing",
-      "description": "Learn to divide equally",
-      "instruction": "How many in each group?"
+    "expanded-form-10000": {
+      "title": "Expanded Form Match (to 10,000)",
+      "description": "Match the number to its expanded form.",
+      "instruction": "Match numbers with their expanded forms!",
+      "expandedForms": "Expanded Forms",
+      "selectNumberFirst": "Select a number first!",
+      "perfect": "Perfect expanded form matching!",
+      "great": "Great expanded form work!",
+      "keepPracticing": "Keep practicing!"
     },
-    "fractionPizzas": {
-      "title": "Fraction Pizzas",
-      "description": "Learn parts of a whole",
-      "instruction": "What fraction is shaded?"
+    "compare-four-digit": {
+      "title": "Compare 4-Digit Numbers",
+      "description": "Pick >, <, or = to compare.",
+      "instruction": "Which symbol makes the comparison true?",
+      "showHint": "Show place values",
+      "hideHint": "Hide place values",
+      "thousandsWord": "thousands",
+      "hundredsWord": "hundreds",
+      "tensWord": "tens",
+      "onesWord": "ones",
+      "perfect": "Amazing comparing!",
+      "great": "Great number sense!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "order-numbers-10000": {
+      "title": "Order the Numbers (to 10,000)",
+      "description": "Put numbers in order from least to greatest.",
+      "instruction": "Click the numbers in order from smallest to largest",
+      "instructionDesc": "Click the numbers in order from largest to smallest",
+      "smallest": "Smallest",
+      "largest": "Largest",
+      "perfect": "Amazing ordering!",
+      "great": "Great sorting!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "number-line-10000": {
+      "title": "Number Line to 10,000",
+      "description": "Find where the number belongs on the number line.",
+      "instruction": "Tap where this number belongs!",
+      "placeNumber": "Place this number:",
+      "checkAnswer": "Check My Answer",
+      "correctMsg": "Perfect placement!",
+      "incorrectMsg": "The correct spot is {target}",
+      "perfect": "Amazing number line skills!",
+      "great": "Great estimation!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "rounding-10-100-1000": {
+      "title": "Round to the Nearest 10/100/1000",
+      "description": "Round numbers to the nearest 10, 100, or 1,000.",
+      "instruction": "Round to the nearest benchmark!",
+      "roundTo": "Round",
+      "toNearest": "to the nearest",
+      "whichCloser": "Which benchmark is closer?",
+      "ten": "10",
+      "hundred": "100",
+      "thousand": "1,000",
+      "incorrectMsg": "Closer to {answer}",
+      "perfect": "Amazing rounding skills!",
+      "great": "Great work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "digit-value": {
+      "title": "Digit Value Detective",
+      "description": "What value does this digit represent?",
+      "instruction": "Find the value of the highlighted digit!",
+      "valueWord": "value",
+      "placeWord": "place",
+      "whatIsThe": "What is the",
+      "ofTheHighlighted": "of the highlighted digit?",
+      "onesPlace": "ones place",
+      "tensPlace": "tens place",
+      "hundredsPlace": "hundreds place",
+      "thousandsPlace": "thousands place",
+      "incorrectMsg": "The answer is {answer}",
+      "perfect": "Amazing detective work!",
+      "great": "Great job!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "add-within-1000": {
+      "title": "Add Within 1,000 (Base-Ten)",
+      "description": "Use blocks to add three-digit numbers.",
+      "instruction": "Add using place value blocks!",
+      "firstNumber": "First number",
+      "secondNumber": "Second number",
+      "regroupOnes": "Regroup: 10 ones → 1 ten",
+      "regroupTens": "Regroup: 10 tens → 1 hundred",
+      "regroupBoth": "Regroup: 10 ones → 1 ten, 10 tens → 1 hundred",
+      "incorrectMsg": "The sum is {answer}",
+      "perfect": "Amazing addition skills!",
+      "great": "Great work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "subtract-within-1000": {
+      "title": "Subtract Within 1,000 (Base-Ten)",
+      "description": "Trade and take away to subtract.",
+      "instruction": "Subtract using place value blocks!",
+      "startWith": "Start with",
+      "takeAway": "Take away",
+      "tradeTen": "Trade: 1 ten → 10 ones",
+      "tradeHundred": "Trade: 1 hundred → 10 tens",
+      "tradeBoth": "Trade: 1 hundred → 10 tens, 1 ten → 10 ones",
+      "incorrectMsg": "The difference is {answer}",
+      "perfect": "Amazing subtraction skills!",
+      "great": "Great work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "add-regrouping-1000": {
+      "title": "Regrouping Practice: Add (Column)",
+      "description": "Practice adding with regrouping.",
+      "instruction": "Add with regrouping when needed!",
+      "whatIsSum": "What is the sum?",
+      "whatOnesDigit": "What is the ones digit in the answer?",
+      "whatTensDigit": "What is the tens digit in the answer?",
+      "showHint": "Show hint",
+      "hideHint": "Hide hint",
+      "onesLabel": "Ones",
+      "tensLabel": "Tens",
+      "hundredsLabel": "Hundreds",
+      "writeCarry": "Write {digit}, carry {carry}",
+      "incorrectMsg": "The sum is {answer}",
+      "incorrectOnes": "The ones digit is {answer}",
+      "incorrectTens": "The tens digit is {answer}",
+      "perfect": "Amazing regrouping skills!",
+      "great": "Great work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "subtract-regrouping-1000": {
+      "title": "Regrouping Practice: Subtract (Column)",
+      "description": "Practice subtracting with regrouping.",
+      "instruction": "Subtract with regrouping when needed!",
+      "whatIsDiff": "What is the difference?",
+      "whatOnesDigit": "What is the ones digit in the answer?",
+      "whatTensDigit": "What is the tens digit in the answer?",
+      "showHint": "Show hint",
+      "hideHint": "Hide hint",
+      "onesLabel": "Ones",
+      "tensLabel": "Tens",
+      "hundredsLabel": "Hundreds",
+      "borrowFromTens": "Borrow from tens",
+      "borrowFromHundreds": "Borrow from hundreds",
+      "incorrectMsg": "The difference is {answer}",
+      "incorrectOnes": "The ones digit is {answer}",
+      "incorrectTens": "The tens digit is {answer}",
+      "perfect": "Amazing regrouping skills!",
+      "great": "Great work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "estimate-sum-diff": {
+      "title": "Estimate, Then Check",
+      "description": "Estimate first, then solve exactly.",
+      "instruction": "Estimate, then find the exact answer!",
+      "step1": "Step 1: Estimate first!",
+      "step2": "Step 2: Find the exact answer!",
+      "step3": "Step 3: Is it close to your estimate?",
+      "whatEstimate": "What is your estimate?",
+      "estimateLabel": "Estimate:",
+      "whatExact": "What is the exact answer?",
+      "closeToEstimate": "Is your answer close to the estimate?",
+      "roundToNearest": "Round to the nearest:",
+      "yes": "Yes, it's close!",
+      "no": "No, it's not close",
+      "incorrectEstimate": "The estimate is {answer}",
+      "incorrectExact": "The exact answer is {answer}",
+      "yesClose": "Yes! {estimate} is close to {exact} (difference: {diff})",
+      "noNotClose": "That's right! {estimate} and {exact} are {diff} apart.",
+      "actuallyClose": "Actually, {estimate} is close to {exact} (only {diff} apart)!",
+      "actuallyNotClose": "Actually, {estimate} and {exact} are {diff} apart - that's a bigger gap.",
+      "perfect": "Amazing estimation skills!",
+      "great": "Great work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "number-line-add-sub-1000": {
+      "title": "Number Line Add/Subtract (to 1,000)",
+      "description": "Jump by hundreds, tens, and ones.",
+      "instruction": "Watch the jumps and find the answer!",
+      "watchJumps": "Watch the jumps on the number line!",
+      "jumps": "Jumps:",
+      "whereDoesLand": "Where does the frog land?",
+      "correctMsg": "Great jumping!",
+      "incorrectMsg": "The answer is {answer}",
+      "perfect": "Amazing jumping skills!",
+      "great": "Great number line work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "missing-number-1000": {
+      "title": "Missing Number (to 1,000)",
+      "description": "Find the mystery number in an equation.",
+      "instruction": "What number makes the equation true?",
+      "showHint": "Show hint",
+      "hideHint": "Hide hint",
+      "thinkAbout": "Think about it:",
+      "hintAddUnknown": "{a} plus what equals {c}?",
+      "hintAddFirst": "What plus {b} equals {c}?",
+      "hintSubUnknown": "{a} minus what equals {c}?",
+      "hintSubFirst": "What minus {b} equals {c}?",
+      "hintSubtract": "Subtract: {c} − {a}",
+      "hintSubtractReverse": "Subtract: {a} − {c}",
+      "hintAdd": "Add: {b} + {c}",
+      "incorrectMsg": "The missing number is {answer}",
+      "perfect": "Amazing number detective work!",
+      "great": "Great work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "multi-step-word-problems-1000": {
+      "title": "Two-Step Word Problems",
+      "description": "Solve a short story in two steps.",
+      "instruction": "Read carefully and solve step by step!",
+      "step1": "Step 1: Choose the first operation",
+      "step2": "Step 2: Choose the second operation",
+      "step3": "Step 3: What is the final answer?",
+      "whatOperation1": "What operation do we use first?",
+      "whatOperation2": "What operation do we use next?",
+      "whatAnswer": "What is the final answer?",
+      "stepLabel1": "Step 1:",
+      "stepLabel2": "Step 2:",
+      "loadingStory": "Loading story...",
+      "someone": "Someone",
+      "pronouns": {
+        "they": "They",
+        "theyLower": "they",
+        "he": "He",
+        "heLower": "he",
+        "she": "She",
+        "sheLower": "she"
+      },
+      "stories": {
+        "balloons": {
+          "template": "{name} has {a} balloons. {pronoun} buys {b} more, then gives {c} away.",
+          "question": "How many balloons does {name} have now?"
+        },
+        "library": {
+          "template": "A library has {a} books. They buy {b} new books, then donate {c} old books.",
+          "question": "How many books does the library have now?"
+        },
+        "farmerApples": {
+          "template": "A farmer picks {a} apples in the morning and {b} apples in the afternoon. {pronoun2} sells {c} apples at the market.",
+          "question": "How many apples does the farmer have left?"
+        },
+        "stickers": {
+          "template": "{name} collects {a} stickers. {pronoun} trades away {b} stickers and then gets {c} new ones.",
+          "question": "How many stickers does {name} have now?"
+        },
+        "busStops": {
+          "template": "A bus has {a} passengers. At the first stop, {b} people get off. At the second stop, {c} people get on.",
+          "question": "How many passengers are on the bus now?"
+        },
+        "savings": {
+          "template": "{name} saves ${a}. {pronoun} spends ${b} on a toy and then earns ${c} doing chores.",
+          "question": "How much money does {name} have now?"
+        },
+        "birds": {
+          "template": "There are {a} birds in a tree. {b} birds fly away, then {c} more birds join them.",
+          "question": "How many birds are in the tree now?"
+        },
+        "candies": {
+          "template": "{name} has {a} candies. {pronoun} gets {b} more from a friend, then eats {c} candies.",
+          "question": "How many candies does {name} have now?"
+        }
+      },
+      "incorrectOp1": "The first operation is {op}",
+      "incorrectOp2": "The second operation is {op}",
+      "incorrectAnswer": "The answer is {answer}",
+      "addition": "addition (+)",
+      "subtraction": "subtraction (−)",
+      "perfect": "Amazing problem-solving!",
+      "great": "Great thinking!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "build-array-g3": {
+      "title": "Build an Array",
+      "description": "Make an array with the given rows and columns.",
+      "instruction": "Click to build the array!",
+      "makeArray": "Make an array:",
+      "rows": "rows",
+      "columns": "columns",
+      "filled": "Filled:",
+      "perfect": "Amazing array building!",
+      "great": "Great array work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "array-multiply": {
+      "title": "Multiply the Array",
+      "description": "Find the total using rows x columns.",
+      "instruction": "How many squares in all?",
+      "howMany": "How many squares?",
+      "rows": "rows",
+      "columns": "columns",
+      "groupsOf": "groups of",
+      "equals": "equals",
+      "perfect": "Amazing multiplication!",
+      "great": "Great array work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "equal-groups-multiply": {
+      "title": "Equal Groups Stories",
+      "description": "Use equal groups to solve story problems.",
+      "instruction": "Find the total by multiplying!",
+      "storyPattern": "There are {groups} {containers}. Each {container} has {items} {itemName}. How many {itemPlural} in all?",
+      "howManyTotal": "How many {items} in all?",
+      "perfect": "Amazing multiplication stories!",
+      "great": "Great equal groups work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "missing-factor": {
+      "title": "Missing Factor Puzzle",
+      "description": "Find the missing number in a multiplication fact.",
+      "instruction": "What number is missing?",
+      "showHint": "Show hint",
+      "hideHint": "Hide hint",
+      "thinkAbout": "Think about it:",
+      "groupsOf": "groups of",
+      "whatTimes": "What times",
+      "equals": "equals",
+      "perfect": "Amazing factor finding!",
+      "great": "Great factor work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "fact-family-mult-div": {
+      "title": "Fact Family Match (× and ÷)",
+      "description": "Multiplication and division are a family.",
+      "instruction": "Match related facts!",
+      "familyNumbers": "Family Numbers:",
+      "pickCorrect": "Pick the correct equation from this fact family:",
+      "belongsToFamily": "belongs to the family!",
+      "theCorrectIs": "The correct answer is:",
+      "perfect": "Amazing fact family work!",
+      "great": "Great fact family work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "division-sharing": {
+      "title": "Division Sharing Game",
+      "description": "Share items equally and see how many in each group.",
+      "instruction": "Share equally into groups!",
+      "storyPattern": "Share {total} {items} equally among {groups} {containers}. How many {itemPlural} in each {container}?",
+      "itemsToShare": "Items to share:",
+      "shareAmong": "Share among {n} {containers}:",
+      "howManyEach": "How many {items} in each {container}?",
+      "containers": {
+        "plate": "plate",
+        "plates": "plates",
+        "bag": "bag",
+        "bags": "bags",
+        "box": "box",
+        "boxes": "boxes",
+        "basket": "basket",
+        "baskets": "baskets",
+        "bowl": "bowl",
+        "bowls": "bowls",
+        "nest": "nest",
+        "nests": "nests",
+        "vase": "vase",
+        "vases": "vases",
+        "shelf": "shelf",
+        "shelves": "shelves",
+        "jar": "jar",
+        "jars": "jars",
+        "tray": "tray",
+        "trays": "trays"
+      },
+      "items": {
+        "cookie": "cookie",
+        "cookies": "cookies",
+        "marble": "marble",
+        "marbles": "marbles",
+        "crayon": "crayon",
+        "crayons": "crayons",
+        "apple": "apple",
+        "apples": "apples",
+        "grape": "grape",
+        "grapes": "grapes",
+        "egg": "egg",
+        "eggs": "eggs",
+        "flower": "flower",
+        "flowers": "flowers",
+        "book": "book",
+        "books": "books",
+        "candy": "candy",
+        "candies": "candies",
+        "cupcake": "cupcake",
+        "cupcakes": "cupcakes"
+      },
+      "perfect": "Amazing sharing skills!",
+      "great": "Great sharing skills!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "skip-count-multiply": {
+      "title": "Skip Count for Multiplication",
+      "description": "Use skip counting to find products.",
+      "instruction": "Fill in the missing numbers!",
+      "countBy": "Count by:",
+      "thats": "That's",
+      "answerIs": "The answer is",
+      "perfect": "Amazing skip counting!",
+      "great": "Great skip counting!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "match-picture-equation-mult": {
+      "title": "Match Picture to Equation",
+      "description": "Which equation matches the picture?",
+      "instruction": "Pick the equation that matches!",
+      "whichEquation": "Which equation matches this picture?",
+      "rows": "rows",
+      "columns": "columns",
+      "groups": "groups",
+      "eachWith": "each with",
+      "perfect": "Amazing matching skills!",
+      "great": "Great matching work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "fraction-of-shape-g3": {
+      "title": "Fraction of a Shape",
+      "description": "What fraction is shaded?",
+      "instruction": "What fraction of the shape is shaded?",
+      "howMuchShaded": "What fraction is shaded?",
+      "correct": "Correct!",
+      "wrong": "The answer is {fraction}",
+      "perfect": "Perfect fraction skills!",
+      "great": "Great fraction work!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "build-the-fraction": {
+      "title": "Build the Fraction",
+      "description": "Shade or select parts to make the fraction.",
+      "instruction": "Tap parts to make the fraction!",
+      "make": "Make:",
+      "shaded": "Shaded:",
+      "checkAnswer": "Check My Answer",
+      "correct": "Perfect! You built the fraction!",
+      "wrong": "Not quite. The answer is {fraction}",
+      "perfect": "Amazing fraction building!",
+      "great": "Great fraction work!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "fraction-number-line": {
+      "title": "Fractions on the Number Line",
+      "description": "Place the fraction between 0 and 1.",
+      "instruction": "Tap where the fraction belongs!",
+      "placeFraction": "Place this fraction:",
+      "checkAnswer": "Check My Answer",
+      "correctMsg": "Perfect placement!",
+      "incorrectMsg": "The correct spot is {fraction}",
+      "perfect": "Amazing fraction placement!",
+      "great": "Great number line work!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "equivalent-fractions": {
+      "title": "Equivalent Fractions Match",
+      "description": "Find fractions that name the same amount.",
+      "instruction": "Match equivalent fractions!",
+      "correct": "That's a match!",
+      "wrong": "Not equivalent. Try again!",
+      "perfect": "Amazing! You're a fraction expert!",
+      "great": "Great matching!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "compare-fractions": {
+      "title": "Compare Fractions",
+      "description": "Use >, <, or = to compare fractions.",
+      "instruction": "Which symbol makes the comparison true?",
+      "showHint": "Show fraction bars",
+      "hideHint": "Hide fraction bars",
+      "correct": "Correct!",
+      "wrong": "The answer is {symbol}",
+      "perfect": "Amazing comparison skills!",
+      "great": "Great fraction work!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "fraction-story-problems": {
+      "title": "Fraction Story Problems",
+      "description": "Read a short story and solve with fractions.",
+      "instruction": "Solve the fraction story!",
+      "correct": "Correct!",
+      "wrong": "The answer is {fraction}",
+      "perfect": "Amazing story problem skills!",
+      "great": "Great fraction work!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!",
+      "fractionLabel": "{num} over {den}",
+      "stories": {
+        "eating": {
+          "story": "A {item} is cut into {total} equal {parts}. You eat {used} {parts}.",
+          "question": "What fraction did you eat?"
+        },
+        "sharing": {
+          "story": "A {item} is divided into {total} equal {parts}. {friend} takes {used} {parts}.",
+          "question": "What fraction did {friend} take?"
+        },
+        "unit": {
+          "story": "A {item} is cut into {total} equal {parts}.",
+          "question": "How much is one part?"
+        },
+        "remaining": {
+          "story": "There are {total} {item}. {used} are given away.",
+          "question": "What fraction is left?"
+        }
+      },
+      "items": {
+        "pizza": "pizza",
+        "pie": "pie",
+        "cake": "cake",
+        "sandwich": "sandwich",
+        "candy bar": "candy bar",
+        "ribbon": "ribbon",
+        "rope": "rope",
+        "board": "board",
+        "string": "string",
+        "cookies": "cookies",
+        "cupcakes": "cupcakes",
+        "flowers": "flowers"
+      },
+      "parts": {
+        "slices": "slices",
+        "pieces": "pieces",
+        "parts": "parts",
+        "cookies": "cookies",
+        "cupcakes": "cupcakes",
+        "flowers": "flowers"
+      }
+    },
+    "fractions-equal-to-1": {
+      "title": "Fractions Equal to 1",
+      "description": "Which fractions make a whole?",
+      "instruction": "Find fractions equal to 1!",
+      "whichEqual": "Which fraction equals 1 whole?",
+      "oneWhole": "1 whole =",
+      "correct": "Correct! That fraction equals 1!",
+      "wrong": "Not quite. {fraction} equals 1 whole.",
+      "perfect": "Perfect! You know your wholes!",
+      "great": "Great fraction work!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "unit-fractions-count": {
+      "title": "Count Unit Fractions",
+      "description": "How many 1/b pieces are shown?",
+      "instruction": "Count the unit fractions!",
+      "howMany": "How many unit fractions are shaded?",
+      "eachPart": "Each part is 1/{den}",
+      "correct": "Correct! Great counting!",
+      "wrong": "The answer is {num}/{den}",
+      "perfect": "Perfect! You're a unit fraction expert!",
+      "great": "Great counting!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "perimeter-walk": {
+      "title": "Perimeter Walk",
+      "description": "Find the perimeter by walking around the edge.",
+      "instruction": "Count the units around the edge!",
+      "findPerimeter": "Find the perimeter of this shape!",
+      "counted": "Counted:",
+      "units": "units",
+      "correct": "Correct!",
+      "wrong": "The perimeter is {perimeter} units.",
+      "perfect": "Perfect perimeter skills!",
+      "great": "Great walking!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "build-perimeter": {
+      "title": "Build the Perimeter",
+      "description": "Add side lengths to find perimeter.",
+      "instruction": "Add all the sides!",
+      "question": "What is the perimeter?",
+      "missingHint": "One side is missing. Use the opposite side!",
+      "units": "units",
+      "correct": "Correct!",
+      "wrong": "The perimeter is {perimeter} units.",
+      "perfect": "Perfect perimeter builder!",
+      "great": "Great adding!",
+      "good": "Nice work!",
+      "keepPracticing": "Keep practicing!",
+      "shapeLabel": "Shape with side lengths"
+    },
+    "area-count": {
+      "title": "Area Count (Square Units)",
+      "description": "Count squares to find area.",
+      "instruction": "Count the square units!",
+      "findArea": "Find the area of this shape!",
+      "tapSquares": "Tap squares to count, then pick the total.",
+      "counted": "Counted:",
+      "squareUnits": "square units",
+      "squareUnit": "Square unit",
+      "gridLabel": "Area grid",
+      "correct": "Correct!",
+      "wrong": "The area is {area} square units.",
+      "perfect": "Perfect area counting!",
+      "great": "Great counting!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "area-multiply": {
+      "title": "Area as Multiply",
+      "description": "Use rows x columns to find area fast.",
+      "instruction": "Use multiplication to find area!",
+      "findArea": "Find the area of this rectangle!",
+      "rowsTimesColumns": "Rows × columns gives the area.",
+      "rows": "rows",
+      "columns": "columns",
+      "squareUnits": "square units",
+      "squareUnit": "Square unit",
+      "gridLabel": "Area grid with {rows} rows and {cols} columns.",
+      "correct": "Correct!",
+      "wrong": "The area is {area} square units.",
+      "perfect": "Perfect area multiplication!",
+      "great": "Great area work!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!"
+    },
+    "elapsed-time": {
+      "title": "Elapsed Time Stories",
+      "description": "How much time passed?",
+      "instruction": "Find how much time passed!",
+      "question": "How much time passed?",
+      "timeStripLabel": "Time strip",
+      "timeStripHint": "Count the ticks to find the elapsed time.",
+      "startLabel": "Start",
+      "endLabel": "End",
+      "tickLabel": "Each tick = {step} {unit}",
+      "choicesLabel": "Answer choices",
+      "choiceLabel": "Elapsed time: {duration}",
+      "hour": "hour",
+      "hours": "hours",
+      "minute": "minute",
+      "minutes": "minutes",
+      "correct": "Correct! {duration} passed.",
+      "wrong": "The elapsed time is {duration}.",
+      "perfect": "Perfect time sense!",
+      "great": "Great elapsed time work!",
+      "good": "Good job!",
+      "keepPracticing": "Keep practicing!",
+      "stories": {
+        "movie": "The movie starts at {start} and ends at {end}.",
+        "soccer": "Soccer practice starts at {start} and ends at {end}.",
+        "bus": "The bus leaves at {start} and arrives at {end}.",
+        "reading": "Reading time starts at {start} and ends at {end}.",
+        "museum": "The museum visit begins at {start} and finishes at {end}.",
+        "baking": "Baking starts at {start} and ends at {end}."
+      }
+    },
+    "mass-volume": {
+      "title": "Mass & Volume Compare",
+      "description": "Choose the best unit and compare amounts.",
+      "instruction": "Pick the right unit and compare!",
+      "promptUnit": "Which unit is best for {item}?",
+      "promptCompareMass": "Which is heavier?",
+      "promptCompareVolume": "Which holds more?",
+      "hintMass": "Remember: 1 kilogram = 1,000 grams.",
+      "hintVolume": "Remember: 1 liter = 1,000 milliliters.",
+      "categoryMass": "Mass",
+      "categoryVolume": "Volume",
+      "choicesLabel": "Answer choices",
+      "choiceLeft": "Container A",
+      "choiceRight": "Container B",
+      "correctUnit": "Correct! Use {unit} for {item}.",
+      "wrongUnit": "Use {unit} for {item}.",
+      "correctCompareMass": "Correct! {choice} is heavier.",
+      "wrongCompareMass": "{choice} is heavier.",
+      "correctCompareVolume": "Correct! {choice} holds more.",
+      "wrongCompareVolume": "{choice} holds more.",
+      "perfect": "Perfect measuring!",
+      "great": "Great comparisons!",
+      "good": "Nice work!",
+      "keepPracticing": "Keep practicing!",
+      "units": {
+        "g": "g",
+        "kg": "kg",
+        "mL": "mL",
+        "L": "L"
+      },
+      "items": {
+        "watermelon": "a watermelon",
+        "backpack": "a backpack",
+        "apple": "an apple",
+        "paperclip": "a paper clip",
+        "bathtub": "a bathtub",
+        "juiceBox": "a juice box",
+        "bucket": "a bucket",
+        "eyedropper": "an eyedropper"
+      }
+    },
+    "scaled-bar-graph-g3": {
+      "title": "Scaled Bar Graph Questions",
+      "description": "Read a bar graph where each mark counts more than 1.",
+      "instruction": "Read the graph and answer!",
+      "scaleLabel": "Each tick = {step} votes",
+      "choicesLabel": "Answer choices",
+      "questionMost": "Which has the most votes?",
+      "questionLeast": "Which has the least votes?",
+      "questionHowMany": "How many votes for {item}?",
+      "questionHowManyMore": "How many more votes for {item1} than {item2}?",
+      "questionTotal": "How many votes in total?",
+      "correct": "Correct! The answer is {answer}.",
+      "wrong": "The answer is {answer}.",
+      "perfect": "Perfect graph reading!",
+      "great": "Great job reading graphs!",
+      "good": "Good work with scales!",
+      "keepPracticing": "Keep practicing!",
+      "titles": {
+        "favoriteBooks": "Favorite Books",
+        "afterSchoolClubs": "After School Clubs",
+        "fieldTrips": "Field Trip Choices",
+        "classSnacks": "Class Snacks",
+        "gameDay": "Game Day Votes"
+      },
+      "categories": {
+        "mystery": "Mystery",
+        "adventure": "Adventure",
+        "animals": "Animals",
+        "science": "Science",
+        "art": "Art",
+        "music": "Music",
+        "sports": "Sports",
+        "robotics": "Robotics",
+        "museum": "Museum",
+        "zoo": "Zoo",
+        "aquarium": "Aquarium",
+        "park": "Park",
+        "pretzels": "Pretzels",
+        "fruit": "Fruit",
+        "popcorn": "Popcorn",
+        "yogurt": "Yogurt",
+        "soccer": "Soccer",
+        "basketball": "Basketball",
+        "relay": "Relay",
+        "tag": "Tag"
+      }
+    },
+    "quadrilateral-sort": {
+      "title": "Quadrilateral Sort",
+      "description": "Sort quadrilaterals by their properties.",
+      "instruction": "Sort shapes into the right bins!",
+      "sortBy": "Sort the quadrilaterals into the correct bins!",
+      "check": "Check",
+      "sortAll": "Sort all shapes into bins first!",
+      "clickToRemove": "Click to remove from bin",
+      "bins": {
+        "fourRightAngles": "4 Right Angles",
+        "notFourRightAngles": "Not 4 Right Angles",
+        "twoParallelPairs": "2 Pairs of Parallel Sides",
+        "notTwoParallelPairs": "Not 2 Parallel Pairs",
+        "allSidesEqual": "All Sides Equal",
+        "notAllSidesEqual": "Not All Sides Equal"
+      },
+      "shapes": {
+        "square": "Square",
+        "rectangle": "Rectangle",
+        "rhombus": "Rhombus",
+        "trapezoid": "Trapezoid",
+        "kite": "Kite"
+      },
+      "correct": "Great sorting! All quadrilaterals are in the right bins!",
+      "tryAgain": "Some quadrilaterals are in the wrong bin. Try again!",
+      "perfect": "Perfect! You're a quadrilateral expert!",
+      "great": "Excellent sorting!",
+      "good": "Good work sorting!",
+      "keepPracticing": "Keep practicing!"
     }
   }
 }

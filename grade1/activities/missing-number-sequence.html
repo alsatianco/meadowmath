@@ -298,7 +298,7 @@
         }
         this.shuffleArray(possibleIndices);
         this.missingIndices = possibleIndices.slice(0, numBlanks).sort((a, b) => a - b);
-        
+
         this.missingNumbers = this.missingIndices.map(idx => this.currentSequence[idx]);
         this.userAnswers = new Array(sequenceLength).fill(null);
         this.currentBlankIndex = 0;
@@ -380,7 +380,7 @@
 
         // Generate choices: correct answer plus 3 distractors
         const choices = [correctAnswer];
-        
+
         // Add distractors (nearby numbers)
         const distractors = [];
         for (let offset of [-2, -1, 1, 2, -3, 3]) {
@@ -389,11 +389,11 @@
             distractors.push(distractor);
           }
         }
-        
+
         // Pick 3 random distractors
         this.shuffleArray(distractors);
         choices.push(...distractors.slice(0, 3));
-        
+
         // Shuffle choices
         this.shuffleArray(choices);
 

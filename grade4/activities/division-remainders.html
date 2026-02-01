@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Remainder Stories - Grade 4 Math Activity - Meadow Math">
+  <title>Remainder Stories - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link">
+            <span data-i18n="activity.backTo">← Back to</span>
+            <span data-i18n="nav.grade4">Grade 4</span>
+          </a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🧁</span>
+            <span data-i18n="section.activities.division-remainders.title">Remainder Stories</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.division-remainders.description">
+            Decide what the remainder means in a story.
+          </p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Story Section -->
+          <section class="story-section">
+            <div class="story-card" id="story-card">
+              <div class="story-icon" id="story-icon" aria-hidden="true">🧁</div>
+              <div class="story-text" id="story-text" data-i18n="section.activities.division-remainders.loadingStory">
+                Loading story...
+              </div>
+            </div>
+          </section>
+
+          <!-- Division Section -->
+          <section class="division-section">
+            <div class="division-card">
+              <div class="division-title" data-i18n="section.activities.division-remainders.divisionTitle">
+                Solve the division:
+              </div>
+              <div class="division-equation" aria-label="Division equation" data-i18n-title="section.activities.division-remainders.divisionAriaLabel">
+                <span class="equation-number" id="dividend">0</span>
+                <span class="equation-operator">÷</span>
+                <span class="equation-number" id="divisor">0</span>
+                <span class="equation-operator">=</span>
+                <span class="equation-number" id="quotient">0</span>
+                <span class="remainder-chip">
+                  <span class="remainder-label" data-i18n="section.activities.division-remainders.remainderShort">R</span>
+                  <span class="remainder-value" id="remainder">0</span>
+                </span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Decision Section -->
+          <section class="decision-section">
+            <div class="decision-card">
+              <div class="decision-title" data-i18n="section.activities.division-remainders.decisionTitle">
+                What does the remainder tell you?
+              </div>
+              <div class="choice-grid" id="choice-grid" role="group" aria-label="Remainder choices" data-i18n-title="section.activities.division-remainders.choicesAriaLabel">
+                <button class="choice-btn" data-choice="leftover" data-i18n-title="section.activities.division-remainders.choices.leftover">
+                  <span class="choice-icon" aria-hidden="true">🧺</span>
+                  <span class="choice-text" data-i18n="section.activities.division-remainders.choices.leftover">Remainder left over</span>
+                </button>
+                <button class="choice-btn" data-choice="extraGroup" data-i18n-title="section.activities.division-remainders.choices.extraGroup">
+                  <span class="choice-icon" aria-hidden="true">➕</span>
+                  <span class="choice-text" data-i18n="section.activities.division-remainders.choices.extraGroup">Need one more group</span>
+                </button>
+                <button class="choice-btn" data-choice="roundDown" data-i18n-title="section.activities.division-remainders.choices.roundDown">
+                  <span class="choice-icon" aria-hidden="true">⬇️</span>
+                  <span class="choice-text" data-i18n="section.activities.division-remainders.choices.roundDown">Round down to full groups</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.division-remainders.great">
+            Great remainder reasoning!
+          </p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Remainder Stories Activity - Grade 4 Level 2
+    const DivisionRemainders = {
+      currentQuestion: 0,
+      totalQuestions: 8,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+      advanceTimeout: null,
+      lastFeedback: null,
+
+      stories: [
+        {
+          id: 'cupcakes',
+          icon: '🧁',
+          type: 'leftover',
+          minTotal: 30,
+          maxTotal: 90,
+          minGroup: 4,
+          maxGroup: 9,
+          template: '{total} cupcakes are packed into boxes of {group}.',
+          question: 'How many cupcakes are left over?'
+        },
+        {
+          id: 'stickers',
+          icon: '⭐',
+          type: 'leftover',
+          minTotal: 25,
+          maxTotal: 70,
+          minGroup: 5,
+          maxGroup: 12,
+          template: '{total} stickers are packed into bundles of {group}.',
+          question: 'How many stickers are left over?'
+        },
+        {
+          id: 'apples',
+          icon: '🍎',
+          type: 'leftover',
+          minTotal: 40,
+          maxTotal: 96,
+          minGroup: 6,
+          maxGroup: 12,
+          template: '{total} apples go into baskets of {group}.',
+          question: 'How many apples are left over?'
+        },
+        {
+          id: 'buses',
+          icon: '🚌',
+          type: 'extraGroup',
+          minTotal: 45,
+          maxTotal: 120,
+          minGroup: 18,
+          maxGroup: 28,
+          template: '{total} students are going on a trip. Each bus holds {group} students.',
+          question: 'How many buses are needed?'
+        },
+        {
+          id: 'tables',
+          icon: '🍽️',
+          type: 'extraGroup',
+          minTotal: 24,
+          maxTotal: 80,
+          minGroup: 4,
+          maxGroup: 8,
+          template: '{total} guests sit at tables with {group} seats each.',
+          question: 'How many tables are needed?'
+        },
+        {
+          id: 'gift-bags',
+          icon: '🎒',
+          type: 'extraGroup',
+          minTotal: 30,
+          maxTotal: 90,
+          minGroup: 5,
+          maxGroup: 10,
+          template: '{total} party favors go into bags of {group}.',
+          question: 'How many bags are needed?'
+        },
+        {
+          id: 'teams',
+          icon: '🏀',
+          type: 'roundDown',
+          minTotal: 20,
+          maxTotal: 60,
+          minGroup: 4,
+          maxGroup: 9,
+          template: '{total} players make teams of {group}.',
+          question: 'How many full teams can they make?'
+        },
+        {
+          id: 'shelves',
+          icon: '📚',
+          type: 'roundDown',
+          minTotal: 28,
+          maxTotal: 84,
+          minGroup: 5,
+          maxGroup: 12,
+          template: '{total} books go on shelves that hold {group} books each.',
+          question: 'How many full shelves can be filled?'
+        }
+      ],
+
+      storySequence: [],
+      currentProblem: null,
+
+      storyIcon: null,
+      storyText: null,
+      dividendEl: null,
+      divisorEl: null,
+      quotientEl: null,
+      remainderEl: null,
+      feedback: null,
+      progress: null,
+      choiceButtons: [],
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.storyIcon = document.getElementById('story-icon');
+        this.storyText = document.getElementById('story-text');
+        this.dividendEl = document.getElementById('dividend');
+        this.divisorEl = document.getElementById('divisor');
+        this.quotientEl = document.getElementById('quotient');
+        this.remainderEl = document.getElementById('remainder');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.choiceButtons = Array.from(document.querySelectorAll('.choice-btn'));
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.choiceButtons.forEach((btn) => {
+          btn.addEventListener('click', () => this.selectChoice(btn.dataset.choice));
+        });
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.storySequence = shuffle(this.stories);
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      getTranslation(key, fallback) {
+        if (!window.i18n) return fallback;
+        const value = i18n.t(key);
+        return value === key ? fallback : value;
+      },
+
+      formatExplanation(explanation) {
+        if (!explanation || !this.currentProblem) return explanation || '';
+        return explanation.replace('{remainder}', this.currentProblem.remainder.toLocaleString());
+      },
+
+      generateNumbers(story) {
+        let total = 0;
+        let group = 0;
+        let attempts = 0;
+
+        while (attempts < 40) {
+          group = randomInt(story.minGroup, story.maxGroup);
+          total = randomInt(story.minTotal, story.maxTotal);
+          if (total > group && total % group !== 0) {
+            break;
+          }
+          attempts++;
+        }
+
+        if (total % group === 0) {
+          total += 1;
+        }
+
+        return { total, group };
+      },
+
+      buildProblem(story) {
+        const { total, group } = this.generateNumbers(story);
+        return {
+          story,
+          total,
+          group,
+          quotient: Math.floor(total / group),
+          remainder: total % group,
+          type: story.type
+        };
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.lastFeedback = null;
+        this.feedback.classList.remove('show', 'error');
+
+        const story = this.storySequence[this.currentQuestion % this.storySequence.length];
+        this.currentProblem = this.buildProblem(story);
+        this.renderStory();
+        this.renderEquation();
+        this.resetChoices();
+        this.renderProgress();
+      },
+
+      renderStory() {
+        const story = this.currentProblem.story;
+        const templateKey = `section.activities.division-remainders.stories.${story.id}.template`;
+        const questionKey = `section.activities.division-remainders.stories.${story.id}.question`;
+        const template = this.getTranslation(templateKey, story.template);
+        const question = this.getTranslation(questionKey, story.question);
+
+        const narrative = template
+          .replace('{total}', this.currentProblem.total.toLocaleString())
+          .replace('{group}', this.currentProblem.group.toLocaleString());
+        const questionText = question
+          .replace('{total}', this.currentProblem.total.toLocaleString())
+          .replace('{group}', this.currentProblem.group.toLocaleString());
+
+        this.storyIcon.textContent = story.icon;
+        this.storyText.innerHTML = `
+          <p class="story-narrative">${narrative}</p>
+          <p class="story-question">${questionText}</p>
+        `;
+      },
+
+      renderEquation() {
+        this.dividendEl.textContent = this.currentProblem.total.toLocaleString();
+        this.divisorEl.textContent = this.currentProblem.group.toLocaleString();
+        this.quotientEl.textContent = this.currentProblem.quotient.toLocaleString();
+        this.remainderEl.textContent = this.currentProblem.remainder.toLocaleString();
+      },
+
+      resetChoices() {
+        this.choiceButtons.forEach((btn) => {
+          btn.disabled = false;
+          btn.classList.remove('correct', 'incorrect');
+        });
+      },
+
+      selectChoice(choice) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const correctType = this.currentProblem.type;
+        const isCorrect = choice === correctType;
+
+        this.choiceButtons.forEach((btn) => {
+          btn.disabled = true;
+          if (btn.dataset.choice === correctType) {
+            btn.classList.add('correct');
+          } else if (btn.dataset.choice === choice) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        if (isCorrect) {
+          this.correctCount++;
+        } else {
+          this.incorrectCount++;
+        }
+
+        const baseMessage = isCorrect
+          ? this.getTranslation('feedback.correct', 'Correct!')
+          : this.getTranslation('feedback.tryAgain', 'Try again!');
+        const explanationKey = `section.activities.division-remainders.explain.${correctType}`;
+        const explanation = this.formatExplanation(this.getTranslation(explanationKey, ''));
+
+        this.feedback.textContent = explanation ? `${baseMessage} ${explanation}` : baseMessage;
+        this.feedback.classList.toggle('error', !isCorrect);
+        this.feedback.classList.add('show');
+        this.lastFeedback = { correctType, isCorrect };
+
+        this.clearAdvanceTimeout();
+        this.advanceTimeout = setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+        this.lastFeedback = null;
+        this.resetChoices();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        const label = window.i18n
+          ? `${i18n.t('activity.round')} ${this.currentQuestion + 1} ${i18n.t('activity.of')} ${this.totalQuestions}`
+          : `Round ${this.currentQuestion + 1} of ${this.totalQuestions}`;
+        this.progress.setAttribute('aria-label', label);
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation('section.activities.division-remainders.perfect', 'Remainder expert!');
+        } else if (percent >= 0.7) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation('section.activities.division-remainders.great', 'Great remainder reasoning!');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation('section.activities.division-remainders.keepPracticing', 'Keep practicing!');
+        }
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.storySequence = shuffle(this.stories);
+        this.startQuestion();
+      },
+
+      updateTranslations() {
+        this.renderStory();
+
+        if (this.feedback.classList.contains('show') && this.lastFeedback) {
+          const baseMessage = this.lastFeedback.isCorrect
+            ? this.getTranslation('feedback.correct', 'Correct!')
+            : this.getTranslation('feedback.tryAgain', 'Try again!');
+          const explanationKey = `section.activities.division-remainders.explain.${this.lastFeedback.correctType}`;
+          const explanation = this.formatExplanation(this.getTranslation(explanationKey, ''));
+          this.feedback.textContent = explanation ? `${baseMessage} ${explanation}` : baseMessage;
+        }
+
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+
+        this.updateProgressLabel();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => DivisionRemainders.init());
+      } else {
+        DivisionRemainders.init();
+      }
+    });
+  </script>
+  <style>
+    /* Remainder Stories specific styles */
+    .story-section {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .story-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-4) var(--space-5);
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid #f59e0b;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #d97706;
+      max-width: 720px;
+      width: 100%;
+    }
+
+    .story-icon {
+      font-size: var(--text-4xl);
+    }
+
+    .story-text {
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .story-narrative {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-2);
+    }
+
+    .story-question {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #92400e;
+    }
+
+    .division-section {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-5);
+    }
+
+    .division-card {
+      width: 100%;
+      max-width: 620px;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 3px solid #38bdf8;
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      text-align: center;
+      box-shadow: 0 4px 0 #0ea5e9;
+    }
+
+    .division-title {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #0f172a;
+      margin-bottom: var(--space-2);
+    }
+
+    .division-equation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      font-family: var(--font-secondary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: #0f172a;
+    }
+
+    .equation-operator {
+      color: #0284c7;
+      font-size: var(--text-2xl);
+    }
+
+    .remainder-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      background: white;
+      border: 2px dashed #38bdf8;
+      border-radius: var(--radius-lg);
+      padding: var(--space-1) var(--space-2);
+      font-size: var(--text-lg);
+    }
+
+    .remainder-label {
+      color: #0284c7;
+      font-weight: var(--weight-bold);
+    }
+
+    .decision-section {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .decision-card {
+      width: 100%;
+      max-width: 760px;
+      background: linear-gradient(135deg, #ecfeff, #cffafe);
+      border: 3px solid #06b6d4;
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      text-align: center;
+    }
+
+    .decision-title {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: #0f172a;
+      margin-bottom: var(--space-4);
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .choice-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      min-height: 80px;
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      border: 3px solid var(--color-neutral-300);
+      border-radius: var(--radius-xl);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 0 var(--color-neutral-400);
+      text-align: center;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 6px 0 var(--color-neutral-400);
+    }
+
+    .choice-btn:active:not(:disabled) {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 2px 0 var(--color-neutral-400);
+    }
+
+    .choice-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.35), 0 4px 0 var(--color-neutral-400);
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.75;
+    }
+
+    .choice-icon {
+      font-size: var(--text-2xl);
+    }
+
+    .choice-btn.correct {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border-color: #22c55e;
+      color: #166534;
+      box-shadow: 0 4px 0 #16a34a;
+    }
+
+    .choice-btn.incorrect {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      border-color: #ef4444;
+      color: #991b1b;
+      animation: shake 0.3s ease;
+    }
+
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      75% { transform: translateX(4px); }
+    }
+
+    @media (max-width: 768px) {
+      .story-card {
+        padding: var(--space-3) var(--space-4);
+      }
+
+      .story-icon {
+        font-size: var(--text-3xl);
+      }
+
+      .story-narrative {
+        font-size: var(--text-base);
+      }
+
+      .division-card {
+        padding: var(--space-3);
+      }
+
+      .division-equation {
+        font-size: var(--text-xl);
+      }
+
+      .remainder-chip {
+        font-size: var(--text-base);
+      }
+
+      .decision-title {
+        font-size: var(--text-base);
+      }
+
+      .choice-btn {
+        min-height: 72px;
+        font-size: var(--text-sm);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .choice-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .choice-btn {
+        min-height: 64px;
+        padding: var(--space-3);
+      }
+
+      .story-question {
+        font-size: var(--text-sm);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

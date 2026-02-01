@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Number Line Zoom - Grade 4 Math Activity - Meadow Math">
+  <title>Number Line Zoom - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade4">Grade 4</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">➡️</span>
+            <span data-i18n="section.activities.number-line-zoom.title">Number Line Zoom</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.number-line-zoom.description">Place a number on a zoomed number line.</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Target Number Display -->
+          <div class="target-display" id="target-display">
+            <div class="target-label" data-i18n="section.activities.number-line-zoom.placeNumber">Place this number:</div>
+            <div class="target-number" id="target-number">320,000</div>
+          </div>
+
+          <!-- Instruction -->
+          <div class="question-text" id="instruction">
+            <span data-i18n="section.activities.number-line-zoom.instruction">Tap where the number belongs on the number line!</span>
+          </div>
+
+          <!-- Number Line Container -->
+          <div class="number-line-container" id="number-line-container">
+            <div class="number-line" id="number-line">
+              <div class="number-line-track"></div>
+              <div class="number-line-markers" id="number-line-markers"></div>
+              <div class="number-line-labels" id="number-line-labels"></div>
+              <!-- User marker (hidden until click) -->
+              <div class="user-marker" id="user-marker" hidden>
+                <div class="marker-pin">📍</div>
+                <div class="marker-value" id="marker-value"></div>
+              </div>
+              <!-- Correct marker (shown after answer) -->
+              <div class="correct-marker" id="correct-marker" hidden>
+                <div class="marker-pin correct">⭐</div>
+                <div class="marker-value correct" id="correct-value"></div>
+              </div>
+              <!-- Clickable overlay -->
+              <div class="number-line-clickable" id="number-line-clickable" role="slider" tabindex="0" data-i18n-title="section.activities.number-line-zoom.sliderLabel"></div>
+            </div>
+          </div>
+
+          <!-- Range Display -->
+          <div class="range-display" id="range-display">
+            <span class="range-start" id="range-start">320,000</span>
+            <span class="range-arrow">↔</span>
+            <span class="range-end" id="range-end">330,000</span>
+          </div>
+
+          <!-- Confirm Button (shows after click) -->
+          <div class="confirm-container" id="confirm-container" hidden>
+            <button class="btn-activity btn-primary" id="btn-confirm" data-i18n="section.activities.number-line-zoom.checkAnswer">Check My Answer</button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value correct" id="stat-correct">0</div>
+              <div class="stat-label" data-i18n="stats.correct">Correct</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value incorrect" id="stat-incorrect">0</div>
+              <div class="stat-label" data-i18n="stats.incorrect">Incorrect</div>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.number-line-zoom.great">Great estimation!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Number Line Zoom Activity - Grade 4 Level 1
+    const NumberLineZoom = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      targetNumber: 0,
+      rangeStart: 0,
+      rangeEnd: 0,
+      userGuess: null,
+      autoAdvanceDelay: 1500,
+      isAnswered: false,
+      hasClicked: false,
+      tolerance: 0,
+      tickStep: 1000,
+      snapStep: 100,
+
+      // DOM elements
+      targetDisplay: null,
+      targetNumberEl: null,
+      numberLine: null,
+      numberLineClickable: null,
+      numberLineMarkers: null,
+      numberLineLabels: null,
+      userMarker: null,
+      markerValue: null,
+      correctMarker: null,
+      correctValue: null,
+      rangeStartEl: null,
+      rangeEndEl: null,
+      confirmContainer: null,
+      btnConfirm: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.targetDisplay = document.getElementById('target-display');
+        this.targetNumberEl = document.getElementById('target-number');
+        this.numberLine = document.getElementById('number-line');
+        this.numberLineClickable = document.getElementById('number-line-clickable');
+        this.numberLineMarkers = document.getElementById('number-line-markers');
+        this.numberLineLabels = document.getElementById('number-line-labels');
+        this.userMarker = document.getElementById('user-marker');
+        this.markerValue = document.getElementById('marker-value');
+        this.correctMarker = document.getElementById('correct-marker');
+        this.correctValue = document.getElementById('correct-value');
+        this.rangeStartEl = document.getElementById('range-start');
+        this.rangeEndEl = document.getElementById('range-end');
+        this.confirmContainer = document.getElementById('confirm-container');
+        this.btnConfirm = document.getElementById('btn-confirm');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Event listeners
+        this.numberLineClickable.addEventListener('click', (e) => this.handleNumberLineClick(e));
+        this.numberLineClickable.addEventListener('keydown', (e) => this.handleNumberLineKeydown(e));
+        this.btnConfirm.addEventListener('click', () => this.checkAnswer());
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      updateTranslations() {
+        this.updateAriaValues();
+      },
+
+      randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      formatNumber(num) {
+        return num.toLocaleString();
+      },
+
+      generateProblem() {
+        let rangeSize;
+        if (this.currentQuestion < 4) {
+          rangeSize = 10000;
+        } else if (this.currentQuestion < 7) {
+          rangeSize = 5000;
+        } else {
+          rangeSize = 1000;
+        }
+
+        const minStart = 100000;
+        const maxStart = 1000000 - rangeSize;
+        const step = rangeSize;
+        const options = Math.floor((maxStart - minStart) / step);
+        this.rangeStart = minStart + step * this.randomInt(0, options);
+        this.rangeEnd = this.rangeStart + rangeSize;
+
+        this.snapStep = rangeSize >= 5000 ? 100 : 10;
+        const buffer = Math.max(Math.floor(rangeSize * 0.12), this.snapStep * 4);
+        let target = this.randomInt(this.rangeStart + buffer, this.rangeEnd - buffer);
+        target = Math.round(target / this.snapStep) * this.snapStep;
+
+        if (target <= this.rangeStart) target = this.rangeStart + this.snapStep;
+        if (target >= this.rangeEnd) target = this.rangeEnd - this.snapStep;
+
+        this.targetNumber = target;
+        this.tolerance = Math.max(Math.floor(rangeSize * 0.06), this.snapStep * 2);
+        this.userGuess = null;
+        this.isAnswered = false;
+        this.hasClicked = false;
+      },
+
+      startQuestion() {
+        this.generateProblem();
+        this.renderNumberLine();
+        this.updateDisplay();
+        this.feedback.classList.remove('show', 'error');
+        this.confirmContainer.hidden = true;
+        this.userMarker.hidden = true;
+        this.correctMarker.hidden = true;
+        this.userMarker.classList.remove('correct', 'incorrect');
+        this.numberLineClickable.style.pointerEvents = 'auto';
+        this.renderProgress();
+      },
+
+      updateDisplay() {
+        this.targetNumberEl.textContent = this.formatNumber(this.targetNumber);
+        this.rangeStartEl.textContent = this.formatNumber(this.rangeStart);
+        this.rangeEndEl.textContent = this.formatNumber(this.rangeEnd);
+        this.updateAriaValues();
+      },
+
+      updateAriaValues() {
+        const value = this.userGuess !== null ? this.userGuess : this.rangeStart;
+        this.numberLineClickable.setAttribute('aria-valuemin', this.rangeStart);
+        this.numberLineClickable.setAttribute('aria-valuemax', this.rangeEnd);
+        this.numberLineClickable.setAttribute('aria-valuenow', value);
+        this.numberLineClickable.setAttribute('aria-valuetext', this.formatNumber(value));
+      },
+
+      renderNumberLine() {
+        this.numberLineMarkers.innerHTML = '';
+        this.numberLineLabels.innerHTML = '';
+
+        const range = this.rangeEnd - this.rangeStart;
+        let step;
+        let majorStep;
+
+        if (range >= 10000) {
+          step = 1000;
+          majorStep = 5000;
+        } else if (range >= 5000) {
+          step = 500;
+          majorStep = 2500;
+        } else if (range >= 2000) {
+          step = 200;
+          majorStep = 1000;
+        } else {
+          step = 100;
+          majorStep = 500;
+        }
+
+        this.tickStep = step;
+
+        for (let num = this.rangeStart; num <= this.rangeEnd; num += step) {
+          const position = ((num - this.rangeStart) / range) * 100;
+          const isMajor = (num - this.rangeStart) % majorStep === 0 || num === this.rangeEnd;
+
+          const marker = document.createElement('div');
+          marker.className = `nl-marker ${isMajor ? 'major' : 'minor'}`;
+          marker.style.left = `${position}%`;
+          this.numberLineMarkers.appendChild(marker);
+
+          if (isMajor) {
+            const label = document.createElement('div');
+            label.className = 'nl-label';
+            label.style.left = `${position}%`;
+            label.textContent = this.formatNumber(num);
+            this.numberLineLabels.appendChild(label);
+          }
+        }
+      },
+
+      handleNumberLineClick(e) {
+        if (this.isAnswered) return;
+
+        const rect = this.numberLineClickable.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const percentage = Math.max(0, Math.min(1, clickX / rect.width));
+        const range = this.rangeEnd - this.rangeStart;
+        let guess = this.rangeStart + (percentage * range);
+        guess = Math.round(guess / this.snapStep) * this.snapStep;
+        this.setUserGuess(guess);
+      },
+
+      handleNumberLineKeydown(e) {
+        if (this.isAnswered) return;
+
+        let handled = false;
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+          this.moveGuess(-this.snapStep);
+          handled = true;
+        } else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+          this.moveGuess(this.snapStep);
+          handled = true;
+        } else if (e.key === 'Home') {
+          this.setUserGuess(this.rangeStart);
+          handled = true;
+        } else if (e.key === 'End') {
+          this.setUserGuess(this.rangeEnd);
+          handled = true;
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          if (this.hasClicked) {
+            this.checkAnswer();
+            handled = true;
+          }
+        }
+
+        if (handled) {
+          e.preventDefault();
+        }
+      },
+
+      moveGuess(delta) {
+        const startValue = this.userGuess !== null ? this.userGuess : this.rangeStart;
+        this.setUserGuess(startValue + delta);
+      },
+
+      setUserGuess(value) {
+        const range = this.rangeEnd - this.rangeStart;
+        const clamped = Math.min(this.rangeEnd, Math.max(this.rangeStart, value));
+        const snapped = Math.round(clamped / this.snapStep) * this.snapStep;
+        this.userGuess = Math.min(this.rangeEnd, Math.max(this.rangeStart, snapped));
+
+        const position = ((this.userGuess - this.rangeStart) / range) * 100;
+        this.userMarker.style.left = `${position}%`;
+        this.markerValue.textContent = this.formatNumber(this.userGuess);
+        this.userMarker.hidden = false;
+        this.confirmContainer.hidden = false;
+        this.hasClicked = true;
+        this.updateAriaValues();
+      },
+
+      checkAnswer() {
+        if (this.isAnswered || !this.hasClicked) return;
+        this.isAnswered = true;
+
+        this.confirmContainer.hidden = true;
+        this.numberLineClickable.style.pointerEvents = 'none';
+
+        const difference = Math.abs(this.userGuess - this.targetNumber);
+        const isCorrect = difference <= this.tolerance;
+
+        const range = this.rangeEnd - this.rangeStart;
+        const correctPosition = ((this.targetNumber - this.rangeStart) / range) * 100;
+        this.correctMarker.style.left = `${correctPosition}%`;
+        this.correctValue.textContent = this.formatNumber(this.targetNumber);
+        this.correctMarker.hidden = false;
+
+        if (isCorrect) {
+          this.correctCount++;
+          this.userMarker.classList.add('correct');
+          const msg = window.i18n
+            ? i18n.t('section.activities.number-line-zoom.correctMsg') || 'Great placement!'
+            : 'Great placement!';
+          this.feedback.textContent = '✓ ' + msg;
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          this.userMarker.classList.add('incorrect');
+          const msg = window.i18n
+            ? (i18n.t('section.activities.number-line-zoom.incorrectMsg') || 'The correct spot is {target}').replace('{target}', this.formatNumber(this.targetNumber))
+            : `The correct spot is ${this.formatNumber(this.targetNumber)}`;
+          this.feedback.textContent = msg;
+          this.feedback.classList.add('error');
+        }
+        this.feedback.classList.add('show');
+
+        setTimeout(() => {
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+
+        const percentage = (this.correctCount / this.totalQuestions) * 100;
+        if (percentage >= 80) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.number-line-zoom.perfect') || 'Amazing number line skills!' : 'Amazing number line skills!';
+        } else if (percentage >= 50) {
+          this.statsIcon.textContent = '➡️';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.number-line-zoom.great') || 'Great estimation!' : 'Great estimation!';
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = window.i18n ? i18n.t('section.activities.number-line-zoom.keepPracticing') || 'Keep practicing!' : 'Keep practicing!';
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      restartActivity() {
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.startQuestion();
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => NumberLineZoom.init());
+      } else {
+        NumberLineZoom.init();
+      }
+    });
+  </script>
+  <style>
+    /* Number Line Zoom specific styles */
+
+    .question-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-600);
+      margin-bottom: var(--space-4);
+      text-align: center;
+    }
+
+    /* Target Display */
+    .target-display {
+      text-align: center;
+      margin-bottom: var(--space-4);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border: 3px solid #22c55e;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 0 #16a34a;
+    }
+
+    .target-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: #166534;
+      margin-bottom: var(--space-1);
+    }
+
+    .target-number {
+      font-family: var(--font-secondary);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: #14532d;
+    }
+
+    /* Number Line Container */
+    .number-line-container {
+      margin: var(--space-6) 0;
+      padding: var(--space-4) var(--space-6);
+    }
+
+    .number-line {
+      position: relative;
+      height: 120px;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    .number-line-track {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(135deg, #d9f99d, #86efac);
+      border-radius: var(--radius-full);
+      transform: translateY(-50%);
+      border: 2px solid #22c55e;
+    }
+
+    .number-line-markers {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 0;
+      transform: translateY(-50%);
+    }
+
+    .nl-marker {
+      position: absolute;
+      width: 3px;
+      background: #16a34a;
+      transform: translateX(-50%);
+    }
+
+    .nl-marker.major {
+      height: 24px;
+      top: -12px;
+      background: #15803d;
+      width: 4px;
+    }
+
+    .nl-marker.minor {
+      height: 12px;
+      top: -6px;
+    }
+
+    .number-line-labels {
+      position: absolute;
+      top: calc(50% + 20px);
+      left: 0;
+      right: 0;
+    }
+
+    .nl-label {
+      position: absolute;
+      transform: translateX(-50%);
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: #14532d;
+      white-space: nowrap;
+    }
+
+    .number-line-clickable {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      cursor: crosshair;
+      z-index: 10;
+      border-radius: var(--radius-xl);
+    }
+
+    .number-line-clickable:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.35);
+    }
+
+    /* User Marker */
+    .user-marker {
+      position: absolute;
+      top: calc(50% - 50px);
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 15;
+      transition: opacity 0.2s ease;
+    }
+
+    .marker-pin {
+      font-size: var(--text-2xl);
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+      animation: marker-drop 0.3s ease;
+    }
+
+    @keyframes marker-drop {
+      0% { transform: translateY(-20px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .marker-value {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      color: var(--color-neutral-700);
+      background: white;
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-md);
+      border: 2px solid var(--color-neutral-300);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-top: var(--space-1);
+    }
+
+    .user-marker.correct .marker-value {
+      background: #dcfce7;
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .user-marker.incorrect .marker-value {
+      background: #fee2e2;
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+
+    /* Correct Marker */
+    .correct-marker {
+      position: absolute;
+      top: calc(50% - 50px);
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 14;
+    }
+
+    .marker-pin.correct {
+      font-size: var(--text-2xl);
+      animation: star-pop 0.5s ease;
+    }
+
+    @keyframes star-pop {
+      0% { transform: scale(0); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+
+    .marker-value.correct {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      border: 2px solid #22c55e;
+      color: #166534;
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-md);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-top: var(--space-1);
+    }
+
+    /* Range Display */
+    .range-display {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--color-neutral-500);
+      margin-top: var(--space-2);
+    }
+
+    .range-start, .range-end {
+      color: #166534;
+      background: #ecfccb;
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-md);
+      border: 2px solid #22c55e;
+    }
+
+    .range-arrow {
+      color: var(--color-neutral-400);
+    }
+
+    /* Confirm Container */
+    .confirm-container {
+      text-align: center;
+      margin: var(--space-4) 0;
+    }
+
+    .confirm-container .btn-activity {
+      min-width: 180px;
+      min-height: 52px;
+    }
+
+    /* Progress indicator */
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-neutral-300);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    .progress-dot.completed {
+      background: #22c55e;
+    }
+
+    /* Activity area padding for feedback */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .target-number {
+        font-size: var(--text-3xl);
+      }
+
+      .number-line-container {
+        padding: var(--space-3) var(--space-4);
+      }
+
+      .number-line {
+        height: 100px;
+      }
+
+      .nl-label {
+        font-size: var(--text-xs);
+      }
+
+      .marker-pin {
+        font-size: var(--text-xl);
+      }
+
+      .marker-value {
+        font-size: var(--text-xs);
+        padding: 2px var(--space-1);
+      }
+
+      .range-display {
+        font-size: var(--text-sm);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .target-display {
+        padding: var(--space-3);
+      }
+
+      .target-number {
+        font-size: var(--text-2xl);
+      }
+
+      .number-line {
+        height: 90px;
+      }
+
+      .user-marker, .correct-marker {
+        top: calc(50% - 45px);
+      }
+
+      .nl-marker.major {
+        height: 18px;
+        top: -9px;
+      }
+
+      .nl-marker.minor {
+        height: 10px;
+        top: -5px;
+      }
+
+      .range-display {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

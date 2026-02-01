@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Coordinate Distance - Grade 5 Math Activity - Meadow Math">
+  <title>Coordinate Distance - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../../grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade5">Grade 5</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon" aria-hidden="true">📏</span>
+            <span data-i18n="section.activities.coordinate-distance.title">Coordinate Distance</span>
+          </h1>
+          <p class="activity-instruction" data-i18n="section.activities.coordinate-distance.instruction">Find the distance between the points!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress" role="status" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Prompt Card -->
+          <div class="prompt-card" id="prompt-card">
+            <span class="prompt-text" id="prompt-text">How far apart are the two points?</span>
+          </div>
+
+          <!-- Coordinate Grid -->
+          <div class="grid-container" id="grid-container">
+            <svg class="coordinate-grid" id="coordinate-grid" viewBox="0 0 340 340" preserveAspectRatio="xMidYMid meet">
+              <!-- Grid will be drawn here -->
+            </svg>
+          </div>
+
+          <!-- Point Labels -->
+          <div class="point-labels" id="point-labels">
+            <span class="point-label point-a" id="point-a-label">A (0, 0)</span>
+            <span class="point-label point-b" id="point-b-label">B (0, 0)</span>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="choices-container" id="choices-container">
+            <!-- Choices will be rendered here -->
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="activity-actions">
+          <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="buttons.reset">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon" aria-hidden="true">🌟</div>
+          <h2 class="stats-title" id="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stat-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stat-incorrect">0</span>
+              <span class="stat-label" data-i18n="stats.incorrect">Incorrect</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message" data-i18n="section.activities.coordinate-distance.great">Great distance finding!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Coordinate Distance Activity - Grade 5 Level 5
+    const CoordinateDistance = {
+      currentQuestion: 0,
+      totalQuestions: 10,
+      correctCount: 0,
+      incorrectCount: 0,
+      autoAdvanceDelay: 1500,
+      questions: [],
+      isAnswered: false,
+      advanceTimeout: null,
+      gridSize: 10,
+      cellSize: 30,
+      padding: 40,
+
+      // DOM elements
+      promptCard: null,
+      promptText: null,
+      gridContainer: null,
+      gridSvg: null,
+      pointLabels: null,
+      pointALabel: null,
+      pointBLabel: null,
+      choicesContainer: null,
+      feedback: null,
+      progress: null,
+      btnReset: null,
+      statsOverlay: null,
+      statCorrect: null,
+      statIncorrect: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      init() {
+        this.promptCard = document.getElementById('prompt-card');
+        this.promptText = document.getElementById('prompt-text');
+        this.gridContainer = document.getElementById('grid-container');
+        this.gridSvg = document.getElementById('coordinate-grid');
+        this.pointLabels = document.getElementById('point-labels');
+        this.pointALabel = document.getElementById('point-a-label');
+        this.pointBLabel = document.getElementById('point-b-label');
+        this.choicesContainer = document.getElementById('choices-container');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statCorrect = document.getElementById('stat-correct');
+        this.statIncorrect = document.getElementById('stat-incorrect');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        this.btnReset.addEventListener('click', () => this.resetCurrentQuestion());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (event) => {
+          if (event.target === this.statsOverlay) this.restartActivity();
+        });
+
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        this.drawGrid();
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      drawGrid() {
+        const svg = this.gridSvg;
+        svg.innerHTML = '';
+
+        const gridGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+        // Draw grid lines
+        for (let i = 0; i <= this.gridSize; i++) {
+          const x = this.padding + i * this.cellSize;
+          const y = this.padding + (this.gridSize - i) * this.cellSize;
+
+          // Vertical lines
+          const vLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          vLine.setAttribute('x1', x);
+          vLine.setAttribute('y1', this.padding);
+          vLine.setAttribute('x2', x);
+          vLine.setAttribute('y2', this.padding + this.gridSize * this.cellSize);
+          vLine.setAttribute('stroke', i === 0 ? '#374151' : '#d1d5db');
+          vLine.setAttribute('stroke-width', i === 0 ? '2' : '1');
+          gridGroup.appendChild(vLine);
+
+          // Horizontal lines
+          const hLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          hLine.setAttribute('x1', this.padding);
+          hLine.setAttribute('y1', y);
+          hLine.setAttribute('x2', this.padding + this.gridSize * this.cellSize);
+          hLine.setAttribute('y2', y);
+          hLine.setAttribute('stroke', i === 0 ? '#374151' : '#d1d5db');
+          hLine.setAttribute('stroke-width', i === 0 ? '2' : '1');
+          gridGroup.appendChild(hLine);
+
+          // X-axis labels
+          const xLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          xLabel.setAttribute('x', this.padding + i * this.cellSize);
+          xLabel.setAttribute('y', this.padding + this.gridSize * this.cellSize + 20);
+          xLabel.setAttribute('text-anchor', 'middle');
+          xLabel.setAttribute('fill', '#374151');
+          xLabel.setAttribute('font-size', '12');
+          xLabel.setAttribute('font-family', 'var(--font-secondary)');
+          xLabel.textContent = i;
+          gridGroup.appendChild(xLabel);
+
+          // Y-axis labels
+          const yLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          yLabel.setAttribute('x', this.padding - 15);
+          yLabel.setAttribute('y', this.padding + (this.gridSize - i) * this.cellSize + 4);
+          yLabel.setAttribute('text-anchor', 'middle');
+          yLabel.setAttribute('fill', '#374151');
+          yLabel.setAttribute('font-size', '12');
+          yLabel.setAttribute('font-family', 'var(--font-secondary)');
+          yLabel.textContent = i;
+          gridGroup.appendChild(yLabel);
+        }
+
+        // Add axis labels
+        const xAxisLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        xAxisLabel.setAttribute('x', this.padding + this.gridSize * this.cellSize + 15);
+        xAxisLabel.setAttribute('y', this.padding + this.gridSize * this.cellSize + 4);
+        xAxisLabel.setAttribute('fill', '#3b82f6');
+        xAxisLabel.setAttribute('font-size', '14');
+        xAxisLabel.setAttribute('font-weight', 'bold');
+        xAxisLabel.textContent = 'x';
+        gridGroup.appendChild(xAxisLabel);
+
+        const yAxisLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        yAxisLabel.setAttribute('x', this.padding - 4);
+        yAxisLabel.setAttribute('y', this.padding - 10);
+        yAxisLabel.setAttribute('fill', '#22c55e');
+        yAxisLabel.setAttribute('font-size', '14');
+        yAxisLabel.setAttribute('font-weight', 'bold');
+        yAxisLabel.textContent = 'y';
+        gridGroup.appendChild(yAxisLabel);
+
+        svg.appendChild(gridGroup);
+
+        // Create drawing group
+        this.drawGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        this.drawGroup.setAttribute('id', 'draw-group');
+        svg.appendChild(this.drawGroup);
+      },
+
+      generateQuestions() {
+        const questions = [];
+
+        while (questions.length < this.totalQuestions) {
+          // Randomly choose horizontal or vertical
+          const isHorizontal = Math.random() < 0.5;
+
+          let p1, p2;
+          if (isHorizontal) {
+            // Same y, different x
+            const y = Math.floor(Math.random() * (this.gridSize + 1));
+            let x1 = Math.floor(Math.random() * (this.gridSize + 1));
+            let x2 = Math.floor(Math.random() * (this.gridSize + 1));
+
+            // Ensure x1 < x2 and they're different
+            if (x1 === x2) x2 = (x2 + 3) % (this.gridSize + 1);
+            if (x1 > x2) [x1, x2] = [x2, x1];
+
+            // Ensure distance is at least 2
+            if (x2 - x1 < 2) {
+              x2 = Math.min(x1 + 2 + Math.floor(Math.random() * 5), this.gridSize);
+            }
+
+            p1 = { x: x1, y };
+            p2 = { x: x2, y };
+          } else {
+            // Same x, different y
+            const x = Math.floor(Math.random() * (this.gridSize + 1));
+            let y1 = Math.floor(Math.random() * (this.gridSize + 1));
+            let y2 = Math.floor(Math.random() * (this.gridSize + 1));
+
+            // Ensure y1 < y2 and they're different
+            if (y1 === y2) y2 = (y2 + 3) % (this.gridSize + 1);
+            if (y1 > y2) [y1, y2] = [y2, y1];
+
+            // Ensure distance is at least 2
+            if (y2 - y1 < 2) {
+              y2 = Math.min(y1 + 2 + Math.floor(Math.random() * 5), this.gridSize);
+            }
+
+            p1 = { x, y: y1 };
+            p2 = { x, y: y2 };
+          }
+
+          const distance = isHorizontal ? Math.abs(p2.x - p1.x) : Math.abs(p2.y - p1.y);
+
+          // Skip if distance is still less than 2 (edge case)
+          if (distance < 2) continue;
+
+          questions.push({
+            p1,
+            p2,
+            distance,
+            isHorizontal
+          });
+        }
+
+        this.questions = shuffle(questions);
+      },
+
+      getTranslation(key, fallback) {
+        if (window.i18n && typeof i18n.t === 'function') {
+          const text = i18n.t(key);
+          if (text && text !== key) return text;
+        }
+        return fallback;
+      },
+
+      startQuestion() {
+        this.clearAdvanceTimeout();
+        this.isAnswered = false;
+        this.feedback.classList.remove('show', 'error');
+
+        const q = this.questions[this.currentQuestion];
+        if (!q) {
+          this.showStats();
+          return;
+        }
+
+        // Update prompt
+        this.promptText.textContent = this.getTranslation(
+          'section.activities.coordinate-distance.prompt',
+          'How far apart are points A and B?'
+        );
+
+        // Draw points and segment
+        this.drawSegment(q);
+
+        // Update point labels
+        this.pointALabel.textContent = `A (${q.p1.x}, ${q.p1.y})`;
+        this.pointBLabel.textContent = `B (${q.p2.x}, ${q.p2.y})`;
+
+        // Generate choices
+        const choices = this.generateChoices(q.distance);
+        this.renderChoices(choices, q.distance);
+
+        this.renderProgress();
+      },
+
+      drawSegment(q) {
+        const drawGroup = document.getElementById('draw-group');
+        drawGroup.innerHTML = '';
+
+        const x1 = this.padding + q.p1.x * this.cellSize;
+        const y1 = this.padding + (this.gridSize - q.p1.y) * this.cellSize;
+        const x2 = this.padding + q.p2.x * this.cellSize;
+        const y2 = this.padding + (this.gridSize - q.p2.y) * this.cellSize;
+
+        // Draw segment line
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', x1);
+        line.setAttribute('y1', y1);
+        line.setAttribute('x2', x2);
+        line.setAttribute('y2', y2);
+        line.setAttribute('stroke', '#8b5cf6');
+        line.setAttribute('stroke-width', '4');
+        line.setAttribute('stroke-linecap', 'round');
+        drawGroup.appendChild(line);
+
+        // Draw point A
+        const circleA = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circleA.setAttribute('cx', x1);
+        circleA.setAttribute('cy', y1);
+        circleA.setAttribute('r', '8');
+        circleA.setAttribute('fill', '#3b82f6');
+        circleA.setAttribute('stroke', 'white');
+        circleA.setAttribute('stroke-width', '2');
+        drawGroup.appendChild(circleA);
+
+        // Draw point B
+        const circleB = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circleB.setAttribute('cx', x2);
+        circleB.setAttribute('cy', y2);
+        circleB.setAttribute('r', '8');
+        circleB.setAttribute('fill', '#22c55e');
+        circleB.setAttribute('stroke', 'white');
+        circleB.setAttribute('stroke-width', '2');
+        drawGroup.appendChild(circleB);
+
+        // Add point labels
+        const labelA = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        labelA.setAttribute('x', x1);
+        labelA.setAttribute('y', y1 - 14);
+        labelA.setAttribute('text-anchor', 'middle');
+        labelA.setAttribute('fill', '#1e40af');
+        labelA.setAttribute('font-size', '12');
+        labelA.setAttribute('font-weight', 'bold');
+        labelA.textContent = 'A';
+        drawGroup.appendChild(labelA);
+
+        const labelB = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        labelB.setAttribute('x', x2);
+        labelB.setAttribute('y', y2 - 14);
+        labelB.setAttribute('text-anchor', 'middle');
+        labelB.setAttribute('fill', '#166534');
+        labelB.setAttribute('font-size', '12');
+        labelB.setAttribute('font-weight', 'bold');
+        labelB.textContent = 'B';
+        drawGroup.appendChild(labelB);
+      },
+
+      generateChoices(correct) {
+        const choices = [correct];
+        const used = new Set([correct]);
+
+        // Common mistakes: off by one
+        const offByOne = [correct + 1, correct - 1];
+        for (const val of offByOne) {
+          if (val > 0 && val <= this.gridSize && !used.has(val)) {
+            choices.push(val);
+            used.add(val);
+          }
+        }
+
+        // Other distractors
+        const others = [correct + 2, correct - 2, correct * 2];
+        for (const val of others) {
+          if (choices.length >= 4) break;
+          if (val > 0 && val <= this.gridSize && !used.has(val)) {
+            choices.push(val);
+            used.add(val);
+          }
+        }
+
+        // Fill with random if needed
+        while (choices.length < 4) {
+          const val = Math.floor(Math.random() * this.gridSize) + 1;
+          if (!used.has(val)) {
+            choices.push(val);
+            used.add(val);
+          }
+        }
+
+        return shuffle(choices);
+      },
+
+      renderChoices(choices, correctAnswer) {
+        this.choicesContainer.innerHTML = '';
+        const unitsLabel = this.getTranslation('section.activities.coordinate-distance.units', 'units');
+
+        choices.forEach(choice => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.setAttribute('tabindex', '0');
+          btn.innerHTML = `<span class="choice-value">${choice}</span><span class="choice-unit">${unitsLabel}</span>`;
+
+          btn.addEventListener('click', () => this.checkAnswer(choice, correctAnswer));
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.checkAnswer(choice, correctAnswer);
+            }
+          });
+
+          this.choicesContainer.appendChild(btn);
+        });
+      },
+
+      checkAnswer(selected, correct) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+
+        const buttons = this.choicesContainer.querySelectorAll('.choice-btn');
+        buttons.forEach(btn => btn.disabled = true);
+
+        const isCorrect = selected === correct;
+
+        buttons.forEach(btn => {
+          const btnValue = parseInt(btn.querySelector('.choice-value').textContent);
+          if (btnValue === correct) {
+            btn.classList.add('correct');
+          } else if (btnValue === selected) {
+            btn.classList.add('incorrect');
+          }
+        });
+
+        const q = this.questions[this.currentQuestion];
+        const calculation = q.isHorizontal
+          ? `|${q.p2.x} - ${q.p1.x}| = ${correct}`
+          : `|${q.p2.y} - ${q.p1.y}| = ${correct}`;
+
+        if (isCorrect) {
+          this.correctCount++;
+          this.feedback.textContent = this.getTranslation(
+            'section.activities.coordinate-distance.correct',
+            'Correct! The distance is {distance} units.'
+          )
+            .replace('{distance}', correct);
+          this.feedback.classList.remove('error');
+        } else {
+          this.incorrectCount++;
+          this.feedback.textContent = this.getTranslation(
+            'section.activities.coordinate-distance.wrong',
+            'The distance is {distance} units. ({calculation})'
+          )
+            .replace('{distance}', correct)
+            .replace('{calculation}', calculation);
+          this.feedback.classList.add('error');
+        }
+
+        this.feedback.classList.add('show');
+        this.scheduleAdvance();
+      },
+
+      scheduleAdvance() {
+        this.advanceTimeout = setTimeout(() => {
+          this.advanceTimeout = null;
+          if (this.currentQuestion < this.totalQuestions - 1) {
+            this.nextQuestion();
+          } else {
+            this.showStats();
+          }
+        }, this.autoAdvanceDelay);
+      },
+
+      updateTranslations() {
+        if (this.statsOverlay.classList.contains('show')) {
+          this.updateStatsMessage();
+        }
+        this.updateProgressLabel();
+
+        // Update prompt if showing a question
+        if (!this.statsOverlay.classList.contains('show') && this.questions[this.currentQuestion]) {
+          this.promptText.textContent = this.getTranslation(
+            'section.activities.coordinate-distance.prompt',
+            'How far apart are points A and B?'
+          );
+
+          // Update choice unit labels
+          const unitsLabel = this.getTranslation('section.activities.coordinate-distance.units', 'units');
+          this.choicesContainer.querySelectorAll('.choice-unit').forEach(el => {
+            el.textContent = unitsLabel;
+          });
+        }
+      },
+
+      nextQuestion() {
+        this.currentQuestion++;
+        this.startQuestion();
+      },
+
+      resetCurrentQuestion() {
+        this.clearAdvanceTimeout();
+        this.startQuestion();
+      },
+
+      showStats() {
+        this.statCorrect.textContent = this.correctCount;
+        this.statIncorrect.textContent = this.incorrectCount;
+        this.updateStatsMessage();
+        this.statsOverlay.classList.add('show');
+      },
+
+      updateStatsMessage() {
+        const percent = this.correctCount / this.totalQuestions;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.coordinate-distance.perfect',
+            'Perfect! You mastered coordinate distance!'
+          );
+        } else if (percent >= 0.75) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.coordinate-distance.great',
+            'Great distance finding!'
+          );
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.coordinate-distance.good',
+            'Good job!'
+          );
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = this.getTranslation(
+            'section.activities.coordinate-distance.keepPracticing',
+            'Keep practicing!'
+          );
+        }
+      },
+
+      restartActivity() {
+        this.clearAdvanceTimeout();
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.incorrectCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generateQuestions();
+        this.startQuestion();
+        this.renderProgress();
+      },
+
+      clearAdvanceTimeout() {
+        if (this.advanceTimeout) {
+          clearTimeout(this.advanceTimeout);
+          this.advanceTimeout = null;
+        }
+      },
+
+      renderProgress() {
+        let html = '';
+        for (let i = 0; i < this.totalQuestions; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentQuestion) {
+            className += ' completed';
+          } else if (i === this.currentQuestion) {
+            className += ' current';
+          }
+          html += `<div class="${className}" role="presentation" aria-hidden="true"></div>`;
+        }
+        this.progress.innerHTML = html;
+        this.updateProgressLabel();
+      },
+
+      updateProgressLabel() {
+        if (!this.progress) return;
+        const roundLabel = this.getTranslation('activity.round', 'Round');
+        const ofLabel = this.getTranslation('activity.of', 'of');
+        const currentRound = Math.min(this.currentQuestion + 1, this.totalQuestions);
+        this.progress.setAttribute('aria-label', `${roundLabel} ${currentRound} ${ofLabel} ${this.totalQuestions}`);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.i18n && typeof i18n.init === 'function') {
+        i18n.init().then(() => CoordinateDistance.init());
+      } else {
+        CoordinateDistance.init();
+      }
+    });
+  </script>
+  <style>
+    /* Coordinate Distance specific styles */
+
+    /* Prompt Card */
+    .prompt-card {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-radius: var(--radius-xl);
+      border: 3px solid #3b82f6;
+      padding: var(--space-3);
+      margin-bottom: var(--space-2);
+      text-align: center;
+    }
+
+    .prompt-text {
+      font-family: var(--font-secondary);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #1e3a8a;
+    }
+
+    /* Grid Container */
+    .grid-container {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 2px solid #e2e8f0;
+      padding: var(--space-2);
+      margin-bottom: var(--space-2);
+      display: flex;
+      justify-content: center;
+    }
+
+    .coordinate-grid {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+    }
+
+    /* Point Labels */
+    .point-labels {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-3);
+    }
+
+    .point-label {
+      font-family: var(--font-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-md);
+    }
+
+    .point-label.point-a {
+      background: #dbeafe;
+      color: #1e40af;
+      border: 2px solid #3b82f6;
+    }
+
+    .point-label.point-b {
+      background: #dcfce7;
+      color: #166534;
+      border: 2px solid #22c55e;
+    }
+
+    /* Choices Container */
+    .choices-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .choice-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-3);
+      font-family: var(--font-secondary);
+      color: #374151;
+      background: white;
+      border: 3px solid #d1d5db;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 65px;
+    }
+
+    .choice-value {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+    }
+
+    .choice-unit {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-medium);
+      color: #6b7280;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: #f3f4f6;
+      border-color: #9ca3af;
+      transform: scale(1.02);
+    }
+
+    .choice-btn:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .choice-btn.correct {
+      background: #dcfce7;
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .choice-btn.incorrect {
+      background: #fee2e2;
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+
+    .choice-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    /* Feedback and layout */
+    .activity-area {
+      padding-bottom: calc(var(--space-8) + 60px);
+      position: relative;
+    }
+
+    .feedback-message {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      max-width: 90%;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .prompt-card {
+        padding: var(--space-2);
+      }
+
+      .prompt-text {
+        font-size: var(--text-sm);
+      }
+
+      .coordinate-grid {
+        max-width: 300px;
+      }
+
+      .point-labels {
+        gap: var(--space-2);
+      }
+
+      .point-label {
+        font-size: var(--text-xs);
+      }
+
+      .choices-container {
+        gap: var(--space-2);
+      }
+
+      .choice-btn {
+        padding: var(--space-2);
+        min-height: 55px;
+      }
+
+      .choice-value {
+        font-size: var(--text-xl);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .coordinate-grid {
+        max-width: 280px;
+      }
+
+      .choice-btn {
+        min-height: 50px;
+      }
+
+      .choice-value {
+        font-size: var(--text-lg);
+      }
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Compose the Shape - Grade 2 Math Activity - Meadow Math">
+  <title>Compose the Shape - Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="../../prek/activities/activity.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="../../prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="../../kindergarten/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="../../grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="../index.html" class="nav-item active">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="../../grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="../../grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="../../grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+      </nav>
+
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.grade2">Grade 2</span></a>
+          <h1 class="activity-title">
+            <span class="activity-title-icon">🧩</span>
+            <span data-i18n="section.activities.compose-shapes.title">Compose the Shape</span>
+          </h1>
+          <p class="activity-instruction" id="instruction" data-i18n="section.activities.compose-shapes.instruction">Drag the shapes to build the target!</p>
+        </header>
+
+        <!-- Activity Area -->
+        <div class="activity-area">
+          <!-- Progress -->
+          <div class="progress-indicator" id="progress"></div>
+
+          <!-- Target Shape Display -->
+          <div class="target-container">
+            <div class="target-label" data-i18n="section.activities.compose-shapes.buildThis">Build this shape:</div>
+            <div class="target-shape" id="target-shape">
+              <!-- Target shape will be shown here -->
+            </div>
+            <div class="target-name" id="target-name"></div>
+          </div>
+
+          <!-- Building Area -->
+          <div class="compose-workspace">
+            <div class="build-area" id="build-area">
+              <!-- Drop zone for building shapes -->
+            </div>
+          </div>
+
+          <!-- Pieces Tray -->
+          <div class="pieces-tray" id="pieces-tray">
+            <!-- Draggable shape pieces will appear here -->
+          </div>
+
+          <!-- Check Button -->
+          <div class="action-buttons">
+            <button class="btn-activity btn-secondary" id="btn-reset" data-i18n="section.activities.compose-shapes.reset">Reset</button>
+            <button class="btn-activity btn-primary" id="btn-check" data-i18n="section.activities.compose-shapes.check">Check</button>
+          </div>
+
+          <!-- Feedback Message -->
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Stats Overlay -->
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value correct" id="stats-correct">0</span>
+              <span class="stat-label" data-i18n="stats.correct">Correct</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value incorrect" id="stats-wrong">0</span>
+              <span class="stat-label" data-i18n="stats.wrong">Wrong</span>
+            </div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    /* Compose Shapes specific styles */
+    .target-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: var(--space-6);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, #dbeafe, #eff6ff);
+      border-radius: var(--radius-xl);
+      border: 3px solid #3b82f6;
+    }
+
+    .target-label {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--space-3);
+    }
+
+    .target-shape {
+      width: 200px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .target-shape svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .target-name {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-text);
+      margin-top: var(--space-3);
+      text-transform: capitalize;
+    }
+
+    .compose-workspace {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--space-6);
+    }
+
+    .build-area {
+      width: 320px;
+      height: 240px;
+      background: white;
+      border: 4px dashed #94a3b8;
+      border-radius: var(--radius-xl);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .build-area.drag-over {
+      border-color: #3b82f6;
+      background-color: #eff6ff;
+    }
+
+    .build-area.correct {
+      border-color: var(--color-success);
+      background-color: #dcfce7;
+    }
+
+    .build-area.incorrect {
+      border-color: var(--color-error);
+      background-color: #fee2e2;
+    }
+
+    .build-area svg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .pieces-tray {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-4);
+      padding: var(--space-4);
+      background: #f1f5f9;
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--space-6);
+      min-height: 100px;
+    }
+
+    .shape-piece {
+      width: 90px;
+      height: 90px;
+      background: white;
+      border: 3px solid #3b82f6;
+      border-radius: var(--radius-lg);
+      cursor: grab;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 0 rgba(59, 130, 246, 0.3), 0 4px 8px rgba(0, 0, 0, 0.1);
+      user-select: none;
+      touch-action: none;
+    }
+
+    .shape-piece:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 5px 0 rgba(59, 130, 246, 0.3), 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .shape-piece:active, .shape-piece.dragging {
+      cursor: grabbing;
+      transform: scale(1.1);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      opacity: 0.9;
+    }
+
+    .shape-piece.placed {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .shape-piece:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.5), 0 3px 0 rgba(59, 130, 246, 0.3), 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .shape-piece svg {
+      width: 70px;
+      height: 70px;
+    }
+
+    /* Placed piece in build area */
+    .placed-piece {
+      position: absolute;
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+
+    .placed-piece:hover {
+      filter: brightness(1.1);
+    }
+
+    .placed-piece svg {
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .action-buttons .btn-activity {
+      min-width: 140px;
+      min-height: 60px;
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      border-radius: var(--radius-xl);
+      padding: var(--space-4) var(--space-6);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary {
+      background: white;
+      border: 3px solid #94a3b8;
+      color: #64748b;
+    }
+
+    .btn-secondary:hover {
+      background: #f1f5f9;
+      border-color: #64748b;
+    }
+
+    .btn-activity:active {
+      transform: scale(0.97);
+    }
+
+    .btn-activity:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4);
+    }
+
+    @media (max-width: 767px) {
+      .target-shape {
+        width: 160px;
+        height: 120px;
+      }
+
+      .build-area {
+        width: 280px;
+        height: 200px;
+      }
+
+      .shape-piece {
+        width: 80px;
+        height: 80px;
+      }
+
+      .shape-piece svg {
+        width: 60px;
+        height: 60px;
+      }
+
+      .pieces-tray {
+        gap: var(--space-3);
+        padding: var(--space-3);
+      }
+
+      .action-buttons .btn-activity {
+        min-width: 120px;
+        min-height: 54px;
+        font-size: var(--text-base);
+        padding: var(--space-3) var(--space-4);
+      }
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script>
+    // Compose the Shape Activity - Grade 2
+    const ComposeShapes = {
+      // Game state
+      currentRound: 1,
+      maxRounds: 6,
+      correctCount: 0,
+      wrongCount: 0,
+      autoAdvanceDelay: 1500,
+      currentPuzzle: null,
+      placedPieces: [],
+      puzzles: [],
+
+      // DOM elements
+      targetShape: null,
+      targetName: null,
+      buildArea: null,
+      piecesTray: null,
+      feedback: null,
+      progress: null,
+      btnCheck: null,
+      btnReset: null,
+      statsOverlay: null,
+      statsCorrect: null,
+      statsWrong: null,
+      statsMessage: null,
+      statsIcon: null,
+      btnPlayAgain: null,
+
+      // Drag state
+      draggedPiece: null,
+      dragOffsetX: 0,
+      dragOffsetY: 0,
+
+      /**
+       * Puzzle definitions - simple compositions for Grade 2
+       * Each puzzle has a target shape and pieces to compose it
+       */
+      puzzleDefinitions: [
+        {
+          id: 'house',
+          name: 'house',
+          targetSvg: `
+            <svg viewBox="0 0 200 150">
+              <!-- House outline -->
+              <polygon points="100,10 180,60 180,140 20,140 20,60" fill="#f0f0f0" stroke="#333" stroke-width="2"/>
+              <polygon points="100,10 20,60 180,60" fill="#ef4444" stroke="#333" stroke-width="2"/>
+              <rect x="20" y="60" width="160" height="80" fill="#fbbf24" stroke="#333" stroke-width="2"/>
+            </svg>
+          `,
+          pieces: [
+            { type: 'triangle', color: '#ef4444', svg: '<polygon points="50,10 90,50 10,50" fill="#ef4444" stroke="#333" stroke-width="2"/>' },
+            { type: 'square', color: '#fbbf24', svg: '<rect x="10" y="10" width="60" height="60" fill="#fbbf24" stroke="#333" stroke-width="2"/>' }
+          ],
+          slots: [
+            { x: 100, y: 35, piece: 'triangle', rotation: 0 },
+            { x: 100, y: 100, piece: 'square', rotation: 0 }
+          ]
+        },
+        {
+          id: 'rocket',
+          name: 'rocket',
+          targetSvg: `
+            <svg viewBox="0 0 200 150">
+              <!-- Rocket -->
+              <polygon points="100,10 130,50 70,50" fill="#ef4444" stroke="#333" stroke-width="2"/>
+              <rect x="70" y="50" width="60" height="80" fill="#3b82f6" stroke="#333" stroke-width="2"/>
+              <polygon points="70,130 50,150 70,150" fill="#f97316" stroke="#333" stroke-width="2"/>
+              <polygon points="130,130 150,150 130,150" fill="#f97316" stroke="#333" stroke-width="2"/>
+            </svg>
+          `,
+          pieces: [
+            { type: 'triangle', color: '#ef4444', svg: '<polygon points="50,10 90,50 10,50" fill="#ef4444" stroke="#333" stroke-width="2"/>' },
+            { type: 'rectangle', color: '#3b82f6', svg: '<rect x="10" y="10" width="60" height="60" fill="#3b82f6" stroke="#333" stroke-width="2"/>' },
+            { type: 'smallTriangle', color: '#f97316', svg: '<polygon points="40,10 60,40 20,40" fill="#f97316" stroke="#333" stroke-width="2"/>' }
+          ],
+          slots: [
+            { x: 100, y: 30, piece: 'triangle', rotation: 0 },
+            { x: 100, y: 90, piece: 'rectangle', rotation: 0 },
+            { x: 60, y: 140, piece: 'smallTriangle', rotation: 0 },
+            { x: 140, y: 140, piece: 'smallTriangle', rotation: 0 }
+          ]
+        },
+        {
+          id: 'tree',
+          name: 'tree',
+          targetSvg: `
+            <svg viewBox="0 0 200 150">
+              <!-- Tree -->
+              <polygon points="100,10 150,70 50,70" fill="#22c55e" stroke="#333" stroke-width="2"/>
+              <polygon points="100,40 160,110 40,110" fill="#16a34a" stroke="#333" stroke-width="2"/>
+              <rect x="85" y="110" width="30" height="35" fill="#92400e" stroke="#333" stroke-width="2"/>
+            </svg>
+          `,
+          pieces: [
+            { type: 'triangle', color: '#22c55e', svg: '<polygon points="50,10 90,50 10,50" fill="#22c55e" stroke="#333" stroke-width="2"/>' },
+            { type: 'triangle', color: '#16a34a', svg: '<polygon points="50,10 90,50 10,50" fill="#16a34a" stroke="#333" stroke-width="2"/>' },
+            { type: 'rectangle', color: '#92400e', svg: '<rect x="15" y="10" width="50" height="60" fill="#92400e" stroke="#333" stroke-width="2"/>' }
+          ],
+          slots: [
+            { x: 100, y: 40, piece: 'triangle', rotation: 0 },
+            { x: 100, y: 75, piece: 'triangle', rotation: 0 },
+            { x: 100, y: 127, piece: 'rectangle', rotation: 0 }
+          ]
+        },
+        {
+          id: 'boat',
+          name: 'boat',
+          targetSvg: `
+            <svg viewBox="0 0 200 150">
+              <!-- Boat -->
+              <polygon points="30,100 170,100 150,140 50,140" fill="#3b82f6" stroke="#333" stroke-width="2"/>
+              <rect x="90" y="40" width="10" height="60" fill="#92400e" stroke="#333" stroke-width="2"/>
+              <polygon points="100,40 100,80 140,80" fill="#f97316" stroke="#333" stroke-width="2"/>
+            </svg>
+          `,
+          pieces: [
+            { type: 'trapezoid', color: '#3b82f6', svg: '<polygon points="10,40 70,40 60,70 20,70" fill="#3b82f6" stroke="#333" stroke-width="2"/>' },
+            { type: 'rectangle', color: '#92400e', svg: '<rect x="30" y="10" width="20" height="60" fill="#92400e" stroke="#333" stroke-width="2"/>' },
+            { type: 'triangle', color: '#f97316', svg: '<polygon points="40,10 40,50 80,50" fill="#f97316" stroke="#333" stroke-width="2"/>' }
+          ],
+          slots: [
+            { x: 100, y: 120, piece: 'trapezoid', rotation: 0 },
+            { x: 95, y: 70, piece: 'rectangle', rotation: 0 },
+            { x: 120, y: 60, piece: 'triangle', rotation: 0 }
+          ]
+        },
+        {
+          id: 'fish',
+          name: 'fish',
+          targetSvg: `
+            <svg viewBox="0 0 200 150">
+              <!-- Fish -->
+              <ellipse cx="100" cy="75" rx="60" ry="40" fill="#3b82f6" stroke="#333" stroke-width="2"/>
+              <polygon points="160,75 200,45 200,105" fill="#60a5fa" stroke="#333" stroke-width="2"/>
+              <circle cx="70" cy="65" r="8" fill="white" stroke="#333" stroke-width="2"/>
+              <circle cx="70" cy="65" r="4" fill="#333"/>
+            </svg>
+          `,
+          pieces: [
+            { type: 'oval', color: '#3b82f6', svg: '<ellipse cx="40" cy="40" rx="35" ry="25" fill="#3b82f6" stroke="#333" stroke-width="2"/>' },
+            { type: 'triangle', color: '#60a5fa', svg: '<polygon points="10,40 50,10 50,70" fill="#60a5fa" stroke="#333" stroke-width="2"/>' }
+          ],
+          slots: [
+            { x: 100, y: 75, piece: 'oval', rotation: 0 },
+            { x: 180, y: 75, piece: 'triangle', rotation: 0 }
+          ]
+        },
+        {
+          id: 'arrow',
+          name: 'arrow',
+          targetSvg: `
+            <svg viewBox="0 0 200 150">
+              <!-- Arrow pointing right -->
+              <polygon points="120,20 180,75 120,130" fill="#ef4444" stroke="#333" stroke-width="2"/>
+              <rect x="20" y="50" width="100" height="50" fill="#f97316" stroke="#333" stroke-width="2"/>
+            </svg>
+          `,
+          pieces: [
+            { type: 'triangle', color: '#ef4444', svg: '<polygon points="10,40 70,10 70,70" fill="#ef4444" stroke="#333" stroke-width="2"/>' },
+            { type: 'rectangle', color: '#f97316', svg: '<rect x="10" y="15" width="60" height="50" fill="#f97316" stroke="#333" stroke-width="2"/>' }
+          ],
+          slots: [
+            { x: 150, y: 75, piece: 'triangle', rotation: 0 },
+            { x: 70, y: 75, piece: 'rectangle', rotation: 0 }
+          ]
+        }
+      ],
+
+      /**
+       * Initialize the activity
+       */
+      init() {
+        // Get DOM elements
+        this.targetShape = document.getElementById('target-shape');
+        this.targetName = document.getElementById('target-name');
+        this.buildArea = document.getElementById('build-area');
+        this.piecesTray = document.getElementById('pieces-tray');
+        this.feedback = document.getElementById('feedback');
+        this.progress = document.getElementById('progress');
+        this.btnCheck = document.getElementById('btn-check');
+        this.btnReset = document.getElementById('btn-reset');
+        this.statsOverlay = document.getElementById('stats-overlay');
+        this.statsCorrect = document.getElementById('stats-correct');
+        this.statsWrong = document.getElementById('stats-wrong');
+        this.statsMessage = document.getElementById('stats-message');
+        this.statsIcon = document.getElementById('stats-icon');
+        this.btnPlayAgain = document.getElementById('btn-play-again');
+
+        // Set up event listeners
+        this.btnCheck.addEventListener('click', () => this.checkAnswer());
+        this.btnReset.addEventListener('click', () => this.resetBuildArea());
+        this.btnPlayAgain.addEventListener('click', () => this.restartActivity());
+        this.statsOverlay.addEventListener('click', (e) => {
+          if (e.target === this.statsOverlay) this.restartActivity();
+        });
+
+        // Listen for language changes
+        document.addEventListener('languageChanged', () => {
+          this.updateTranslations();
+        });
+
+        // Set up global event listeners (only once)
+        this.setupGlobalListeners();
+
+        // Generate puzzle sequence
+        this.generatePuzzleSequence();
+
+        // Start first round
+        this.generateRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Generate a random sequence of puzzles
+       */
+      generatePuzzleSequence() {
+        this.puzzles = shuffle([...this.puzzleDefinitions]).slice(0, this.maxRounds);
+      },
+
+      /**
+       * Update translations when language changes
+       */
+      updateTranslations() {
+        if (this.currentPuzzle) {
+          const translatedName = i18n.t(`section.activities.compose-shapes.shapes.${this.currentPuzzle.name}`);
+          this.targetName.textContent = translatedName;
+        }
+
+        // Update feedback message if showing
+        if (this.feedback.classList.contains('show')) {
+          const isError = this.feedback.classList.contains('error');
+          if (isError) {
+            this.feedback.textContent = i18n.t('section.activities.compose-shapes.tryAgain');
+          } else {
+            this.feedback.textContent = i18n.t('section.activities.compose-shapes.correct');
+          }
+        }
+      },
+
+      /**
+       * Generate a new round
+       */
+      generateRound() {
+        this.feedback.classList.remove('show');
+        this.placedPieces = [];
+        this.buildArea.classList.remove('correct', 'incorrect');
+
+        // Get current puzzle
+        this.currentPuzzle = this.puzzles[this.currentRound - 1];
+
+        this.renderTarget();
+        this.renderPieces();
+        this.clearBuildArea();
+      },
+
+      /**
+       * Render the target shape
+       */
+      renderTarget() {
+        this.targetShape.innerHTML = this.currentPuzzle.targetSvg;
+        const translatedName = i18n.t(`section.activities.compose-shapes.shapes.${this.currentPuzzle.name}`);
+        this.targetName.textContent = translatedName;
+      },
+
+      /**
+       * Render the draggable pieces
+       */
+      renderPieces() {
+        this.piecesTray.innerHTML = '';
+
+        this.currentPuzzle.pieces.forEach((piece, index) => {
+          const pieceEl = document.createElement('div');
+          pieceEl.className = 'shape-piece';
+          pieceEl.dataset.pieceIndex = index;
+          pieceEl.dataset.pieceType = piece.type;
+          pieceEl.innerHTML = `<svg viewBox="0 0 80 80">${piece.svg}</svg>`;
+
+          // Add drag event listeners
+          pieceEl.addEventListener('mousedown', (e) => this.startDrag(e, pieceEl, index));
+          pieceEl.addEventListener('touchstart', (e) => this.startDrag(e, pieceEl, index), { passive: false });
+
+          // Keyboard support
+          pieceEl.setAttribute('tabindex', '0');
+          pieceEl.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.placePieceFromKeyboard(index);
+            }
+          });
+
+          this.piecesTray.appendChild(pieceEl);
+        });
+      },
+
+      /**
+       * Set up global event listeners (called once during init)
+       */
+      setupGlobalListeners() {
+        // Bind handlers once to maintain reference for cleanup
+        this.boundOnDrag = (e) => this.onDrag(e);
+        this.boundEndDrag = (e) => this.endDrag(e);
+
+        document.addEventListener('mousemove', this.boundOnDrag);
+        document.addEventListener('mouseup', this.boundEndDrag);
+        document.addEventListener('touchmove', this.boundOnDrag, { passive: false });
+        document.addEventListener('touchend', this.boundEndDrag);
+      },
+
+      /**
+       * Clear the build area
+       */
+      clearBuildArea() {
+        this.buildArea.innerHTML = '';
+        this.placedPieces = [];
+
+        // Reset piece states in tray
+        const trayPieces = this.piecesTray.querySelectorAll('.shape-piece');
+        trayPieces.forEach(p => p.classList.remove('placed'));
+      },
+
+      /**
+       * Start dragging a piece
+       */
+      startDrag(e, pieceEl, pieceIndex) {
+        if (pieceEl.classList.contains('placed')) return;
+
+        e.preventDefault();
+
+        const touch = e.touches ? e.touches[0] : e;
+        const rect = pieceEl.getBoundingClientRect();
+
+        this.draggedPiece = {
+          element: pieceEl,
+          index: pieceIndex,
+          type: pieceEl.dataset.pieceType
+        };
+
+        this.dragOffsetX = touch.clientX - rect.left;
+        this.dragOffsetY = touch.clientY - rect.top;
+
+        pieceEl.classList.add('dragging');
+
+        // Create a clone for dragging
+        this.dragClone = pieceEl.cloneNode(true);
+        this.dragClone.style.position = 'fixed';
+        this.dragClone.style.pointerEvents = 'none';
+        this.dragClone.style.zIndex = '1000';
+        this.dragClone.style.width = pieceEl.offsetWidth + 'px';
+        this.dragClone.style.height = pieceEl.offsetHeight + 'px';
+        this.dragClone.style.left = (touch.clientX - this.dragOffsetX) + 'px';
+        this.dragClone.style.top = (touch.clientY - this.dragOffsetY) + 'px';
+        document.body.appendChild(this.dragClone);
+      },
+
+      /**
+       * Handle drag movement
+       */
+      onDrag(e) {
+        if (!this.draggedPiece || !this.dragClone) return;
+
+        e.preventDefault();
+
+        const touch = e.touches ? e.touches[0] : e;
+        this.dragClone.style.left = (touch.clientX - this.dragOffsetX) + 'px';
+        this.dragClone.style.top = (touch.clientY - this.dragOffsetY) + 'px';
+
+        // Check if over build area
+        const buildRect = this.buildArea.getBoundingClientRect();
+        const isOverBuild = touch.clientX >= buildRect.left && touch.clientX <= buildRect.right &&
+                           touch.clientY >= buildRect.top && touch.clientY <= buildRect.bottom;
+
+        if (isOverBuild) {
+          this.buildArea.classList.add('drag-over');
+        } else {
+          this.buildArea.classList.remove('drag-over');
+        }
+      },
+
+      /**
+       * End drag operation
+       */
+      endDrag(e) {
+        if (!this.draggedPiece) return;
+
+        const touch = e.changedTouches ? e.changedTouches[0] : e;
+        const buildRect = this.buildArea.getBoundingClientRect();
+
+        // Check if dropped in build area
+        const isOverBuild = touch.clientX >= buildRect.left && touch.clientX <= buildRect.right &&
+                           touch.clientY >= buildRect.top && touch.clientY <= buildRect.bottom;
+
+        if (isOverBuild) {
+          // Calculate position relative to build area
+          const x = touch.clientX - buildRect.left;
+          const y = touch.clientY - buildRect.top;
+          this.placePiece(this.draggedPiece.index, x, y);
+        }
+
+        // Clean up
+        this.buildArea.classList.remove('drag-over');
+        this.draggedPiece.element.classList.remove('dragging');
+
+        if (this.dragClone) {
+          this.dragClone.remove();
+          this.dragClone = null;
+        }
+
+        this.draggedPiece = null;
+      },
+
+      /**
+       * Place a piece in the build area
+       */
+      placePiece(pieceIndex, x, y) {
+        const piece = this.currentPuzzle.pieces[pieceIndex];
+
+        // Mark the tray piece as placed
+        const trayPiece = this.piecesTray.querySelector(`[data-piece-index="${pieceIndex}"]`);
+        if (trayPiece) {
+          trayPiece.classList.add('placed');
+        }
+
+        // Create placed piece in build area
+        const placedEl = document.createElement('div');
+        placedEl.className = 'placed-piece';
+        placedEl.dataset.pieceIndex = pieceIndex;
+        placedEl.style.left = (x - 40) + 'px';
+        placedEl.style.top = (y - 40) + 'px';
+        placedEl.innerHTML = `<svg viewBox="0 0 80 80" width="80" height="80">${piece.svg}</svg>`;
+
+        // Click to remove
+        placedEl.addEventListener('click', () => this.removePiece(placedEl, pieceIndex));
+
+        this.buildArea.appendChild(placedEl);
+
+        // Track placed piece
+        this.placedPieces.push({
+          index: pieceIndex,
+          type: piece.type,
+          x: x,
+          y: y
+        });
+      },
+
+      /**
+       * Place piece from keyboard (simplified placement)
+       */
+      placePieceFromKeyboard(pieceIndex) {
+        const piece = this.currentPuzzle.pieces[pieceIndex];
+        const trayPiece = this.piecesTray.querySelector(`[data-piece-index="${pieceIndex}"]`);
+
+        if (trayPiece && !trayPiece.classList.contains('placed')) {
+          // Place in center of build area
+          const buildRect = this.buildArea.getBoundingClientRect();
+          const x = buildRect.width / 2 + (pieceIndex * 30 - 30);
+          const y = buildRect.height / 2;
+          this.placePiece(pieceIndex, x, y);
+        }
+      },
+
+      /**
+       * Remove a placed piece
+       */
+      removePiece(placedEl, pieceIndex) {
+        placedEl.remove();
+
+        // Restore tray piece
+        const trayPiece = this.piecesTray.querySelector(`[data-piece-index="${pieceIndex}"]`);
+        if (trayPiece) {
+          trayPiece.classList.remove('placed');
+        }
+
+        // Remove from tracking
+        this.placedPieces = this.placedPieces.filter(p => p.index !== pieceIndex);
+      },
+
+      /**
+       * Reset the build area
+       */
+      resetBuildArea() {
+        this.clearBuildArea();
+        this.feedback.classList.remove('show');
+        this.buildArea.classList.remove('correct', 'incorrect');
+      },
+
+      /**
+       * Check if all pieces are placed (simplified validation)
+       */
+      checkAnswer() {
+        // Simple check: all pieces must be placed
+        const allPlaced = this.placedPieces.length === this.currentPuzzle.pieces.length;
+
+        if (allPlaced) {
+          // Correct!
+          this.buildArea.classList.add('correct');
+          this.feedback.textContent = i18n.t('section.activities.compose-shapes.correct');
+          this.feedback.classList.remove('error');
+          this.feedback.classList.add('show');
+          this.correctCount++;
+
+          // Disable interactions
+          this.btnCheck.disabled = true;
+          this.btnReset.disabled = true;
+
+          // Auto-advance
+          setTimeout(() => {
+            this.btnCheck.disabled = false;
+            this.btnReset.disabled = false;
+
+            if (this.currentRound < this.maxRounds) {
+              this.nextRound();
+            } else {
+              this.showStats();
+            }
+          }, this.autoAdvanceDelay);
+        } else {
+          // Need more pieces
+          this.buildArea.classList.add('incorrect');
+          this.feedback.textContent = i18n.t('section.activities.compose-shapes.needMore');
+          this.feedback.classList.add('show', 'error');
+
+          setTimeout(() => {
+            this.buildArea.classList.remove('incorrect');
+          }, 500);
+        }
+
+        this.renderProgress();
+      },
+
+      /**
+       * Show completion stats
+       */
+      showStats() {
+        this.statsCorrect.textContent = this.correctCount;
+        this.statsWrong.textContent = this.wrongCount;
+
+        const percent = this.correctCount / this.maxRounds;
+
+        if (percent === 1) {
+          this.statsIcon.textContent = '🏆';
+          this.statsMessage.textContent = i18n.t('section.activities.compose-shapes.perfect');
+        } else if (percent >= 0.75) {
+          this.statsIcon.textContent = '🌟';
+          this.statsMessage.textContent = i18n.t('section.activities.compose-shapes.great');
+        } else if (percent >= 0.5) {
+          this.statsIcon.textContent = '👍';
+          this.statsMessage.textContent = i18n.t('section.activities.compose-shapes.good');
+        } else {
+          this.statsIcon.textContent = '💪';
+          this.statsMessage.textContent = i18n.t('section.activities.compose-shapes.keepPracticing');
+        }
+
+        this.statsOverlay.classList.add('show');
+      },
+
+      /**
+       * Restart the entire activity
+       */
+      restartActivity() {
+        this.currentRound = 1;
+        this.correctCount = 0;
+        this.wrongCount = 0;
+        this.statsOverlay.classList.remove('show');
+        this.generatePuzzleSequence();
+        this.generateRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Go to next round
+       */
+      nextRound() {
+        this.currentRound++;
+        this.generateRound();
+        this.renderProgress();
+      },
+
+      /**
+       * Render progress indicator
+       */
+      renderProgress() {
+        let html = '';
+        for (let i = 1; i <= this.maxRounds; i++) {
+          let className = 'progress-dot';
+          if (i < this.currentRound) {
+            className += ' completed';
+          } else if (i === this.currentRound) {
+            className += ' current';
+          }
+          html += `<div class="${className}"></div>`;
+        }
+        this.progress.innerHTML = html;
+      }
+    };
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      ComposeShapes.init();
+    });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>
