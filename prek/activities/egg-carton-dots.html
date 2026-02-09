@@ -4,7 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Spot dot patterns in egg cartons. Free interactive Pre-K math practice on Meadow Math.">
-  <title>Egg Carton Dots | Pre-K Math Activity | Meadow Math</title>
+    <meta property="og:title" content="Egg Carton Dots | Pre-K Math Activity | Meadow Math">
+  <meta property="og:description" content="Spot dot patterns in egg cartons. Free interactive Pre-K math practice on Meadow Math.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://meadowmath.github.io/prek/activities/egg-carton-dots.html">
+  <meta property="og:image" content="https://meadowmath.github.io/images/og/og-prek.png">
+  <meta property="og:site_name" content="Meadow Math">
+<title>Egg Carton Dots | Pre-K Math Activity | Meadow Math</title>
 
   <!-- CSS Files -->
   <link rel="stylesheet" href="../../css/reset.css">
@@ -554,7 +560,8 @@
     };
 
     // Initialize when DOM is ready
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
       EggCartonDots.init();
     });
   </script>

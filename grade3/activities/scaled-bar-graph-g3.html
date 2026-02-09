@@ -4,7 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Read a bar graph where each mark counts more than 1. Free interactive Grade 3 math practice on Meadow Math.">
-  <title>Scaled Bar Graph Questions | Grade 3 Math Activity | Meadow Math</title>
+    <meta property="og:title" content="Scaled Bar Graph Questions | Grade 3 Math Activity | Meadow Math">
+  <meta property="og:description" content="Read a bar graph where each mark counts more than 1. Free interactive Grade 3 math practice on Meadow Math.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://meadowmath.github.io/grade3/activities/scaled-bar-graph-g3.html">
+  <meta property="og:image" content="https://meadowmath.github.io/images/og/og-grade3.png">
+  <meta property="og:site_name" content="Meadow Math">
+<title>Scaled Bar Graph Questions | Grade 3 Math Activity | Meadow Math</title>
 
   <!-- CSS Files -->
   <link rel="stylesheet" href="../../css/reset.css">
@@ -45,7 +51,7 @@
           <span class="nav-item-icon">🪺</span>
           <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
         </a>
-        <a href="../../kindergarten/index.html" class="nav-item">
+        <a href="../../kinder/index.html" class="nav-item">
           <span class="nav-item-icon">🌱</span>
           <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
         </a>
@@ -68,6 +74,17 @@
         <a href="../../grade5/index.html" class="nav-item">
           <span class="nav-item-icon">➗</span>
           <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+
+        <div class="nav-divider"></div>
+
+        <a href="../../tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="../../about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
         </a>
       </nav>
 
@@ -1007,12 +1024,9 @@
       }
     };
 
-    document.addEventListener('DOMContentLoaded', () => {
-      if (window.i18n && typeof i18n.init === 'function') {
-        i18n.init().then(() => ScaledBarGraph.init());
-      } else {
-        ScaledBarGraph.init();
-      }
+    document.addEventListener('DOMContentLoaded', async () => {
+      await i18n.ready();
+      ScaledBarGraph.init();
     });
   </script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>

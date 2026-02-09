@@ -31,7 +31,9 @@
     },
     "team": {
       "title": "Who Built This?",
-      "content": "Meadow Math is a family project built with love. We created it for our own children and decided to share it with the world."
+      "content": "Meadow Math is a family project built with love. We created it for our own children and decided to share it with the world.",
+      "linkedinIntro": "You can also find ",
+      "linkedinLink": "me on LinkedIn"
     },
     "contribute": {
       "title": "How to Contribute",

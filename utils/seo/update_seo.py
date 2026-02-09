@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Update <title> and meta description across the Meadow Math static site.
+"""Update <title>, meta description, and Open Graph tags across the Meadow Math static site.
 
 - Uses data/*.json to populate activity titles/descriptions.
 - Adds/updates <meta name="description"> and <title> inside <head>.
+- Adds/updates Open Graph (og:) meta tags for rich social previews.
+- Pages in the same section share the same og:image.
 - Keeps changes minimal and idempotent.
 
 Run from repo root:
@@ -23,6 +25,70 @@ from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Tuple
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
+
+SITE_URL = "https://meadowmath.github.io"
+
+# ---------------------------------------------------------------------------
+# Open Graph image URLs — one per section.
+# Replace these placeholder values with the final image URLs.
+# ---------------------------------------------------------------------------
+OG_IMAGE_HOME = "https://meadowmath.github.io/images/og/og-home.png"
+OG_IMAGE_PREK = "https://meadowmath.github.io/images/og/og-prek.png"
+OG_IMAGE_KINDER = "https://meadowmath.github.io/images/og/og-kinder.png"
+OG_IMAGE_GRADE1 = "https://meadowmath.github.io/images/og/og-grade1.png"
+OG_IMAGE_GRADE2 = "https://meadowmath.github.io/images/og/og-grade2.png"
+OG_IMAGE_GRADE3 = "https://meadowmath.github.io/images/og/og-grade3.png"
+OG_IMAGE_GRADE4 = "https://meadowmath.github.io/images/og/og-grade4.png"
+OG_IMAGE_GRADE5 = "https://meadowmath.github.io/images/og/og-grade5.png"
+OG_IMAGE_TOOLS = "https://meadowmath.github.io/images/og/og-tools.png"
+OG_IMAGE_ABOUT = "https://meadowmath.github.io/images/og/og-about.png"
+
+# Map section keys to their OG image URL.
+_SECTION_OG_IMAGES: Dict[str, str] = {
+    "home": OG_IMAGE_HOME,
+    "prek": OG_IMAGE_PREK,
+    "kinder": OG_IMAGE_KINDER,
+    "grade1": OG_IMAGE_GRADE1,
+    "grade2": OG_IMAGE_GRADE2,
+    "grade3": OG_IMAGE_GRADE3,
+    "grade4": OG_IMAGE_GRADE4,
+    "grade5": OG_IMAGE_GRADE5,
+    "tools": OG_IMAGE_TOOLS,
+    "about": OG_IMAGE_ABOUT,
+}
+
+
+def _section_for_path(rel_path: str) -> str:
+    """Return the section key for a relative HTML path."""
+    if rel_path == "index.html":
+        return "home"
+    first = rel_path.split("/")[0]
+    if first in {"prek", "kinder", "kindergarten"}:
+        return "kinder" if first == "kindergarten" else first
+    if first in {"grade1", "grade2", "grade3", "grade4", "grade5"}:
+        return first
+    if first == "tools":
+        return "tools"
+    if first == "about":
+        return "about"
+    # Default to home for any unrecognised top-level paths.
+    return "home"
+
+
+def _og_image_for_path(rel_path: str) -> str:
+    """Return the og:image URL for a page based on its section."""
+    section = _section_for_path(rel_path)
+    return _SECTION_OG_IMAGES.get(section, OG_IMAGE_HOME)
+
+
+def _og_url_for_path(rel_path: str) -> str:
+    """Return the canonical og:url for a page."""
+    if rel_path == "index.html":
+        return f"{SITE_URL}/"
+    # Strip trailing index.html for cleaner URLs.
+    if rel_path.endswith("/index.html"):
+        return f"{SITE_URL}/{rel_path[:-len('index.html')]}"
+    return f"{SITE_URL}/{rel_path}"
 
 
 @dataclass(frozen=True)
@@ -283,7 +349,46 @@ def _derive_fallback_meta(rel_path: str) -> SeoMeta:
     )
 
 
-def _update_head(html: str, meta: SeoMeta) -> Tuple[str, bool]:
+def _upsert_og_tag(head: str, og_property: str, content: str) -> str:
+    """Update an existing og: meta tag or insert a new one."""
+    og_re = rf"<meta\s+[^>]*property=['\"]og:{re.escape(og_property)}['\"][^>]*>"
+    if re.search(og_re, head, flags=re.IGNORECASE):
+        def _replace_og(match: re.Match) -> str:
+            tag = match.group(0)
+            if re.search(r"\bcontent=", tag, flags=re.IGNORECASE):
+                return re.sub(
+                    r"content=['\"][^'\"]*['\"]",
+                    f'content="{content}"',
+                    tag,
+                    flags=re.IGNORECASE,
+                    count=1,
+                )
+            return tag[:-1] + f' content="{content}">'
+
+        return re.sub(og_re, _replace_og, head, flags=re.IGNORECASE, count=1)
+
+    # Insert new tag. Place after existing og tags, or after </title>, or at end.
+    # Find the last og: tag to group them together.
+    last_og = None
+    for m in re.finditer(r"<meta\s+[^>]*property=['\"]og:[^'\"]*['\"][^>]*>\s*", head, flags=re.IGNORECASE):
+        last_og = m
+    if last_og:
+        pos = last_og.end()
+        return head[:pos] + f'  <meta property="og:{og_property}" content="{content}">\n' + head[pos:]
+
+    # No og tags yet — insert after meta description or </title>.
+    anchor = re.search(r"<meta\s+[^>]*name=['\"]description['\"][^>]*>\s*", head, flags=re.IGNORECASE)
+    if not anchor:
+        anchor = re.search(r"</title>\s*", head, flags=re.IGNORECASE)
+    if anchor:
+        pos = anchor.end()
+        return head[:pos] + f'  <meta property="og:{og_property}" content="{content}">\n' + head[pos:]
+
+    # Last resort: append.
+    return head + f'  <meta property="og:{og_property}" content="{content}">\n'
+
+
+def _update_head(html: str, meta: SeoMeta, rel_path: str) -> Tuple[str, bool]:
     """Return (updated_html, changed)."""
 
     # Quick, targeted edits inside the <head>...</head> block.
@@ -357,6 +462,17 @@ def _update_head(html: str, meta: SeoMeta) -> Tuple[str, bool]:
         else:
             head = tag + head
 
+    # Update or insert Open Graph meta tags.
+    og_url = _og_url_for_path(rel_path)
+    og_image = _og_image_for_path(rel_path)
+
+    head = _upsert_og_tag(head, "title", meta.title)
+    head = _upsert_og_tag(head, "description", meta.description)
+    head = _upsert_og_tag(head, "type", "website")
+    head = _upsert_og_tag(head, "url", og_url)
+    head = _upsert_og_tag(head, "image", og_image)
+    head = _upsert_og_tag(head, "site_name", "Meadow Math")
+
     if head == original_head:
         return html, False
 
@@ -410,6 +526,7 @@ def main() -> int:
     checked = 0
     missing_title = []
     missing_desc = []
+    missing_og = []
 
     # Track title uniqueness.
     seen_titles: Dict[str, List[str]] = {}
@@ -419,7 +536,7 @@ def main() -> int:
         html = html_path.read_text(encoding="utf-8")
 
         meta = mapping.get(rel) or _derive_fallback_meta(rel)
-        new_html, changed = _update_head(html, meta)
+        new_html, changed = _update_head(html, meta, rel)
 
         checked += 1
 
@@ -431,6 +548,8 @@ def main() -> int:
             missing_title.append(rel)
         if not re.search(r"<meta\s+[^>]*name=['\"]description['\"][^>]*>", head, flags=re.IGNORECASE):
             missing_desc.append(rel)
+        if not re.search(r"<meta\s+[^>]*property=['\"]og:title['\"][^>]*>", head, flags=re.IGNORECASE):
+            missing_og.append(rel)
 
         # Extract title text for duplicate detection.
         m = re.search(r"<title>([\s\S]*?)</title>", head, flags=re.IGNORECASE)
@@ -464,6 +583,13 @@ def main() -> int:
         if len(missing_desc) > 20:
             print("  (truncated)")
 
+    if missing_og:
+        print(f"Missing og:title: {len(missing_og)}")
+        for p in missing_og[:20]:
+            print(f"  - {p}")
+        if len(missing_og) > 20:
+            print("  (truncated)")
+
     if dup_titles:
         print(f"Duplicate titles: {len(dup_titles)}")
         # Show a few examples.
@@ -480,7 +606,7 @@ def main() -> int:
                 break
 
     # Non-zero exit if check fails.
-    if missing_title or missing_desc:
+    if missing_title or missing_desc or missing_og:
         return 2
     return 0
 

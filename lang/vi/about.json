@@ -31,7 +31,9 @@
     },
     "team": {
       "title": "Ai xây dựng dự án này?",
-      "content": "Meadow Math là dự án gia đình được xây dựng với tình yêu thương. Chúng tôi tạo ra nó cho con cái mình và quyết định chia sẻ với mọi người."
+      "content": "Meadow Math là dự án gia đình được xây dựng với tình yêu thương. Chúng tôi tạo ra nó cho con cái mình và quyết định chia sẻ với mọi người.",
+      "linkedinIntro": "Bạn cũng có thể tìm ",
+      "linkedinLink": "tôi trên LinkedIn"
     },
     "contribute": {
       "title": "Cách đóng góp",

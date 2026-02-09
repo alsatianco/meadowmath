@@ -132,6 +132,31 @@
   margin: 0;
 }
 
+.creator-note {
+  margin: var(--space-4) 0 0;
+  padding: var(--space-4) var(--space-5);
+  border-left: 4px solid rgba(0, 201, 201, 0.45);
+  background: linear-gradient(135deg, rgba(0, 201, 201, 0.08), rgba(255, 255, 255, 0.95));
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  color: var(--color-neutral-700);
+  line-height: 1.7;
+}
+
+.linkedin-link {
+  display: inline-flex;
+  align-items: center;
+  margin-left: var(--space-2);
+  color: var(--color-secondary);
+  font-weight: var(--weight-bold);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.linkedin-link:hover {
+  color: var(--color-primary-dark);
+}
+
 /* ========== PRINCIPLES GRID ========== */
 
 .principles-grid {
@@ -256,6 +281,11 @@
 
   .tab-content {
     padding: var(--space-5);
+  }
+
+  .linkedin-link {
+    display: inline;
+    margin-left: 0;
   }
 
   .section-title {
