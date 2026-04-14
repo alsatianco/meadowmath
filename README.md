@@ -1,6 +1,6 @@
-# 🌾 [Meadow Math](https://meadowmath.github.io/)
+# 🌾 [Meadow Math](https://math.alsatian.co/)
 
-🌐 Website: https://meadowmath.github.io/
+🌐 Website: https://math.alsatian.co/
 
 **Meadow Math is a small, interactive math world for children from Pre-K to Grade 5.**
 
