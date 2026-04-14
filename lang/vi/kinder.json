@@ -312,8 +312,8 @@
     },
     "teen-stories": {
       "title": "Câu chuyện số teen",
-      "description": "10 và thêm một ít nữa — tất cả là bao nhiêu?",
-      "instruction": "10 và thêm một ít nữa — tất cả là bao nhiêu?",
+      "description": "10 và thêm một ít nữa - tất cả là bao nhiêu?",
+      "instruction": "10 và thêm một ít nữa - tất cả là bao nhiêu?",
       "question": "Tất cả là bao nhiêu?",
       "correct": "Đúng rồi! 10 + {{ones}} = {{total}}!",
       "incorrect": "Chưa đúng! 10 + {{ones}} = {{total}}",
@@ -759,7 +759,7 @@
     },
     "more-less-same": {
       "title": "Nhiều hơn, ít hơn, bằng nhau",
-      "description": "So sánh nhóm — nhóm nào nhiều hơn, ít hơn hay bằng nhau?",
+      "description": "So sánh nhóm - nhóm nào nhiều hơn, ít hơn hay bằng nhau?",
       "instruction": "Nhóm xanh có nhiều hơn, ít hơn hay bằng nhau?",
       "greenGroup": "Nhóm Xanh",
       "orangeGroup": "Nhóm Cam",

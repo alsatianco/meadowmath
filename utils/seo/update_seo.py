@@ -26,22 +26,31 @@ from typing import Dict, Iterable, List, Optional, Tuple
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
-SITE_URL = "https://meadowmath.github.io"
+def _load_site_url() -> str:
+    """Return the public site URL, preferring the deployed CNAME."""
+    cname_path = REPO_ROOT / "CNAME"
+    if cname_path.exists():
+        hostname = cname_path.read_text(encoding="utf-8").strip()
+        if hostname:
+            return f"https://{hostname}"
+    return "https://math.alsatian.co"
+
+
+SITE_URL = _load_site_url()
 
 # ---------------------------------------------------------------------------
-# Open Graph image URLs — one per section.
-# Replace these placeholder values with the final image URLs.
+# Open Graph image URLs - one per section.
 # ---------------------------------------------------------------------------
-OG_IMAGE_HOME = "https://meadowmath.github.io/images/og/og-home.png"
-OG_IMAGE_PREK = "https://meadowmath.github.io/images/og/og-prek.png"
-OG_IMAGE_KINDER = "https://meadowmath.github.io/images/og/og-kinder.png"
-OG_IMAGE_GRADE1 = "https://meadowmath.github.io/images/og/og-grade1.png"
-OG_IMAGE_GRADE2 = "https://meadowmath.github.io/images/og/og-grade2.png"
-OG_IMAGE_GRADE3 = "https://meadowmath.github.io/images/og/og-grade3.png"
-OG_IMAGE_GRADE4 = "https://meadowmath.github.io/images/og/og-grade4.png"
-OG_IMAGE_GRADE5 = "https://meadowmath.github.io/images/og/og-grade5.png"
-OG_IMAGE_TOOLS = "https://meadowmath.github.io/images/og/og-tools.png"
-OG_IMAGE_ABOUT = "https://meadowmath.github.io/images/og/og-about.png"
+OG_IMAGE_HOME = f"{SITE_URL}/images/og/og-home.png"
+OG_IMAGE_PREK = f"{SITE_URL}/images/og/og-prek.png"
+OG_IMAGE_KINDER = f"{SITE_URL}/images/og/og-kinder.png"
+OG_IMAGE_GRADE1 = f"{SITE_URL}/images/og/og-grade1.png"
+OG_IMAGE_GRADE2 = f"{SITE_URL}/images/og/og-grade2.png"
+OG_IMAGE_GRADE3 = f"{SITE_URL}/images/og/og-grade3.png"
+OG_IMAGE_GRADE4 = f"{SITE_URL}/images/og/og-grade4.png"
+OG_IMAGE_GRADE5 = f"{SITE_URL}/images/og/og-grade5.png"
+OG_IMAGE_TOOLS = f"{SITE_URL}/images/og/og-tools.png"
+OG_IMAGE_ABOUT = f"{SITE_URL}/images/og/og-about.png"
 
 # Map section keys to their OG image URL.
 _SECTION_OG_IMAGES: Dict[str, str] = {
@@ -152,7 +161,7 @@ def _compose_description(primary: str, suffixes: List[str], max_len: int = 160) 
     # Fallback: truncate primary only.
     if primary:
         return _truncate_words(primary, max_len)
-    return "Meadow Math — free, interactive math activities and tools."
+    return "Meadow Math - free, interactive math activities and tools."
 
 
 def _grade_label_from_region(region: str) -> str:
@@ -236,9 +245,9 @@ def _manual_pages() -> Dict[str, SeoMeta]:
         "about/index.html": SeoMeta(
             title="About Meadow Math | Free K-5 Math Activities",
             description=_compose_description(
-                "Learn about Meadow Math and our goal to make math practice gentle, joyful, and accessible",
+                "The story behind Meadow Math, a family-made collection of free interactive math activities for children",
                 [
-                    "Explore our free interactive activities for Pre-K through Grade 5.",
+                    "Learn how the project began and why it is growing slowly and thoughtfully.",
                     "Explore free interactive math activities for kids.",
                 ],
             ),
@@ -376,7 +385,7 @@ def _upsert_og_tag(head: str, og_property: str, content: str) -> str:
         pos = last_og.end()
         return head[:pos] + f'  <meta property="og:{og_property}" content="{content}">\n' + head[pos:]
 
-    # No og tags yet — insert after meta description or </title>.
+    # No og tags yet - insert after meta description or </title>.
     anchor = re.search(r"<meta\s+[^>]*name=['\"]description['\"][^>]*>\s*", head, flags=re.IGNORECASE)
     if not anchor:
         anchor = re.search(r"</title>\s*", head, flags=re.IGNORECASE)

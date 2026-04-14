@@ -5,7 +5,7 @@ This document describes the shared architecture for all activity pages across gr
 ## Directory Structure
 
 ```
-meadowmath.github.io/
+meadowmath/
 ├── css/
 │   ├── activity.css          # Shared activity styles (main)
 │   ├── activity-shared.css   # Shared utility styles

@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://meadowmath.github.io/sitemap.xml
+Sitemap: https://math.alsatian.co/sitemap.xml

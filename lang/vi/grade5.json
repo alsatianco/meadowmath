@@ -8,7 +8,7 @@
       "learnMore": {
         "g5-l1-big-idea": {
           "title": "Ý tưởng lớn",
-          "content": "Số thập phân không phải là \"số mới\"—chúng là cùng hệ thống giá trị vị trí kéo dài sang bên phải. Mỗi bước sang phải là **÷10**, và mỗi bước sang trái là **×10**. Khi trẻ có thể *nhìn thấy* giá trị vị trí, việc làm tròn và so sánh trở nên bình tĩnh và logic."
+          "content": "Số thập phân không phải là \"số mới\" - chúng là cùng hệ thống giá trị vị trí kéo dài sang bên phải. Mỗi bước sang phải là **÷10**, và mỗi bước sang trái là **×10**. Khi trẻ có thể *nhìn thấy* giá trị vị trí, việc làm tròn và so sánh trở nên bình tĩnh và logic."
         },
         "g5-l1-notice": {
           "title": "Những điều cần chú ý",
@@ -30,7 +30,7 @@
       "learnMore": {
         "g5-l2-big-idea": {
           "title": "Ý tưởng lớn",
-          "content": "Các phép tính Lớp 5 không phải về \"thủ thuật mới\"—chúng là về **làm cho giá trị vị trí hiện rõ**. Phép nhân là diện tích. Phép chia là \"bao nhiêu nhóm?\" Số thập phân hoạt động như số nguyên **miễn là bạn tôn trọng các vị trí**. Biểu thức chỉ là cách *viết câu chuyện* của một phép tính."
+          "content": "Các phép tính Lớp 5 không phải về \"thủ thuật mới\" - chúng là về **làm cho giá trị vị trí hiện rõ**. Phép nhân là diện tích. Phép chia là \"bao nhiêu nhóm?\" Số thập phân hoạt động như số nguyên **miễn là bạn tôn trọng các vị trí**. Biểu thức chỉ là cách *viết câu chuyện* của một phép tính."
         },
         "g5-l2-notice": {
           "title": "Những điều cần chú ý",
@@ -96,7 +96,7 @@
       "learnMore": {
         "g5-l5-big-idea": {
           "title": "Ý tưởng lớn",
-          "content": "Mặt phẳng tọa độ là một trục số theo hai hướng cùng một lúc. Cặp số thứ tự là \"nơi\" một điểm nằm. **Các mẫu** trở nên hiện rõ khi bạn tạo hai quy tắc và vẽ đồ thị các cặp—bạn có thể thấy mối quan hệ! Hình học là về **tính chất**—và các tính chất tạo ra một \"cây gia đình\" (mọi hình vuông là hình chữ nhật, nhưng không phải mọi hình chữ nhật là hình vuông)."
+          "content": "Mặt phẳng tọa độ là một trục số theo hai hướng cùng một lúc. Cặp số thứ tự là \"nơi\" một điểm nằm. **Các mẫu** trở nên hiện rõ khi bạn tạo hai quy tắc và vẽ đồ thị các cặp - bạn có thể thấy mối quan hệ! Hình học là về **tính chất** - và các tính chất tạo ra một \"cây gia đình\" (mọi hình vuông là hình chữ nhật, nhưng không phải mọi hình chữ nhật là hình vuông)."
         },
         "g5-l5-notice": {
           "title": "Những điều cần chú ý",
@@ -786,7 +786,7 @@
       "hint": "Nhớ: Đi sang phải trước (x), rồi đi lên (y)!",
       "over": "sang",
       "up": "lên",
-      "correct": "Đúng rồi! ({x}, {y}) — {over} {x}, {up} {y}!",
+      "correct": "Đúng rồi! ({x}, {y}) - {over} {x}, {up} {y}!",
       "wrong": "Điểm đúng là ({x}, {y}).",
       "perfect": "Hoàn hảo! Bạn là bậc thầy vẽ điểm!",
       "great": "Vẽ điểm tuyệt vời!",

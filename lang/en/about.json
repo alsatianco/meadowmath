@@ -1,50 +1,62 @@
 {
   "title": "About Meadow Math",
-  "description": "Learn about our mission and values",
+  "description": "The story behind this family-made math site",
   "tabs": {
     "about": "About",
     "privacy": "Privacy & Terms"
   },
   "about": {
+    "eyebrow": "A small family project",
     "title": "What is Meadow Math?",
-    "intro": "Meadow Math is a free, gentle, and joyful space for children to explore mathematics from Pre-K through Grade 5.",
-    "mission": {
-      "title": "Our Mission",
-      "content": "We believe every child can develop a love for math when learning feels like play. Meadow Math provides a calm, no-pressure environment where children can explore mathematical concepts at their own pace through interactive activities and hands-on tools."
+    "intro": "Meadow Math is a free, gentle space where children can explore math from Pre-K through Grade 5 through hands-on activities and simple tools.",
+    "intro2": "It was made to feel calm, clear, and inviting. The goal is not to rush children through practice, but to give them room to try things, notice patterns, and build understanding at their own pace.",
+    "origin": {
+      "title": "How Meadow Math Began",
+      "content1": "Meadow Math started at home. My son was watching my wife teach our younger daughter through counting, drawing, and playful little math moments, and math felt more like something to explore than something to perform.",
+      "quote": "\"Can we make a math game website for kids?\"",
+      "content2": "That question became this project. I set up the overall structure, my wife came up with ideas and content for the activities, and our son used AI tools like GitHub Copilot to build most of them himself."
     },
     "philosophy": {
-      "title": "Our Philosophy",
+      "title": "What We Care About",
       "principles": {
         "handson": {
           "title": "Hands-on Learning",
-          "content": "Children learn best when they can touch, move, and manipulate. Our tools and activities let kids explore math concepts through direct interaction."
+          "content": "Children understand math more deeply when they can move pieces around, test ideas, and see what changes."
         },
         "calm": {
-          "title": "Calm & No-Pressure",
-          "content": "No timers, no scores, no competition. Just gentle encouragement and the freedom to learn at your own pace."
+          "title": "Calm, Not Pushy",
+          "content": "No timers, no streaks, and no pressure to perform. Just enough structure to help children focus without making math feel tense."
         },
         "joyful": {
           "title": "Joyful Discovery",
-          "content": "Math should spark curiosity and wonder. Every activity is designed to create those magical 'aha!' moments."
+          "content": "Good math moments often start with curiosity. We want activities to feel like invitations, not assignments."
         }
       }
     },
+    "project": {
+      "title": "What This Project Is",
+      "content1": "Meadow Math isn't a startup or a business. It's just a family project we made because we wanted something simple and free for our kids to practice math with.",
+      "content2": "It's open source and growing slowly on purpose. We're not trying to turn it into anything big \u2014 just adding more activities when we can and sharing them for free."
+    },
     "team": {
       "title": "Who Built This?",
-      "content": "Meadow Math is a family project built with love. We created it for our own children and decided to share it with the world.",
-      "linkedinIntro": "You can also find ",
-      "linkedinLink": "me on LinkedIn"
+      "content1": "It's our family. My wife spends a lot of time learning how to teach our kids (ages 4 and 10) and came up with the ideas and content. I built the overall framework. And our 10-year-old used AI tools to implement most of the activities.",
+      "content2": "We started it for our own kids, and decided to share it in case other families find it useful too.",
+      "profileIntro": "You can find me on ",
+      "linkedinLink": "LinkedIn",
+      "profileMiddle": " or ",
+      "githubLink": "GitHub"
     },
     "contribute": {
       "title": "How to Contribute",
-      "content": "Meadow Math is open source! You can contribute by:",
+      "content": "Meadow Math is open source and still growing gently. If you'd like to help, here are a few good ways:",
       "items": {
-        "issues": "Reporting bugs or suggesting features on GitHub",
-        "code": "Contributing code improvements",
-        "translate": "Helping translate to more languages",
-        "spread": "Sharing with other families and educators"
+        "issues": "Opening an issue if you spot a bug or have an idea",
+        "code": "Contributing code or activity improvements",
+        "translate": "Helping translate the site into more languages",
+        "spread": "Sharing it with families, teachers, or homeschool communities who might find it useful"
       },
-      "github": "Visit our GitHub"
+      "github": "View the project on GitHub"
     }
   },
   "privacy": {
@@ -56,7 +68,7 @@
     },
     "noData": {
       "title": "No Personal Data Collection",
-      "content": "We don't collect, store, or share any personal information about you or your children. No names, no emails, no tracking."
+      "content": "We don't collect, store, or share any personal information about you or your children. No names, no emails, and no personal profiles."
     },
     "localStorage": {
       "title": "Local Storage Only",

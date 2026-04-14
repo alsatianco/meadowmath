@@ -24,8 +24,18 @@ from xml.etree.ElementTree import Element, SubElement, ElementTree, indent
 # Resolve repository root (3 levels up from this script)
 REPO_ROOT = Path(__file__).resolve().parents[3]
 
+def _load_site_url() -> str:
+    """Return the public site URL, preferring the deployed CNAME."""
+    cname_path = REPO_ROOT / "CNAME"
+    if cname_path.exists():
+        hostname = cname_path.read_text(encoding="utf-8").strip()
+        if hostname:
+            return f"https://{hostname}"
+    return "https://math.alsatian.co"
+
+
 # Site base URL
-SITE_URL = "https://meadowmath.github.io"
+SITE_URL = _load_site_url()
 
 # Directories and files to exclude from sitemap
 EXCLUDED_DIRS = {

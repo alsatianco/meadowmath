@@ -8,7 +8,7 @@
       "learnMore": {
         "g5-l1-big-idea": {
           "title": "Big idea",
-          "content": "Decimals aren't \"new numbers\"—they're the same place-value system stretched to the right. Each step right is **÷10**, and each step left is **×10**. When kids can *see* place value, rounding and comparing become calm and logical."
+          "content": "Decimals aren't \"new numbers\" - they're the same place-value system stretched to the right. Each step right is **÷10**, and each step left is **×10**. When kids can *see* place value, rounding and comparing become calm and logical."
         },
         "g5-l1-notice": {
           "title": "What to notice",
@@ -30,7 +30,7 @@
       "learnMore": {
         "g5-l2-big-idea": {
           "title": "Big idea",
-          "content": "Grade 5 operations aren't about \"new tricks\"—they're about **making place value visible**. Multiplication is area. Division is \"how many groups?\" Decimals behave like whole numbers **as long as you respect the places**. Expressions are just a way to *write the story* of a calculation."
+          "content": "Grade 5 operations aren't about \"new tricks\" - they're about **making place value visible**. Multiplication is area. Division is \"how many groups?\" Decimals behave like whole numbers **as long as you respect the places**. Expressions are just a way to *write the story* of a calculation."
         },
         "g5-l2-notice": {
           "title": "What to notice",
@@ -96,7 +96,7 @@
       "learnMore": {
         "g5-l5-big-idea": {
           "title": "Big idea",
-          "content": "The coordinate plane is a number line in two directions at once. Ordered pairs are \"where\" a point lives. **Patterns** become visible when you generate two rules and graph the pairs—you can see the relationship! Geometry is about **properties**—and properties create a \"family tree\" (every square is a rectangle, but not every rectangle is a square)."
+          "content": "The coordinate plane is a number line in two directions at once. Ordered pairs are \"where\" a point lives. **Patterns** become visible when you generate two rules and graph the pairs - you can see the relationship! Geometry is about **properties** - and properties create a \"family tree\" (every square is a rectangle, but not every rectangle is a square)."
         },
         "g5-l5-notice": {
           "title": "What to notice",
@@ -786,7 +786,7 @@
       "hint": "Remember: Go right first (x), then up (y)!",
       "over": "over",
       "up": "up",
-      "correct": "Correct! ({x}, {y}) — {over} {x}, {up} {y}!",
+      "correct": "Correct! ({x}, {y}) - {over} {x}, {up} {y}!",
       "wrong": "The correct point is ({x}, {y}).",
       "perfect": "Perfect! You are a plotting master!",
       "great": "Great plotting!",

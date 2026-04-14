@@ -1,50 +1,62 @@
 {
   "title": "Giới thiệu Meadow Math",
-  "description": "Tìm hiểu về sứ mệnh và giá trị của chúng tôi",
+  "description": "Câu chuyện phía sau trang toán học do gia đình làm",
   "tabs": {
     "about": "Giới thiệu",
     "privacy": "Quyền riêng tư & Điều khoản"
   },
   "about": {
+    "eyebrow": "Một dự án gia đình nhỏ",
     "title": "Meadow Math là gì?",
-    "intro": "Meadow Math là không gian miễn phí, nhẹ nhàng và vui vẻ để trẻ em khám phá toán học từ Mầm non đến Lớp 5.",
-    "mission": {
-      "title": "Sứ mệnh của chúng tôi",
-      "content": "Chúng tôi tin rằng mọi trẻ em đều có thể yêu thích toán học khi việc học giống như chơi. Meadow Math mang đến môi trường bình yên, không áp lực, nơi trẻ có thể khám phá các khái niệm toán học theo nhịp độ riêng thông qua các hoạt động tương tác và công cụ thực hành."
+    "intro": "Meadow Math là một không gian miễn phí và nhẹ nhàng, nơi trẻ em từ Mầm non đến Lớp 5 có thể khám phá toán học qua các hoạt động tương tác và công cụ đơn giản.",
+    "intro2": "Trang được làm để mang cảm giác bình yên, rõ ràng và dễ gần. Mục tiêu không phải là thúc trẻ làm thật nhanh, mà là cho các em khoảng không để thử, nhận ra quy luật và hiểu dần theo nhịp độ riêng.",
+    "origin": {
+      "title": "Meadow Math bắt đầu như thế nào",
+      "content1": "Meadow Math bắt đầu từ ở nhà. Con trai tôi thường nhìn mẹ dạy em gái nhỏ bằng cách đếm, vẽ và chơi với các ý tưởng toán học, nên toán giống như thứ để khám phá hơn là thứ để bị kiểm tra.",
+      "quote": "\"Mình có thể làm một website trò chơi toán cho trẻ em không?\"",
+      "content2": "Câu hỏi đó trở thành dự án này. Tôi dựng khung tổng thể, vợ tôi nghĩ ra ý tưởng và nội dung cho các hoạt động, còn con trai tôi dùng AI tools như GitHub Copilot để tự xây dựng phần lớn các bài tập."
     },
     "philosophy": {
-      "title": "Triết lý của chúng tôi",
+      "title": "Điều chúng tôi coi trọng",
       "principles": {
         "handson": {
           "title": "Học qua thực hành",
-          "content": "Trẻ em học tốt nhất khi được chạm, di chuyển và thao tác. Các công cụ và hoạt động của chúng tôi cho phép trẻ khám phá khái niệm toán học qua tương tác trực tiếp."
+          "content": "Trẻ hiểu toán sâu hơn khi được di chuyển đồ vật, thử ý tưởng và nhìn thấy điều gì thay đổi."
         },
         "calm": {
-          "title": "Bình yên & Không áp lực",
-          "content": "Không đồng hồ đếm, không điểm số, không cạnh tranh. Chỉ có sự khuyến khích nhẹ nhàng và tự do học theo nhịp độ riêng."
+          "title": "Bình yên, không thúc ép",
+          "content": "Không đồng hồ đếm ngược, không chuỗi thành tích, không áp lực thể hiện. Chỉ có vừa đủ cấu trúc để trẻ tập trung mà không thấy căng thẳng."
         },
         "joyful": {
-          "title": "Khám phá vui vẻ",
-          "content": "Toán học nên khơi gợi sự tò mò và ngạc nhiên. Mỗi hoạt động được thiết kế để tạo ra những khoảnh khắc 'à há!' kỳ diệu."
+          "title": "Niềm vui khám phá",
+          "content": "Nhiều khoảnh khắc học toán đẹp bắt đầu từ sự tò mò. Chúng tôi muốn mỗi hoạt động giống như một lời mời khám phá, không phải một bài giao bắt buộc."
         }
       }
     },
+    "project": {
+      "title": "Dự án này là gì",
+      "content1": "Meadow Math không phải startup hay sản phẩm thương mại gì cả. Đơn giản là một dự án gia đình, vì chúng tôi muốn có chỗ đơn giản và miễn phí cho con mình luyện toán.",
+      "content2": "Dự án là mã nguồn mở và phát triển chậm rãi có chủ đích. Chúng tôi không cố biến nó thành thứ gì lớn lao - chỉ thêm hoạt động khi có thể và chia sẻ miễn phí."
+    },
     "team": {
       "title": "Ai xây dựng dự án này?",
-      "content": "Meadow Math là dự án gia đình được xây dựng với tình yêu thương. Chúng tôi tạo ra nó cho con cái mình và quyết định chia sẻ với mọi người.",
-      "linkedinIntro": "Bạn cũng có thể tìm ",
-      "linkedinLink": "tôi trên LinkedIn"
+      "content1": "Là gia đình tôi. Vợ tôi dành nhiều thời gian tìm hiểu cách dạy hai con (4 và 10 tuổi) và nghĩ ra ý tưởng, nội dung cho các hoạt động. Tôi dựng khung tổng thể. Còn cháu lớn 10 tuổi dùng AI tools để xây dựng phần lớn các bài tập.",
+      "content2": "Ban đầu chúng tôi làm cho con mình, rồi quyết định chia sẻ phòng khi gia đình khác cũng thấy hữu ích.",
+      "profileIntro": "Bạn có thể tìm tôi trên ",
+      "linkedinLink": "LinkedIn",
+      "profileMiddle": " hoặc ",
+      "githubLink": "GitHub"
     },
     "contribute": {
       "title": "Cách đóng góp",
-      "content": "Meadow Math là mã nguồn mở! Bạn có thể đóng góp bằng cách:",
+      "content": "Meadow Math là mã nguồn mở và vẫn đang lớn lên một cách chậm rãi. Nếu bạn muốn giúp một tay, đây là vài cách thiết thực:",
       "items": {
-        "issues": "Báo lỗi hoặc đề xuất tính năng trên GitHub",
-        "code": "Đóng góp cải tiến mã nguồn",
-        "translate": "Giúp dịch sang nhiều ngôn ngữ hơn",
-        "spread": "Chia sẻ với các gia đình và giáo viên khác"
+        "issues": "Mở issue nếu bạn thấy lỗi hoặc có ý tưởng mới",
+        "code": "Đóng góp cải tiến mã nguồn hoặc hoạt động học",
+        "translate": "Giúp dịch website sang nhiều ngôn ngữ hơn",
+        "spread": "Chia sẻ với gia đình, giáo viên hoặc cộng đồng homeschool có thể thấy hữu ích"
       },
-      "github": "Truy cập GitHub của chúng tôi"
+      "github": "Xem dự án trên GitHub"
     }
   },
   "privacy": {
@@ -56,7 +68,7 @@
     },
     "noData": {
       "title": "Không thu thập dữ liệu cá nhân",
-      "content": "Chúng tôi không thu thập, lưu trữ hay chia sẻ bất kỳ thông tin cá nhân nào về bạn hoặc con cái bạn. Không tên, không email, không theo dõi."
+      "content": "Chúng tôi không thu thập, lưu trữ hay chia sẻ bất kỳ thông tin cá nhân nào về bạn hoặc con cái bạn. Không tên, không email và không hồ sơ cá nhân."
     },
     "localStorage": {
       "title": "Chỉ lưu trữ cục bộ",
