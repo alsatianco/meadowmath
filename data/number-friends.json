@@ -7,17 +7,18 @@
       "id": "stage-0", "number": 0, "title": "Meet the Blocks", "icon": "🧱",
       "goal": "See each number as a tower of blocks.",
       "intro": { "id": "meet-blocks-intro", "path": "activities/meet-blocks-intro.html" },
+      "host": 1, "missions": 2,
       "activities": [
         { "id": "count-blocks", "icon": "🔢", "path": "activities/count-blocks.html", "type": "count-blocks" },
         { "id": "tower-to-numeral", "icon": "🔤", "path": "activities/tower-to-numeral.html", "type": "tower-to-numeral" },
         { "id": "subitize-flash", "icon": "⚡", "path": "activities/subitize-flash.html", "type": "subitize-flash" }
       ]
     },
-    { "id": "stage-1", "number": 1, "title": "Tách", "icon": "✂️", "goal": "Split a tower into two parts.", "activities": [] },
-    { "id": "stage-2", "number": 2, "title": "Gộp", "icon": "🤝", "goal": "Join two parts into one.", "activities": [] },
-    { "id": "stage-3", "number": 3, "title": "Toàn thể của tớ", "icon": "🌈", "goal": "Find every way to split a number.", "activities": [] },
-    { "id": "stage-4", "number": 4, "title": "Trốn tìm", "icon": "🫣", "goal": "Find the hidden part.", "activities": [] },
-    { "id": "stage-5", "number": 5, "title": "Làm bạn với 5 và 10", "icon": "🖐️", "goal": "Make 5 and make 10.", "activities": [] },
-    { "id": "stage-6", "number": 6, "title": "Mười và vài đơn vị", "icon": "🔟", "goal": "Teen numbers are ten and some ones.", "activities": [] }
+    { "id": "stage-1", "number": 1, "title": "Tách", "icon": "✂️", "goal": "Split a tower into two parts.", "host": 4, "missions": 2, "activities": [] },
+    { "id": "stage-2", "number": 2, "title": "Gộp", "icon": "🤝", "goal": "Join two parts into one.", "host": 2, "missions": 2, "activities": [] },
+    { "id": "stage-3", "number": 3, "title": "Toàn thể của tớ", "icon": "🌈", "goal": "Find every way to split a number.", "host": 6, "missions": 3, "activities": [] },
+    { "id": "stage-4", "number": 4, "title": "Trốn tìm", "icon": "🫣", "goal": "Find the hidden part.", "host": 3, "missions": 2, "activities": [] },
+    { "id": "stage-5", "number": 5, "title": "Làm bạn với 5 và 10", "icon": "🖐️", "goal": "Make 5 and make 10.", "host": 5, "missions": 3, "activities": [] },
+    { "id": "stage-6", "number": 6, "title": "Mười và vài đơn vị", "icon": "🔟", "goal": "Teen numbers are ten and some ones.", "host": 10, "missions": 2, "activities": [] }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "world": { "title": "Number Friends", "tagline": "Numbers are blocks you can pull apart and snap together." },
+  "world": { "title": "Number Friends", "tagline": "Numbers are blocks you can pull apart and snap together.", "missionsButton": "Real-world missions", "missionsTitle": "Number Explorer missions", "nextStage": "Next stage" },
   "stages": {
     "stage-0": { "title": "Meet the Blocks", "goal": "See each number as a tower of blocks — and know it by its shape." },
     "stage-1": { "title": "Pull Apart", "goal": "Split a tower into two parts." },

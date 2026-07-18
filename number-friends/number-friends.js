@@ -13,6 +13,7 @@ const NumberFriendsHub = {
     }
     this.render();
     this.renderHero();
+    this.bindMissionModal();
     document.addEventListener('languageChanged', () => this.render());
   },
   t(key, fallback) {
@@ -24,16 +25,26 @@ const NumberFriendsHub = {
     this.map.querySelectorAll('.stage-head').forEach(h => {
       h.addEventListener('click', () => h.parentElement.classList.toggle('open'));
     });
+    this.map.querySelectorAll('.mission-chip').forEach(b => {
+      b.addEventListener('click', () => this.openMissions(b.dataset.stage));
+    });
   },
   renderStage(stage, i) {
     const hasActivities = stage.activities && stage.activities.length > 0;
     const title = this.t(`section.stages.${stage.id}.title`, stage.title);
     const goal = this.t(`section.stages.${stage.id}.goal`, stage.goal);
+    const allActivitiesDone = hasActivities && stage.activities.every(a => {
+      try { return window.Storage && window.Storage.isActivityCompleted('number-friends', a.id); } catch (e) { return false; }
+    });
+    const missionChip = allActivitiesDone
+      ? `<button class="mission-chip" data-stage="${stage.id}">🏅 <span>${this.escape(this.t('section.world.missionsButton', 'Real-world missions'))}</span></button>`
+      : '';
     const chips = hasActivities
       ? `<div class="stage-activities">
            ${stage.intro ? this.renderChip(stage.intro, '📖', true) : ''}
            ${stage.activities.map(a => this.renderChip(a, a.icon, false)).join('')}
-         </div>`
+         </div>
+         ${missionChip}`
       : `<p class="coming-soon">Sắp ra mắt • Coming soon</p>`;
     return `
       <section class="stage-node ${hasActivities ? '' : 'locked'}">
@@ -72,6 +83,44 @@ const NumberFriendsHub = {
         <span class="chip-title">${this.escape(title)}</span>
         <span class="chip-star">${star}</span>
       </a>`;
+  },
+  openMissions(stageId) {
+    const stage = this.data.levels.find(l => l.id === stageId);
+    if (!stage) return;
+    const raw = window.i18n ? window.i18n.getRaw(`section.stages.${stageId}.missions`) : null;
+    const missions = Array.isArray(raw) ? raw.slice(0, stage.missions || raw.length) : [];
+    const overlay = document.getElementById('mission-overlay');
+    const list = document.getElementById('mission-list');
+    if (!overlay || !list) return;
+    document.getElementById('mission-title').textContent = this.t('section.world.missionsTitle', 'Explorer missions');
+    list.innerHTML = missions.map((m, i) => {
+      const done = (() => { try { return window.Storage.isActivityCompleted('number-friends', `${stageId}-mission-${i}`); } catch (e) { return false; } })();
+      return `<li class="mission-item${done ? ' done' : ''}" data-i="${i}">
+        <button class="mission-speak" aria-label="Read aloud">🔊</button>
+        <span class="mission-text">${this.escape(m)}</span>
+        <button class="mission-star" aria-pressed="${done}">${done ? '⭐' : '☆'}</button></li>`;
+    }).join('');
+    list.querySelectorAll('.mission-speak').forEach((b, i) => b.addEventListener('click', () => {
+      if (window.BlockEngine) window.BlockEngine.speak(missions[i]);
+    }));
+    list.querySelectorAll('.mission-star').forEach((b, i) => b.addEventListener('click', () => {
+      try { window.Storage.markActivityCompleted('number-friends', `${stageId}-mission-${i}`); } catch (e) {}
+      b.textContent = '⭐';
+      b.setAttribute('aria-pressed', 'true');
+      b.closest('.mission-item').classList.add('done');
+    }));
+    overlay.classList.add('open');
+  },
+  closeMissions() {
+    const overlay = document.getElementById('mission-overlay');
+    if (overlay) overlay.classList.remove('open');
+  },
+  bindMissionModal() {
+    const overlay = document.getElementById('mission-overlay');
+    const closeBtn = document.getElementById('mission-close');
+    if (!overlay || !closeBtn) return;
+    closeBtn.addEventListener('click', () => this.closeMissions());
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) this.closeMissions(); });
   },
   escape(t) { const d = document.createElement('div'); d.textContent = t == null ? '' : t; return d.innerHTML; }
 };

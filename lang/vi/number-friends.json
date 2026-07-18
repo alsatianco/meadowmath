@@ -1,5 +1,5 @@
 {
-  "world": { "title": "Bạn Số", "tagline": "Mỗi con số là những khối có thể tách ra và gộp lại." },
+  "world": { "title": "Bạn Số", "tagline": "Mỗi con số là những khối có thể tách ra và gộp lại.", "missionsButton": "Nhiệm vụ thật", "missionsTitle": "Nhiệm vụ nhà thám hiểm số", "nextStage": "Chặng sau" },
   "stages": {
     "stage-0": { "title": "Làm quen khối số", "goal": "Thấy mỗi số là một tháp khối — và nhận ra số nhờ hình dạng." },
     "stage-1": { "title": "Tách", "goal": "Tách một tháp thành hai phần." },
