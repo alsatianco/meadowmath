@@ -1,0 +1,28 @@
+/* number-friends/number-friends.css — "Bạn Số" world hub */
+.region-header { text-align: center; padding: 28px 16px 8px; }
+.region-icon { font-size: 2.6rem; display: block; }
+.region-title { font-family: var(--font-secondary, sans-serif); font-size: 2rem; color: var(--color-neutral-800, #1e293b); margin-top: 4px; }
+.region-tagline { color: var(--color-neutral-500, #64748b); margin-top: 6px; }
+
+.journey-map { max-width: 760px; margin: 0 auto; padding: 16px; display: flex; flex-direction: column; gap: 18px; }
+
+.stage-node { border: 3px solid #e2e8f0; border-radius: 20px; background: #fff; padding: 16px 18px; box-shadow: 0 4px 0 #e2e8f0; }
+.stage-node.locked { opacity: .55; }
+.stage-head { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.stage-icon { font-size: 2rem; }
+.stage-title { font-family: var(--font-secondary, sans-serif); font-weight: 700; font-size: 1.25rem; }
+.stage-goal { color: var(--color-neutral-500, #64748b); font-size: .95rem; }
+
+.stage-activities { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+.activity-chip { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 96px; padding: 12px; border-radius: 16px; border: 2px solid #e2e8f0; text-decoration: none; color: inherit; background: #f8fafc; transition: transform .15s ease, border-color .15s ease; }
+.activity-chip:hover { border-color: #3b82f6; transform: translateY(-3px); }
+.activity-chip .chip-icon { font-size: 1.8rem; }
+.activity-chip .chip-title { font-size: .85rem; text-align: center; }
+.activity-chip .chip-star { font-size: .9rem; min-height: 1em; }
+
+.coming-soon { color: var(--color-neutral-400, #94a3b8); font-style: italic; margin-top: 10px; }
+
+.loading-state { text-align: center; color: var(--color-neutral-400, #94a3b8); padding: 40px; }
+.loading-spinner { width: 32px; height: 32px; margin: 0 auto 10px; border: 4px solid #e2e8f0; border-top-color: #3b82f6; border-radius: 50%; animation: nf-spin 1s linear infinite; }
+@keyframes nf-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .loading-spinner { animation: none; } }
