@@ -15,7 +15,7 @@
 
   const FRIEND_STYLES = {
     0: { accent: '#8b8171', expression: 'soft', decor: 'none' },
-    1: { accent: '#f6b7a0', expression: 'bright', decor: 'tuft', eyes: 1 },
+    1: { accent: '#f6b7a0', expression: 'bright', decor: 'none', eyes: 1 },
     2: { accent: '#f5c273', expression: 'soft', decor: 'glasses' },
     3: { accent: '#ffe08a', expression: 'bright', decor: 'crown' },
     4: { accent: '#b7dc75', expression: 'calm', decor: 'brows' },
@@ -28,7 +28,7 @@
     8: { accent: '#f4a3bd', expression: 'calm', decor: 'bow' },
     9: { accent: '#d2c9ad', expression: 'soft', decor: 'sneezy' },
     10: { accent: '#a7d6bd', expression: 'bright', decor: 'stripes' },
-    11: { accent: '#f6b7a0', expression: 'happy', decor: 'tuft' },
+    11: { accent: '#f6b7a0', expression: 'happy', decor: 'none' },
     12: { accent: '#ffd37c', expression: 'soft', decor: 'sprout' },
     13: { accent: '#a7d887', expression: 'bright', decor: 'star' },
     14: { accent: '#9fd3f1', expression: 'happy', decor: 'spark' },

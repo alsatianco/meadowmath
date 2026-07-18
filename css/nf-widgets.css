@@ -98,5 +98,6 @@
 
 /* take-away: cubes that "fly away" — fade/shrink/drop before removal from the count */
 .nb-cube--gone { transform: translateY(70px) scale(.3); opacity: 0; transition: .5s; }
+@media (prefers-reduced-motion: reduce) { .nb-cube--gone { transition: none; } }
 
 @media (prefers-reduced-motion: reduce) { .nf-fruit, .nf-zilla-mouth { transition: none; } }
