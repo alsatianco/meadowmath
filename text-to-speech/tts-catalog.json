@@ -1635,6 +1635,111 @@
               "voiceText": "twenty"
             }
           ]
+        },
+        {
+          "id": "number-friends-home",
+          "items": [
+            {
+              "id": "stage-0-mission-1",
+              "text": "Stand on 1 leg and count to 5!",
+              "created": true
+            },
+            {
+              "id": "stage-0-mission-2",
+              "text": "Spot 1 red thing in your home.",
+              "created": true
+            },
+            {
+              "id": "stage-1-mission-1",
+              "text": "Split 4 grapes into 2 bowls!",
+              "created": true
+            },
+            {
+              "id": "stage-1-mission-2",
+              "text": "Break a cracker in half — how much is each half?",
+              "created": true
+            },
+            {
+              "id": "stage-2-mission-1",
+              "text": "Hold 1 pebble in your left hand, 2 in your right — join them, how many?",
+              "created": true
+            },
+            {
+              "id": "stage-2-mission-2",
+              "text": "Line up 2 pairs of shoes — count how many shoes in all!",
+              "created": true
+            },
+            {
+              "id": "stage-3-mission-1",
+              "text": "Stack 5 toys in a pile — how many ways can you split the pile into 2 groups?",
+              "created": true
+            },
+            {
+              "id": "stage-3-mission-2",
+              "text": "Snap 6 craft sticks into 3 and 3!",
+              "created": true
+            },
+            {
+              "id": "stage-3-mission-3",
+              "text": "Find 2 ways to share 4 candies between 2 friends.",
+              "created": true
+            },
+            {
+              "id": "stage-4-mission-1",
+              "text": "Hide 2 of 5 toys behind your back — guess how many are hiding!",
+              "created": true
+            },
+            {
+              "id": "stage-4-mission-2",
+              "text": "Play hide and seek as a family — count out loud to 10!",
+              "created": true
+            },
+            {
+              "id": "stage-5-mission-1",
+              "text": "Hold up 3 fingers — how many more to make 5?",
+              "created": true
+            },
+            {
+              "id": "stage-5-mission-2",
+              "text": "Count to 10 on your fingers, nice and loud!",
+              "created": true
+            },
+            {
+              "id": "stage-5-mission-3",
+              "text": "Line up 10 beads in 2 rows of 5 like a ten-frame.",
+              "created": true
+            },
+            {
+              "id": "stage-6-mission-1",
+              "text": "Count 12 stair steps — stop at step 10 and shout TEN!",
+              "created": true
+            },
+            {
+              "id": "stage-6-mission-2",
+              "text": "Line up 13 pebbles: 10 in a row — how many are left over?",
+              "created": true
+            },
+            {
+              "id": "stage-7-mission-1",
+              "text": "Count your socks by 2s — how many pairs?",
+              "created": true
+            },
+            {
+              "id": "stage-7-mission-2",
+              "text": "Share 8 grapes fairly with a friend — how many each?",
+              "created": true
+            },
+            {
+              "id": "stage-8-mission-1",
+              "text": "Count the wheels on 3 tricycles by 3s!",
+              "created": true
+            },
+            {
+              "id": "stage-8-mission-2",
+              "text": "Share 9 crayons into 3 equal cups — how many in each?",
+              "created": true
+            }
+          ]
         }
       ]
     }

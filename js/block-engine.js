@@ -159,6 +159,9 @@
 
   let _audioCtx = null;
   let _narrationAudio = null;
+  let _deferredNarration = null;
+  let _deferredNarrationListening = false;
+  let _deferredNarrationPrompt = null;
   let _muted = (function () {
     try { return !!(window.Storage && window.Storage.getSettings && window.Storage.getSettings().nbMuted); }
     catch (e) { return false; }
@@ -206,14 +209,54 @@
         const audio = new Audio(file);
         _narrationAudio = audio;
         audio.onended = audio.onerror = () => { if (_narrationAudio === audio) _narrationAudio = null; };
-        audio.play().catch(() => {
+        audio.play().catch((error) => {
           if (_narrationAudio === audio) _narrationAudio = null;
+          // iPad/iPhone only permits media playback after a gesture in the
+          // current document. Preserve the generated narration and replay it
+          // on the next touch instead of replacing it with Web Speech.
+          if (error && error.name === 'NotAllowedError') {
+            deferNarration(value, opts);
+            return;
+          }
           speakWithBrowser(value, lang);
         });
         return;
       }
       speakWithBrowser(value, lang);
     } catch (e) { /* speech is optional */ }
+  }
+
+  function deferNarration(text, opts) {
+    _deferredNarration = { text, opts };
+    showDeferredNarrationPrompt();
+    if (_deferredNarrationListening) return;
+    _deferredNarrationListening = true;
+    const retry = () => {
+      window.removeEventListener('pointerdown', retry, true);
+      window.removeEventListener('touchstart', retry, true);
+      if (_deferredNarrationPrompt) {
+        _deferredNarrationPrompt.remove();
+        _deferredNarrationPrompt = null;
+      }
+      const pending = _deferredNarration;
+      _deferredNarration = null;
+      _deferredNarrationListening = false;
+      if (pending) speak(pending.text, pending.opts);
+    };
+    window.addEventListener('pointerdown', retry, { once: true, capture: true });
+    window.addEventListener('touchstart', retry, { once: true, capture: true });
+  }
+
+  function showDeferredNarrationPrompt() {
+    if (_deferredNarrationPrompt || !document.body) return;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'tts-tap-to-hear';
+    button.textContent = '🔊 Tap to hear';
+    button.setAttribute('aria-label', 'Tap to hear narration');
+    button.style.cssText = 'position:fixed;right:16px;bottom:16px;z-index:1000;padding:10px 14px;border:0;border-radius:999px;background:#2f9ee0;color:#fff;font:600 15px system-ui,sans-serif;box-shadow:0 3px 12px rgba(0,0,0,.22);';
+    document.body.appendChild(button);
+    _deferredNarrationPrompt = button;
   }
 
   function speakWithBrowser(text, lang) {
