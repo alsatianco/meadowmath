@@ -1,0 +1,1642 @@
+{
+  "schemaVersion": 1,
+  "language": "en-US",
+  "sections": [
+    {
+      "id": "number-friends",
+      "activities": [
+        {
+          "id": "meet-blocks-intro",
+          "items": [
+            {
+              "id": "meet-blocks-opening",
+              "text": "Hi! Every number is made of blocks.",
+              "created": true
+            },
+            {
+              "id": "meet-blocks-one",
+              "text": "One block is One.",
+              "created": true
+            },
+            {
+              "id": "meet-blocks-two",
+              "text": "Add a block — now it's Two!",
+              "created": true
+            },
+            {
+              "id": "meet-blocks-five",
+              "text": "Five looks like the dots on dice.",
+              "created": true
+            },
+            {
+              "id": "meet-blocks-ten",
+              "text": "Ten is two rows of five.",
+              "created": true
+            },
+            {
+              "id": "meet-blocks-tap",
+              "text": "Tap a friend to hear its name!",
+              "created": true
+            },
+            {
+              "id": "number-one",
+              "text": "1",
+              "created": true,
+              "voiceText": "one"
+            },
+            {
+              "id": "number-two",
+              "text": "2",
+              "created": true,
+              "voiceText": "two"
+            },
+            {
+              "id": "number-three",
+              "text": "3",
+              "created": true,
+              "voiceText": "three"
+            },
+            {
+              "id": "number-four",
+              "text": "4",
+              "created": true,
+              "voiceText": "four"
+            },
+            {
+              "id": "number-five",
+              "text": "5",
+              "created": true,
+              "voiceText": "five"
+            },
+            {
+              "id": "nf-meet-blocks-intro-instruction",
+              "text": "Tap to meet each number friend!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "count-blocks",
+          "items": [
+            {
+              "id": "count-blocks-instruction",
+              "text": "How many blocks?",
+              "created": true
+            },
+            {
+              "id": "number-six",
+              "text": "6",
+              "created": true,
+              "voiceText": "six"
+            },
+            {
+              "id": "number-seven",
+              "text": "7",
+              "created": true,
+              "voiceText": "seven"
+            },
+            {
+              "id": "number-eight",
+              "text": "8",
+              "created": true,
+              "voiceText": "eight"
+            },
+            {
+              "id": "number-nine",
+              "text": "9",
+              "created": true,
+              "voiceText": "nine"
+            },
+            {
+              "id": "number-ten",
+              "text": "10",
+              "created": true,
+              "voiceText": "ten"
+            },
+            {
+              "id": "nf-count-blocks-perfect",
+              "text": "Super counting!",
+              "created": true
+            },
+            {
+              "id": "nf-count-blocks-great",
+              "text": "Great counting!",
+              "created": true
+            },
+            {
+              "id": "nf-count-blocks-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-count-blocks-keep-practicing",
+              "text": "Keep counting!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "tower-to-numeral",
+          "items": [
+            {
+              "id": "nf-tower-to-numeral-instruction",
+              "text": "Pick the number that matches the blocks.",
+              "created": true
+            },
+            {
+              "id": "nf-tower-to-numeral-perfect",
+              "text": "Number star!",
+              "created": true
+            },
+            {
+              "id": "nf-tower-to-numeral-great",
+              "text": "Great matching!",
+              "created": true
+            },
+            {
+              "id": "nf-tower-to-numeral-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-tower-to-numeral-keep-practicing",
+              "text": "Keep going!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "subitize-flash",
+          "items": [
+            {
+              "id": "nf-subitize-flash-instruction",
+              "text": "Look fast — how many?",
+              "created": true
+            },
+            {
+              "id": "nf-subitize-flash-perfect",
+              "text": "Eagle eyes!",
+              "created": true
+            },
+            {
+              "id": "nf-subitize-flash-great",
+              "text": "Quick eyes!",
+              "created": true
+            },
+            {
+              "id": "nf-subitize-flash-good",
+              "text": "Nice spotting!",
+              "created": true
+            },
+            {
+              "id": "nf-subitize-flash-keep-practicing",
+              "text": "Keep looking!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "who-is-bigger",
+          "items": [
+            {
+              "id": "nf-who-is-bigger-instruction",
+              "text": "Tap the taller tower — or = if they match!",
+              "created": true
+            },
+            {
+              "id": "nf-who-is-bigger-perfect",
+              "text": "Compare champion!",
+              "created": true
+            },
+            {
+              "id": "nf-who-is-bigger-great",
+              "text": "Great comparing!",
+              "created": true
+            },
+            {
+              "id": "nf-who-is-bigger-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-who-is-bigger-keep-practicing",
+              "text": "Try again!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "stamp-shapes",
+          "items": [
+            {
+              "id": "nf-stamp-shapes-instruction",
+              "text": "Look at the stamps — whose are they?",
+              "created": true
+            },
+            {
+              "id": "nf-stamp-shapes-perfect",
+              "text": "Shape master!",
+              "created": true
+            },
+            {
+              "id": "nf-stamp-shapes-great",
+              "text": "Sharp eyes!",
+              "created": true
+            },
+            {
+              "id": "nf-stamp-shapes-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-stamp-shapes-keep-practicing",
+              "text": "Look closely!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "split-intro",
+          "items": [
+            {
+              "id": "nf-split-intro-instruction",
+              "text": "Tap to watch the blocks split!",
+              "created": true
+            },
+            {
+              "id": "nf-split-intro-steps-0",
+              "text": "Hi! I'm Four. I have a fun trick!",
+              "created": true
+            },
+            {
+              "id": "nf-split-intro-steps-1",
+              "text": "Watch — I split into 2 and 2!",
+              "created": true
+            },
+            {
+              "id": "nf-split-intro-steps-2",
+              "text": "I can also split into 3 and 1!",
+              "created": true
+            },
+            {
+              "id": "nf-split-intro-steps-3",
+              "text": "Your turn — tap the seam to split Six!",
+              "created": true
+            },
+            {
+              "id": "nf-split-intro-steps-4",
+              "text": "Next stage: Let's put them back together!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "split-free",
+          "items": [
+            {
+              "id": "nf-split-free-instruction",
+              "text": "Tap a bright seam to split the tower!",
+              "created": true
+            },
+            {
+              "id": "nf-split-free-perfect",
+              "text": "Master splitter!",
+              "created": true
+            },
+            {
+              "id": "nf-split-free-great",
+              "text": "Great splitting!",
+              "created": true
+            },
+            {
+              "id": "nf-split-free-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-split-free-keep-practicing",
+              "text": "Keep splitting!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "split-name",
+          "items": [
+            {
+              "id": "nf-split-name-instruction",
+              "text": "What did the tower just split into?",
+              "created": true
+            },
+            {
+              "id": "nf-split-name-perfect",
+              "text": "Naming star!",
+              "created": true
+            },
+            {
+              "id": "nf-split-name-great",
+              "text": "Great job!",
+              "created": true
+            },
+            {
+              "id": "nf-split-name-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-split-name-keep-practicing",
+              "text": "Look closely!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "missing-part",
+          "items": [
+            {
+              "id": "nf-missing-part-instruction",
+              "text": "How much is missing to match the big tower?",
+              "created": true
+            },
+            {
+              "id": "nf-missing-part-perfect",
+              "text": "Number detective!",
+              "created": true
+            },
+            {
+              "id": "nf-missing-part-great",
+              "text": "Great finding!",
+              "created": true
+            },
+            {
+              "id": "nf-missing-part-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-missing-part-keep-practicing",
+              "text": "Try again!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "merge-intro",
+          "items": [
+            {
+              "id": "nf-merge-intro-instruction",
+              "text": "Watch the two friends, then tap the step they reach together!",
+              "created": true
+            },
+            {
+              "id": "nf-merge-intro-steps-0",
+              "text": "Hi! I'm Two. Watch this magic staircase!",
+              "created": true
+            },
+            {
+              "id": "nf-merge-intro-steps-1",
+              "text": "Two stands on step 2, Three stands on step 3.",
+              "created": true
+            },
+            {
+              "id": "nf-merge-intro-steps-2",
+              "text": "Hold hands — together they reach step 5!",
+              "created": true
+            },
+            {
+              "id": "nf-merge-intro-steps-3",
+              "text": "One and Three join up — which step do they reach?",
+              "created": true
+            },
+            {
+              "id": "nf-merge-intro-steps-4",
+              "text": "Next stage: The Whole of Me!",
+              "created": true
+            },
+            {
+              "id": "nf-merge-intro-demo1q",
+              "text": "Two and Three join up — which step do they reach?",
+              "created": true
+            },
+            {
+              "id": "nf-merge-intro-demo1a",
+              "text": "Together they reach step 5!",
+              "created": true
+            },
+            {
+              "id": "nf-merge-intro-demo2q",
+              "text": "One and Three join up — which step?",
+              "created": true
+            },
+            {
+              "id": "nf-merge-intro-demo2a",
+              "text": "They reach step 4!",
+              "created": true
+            },
+            {
+              "id": "nf-merge-intro-start-btn",
+              "text": "Let's play!",
+              "created": true
+            },
+            {
+              "id": "nf-merge-intro-higher",
+              "text": "Higher! They reach a bigger step.",
+              "created": true
+            },
+            {
+              "id": "nf-merge-intro-lower",
+              "text": "Lower! They reach a smaller step.",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "merge-free",
+          "items": [
+            {
+              "id": "nf-merge-free-instruction",
+              "text": "Drag one friend onto the other (or tap them one at a time)!",
+              "created": true
+            },
+            {
+              "id": "nf-merge-free-perfect",
+              "text": "Joining champion!",
+              "created": true
+            },
+            {
+              "id": "nf-merge-free-great",
+              "text": "Great joining!",
+              "created": true
+            },
+            {
+              "id": "nf-merge-free-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-merge-free-keep-practicing",
+              "text": "Keep joining!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "merge-name",
+          "items": [
+            {
+              "id": "nf-merge-name-instruction",
+              "text": "How many do these two friends make together?",
+              "created": true
+            },
+            {
+              "id": "nf-merge-name-perfect",
+              "text": "Super adder!",
+              "created": true
+            },
+            {
+              "id": "nf-merge-name-great",
+              "text": "Great job!",
+              "created": true
+            },
+            {
+              "id": "nf-merge-name-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-merge-name-keep-practicing",
+              "text": "Keep trying!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "pick-pair",
+          "items": [
+            {
+              "id": "nf-pick-pair-instruction",
+              "text": "Which pair joins together to make this number?",
+              "created": true
+            },
+            {
+              "id": "nf-pick-pair-perfect",
+              "text": "Pair detective!",
+              "created": true
+            },
+            {
+              "id": "nf-pick-pair-great",
+              "text": "Great pair-finding!",
+              "created": true
+            },
+            {
+              "id": "nf-pick-pair-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-pick-pair-keep-practicing",
+              "text": "Try again!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "bonds-intro",
+          "items": [
+            {
+              "id": "nf-bonds-intro-instruction",
+              "text": "Tap to see every way Six can split!",
+              "created": true
+            },
+            {
+              "id": "nf-bonds-intro-steps-0",
+              "text": "Hi! I'm Six — I'm hiding lots of friend-pairs inside!",
+              "created": true
+            },
+            {
+              "id": "nf-bonds-intro-steps-1",
+              "text": "One and Five!",
+              "created": true
+            },
+            {
+              "id": "nf-bonds-intro-steps-2",
+              "text": "Two and Four!",
+              "created": true
+            },
+            {
+              "id": "nf-bonds-intro-steps-3",
+              "text": "Three and Three — twins!",
+              "created": true
+            },
+            {
+              "id": "nf-bonds-intro-steps-4",
+              "text": "Any way you split me, I'm still Six!",
+              "created": true
+            },
+            {
+              "id": "nf-bonds-intro-steps-5",
+              "text": "Next stage: Hide and Seek!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "fruit-salad",
+          "items": [
+            {
+              "id": "nf-fruit-salad-instruction",
+              "text": "Fruit splitter machine — how many fruits are left in the bowl?",
+              "created": true
+            },
+            {
+              "id": "nf-fruit-salad-perfect",
+              "text": "Top chef!",
+              "created": true
+            },
+            {
+              "id": "nf-fruit-salad-great",
+              "text": "Great fruit splitting!",
+              "created": true
+            },
+            {
+              "id": "nf-fruit-salad-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-fruit-salad-keep-practicing",
+              "text": "Keep mixing!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "all-bonds",
+          "items": [
+            {
+              "id": "nf-all-bonds-instruction",
+              "text": "Find ALL the pairs that make this number friend!",
+              "created": true
+            },
+            {
+              "id": "nf-all-bonds-found-one",
+              "text": "Found one pair!",
+              "created": true
+            },
+            {
+              "id": "nf-all-bonds-perfect",
+              "text": "Rainbow number king!",
+              "created": true
+            },
+            {
+              "id": "nf-all-bonds-great",
+              "text": "Super pair finder!",
+              "created": true
+            },
+            {
+              "id": "nf-all-bonds-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-all-bonds-keep-practicing",
+              "text": "Keep looking!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "inside-me",
+          "items": [
+            {
+              "id": "nf-inside-me-instruction",
+              "text": "Tap EVERY friend who fits inside the big number!",
+              "created": true
+            },
+            {
+              "id": "nf-inside-me-too-big",
+              "text": "That friend is too big to fit inside!",
+              "created": true
+            },
+            {
+              "id": "nf-inside-me-nobody",
+              "text": "Nobody!",
+              "created": true
+            },
+            {
+              "id": "nf-inside-me-nobody-msg",
+              "text": "Right! One is too tiny to hold anybody.",
+              "created": true
+            },
+            {
+              "id": "nf-inside-me-perfect",
+              "text": "Nesting doll master!",
+              "created": true
+            },
+            {
+              "id": "nf-inside-me-great",
+              "text": "Sharp eyes!",
+              "created": true
+            },
+            {
+              "id": "nf-inside-me-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-inside-me-keep-practicing",
+              "text": "Try again!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "fill-shape",
+          "items": [
+            {
+              "id": "nf-fill-shape-instruction",
+              "text": "Which block friend fills the empty space exactly?",
+              "created": true
+            },
+            {
+              "id": "nf-fill-shape-perfect",
+              "text": "Puzzle master!",
+              "created": true
+            },
+            {
+              "id": "nf-fill-shape-great",
+              "text": "Nice fitting!",
+              "created": true
+            },
+            {
+              "id": "nf-fill-shape-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-fill-shape-keep-practicing",
+              "text": "Try fitting again!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "hide-intro",
+          "items": [
+            {
+              "id": "nf-hide-intro-instruction",
+              "text": "Watch, then guess how many friends are hiding behind the bush!",
+              "created": true
+            },
+            {
+              "id": "nf-hide-intro-steps-0",
+              "text": "Hi! I'm Three — hide-and-seek champion!",
+              "created": true
+            },
+            {
+              "id": "nf-hide-intro-steps-1",
+              "text": "Shh… two friends are hiding behind the bush!",
+              "created": true
+            },
+            {
+              "id": "nf-hide-intro-steps-2",
+              "text": "Out they come — still Five!",
+              "created": true
+            },
+            {
+              "id": "nf-hide-intro-steps-3",
+              "text": "Now three friends of Seven go hide…",
+              "created": true
+            },
+            {
+              "id": "nf-hide-intro-steps-4",
+              "text": "See — 4 and 3 make 7!",
+              "created": true
+            },
+            {
+              "id": "nf-hide-intro-steps-5",
+              "text": "Next stage: Friends of 5 and 10!",
+              "created": true
+            },
+            {
+              "id": "nf-hide-intro-demo1q",
+              "text": "Five friends! Shh… some duck behind the bush.",
+              "created": true
+            },
+            {
+              "id": "nf-hide-intro-demo1a",
+              "text": "2 are hiding. We see 3 — but it's still 5!",
+              "created": true
+            },
+            {
+              "id": "nf-hide-intro-demo2q",
+              "text": "Some are hiding again — how many this time?",
+              "created": true
+            },
+            {
+              "id": "nf-hide-intro-demo2a",
+              "text": "Just 1 hiding. 4 and 1 make 5!",
+              "created": true
+            },
+            {
+              "id": "nf-hide-intro-start-btn",
+              "text": "Let's play!",
+              "created": true
+            },
+            {
+              "id": "nf-hide-intro-play",
+              "text": "Some friends are hiding! How many are behind the bush?",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "hide-seek",
+          "items": [
+            {
+              "id": "nf-hide-seek-instruction",
+              "text": "How many friends are hiding behind the bush?",
+              "created": true
+            },
+            {
+              "id": "nf-hide-seek-perfect",
+              "text": "Hide-and-seek champion!",
+              "created": true
+            },
+            {
+              "id": "nf-hide-seek-great",
+              "text": "Great spotting!",
+              "created": true
+            },
+            {
+              "id": "nf-hide-seek-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-hide-seek-keep-practicing",
+              "text": "Keep looking!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "bond-missing",
+          "items": [
+            {
+              "id": "nf-bond-missing-instruction",
+              "text": "What number goes in the empty circle?",
+              "created": true
+            },
+            {
+              "id": "nf-bond-missing-perfect",
+              "text": "Piece detective!",
+              "created": true
+            },
+            {
+              "id": "nf-bond-missing-great",
+              "text": "Great reasoning!",
+              "created": true
+            },
+            {
+              "id": "nf-bond-missing-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-bond-missing-keep-practicing",
+              "text": "Keep thinking!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "take-away",
+          "items": [
+            {
+              "id": "nf-take-away-instruction",
+              "text": "Some blocks fly away — how many are left?",
+              "created": true
+            },
+            {
+              "id": "nf-take-away-perfect",
+              "text": "Super mental math!",
+              "created": true
+            },
+            {
+              "id": "nf-take-away-great",
+              "text": "Great job!",
+              "created": true
+            },
+            {
+              "id": "nf-take-away-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-take-away-keep-practicing",
+              "text": "Count again!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "frame-intro",
+          "items": [
+            {
+              "id": "nf-frame-intro-instruction",
+              "text": "Tap to get to know the five-frame and the ten-frame!",
+              "created": true
+            },
+            {
+              "id": "nf-frame-intro-steps-0",
+              "text": "I'm Five — like an open hand!",
+              "created": true
+            },
+            {
+              "id": "nf-frame-intro-steps-1",
+              "text": "The frame has 3 already… 2 more to fill it up!",
+              "created": true
+            },
+            {
+              "id": "nf-frame-intro-steps-2",
+              "text": "Full five — high five!",
+              "created": true
+            },
+            {
+              "id": "nf-frame-intro-steps-3",
+              "text": "And I'm Ten — two rows of five, two hands!",
+              "created": true
+            },
+            {
+              "id": "nf-frame-intro-steps-4",
+              "text": "Next stage: Ten and Some Ones!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "five-frame",
+          "items": [
+            {
+              "id": "nf-five-frame-instruction",
+              "text": "Tap the empty boxes to fill the five-frame!",
+              "created": true
+            },
+            {
+              "id": "nf-five-frame-tap-more",
+              "text": "Keep tapping!",
+              "created": true
+            },
+            {
+              "id": "nf-five-frame-perfect",
+              "text": "Golden hand!",
+              "created": true
+            },
+            {
+              "id": "nf-five-frame-great",
+              "text": "Great frame filling!",
+              "created": true
+            },
+            {
+              "id": "nf-five-frame-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-five-frame-keep-practicing",
+              "text": "Keep filling!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "ten-frame",
+          "items": [
+            {
+              "id": "nf-ten-frame-instruction",
+              "text": "Tap the empty boxes to fill the ten-frame!",
+              "created": true
+            },
+            {
+              "id": "nf-ten-frame-tap-more",
+              "text": "Keep tapping!",
+              "created": true
+            },
+            {
+              "id": "nf-ten-frame-perfect",
+              "text": "Ten-frame king!",
+              "created": true
+            },
+            {
+              "id": "nf-ten-frame-great",
+              "text": "Great frame filling!",
+              "created": true
+            },
+            {
+              "id": "nf-ten-frame-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-ten-frame-keep-practicing",
+              "text": "Keep filling!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "number-rainbow",
+          "items": [
+            {
+              "id": "nf-number-rainbow-instruction",
+              "text": "Which number friend pairs with the bright one to make 10?",
+              "created": true
+            },
+            {
+              "id": "nf-number-rainbow-perfect",
+              "text": "Full rainbow!",
+              "created": true
+            },
+            {
+              "id": "nf-number-rainbow-great",
+              "text": "Great pairing!",
+              "created": true
+            },
+            {
+              "id": "nf-number-rainbow-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-number-rainbow-keep-practicing",
+              "text": "Keep pairing!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "how-many-more",
+          "items": [
+            {
+              "id": "nf-how-many-more-instruction",
+              "text": "How many more boxes to fill the ten-frame?",
+              "created": true
+            },
+            {
+              "id": "nf-how-many-more-perfect",
+              "text": "Ten-frame master!",
+              "created": true
+            },
+            {
+              "id": "nf-how-many-more-great",
+              "text": "Great math!",
+              "created": true
+            },
+            {
+              "id": "nf-how-many-more-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-how-many-more-keep-practicing",
+              "text": "Count the empty boxes!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "teen-intro",
+          "items": [
+            {
+              "id": "nf-teen-intro-instruction",
+              "text": "Tap to meet the teen numbers!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-intro-steps-0",
+              "text": "I'm Ten — two neat rows of five!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-intro-steps-1",
+              "text": "Here's Ten… and three loose friends.",
+              "created": true
+            },
+            {
+              "id": "nf-teen-intro-steps-2",
+              "text": "Join them up — Ten-and-three: Thirteen!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-intro-steps-3",
+              "text": "Split Fifteen apart — there's always a Ten friend inside!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-intro-steps-4",
+              "text": "You've gone through the whole journey — replay any stage you like!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "teen-build",
+          "items": [
+            {
+              "id": "nf-teen-build-instruction",
+              "text": "Tap the empty spots to build the number!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-build-perfect",
+              "text": "Teen architect!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-build-great",
+              "text": "Great building!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-build-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-build-keep-practicing",
+              "text": "Keep building!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "teen-split",
+          "items": [
+            {
+              "id": "nf-teen-split-instruction",
+              "text": "This number is 10 and how many more?",
+              "created": true
+            },
+            {
+              "id": "nf-teen-split-perfect",
+              "text": "Teen number master!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-split-great",
+              "text": "Great splitting!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-split-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-split-keep-practicing",
+              "text": "Look at the ten row!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "teen-merge",
+          "items": [
+            {
+              "id": "nf-teen-merge-instruction",
+              "text": "Ten and some ones join up — what teen number do they make?",
+              "created": true
+            },
+            {
+              "id": "nf-teen-merge-perfect",
+              "text": "Teen maker!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-merge-great",
+              "text": "Great joining!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-merge-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-merge-keep-practicing",
+              "text": "Count on from ten!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "teen-name",
+          "items": [
+            {
+              "id": "nf-teen-name-instruction",
+              "text": "A full ten and some ones — which number is it?",
+              "created": true
+            },
+            {
+              "id": "nf-teen-name-perfect",
+              "text": "Sharp eyes!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-name-great",
+              "text": "Great reading!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-name-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-name-keep-practicing",
+              "text": "Count the full ten first!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "teen-match",
+          "items": [
+            {
+              "id": "nf-teen-match-instruction",
+              "text": "Tap a number, then tap its blocks to match!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-match-done",
+              "text": "Great matching!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-match-perfect",
+              "text": "Matching master!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-match-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-teen-match-keep-practicing",
+              "text": "Count the blocks!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "doubles",
+          "items": [
+            {
+              "id": "nf-doubles-instruction",
+              "text": "Look in the mirror — two identical friends make how many together?",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-halve-instruction",
+              "text": "Break it evenly in half — how many in each half?",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-perfect",
+              "text": "Mirror wizard!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-great",
+              "text": "Doubling champ!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-keep-practicing",
+              "text": "Keep looking!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "doubles-add",
+          "items": [
+            {
+              "id": "nf-doubles-add-instruction",
+              "text": "Two equal groups — add them up!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-add-perfect",
+              "text": "Doubles star!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-add-great",
+              "text": "Great adding!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-add-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-add-keep-practicing",
+              "text": "Add the two rows!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "doubles-flash",
+          "items": [
+            {
+              "id": "nf-doubles-flash-instruction",
+              "text": "Peek at two equal groups, then say how many!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-flash-perfect",
+              "text": "Quick eyes!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-flash-great",
+              "text": "Fast adding!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-flash-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-flash-keep-practicing",
+              "text": "Add the two groups!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "doubles-ladder",
+          "items": [
+            {
+              "id": "nf-doubles-ladder-instruction",
+              "text": "Tap the numbers, counting by two!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-ladder-perfect",
+              "text": "Count-by-2 champ!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-ladder-great",
+              "text": "Great counting!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-ladder-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-ladder-keep-practicing",
+              "text": "Add 2 each hop!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "doubles-match",
+          "items": [
+            {
+              "id": "nf-doubles-match-instruction",
+              "text": "Match each group with its double!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-match-done",
+              "text": "Great matching!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-match-perfect",
+              "text": "Doubles master!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-match-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-match-keep-practicing",
+              "text": "Double the group!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "doubles-share",
+          "items": [
+            {
+              "id": "nf-doubles-share-instruction",
+              "text": "Share the blocks into two equal rows — how many in each?",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-share-perfect",
+              "text": "Fair sharer!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-share-great",
+              "text": "Great sharing!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-share-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-doubles-share-keep-practicing",
+              "text": "Count one row!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "triples-add",
+          "items": [
+            {
+              "id": "nf-triples-add-instruction",
+              "text": "Three equal groups — add them up!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-add-perfect",
+              "text": "Triples star!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-add-great",
+              "text": "Great adding!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-add-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-add-keep-practicing",
+              "text": "Add the three rows!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "triples-flash",
+          "items": [
+            {
+              "id": "nf-triples-flash-instruction",
+              "text": "Peek at three equal groups, then say how many!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-flash-perfect",
+              "text": "Quick eyes!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-flash-great",
+              "text": "Fast adding!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-flash-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-flash-keep-practicing",
+              "text": "Add the three groups!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "triples-ladder",
+          "items": [
+            {
+              "id": "nf-triples-ladder-instruction",
+              "text": "Tap the numbers, counting by three!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-ladder-perfect",
+              "text": "Count-by-3 champ!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-ladder-great",
+              "text": "Great counting!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-ladder-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-ladder-keep-practicing",
+              "text": "Add 3 each hop!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "triples-match",
+          "items": [
+            {
+              "id": "nf-triples-match-instruction",
+              "text": "Match each group with its triple!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-match-done",
+              "text": "Great matching!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-match-perfect",
+              "text": "Triples master!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-match-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-match-keep-practicing",
+              "text": "Triple the group!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "triples-share",
+          "items": [
+            {
+              "id": "nf-triples-share-instruction",
+              "text": "Share the blocks into three equal rows — how many in each?",
+              "created": true
+            },
+            {
+              "id": "nf-triples-share-perfect",
+              "text": "Fair sharer!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-share-great",
+              "text": "Great sharing!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-share-good",
+              "text": "Nice work!",
+              "created": true
+            },
+            {
+              "id": "nf-triples-share-keep-practicing",
+              "text": "Count one row!",
+              "created": true
+            }
+          ]
+        },
+        {
+          "id": "shared-numbers",
+          "items": [
+            {
+              "id": "number-0",
+              "text": "0",
+              "created": true,
+              "voiceText": "zero"
+            },
+            {
+              "id": "number-11",
+              "text": "11",
+              "created": true,
+              "voiceText": "eleven"
+            },
+            {
+              "id": "number-12",
+              "text": "12",
+              "created": true,
+              "voiceText": "twelve"
+            },
+            {
+              "id": "number-13",
+              "text": "13",
+              "created": true,
+              "voiceText": "thirteen"
+            },
+            {
+              "id": "number-14",
+              "text": "14",
+              "created": true,
+              "voiceText": "fourteen"
+            },
+            {
+              "id": "number-15",
+              "text": "15",
+              "created": true,
+              "voiceText": "fifteen"
+            },
+            {
+              "id": "number-16",
+              "text": "16",
+              "created": true,
+              "voiceText": "sixteen"
+            },
+            {
+              "id": "number-17",
+              "text": "17",
+              "created": true,
+              "voiceText": "seventeen"
+            },
+            {
+              "id": "number-18",
+              "text": "18",
+              "created": true,
+              "voiceText": "eighteen"
+            },
+            {
+              "id": "number-19",
+              "text": "19",
+              "created": true,
+              "voiceText": "nineteen"
+            },
+            {
+              "id": "number-20",
+              "text": "20",
+              "created": true,
+              "voiceText": "twenty"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

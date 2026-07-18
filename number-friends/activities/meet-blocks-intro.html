@@ -75,6 +75,7 @@
   <script src="../../js/i18n.js"></script>
   <script src="../../js/navigation.js"></script>
   <script src="../../js/activity-base.js"></script>
+  <script src="../../assets/audio/tts/manifest.js"></script>
   <script src="../../js/block-engine.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
@@ -85,6 +86,9 @@
       const fallback = [
         'Hi! Every number is made of blocks.', 'One block is One.', 'Add a block — now it\'s Two!',
         'Five looks like the dots on dice.', 'Ten is two rows of five.', 'Tap a friend to hear its name!'
+      ];
+      const narrationIds = [
+        'meet-blocks-opening', 'meet-blocks-one', 'meet-blocks-two', 'meet-blocks-five', 'meet-blocks-ten', 'meet-blocks-tap'
       ];
       function steps() {
         const raw = window.i18n.getRaw('section.activities.meet-blocks-intro.steps');
@@ -108,14 +112,18 @@
           // so the stage is never visually empty.
           [1, 2, 3].forEach(n => BlockEngine.render(stage, { value: n }));
         }
-        BlockEngine.speak(s[i] || '');
+        BlockEngine.speak(s[i] || '', { audioId: narrationIds[i] });
         const last = i >= s.length - 1;
         btn.textContent = last ? label('buttons.done', 'Done') : label('buttons.next', 'Next');
       }
       // Tapping a creature in the final lineup speaks its number.
       stage.addEventListener('click', (e) => {
         const creature = e.target.closest('.nb-creature');
-        if (creature) BlockEngine.speak(creature.dataset.value);
+        if (creature) {
+          const number = creature.dataset.value;
+          const names = ['', 'one', 'two', 'three', 'four', 'five'];
+          BlockEngine.speak(number, { audioId: names[Number(number)] ? `number-${names[Number(number)]}` : null });
+        }
       });
       btn.addEventListener('click', () => {
         const s = steps();

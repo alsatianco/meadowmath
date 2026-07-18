@@ -158,6 +158,7 @@
   // ---------- audio (optional; no-op when unsupported or muted) ----------
 
   let _audioCtx = null;
+  let _narrationAudio = null;
   let _muted = (function () {
     try { return !!(window.Storage && window.Storage.getSettings && window.Storage.getSettings().nbMuted); }
     catch (e) { return false; }
@@ -188,10 +189,38 @@
 
   function speak(text, opts) {
     opts = opts || {};
-    if (_muted || typeof window === 'undefined' || !window.speechSynthesis) return;
+    if (_muted || typeof window === 'undefined') return;
+    try {
+      const value = String(text);
+      const lang = opts.lang || (window.i18n && window.i18n.currentLang === 'en' ? 'en-US' : 'vi-VN');
+      const file = lang.startsWith('en') && (
+        (opts.audioId && window.TTS_AUDIO_BY_ID && window.TTS_AUDIO_BY_ID[opts.audioId]) ||
+        (window.TTS_AUDIO && window.TTS_AUDIO[value])
+      );
+      if (_narrationAudio) {
+        _narrationAudio.pause();
+        _narrationAudio = null;
+      }
+      if (file) {
+        if (window.speechSynthesis) window.speechSynthesis.cancel();
+        const audio = new Audio(file);
+        _narrationAudio = audio;
+        audio.onended = audio.onerror = () => { if (_narrationAudio === audio) _narrationAudio = null; };
+        audio.play().catch(() => {
+          if (_narrationAudio === audio) _narrationAudio = null;
+          speakWithBrowser(value, lang);
+        });
+        return;
+      }
+      speakWithBrowser(value, lang);
+    } catch (e) { /* speech is optional */ }
+  }
+
+  function speakWithBrowser(text, lang) {
+    if (!window.speechSynthesis) return;
     try {
       const u = new SpeechSynthesisUtterance(String(text));
-      u.lang = opts.lang || (window.i18n && window.i18n.currentLang === 'en' ? 'en-US' : 'vi-VN');
+      u.lang = lang;
       u.rate = 0.9;
       window.speechSynthesis.cancel();
       window.speechSynthesis.speak(u);
