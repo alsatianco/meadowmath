@@ -296,3 +296,25 @@
   .nb-creature--wide { --nb-cube-size: 27px; }
   .nb-creature--tall { --nb-cube-size: 26px; }
 }
+
+/* silhouettes / ghost cells */
+.nb-silhouette .nb-creature--ghost { position: relative; }
+.nb-cube--ghost {
+  background: transparent !important;
+  border: 2px dashed color-mix(in srgb, var(--nb-color, #888) 55%, transparent);
+  box-shadow: none !important; opacity: .75;
+}
+/* seam hit areas */
+.nb-seam {
+  position: absolute; z-index: 5; border: 0; cursor: pointer;
+  background: repeating-linear-gradient(90deg, #fff8 0 8px, transparent 8px 14px);
+  border-radius: 4px; opacity: 0; transition: opacity .15s;
+}
+.nb-creature:hover .nb-seam, .nb-seam:focus-visible { opacity: 1; }
+.nb-seam--row { left: -6%; width: 112%; height: 14px; top: calc(var(--nb-seam-pos) * (100% / var(--nb-rows)) - 7px); }
+.nb-seam--col { top: -6%; height: 112%; width: 14px; left: calc(var(--nb-seam-pos) * (100% / var(--nb-cols)) - 7px); }
+@media (pointer: coarse) { .nb-seam { opacity: .55; } }
+/* drag states */
+.nb-dragging { z-index: 20; filter: brightness(1.06); }
+.nb-selected { outline: 3px solid #e3a83f; outline-offset: 4px; border-radius: 8px; }
+@media (prefers-reduced-motion: reduce) { .nb-seam { transition: none; } }

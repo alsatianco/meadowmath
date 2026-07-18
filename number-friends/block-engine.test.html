@@ -30,6 +30,20 @@
   </div>
   <div id="stage"></div>
 
+  <h2>silhouettes (pattern layout)</h2>
+  <div class="row" id="silhouettes"></div>
+
+  <h2>silhouettes (frame layout)</h2>
+  <div class="row" id="frames"></div>
+
+  <h2>splittable 8</h2>
+  <div class="row" id="splittable"></div>
+  <pre id="split-log">(tap a seam on the 8 above)</pre>
+
+  <h2>draggable 3 &amp; 4 → drop target</h2>
+  <div class="row" id="draggables" style="position: relative;"></div>
+  <pre id="drag-log">(drag or tap-then-tap a creature onto the target)</pre>
+
   <script src="../js/storage.js"></script>
   <script src="../js/block-engine.js"></script>
   <script>
@@ -55,6 +69,58 @@
     document.getElementById('btn-pop').onclick = () => BlockEngine.sfx('pop');
     document.getElementById('btn-snap').onclick = () => BlockEngine.sfx('snap');
     document.getElementById('btn-mute').onclick = () => BlockEngine.setMuted(!BlockEngine.isMuted());
+
+    // ---- silhouettes (pattern layout): 5/7/10 with filled 0/3/10 ----
+    const silhouettes = document.getElementById('silhouettes');
+    [[5, 0], [7, 3], [10, 10]].forEach(([value, filled]) => {
+      const cell = document.createElement('div'); cell.className = 'cell';
+      BlockEngine.renderSilhouette(cell, { value, filled });
+      const label = document.createElement('div');
+      label.textContent = value + ' (filled ' + filled + ')';
+      cell.appendChild(label);
+      silhouettes.appendChild(cell);
+    });
+
+    // ---- silhouettes (frame layout): 5, 10, 13 ----
+    const frames = document.getElementById('frames');
+    [5, 10, 13].forEach(value => {
+      const cell = document.createElement('div'); cell.className = 'cell';
+      BlockEngine.renderSilhouette(cell, { value, layout: 'frame' });
+      const label = document.createElement('div');
+      label.textContent = 'frame ' + value;
+      cell.appendChild(label);
+      frames.appendChild(cell);
+    });
+
+    // ---- splittable 8 ----
+    const splitLog = document.getElementById('split-log');
+    const splittableCell = document.createElement('div'); splittableCell.className = 'cell';
+    const splittableGroup = BlockEngine.render(splittableCell, { value: 8 });
+    document.getElementById('splittable').appendChild(splittableCell);
+    BlockEngine.makeSplittable(splittableGroup, seam => {
+      splitLog.textContent = 'picked seam: axis=' + seam.axis + ' index=' + seam.index + ' parts=' + JSON.stringify(seam.parts);
+    });
+
+    // ---- draggable 3 & 4 with a drop target ----
+    const dragLog = document.getElementById('drag-log');
+    const draggables = document.getElementById('draggables');
+    const dropTarget = document.createElement('div');
+    dropTarget.id = 'drop-target';
+    dropTarget.textContent = 'drop here';
+    dropTarget.style.cssText = 'width:140px;height:140px;border:3px dashed #888;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#666;';
+    const dragA = document.createElement('div'); dragA.className = 'cell';
+    const groupA = BlockEngine.render(dragA, { value: 3, label: 3 });
+    const dragB = document.createElement('div'); dragB.className = 'cell';
+    const groupB = BlockEngine.render(dragB, { value: 4, label: 4 });
+    draggables.appendChild(dragA);
+    draggables.appendChild(dragB);
+    draggables.appendChild(dropTarget);
+    BlockEngine.makeDraggable(groupA, [dropTarget], target => {
+      dragLog.textContent = '3 dropped on ' + target.id;
+    });
+    BlockEngine.makeDraggable(groupB, [dropTarget], target => {
+      dragLog.textContent = '4 dropped on ' + target.id;
+    });
   </script>
 </body>
 </html>

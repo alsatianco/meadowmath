@@ -269,6 +269,97 @@
 
   function clear(container) { if (container) container.innerHTML = ''; }
 
+  // ---------- silhouettes / splittable / draggable ----------
+
+  function frameCells(n) {
+    const cells = [];
+    for (let i = 0; i < n; i++) cells.push({ r: Math.floor(i / 5), c: i % 5 });
+    return cells;
+  }
+
+  function renderSilhouette(container, opts) {
+    const value = opts.value;
+    const filled = opts.filled || 0;
+    const color = opts.color || COLORS[Math.min(value, 20)];
+    const cells = opts.layout === 'frame' ? frameCells(value) : patternCoords(value);
+    const rows = cells.length ? Math.max(...cells.map(c => c.r)) + 1 : 1;
+    const cols = cells.length ? Math.max(...cells.map(c => c.c)) + 1 : 1;
+    const root = el('div', 'nb-group nb-silhouette');
+    root.dataset.value = value;
+    const body = el('div', 'nb-creature nb-creature--ghost');
+    body.style.setProperty('--nb-color', color);
+    body.style.setProperty('--nb-cols', cols);
+    body.style.setProperty('--nb-rows', rows);
+    cells.forEach((cell, index) => {
+      const cube = el('div', index < filled ? 'nb-cube' : 'nb-cube nb-cube--ghost');
+      cube.style.gridRowStart = cell.r + 1;
+      cube.style.gridColumnStart = cell.c + 1;
+      if (cell.x) cube.style.setProperty('--nb-cell-shift-x', cell.x);
+      body.appendChild(cube);
+    });
+    root.appendChild(body);
+    if (container) container.appendChild(root);
+    return root;
+  }
+
+  function fillSilhouette(rootEl, count) {
+    count = count == null ? 1 : count;
+    const ghosts = rootEl.querySelectorAll('.nb-cube--ghost');
+    for (let i = 0; i < Math.min(count, ghosts.length); i++) ghosts[i].classList.remove('nb-cube--ghost');
+    if (count > 0) sfx('pop');
+    return rootEl.querySelectorAll('.nb-cube--ghost').length;
+  }
+
+  function makeSplittable(groupEl, onPick) {
+    const creature = groupEl.classList.contains('nb-creature') ? groupEl : groupEl.querySelector('.nb-creature');
+    const value = parseInt(creature.dataset.value, 10);
+    seamSplits(value).forEach(seam => {
+      const hit = el('button', 'nb-seam nb-seam--' + seam.axis);
+      hit.type = 'button';
+      hit.setAttribute('aria-label', seam.parts[0] + ' + ' + seam.parts[1]);
+      hit.style.setProperty('--nb-seam-pos', seam.index + 1);
+      hit.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); onPick(seam); });
+      creature.appendChild(hit);
+    });
+  }
+
+  function makeDraggable(dragEl, targets, onDrop) {
+    let startX = 0, startY = 0, moved = false;
+    const hitTarget = (x, y) => targets.find(t => {
+      const r = t.getBoundingClientRect();
+      return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+    });
+    dragEl.style.touchAction = 'none';
+    dragEl.addEventListener('pointerdown', e => {
+      dragEl.setPointerCapture(e.pointerId);
+      startX = e.clientX; startY = e.clientY; moved = false;
+      dragEl.classList.add('nb-dragging');
+    });
+    dragEl.addEventListener('pointermove', e => {
+      if (!dragEl.classList.contains('nb-dragging')) return;
+      const dx = e.clientX - startX, dy = e.clientY - startY;
+      if (Math.abs(dx) + Math.abs(dy) > 6) moved = true;
+      dragEl.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+    });
+    dragEl.addEventListener('pointerup', e => {
+      dragEl.classList.remove('nb-dragging');
+      dragEl.style.transform = '';
+      const target = hitTarget(e.clientX, e.clientY);
+      if (moved && target) { onDrop(target); return; }
+      if (!moved) { // tap-to-select fallback
+        dragEl.classList.toggle('nb-selected');
+        if (dragEl.classList.contains('nb-selected')) {
+          const chosen = ev => {
+            const t = targets.find(x => x === ev.currentTarget);
+            if (t) { dragEl.classList.remove('nb-selected'); cleanup(); onDrop(t); }
+          };
+          const cleanup = () => targets.forEach(t => t.removeEventListener('click', chosen));
+          targets.forEach(t => t.addEventListener('click', chosen, { once: true }));
+        }
+      }
+    });
+  }
+
   // ---------- split / merge / celebrate animations ----------
 
   function split(creatureEl, parts, opts) {
@@ -318,6 +409,7 @@
   const BlockEngine = {
     COLORS, patternCoords, gridSize, validSplits, seamSplits, makeChoices, decomposeTeen,
     render, clear, buildCreature, split, merge, celebrate,
+    renderSilhouette, fillSilhouette, makeSplittable, makeDraggable,
     speak, sfx, setMuted, isMuted
   };
 
