@@ -354,28 +354,31 @@
     dragEl.addEventListener('pointerup', e => {
       dragEl.classList.remove('nb-dragging');
       dragEl.style.transform = '';
+      // Always drop any listeners from a previous selection cycle and clear
+      // selection state up front — a completed drag (moved && target) must
+      // not leave a stale tap-select listener on the targets or leave the
+      // dragged element stuck in `.nb-selected`. Capture the prior state
+      // first so the tap-to-select branch below can still tell "was this a
+      // select tap or a deselect tap" after we've cleared it.
+      const wasSelected = dragEl.classList.contains('nb-selected');
+      cleanupSelectionListeners();
+      cleanupSelectionListeners = () => {};
+      dragEl.classList.remove('nb-selected');
       const target = hitTarget(e.clientX, e.clientY);
       if (moved && target) { onDrop(target); return; }
-      if (!moved) { // tap-to-select fallback
-        // Always drop any listeners from a previous selection cycle before
-        // toggling — this is the only place selection state changes, so it
-        // guarantees at most one set of target listeners exists at a time.
-        cleanupSelectionListeners();
-        cleanupSelectionListeners = () => {};
-        dragEl.classList.toggle('nb-selected');
-        if (dragEl.classList.contains('nb-selected')) {
-          const chosen = ev => {
-            const t = targets.find(x => x === ev.currentTarget);
-            if (t) {
-              dragEl.classList.remove('nb-selected');
-              cleanupSelectionListeners();
-              cleanupSelectionListeners = () => {};
-              onDrop(t);
-            }
-          };
-          targets.forEach(t => t.addEventListener('click', chosen));
-          cleanupSelectionListeners = () => targets.forEach(t => t.removeEventListener('click', chosen));
-        }
+      if (!moved && !wasSelected) { // tap-to-select fallback (only when turning selection on)
+        dragEl.classList.add('nb-selected');
+        const chosen = ev => {
+          const t = targets.find(x => x === ev.currentTarget);
+          if (t) {
+            dragEl.classList.remove('nb-selected');
+            cleanupSelectionListeners();
+            cleanupSelectionListeners = () => {};
+            onDrop(t);
+          }
+        };
+        targets.forEach(t => t.addEventListener('click', chosen));
+        cleanupSelectionListeners = () => targets.forEach(t => t.removeEventListener('click', chosen));
       }
     });
   }
