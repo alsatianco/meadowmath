@@ -7,7 +7,9 @@
     "stage-1": { "title": "Pull Apart", "goal": "Split a tower into two parts.",
       "hostLine": "I'm Four — I love splitting into 2 and 2!",
       "missions": ["Split 4 grapes into 2 bowls!", "Break a cracker in half — how much is each half?"] },
-    "stage-2": { "title": "Snap Together", "goal": "Join two parts into one." },
+    "stage-2": { "title": "Snap Together", "goal": "Join two parts into one.",
+      "hostLine": "I'm Two — making friends is the best part!",
+      "missions": ["Hold 1 pebble in your left hand, 2 in your right — join them, how many?", "Line up 2 pairs of shoes — count how many shoes in all!"] },
     "stage-3": { "title": "The Whole of Me", "goal": "Find every way to split a number." },
     "stage-4": { "title": "Hide and Seek", "goal": "Find the hidden part." },
     "stage-5": { "title": "Friends of 5 and 10", "goal": "Make 5 and make 10." },
@@ -59,6 +61,17 @@
       "perfect": "Naming star!", "great": "Great job!", "good": "Nice work!", "keepPracticing": "Look closely!" },
     "missing-part": { "title": "The Missing Part", "instruction": "How much is missing to match the big tower?",
       "correct": "Right! {{a}} and {{b}} make {{n}}.", "incorrect": "{{a}} and {{b}} make {{n}}.",
-      "perfect": "Number detective!", "great": "Great finding!", "good": "Nice work!", "keepPracticing": "Try again!" }
+      "perfect": "Number detective!", "great": "Great finding!", "good": "Nice work!", "keepPracticing": "Try again!" },
+    "merge-intro": { "title": "Joining Up!", "instruction": "Tap to watch the staircase magic!",
+      "steps": ["Hi! I'm Two. Watch this magic staircase!", "Two stands on step 2, Three stands on step 3.", "Hold hands — together they reach step 5!", "One and Three join up — which step do they reach?", "Next stage: The Whole of Me!"] },
+    "merge-free": { "title": "Join Two Friends", "instruction": "Drag one friend onto the other (or tap them one at a time)!",
+      "result": "{{a}} and {{b}} join to make {{n}}!",
+      "perfect": "Joining champion!", "great": "Great joining!", "good": "Nice work!", "keepPracticing": "Keep joining!" },
+    "merge-name": { "title": "How Many Together?", "instruction": "How many do these two friends make together?",
+      "correct": "Right! {{a}} and {{b}} make {{n}}.", "incorrect": "{{a}} and {{b}} make {{n}}.",
+      "perfect": "Super adder!", "great": "Great job!", "good": "Nice work!", "keepPracticing": "Keep trying!" },
+    "pick-pair": { "title": "Who Makes Me?", "instruction": "Which pair joins together to make this number?",
+      "correct": "Right! That pair makes {{n}}.", "incorrect": "That pair isn't {{n}} — look at the highlighted pair.",
+      "perfect": "Pair detective!", "great": "Great pair-finding!", "good": "Nice work!", "keepPracticing": "Try again!" }
   }
 }

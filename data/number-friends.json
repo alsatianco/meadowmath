@@ -23,7 +23,13 @@
         { "id": "split-name", "icon": "🗣️", "path": "activities/split-name.html", "type": "split-name" },
         { "id": "missing-part", "icon": "🧩", "path": "activities/missing-part.html", "type": "missing-part" }
       ] },
-    { "id": "stage-2", "number": 2, "title": "Gộp", "icon": "🤝", "goal": "Join two parts into one.", "host": 2, "missions": 2, "activities": [] },
+    { "id": "stage-2", "number": 2, "title": "Gộp", "icon": "🤝", "goal": "Join two parts into one.", "host": 2, "missions": 2,
+      "intro": { "id": "merge-intro", "path": "activities/merge-intro.html" },
+      "activities": [
+        { "id": "merge-free", "icon": "🤝", "path": "activities/merge-free.html", "type": "merge-free" },
+        { "id": "merge-name", "icon": "➕", "path": "activities/merge-name.html", "type": "merge-name" },
+        { "id": "pick-pair", "icon": "👯", "path": "activities/pick-pair.html", "type": "pick-pair" }
+      ] },
     { "id": "stage-3", "number": 3, "title": "Toàn thể của tớ", "icon": "🌈", "goal": "Find every way to split a number.", "host": 6, "missions": 3, "activities": [] },
     { "id": "stage-4", "number": 4, "title": "Trốn tìm", "icon": "🫣", "goal": "Find the hidden part.", "host": 3, "missions": 2, "activities": [] },
     { "id": "stage-5", "number": 5, "title": "Làm bạn với 5 và 10", "icon": "🖐️", "goal": "Make 5 and make 10.", "host": 5, "missions": 3, "activities": [] },
