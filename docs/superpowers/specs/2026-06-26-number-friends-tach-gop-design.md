@@ -1,6 +1,6 @@
 # Thiết kế — "Bạn Số" (Number Friends): Nền tảng tính toán cho mẫu giáo — Giai đoạn 1: Tách Gộp
 
-Ngày: 2026-06-26 · Trạng thái: Đã duyệt thiết kế (chờ rà soát spec) · Phạm vi: chỉ Giai đoạn 1.
+Ngày: 2026-06-26 · Trạng thái: Đã triển khai nền tảng Giai đoạn 1 + Chặng 0 (Chặng 1–6 còn lại) · Phạm vi: chỉ Giai đoạn 1.
 
 ## 1. Mục tiêu
 
