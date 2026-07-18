@@ -83,6 +83,18 @@
       "perfect": "Top chef!", "great": "Great fruit splitting!", "good": "Nice work!", "keepPracticing": "Keep mixing!" },
     "all-bonds": { "title": "How Many Ways?", "instruction": "Find ALL the pairs that make this number friend!",
       "foundOne": "Found one pair!", "foundAll": "You found every way to split {{n}}!", "wrongPair": "That pair isn't {{n}} yet.",
-      "perfect": "Rainbow number king!", "great": "Super pair finder!", "good": "Nice work!", "keepPracticing": "Keep looking!" }
+      "perfect": "Rainbow number king!", "great": "Super pair finder!", "good": "Nice work!", "keepPracticing": "Keep looking!" },
+    "inside-me": { "title": "Who's Inside Me?", "instruction": "Tap EVERY friend who fits inside the big number!",
+      "tooBig": "That friend is too big to fit inside!", "foundAll": "You found them all — every small friend fits inside {{n}}!",
+      "nobody": "Nobody!", "nobodyMsg": "Right! One is too tiny to hold anybody.",
+      "perfect": "Nesting doll master!", "great": "Sharp eyes!", "good": "Nice work!", "keepPracticing": "Try again!" },
+    "fill-shape": { "title": "Fill the Shape", "instruction": "Which block friend fills the empty space exactly?",
+      "correct": "Perfect fit! {{a}} and {{b}} make {{n}}.", "incorrect": "You need {{b}} — {{a}} and {{b}} make {{n}}.",
+      "perfect": "Puzzle master!", "great": "Nice fitting!", "good": "Nice work!", "keepPracticing": "Try fitting again!" },
+    "doubles": { "title": "Mirror Doubles", "instruction": "Look in the mirror — two identical friends make how many together?",
+      "halveInstruction": "Break it evenly in half — how many in each half?",
+      "correct": "Right! {{a}} and {{a}} make {{n}}.", "incorrect": "{{a}} and {{a}} make {{n}} together.",
+      "halveCorrect": "Yes! {{n}} split in half makes {{a}} and {{a}}.", "halveIncorrect": "{{n}} split in half makes {{a}} and {{a}}.",
+      "perfect": "Mirror wizard!", "great": "Doubling champ!", "good": "Nice work!", "keepPracticing": "Keep looking!" }
   }
 }

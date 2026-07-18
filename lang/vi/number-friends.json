@@ -83,6 +83,18 @@
       "perfect": "Đầu bếp số!", "great": "Tách quả cừ khôi!", "good": "Làm tốt lắm!", "keepPracticing": "Trộn tiếp nhé!" },
     "all-bonds": { "title": "Bao nhiêu cách tách?", "instruction": "Tìm HẾT các cặp làm nên bạn số nhé!",
       "foundOne": "Đúng một cặp rồi!", "foundAll": "Tìm đủ mọi cách tách của {{n}} rồi!", "wrongPair": "Cặp này chưa bằng {{n}}.",
-      "perfect": "Vua cầu vồng số!", "great": "Siêu tìm cặp!", "good": "Làm tốt lắm!", "keepPracticing": "Tìm tiếp nhé!" }
+      "perfect": "Vua cầu vồng số!", "great": "Siêu tìm cặp!", "good": "Làm tốt lắm!", "keepPracticing": "Tìm tiếp nhé!" },
+    "inside-me": { "title": "Ai ở trong tớ?", "instruction": "Chạm vào TẤT CẢ các bạn nằm vừa trong bạn số lớn!",
+      "tooBig": "Bạn này to quá, không chui vừa đâu!", "foundAll": "Đúng hết rồi — các bạn nhỏ đều ở trong {{n}}!",
+      "nobody": "Không ai cả!", "nobodyMsg": "Đúng! Một bé xíu nên không chứa được ai.",
+      "perfect": "Búp bê số lồng nhau!", "great": "Tinh mắt lắm!", "good": "Làm tốt lắm!", "keepPracticing": "Thử lại nhé!" },
+    "fill-shape": { "title": "Lấp hình bóng", "instruction": "Bạn khối nào lấp vừa khít phần còn trống?",
+      "correct": "Vừa khít! {{a}} và {{b}} làm nên {{n}}.", "incorrect": "Cần bạn {{b}} cơ — {{a}} và {{b}} mới đủ {{n}}.",
+      "perfect": "Thợ xếp hình!", "great": "Khéo ghê!", "good": "Làm tốt lắm!", "keepPracticing": "Ướm thử nhé!" },
+    "doubles": { "title": "Gương nhân đôi", "instruction": "Soi gương nào — hai bạn giống hệt gộp thành mấy?",
+      "halveInstruction": "Bẻ đôi thật đều — mỗi nửa là mấy?",
+      "correct": "Chuẩn! {{a}} và {{a}} là {{n}}.", "incorrect": "{{a}} và {{a}} gộp thành {{n}} cơ.",
+      "halveCorrect": "Đúng! {{n}} bẻ đôi thành {{a}} và {{a}}.", "halveIncorrect": "{{n}} bẻ đôi thành {{a}} và {{a}} cơ.",
+      "perfect": "Phù thủy gương!", "great": "Nhân đôi cừ khôi!", "good": "Làm tốt lắm!", "keepPracticing": "Soi tiếp nhé!" }
   }
 }
