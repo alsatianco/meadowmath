@@ -310,6 +310,22 @@ Export all five new functions on `BlockEngine`.
 
 ---
 
+## Task 2b: Character recognition pack — show-accurate palette + signature cues (NO cloning)
+
+**Files:** Modify `js/block-engine.js` (COLORS 0–10, FRIEND_STYLES, buildCreature face), `css/block-engine.css` (decor variants), `js/block-engine.test.js` (only if a COLORS assertion hardcodes hex values — format-only tests need no change).
+
+**Context/why:** user wants children who watch the show to recognize each number friend instantly. Legal boundary (spec decision log): do NOT replicate the TV characters' art; DO adopt non-protectable recognition signals — per-number colors, eye-count-as-value for One, and generic accessories that rhyme with each character.
+
+**Interfaces — Produces:** same `BlockEngine` API; only visual output changes. `FRIEND_STYLES[n]` gains optional `eyes: 1` and new `decor` names.
+
+- [ ] **Step 1: Palette** — in `js/block-engine.js` set `COLORS` 1–10 to: `1:'#e0403f', 2:'#f68b21', 3:'#f6c521', 4:'#4fb04b', 5:'#2f9ee0', 6:'#7b5aa6', 7:'#8e5bbf', 8:'#ef5ba1', 9:'#9b9788', 10:'#e04b3f'` (0 and 11–20 unchanged).
+- [ ] **Step 2: FRIEND_STYLES** — update entries 1–10: `1:{eyes:1, decor:'tuft'}`, `2:{decor:'glasses'}`, `3:{decor:'crown'}`, `4:{decor:'brows'}`, `5:{decor:'starHand'}`, `6:{decor:'dice'}`, `7:{decor:'none', cubes:[7 rainbow tints — keep/refresh existing rainbow array]}`, `8:{decor:'bow'}`, `9:{decor:'sneezy', expression:'soft'}`, `10:{decor:'stripes'}`. Keep each entry's existing `accent`/`expression` unless listed. In `buildCreature`: render `friendStyle.eyes || 2` eye spans instead of the hardcoded two; when `decor === 'stripes'` add class `nb-creature--stripes` to the wrap (no decor element); when `decor === 'glasses'` ALSO add class `nb-face--glasses` to the face element (decor element optional).
+- [ ] **Step 3: CSS** — in `css/block-engine.css` add decor variants (original art, chunky-cute, CSS only): `.nb-decor--crown` (small 3-point gold crown above head), `.nb-decor--glasses`/`.nb-face--glasses .nb-eye` (thin dark ring + bridge), `.nb-decor--starHand` (small ⭐-shaped badge at body side), `.nb-decor--dice` (3 small white pips row on chest), `.nb-decor--sneezy` (droopy brows / pink nose dot), `.nb-creature--stripes .nb-cube` (horizontal white band via inset linear-gradient overlay), single-eye face centers correctly when only one `.nb-eye`. Reuse the existing `.nb-decor` positioning conventions in the file.
+- [ ] **Step 4: Verify** — `node --test js/block-engine.test.js` all pass; open `number-friends/block-engine.test.html` (serve via http.server) — the 0–20 lineup shows: 1 one-eyed red, 2 orange glasses, 3 yellow crown, 4 green square brows, 5 blue star, 6 indigo dice, 7 rainbow cubes, 8 pink bow, 9 grey sneezy, 10 red-white stripes.
+- [ ] **Step 5: Commit** `feat(block-engine): show-accurate palette + signature recognition cues per number`.
+
+---
+
 ## Task 3: NFWidgets + CSS
 
 **Files:** Create `number-friends/activities/nf-widgets.js`, `css/nf-widgets.css`; modify `number-friends/activities/activity.css` (add `@import url('../../css/nf-widgets.css');` at top), `number-friends/block-engine.test.html` (widget demo section).

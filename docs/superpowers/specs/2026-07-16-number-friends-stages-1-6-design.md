@@ -15,6 +15,7 @@ Bổ sung 4 cơ chế học được từ bộ sách bài tập Numberblocks son
 - **Code đang dở:** commit phần storybook UI redesign hiện có thành một commit riêng trước, rồi xây game trên nền đó.
 - **Kiến trúc:** phương án A — mỗi mini-game một trang HTML tự chứa theo đúng pattern repo; phần dùng chung mở rộng vào `js/block-engine.js` + file mới `number-friends/activities/nf-widgets.js`. Không build step.
 - **Nghệ thuật:** thuần CSS/emoji, art gốc, không dùng tên/hình nhân vật Numberblocks (an toàn bản quyền, nhất quán spec gốc).
+- **Bổ sung 2026-07-16 (yêu cầu nhận diện nhân vật):** người dùng muốn trẻ nhận ra nhân vật như trong phim. Quyết định: KHÔNG clone thiết kế nhân vật (site công khai, bản quyền Alphablocks/BBC) — thay bằng **gói tín hiệu nhận diện an toàn**: bảng màu đúng từng số như phim (1 đỏ · 2 cam · 3 vàng · 4 xanh lá · 5 xanh dương · 6 chàm · 7 tím cầu vồng · 8 hồng · 9 xám · 10 đỏ-trắng), số Một 1 mắt (mắt = giá trị), phụ kiện gợi nhớ vẽ theo phong cách riêng (kính Hai, vương miện Ba, lông mày vuông Bốn, sao trên tay Năm, chấm xúc xắc Sáu, 7 ô 7 sắc Bảy, nơ Tám, mặt hắt xì Chín, sọc Mười). Task riêng trong plan (2b).
 - **Bổ sung 2026-07-16 (đợt tài liệu thứ hai — 47 worksheet theo tập phim + flashcard 0–20 + pack 136 trang):** thêm lớp kể chuyện "Nhiệm vụ nhà thám hiểm số" (§4a), thêm 2 game `stamp-shapes` và `inside-me`, làm giàu `fruit-salad` (hai chiều), `doubles` (gương nhân đôi + bẻ đôi), `hide-seek` (trốn sau bạn lớn hơn). Người dùng yêu cầu trực tiếp ("tham khảo cả cách xây dựng câu chuyện").
 
 ## 3. Sư phạm — trục xuyên suốt
