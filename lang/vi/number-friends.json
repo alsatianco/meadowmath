@@ -4,7 +4,9 @@
     "stage-0": { "title": "Làm quen khối số", "goal": "Thấy mỗi số là một tháp khối — và nhận ra số nhờ hình dạng.",
       "hostLine": "Tớ là Một! Đi khám phá cùng tớ nhé!",
       "missions": ["Đứng bằng 1 chân và đếm đến 5!", "Tìm 1 đồ vật màu đỏ trong nhà."] },
-    "stage-1": { "title": "Tách", "goal": "Tách một tháp thành hai phần." },
+    "stage-1": { "title": "Tách", "goal": "Tách một tháp thành hai phần.",
+      "hostLine": "Tớ là Tư — tớ mê bẻ đôi thành 2 và 2!",
+      "missions": ["Chia 4 quả nho vào 2 bát nhé!", "Bẻ đôi một chiếc bánh — mỗi nửa là bao nhiêu?"] },
     "stage-2": { "title": "Gộp", "goal": "Gộp hai phần thành một." },
     "stage-3": { "title": "Toàn thể của tớ", "goal": "Tìm tất cả các cách tách một số." },
     "stage-4": { "title": "Trốn tìm", "goal": "Tìm phần đang trốn." },
@@ -46,6 +48,17 @@
     "stamp-shapes": { "title": "Dấu in nhún nhảy", "instruction": "Nhìn dấu in — của bạn số nào?",
       "askMine": "Dấu in nào là của bạn {{n}}?", "askOdd": "Dấu in nào KHÔNG phải của bạn {{n}}?",
       "correct": "Chuẩn luôn! Vẫn là {{n}} dù đứng kiểu gì.", "incorrect": "Đếm thử nhé — bạn {{n}} có {{n}} ô.",
-      "perfect": "Vua nhận hình!", "great": "Tinh mắt ghê!", "good": "Làm tốt lắm!", "keepPracticing": "Nhìn kỹ hơn nhé!" }
+      "perfect": "Vua nhận hình!", "great": "Tinh mắt ghê!", "good": "Làm tốt lắm!", "keepPracticing": "Nhìn kỹ hơn nhé!" },
+    "split-intro": { "title": "Tách ra nào!", "instruction": "Chạm để xem khối tách ra!",
+      "steps": ["Chào! Tớ là Tư. Tớ có trò hay lắm!", "Nhìn nhé — tớ tách thành 2 và 2!", "Tớ còn tách được thành 3 và 1 nữa!", "Đến lượt bạn — chạm vào vạch để tách bạn Sáu!", "Chặng sau: Gộp lại nào!"] },
+    "split-free": { "title": "Bẻ khối tự do", "instruction": "Chạm vào vạch sáng để tách tháp!",
+      "result": "{{n}} tách thành {{a}} và {{b}}!",
+      "perfect": "Nhà tách khối!", "great": "Tách cừ lắm!", "good": "Làm tốt lắm!", "keepPracticing": "Tách tiếp nhé!" },
+    "split-name": { "title": "Tách ra mấy và mấy?", "instruction": "Tháp vừa tách thành mấy và mấy?",
+      "correct": "Đúng! {{a}} và {{b}}.", "incorrect": "Là {{a}} và {{b}} đó.",
+      "perfect": "Gọi tên siêu chuẩn!", "great": "Giỏi quá!", "good": "Làm tốt lắm!", "keepPracticing": "Nhìn kỹ nhé!" },
+    "missing-part": { "title": "Phần còn thiếu", "instruction": "Còn thiếu mấy để đủ như tháp lớn?",
+      "correct": "Chuẩn! {{a}} và {{b}} làm nên {{n}}.", "incorrect": "{{a}} và {{b}} mới làm nên {{n}}.",
+      "perfect": "Thám tử số!", "great": "Tìm giỏi lắm!", "good": "Làm tốt lắm!", "keepPracticing": "Thử tiếp nhé!" }
   }
 }

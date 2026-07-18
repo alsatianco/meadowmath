@@ -16,7 +16,13 @@
         { "id": "stamp-shapes", "icon": "🎪", "path": "activities/stamp-shapes.html", "type": "stamp-shapes" }
       ]
     },
-    { "id": "stage-1", "number": 1, "title": "Tách", "icon": "✂️", "goal": "Split a tower into two parts.", "host": 4, "missions": 2, "activities": [] },
+    { "id": "stage-1", "number": 1, "title": "Tách", "icon": "✂️", "goal": "Split a tower into two parts.", "host": 4, "missions": 2,
+      "intro": { "id": "split-intro", "path": "activities/split-intro.html" },
+      "activities": [
+        { "id": "split-free", "icon": "✂️", "path": "activities/split-free.html", "type": "split-free" },
+        { "id": "split-name", "icon": "🗣️", "path": "activities/split-name.html", "type": "split-name" },
+        { "id": "missing-part", "icon": "🧩", "path": "activities/missing-part.html", "type": "missing-part" }
+      ] },
     { "id": "stage-2", "number": 2, "title": "Gộp", "icon": "🤝", "goal": "Join two parts into one.", "host": 2, "missions": 2, "activities": [] },
     { "id": "stage-3", "number": 3, "title": "Toàn thể của tớ", "icon": "🌈", "goal": "Find every way to split a number.", "host": 6, "missions": 3, "activities": [] },
     { "id": "stage-4", "number": 4, "title": "Trốn tìm", "icon": "🫣", "goal": "Find the hidden part.", "host": 3, "missions": 2, "activities": [] },
