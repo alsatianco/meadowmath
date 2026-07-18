@@ -101,6 +101,23 @@
       6: [[[0,0],[0,1],[1,0],[1,1],[2,0],[2,1]], [[0,0],[0,1],[0,2],[1,2],[1,3],[1,4]], [[0,2],[1,1],[1,2],[2,0],[2,1],[2,2]]]
     };
     function pickStamp(n) { const v = ALT_STAMPS[n]; return v[Math.floor(Math.random() * v.length)]; }
+    // Assign one arrangement per requested count, guaranteeing that any two
+    // buttons sharing the SAME count also get DIFFERENT arrangements — odd
+    // mode asks for [n, n, wrongN], and two identical-looking "n" stamps
+    // would make the round ambiguous (which n is the "stranger"?).
+    function pickStamps(counts) {
+      const used = {};
+      return counts.map(c => {
+        const variants = ALT_STAMPS[c];
+        const seen = used[c] || (used[c] = new Set());
+        let idx = Math.floor(Math.random() * variants.length);
+        if (seen.size < variants.length) {
+          while (seen.has(idx)) idx = Math.floor(Math.random() * variants.length);
+        }
+        seen.add(idx);
+        return variants[idx];
+      });
+    }
     class StampShapes extends ActivityBase {
       constructor() { super({ totalRounds: 8, activityId: 'stamp-shapes', gradeLevel: 'number-friends', autoAdvanceDelay: 1700 }); }
       init() {
@@ -123,10 +140,11 @@
         const instr = i18n.t('section.activities.stamp-shapes.' + (this.odd ? 'askOdd' : 'askMine')).replace('{{n}}', this.n);
         document.querySelector('.activity-instruction').textContent = instr;
         this.audio.say(instr);
-        counts.forEach(c => {
+        const stamps = pickStamps(counts);
+        counts.forEach((c, i) => {
           const b = document.createElement('button');
           b.className = 'answer-btn nf-stamp-btn'; b.dataset.v = c;
-          NFWidgets.stamp(b, { cells: pickStamp(c), color: BlockEngine.COLORS[this.n] });
+          NFWidgets.stamp(b, { cells: stamps[i], color: BlockEngine.COLORS[this.n] });
           b.addEventListener('click', () => this.pick(c, b));
           this.choices.appendChild(b);
         });

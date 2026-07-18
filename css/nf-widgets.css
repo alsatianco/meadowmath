@@ -35,10 +35,10 @@
   transform: translateX(-50%); display: flex; align-items: center; justify-content: center;
   font: 900 2.2rem/1 'Chango', Georgia, serif; color: #1f2913; transition: transform .2s; }
 
-/* staircase */
-.nf-stairs { display: flex; align-items: flex-end; gap: 8px; }
-.nf-stair { width: 96px; background: #e9ddb8; border: 3px solid #4b372e; border-radius: 8px 8px 0 0;
-  height: calc(var(--nf-stair-h) * 52px); position: relative; }
+/* staircase — 15% bigger now that the open stage has room to spare */
+.nf-stairs { display: flex; align-items: flex-end; gap: 9px; }
+.nf-stair { width: 110px; background: #e9ddb8; border: 3px solid #4b372e; border-radius: 8px 8px 0 0;
+  height: calc(var(--nf-stair-h) * 60px); position: relative; }
 .nf-stair-num { position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); font-weight: 800; color: #4b372e; }
 .nf-stair-slot { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); }
 
@@ -76,13 +76,13 @@
 /* mirror (doubles) */
 .nf-mirror { transform: scaleX(-1); opacity: .55; filter: saturate(.6); }
 
-/* compare layout (who-is-bigger) */
-.nf-compare { display: flex; align-items: flex-end; justify-content: center; gap: 28px; min-height: 320px; }
+/* compare layout (who-is-bigger) — open, borderless, no clipping */
+.nf-compare { display: flex; align-items: flex-end; justify-content: center; gap: 28px; min-height: 380px; overflow: visible; }
 .nf-compare-side { cursor: pointer; border-radius: 12px; padding: 8px; }
 .nf-compare-side:hover { background: #0000000d; }
 
-/* generic stage */
-.nf-stage { min-height: 300px; display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; }
+/* generic stage — open, borderless, no clipping */
+.nf-stage { min-height: 380px; display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; overflow: visible; }
 
 /* audio guide: repeatable "hear instructions" button injected into the header */
 .nf-speak-btn { display: inline-flex; align-items: center; justify-content: center;
@@ -112,8 +112,8 @@
   .nf-bond-bottom { gap: 28px; }
   .nf-fruits { grid-template-columns: repeat(var(--nf-cols), 1.9rem);
     grid-template-rows: repeat(var(--nf-rows), 1.9rem); gap: 4px; font-size: 1.5rem; }
-  .nf-stair { width: 70px; }
-  .nf-stair { height: calc(var(--nf-stair-h) * 38px); }
+  .nf-stair { width: 80px; }
+  .nf-stair { height: calc(var(--nf-stair-h) * 44px); }
   .nf-stamp { grid-template-columns: repeat(var(--nf-cols), 32px);
     grid-template-rows: repeat(var(--nf-rows), 32px); }
   .nf-rainbow-arcs { height: 160px; }

@@ -6,37 +6,22 @@
 /* Shared answer buttons for Bạn Số mini-games */
 .answer-choices { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: var(--space-4, 16px); }
 
+/* Open stage: no frame, no clipping. The teal-sky/orange-ground box used to
+   crop anything tall (a creature standing on the top staircase step, etc.)
+   and left the rest of the page flat white. Now the stage is just a
+   transparent, full-width, centered layout slot — illustrations breathe. */
 #stage {
-  position: relative;
-  overflow: hidden;
   box-sizing: border-box;
-  width: min(100%, 640px);
-  min-height: 300px !important;
+  width: 100%;
+  min-height: 380px;
   margin: 0 auto;
-  padding: 24px;
-  border: 4px solid #6d4b38;
-  border-radius: 24px;
-  background:
-    linear-gradient(90deg, rgba(255, 247, 220, .18) 1px, transparent 1px),
-    linear-gradient(rgba(255, 247, 220, .16) 1px, transparent 1px),
-    linear-gradient(180deg, #9ccdc1 0%, #dfe8bc 55%, #efc575 56%, #c9814c 100%);
-  background-size: 28px 28px, 28px 28px, auto;
-  box-shadow: inset 0 -10px 0 rgba(91, 58, 36, .12), 0 8px 0 rgba(109, 75, 56, .22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 28px;
+  overflow: visible;
 }
-
-#stage::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: 20px;
-  width: min(78%, 360px);
-  height: 42px;
-  border-radius: 50%;
-  background: rgba(84, 54, 36, .14);
-  transform: translateX(-50%);
-}
-
-#stage > * { position: relative; z-index: 1; }
 
 .answer-btn {
   min-width: 92px; height: 92px; padding: 0 18px;
@@ -95,8 +80,21 @@
    (now-bigger) bond circle instead of overflowing it. */
 .nf-bond-block .nb-group, .nf-bond-circle .nb-group { transform: scale(.25); transform-origin: center; }
 
+/* stamp-shapes: size the button to its stamp, not the other way around.
+   .answer-btn's fixed 92px height clipped anything taller (a 3-row L-shape)
+   and left it poking out past the tile's edge; grow to fit instead. */
+.nf-stamp-btn {
+  height: auto; min-height: 92px;
+  width: auto; min-width: 92px;
+  padding: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+
 @media (prefers-reduced-motion: reduce) { .answer-btn { transition: none; } .answer-btn.incorrect { animation: none; } }
 @media (max-width: 767px) {
-  #stage { width: 100%; min-height: 260px !important; padding: 18px; }
+  #stage { min-height: 300px; gap: 18px; }
   .answer-btn { height: 76px; min-width: 76px; font-size: 1.8rem; }
+  /* re-assert auto-sizing: the generic mobile .answer-btn height above would
+     otherwise re-clip a tall stamp at small widths. */
+  .nf-stamp-btn { height: auto; min-height: 76px; width: auto; min-width: 76px; }
 }
