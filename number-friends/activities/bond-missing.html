@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free interactive Kindergarten math practice on Meadow Math.">
+  <meta property="og:title" content="Mystery Piece | Bạn Số | Meadow Math">
+  <meta property="og:description" content="Free interactive Kindergarten math practice on Meadow Math.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://math.alsatian.co/number-friends/activities/bond-missing.html">
+  <meta property="og:image" content="https://math.alsatian.co/images/og/og-kinder.png">
+  <meta property="og:site_name" content="Meadow Math">
+  <title data-i18n="section.activities.bond-missing.title">Mystery Piece</title>
+
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon"><div class="hamburger-line"></div><div class="hamburger-line"></div><div class="hamburger-line"></div></div>
+  </button>
+  <div class="sidebar-backdrop"></div>
+
+  <div class="app-container">
+    <aside class="sidebar">
+      <a href="../../index.html" class="sidebar-logo"><span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span></a>
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="../../index.html" class="nav-item"><span class="nav-item-icon">🏠</span><span class="nav-item-text" data-i18n="nav.home">Home</span></a>
+        <a href="../index.html" class="nav-item active"><span class="nav-item-icon">🧱</span><span class="nav-item-text" data-i18n="nav.numberFriends">Number Friends</span></a>
+        <a href="../../prek/index.html" class="nav-item"><span class="nav-item-icon">🪺</span><span class="nav-item-text" data-i18n="nav.prek">Pre-K</span></a>
+        <a href="../../kinder/index.html" class="nav-item"><span class="nav-item-icon">🌱</span><span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span></a>
+        <a href="../../grade1/index.html" class="nav-item"><span class="nav-item-icon">📐</span><span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span></a>
+        <a href="../../grade2/index.html" class="nav-item"><span class="nav-item-icon">➕</span><span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span></a>
+        <a href="../../grade3/index.html" class="nav-item"><span class="nav-item-icon">➖</span><span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span></a>
+        <a href="../../grade4/index.html" class="nav-item"><span class="nav-item-icon">✖️</span><span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span></a>
+        <a href="../../grade5/index.html" class="nav-item"><span class="nav-item-icon">➗</span><span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span></a>
+        <div class="nav-divider"></div>
+        <a href="../../tools/index.html" class="nav-item"><span class="nav-item-icon">🧰</span><span class="nav-item-text" data-i18n="nav.tools">Tools</span></a>
+        <a href="../../about/index.html" class="nav-item"><span class="nav-item-icon">ℹ️</span><span class="nav-item-text" data-i18n="nav.about">About</span></a>
+      </nav>
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="activity-wrapper">
+        <header class="activity-header">
+          <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.numberFriends">Number Friends</span></a>
+          <h1 class="activity-title"><span class="activity-title-icon">❓</span> <span data-i18n="section.activities.bond-missing.title">Mystery Piece</span></h1>
+          <p class="activity-instruction" data-i18n="section.activities.bond-missing.instruction">What number goes in the empty circle?</p>
+        </header>
+        <div class="activity-area">
+          <div class="progress-indicator" id="progress"></div>
+          <div id="bond-holder" class="nf-stage"></div>
+          <div class="answer-choices" id="choices"></div>
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item"><span class="stat-value correct" id="stats-correct">0</span><span class="stat-label" data-i18n="stats.correct">Correct</span></div>
+            <div class="stat-item"><span class="stat-value incorrect" id="stats-wrong">0</span><span class="stat-label" data-i18n="stats.wrong">Wrong</span></div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/navigation.js"></script>
+  <script src="../../js/activity-base.js"></script>
+  <script src="../../js/block-engine.js"></script>
+  <script src="nf-widgets.js"></script>
+  <script>
+    class BondMissing extends ActivityBase {
+      constructor() { super({ totalRounds: 8, activityId: 'bond-missing', gradeLevel: 'number-friends', autoAdvanceDelay: 1900 }); }
+      init() {
+        super.init();
+        this.holder = document.getElementById('bond-holder');
+        this.choices = document.getElementById('choices');
+        NFWidgets.hostBadge(document.querySelector('.activity-header'), { value: 3, text: i18n.t('section.stages.stage-4.hostLine') });
+        NFWidgets.audioGuide({ instructionKey: 'section.activities.bond-missing.instruction' });
+        this.nextRound();
+      }
+      startRound() {
+        this.n = this.randomInt(3, 10); this.a = this.randomInt(1, this.n - 1); this.b = this.n - this.a;
+        this.answer = this.b;
+        this.holder.innerHTML = ''; this.choices.innerHTML = '';
+        this.bond = NFWidgets.bondDiagram(this.holder, { direction: 'down' });
+        this.bond.top.classList.add('nf-bond-block');
+        BlockEngine.render(this.bond.top, { value: this.n, face: false });
+        BlockEngine.render(this.bond.left, { value: this.a });
+        this.bond.right.textContent = '?';
+        this.bond.equation.textContent = this.n + ' = ' + this.a + ' + ?';
+        this.renderChoices(BlockEngine.makeChoices(this.b, 4, 1, 9));
+      }
+      reveal(ok) {
+        this.bond.right.textContent = '';
+        const real = BlockEngine.render(this.bond.right, { value: this.b });
+        this.bond.equation.textContent = this.n + ' = ' + this.a + ' + ' + this.b;
+        if (ok) BlockEngine.celebrate(real);
+      }
+      pick(v, btn) {
+        if (this.isAnswered) return; this.isAnswered = true;
+        this.disableButtons(this.choices);
+        const ok = v === this.answer;
+        const msg = i18n.t('section.activities.bond-missing.' + (ok ? 'correct' : 'incorrect'))
+          .replace(/\{\{a\}\}/g, this.a).replace(/\{\{b\}\}/g, this.b).replace(/\{\{n\}\}/g, this.n);
+        if (ok) { btn.classList.add('correct'); this.incrementCorrect(); BlockEngine.sfx('correct'); }
+        else {
+          btn.classList.add('incorrect'); this.incrementIncorrect(); BlockEngine.sfx('wrong');
+          this.choices.querySelectorAll('.answer-btn').forEach(b => { if (b.dataset.v == this.answer) b.classList.add('correct'); });
+        }
+        this.reveal(ok);
+        this.showFeedback(msg, !ok); BlockEngine.speak(msg);
+        this.renderProgress(); this.autoAdvance();
+      }
+      renderChoices(values) {
+        this.choices.innerHTML = '';
+        values.forEach(v => {
+          const b = document.createElement('button');
+          b.className = 'answer-btn'; b.textContent = v; b.dataset.v = v;
+          b.addEventListener('click', () => this.pick(v, b));
+          this.choices.appendChild(b);
+        });
+      }
+      showStats() { try { window.Storage.markActivityCompleted('number-friends', 'bond-missing'); } catch (e) {} super.showStats(); }
+    }
+    document.addEventListener('DOMContentLoaded', async () => { await i18n.ready(); new BondMissing().init(); });
+  </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

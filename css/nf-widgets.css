@@ -90,8 +90,13 @@
 .nf-speak-btn:hover { background: #ffedc2; }
 .nf-speak-btn:active { transform: translateY(1px); box-shadow: none; }
 
-/* hide overlay bush */
+/* hide overlay bush — anchor to the individual cube it's appended into, not
+   the whole creature, so each hidden cube gets its own bush */
+.nb-cube:has(.nb-hide) { position: relative; }
 .nb-hide { position: absolute; inset: -12%; display: flex; align-items: center; justify-content: center;
   font-size: 1.9em; z-index: 6; }
+
+/* take-away: cubes that "fly away" — fade/shrink/drop before removal from the count */
+.nb-cube--gone { transform: translateY(70px) scale(.3); opacity: 0; transition: .5s; }
 
 @media (prefers-reduced-motion: reduce) { .nf-fruit, .nf-zilla-mouth { transition: none; } }

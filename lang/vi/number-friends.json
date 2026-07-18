@@ -13,7 +13,9 @@
     "stage-3": { "title": "Toàn thể của tớ", "goal": "Tìm tất cả các cách tách một số.",
       "hostLine": "Tớ là Sáu — trong tớ có bao nhiêu cặp bạn nhỉ?",
       "missions": ["Xếp 5 món đồ chơi thành một đống — chia đống ra 2 phần theo mấy cách?", "Bẻ đôi 6 que tính thành 3 và 3!", "Tìm 2 cách chia 4 chiếc kẹo cho 2 bạn."] },
-    "stage-4": { "title": "Trốn tìm", "goal": "Tìm phần đang trốn." },
+    "stage-4": { "title": "Trốn tìm", "goal": "Tìm phần đang trốn.",
+      "hostLine": "Tớ là Ba — chơi trốn tìm không?",
+      "missions": ["Giấu 2 trong 5 món đồ sau lưng — đố bé mấy món đang trốn!", "Cả nhà chơi trốn tìm — đếm to tới 10 nhé!"] },
     "stage-5": { "title": "Làm bạn với 5 và 10", "goal": "Làm cho đủ 5 và đủ 10." },
     "stage-6": { "title": "Mười và vài đơn vị", "goal": "Số teen là mười và vài đơn vị." }
   },
@@ -95,6 +97,17 @@
       "halveInstruction": "Bẻ đôi thật đều — mỗi nửa là mấy?",
       "correct": "Chuẩn! {{a}} và {{a}} là {{n}}.", "incorrect": "{{a}} và {{a}} gộp thành {{n}} cơ.",
       "halveCorrect": "Đúng! {{n}} bẻ đôi thành {{a}} và {{a}}.", "halveIncorrect": "{{n}} bẻ đôi thành {{a}} và {{a}} cơ.",
-      "perfect": "Phù thủy gương!", "great": "Nhân đôi cừ khôi!", "good": "Làm tốt lắm!", "keepPracticing": "Soi tiếp nhé!" }
+      "perfect": "Phù thủy gương!", "great": "Nhân đôi cừ khôi!", "good": "Làm tốt lắm!", "keepPracticing": "Soi tiếp nhé!" },
+    "hide-intro": { "title": "Trốn tìm", "instruction": "Chạm để chơi trốn tìm cùng khối!",
+      "steps": ["Chào! Tớ là Ba — trùm trốn tìm đây!", "Suỵt… hai bạn trốn sau bụi cây!", "Ló ra rồi — vẫn là 5!", "Giờ ba bạn của Bảy đi trốn…", "Thấy chưa — 4 và 3 làm nên 7!", "Chặng sau: Làm bạn với 5 và 10!"] },
+    "hide-seek": { "title": "Khối trốn", "instruction": "Mấy bạn đang trốn sau bụi cây?",
+      "correct": "Bắt được! {{k}} bạn trốn — {{m}} và {{k}} làm nên {{n}}.", "incorrect": "Có {{k}} bạn trốn — {{m}} và {{k}} là {{n}}.",
+      "perfect": "Mắt thần trốn tìm!", "great": "Tìm giỏi lắm!", "good": "Làm tốt lắm!", "keepPracticing": "Tìm tiếp nhé!" },
+    "bond-missing": { "title": "Mảnh ghép bí ẩn", "instruction": "Vòng tròn trống là số mấy?",
+      "correct": "Chuẩn! {{n}} tách thành {{a}} và {{b}}.", "incorrect": "{{n}} tách thành {{a}} và {{b}} cơ.",
+      "perfect": "Thám tử mảnh ghép!", "great": "Suy luận cừ!", "good": "Làm tốt lắm!", "keepPracticing": "Nghĩ tiếp nhé!" },
+    "take-away": { "title": "Còn lại bao nhiêu?", "instruction": "Vài khối bay đi — còn lại mấy?",
+      "correct": "Đúng! {{n}} bớt {{x}} còn {{r}}.", "incorrect": "{{n}} bớt {{x}} còn {{r}} cơ.",
+      "perfect": "Siêu tính nhẩm!", "great": "Giỏi quá!", "good": "Làm tốt lắm!", "keepPracticing": "Đếm lại nhé!" }
   }
 }

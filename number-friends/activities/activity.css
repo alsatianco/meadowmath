@@ -74,6 +74,9 @@
 .nf-block-choice .nb-group { transform: scale(.45); transform-origin: center; }
 .nf-block-choice { min-height: 120px; }
 
+/* mini creatures rendered inside bond-diagram circles (bond-missing) */
+.nf-bond-block .nb-group, .nf-bond-circle .nb-group { transform: scale(.4); transform-origin: center; }
+
 @media (prefers-reduced-motion: reduce) { .answer-btn { transition: none; } .answer-btn.incorrect { animation: none; } }
 @media (max-width: 767px) {
   #stage { width: 100%; min-height: 200px !important; padding: 18px; }

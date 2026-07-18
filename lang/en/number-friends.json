@@ -13,7 +13,9 @@
     "stage-3": { "title": "The Whole of Me", "goal": "Find every way to split a number.",
       "hostLine": "I'm Six — how many friend-pairs are hiding inside me?",
       "missions": ["Stack 5 toys in a pile — how many ways can you split the pile into 2 groups?", "Snap 6 craft sticks into 3 and 3!", "Find 2 ways to share 4 candies between 2 friends."] },
-    "stage-4": { "title": "Hide and Seek", "goal": "Find the hidden part." },
+    "stage-4": { "title": "Hide and Seek", "goal": "Find the hidden part.",
+      "hostLine": "I'm Three — want to play hide and seek?",
+      "missions": ["Hide 2 of 5 toys behind your back — guess how many are hiding!", "Play hide and seek as a family — count out loud to 10!"] },
     "stage-5": { "title": "Friends of 5 and 10", "goal": "Make 5 and make 10." },
     "stage-6": { "title": "Ten and Some Ones", "goal": "Teen numbers are ten and some ones." }
   },
@@ -95,6 +97,17 @@
       "halveInstruction": "Break it evenly in half — how many in each half?",
       "correct": "Right! {{a}} and {{a}} make {{n}}.", "incorrect": "{{a}} and {{a}} make {{n}} together.",
       "halveCorrect": "Yes! {{n}} split in half makes {{a}} and {{a}}.", "halveIncorrect": "{{n}} split in half makes {{a}} and {{a}}.",
-      "perfect": "Mirror wizard!", "great": "Doubling champ!", "good": "Nice work!", "keepPracticing": "Keep looking!" }
+      "perfect": "Mirror wizard!", "great": "Doubling champ!", "good": "Nice work!", "keepPracticing": "Keep looking!" },
+    "hide-intro": { "title": "Hide and Seek", "instruction": "Tap to play hide and seek with the blocks!",
+      "steps": ["Hi! I'm Three — hide-and-seek champion!", "Shh… two friends are hiding behind the bush!", "Out they come — still Five!", "Now three friends of Seven go hide…", "See — 4 and 3 make 7!", "Next stage: Friends of 5 and 10!"] },
+    "hide-seek": { "title": "Hiding Blocks", "instruction": "How many friends are hiding behind the bush?",
+      "correct": "Caught you! {{k}} were hiding — {{m}} and {{k}} make {{n}}.", "incorrect": "{{k}} were hiding — {{m}} and {{k}} make {{n}}.",
+      "perfect": "Hide-and-seek champion!", "great": "Great spotting!", "good": "Nice work!", "keepPracticing": "Keep looking!" },
+    "bond-missing": { "title": "Mystery Piece", "instruction": "What number goes in the empty circle?",
+      "correct": "Right! {{n}} splits into {{a}} and {{b}}.", "incorrect": "{{n}} splits into {{a}} and {{b}}.",
+      "perfect": "Piece detective!", "great": "Great reasoning!", "good": "Nice work!", "keepPracticing": "Keep thinking!" },
+    "take-away": { "title": "How Many Left?", "instruction": "Some blocks fly away — how many are left?",
+      "correct": "Right! {{n}} take away {{x}} leaves {{r}}.", "incorrect": "{{n}} take away {{x}} leaves {{r}}.",
+      "perfect": "Super mental math!", "great": "Great job!", "good": "Nice work!", "keepPracticing": "Count again!" }
   }
 }

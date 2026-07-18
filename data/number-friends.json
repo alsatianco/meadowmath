@@ -39,7 +39,13 @@
         { "id": "fill-shape", "icon": "🧊", "path": "activities/fill-shape.html", "type": "fill-shape" },
         { "id": "doubles", "icon": "🪞", "path": "activities/doubles.html", "type": "doubles" }
       ] },
-    { "id": "stage-4", "number": 4, "title": "Trốn tìm", "icon": "🫣", "goal": "Find the hidden part.", "host": 3, "missions": 2, "activities": [] },
+    { "id": "stage-4", "number": 4, "title": "Trốn tìm", "icon": "🫣", "goal": "Find the hidden part.", "host": 3, "missions": 2,
+      "intro": { "id": "hide-intro", "path": "activities/hide-intro.html" },
+      "activities": [
+        { "id": "hide-seek", "icon": "🫣", "path": "activities/hide-seek.html", "type": "hide-seek" },
+        { "id": "bond-missing", "icon": "❓", "path": "activities/bond-missing.html", "type": "bond-missing" },
+        { "id": "take-away", "icon": "🍃", "path": "activities/take-away.html", "type": "take-away" }
+      ] },
     { "id": "stage-5", "number": 5, "title": "Làm bạn với 5 và 10", "icon": "🖐️", "goal": "Make 5 and make 10.", "host": 5, "missions": 3, "activities": [] },
     { "id": "stage-6", "number": 6, "title": "Mười và vài đơn vị", "icon": "🔟", "goal": "Teen numbers are ten and some ones.", "host": 10, "missions": 2, "activities": [] }
   ]
