@@ -10,7 +10,9 @@
     "stage-2": { "title": "Snap Together", "goal": "Join two parts into one.",
       "hostLine": "I'm Two — making friends is the best part!",
       "missions": ["Hold 1 pebble in your left hand, 2 in your right — join them, how many?", "Line up 2 pairs of shoes — count how many shoes in all!"] },
-    "stage-3": { "title": "The Whole of Me", "goal": "Find every way to split a number." },
+    "stage-3": { "title": "The Whole of Me", "goal": "Find every way to split a number.",
+      "hostLine": "I'm Six — how many friend-pairs are hiding inside me?",
+      "missions": ["Stack 5 toys in a pile — how many ways can you split the pile into 2 groups?", "Snap 6 craft sticks into 3 and 3!", "Find 2 ways to share 4 candies between 2 friends."] },
     "stage-4": { "title": "Hide and Seek", "goal": "Find the hidden part." },
     "stage-5": { "title": "Friends of 5 and 10", "goal": "Make 5 and make 10." },
     "stage-6": { "title": "Ten and Some Ones", "goal": "Teen numbers are ten and some ones." }
@@ -72,6 +74,15 @@
       "perfect": "Super adder!", "great": "Great job!", "good": "Nice work!", "keepPracticing": "Keep trying!" },
     "pick-pair": { "title": "Who Makes Me?", "instruction": "Which pair joins together to make this number?",
       "correct": "Right! That pair makes {{n}}.", "incorrect": "That pair isn't {{n}} — look at the highlighted pair.",
-      "perfect": "Pair detective!", "great": "Great pair-finding!", "good": "Nice work!", "keepPracticing": "Try again!" }
+      "perfect": "Pair detective!", "great": "Great pair-finding!", "good": "Nice work!", "keepPracticing": "Try again!" },
+    "bonds-intro": { "title": "All About Me", "instruction": "Tap to see every way Six can split!",
+      "steps": ["Hi! I'm Six — I'm hiding lots of friend-pairs inside!", "One and Five!", "Two and Four!", "Three and Three — twins!", "Any way you split me, I'm still Six!", "Next stage: Hide and Seek!"] },
+    "fruit-salad": { "title": "The Fruit Splitter", "instruction": "Fruit splitter machine — how many fruits are left in the bowl?",
+      "machineLine": "Welcome to my fruity fun factory!",
+      "correct": "Yum! {{a}} and {{b}} — {{n}} fruits in all.", "incorrect": "Count again — {{a}} and {{b}} make {{n}} fruits.",
+      "perfect": "Top chef!", "great": "Great fruit splitting!", "good": "Nice work!", "keepPracticing": "Keep mixing!" },
+    "all-bonds": { "title": "How Many Ways?", "instruction": "Find ALL the pairs that make this number friend!",
+      "foundOne": "Found one pair!", "foundAll": "You found every way to split {{n}}!", "wrongPair": "That pair isn't {{n}} yet.",
+      "perfect": "Rainbow number king!", "great": "Super pair finder!", "good": "Nice work!", "keepPracticing": "Keep looking!" }
   }
 }

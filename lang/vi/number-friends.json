@@ -10,7 +10,9 @@
     "stage-2": { "title": "Gộp", "goal": "Gộp hai phần thành một.",
       "hostLine": "Tớ là Hai — kết bạn là vui nhất!",
       "missions": ["Cầm 1 viên sỏi tay trái, 2 viên tay phải — gộp lại là mấy?", "Xếp 2 đôi dép cạnh nhau — đếm xem mấy chiếc!"] },
-    "stage-3": { "title": "Toàn thể của tớ", "goal": "Tìm tất cả các cách tách một số." },
+    "stage-3": { "title": "Toàn thể của tớ", "goal": "Tìm tất cả các cách tách một số.",
+      "hostLine": "Tớ là Sáu — trong tớ có bao nhiêu cặp bạn nhỉ?",
+      "missions": ["Xếp 5 món đồ chơi thành một đống — chia đống ra 2 phần theo mấy cách?", "Bẻ đôi 6 que tính thành 3 và 3!", "Tìm 2 cách chia 4 chiếc kẹo cho 2 bạn."] },
     "stage-4": { "title": "Trốn tìm", "goal": "Tìm phần đang trốn." },
     "stage-5": { "title": "Làm bạn với 5 và 10", "goal": "Làm cho đủ 5 và đủ 10." },
     "stage-6": { "title": "Mười và vài đơn vị", "goal": "Số teen là mười và vài đơn vị." }
@@ -72,6 +74,15 @@
       "perfect": "Siêu cộng khối!", "great": "Giỏi quá!", "good": "Làm tốt lắm!", "keepPracticing": "Cố lên nhé!" },
     "pick-pair": { "title": "Ai làm nên tớ?", "instruction": "Cặp nào gộp lại đúng bằng bạn số này?",
       "correct": "Chuẩn! Cặp này làm nên {{n}}.", "incorrect": "Cặp đó chưa bằng {{n}} — xem cặp sáng màu nhé.",
-      "perfect": "Thám tử cặp số!", "great": "Tìm cặp giỏi!", "good": "Làm tốt lắm!", "keepPracticing": "Thử tiếp nhé!" }
+      "perfect": "Thám tử cặp số!", "great": "Tìm cặp giỏi!", "good": "Làm tốt lắm!", "keepPracticing": "Thử tiếp nhé!" },
+    "bonds-intro": { "title": "Toàn thể của tớ", "instruction": "Chạm để xem mọi cách tách của Sáu!",
+      "steps": ["Chào! Tớ là Sáu — trong tớ giấu nhiều cặp bạn lắm!", "Một và Năm!", "Hai và Bốn!", "Ba và Ba — cặp sinh đôi!", "Cách nào cũng là tớ — Sáu!", "Chặng sau: Trốn tìm!"] },
+    "fruit-salad": { "title": "Máy Tách Quả", "instruction": "Máy tách quả — bát còn lại có mấy quả?",
+      "machineLine": "Chào mừng tới nhà máy quả vui nhộn của tớ!",
+      "correct": "Ngon lành! {{a}} và {{b}} — cả thảy {{n}} quả.", "incorrect": "Đếm lại nhé — {{a}} và {{b}} là {{n}} quả.",
+      "perfect": "Đầu bếp số!", "great": "Tách quả cừ khôi!", "good": "Làm tốt lắm!", "keepPracticing": "Trộn tiếp nhé!" },
+    "all-bonds": { "title": "Bao nhiêu cách tách?", "instruction": "Tìm HẾT các cặp làm nên bạn số nhé!",
+      "foundOne": "Đúng một cặp rồi!", "foundAll": "Tìm đủ mọi cách tách của {{n}} rồi!", "wrongPair": "Cặp này chưa bằng {{n}}.",
+      "perfect": "Vua cầu vồng số!", "great": "Siêu tìm cặp!", "good": "Làm tốt lắm!", "keepPracticing": "Tìm tiếp nhé!" }
   }
 }

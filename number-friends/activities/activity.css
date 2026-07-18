@@ -51,9 +51,21 @@
 .answer-btn:focus-visible { outline: 3px solid #0f766e; outline-offset: 3px; }
 .answer-btn:disabled { cursor: not-allowed; }
 .answer-btn.correct { background: linear-gradient(135deg, #dff4c7, #8fcf9a); border-color: #3f8f5b; color: #244d34; box-shadow: 0 5px 0 #2f6f45; }
-.answer-btn.incorrect { background: linear-gradient(135deg, #ffd4c9, #e48678); border-color: #b74336; color: #6b2a24; box-shadow: 0 5px 0 #8f342c; }
+.answer-btn.incorrect { background: linear-gradient(135deg, #ffd4c9, #e48678); border-color: #b74336; color: #6b2a24; box-shadow: 0 5px 0 #8f342c; animation: nf-chip-shake .4s ease; }
 
-@media (prefers-reduced-motion: reduce) { .answer-btn { transition: none; } }
+@keyframes nf-chip-shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+/* mini side-by-side pair (bonds-intro lineup scene, all-bonds found tray) */
+.nf-pair { display: flex; align-items: center; gap: 4px; }
+.nf-pair .nb-creature { --nb-cube-size: 16px; }
+.nf-pair .nb-group { padding: 6px 6px 2px; gap: 3px; }
+.nf-pair-plus { font: 800 1.3rem/1 Georgia, serif; color: #6d4b38; }
+
+@media (prefers-reduced-motion: reduce) { .answer-btn { transition: none; } .answer-btn.incorrect { animation: none; } }
 @media (max-width: 767px) {
   #stage { width: 100%; min-height: 200px !important; padding: 18px; }
   .answer-btn { height: 64px; min-width: 64px; font-size: 1.6rem; }
