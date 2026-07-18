@@ -7,27 +7,27 @@
   'use strict';
 
   const COLORS = {
-    0: '#c9c0ad', 1: '#d95f4f', 2: '#ef8a3d', 3: '#f1bd3a', 4: '#75b957',
-    5: '#46a7d8', 6: '#8f67b8', 7: '#8f67b8', 8: '#dd5e7e', 9: '#9b9788', 10: '#4aa889',
+    0: '#c9c0ad', 1: '#e0403f', 2: '#f68b21', 3: '#f6c521', 4: '#4fb04b',
+    5: '#2f9ee0', 6: '#7b5aa6', 7: '#8e5bbf', 8: '#ef5ba1', 9: '#9b9788', 10: '#e04b3f',
     11: '#d66f55', 12: '#e7aa42', 13: '#58a967', 14: '#4594c9', 15: '#8a72c6',
     16: '#c46aa5', 17: '#cf7d38', 18: '#64a86e', 19: '#818b92', 20: '#5676c8'
   };
 
   const FRIEND_STYLES = {
     0: { accent: '#8b8171', expression: 'soft', decor: 'none' },
-    1: { accent: '#f6b7a0', expression: 'bright', decor: 'tuft' },
-    2: { accent: '#f5c273', expression: 'soft', decor: 'sprout' },
-    3: { accent: '#ffe08a', expression: 'bright', decor: 'star' },
+    1: { accent: '#f6b7a0', expression: 'bright', decor: 'tuft', eyes: 1 },
+    2: { accent: '#f5c273', expression: 'soft', decor: 'glasses' },
+    3: { accent: '#ffe08a', expression: 'bright', decor: 'crown' },
     4: { accent: '#b7dc75', expression: 'calm', decor: 'brows' },
-    5: { accent: '#9bd4e7', expression: 'bright', decor: 'spark' },
-    6: { accent: '#d4a6e3', expression: 'happy', decor: 'lashes' },
+    5: { accent: '#9bd4e7', expression: 'bright', decor: 'starHand' },
+    6: { accent: '#d4a6e3', expression: 'happy', decor: 'dice' },
     7: {
-      accent: '#ffd060', expression: 'happy', decor: 'crayons',
-      cubes: ['#9c68ad', '#f07b28', '#f4c34e', '#78b94d', '#46a7d8', '#8f67b8', '#9c68ad']
+      accent: '#ffd060', expression: 'happy', decor: 'none',
+      cubes: ['#e0403f', '#f68b21', '#f6c521', '#4fb04b', '#2f9ee0', '#7b5aa6', '#8e5bbf']
     },
     8: { accent: '#f4a3bd', expression: 'calm', decor: 'bow' },
-    9: { accent: '#d2c9ad', expression: 'soft', decor: 'brows' },
-    10: { accent: '#a7d6bd', expression: 'bright', decor: 'spark' },
+    9: { accent: '#d2c9ad', expression: 'soft', decor: 'sneezy' },
+    10: { accent: '#a7d6bd', expression: 'bright', decor: 'stripes' },
     11: { accent: '#f6b7a0', expression: 'happy', decor: 'tuft' },
     12: { accent: '#ffd37c', expression: 'soft', decor: 'sprout' },
     13: { accent: '#a7d887', expression: 'bright', decor: 'star' },
@@ -230,7 +230,9 @@
       cube.style.setProperty('--nb-tilt', (((index + value) % 3) - 1) * 0.55 + 'deg');
       wrap.appendChild(cube);
     });
-    if (friendStyle.decor !== 'none') {
+    if (friendStyle.decor === 'stripes') {
+      wrap.classList.add('nb-creature--stripes');
+    } else if (friendStyle.decor !== 'none') {
       const decor = el('div', 'nb-decor nb-decor--' + friendStyle.decor);
       if (friendStyle.decor === 'crayons') {
         ['#ef5a45', '#f0b641', '#8abf4e', '#44a2d4', '#8a66bc'].forEach(crayonColor => {
@@ -241,8 +243,9 @@
       }
       wrap.appendChild(decor);
     }
-    const face = el('div', 'nb-face');
-    face.innerHTML = '<span class="nb-eye"></span><span class="nb-eye"></span><span class="nb-mouth"></span>';
+    const face = el('div', 'nb-face' + (friendStyle.decor === 'glasses' ? ' nb-face--glasses' : ''));
+    const eyeCount = friendStyle.eyes || 2;
+    face.innerHTML = '<span class="nb-eye"></span>'.repeat(eyeCount) + '<span class="nb-mouth"></span>';
     wrap.appendChild(face);
     const badge = el('div', 'nb-number-badge');
     badge.textContent = value;

@@ -258,6 +258,121 @@
 .nb-decor--crayons span:nth-child(4) { height: 27px; transform: rotate(6deg); }
 .nb-decor--crayons span:nth-child(5) { height: 22px; transform: rotate(12deg); }
 
+/* --- signature recognition cues (Task 2b) --- */
+
+.nb-decor--crown {
+  top: -22px;
+  width: 38px;
+  height: 20px;
+  background: linear-gradient(160deg, #ffe27a, #e8ac1f);
+  border: 2px solid #b9860f;
+  border-top: 0;
+  clip-path: polygon(0% 100%, 0% 34%, 20% 58%, 50% 4%, 80% 58%, 100% 34%, 100% 100%);
+  filter: drop-shadow(0 2px 0 rgba(80, 52, 36, .25));
+}
+
+.nb-decor--crown::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--nb-accent);
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 1px rgba(80, 52, 36, .3);
+}
+
+/* glasses: thin dark ring around each eye + a bridge between them */
+.nb-decor--glasses {
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 4px;
+  transform: translate(-50%, -50%);
+  background: #3f2c22;
+  border-radius: 2px;
+}
+
+.nb-face--glasses .nb-eye::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  border: 3px solid #3f2c22;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nb-decor--starHand {
+  top: 52%;
+  left: auto;
+  right: -9px;
+  width: 20px;
+  height: 20px;
+  background: var(--nb-accent);
+  clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 56%, 80% 94%, 50% 70%, 20% 94%, 32% 56%, 2% 35%, 39% 35%);
+  transform: translateY(-50%) rotate(-12deg);
+  filter: drop-shadow(0 2px 0 rgba(80, 52, 36, .2));
+}
+
+/* dice: 3 small white pips row on the chest */
+.nb-decor--dice {
+  top: 56%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #fff8df;
+  box-shadow:
+    0 2px 0 rgba(88, 59, 37, .22),
+    16px 0 0 0 #fff8df, 16px 2px 0 0 rgba(88, 59, 37, .22),
+    -16px 0 0 0 #fff8df, -16px 2px 0 0 rgba(88, 59, 37, .22);
+}
+
+/* sneezy: droopy brows + a small pink nose dot */
+.nb-decor--sneezy {
+  top: 42%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #f4a3bd;
+  box-shadow: 0 2px 0 rgba(88, 59, 37, .15);
+}
+
+.nb-decor--sneezy::before,
+.nb-decor--sneezy::after {
+  content: '';
+  position: absolute;
+  top: -22px;
+  width: 24px;
+  height: 8px;
+  border-top: 5px solid #5b3d31;
+  border-radius: 50%;
+}
+
+.nb-decor--sneezy::before { left: -30px; transform: rotate(9deg); }
+.nb-decor--sneezy::after { right: -30px; transform: rotate(-9deg); }
+
+/* stripes: candy-cane bands overlaid on every cube, no head decor */
+.nb-creature--stripes .nb-cube {
+  position: relative;
+  overflow: hidden;
+}
+
+.nb-creature--stripes .nb-cube::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(to bottom,
+    rgba(255, 255, 255, .92) 0, rgba(255, 255, 255, .92) 22%,
+    transparent 22%, transparent 44%);
+  border-radius: 5px;
+  pointer-events: none;
+}
+
 .nb-number-badge {
   display: none;
 }
