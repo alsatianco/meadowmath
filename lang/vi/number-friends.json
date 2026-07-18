@@ -2,24 +2,19 @@
   "world": { "title": "Bạn Số", "tagline": "Mỗi con số là những khối có thể tách ra và gộp lại.", "missionsButton": "Nhiệm vụ thật", "missionsTitle": "Nhiệm vụ nhà thám hiểm số", "nextStage": "Chặng sau" },
   "stages": {
     "stage-0": { "title": "Làm quen khối số", "goal": "Thấy mỗi số là một tháp khối — và nhận ra số nhờ hình dạng.",
-      "hostLine": "Tớ là Một! Đi khám phá cùng tớ nhé!",
       "missions": ["Đứng bằng 1 chân và đếm đến 5!", "Tìm 1 đồ vật màu đỏ trong nhà."] },
     "stage-1": { "title": "Tách", "goal": "Tách một tháp thành hai phần.",
-      "hostLine": "Tớ là Tư — tớ mê bẻ đôi thành 2 và 2!",
       "missions": ["Chia 4 quả nho vào 2 bát nhé!", "Bẻ đôi một chiếc bánh — mỗi nửa là bao nhiêu?"] },
     "stage-2": { "title": "Gộp", "goal": "Gộp hai phần thành một.",
-      "hostLine": "Tớ là Hai — kết bạn là vui nhất!",
       "missions": ["Cầm 1 viên sỏi tay trái, 2 viên tay phải — gộp lại là mấy?", "Xếp 2 đôi dép cạnh nhau — đếm xem mấy chiếc!"] },
     "stage-3": { "title": "Toàn thể của tớ", "goal": "Tìm tất cả các cách tách một số.",
-      "hostLine": "Tớ là Sáu — trong tớ có bao nhiêu cặp bạn nhỉ?",
       "missions": ["Xếp 5 món đồ chơi thành một đống — chia đống ra 2 phần theo mấy cách?", "Bẻ đôi 6 que tính thành 3 và 3!", "Tìm 2 cách chia 4 chiếc kẹo cho 2 bạn."] },
     "stage-4": { "title": "Trốn tìm", "goal": "Tìm phần đang trốn.",
-      "hostLine": "Tớ là Ba — chơi trốn tìm không?",
       "missions": ["Giấu 2 trong 5 món đồ sau lưng — đố bé mấy món đang trốn!", "Cả nhà chơi trốn tìm — đếm to tới 10 nhé!"] },
     "stage-5": { "title": "Làm bạn với 5 và 10", "goal": "Làm cho đủ 5 và đủ 10.",
-      "hostLine": "Tớ là Năm — đập tay nào! Mười là hai bàn tay đó!",
       "missions": ["Giơ 3 ngón tay — thiếu mấy ngón nữa đủ 5?", "Đếm 10 ngón tay thật to!", "Xếp 10 hạt vào 2 hàng 5 như khung mười."] },
-    "stage-6": { "title": "Mười và vài đơn vị", "goal": "Số teen là mười và vài đơn vị." }
+    "stage-6": { "title": "Mười và vài đơn vị", "goal": "Số teen là mười và vài đơn vị.",
+      "missions": ["Đếm 12 bậc cầu thang — dừng ở bậc 10 hô to: MƯỜI!", "Xếp 13 viên sỏi: 10 viên một hàng, mấy viên lẻ?"] }
   },
   "activities": {
     "meet-blocks-intro": {
@@ -82,7 +77,6 @@
     "bonds-intro": { "title": "Toàn thể của tớ", "instruction": "Chạm để xem mọi cách tách của Sáu!",
       "steps": ["Chào! Tớ là Sáu — trong tớ giấu nhiều cặp bạn lắm!", "Một và Năm!", "Hai và Bốn!", "Ba và Ba — cặp sinh đôi!", "Cách nào cũng là tớ — Sáu!", "Chặng sau: Trốn tìm!"] },
     "fruit-salad": { "title": "Máy Tách Quả", "instruction": "Máy tách quả — bát còn lại có mấy quả?",
-      "machineLine": "Chào mừng tới nhà máy quả vui nhộn của tớ!",
       "correct": "Ngon lành! {{a}} và {{b}} — cả thảy {{n}} quả.", "incorrect": "Đếm lại nhé — {{a}} và {{b}} là {{n}} quả.",
       "perfect": "Đầu bếp số!", "great": "Tách quả cừ khôi!", "good": "Làm tốt lắm!", "keepPracticing": "Trộn tiếp nhé!" },
     "all-bonds": { "title": "Bao nhiêu cách tách?", "instruction": "Tìm HẾT các cặp làm nên bạn số nhé!",
@@ -125,6 +119,14 @@
       "perfect": "Cầu vồng trọn vẹn!", "great": "Ghép đôi cừ khôi!", "good": "Làm tốt lắm!", "keepPracticing": "Ghép tiếp nhé!" },
     "how-many-more": { "title": "Thiếu mấy nữa?", "instruction": "Thiếu mấy ô nữa thì đầy khung 10?",
       "correct": "Đúng! {{a}} thêm {{b}} là 10.", "incorrect": "{{a}} cần thêm {{b}} nữa mới đủ 10.",
-      "perfect": "Thần khung mười!", "great": "Tính bù siêu!", "good": "Làm tốt lắm!", "keepPracticing": "Đếm ô trống nhé!" }
+      "perfect": "Thần khung mười!", "great": "Tính bù siêu!", "good": "Làm tốt lắm!", "keepPracticing": "Đếm ô trống nhé!" },
+    "teen-intro": { "title": "Mười và vài đơn vị", "instruction": "Chạm để gặp các số teen!",
+      "steps": ["Tớ là Mười — tròn trịa hai hàng năm!", "Đây là Mười… và ba bạn lẻ.", "Gộp lại — Mười-và-ba: Mười Ba!", "Tách Mười Lăm ra — luôn có một bạn Mười bên trong!", "Bạn đã đi trọn hành trình — chơi lại chặng nào cũng được!"] },
+    "teen-build": { "title": "Dựng số teen", "instruction": "Chạm ô trống để dựng cho đủ số!",
+      "result": "10 và {{ones}} làm nên {{n}}!",
+      "perfect": "Kiến trúc sư teen!", "great": "Dựng cừ khôi!", "good": "Làm tốt lắm!", "keepPracticing": "Dựng tiếp nhé!" },
+    "teen-split": { "title": "Tách số teen", "instruction": "Số này là 10 và mấy?",
+      "correct": "Chuẩn! {{n}} là 10 và {{ones}}.", "incorrect": "{{n}} là 10 và {{ones}} cơ.",
+      "perfect": "Bậc thầy số teen!", "great": "Tách teen cừ!", "good": "Làm tốt lắm!", "keepPracticing": "Nhìn hàng mười nhé!" }
   }
 }

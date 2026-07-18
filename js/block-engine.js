@@ -301,6 +301,10 @@
     const root = el('div', 'nb-group nb-silhouette');
     root.dataset.value = value;
     const body = el('div', 'nb-creature nb-creature--ghost');
+    if (value > 10) body.classList.add('nb-creature--teen');
+    if (cols >= 5) body.classList.add('nb-creature--wide');
+    if (rows >= 4) body.classList.add('nb-creature--tall');
+    if (rows >= 7) body.classList.add('nb-creature--xtall');
     body.dataset.value = value;
     body.style.setProperty('--nb-color', color);
     body.style.setProperty('--nb-cols', cols);

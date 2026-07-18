@@ -102,7 +102,6 @@
         this.rainbowWidget = NFWidgets.rainbow(this.holder);
         this.buttons = Array.from(this.rainbowWidget.root.querySelectorAll('.nf-rainbow-num'));
         this.buttons.forEach(b => b.addEventListener('click', () => this.pick(b)));
-        NFWidgets.hostBadge(document.querySelector('.activity-header'), { value: 5, text: i18n.t('section.stages.stage-5.hostLine') });
         this.audio = NFWidgets.audioGuide({ instructionKey: 'section.activities.number-rainbow.instruction' });
         this.order = this.shuffle([0, 1, 2, 3, 4, 5]);
         this.nextRound();

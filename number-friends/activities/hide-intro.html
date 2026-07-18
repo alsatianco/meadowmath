@@ -56,13 +56,32 @@
       <div class="activity-wrapper">
         <header class="activity-header">
           <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.numberFriends">Number Friends</span></a>
-          <h1 class="activity-title"><span class="activity-title-icon">📖</span> <span data-i18n="section.activities.hide-intro.title">Hide and Seek</span></h1>
+          <h1 class="activity-title"><span class="activity-title-icon">🫣</span> <span data-i18n="section.activities.hide-intro.title">Hide and Seek</span></h1>
+          <p class="activity-instruction" data-i18n="section.activities.hide-intro.instruction">Watch, then guess how many friends are hiding behind the bush!</p>
         </header>
         <div class="activity-area">
+          <div class="progress-indicator" id="progress"></div>
           <div id="stage" class="nf-stage"></div>
           <p id="caption" class="activity-instruction" style="text-align:center;min-height:2.4em;"></p>
+          <div class="answer-choices" id="choices"></div>
           <div style="text-align:center;margin-top:12px;">
             <button id="btn-next" class="btn-activity btn-primary" data-i18n="buttons.next">Next</button>
+          </div>
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item"><span class="stat-value correct" id="stats-correct">0</span><span class="stat-label" data-i18n="stats.correct">Correct</span></div>
+            <div class="stat-item"><span class="stat-value incorrect" id="stats-wrong">0</span><span class="stat-label" data-i18n="stats.wrong">Wrong</span></div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
           </div>
         </div>
       </div>
@@ -78,88 +97,129 @@
   <script src="../../js/block-engine.js"></script>
   <script src="nf-widgets.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      await i18n.ready();
-      const stage = document.getElementById('stage');
-      const caption = document.getElementById('caption');
-      const btn = document.getElementById('btn-next');
-      const fallback = [
-        'Hi! I\'m Three — hide-and-seek champion!',
-        'Shh… two friends are hiding behind the bush!',
-        'Out they come — still Five!',
-        'Now three friends of Seven go hide…',
-        'See — 4 and 3 make 7!',
-        'Next stage: Friends of 5 and 10!'
-      ];
-      function steps() {
-        const raw = window.i18n.getRaw('section.activities.hide-intro.steps');
-        return (Array.isArray(raw) && raw.length) ? raw : fallback;
+    // Hide and Seek (intro) — watch two worked examples where some friends of
+    // Five duck behind the bush, then play: the whole (5) stays on screen, a
+    // bush covers some cubes, and the child says how many are hidden.
+    class HideIntro extends ActivityBase {
+      constructor() { super({ totalRounds: 4, activityId: 'hide-intro', gradeLevel: 'number-friends', autoAdvanceDelay: 2200 }); }
+      init() {
+        super.init();
+        this.stage = document.getElementById('stage');
+        this.choices = document.getElementById('choices');
+        this.caption = document.getElementById('caption');
+        this.btnNext = document.getElementById('btn-next');
+        this.audio = NFWidgets.audioGuide({ instructionKey: 'section.activities.hide-intro.instruction' });
+        this.btnNext.addEventListener('click', () => this.onDemoNext());
+        document.addEventListener('languageChanged', () => { if (this.inDemo) this.renderDemo(); });
+        this.demoIdx = 0;
+        this.rounds = this.shuffle([1, 2, 3, 4]).map(k => ({ n: 5, k }));
+        this.runDemo();
       }
-      function hideLast(g, count) {
+      L(key, fb) { return this.t('section.activities.hide-intro.' + key, fb); }
+      say(text) { if (this.audio) this.audio.say(text); else BlockEngine.speak(text); }
+      coverLast(g, k) {
         const cubes = g.querySelectorAll('.nb-cube');
-        setTimeout(() => {
-          for (let i = cubes.length - count; i < cubes.length; i++) {
-            const bush = document.createElement('div');
-            bush.className = 'nb-hide';
-            bush.textContent = '🌳';
-            cubes[i].appendChild(bush);
-          }
-          window.BlockEngine.sfx('pop');
-        }, 700);
+        for (let i = cubes.length - k; i < cubes.length; i++) {
+          const bush = document.createElement('div');
+          bush.className = 'nb-hide';
+          bush.textContent = '🌳';
+          cubes[i].appendChild(bush);
+        }
+        BlockEngine.sfx('pop');
       }
-      let i = 0;
-      function scene(idx, target) {
-        BlockEngine.clear(target);
-        if (idx === 0) {
-          const g = BlockEngine.render(target, { value: 3, label: 3 });
-          BlockEngine.celebrate(g);
-          BlockEngine.speak(i18n.t('section.stages.stage-4.hostLine'));
-          return;
-        }
-        if (idx === 1) {
-          const g = BlockEngine.render(target, { value: 5, label: 5 });
-          hideLast(g, 2);
-          return;
-        }
-        if (idx === 2) {
-          const g = BlockEngine.render(target, { value: 5, label: 5 });
-          BlockEngine.celebrate(g);
-          return;
-        }
-        if (idx === 3) {
-          const g = BlockEngine.render(target, { value: 7, label: 7 });
-          hideLast(g, 3);
-          return;
-        }
-        if (idx === 4) {
-          const g = BlockEngine.render(target, { value: 7, label: 7 });
-          BlockEngine.celebrate(g);
-          return;
-        }
-        if (idx === 5) {
-          // Final teaser step — celebrate Five one more time instead of
-          // leaving the stage empty.
-          const g = BlockEngine.render(target, { value: 5, label: 5 });
-          BlockEngine.celebrate(g);
-        }
+      reveal(g) { g.querySelectorAll('.nb-hide').forEach(b => b.remove()); }
+
+      // ---------- demo phase ----------
+      demoData() {
+        return [
+          { n: 5, k: 2, q: this.L('demo1q', "Five friends! Shh… some duck behind the bush."), a: this.L('demo1a', "2 are hiding. We see 3 — but it's still 5!") },
+          { n: 5, k: 1, q: this.L('demo2q', "Some are hiding again — how many this time?"), a: this.L('demo2a', "Just 1 hiding. 4 and 1 make 5!") }
+        ];
       }
-      function label(key, fb) { const v = i18n.t(key); return (v && v !== key) ? v : fb; }
-      function show() {
-        const s = steps();
-        caption.textContent = s[i] || '';
-        scene(i, stage);
-        BlockEngine.speak(s[i] || '');
-        const last = i >= s.length - 1;
-        btn.textContent = last ? label('buttons.done', 'Done') : label('buttons.next', 'Next');
+      runDemo() {
+        this.inDemo = true;
+        this.choices.style.display = 'none';
+        if (this.progress) this.progress.style.visibility = 'hidden';
+        this.btnNext.style.display = '';
+        this.renderDemo();
       }
-      btn.addEventListener('click', () => {
-        const s = steps();
-        if (i >= s.length - 1) { window.location.href = '../index.html'; return; }
-        i++; show();
-      });
-      document.addEventListener('languageChanged', show);
-      show();
-    });
+      renderDemo() {
+        const d = this.demoData()[this.demoIdx];
+        BlockEngine.clear(this.stage);
+        const g = BlockEngine.render(this.stage, { value: d.n, label: d.n });
+        this.caption.textContent = d.q;
+        this.say(d.q);
+        this.demoTimer = setTimeout(() => this.coverLast(g, d.k), 800);
+        this.demoTimer2 = setTimeout(() => {
+          this.caption.textContent = d.a;
+          this.say(d.a);
+          BlockEngine.celebrate(g);
+        }, 1800);
+        const last = this.demoIdx >= this.demoData().length - 1;
+        this.btnNext.textContent = last ? this.L('startBtn', "Let's play!") : this.t('buttons.next', 'Next');
+      }
+      onDemoNext() {
+        if (!this.inDemo) return;
+        clearTimeout(this.demoTimer); clearTimeout(this.demoTimer2);
+        if (this.demoIdx >= this.demoData().length - 1) { this.startPlay(); return; }
+        this.demoIdx++;
+        this.renderDemo();
+      }
+      startPlay() {
+        this.inDemo = false;
+        this.btnNext.style.display = 'none';
+        this.choices.style.display = '';
+        if (this.progress) this.progress.style.visibility = '';
+        this.nextRound();
+      }
+
+      // ---------- play phase ----------
+      startRound() {
+        const r = this.rounds[this.currentRound - 1];
+        this.n = r.n; this.k = r.k; this.m = this.n - this.k;
+        BlockEngine.clear(this.stage); this.choices.innerHTML = '';
+        this.g = BlockEngine.render(this.stage, { value: this.n, label: this.n });
+        const q = this.L('play', 'Some friends are hiding! How many are behind the bush?');
+        this.caption.textContent = q;
+        this.say(q);
+        this.hideTimer = setTimeout(() => {
+          if (this.isAnswered) return;
+          this.coverLast(this.g, this.k);
+          this.renderChoices(BlockEngine.makeChoices(this.k, 4, 1, 5));
+        }, 900);
+      }
+      renderChoices(values) {
+        this.choices.innerHTML = '';
+        values.forEach(v => {
+          const b = document.createElement('button');
+          b.className = 'answer-btn'; b.textContent = v; b.dataset.v = v;
+          b.addEventListener('click', () => this.pick(v, b));
+          this.choices.appendChild(b);
+        });
+      }
+      pick(v, btn) {
+        if (this.isAnswered) return;
+        this.isAnswered = true;
+        this.disableButtons(this.choices);
+        const ok = v === this.k;
+        const msg = (ok ? this.L('correct', 'Caught you! {{k}} were hiding — {{m}} and {{k}} make {{n}}.')
+          : this.L('incorrect', '{{k}} were hiding — {{m}} and {{k}} make {{n}}.'))
+          .replace(/\{\{m\}\}/g, this.m).replace(/\{\{k\}\}/g, this.k).replace(/\{\{n\}\}/g, this.n);
+        if (ok) { btn.classList.add('correct'); this.incrementCorrect(); BlockEngine.sfx('correct'); }
+        else {
+          btn.classList.add('incorrect'); this.incrementIncorrect(); BlockEngine.sfx('wrong');
+          this.choices.querySelectorAll('.answer-btn').forEach(b => { if (b.dataset.v == this.k) b.classList.add('correct'); });
+        }
+        this.reveal(this.g);
+        if (ok) BlockEngine.celebrate(this.g);
+        this.showFeedback(msg, !ok);
+        this.say(msg);
+        this.renderProgress();
+        this.autoAdvance();
+      }
+      showStats() { try { window.Storage.markActivityCompleted('number-friends', 'hide-intro'); } catch (e) {} super.showStats(); }
+    }
+    document.addEventListener('DOMContentLoaded', async () => { await i18n.ready(); new HideIntro().init(); });
   </script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
 </html>

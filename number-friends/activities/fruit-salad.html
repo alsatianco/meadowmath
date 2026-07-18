@@ -99,7 +99,6 @@
         super.init();
         this.holder = document.getElementById('bond-holder');
         this.choices = document.getElementById('choices');
-        NFWidgets.hostBadge(document.querySelector('.activity-header'), { value: 3, text: i18n.t('section.activities.fruit-salad.machineLine') });
         NFWidgets.audioGuide({ instructionKey: 'section.activities.fruit-salad.instruction' });
         this.kinds = ['🍊', '🍎', '🍓', '🍌'];
         this.nextRound();

@@ -35,12 +35,35 @@
   transform: translateX(-50%); display: flex; align-items: center; justify-content: center;
   font: 900 2.2rem/1 'Chango', Georgia, serif; color: #1f2913; transition: transform .2s; }
 
-/* staircase — 15% bigger now that the open stage has room to spare */
-.nf-stairs { display: flex; align-items: flex-end; gap: 9px; }
+/* staircase — a friend can STAND on the top step. That creature lives in an
+   absolutely-positioned slot (bottom:100%), so it adds no layout height; the
+   card would center only the bars and clip the creature off the top. Reserve
+   headroom with padding-top (--nf-stair-reserve) so the container's own box
+   includes the tallest standing creature and the card grows to fit it, and
+   scale the creature down (host-badge pattern) so the card stays a sane
+   height. */
+.nf-stairs { display: flex; align-items: flex-end; gap: 9px;
+  padding-top: var(--nf-stair-reserve, 172px); box-sizing: border-box; margin-bottom: 12px; }
 .nf-stair { width: 110px; background: #e9ddb8; border: 3px solid #4b372e; border-radius: 8px 8px 0 0;
-  height: calc(var(--nf-stair-h) * 60px); position: relative; }
+  height: calc(var(--nf-stair-h) * 48px); position: relative; }
 .nf-stair-num { position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); font-weight: 800; color: #4b372e; }
 .nf-stair-slot { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); }
+.nf-stair-slot .nb-group { transform: scale(.72); transform-origin: bottom center; }
+
+/* tappable steps (Joining Up game): the child taps the step two friends reach */
+.nf-stair--tappable { cursor: pointer; transition: background .15s, box-shadow .15s, transform .1s; }
+.nf-stair--tappable:hover { background: #f2e9c8; box-shadow: inset 0 0 0 3px #e3a83f; }
+.nf-stair--tappable:focus-visible { outline: 3px solid #0f766e; outline-offset: 2px; }
+.nf-stair--tappable:active { transform: translateY(1px); }
+/* correct/wrong must beat :hover (pointer lingers on the tapped step) */
+.nf-stair--tappable.nf-stair--correct { background: #b9e6a4; box-shadow: inset 0 0 0 3px #3f8f5b; }
+.nf-stair--tappable.nf-stair--wrong { animation: nf-chip-shake .4s ease; }
+
+/* climbers row — the two friends waiting to join up, shown under the stairs */
+.nf-climbers { display: flex; align-items: flex-end; justify-content: center; gap: 6px; min-height: 90px; flex-wrap: wrap;
+  transition: opacity .3s; }
+.nf-climbers .nb-group { zoom: .5; }
+.nf-climbers .nf-plus { font: 800 2rem/1 'Chango', Georgia, serif; color: #4b372e; align-self: center; padding: 0 2px; }
 
 /* host badge — fixed box so the host creature's body isn't clipped,
    scaled down so a 3-4 row creature fits fully inside it. */
@@ -68,6 +91,49 @@
   font-weight: 800; padding: 8px 0; cursor: pointer; }
 .nf-rainbow-num.correct { background: #8fcf9f; }
 
+/* equal-groups array (multiples games) — k rows of cubes, each row its own
+   colour so k equal groups read at a glance (k rows of n = n + n + … = k×n,
+   and the same array shared into k rows shows total ÷ k). */
+.nf-array { display: inline-flex; flex-direction: column; gap: 12px; --nb-cube-size: 40px; }
+.nf-array-row { display: flex; gap: 6px; }
+.nf-flash-cover { font-size: 5rem; line-height: 1; text-align: center; }
+@media (max-width: 560px) { .nf-array { --nb-cube-size: 28px; gap: 8px; } .nf-array-row { gap: 4px; } }
+
+/* skip-count ladder tiles (doubles-ladder, triples-ladder) */
+.nf-ladder { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: 620px; }
+.nf-ladder-tile { min-width: 72px; height: 72px; border: 4px solid #6d4b38; border-radius: 16px;
+  background: linear-gradient(135deg, #fff8e8, #f5d489); font: 800 1.9rem/1 Georgia, serif; color: #3d2c24; cursor: pointer;
+  box-shadow: 0 5px 0 #c59155, 0 13px 18px rgba(91, 66, 42, .12); transition: transform .12s, border-color .15s, background .15s; }
+.nf-ladder-tile:hover:not(.nf-ladder-done) { transform: translateY(-3px); border-color: #c65343; }
+.nf-ladder-tile:focus-visible { outline: 3px solid #0f766e; outline-offset: 3px; }
+.nf-ladder-done { background: linear-gradient(135deg, #dff4c7, #8fcf9a); border-color: #3f8f5b; box-shadow: 0 5px 0 #2f6f45; color: #244d34; cursor: default; }
+.nf-ladder-wrong { animation: nf-chip-shake .4s ease; border-color: #b74336; }
+@media (max-width: 560px) { .nf-ladder-tile { min-width: 54px; height: 54px; font-size: 1.5rem; } .nf-ladder { gap: 8px; } }
+
+/* match board (teen-match, doubles-match) — two columns of cards; tap a left
+   card then its partner on the right */
+.nf-match { display: flex; justify-content: center; gap: clamp(28px, 12vw, 120px); flex-wrap: nowrap; }
+.nf-match-col { display: flex; flex-direction: column; gap: 14px; }
+.nf-match-card { min-width: 108px; min-height: 92px; padding: 8px 14px;
+  display: flex; align-items: center; justify-content: center;
+  border: 4px solid #6d4b38; border-radius: 18px; background: linear-gradient(135deg, #fff8e8, #f5d489);
+  font: 800 2.2rem/1 Georgia, serif; color: #3d2c24; cursor: pointer;
+  box-shadow: 0 5px 0 #c59155, 0 13px 18px rgba(91, 66, 42, .12);
+  transition: transform .12s, border-color .15s, box-shadow .15s, background .15s; }
+.nf-match-card:hover:not(.nf-match-done) { transform: translateY(-3px); border-color: #c65343; }
+.nf-match-card:focus-visible { outline: 3px solid #0f766e; outline-offset: 3px; }
+.nf-match-card .nb-group { transform: scale(.34); transform-origin: center; margin: -34px; }
+.nf-match-card .nf-array { --nb-cube-size: 14px; gap: 4px; }
+.nf-match-card .nf-array-row { gap: 3px; }
+.nf-match-sel { border-color: #e3a83f; box-shadow: 0 0 0 4px rgba(227, 168, 63, .5), 0 5px 0 #c59155; transform: translateY(-3px); }
+.nf-match-done { background: linear-gradient(135deg, #dff4c7, #8fcf9a); border-color: #3f8f5b; box-shadow: 0 5px 0 #2f6f45; cursor: default; opacity: .9; }
+.nf-match-wrong { animation: nf-chip-shake .4s ease; border-color: #b74336; }
+@media (max-width: 560px) {
+  .nf-match { gap: 32px; }
+  .nf-match-card { min-width: 96px; min-height: 76px; font-size: 1.7rem; }
+  .nf-match-card .nf-array { --nb-cube-size: 11px; gap: 3px; }
+}
+
 /* stamps */
 .nf-stamp { display: grid; grid-template-columns: repeat(var(--nf-cols), 42px);
   grid-template-rows: repeat(var(--nf-rows), 42px); gap: 4px; }
@@ -93,10 +159,16 @@
 .nf-speak-btn:active { transform: translateY(1px); box-shadow: none; }
 
 /* hide overlay bush — anchor to the individual cube it's appended into, not
-   the whole creature, so each hidden cube gets its own bush */
+   the whole creature, so each hidden cube gets its own bush. The bush is an
+   OPAQUE leafy blob that fully covers its cube: "hiding behind the bush" only
+   makes sense if the hidden friend actually disappears (a bare 🌳 emoji left
+   the striped cube visible underneath, so nothing looked hidden). */
 .nb-cube:has(.nb-hide) { position: relative; }
-.nb-hide { position: absolute; inset: -12%; display: flex; align-items: center; justify-content: center;
-  font-size: 1.9em; z-index: 6; }
+.nb-hide { position: absolute; inset: -14%; z-index: 6;
+  display: flex; align-items: center; justify-content: center; font-size: 1.55em;
+  border-radius: 42% 42% 46% 46% / 54% 54% 42% 42%;
+  background: radial-gradient(circle at 42% 30%, #86c95f 0%, #5c9e40 55%, #46833172 100%);
+  box-shadow: inset 0 3px 6px rgba(255, 255, 255, .35), inset 0 -6px 10px rgba(31, 63, 24, .35), 0 4px 0 rgba(47, 90, 38, .55); }
 
 /* take-away: cubes that "fly away" — fade/shrink/drop before removal from the count */
 .nb-cube--gone { transform: translateY(70px) scale(.3); opacity: 0; transition: .5s; }
@@ -108,12 +180,16 @@
    need to shrink on small screens so two side-by-side circles/towers don't
    overflow a ~340px-wide activity area. */
 @media (max-width: 560px) {
-  .nf-bond-circle { width: 108px; height: 108px; font: 700 1.7rem/1 'Chango', Georgia, serif; }
-  .nf-bond-bottom { gap: 28px; }
+  .nf-bond-circle { width: 128px; height: 128px; font: 700 1.7rem/1 'Chango', Georgia, serif; }
+  .nf-bond-bottom { gap: 22px; }
   .nf-fruits { grid-template-columns: repeat(var(--nf-cols), 1.9rem);
     grid-template-rows: repeat(var(--nf-rows), 1.9rem); gap: 4px; font-size: 1.5rem; }
-  .nf-stair { width: 80px; }
-  .nf-stair { height: calc(var(--nf-stair-h) * 44px); }
+  /* narrow card: shrink steps + gap + standing creature so the 5-step run
+     and the friend on the top step stay inside a ~340px activity area. */
+  .nf-stairs { --nf-stair-reserve: 112px; gap: 5px; }
+  .nf-stair { width: 52px; }
+  .nf-stair { height: calc(var(--nf-stair-h) * 38px); }
+  .nf-stair-slot .nb-group { transform: scale(.58); }
   .nf-stamp { grid-template-columns: repeat(var(--nf-cols), 32px);
     grid-template-rows: repeat(var(--nf-rows), 32px); }
   .nf-rainbow-arcs { height: 160px; }

@@ -36,8 +36,7 @@
         { "id": "fruit-salad", "icon": "🍊", "path": "activities/fruit-salad.html", "type": "fruit-salad" },
         { "id": "all-bonds", "icon": "🌈", "path": "activities/all-bonds.html", "type": "all-bonds" },
         { "id": "inside-me", "icon": "🪆", "path": "activities/inside-me.html", "type": "inside-me" },
-        { "id": "fill-shape", "icon": "🧊", "path": "activities/fill-shape.html", "type": "fill-shape" },
-        { "id": "doubles", "icon": "🪞", "path": "activities/doubles.html", "type": "doubles" }
+        { "id": "fill-shape", "icon": "🧊", "path": "activities/fill-shape.html", "type": "fill-shape" }
       ] },
     { "id": "stage-4", "number": 4, "title": "Trốn tìm", "icon": "🫣", "goal": "Find the hidden part.", "host": 3, "missions": 2,
       "intro": { "id": "hide-intro", "path": "activities/hide-intro.html" },
@@ -54,6 +53,33 @@
         { "id": "number-rainbow", "icon": "🌈", "path": "activities/number-rainbow.html", "type": "number-rainbow" },
         { "id": "how-many-more", "icon": "🎯", "path": "activities/how-many-more.html", "type": "how-many-more" }
       ] },
-    { "id": "stage-6", "number": 6, "title": "Mười và vài đơn vị", "icon": "🔟", "goal": "Teen numbers are ten and some ones.", "host": 10, "missions": 2, "activities": [] }
+    { "id": "stage-6", "number": 6, "title": "Mười và vài đơn vị", "icon": "🔟", "goal": "Teen numbers are ten and some ones.", "host": 10, "missions": 2,
+      "intro": { "id": "teen-intro", "path": "activities/teen-intro.html" },
+      "activities": [
+        { "id": "teen-build", "icon": "🏗️", "path": "activities/teen-build.html", "type": "teen-build" },
+        { "id": "teen-split", "icon": "🔟", "path": "activities/teen-split.html", "type": "teen-split" },
+        { "id": "teen-merge", "icon": "🤝", "path": "activities/teen-merge.html", "type": "teen-merge" },
+        { "id": "teen-name", "icon": "🔢", "path": "activities/teen-name.html", "type": "teen-name" },
+        { "id": "teen-match", "icon": "🃏", "path": "activities/teen-match.html", "type": "teen-match" }
+      ] },
+    { "id": "stage-7", "number": 7, "title": "Doubles & Halves", "icon": "✌️", "goal": "Two equal groups: add them up, or share into two.", "host": 2, "missions": 2,
+      "intro": { "id": "doubles", "path": "activities/doubles.html" },
+      "activities": [
+        { "id": "doubles", "icon": "🪞", "path": "activities/doubles.html", "type": "doubles" },
+        { "id": "doubles-add", "icon": "➕", "path": "activities/doubles-add.html", "type": "doubles-add" },
+        { "id": "doubles-flash", "icon": "⚡", "path": "activities/doubles-flash.html", "type": "doubles-flash" },
+        { "id": "doubles-ladder", "icon": "🪜", "path": "activities/doubles-ladder.html", "type": "doubles-ladder" },
+        { "id": "doubles-match", "icon": "🃏", "path": "activities/doubles-match.html", "type": "doubles-match" },
+        { "id": "doubles-share", "icon": "✂️", "path": "activities/doubles-share.html", "type": "doubles-share" }
+      ] },
+    { "id": "stage-8", "number": 8, "title": "Triples & Thirds", "icon": "🤟", "goal": "Three equal groups: add them up, or share into three.", "host": 3, "missions": 2,
+      "intro": { "id": "triples-add", "path": "activities/triples-add.html" },
+      "activities": [
+        { "id": "triples-add", "icon": "➕", "path": "activities/triples-add.html", "type": "triples-add" },
+        { "id": "triples-flash", "icon": "⚡", "path": "activities/triples-flash.html", "type": "triples-flash" },
+        { "id": "triples-ladder", "icon": "🪜", "path": "activities/triples-ladder.html", "type": "triples-ladder" },
+        { "id": "triples-match", "icon": "🃏", "path": "activities/triples-match.html", "type": "triples-match" },
+        { "id": "triples-share", "icon": "✂️", "path": "activities/triples-share.html", "type": "triples-share" }
+      ] }
   ]
 }

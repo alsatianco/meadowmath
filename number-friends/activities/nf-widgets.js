@@ -56,14 +56,28 @@
 
   function staircase(container, opts) {
     const root = el('div', 'nf-stairs', container);
-    const slots = [];
+    const slots = [], stepEls = [];
     for (let i = 1; i <= opts.steps; i++) {
       const step = el('div', 'nf-stair', root);
       step.style.setProperty('--nf-stair-h', i);
+      step.dataset.step = i;
       el('span', 'nf-stair-num', step).textContent = i;
       slots.push(el('div', 'nf-stair-slot', step));
+      stepEls.push(step);
+      // When onStep is given, each bar becomes a tap target (the child taps
+      // the step two friends reach). Keyboard-accessible for good measure.
+      if (typeof opts.onStep === 'function') {
+        step.classList.add('nf-stair--tappable');
+        step.setAttribute('role', 'button');
+        step.setAttribute('aria-label', 'Step ' + i);
+        step.tabIndex = 0;
+        step.addEventListener('click', () => opts.onStep(i, step));
+        step.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); opts.onStep(i, step); }
+        });
+      }
     }
-    return { root, slot: i => slots[i - 1] };
+    return { root, slot: i => slots[i - 1], step: i => stepEls[i - 1], steps: stepEls };
   }
 
   function hostBadge(container, opts) {
@@ -193,5 +207,55 @@
     return { say };
   }
 
-  window.NFWidgets = { bondDiagram, fruitRow, blockzilla, staircase, hostBadge, rainbow, stamp, audioGuide };
+  // matchBoard — a tap-to-connect matching board shared by teen-match and
+  // doubles-match. Two columns of cards; the child taps a left card then its
+  // partner on the right. opts.pairs is [{ id, left(cardEl), right(cardEl) }]
+  // where left/right are callbacks that fill each card (a numeral, a rendered
+  // block, …). Right cards are shuffled. Callbacks: onResult(ok) per attempt,
+  // onDone() when every pair is matched.
+  function matchBoard(container, opts) {
+    const pairs = opts.pairs || [];
+    const root = el('div', 'nf-match', container);
+    const leftCol = el('div', 'nf-match-col', root);
+    const rightCol = el('div', 'nf-match-col', root);
+    let selected = null, matched = 0;
+
+    function clearSel() { if (selected) { selected.classList.remove('nf-match-sel'); selected = null; } }
+    function makeCard(col, side, pair) {
+      const card = el('button', 'nf-match-card nf-match-card--' + side, col);
+      card.type = 'button';
+      card.dataset.id = pair.id;
+      (side === 'left' ? pair.left : pair.right)(card);
+      card.addEventListener('click', () => onTap(card, side));
+      return card;
+    }
+    function onTap(card, side) {
+      if (card.classList.contains('nf-match-done')) return;
+      if (side === 'left') { clearSel(); selected = card; card.classList.add('nf-match-sel'); return; }
+      if (!selected) return; // pick a left card first
+      const ok = selected.dataset.id === card.dataset.id;
+      if (opts.onResult) opts.onResult(ok);
+      if (ok) {
+        card.classList.add('nf-match-done');
+        selected.classList.add('nf-match-done');
+        clearSel();
+        matched++;
+        if (matched === pairs.length && opts.onDone) opts.onDone();
+      } else {
+        card.classList.add('nf-match-wrong');
+        setTimeout(() => card.classList.remove('nf-match-wrong'), 420);
+        clearSel();
+      }
+    }
+    function shuffled(arr) {
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+      return a;
+    }
+    pairs.forEach(p => makeCard(leftCol, 'left', p));
+    shuffled(pairs).forEach(p => makeCard(rightCol, 'right', p));
+    return { root };
+  }
+
+  window.NFWidgets = { bondDiagram, fruitRow, blockzilla, staircase, hostBadge, rainbow, stamp, audioGuide, matchBoard };
 })();

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(codex --version)",
+      "Bash(codex --help)",
+      "Read(//Users/duc.nguyen/Downloads/**)"
+    ]
+  }
+}

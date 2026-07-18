@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Free interactive Kindergarten math practice on Meadow Math.">
-  <meta property="og:title" content="Mystery Piece | Bạn Số | Meadow Math">
+  <meta property="og:title" content="Make a Teen | Bạn Số | Meadow Math">
   <meta property="og:description" content="Free interactive Kindergarten math practice on Meadow Math.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://math.alsatian.co/number-friends/activities/bond-missing.html">
+  <meta property="og:url" content="https://math.alsatian.co/number-friends/activities/teen-merge.html">
   <meta property="og:image" content="https://math.alsatian.co/images/og/og-kinder.png">
   <meta property="og:site_name" content="Meadow Math">
-  <title data-i18n="section.activities.bond-missing.title">Mystery Piece</title>
+  <title data-i18n="section.activities.teen-merge.title">Make a Teen</title>
 
   <link rel="stylesheet" href="../../css/reset.css">
   <link rel="stylesheet" href="../../css/variables.css">
@@ -56,12 +56,12 @@
       <div class="activity-wrapper">
         <header class="activity-header">
           <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.numberFriends">Number Friends</span></a>
-          <h1 class="activity-title"><span class="activity-title-icon">❓</span> <span data-i18n="section.activities.bond-missing.title">Mystery Piece</span></h1>
-          <p class="activity-instruction" data-i18n="section.activities.bond-missing.instruction">What number goes in the empty circle?</p>
+          <h1 class="activity-title"><span class="activity-title-icon">🤝</span> <span data-i18n="section.activities.teen-merge.title">Make a Teen</span></h1>
+          <p class="activity-instruction" data-i18n="section.activities.teen-merge.instruction">Ten and some ones join up — what teen number do they make?</p>
         </header>
         <div class="activity-area">
           <div class="progress-indicator" id="progress"></div>
-          <div id="bond-holder" class="nf-stage"></div>
+          <div id="stage" class="nf-stage"></div>
           <div class="answer-choices" id="choices"></div>
           <div class="feedback-message" id="feedback"></div>
         </div>
@@ -93,43 +93,46 @@
   <script src="../../js/block-engine.js"></script>
   <script src="nf-widgets.js"></script>
   <script>
-    class BondMissing extends ActivityBase {
-      constructor() { super({ totalRounds: 8, activityId: 'bond-missing', gradeLevel: 'number-friends', autoAdvanceDelay: 1900 }); }
+    // Make a Teen — a full Ten friend and a small ones friend stand apart; the
+    // child names the teen they make together (10 + ones), then watches them
+    // merge into one teen block. The "join" direction that complements
+    // teen-split's "break apart".
+    class TeenMerge extends ActivityBase {
+      constructor() { super({ totalRounds: 8, activityId: 'teen-merge', gradeLevel: 'number-friends', autoAdvanceDelay: 2000 }); }
       init() {
         super.init();
-        this.holder = document.getElementById('bond-holder');
+        this.stage = document.getElementById('stage');
         this.choices = document.getElementById('choices');
-        NFWidgets.audioGuide({ instructionKey: 'section.activities.bond-missing.instruction' });
+        NFWidgets.audioGuide({ instructionKey: 'section.activities.teen-merge.instruction' });
         this.nextRound();
       }
       startRound() {
-        this.n = this.randomInt(3, 10); this.a = this.randomInt(1, this.n - 1); this.b = this.n - this.a;
-        this.answer = this.b;
-        this.holder.innerHTML = ''; this.choices.innerHTML = '';
-        this.bond = NFWidgets.bondDiagram(this.holder, { direction: 'down' });
-        this.bond.top.classList.add('nf-bond-block');
-        BlockEngine.render(this.bond.top, { value: this.n, face: false });
-        BlockEngine.render(this.bond.left, { value: this.a });
-        this.bond.right.textContent = '?';
-        this.bond.equation.textContent = this.n + ' = ' + this.a + ' + ?';
-        this.renderChoices(BlockEngine.makeChoices(this.b, 4, 1, 9));
+        this.n = this.randomInt(11, 19);
+        this.ones = this.n - 10;
+        this.merged = false;
+        BlockEngine.clear(this.stage); this.choices.innerHTML = '';
+        this.tenG = BlockEngine.render(this.stage, { value: 10, label: 10 });
+        const plus = document.createElement('span');
+        plus.className = 'nf-plus'; plus.textContent = '+';
+        this.stage.appendChild(plus);
+        this.onesG = BlockEngine.render(this.stage, { value: this.ones, label: this.ones });
+        this.renderChoices(BlockEngine.makeChoices(this.n, 4, 11, 19));
       }
       reveal(ok) {
-        this.bond.right.textContent = '';
-        const real = BlockEngine.render(this.bond.right, { value: this.b });
-        this.bond.equation.textContent = this.n + ' = ' + this.a + ' + ' + this.b;
-        if (ok) BlockEngine.celebrate(real);
+        if (this.merged) return;
+        this.merged = true;
+        BlockEngine.merge(this.tenG, this.onesG).then(sum => { if (ok) BlockEngine.celebrate(sum); });
       }
       pick(v, btn) {
         if (this.isAnswered) return; this.isAnswered = true;
         this.disableButtons(this.choices);
-        const ok = v === this.answer;
-        const msg = i18n.t('section.activities.bond-missing.' + (ok ? 'correct' : 'incorrect'))
-          .replace(/\{\{a\}\}/g, this.a).replace(/\{\{b\}\}/g, this.b).replace(/\{\{n\}\}/g, this.n);
+        const ok = v === this.n;
+        const msg = i18n.t('section.activities.teen-merge.' + (ok ? 'correct' : 'incorrect'))
+          .replace(/\{\{ones\}\}/g, this.ones).replace(/\{\{n\}\}/g, this.n);
         if (ok) { btn.classList.add('correct'); this.incrementCorrect(); BlockEngine.sfx('correct'); }
         else {
           btn.classList.add('incorrect'); this.incrementIncorrect(); BlockEngine.sfx('wrong');
-          this.choices.querySelectorAll('.answer-btn').forEach(b => { if (b.dataset.v == this.answer) b.classList.add('correct'); });
+          this.choices.querySelectorAll('.answer-btn').forEach(b => { if (b.dataset.v == this.n) b.classList.add('correct'); });
         }
         this.reveal(ok);
         this.showFeedback(msg, !ok); BlockEngine.speak(msg);
@@ -144,9 +147,9 @@
           this.choices.appendChild(b);
         });
       }
-      showStats() { try { window.Storage.markActivityCompleted('number-friends', 'bond-missing'); } catch (e) {} super.showStats(); }
+      showStats() { try { window.Storage.markActivityCompleted('number-friends', 'teen-merge'); } catch (e) {} super.showStats(); }
     }
-    document.addEventListener('DOMContentLoaded', async () => { await i18n.ready(); new BondMissing().init(); });
+    document.addEventListener('DOMContentLoaded', async () => { await i18n.ready(); new TeenMerge().init(); });
   </script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
 </html>

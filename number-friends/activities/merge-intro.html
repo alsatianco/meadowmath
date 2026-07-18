@@ -57,12 +57,31 @@
         <header class="activity-header">
           <a href="../index.html" class="back-link"><span data-i18n="activity.backTo">← Back to</span> <span data-i18n="nav.numberFriends">Number Friends</span></a>
           <h1 class="activity-title"><span class="activity-title-icon">📖</span> <span data-i18n="section.activities.merge-intro.title">Joining Up!</span></h1>
+          <p class="activity-instruction" data-i18n="section.activities.merge-intro.instruction">Watch the two friends, then tap the step they reach together!</p>
         </header>
         <div class="activity-area">
+          <div class="progress-indicator" id="progress"></div>
           <div id="stage" class="nf-stage"></div>
+          <div id="climbers" class="nf-climbers"></div>
           <p id="caption" class="activity-instruction" style="text-align:center;min-height:2.4em;"></p>
           <div style="text-align:center;margin-top:12px;">
             <button id="btn-next" class="btn-activity btn-primary" data-i18n="buttons.next">Next</button>
+          </div>
+          <div class="feedback-message" id="feedback"></div>
+        </div>
+      </div>
+
+      <div class="stats-overlay" id="stats-overlay">
+        <div class="stats-modal">
+          <div class="stats-icon" id="stats-icon">🌟</div>
+          <h2 class="stats-title" data-i18n="stats.title">Activity Complete!</h2>
+          <div class="stats-grid">
+            <div class="stat-item"><span class="stat-value correct" id="stats-correct">0</span><span class="stat-label" data-i18n="stats.correct">Correct</span></div>
+            <div class="stat-item"><span class="stat-value incorrect" id="stats-wrong">0</span><span class="stat-label" data-i18n="stats.wrong">Wrong</span></div>
+          </div>
+          <p class="stats-message" id="stats-message">Great job!</p>
+          <div class="stats-actions">
+            <button class="btn-activity btn-primary" id="btn-play-again" data-i18n="buttons.playAgain">Play Again</button>
           </div>
         </div>
       </div>
@@ -78,69 +97,136 @@
   <script src="../../js/block-engine.js"></script>
   <script src="nf-widgets.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      await i18n.ready();
-      const stage = document.getElementById('stage');
-      const caption = document.getElementById('caption');
-      const btn = document.getElementById('btn-next');
-      const fallback = [
-        'Hi! I\'m Two. Watch this magic staircase!',
-        'Two stands on step 2, Three stands on step 3.',
-        'Hold hands — together they reach step 5!',
-        'One and Three join up — which step do they reach?',
-        'Next stage: The Whole of Me!'
-      ];
-      function steps() {
-        const raw = window.i18n.getRaw('section.activities.merge-intro.steps');
-        return (Array.isArray(raw) && raw.length) ? raw : fallback;
+    // Joining Up! — first watch two worked examples on the magic staircase,
+    // then predict: when friends a and b join up, which step do they reach?
+    // The child taps the step (= a + b). Sums stay within 6 (a 6-step run).
+    class JoiningUp extends ActivityBase {
+      constructor() { super({ totalRounds: 5, activityId: 'merge-intro', gradeLevel: 'number-friends', autoAdvanceDelay: 2200 }); }
+      init() {
+        super.init();
+        this.stage = document.getElementById('stage');
+        this.climbers = document.getElementById('climbers');
+        this.caption = document.getElementById('caption');
+        this.btnNext = document.getElementById('btn-next');
+        this.audio = NFWidgets.audioGuide({ instructionKey: 'section.activities.merge-intro.instruction' });
+        this.btnNext.addEventListener('click', () => this.onDemoNext());
+        document.addEventListener('languageChanged', () => this.refreshText());
+        this.demoIdx = 0;
+        this.rounds = this.buildRounds();
+        this.runDemo();
       }
-      let i = 0;
-      let stairs;
-      function label(key, fb) { const v = i18n.t(key); return (v && v !== key) ? v : fb; }
-      function scene(idx, target) {
-        BlockEngine.clear(target);
-        if (idx === 0) {
-          BlockEngine.render(target, { value: 2, label: 2 });
-          BlockEngine.speak(i18n.t('section.stages.stage-2.hostLine'));
-          return;
-        }
-        stairs = NFWidgets.staircase(target, { steps: 5 });
-        if (idx === 1) {
-          BlockEngine.render(stairs.slot(2), { value: 2 });
-          BlockEngine.render(stairs.slot(3), { value: 3 });
-        }
-        if (idx === 2) {
-          const s = BlockEngine.render(stairs.slot(5), { value: 5, label: 5 });
+      L(key, fb) { return this.t('section.activities.merge-intro.' + key, fb); }
+      say(text) { if (this.audio) this.audio.say(text); else BlockEngine.speak(text); }
+      // five rounds, one per target step 2..6, each split into a random a+b
+      buildRounds() {
+        return this.shuffle([2, 3, 4, 5, 6]).map(t => {
+          const a = this.randomInt(1, t - 1);
+          return { a, b: t - a, sum: t };
+        });
+      }
+      demoData() {
+        return [
+          { a: 2, b: 3, sum: 5, q: this.L('demo1q', 'Two and Three join up — which step do they reach?'), ans: this.L('demo1a', 'Together they reach step 5!') },
+          { a: 1, b: 3, sum: 4, q: this.L('demo2q', 'One and Three join up — which step?'), ans: this.L('demo2a', 'They reach step 4!') }
+        ];
+      }
+
+      // ---------- demo phase (watch two examples) ----------
+      runDemo() {
+        this.inDemo = true;
+        this.climbers.style.display = 'none';
+        if (this.progress) this.progress.style.visibility = 'hidden';
+        this.btnNext.style.display = '';
+        this.renderDemo();
+      }
+      renderDemo() {
+        const d = this.demoData()[this.demoIdx];
+        BlockEngine.clear(this.stage);
+        const stairs = NFWidgets.staircase(this.stage, { steps: 6 });
+        BlockEngine.render(stairs.slot(d.a), { value: d.a });
+        BlockEngine.render(stairs.slot(d.b), { value: d.b });
+        this.caption.textContent = d.q;
+        this.say(d.q);
+        this.demoRevealTimer = setTimeout(() => {
+          const s = BlockEngine.render(stairs.slot(d.sum), { value: d.sum, label: d.sum });
           BlockEngine.celebrate(s);
           BlockEngine.sfx('snap');
-        }
-        if (idx === 3) {
-          BlockEngine.render(stairs.slot(1), { value: 1 });
-          BlockEngine.render(stairs.slot(3), { value: 3 });
-          setTimeout(() => {
-            BlockEngine.clear(target);
-            stairs = NFWidgets.staircase(target, { steps: 5 });
-            BlockEngine.celebrate(BlockEngine.render(stairs.slot(4), { value: 4, label: 4 }));
-            BlockEngine.sfx('snap');
-          }, 1200);
+          this.caption.textContent = d.ans;
+          this.say(d.ans);
+        }, 1200);
+        const last = this.demoIdx >= this.demoData().length - 1;
+        this.btnNext.textContent = last ? this.L('startBtn', "Let's play!") : this.t('buttons.next', 'Next');
+      }
+      onDemoNext() {
+        if (!this.inDemo) return;
+        clearTimeout(this.demoRevealTimer);
+        if (this.demoIdx >= this.demoData().length - 1) { this.startPlay(); return; }
+        this.demoIdx++;
+        this.renderDemo();
+      }
+      startPlay() {
+        this.inDemo = false;
+        this.btnNext.style.display = 'none';
+        this.climbers.style.display = '';
+        if (this.progress) this.progress.style.visibility = '';
+        this.nextRound();
+      }
+
+      // ---------- play phase (tap the step) ----------
+      startRound() {
+        const r = this.rounds[this.currentRound - 1];
+        this.a = r.a; this.b = r.b; this.sum = r.sum;
+        this.wrongCounted = false;
+        BlockEngine.clear(this.stage);
+        this.climbers.innerHTML = '';
+        this.climbers.style.opacity = '';
+        this.stairs = NFWidgets.staircase(this.stage, { steps: 6, onStep: (i, el) => this.tapStep(i, el) });
+        BlockEngine.render(this.climbers, { value: this.a, label: this.a });
+        const plus = document.createElement('span');
+        plus.className = 'nf-plus';
+        plus.textContent = '+';
+        this.climbers.appendChild(plus);
+        BlockEngine.render(this.climbers, { value: this.b, label: this.b });
+        const q = this.L('play', '{{a}} and {{b}} join up — which step do they reach?')
+          .replace(/\{\{a\}\}/g, this.a).replace(/\{\{b\}\}/g, this.b);
+        this.caption.textContent = q;
+        this.say(q);
+      }
+      tapStep(i, stepEl) {
+        if (this.inDemo || this.isAnswered) return;
+        if (i === this.sum) {
+          this.isAnswered = true;
+          stepEl.classList.add('nf-stair--correct');
+          const s = BlockEngine.render(this.stairs.slot(i), { value: this.sum, label: this.sum });
+          BlockEngine.celebrate(s);
+          BlockEngine.sfx('correct');
+          this.incrementCorrect();
+          this.climbers.style.opacity = '.35';
+          const msg = this.L('correct', 'Yes! {{a}} and {{b}} make {{n}}!')
+            .replace(/\{\{a\}\}/g, this.a).replace(/\{\{b\}\}/g, this.b).replace(/\{\{n\}\}/g, this.sum);
+          this.showFeedback(msg, false);
+          this.say(msg);
+          this.renderProgress();
+          this.autoAdvance();
+        } else {
+          stepEl.classList.remove('nf-stair--wrong');
+          void stepEl.offsetWidth; // restart shake on repeat taps
+          stepEl.classList.add('nf-stair--wrong');
+          BlockEngine.sfx('wrong');
+          if (!this.wrongCounted) { this.wrongCounted = true; this.incrementIncorrect(); }
+          const hint = i < this.sum
+            ? this.L('higher', 'Higher! They reach a bigger step.')
+            : this.L('lower', 'Lower! They reach a smaller step.');
+          this.showFeedback(hint, true, 1200);
+          this.say(hint);
         }
       }
-      function show() {
-        const s = steps();
-        caption.textContent = s[i] || '';
-        scene(i, stage);
-        BlockEngine.speak(s[i] || '');
-        const last = i >= s.length - 1;
-        btn.textContent = last ? label('buttons.done', 'Done') : label('buttons.next', 'Next');
+      refreshText() {
+        if (this.inDemo) this.renderDemo();
       }
-      btn.addEventListener('click', () => {
-        const s = steps();
-        if (i >= s.length - 1) { window.location.href = '../index.html'; return; }
-        i++; show();
-      });
-      document.addEventListener('languageChanged', show);
-      show();
-    });
+      showStats() { try { window.Storage.markActivityCompleted('number-friends', 'merge-intro'); } catch (e) {} super.showStats(); }
+    }
+    document.addEventListener('DOMContentLoaded', async () => { await i18n.ready(); new JoiningUp().init(); });
   </script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
 </html>

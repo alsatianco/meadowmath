@@ -58,16 +58,28 @@
 .nb-silhouette--tappable { cursor: pointer; }
 .nb-silhouette--tappable .nb-cube--ghost { transition: background .15s, border-color .15s; }
 
+/* teen-build: big numeral shown beside the ten-and-ones silhouette */
+.nf-teen-numeral {
+  font: 900 3.4rem/1 'Chango', Georgia, serif;
+  color: #4b372e;
+  text-shadow: 0 2px 0 #fff4d7;
+}
+
 /* mini side-by-side pair (bonds-intro lineup scene, all-bonds found tray) */
 .nf-pair { display: flex; align-items: center; gap: 4px; }
 .nf-pair .nb-creature { --nb-cube-size: 16px; }
 .nf-pair .nb-group { padding: 6px 6px 2px; gap: 3px; }
 .nf-pair-plus { font: 800 1.3rem/1 Georgia, serif; color: #6d4b38; }
 
-/* mini creature lineup buttons (inside-me) — shrink the creature, keep a big tap target */
-.nf-mini.answer-btn { height: auto; min-height: 92px; padding: 6px; }
-.nf-mini .nb-creature { --nb-cube-size: 16px; }
-.nf-mini .nb-group { padding: 4px 4px 2px; gap: 3px; }
+/* mini creature lineup buttons (inside-me) — shrink the creature, keep a big
+   tap target. Render the friend at its natural cube size and shrink the WHOLE
+   thing with `zoom`: a tiny --nb-cube-size only scales the cube grid, leaving
+   the fixed-px eyes/mouth/decor full size so they pile into an unreadable blob.
+   `zoom` scales layout + paint uniformly (faces stay proportional) and, unlike
+   a transform on .nb-group, doesn't get clobbered by celebrate()'s bounce. */
+.nf-mini.answer-btn { height: auto; min-height: 92px; padding: 6px;
+  display: flex; align-items: center; justify-content: center; }
+.nf-mini .nb-group { zoom: .3; }
 
 /* choice buttons holding a mini rendered creature (fill-shape) — cube base grew
    38px -> 60px (1.58x), so the old .45 scale is knocked back down to .3 to
@@ -75,10 +87,14 @@
 .nf-block-choice .nb-group { transform: scale(.3); transform-origin: center; }
 .nf-block-choice { min-height: 130px; }
 
-/* mini creatures rendered inside bond-diagram circles (bond-missing) — same
-   1.58x cube-base correction, .4 -> .25, so the mini creature still fits the
-   (now-bigger) bond circle instead of overflowing it. */
-.nf-bond-block .nb-group, .nf-bond-circle .nb-group { transform: scale(.25); transform-origin: center; }
+/* mini creatures rendered inside bond-diagram circles (bond-missing). Scale is
+   as large as the widest whole (a 2x5 ten-block) can be while still fitting
+   inside the circle — big enough for little ones to count the cubes. Mobile
+   uses a smaller scale to fit its smaller circle (see the media query below). */
+.nf-bond-block .nb-group, .nf-bond-circle .nb-group { transform: scale(.4); transform-origin: center; }
+@media (max-width: 560px) {
+  .nf-bond-block .nb-group, .nf-bond-circle .nb-group { transform: scale(.32); }
+}
 
 /* stamp-shapes: size the button to its stamp, not the other way around.
    .answer-btn's fixed 92px height clipped anything taller (a 3-row L-shape)
@@ -97,4 +113,5 @@
   /* re-assert auto-sizing: the generic mobile .answer-btn height above would
      otherwise re-clip a tall stamp at small widths. */
   .nf-stamp-btn { height: auto; min-height: 76px; width: auto; min-width: 76px; }
+  .nf-teen-numeral { font-size: 2.4rem; }
 }
