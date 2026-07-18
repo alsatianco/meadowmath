@@ -16,7 +16,9 @@
     "stage-4": { "title": "Trốn tìm", "goal": "Tìm phần đang trốn.",
       "hostLine": "Tớ là Ba — chơi trốn tìm không?",
       "missions": ["Giấu 2 trong 5 món đồ sau lưng — đố bé mấy món đang trốn!", "Cả nhà chơi trốn tìm — đếm to tới 10 nhé!"] },
-    "stage-5": { "title": "Làm bạn với 5 và 10", "goal": "Làm cho đủ 5 và đủ 10." },
+    "stage-5": { "title": "Làm bạn với 5 và 10", "goal": "Làm cho đủ 5 và đủ 10.",
+      "hostLine": "Tớ là Năm — đập tay nào! Mười là hai bàn tay đó!",
+      "missions": ["Giơ 3 ngón tay — thiếu mấy ngón nữa đủ 5?", "Đếm 10 ngón tay thật to!", "Xếp 10 hạt vào 2 hàng 5 như khung mười."] },
     "stage-6": { "title": "Mười và vài đơn vị", "goal": "Số teen là mười và vài đơn vị." }
   },
   "activities": {
@@ -108,6 +110,21 @@
       "perfect": "Thám tử mảnh ghép!", "great": "Suy luận cừ!", "good": "Làm tốt lắm!", "keepPracticing": "Nghĩ tiếp nhé!" },
     "take-away": { "title": "Còn lại bao nhiêu?", "instruction": "Vài khối bay đi — còn lại mấy?",
       "correct": "Đúng! {{n}} bớt {{x}} còn {{r}}.", "incorrect": "{{n}} bớt {{x}} còn {{r}} cơ.",
-      "perfect": "Siêu tính nhẩm!", "great": "Giỏi quá!", "good": "Làm tốt lắm!", "keepPracticing": "Đếm lại nhé!" }
+      "perfect": "Siêu tính nhẩm!", "great": "Giỏi quá!", "good": "Làm tốt lắm!", "keepPracticing": "Đếm lại nhé!" },
+    "frame-intro": { "title": "Bàn tay 5 — khung 10", "instruction": "Chạm để làm quen khung 5 và khung 10!",
+      "steps": ["Tớ là Năm — như một bàn tay xòe!", "Khung có 3 rồi… thiếu 2 nữa là đầy!", "Đầy 5 rồi — đập tay!", "Còn tớ là Mười — hai hàng năm, hai bàn tay!", "Chặng sau: Mười và vài đơn vị!"] },
+    "five-frame": { "title": "Đầy khung 5", "instruction": "Chạm vào ô trống để lấp đầy khung 5!",
+      "result": "{{a}} và {{b}} làm nên 5!", "tapMore": "Chạm tiếp nào!",
+      "perfect": "Bàn tay vàng!", "great": "Đầy khung cừ khôi!", "good": "Làm tốt lắm!", "keepPracticing": "Lấp tiếp nhé!" },
+    "ten-frame": { "title": "Đầy khung 10", "instruction": "Chạm vào ô trống để lấp đầy khung 10!",
+      "result": "{{a}} và {{b}} làm nên 10!", "tapMore": "Chạm tiếp nào!",
+      "perfect": "Vua khung mười!", "great": "Đầy khung cừ khôi!", "good": "Làm tốt lắm!", "keepPracticing": "Lấp tiếp nhé!" },
+    "number-rainbow": { "title": "Cầu vồng số 10", "instruction": "Bạn số nào ghép với bạn sáng màu để thành 10?",
+      "ask": "{{a}} cần bạn mấy để thành 10?",
+      "correct": "Tuyệt! {{a}} và {{b}} là đôi bạn của 10.", "incorrect": "{{a}} phải ghép với {{b}} cơ.",
+      "perfect": "Cầu vồng trọn vẹn!", "great": "Ghép đôi cừ khôi!", "good": "Làm tốt lắm!", "keepPracticing": "Ghép tiếp nhé!" },
+    "how-many-more": { "title": "Thiếu mấy nữa?", "instruction": "Thiếu mấy ô nữa thì đầy khung 10?",
+      "correct": "Đúng! {{a}} thêm {{b}} là 10.", "incorrect": "{{a}} cần thêm {{b}} nữa mới đủ 10.",
+      "perfect": "Thần khung mười!", "great": "Tính bù siêu!", "good": "Làm tốt lắm!", "keepPracticing": "Đếm ô trống nhé!" }
   }
 }

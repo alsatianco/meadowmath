@@ -59,6 +59,20 @@
   40%, 80% { transform: translateX(6px); }
 }
 
+/* number-rainbow: gold pulse on the prompt button, correct/incorrect states
+   for the rainbow's own number buttons (which aren't .answer-btn) */
+.nf-glow { animation: nf-glow-pulse 1.1s ease-in-out infinite; border-color: #e3a83f !important; }
+@keyframes nf-glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(227, 168, 63, .65); }
+  50% { box-shadow: 0 0 0 10px rgba(227, 168, 63, 0); }
+}
+.nf-rainbow-num.incorrect { background: #ffd4c9; border-color: #b74336; animation: nf-chip-shake .4s ease; }
+@media (prefers-reduced-motion: reduce) { .nf-glow { animation: none; box-shadow: 0 0 0 4px rgba(227, 168, 63, .65); } }
+
+/* five-frame / ten-frame: the silhouette itself is the tap target */
+.nb-silhouette--tappable { cursor: pointer; }
+.nb-silhouette--tappable .nb-cube--ghost { transition: background .15s, border-color .15s; }
+
 /* mini side-by-side pair (bonds-intro lineup scene, all-bonds found tray) */
 .nf-pair { display: flex; align-items: center; gap: 4px; }
 .nf-pair .nb-creature { --nb-cube-size: 16px; }
