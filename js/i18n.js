@@ -33,7 +33,7 @@ const i18n = {
   supportedLanguages: ['en', 'vi'],
 
   // Available sections (for lazy loading)
-  sections: ['prek', 'kinder', 'kindergarten', 'grade1', 'grade2', 'grade3', 'grade4', 'grade5', 'tools', 'about'],
+  sections: ['number-friends', 'prek', 'kinder', 'kindergarten', 'grade1', 'grade2', 'grade3', 'grade4', 'grade5', 'tools', 'about'],
 
   // Cache for loaded translations
   cache: {

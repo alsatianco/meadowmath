@@ -1,0 +1,41 @@
+{
+  "world": { "title": "Number Friends", "tagline": "Numbers are blocks you can pull apart and snap together." },
+  "stages": {
+    "stage-0": { "title": "Meet the Blocks", "goal": "See each number as a tower of blocks — and know it by its shape." },
+    "stage-1": { "title": "Pull Apart", "goal": "Split a tower into two parts." },
+    "stage-2": { "title": "Snap Together", "goal": "Join two parts into one." },
+    "stage-3": { "title": "The Whole of Me", "goal": "Find every way to split a number." },
+    "stage-4": { "title": "Hide and Seek", "goal": "Find the hidden part." },
+    "stage-5": { "title": "Friends of 5 and 10", "goal": "Make 5 and make 10." },
+    "stage-6": { "title": "Ten and Some Ones", "goal": "Teen numbers are ten and some ones." }
+  },
+  "activities": {
+    "meet-blocks-intro": {
+      "title": "Meet the Blocks",
+      "instruction": "Tap to meet each number friend!",
+      "steps": [
+        "Hi! Every number is made of blocks.",
+        "One block is One.",
+        "Add a block — now it's Two!",
+        "Five looks like the dots on dice.",
+        "Ten is two rows of five.",
+        "Tap a friend to hear its name!"
+      ]
+    },
+    "count-blocks": {
+      "title": "Count the Blocks", "instruction": "How many blocks?",
+      "correct": "Yes! That's {{n}}.", "incorrect": "Count again — it's {{n}}.",
+      "perfect": "Super counting!", "great": "Great counting!", "good": "Nice work!", "keepPracticing": "Keep counting!"
+    },
+    "tower-to-numeral": {
+      "title": "Which Number?", "instruction": "Pick the number that matches the blocks.",
+      "correct": "That's {{n}}!", "incorrect": "It's {{n}}.",
+      "perfect": "Number star!", "great": "Great matching!", "good": "Nice work!", "keepPracticing": "Keep going!"
+    },
+    "subitize-flash": {
+      "title": "Quick Look", "instruction": "Look fast — how many?",
+      "correct": "Sharp eyes! It's {{n}}.", "incorrect": "It was {{n}}.",
+      "perfect": "Eagle eyes!", "great": "Quick eyes!", "good": "Nice spotting!", "keepPracticing": "Keep looking!"
+    }
+  }
+}

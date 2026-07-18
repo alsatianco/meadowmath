@@ -1,0 +1,41 @@
+{
+  "world": { "title": "Bạn Số", "tagline": "Mỗi con số là những khối có thể tách ra và gộp lại." },
+  "stages": {
+    "stage-0": { "title": "Làm quen khối số", "goal": "Thấy mỗi số là một tháp khối — và nhận ra số nhờ hình dạng." },
+    "stage-1": { "title": "Tách", "goal": "Tách một tháp thành hai phần." },
+    "stage-2": { "title": "Gộp", "goal": "Gộp hai phần thành một." },
+    "stage-3": { "title": "Toàn thể của tớ", "goal": "Tìm tất cả các cách tách một số." },
+    "stage-4": { "title": "Trốn tìm", "goal": "Tìm phần đang trốn." },
+    "stage-5": { "title": "Làm bạn với 5 và 10", "goal": "Làm cho đủ 5 và đủ 10." },
+    "stage-6": { "title": "Mười và vài đơn vị", "goal": "Số teen là mười và vài đơn vị." }
+  },
+  "activities": {
+    "meet-blocks-intro": {
+      "title": "Làm quen khối số",
+      "instruction": "Chạm để gặp từng bạn số nhé!",
+      "steps": [
+        "Chào bạn! Mỗi con số được làm từ các khối.",
+        "Một khối là số Một.",
+        "Thêm một khối — thành số Hai!",
+        "Số Năm trông giống mặt năm chấm xúc xắc.",
+        "Số Mười là hai hàng năm.",
+        "Chạm vào một bạn số để nghe tên nhé!"
+      ]
+    },
+    "count-blocks": {
+      "title": "Đếm khối", "instruction": "Có mấy khối?",
+      "correct": "Đúng rồi! Là {{n}}.", "incorrect": "Đếm lại nhé — là {{n}}.",
+      "perfect": "Đếm siêu quá!", "great": "Đếm giỏi lắm!", "good": "Làm tốt lắm!", "keepPracticing": "Cố lên nhé!"
+    },
+    "tower-to-numeral": {
+      "title": "Số nào đây?", "instruction": "Chọn số ứng với khối.",
+      "correct": "Là {{n}} đó!", "incorrect": "Là {{n}}.",
+      "perfect": "Ngôi sao số học!", "great": "Ghép giỏi lắm!", "good": "Làm tốt lắm!", "keepPracticing": "Cố lên nhé!"
+    },
+    "subitize-flash": {
+      "title": "Nhìn nhanh", "instruction": "Nhìn thật nhanh — mấy khối?",
+      "correct": "Mắt tinh ghê! Là {{n}}.", "incorrect": "Vừa rồi là {{n}}.",
+      "perfect": "Mắt đại bàng!", "great": "Mắt nhanh ghê!", "good": "Nhìn giỏi lắm!", "keepPracticing": "Nhìn tiếp nhé!"
+    }
+  }
+}
