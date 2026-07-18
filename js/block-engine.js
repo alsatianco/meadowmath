@@ -114,6 +114,26 @@
     return out;
   }
 
+  // Natural split lines of the canonical pattern. axis 'row' index r = cut below
+  // grid row r; single-row numbers (2, 3) cut by column instead.
+  function seamSplits(n) {
+    const cells = patternCoords(n);
+    const size = gridSize(n);
+    const out = [];
+    if (size.rows > 1) {
+      for (let r = 0; r < size.rows - 1; r++) {
+        const a = cells.filter(c => c.r <= r).length;
+        if (a > 0 && a < n) out.push({ axis: 'row', index: r, parts: [a, n - a] });
+      }
+    } else if (size.cols > 1) {
+      for (let c = 0; c < size.cols - 1; c++) {
+        const a = cells.filter(cell => cell.c <= c).length;
+        if (a > 0 && a < n) out.push({ axis: 'col', index: c, parts: [a, n - a] });
+      }
+    }
+    return out;
+  }
+
   function makeChoices(correct, count, min, max, rng) {
     rng = rng || Math.random;
     const set = new Set([correct]);
@@ -296,7 +316,7 @@
   }
 
   const BlockEngine = {
-    COLORS, patternCoords, gridSize, validSplits, makeChoices, decomposeTeen,
+    COLORS, patternCoords, gridSize, validSplits, seamSplits, makeChoices, decomposeTeen,
     render, clear, buildCreature, split, merge, celebrate,
     speak, sfx, setMuted, isMuted
   };

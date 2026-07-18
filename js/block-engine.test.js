@@ -67,3 +67,26 @@ test('decomposeTeen splits into tens and ones', () => {
   assert.deepStrictEqual(BlockEngine.decomposeTeen(10), { tens: 10, ones: 0 });
   assert.deepStrictEqual(BlockEngine.decomposeTeen(14), { tens: 10, ones: 4 });
 });
+
+test('seamSplits: 10 splits into 5+5 at the row seam', () => {
+  assert.deepStrictEqual(BlockEngine.seamSplits(10), [{ axis: 'row', index: 0, parts: [5, 5] }]);
+});
+
+test('seamSplits: 7 has row seams 1+6, 3+4, 5+2', () => {
+  assert.deepStrictEqual(BlockEngine.seamSplits(7).map(s => s.parts), [[1, 6], [3, 4], [5, 2]]);
+});
+
+test('seamSplits: 3 splits by column into 1+2 and 2+1', () => {
+  assert.deepStrictEqual(BlockEngine.seamSplits(3), [
+    { axis: 'col', index: 0, parts: [1, 2] }, { axis: 'col', index: 1, parts: [2, 1] }
+  ]);
+});
+
+test('seamSplits: 9 (3x3) gives 3+6 and 6+3', () => {
+  assert.deepStrictEqual(BlockEngine.seamSplits(9).map(s => s.parts), [[3, 6], [6, 3]]);
+});
+
+test('seamSplits: 0 and 1 have no seams', () => {
+  assert.deepStrictEqual(BlockEngine.seamSplits(0), []);
+  assert.deepStrictEqual(BlockEngine.seamSplits(1), []);
+});
