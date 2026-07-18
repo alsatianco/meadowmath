@@ -122,7 +122,9 @@
   //   audio.say(currentInstructionText);
   function audioGuide(opts) {
     opts = opts || {};
-    let currentText = '';
+    let lastSpoken = '';
+    let retryPending = false;
+    let retryTimer = null;
 
     function resolveInitialText() {
       if (typeof opts.text === 'function') return opts.text();
@@ -134,22 +136,35 @@
       return '';
     }
 
-    function speakNow(text) {
-      if (!text) return;
-      currentText = text;
-      window.BlockEngine.speak(text);
-    }
-
+    // Some browsers silently drop speechSynthesis.speak() calls that aren't
+    // triggered by a user gesture (autoplay restrictions, notably iOS
+    // Safari). If nothing appears to be speaking shortly after an attempt,
+    // retry once on the first tap anywhere — replaying whatever was last
+    // passed to say(), even when that attempt started out with no text at
+    // all (dynamic-instruction pages like doubles/stamp-shapes only learn
+    // their text once startRound() calls say(), which can itself be the
+    // very first, gesture-less call).
     function armAutoplayRetry() {
-      // Some browsers silently drop speechSynthesis.speak() calls that
-      // aren't triggered by a user gesture. If nothing appears to be
-      // speaking shortly after our attempt, retry once on the first tap.
-      setTimeout(() => {
+      if (retryPending) return;
+      clearTimeout(retryTimer);
+      retryTimer = setTimeout(() => {
         if (!window.speechSynthesis) return;
         if (window.speechSynthesis.speaking || window.speechSynthesis.pending) return;
-        const retry = () => { document.removeEventListener('pointerdown', retry); speakNow(currentText); };
+        retryPending = true;
+        const retry = () => {
+          retryPending = false;
+          document.removeEventListener('pointerdown', retry);
+          speakNow(lastSpoken);
+        };
         document.addEventListener('pointerdown', retry, { once: true });
       }, 300);
+    }
+
+    function speakNow(text) {
+      if (!text) return;
+      lastSpoken = text;
+      window.BlockEngine.speak(text);
+      armAutoplayRetry();
     }
 
     function say(text) {
@@ -157,9 +172,10 @@
     }
 
     // (a) speak once, right away (this is called from a page's init(), which
-    // itself runs after DOMContentLoaded + i18n.ready()).
-    const initial = resolveInitialText();
-    if (initial) { speakNow(initial); armAutoplayRetry(); }
+    // itself runs after DOMContentLoaded + i18n.ready()). Pages with no
+    // instructionKey (dynamic instruction text) have nothing to speak yet —
+    // their first startRound() -> say(text) call arms the retry instead.
+    speakNow(resolveInitialText());
 
     // (b) round 🔊 button that re-speaks the current instruction on tap.
     const header = document.querySelector('.activity-header');
@@ -170,7 +186,7 @@
       btn.textContent = '🔊';
       const label = (window.i18n && window.i18n.t('buttons.listen')) || 'Hear instructions';
       btn.setAttribute('aria-label', label);
-      btn.addEventListener('click', () => say(currentText || resolveInitialText()));
+      btn.addEventListener('click', () => say(lastSpoken || resolveInitialText()));
       header.appendChild(btn);
     }
 
