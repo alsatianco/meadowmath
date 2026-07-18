@@ -311,7 +311,7 @@
   border-radius: 4px; opacity: 0; transition: opacity .15s;
 }
 .nb-creature:hover .nb-seam, .nb-seam:focus-visible { opacity: 1; }
-.nb-seam--row { left: -6%; width: 112%; height: 14px; top: calc(var(--nb-seam-pos) * (100% / var(--nb-rows)) - 7px); }
+.nb-seam--row { left: -6%; width: 112%; height: 14px; top: calc(9px + var(--nb-seam-pos) * ((100% - 9px) / var(--nb-rows)) - 7px); }
 .nb-seam--col { top: -6%; height: 112%; width: 14px; left: calc(var(--nb-seam-pos) * (100% / var(--nb-cols)) - 7px); }
 @media (pointer: coarse) { .nb-seam { opacity: .55; } }
 /* drag states */

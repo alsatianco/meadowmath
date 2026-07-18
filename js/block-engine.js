@@ -287,6 +287,7 @@
     const root = el('div', 'nb-group nb-silhouette');
     root.dataset.value = value;
     const body = el('div', 'nb-creature nb-creature--ghost');
+    body.dataset.value = value;
     body.style.setProperty('--nb-color', color);
     body.style.setProperty('--nb-cols', cols);
     body.style.setProperty('--nb-rows', rows);
@@ -312,7 +313,10 @@
 
   function makeSplittable(groupEl, onPick) {
     const creature = groupEl.classList.contains('nb-creature') ? groupEl : groupEl.querySelector('.nb-creature');
-    const value = parseInt(creature.dataset.value, 10);
+    const rawValue = creature.dataset.value !== undefined ? creature.dataset.value : groupEl.dataset.value;
+    const value = parseInt(rawValue, 10);
+    if (!Number.isFinite(value) || value < 2) return;
+    creature.querySelectorAll('.nb-seam').forEach(seamEl => seamEl.remove());
     seamSplits(value).forEach(seam => {
       const hit = el('button', 'nb-seam nb-seam--' + seam.axis);
       hit.type = 'button';
@@ -324,7 +328,9 @@
   }
 
   function makeDraggable(dragEl, targets, onDrop) {
+    targets = Array.from(targets);
     let startX = 0, startY = 0, moved = false;
+    let cleanupSelectionListeners = () => {};
     const hitTarget = (x, y) => targets.find(t => {
       const r = t.getBoundingClientRect();
       return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
@@ -341,20 +347,34 @@
       if (Math.abs(dx) + Math.abs(dy) > 6) moved = true;
       dragEl.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
     });
+    dragEl.addEventListener('pointercancel', () => {
+      dragEl.classList.remove('nb-dragging');
+      dragEl.style.transform = '';
+    });
     dragEl.addEventListener('pointerup', e => {
       dragEl.classList.remove('nb-dragging');
       dragEl.style.transform = '';
       const target = hitTarget(e.clientX, e.clientY);
       if (moved && target) { onDrop(target); return; }
       if (!moved) { // tap-to-select fallback
+        // Always drop any listeners from a previous selection cycle before
+        // toggling — this is the only place selection state changes, so it
+        // guarantees at most one set of target listeners exists at a time.
+        cleanupSelectionListeners();
+        cleanupSelectionListeners = () => {};
         dragEl.classList.toggle('nb-selected');
         if (dragEl.classList.contains('nb-selected')) {
           const chosen = ev => {
             const t = targets.find(x => x === ev.currentTarget);
-            if (t) { dragEl.classList.remove('nb-selected'); cleanup(); onDrop(t); }
+            if (t) {
+              dragEl.classList.remove('nb-selected');
+              cleanupSelectionListeners();
+              cleanupSelectionListeners = () => {};
+              onDrop(t);
+            }
           };
-          const cleanup = () => targets.forEach(t => t.removeEventListener('click', chosen));
-          targets.forEach(t => t.addEventListener('click', chosen, { once: true }));
+          targets.forEach(t => t.addEventListener('click', chosen));
+          cleanupSelectionListeners = () => targets.forEach(t => t.removeEventListener('click', chosen));
         }
       }
     });
