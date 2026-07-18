@@ -6,6 +6,7 @@
   <title>BlockEngine Visual Test</title>
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/block-engine.css">
+  <link rel="stylesheet" href="../css/nf-widgets.css">
   <style>
     body { font-family: sans-serif; padding: 24px; background: #f8fafc; }
     .row { display: flex; flex-wrap: wrap; gap: 18px 22px; align-items: flex-end; margin: 18px 0; overflow: visible; }
@@ -44,8 +45,44 @@
   <div class="row" id="draggables" style="position: relative;"></div>
   <pre id="drag-log">(drag or tap-then-tap a creature onto the target)</pre>
 
+  <h2>NFWidgets — bond diagram (down / up)</h2>
+  <div class="row" id="nf-bonds"></div>
+
+  <h2>NFWidgets — fruit rows (3 / 5 / 8)</h2>
+  <div class="row" id="nf-fruits"></div>
+
+  <h2>NFWidgets — blockzilla (comparison monster)</h2>
+  <div class="row" id="nf-zilla-wrap"></div>
+  <div>
+    <button id="nf-zilla-left">point left (left bigger)</button>
+    <button id="nf-zilla-right">point right (right bigger)</button>
+    <button id="nf-zilla-equal">point equal</button>
+    <button id="nf-zilla-reset">reset (point null)</button>
+  </div>
+
+  <h2>NFWidgets — staircase (5 steps, creature on step 3)</h2>
+  <div class="row" id="nf-stairs-wrap"></div>
+
+  <h2>NFWidgets — host badge</h2>
+  <div class="row" id="nf-host-wrap"></div>
+
+  <h2>NFWidgets — make-10 rainbow</h2>
+  <div class="row" id="nf-rainbow-wrap"></div>
+  <div>
+    <button id="nf-rainbow-arc0">arc(0)</button>
+    <button id="nf-rainbow-arc1">arc(1)</button>
+    <button id="nf-rainbow-arc2">arc(2)</button>
+    <button id="nf-rainbow-arc3">arc(3)</button>
+    <button id="nf-rainbow-arc4">arc(4)</button>
+    <button id="nf-rainbow-arc5">arc(5)</button>
+  </div>
+
+  <h2>NFWidgets — stamps</h2>
+  <div class="row" id="nf-stamps-wrap"></div>
+
   <script src="../js/storage.js"></script>
   <script src="../js/block-engine.js"></script>
+  <script src="activities/nf-widgets.js"></script>
   <script>
     const all = document.getElementById('all');
     for (let n = 0; n <= 20; n++) {
@@ -121,6 +158,63 @@
     BlockEngine.makeDraggable(groupB, [dropTarget], target => {
       dragLog.textContent = '4 dropped on ' + target.id;
     });
+
+    // ---- NFWidgets: bond diagram (down + up) ----
+    const nfBonds = document.getElementById('nf-bonds');
+    const bondDown = NFWidgets.bondDiagram(nfBonds, { direction: 'down' });
+    bondDown.top.textContent = '5';
+    bondDown.left.textContent = '2';
+    bondDown.right.textContent = '3';
+    bondDown.equation.textContent = '2 + 3 = 5';
+    const bondUp = NFWidgets.bondDiagram(nfBonds, { direction: 'up' });
+    bondUp.top.textContent = '7';
+    bondUp.left.textContent = '4';
+    bondUp.right.textContent = '3';
+    bondUp.equation.textContent = '4 + 3 = 7';
+
+    // ---- NFWidgets: fruit rows (3 / 5 / 8) ----
+    const nfFruits = document.getElementById('nf-fruits');
+    [3, 5, 8].forEach(count => {
+      const cell = document.createElement('div'); cell.className = 'cell';
+      NFWidgets.fruitRow(cell, { count, kind: '🍎' });
+      const label = document.createElement('div');
+      label.textContent = String(count);
+      cell.appendChild(label);
+      nfFruits.appendChild(cell);
+    });
+
+    // ---- NFWidgets: blockzilla comparer ----
+    const nfZillaWrap = document.getElementById('nf-zilla-wrap');
+    const zilla = NFWidgets.blockzilla(nfZillaWrap);
+    document.getElementById('nf-zilla-left').onclick = () => zilla.point('left');
+    document.getElementById('nf-zilla-right').onclick = () => zilla.point('right');
+    document.getElementById('nf-zilla-equal').onclick = () => zilla.point('equal');
+    document.getElementById('nf-zilla-reset').onclick = () => zilla.point(null);
+
+    // ---- NFWidgets: staircase 5 steps, creature on slot 3 ----
+    const nfStairsWrap = document.getElementById('nf-stairs-wrap');
+    const stairs = NFWidgets.staircase(nfStairsWrap, { steps: 5 });
+    BlockEngine.render(stairs.slot(3), { value: 3 });
+
+    // ---- NFWidgets: host badge ----
+    const nfHostWrap = document.getElementById('nf-host-wrap');
+    const host = NFWidgets.hostBadge(nfHostWrap, { value: 3, text: 'Xin chào! Mình có 3 khối.' });
+    host.say('Cùng đếm nhé!');
+
+    // ---- NFWidgets: make-10 rainbow ----
+    const nfRainbowWrap = document.getElementById('nf-rainbow-wrap');
+    const rainbow = NFWidgets.rainbow(nfRainbowWrap);
+    document.getElementById('nf-rainbow-arc0').onclick = () => rainbow.arc(0);
+    document.getElementById('nf-rainbow-arc1').onclick = () => rainbow.arc(1);
+    document.getElementById('nf-rainbow-arc2').onclick = () => rainbow.arc(2);
+    document.getElementById('nf-rainbow-arc3').onclick = () => rainbow.arc(3);
+    document.getElementById('nf-rainbow-arc4').onclick = () => rainbow.arc(4);
+    document.getElementById('nf-rainbow-arc5').onclick = () => rainbow.arc(5);
+
+    // ---- NFWidgets: stamps ----
+    const nfStampsWrap = document.getElementById('nf-stamps-wrap');
+    NFWidgets.stamp(nfStampsWrap, { cells: [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1]], color: '#75b957' });
+    NFWidgets.stamp(nfStampsWrap, { cells: [[0, 0], [0, 1], [1, 0], [1, 1], [2, 0], [2, 1]], color: '#e3a83f' });
   </script>
 </body>
 </html>
