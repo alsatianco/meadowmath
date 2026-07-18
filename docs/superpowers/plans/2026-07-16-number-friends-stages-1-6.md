@@ -1219,3 +1219,14 @@ ids: who-is-bigger, stamp-shapes, split-intro, split-free, split-name, missing-p
 - [ ] **Step 3:** `node --test js/block-engine.test.js` → PASS.
 - [ ] **Step 4: Run the `verify` skill** (drive the real flow end-to-end) before the final commit.
 - [ ] **Step 5: Commit** `feat(number-friends): sitemap for 28 new pages + QA fixes`.
+
+---
+
+## Task 14: Hub watercolor restyle (user mockup 2026-07-17)
+
+**Files:** Modify `number-friends/index.html`, `number-friends/number-friends.css`, `number-friends/number-friends.js` (chip/stage markup only).
+
+**Goal:** Restyle the hub to the user's watercolor-meadow mockup: soft watercolor sky/meadow backdrop (CSS gradients + subtle texture), stitched-border cream title card ("NUMBER FRIENDS" in soft rainbow letters + tagline), per-stage pastel band tints (stage-0 sage, 1 butter-yellow, 2 lavender, 3 cream, 4 rose, 5/6 tan until unlocked-style), circular medallion badge at each band's left (icon inside pastel disc), activity chips as white rounded TILES (icon large on top, label beneath, soft shadow), decorative block-engine creatures (render 4, plus-shaped 5, tall stacks) with existing leaf/star decors placed beside bands, emoji accents (🌳🦋🌼), wooden "Let's play" sign at the footer, locked stages shown as slim tan bars with 🔒 + "Coming soon". Responsive; reduced-motion safe; no image assets (CSS/emoji only); keep all existing functionality (mission chips, stars, i18n, languageChanged re-render).
+
+- [ ] Implement CSS + markup changes; verify with Playwright screenshot vs mockup; adjust until close.
+- [ ] Commit `feat(number-friends): watercolor meadow hub restyle`.
