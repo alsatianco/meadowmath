@@ -3,15 +3,15 @@ const test = require('node:test');
 const assert = require('node:assert');
 const BlockEngine = require('./block-engine.js');
 
-test('COLORS covers 0..10', () => {
-  for (let n = 0; n <= 10; n++) {
-    assert.match(BlockEngine.COLORS[n], /^#[0-9a-f]{6}$/i, `color for ${n}`);
+test('COLORS covers 0..20', () => {
+  for (let numberValue = 0; numberValue <= 20; numberValue++) {
+    assert.match(BlockEngine.COLORS[numberValue], /^#[0-9a-f]{6}$/i, `color for ${numberValue}`);
   }
 });
 
 test('patternCoords returns the right number of cells', () => {
-  for (let n = 0; n <= 10; n++) {
-    assert.strictEqual(BlockEngine.patternCoords(n).length, n, `count for ${n}`);
+  for (let numberValue = 0; numberValue <= 20; numberValue++) {
+    assert.strictEqual(BlockEngine.patternCoords(numberValue).length, numberValue, `count for ${numberValue}`);
   }
 });
 
@@ -23,10 +23,10 @@ test('8 is two rows of four', () => {
   assert.deepStrictEqual(BlockEngine.gridSize(8), { rows: 2, cols: 4 });
 });
 
-test('5 is a dice quincunx (corners + center of 3x3)', () => {
-  const key = c => `${c.r},${c.c}`;
+test('5 is a plus shape around a center block', () => {
+  const key = cell => `${cell.r},${cell.c}`;
   const set = new Set(BlockEngine.patternCoords(5).map(key));
-  ['0,0', '0,2', '1,1', '2,0', '2,2'].forEach(k => assert.ok(set.has(k), `has ${k}`));
+  ['0,1', '1,0', '1,1', '1,2', '2,1'].forEach(position => assert.ok(set.has(position), `has ${position}`));
 });
 
 test('10 is a 2x5 ten-frame', () => {
@@ -34,11 +34,17 @@ test('10 is a 2x5 ten-frame', () => {
   assert.strictEqual(BlockEngine.patternCoords(10).length, 10);
 });
 
-test('7 is six (2x3) plus one centered below', () => {
-  const key = c => `${c.r},${c.c}`;
+test('7 is six in a 2x3 body plus one cap block', () => {
+  const key = cell => `${cell.r},${cell.c}`;
   const set = new Set(BlockEngine.patternCoords(7).map(key));
-  assert.ok(set.has('2,1'), 'the extra block sits below center');
-  assert.deepStrictEqual(BlockEngine.gridSize(7), { rows: 3, cols: 3 });
+  assert.ok(set.has('0,0'), 'the cap block sits above the body');
+  ['1,0', '1,1', '2,0', '2,1', '3,0', '3,1'].forEach(position => assert.ok(set.has(position), `has body cell ${position}`));
+  assert.deepStrictEqual(BlockEngine.gridSize(7), { rows: 4, cols: 2 });
+});
+
+test('20 is four clean rows of five', () => {
+  assert.deepStrictEqual(BlockEngine.gridSize(20), { rows: 4, cols: 5 });
+  assert.strictEqual(BlockEngine.patternCoords(20).length, 20);
 });
 
 test('validSplits lists ordered partitions into two positive parts', () => {

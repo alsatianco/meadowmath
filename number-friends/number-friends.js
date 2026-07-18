@@ -12,6 +12,7 @@ const NumberFriendsHub = {
       return;
     }
     this.render();
+    this.renderHero();
     document.addEventListener('languageChanged', () => this.render());
   },
   t(key, fallback) {
@@ -45,6 +46,19 @@ const NumberFriendsHub = {
         </div>
         ${chips}
       </section>`;
+  },
+  renderHero() {
+    const showcase = document.getElementById('number-friends-showcase');
+    if (!showcase || !window.BlockEngine) return;
+    window.BlockEngine.clear(showcase);
+    [
+      { value: 4, className: 'nf-pal-one' },
+      { value: 5, className: 'nf-pal-two' },
+      { value: 7, className: 'nf-pal-five' }
+    ].forEach(friend => {
+      const node = window.BlockEngine.render(showcase, { value: friend.value });
+      node.classList.add('nf-showcase-friend', friend.className);
+    });
   },
   renderChip(item, icon, isIntro) {
     const title = this.t(`section.activities.${item.id}.title`, item.id);

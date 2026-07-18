@@ -7,28 +7,95 @@
   'use strict';
 
   const COLORS = {
-    0: '#cbd5e1', 1: '#e23b3b', 2: '#f5872b', 3: '#f5c518', 4: '#3fb64a',
-    5: '#27b6d6', 6: '#3b6fe2', 7: '#7c4dd6', 8: '#e23b9b', 9: '#1faf8f', 10: '#f0a818'
+    0: '#c9c0ad', 1: '#d95f4f', 2: '#ef8a3d', 3: '#f1bd3a', 4: '#75b957',
+    5: '#46a7d8', 6: '#8f67b8', 7: '#8f67b8', 8: '#dd5e7e', 9: '#9b9788', 10: '#4aa889',
+    11: '#d66f55', 12: '#e7aa42', 13: '#58a967', 14: '#4594c9', 15: '#8a72c6',
+    16: '#c46aa5', 17: '#cf7d38', 18: '#64a86e', 19: '#818b92', 20: '#5676c8'
   };
 
-  // Canonical subitizing layouts (spec §3.1). Each entry: list of {r,c} grid cells.
+  const FRIEND_STYLES = {
+    0: { accent: '#8b8171', expression: 'soft', decor: 'none' },
+    1: { accent: '#f6b7a0', expression: 'bright', decor: 'tuft' },
+    2: { accent: '#f5c273', expression: 'soft', decor: 'sprout' },
+    3: { accent: '#ffe08a', expression: 'bright', decor: 'star' },
+    4: { accent: '#b7dc75', expression: 'calm', decor: 'brows' },
+    5: { accent: '#9bd4e7', expression: 'bright', decor: 'spark' },
+    6: { accent: '#d4a6e3', expression: 'happy', decor: 'lashes' },
+    7: {
+      accent: '#ffd060', expression: 'happy', decor: 'crayons',
+      cubes: ['#9c68ad', '#f07b28', '#f4c34e', '#78b94d', '#46a7d8', '#8f67b8', '#9c68ad']
+    },
+    8: { accent: '#f4a3bd', expression: 'calm', decor: 'bow' },
+    9: { accent: '#d2c9ad', expression: 'soft', decor: 'brows' },
+    10: { accent: '#a7d6bd', expression: 'bright', decor: 'spark' },
+    11: { accent: '#f6b7a0', expression: 'happy', decor: 'tuft' },
+    12: { accent: '#ffd37c', expression: 'soft', decor: 'sprout' },
+    13: { accent: '#a7d887', expression: 'bright', decor: 'star' },
+    14: { accent: '#9fd3f1', expression: 'happy', decor: 'spark' },
+    15: { accent: '#cbb3ef', expression: 'calm', decor: 'bow' },
+    16: { accent: '#efa9ce', expression: 'soft', decor: 'lashes' },
+    17: { accent: '#f4c16a', expression: 'happy', decor: 'crayons' },
+    18: { accent: '#a8d48c', expression: 'bright', decor: 'sprout' },
+    19: { accent: '#cfc7b1', expression: 'calm', decor: 'brows' },
+    20: { accent: '#aebce9', expression: 'happy', decor: 'star' }
+  };
+
+  function rowCells(rowIndex, count, startColumn) {
+    const cells = [];
+    for (let columnIndex = 0; columnIndex < count; columnIndex++) {
+      cells.push({ r: rowIndex, c: columnIndex + (startColumn || 0) });
+    }
+    return cells;
+  }
+
+  function rectangleCells(rowCount, columnCount, startRow) {
+    const cells = [];
+    for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+      cells.push(...rowCells(rowIndex + (startRow || 0), columnCount));
+    }
+    return cells;
+  }
+
+  function cellSize(cells) {
+    if (cells.length === 0) return { rows: 0, cols: 0 };
+    return {
+      rows: Math.max(...cells.map(cell => cell.r)) + 1,
+      cols: Math.max(...cells.map(cell => cell.c)) + 1
+    };
+  }
+
+  function shiftedCells(cells, rowOffset, columnOffset) {
+    return cells.map(cell => ({ r: cell.r + rowOffset, c: cell.c + columnOffset }));
+  }
+
+  // Canonical hand-drawn layouts. Each entry is a list of {r,c} grid cells.
   const PATTERNS = {
     0: [],
     1: [{ r: 0, c: 0 }],
-    2: [{ r: 0, c: 0 }, { r: 0, c: 1 }],
-    3: [{ r: 0, c: 0 }, { r: 0, c: 1 }, { r: 0, c: 2 }],
-    4: [{ r: 0, c: 0 }, { r: 0, c: 1 }, { r: 1, c: 0 }, { r: 1, c: 1 }],
-    5: [{ r: 0, c: 0 }, { r: 0, c: 2 }, { r: 1, c: 1 }, { r: 2, c: 0 }, { r: 2, c: 2 }],
-    6: [{ r: 0, c: 0 }, { r: 0, c: 1 }, { r: 0, c: 2 }, { r: 1, c: 0 }, { r: 1, c: 1 }, { r: 1, c: 2 }],
-    7: [{ r: 0, c: 0 }, { r: 0, c: 1 }, { r: 0, c: 2 }, { r: 1, c: 0 }, { r: 1, c: 1 }, { r: 1, c: 2 }, { r: 2, c: 1 }],
-    8: [{ r: 0, c: 0 }, { r: 0, c: 1 }, { r: 0, c: 2 }, { r: 0, c: 3 }, { r: 1, c: 0 }, { r: 1, c: 1 }, { r: 1, c: 2 }, { r: 1, c: 3 }],
-    9: [{ r: 0, c: 0 }, { r: 0, c: 1 }, { r: 0, c: 2 }, { r: 1, c: 0 }, { r: 1, c: 1 }, { r: 1, c: 2 }, { r: 2, c: 0 }, { r: 2, c: 1 }, { r: 2, c: 2 }],
-    10: [{ r: 0, c: 0 }, { r: 0, c: 1 }, { r: 0, c: 2 }, { r: 0, c: 3 }, { r: 0, c: 4 }, { r: 1, c: 0 }, { r: 1, c: 1 }, { r: 1, c: 2 }, { r: 1, c: 3 }, { r: 1, c: 4 }]
+    2: rowCells(0, 2),
+    3: rowCells(0, 3),
+    4: rectangleCells(2, 2),
+    5: [{ r: 0, c: 1 }, { r: 1, c: 0 }, { r: 1, c: 1 }, { r: 1, c: 2 }, { r: 2, c: 1 }],
+    6: rectangleCells(2, 3),
+    7: [{ r: 0, c: 0, x: '50%' }, ...rectangleCells(3, 2, 1)],
+    8: rectangleCells(2, 4),
+    9: rectangleCells(3, 3),
+    10: rectangleCells(2, 5)
   };
+
+  for (let numberValue = 11; numberValue <= 20; numberValue++) {
+    const extraCells = PATTERNS[numberValue - 10];
+    const extraSize = cellSize(extraCells);
+    const centeredColumn = Math.max(0, Math.floor((5 - extraSize.cols) / 2));
+    PATTERNS[numberValue] = [
+      ...rectangleCells(2, 5),
+      ...shiftedCells(extraCells, 2, centeredColumn)
+    ];
+  }
 
   function patternCoords(n) {
     const cells = PATTERNS[n];
-    if (!cells) throw new RangeError('patternCoords supports 0..10, got ' + n);
+    if (!cells) throw new RangeError('patternCoords supports 0..20, got ' + n);
     return cells.map(c => ({ r: c.r, c: c.c }));
   }
 
@@ -122,35 +189,53 @@
 
   function buildCreature(value, color) {
     const size = gridSize(value);
+    const friendStyle = FRIEND_STYLES[value] || FRIEND_STYLES[10];
     const wrap = el('div', 'nb-creature');
+    wrap.classList.add('nb-creature--value-' + value, 'nb-expression-' + friendStyle.expression);
+    if (value > 10) wrap.classList.add('nb-creature--teen');
+    if (size.cols >= 5) wrap.classList.add('nb-creature--wide');
+    if (size.rows >= 4) wrap.classList.add('nb-creature--tall');
     wrap.dataset.value = value;
+    wrap.setAttribute('aria-label', 'Number ' + value + ' block friend');
     wrap.style.setProperty('--nb-color', color);
+    wrap.style.setProperty('--nb-accent', friendStyle.accent);
     wrap.style.setProperty('--nb-cols', size.cols || 1);
     wrap.style.setProperty('--nb-rows', size.rows || 1);
-    patternCoords(value).forEach(cell => {
+    PATTERNS[value].forEach((cell, index) => {
       const cube = el('div', 'nb-cube');
       cube.style.gridRowStart = cell.r + 1;
       cube.style.gridColumnStart = cell.c + 1;
+      if (cell.x) cube.style.setProperty('--nb-cell-shift-x', cell.x);
+      if (friendStyle.cubes && friendStyle.cubes[index]) cube.style.setProperty('--nb-cell-color', friendStyle.cubes[index]);
+      cube.style.setProperty('--nb-tilt', (((index + value) % 3) - 1) * 0.55 + 'deg');
       wrap.appendChild(cube);
     });
+    if (friendStyle.decor !== 'none') {
+      const decor = el('div', 'nb-decor nb-decor--' + friendStyle.decor);
+      if (friendStyle.decor === 'crayons') {
+        ['#ef5a45', '#f0b641', '#8abf4e', '#44a2d4', '#8a66bc'].forEach(crayonColor => {
+          const crayon = el('span');
+          crayon.style.setProperty('--nb-crayon-color', crayonColor);
+          decor.appendChild(crayon);
+        });
+      }
+      wrap.appendChild(decor);
+    }
     const face = el('div', 'nb-face');
     face.innerHTML = '<span class="nb-eye"></span><span class="nb-eye"></span><span class="nb-mouth"></span>';
     wrap.appendChild(face);
+    const badge = el('div', 'nb-number-badge');
+    badge.textContent = value;
+    wrap.appendChild(badge);
     return wrap;
   }
 
   function render(container, opts) {
     const value = opts.value;
-    const color = opts.color || COLORS[Math.min(value, 10)] || COLORS[10];
+    const color = opts.color || COLORS[value] || COLORS[Math.min(value, 20)] || COLORS[10];
     const root = el('div', 'nb-group');
-    if (value > 10) {
-      const ten = buildCreature(10, COLORS[10]);
-      ten.classList.add('nb-creature--ten');
-      root.appendChild(ten);
-      root.appendChild(buildCreature(value - 10, color));
-    } else {
-      root.appendChild(buildCreature(value, color));
-    }
+    root.classList.add('nb-group--value-' + value);
+    root.appendChild(buildCreature(value, color));
     if (opts.scale && opts.scale !== 1) root.style.transform = `scale(${opts.scale})`;
     if (opts.label != null) {
       const lab = el('div', 'nb-label');
