@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlockEngine Visual Test</title>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/block-engine.css">
+  <style>
+    body { font-family: sans-serif; padding: 24px; background: #f8fafc; }
+    .row { display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-end; margin: 18px 0; }
+    .cell { text-align: center; }
+    button { font-size: 1rem; padding: 8px 14px; margin: 4px; border-radius: 8px; cursor: pointer; }
+    #stage { min-height: 180px; display: flex; gap: 40px; align-items: center; }
+  </style>
+</head>
+<body>
+  <h1>BlockEngine — visual test</h1>
+  <h2>render() 0–20</h2>
+  <div class="row" id="all"></div>
+
+  <h2>split / merge / audio</h2>
+  <div>
+    <button id="btn-split">split 8 → 4 + 4</button>
+    <button id="btn-merge">merge 3 + 2 → 5</button>
+    <button id="btn-speak">speak "năm"</button>
+    <button id="btn-pop">sfx pop</button>
+    <button id="btn-snap">sfx snap</button>
+    <button id="btn-mute">toggle mute</button>
+  </div>
+  <div id="stage"></div>
+
+  <script src="../js/storage.js"></script>
+  <script src="../js/block-engine.js"></script>
+  <script>
+    const all = document.getElementById('all');
+    for (let n = 0; n <= 20; n++) {
+      const cell = document.createElement('div'); cell.className = 'cell';
+      BlockEngine.render(cell, { value: n, label: n });
+      all.appendChild(cell);
+    }
+    const stage = document.getElementById('stage');
+    document.getElementById('btn-split').onclick = async () => {
+      stage.innerHTML = '';
+      const c = BlockEngine.render(stage, { value: 8 });
+      await BlockEngine.split(c, [4, 4]);
+    };
+    document.getElementById('btn-merge').onclick = async () => {
+      stage.innerHTML = '';
+      const a = BlockEngine.render(stage, { value: 3 });
+      const b = BlockEngine.render(stage, { value: 2 });
+      await BlockEngine.merge(a, b);
+    };
+    document.getElementById('btn-speak').onclick = () => BlockEngine.speak('năm');
+    document.getElementById('btn-pop').onclick = () => BlockEngine.sfx('pop');
+    document.getElementById('btn-snap').onclick = () => BlockEngine.sfx('snap');
+    document.getElementById('btn-mute').onclick = () => BlockEngine.setMuted(!BlockEngine.isMuted());
+  </script>
+</body>
+</html>

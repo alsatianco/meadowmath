@@ -1,0 +1,64 @@
+/* css/block-engine.css — shared visuals for the Number Friends block engine */
+.nb-group { display: inline-flex; flex-direction: column; align-items: center; gap: 6px; }
+
+.nb-creature {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--nb-cols), 1fr);
+  grid-template-rows: repeat(var(--nb-rows), 1fr);
+  gap: 4px;
+  --nb-cube-size: 34px;
+}
+
+.nb-cube {
+  width: var(--nb-cube-size);
+  height: var(--nb-cube-size);
+  border-radius: 7px;
+  background:
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--nb-color) 78%, white) 0%,
+      var(--nb-color) 55%,
+      color-mix(in srgb, var(--nb-color) 70%, black) 100%);
+  border: 2px solid color-mix(in srgb, var(--nb-color) 65%, black);
+  box-shadow: inset 0 3px 0 rgba(255, 255, 255, .35),
+              0 2px 0 color-mix(in srgb, var(--nb-color) 55%, black);
+}
+
+.nb-face {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; pointer-events: none;
+}
+.nb-no-face .nb-face { display: none; }
+.nb-eye { width: 9px; height: 9px; border-radius: 50%; background: #1f2937; box-shadow: 0 0 0 3px #fff; }
+.nb-mouth {
+  position: absolute; bottom: 28%; width: 16px; height: 8px;
+  border-bottom: 3px solid #1f2937; border-radius: 0 0 16px 16px;
+}
+
+.nb-creature--ten { --nb-cube-size: 26px; }
+
+.nb-label {
+  font-family: var(--font-secondary, sans-serif);
+  font-weight: 700; font-size: 1.5rem;
+  color: var(--color-neutral-700, #334155);
+}
+
+/* split / merge / celebrate */
+.nb-split { display: flex; gap: 8px; align-items: center; }
+.nb-split--animate > :first-child { animation: nb-slide-left .45s ease both; }
+.nb-split--animate > :last-child { animation: nb-slide-right .45s ease both; }
+@keyframes nb-slide-left { from { transform: translateX(20px); opacity: .4; } to { transform: translateX(0); opacity: 1; } }
+@keyframes nb-slide-right { from { transform: translateX(-20px); opacity: .4; } to { transform: translateX(0); opacity: 1; } }
+.nb-merge-a { animation: nb-nudge-right .45s ease both; }
+.nb-merge-b { animation: nb-nudge-left .45s ease both; }
+@keyframes nb-nudge-right { to { transform: translateX(10px); } }
+@keyframes nb-nudge-left { to { transform: translateX(-10px); } }
+.nb-celebrate { animation: nb-bounce .6s ease; }
+@keyframes nb-bounce { 0%, 100% { transform: scale(1); } 40% { transform: scale(1.12); } 70% { transform: scale(.96); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .nb-creature, .nb-split--animate > *, .nb-merge-a, .nb-merge-b, .nb-celebrate {
+    transition: none !important; animation: none !important;
+  }
+}
