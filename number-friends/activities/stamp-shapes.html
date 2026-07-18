@@ -97,7 +97,7 @@
       2: [[[0,0],[1,0]], [[0,0],[1,1]]],
       3: [[[0,0],[1,0],[1,1]], [[0,0],[1,1],[2,2]], [[0,0],[0,1],[1,0]]],
       4: [[[0,0],[0,1],[0,2],[0,3]], [[0,1],[1,0],[1,1],[2,1]], [[0,0],[0,1],[1,1],[1,2]]],
-      5: [[[0,0],[0,1],[0,2],[1,0],[1,1]], [[0,0],[0,1],[0,2],[0,3],[0,4]], [[0,1],[1,0],[1,1],[1,2],[2,1]]],
+      5: [[[0,0],[0,1],[0,2],[1,0],[1,1]], [[0,0],[0,1],[0,2],[0,3],[0,4]], [[0,0],[0,1],[1,1],[1,2],[2,2]]],
       6: [[[0,0],[0,1],[1,0],[1,1],[2,0],[2,1]], [[0,0],[0,1],[0,2],[1,2],[1,3],[1,4]], [[0,2],[1,1],[1,2],[2,0],[2,1],[2,2]]]
     };
     function pickStamp(n) { const v = ALT_STAMPS[n]; return v[Math.floor(Math.random() * v.length)]; }
@@ -131,7 +131,7 @@
         if (this.isAnswered) return; this.isAnswered = true;
         this.disableButtons(this.choices);
         const ok = v === this.answer;
-        const msg = i18n.t('section.activities.stamp-shapes.' + (ok ? 'correct' : 'incorrect')).replace('{{n}}', this.n);
+        const msg = i18n.t('section.activities.stamp-shapes.' + (ok ? 'correct' : 'incorrect')).replace(/\{\{n\}\}/g, this.n);
         if (ok) { btn.classList.add('correct'); this.incrementCorrect(); BlockEngine.sfx('correct'); }
         else {
           btn.classList.add('incorrect'); this.incrementIncorrect(); BlockEngine.sfx('wrong');
