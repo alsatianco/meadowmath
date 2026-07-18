@@ -113,6 +113,7 @@
         this.choices = document.getElementById('choices');
         this.found = document.getElementById('found');
         NFWidgets.hostBadge(document.querySelector('.activity-header'), { value: 6, text: i18n.t('section.stages.stage-3.hostLine') });
+        NFWidgets.audioGuide({ instructionKey: 'section.activities.all-bonds.instruction' });
         this.ns = [4, 5, 6];
         this.nextRound();
       }
@@ -169,6 +170,7 @@
           BlockEngine.sfx('wrong');
           const msg = i18n.t('section.activities.all-bonds.wrongPair').replace(/\{\{n\}\}/g, this.n);
           this.showFeedback(msg, true, 1200);
+          BlockEngine.speak(msg);
         }
       }
       renderFoundPair(pair) {

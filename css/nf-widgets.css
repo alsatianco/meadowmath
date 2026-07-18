@@ -22,18 +22,18 @@
 .nf-fruit { display: flex; align-items: center; justify-content: center; transition: transform .3s, opacity .3s; }
 .nf-fruit--gone { transform: translateY(60px) scale(.4); opacity: 0; }
 
-/* blockzilla: round green face, googly eyes, wedge mouth that rotates */
+/* blockzilla: round green face, googly eyes, mouth shows an unambiguous
+   glyph instead of a wedge shape. Convention (see NFWidgets.blockzilla):
+   left side bigger -> '>' (opening faces left), right side bigger -> '<'
+   (opening faces right), equal -> '='. */
 .nf-zilla { position: relative; width: 110px; height: 110px; border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, #9ccf6d, #5f8f3e); display: flex; justify-content: center;
   gap: 16px; padding-top: 22px; box-shadow: 0 4px 0 #3f5e28, 0 6px 10px #0003; }
 .nf-zilla-eye { width: 26px; height: 26px; border-radius: 50%; background: #fff; position: relative; }
 .nf-zilla-eye::after { content: ''; position: absolute; inset: 30% 30% auto auto; width: 10px; height: 10px; border-radius: 50%; background: #222; }
-.nf-zilla-mouth { position: absolute; bottom: 14px; left: 50%; width: 44px; height: 40px;
-  transform: translateX(-50%); background: #35301f;
-  clip-path: polygon(0 50%, 100% 0, 100% 100%); transition: transform .35s, clip-path .35s; }
-.nf-zilla--left  .nf-zilla-mouth { clip-path: polygon(100% 50%, 0 0, 0 100%); }   /* opens left = left is bigger */
-.nf-zilla--right .nf-zilla-mouth { clip-path: polygon(0 50%, 100% 0, 100% 100%); }
-.nf-zilla--equal .nf-zilla-mouth { clip-path: polygon(0 15%, 100% 15%, 100% 38%, 0 38%, 0 62%, 100% 62%, 100% 85%, 0 85%); }
+.nf-zilla-mouth { position: absolute; bottom: 6px; left: 50%; width: 52px; height: 44px;
+  transform: translateX(-50%); display: flex; align-items: center; justify-content: center;
+  font: 900 2.2rem/1 'Chango', Georgia, serif; color: #1f2913; transition: transform .2s; }
 
 /* staircase */
 .nf-stairs { display: flex; align-items: flex-end; gap: 6px; }
@@ -42,9 +42,11 @@
 .nf-stair-num { position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); font-weight: 800; color: #4b372e; }
 .nf-stair-slot { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); }
 
-/* host badge */
+/* host badge — fixed box so the host creature's body isn't clipped,
+   scaled down so a 3-4 row creature fits fully inside it. */
 .nf-host { display: flex; align-items: flex-end; gap: 10px; margin: 8px 0; }
-.nf-host-block .nb-group { transform: scale(.5); transform-origin: bottom left; }
+.nf-host-block { width: 64px; height: 64px; display: flex; align-items: flex-end; overflow: visible; }
+.nf-host-block .nb-group { transform: scale(.34); transform-origin: bottom left; }
 .nf-host-bubble { background: #fff; border: 3px solid #4b372e; border-radius: 14px; padding: 8px 12px;
   font-weight: 700; color: #4b372e; position: relative; max-width: 320px; }
 .nf-host-bubble::before { content: ''; position: absolute; left: -12px; bottom: 12px;
@@ -79,6 +81,14 @@
 
 /* generic stage */
 .nf-stage { min-height: 220px; display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; }
+
+/* audio guide: repeatable "hear instructions" button injected into the header */
+.nf-speak-btn { display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; margin-left: 8px; border: 3px solid #4b372e; border-radius: 50%;
+  background: #fff8e8; font-size: 1.4rem; line-height: 1; cursor: pointer;
+  box-shadow: 0 3px 0 #4b372e33; }
+.nf-speak-btn:hover { background: #ffedc2; }
+.nf-speak-btn:active { transform: translateY(1px); box-shadow: none; }
 
 /* hide overlay bush */
 .nb-hide { position: absolute; inset: -12%; display: flex; align-items: center; justify-content: center;

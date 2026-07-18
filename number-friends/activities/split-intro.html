@@ -110,11 +110,18 @@
           const g = BlockEngine.render(target, { value: 6, label: 6 });
           BlockEngine.makeSplittable(g, seam => BlockEngine.split(g.querySelector('.nb-creature'), seam.parts));
         }
+        if (idx === 4) {
+          // Final teaser step — hint at "joining" with two friends side by side
+          // instead of leaving the stage empty.
+          BlockEngine.render(target, { value: 2, label: 2 });
+          BlockEngine.render(target, { value: 4, label: 4 });
+        }
       }
       function show() {
         const s = steps();
         caption.textContent = s[i] || '';
         scene(i, stage);
+        BlockEngine.speak(s[i] || '');
         const last = i >= s.length - 1;
         btn.textContent = last ? label('buttons.done', 'Done') : label('buttons.next', 'Next');
       }

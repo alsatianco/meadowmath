@@ -91,10 +91,16 @@
   <script src="../../js/navigation.js"></script>
   <script src="../../js/activity-base.js"></script>
   <script src="../../js/block-engine.js"></script>
+  <script src="nf-widgets.js"></script>
   <script>
     class TowerToNumeral extends ActivityBase {
       constructor() { super({ totalRounds: 8, activityId: 'tower-to-numeral', gradeLevel: 'number-friends', autoAdvanceDelay: 1500 }); }
-      init() { super.init(); this.stage = document.getElementById('stage'); this.choices = document.getElementById('choices'); this.nextRound(); }
+      init() {
+        super.init();
+        this.stage = document.getElementById('stage'); this.choices = document.getElementById('choices');
+        NFWidgets.audioGuide({ instructionKey: 'section.activities.tower-to-numeral.instruction' });
+        this.nextRound();
+      }
       startRound() {
         this.n = this.randomInt(1, 10);
         BlockEngine.clear(this.stage);

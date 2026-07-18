@@ -98,6 +98,7 @@
         super.init();
         this.stage = document.getElementById('stage');
         NFWidgets.hostBadge(document.querySelector('.activity-header'), { value: 4, text: i18n.t('section.stages.stage-1.hostLine') });
+        NFWidgets.audioGuide({ instructionKey: 'section.activities.split-free.instruction' });
         this.nextRound();
       }
       startRound() {

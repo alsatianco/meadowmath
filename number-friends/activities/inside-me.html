@@ -100,6 +100,7 @@
         this.stage = document.getElementById('stage');
         this.choices = document.getElementById('choices');
         NFWidgets.hostBadge(document.querySelector('.activity-header'), { value: 6, text: i18n.t('section.stages.stage-3.hostLine') });
+        NFWidgets.audioGuide({ instructionKey: 'section.activities.inside-me.instruction' });
         this.ns = [3, 5, 7, 1];
         this.nextRound();
       }
@@ -147,7 +148,9 @@
           btn.classList.add('incorrect');
           BlockEngine.sfx('wrong');
           if (!this.wrongCounted) { this.wrongCounted = true; this.incrementIncorrect(); }
-          this.showFeedback(i18n.t('section.activities.inside-me.tooBig'), true, 1200);
+          const tooBigMsg = i18n.t('section.activities.inside-me.tooBig');
+          this.showFeedback(tooBigMsg, true, 1200);
+          BlockEngine.speak(tooBigMsg);
         }
       }
       tapNobody(btn) {

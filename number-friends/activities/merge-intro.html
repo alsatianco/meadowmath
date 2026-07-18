@@ -129,6 +129,7 @@
         const s = steps();
         caption.textContent = s[i] || '';
         scene(i, stage);
+        BlockEngine.speak(s[i] || '');
         const last = i >= s.length - 1;
         btn.textContent = last ? label('buttons.done', 'Done') : label('buttons.next', 'Next');
       }

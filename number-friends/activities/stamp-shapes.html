@@ -103,7 +103,12 @@
     function pickStamp(n) { const v = ALT_STAMPS[n]; return v[Math.floor(Math.random() * v.length)]; }
     class StampShapes extends ActivityBase {
       constructor() { super({ totalRounds: 8, activityId: 'stamp-shapes', gradeLevel: 'number-friends', autoAdvanceDelay: 1700 }); }
-      init() { super.init(); this.stage = document.getElementById('stage'); this.choices = document.getElementById('choices'); this.nextRound(); }
+      init() {
+        super.init();
+        this.stage = document.getElementById('stage'); this.choices = document.getElementById('choices');
+        this.audio = NFWidgets.audioGuide({});
+        this.nextRound();
+      }
       startRound() {
         this.n = this.randomInt(2, 6);
         this.odd = this.currentRound % 2 === 1;      // alternate: find-mine / find-the-stranger
@@ -117,7 +122,7 @@
         this.answer = this.odd ? wrongN : this.n;
         const instr = i18n.t('section.activities.stamp-shapes.' + (this.odd ? 'askOdd' : 'askMine')).replace('{{n}}', this.n);
         document.querySelector('.activity-instruction').textContent = instr;
-        BlockEngine.speak(instr);
+        this.audio.say(instr);
         counts.forEach(c => {
           const b = document.createElement('button');
           b.className = 'answer-btn nf-stamp-btn'; b.dataset.v = c;

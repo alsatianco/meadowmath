@@ -101,10 +101,14 @@
         if (v != null) {
           const c = BlockEngine.render(stage, { value: v, label: v });
           BlockEngine.celebrate(c);
-          BlockEngine.speak(String(v));
         } else if (i === values.length - 1) {
           for (let n = 1; n <= 5; n++) { BlockEngine.render(stage, { value: n }); }
+        } else if (i === 0) {
+          // Opening step has no assigned value — greet with a small lineup
+          // so the stage is never visually empty.
+          [1, 2, 3].forEach(n => BlockEngine.render(stage, { value: n }));
         }
+        BlockEngine.speak(s[i] || '');
         const last = i >= s.length - 1;
         btn.textContent = last ? label('buttons.done', 'Done') : label('buttons.next', 'Next');
       }

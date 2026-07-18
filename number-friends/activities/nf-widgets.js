@@ -42,11 +42,14 @@
   function blockzilla(container) {
     const root = el('div', 'nf-zilla', container);
     root.innerHTML = '<div class="nf-zilla-eye"></div><div class="nf-zilla-eye"></div><div class="nf-zilla-mouth"></div>';
+    const mouth = root.querySelector('.nf-zilla-mouth');
+    // Glyph convention: left bigger -> '>' (mouth opens toward the left,
+    // wide side left), right bigger -> '<' (opens toward the right), equal -> '='.
+    const GLYPHS = { left: '>', right: '<', equal: '=' };
     function point(dir) {
       root.classList.remove('nf-zilla--left', 'nf-zilla--right', 'nf-zilla--equal');
-      if (dir === 'left') root.classList.add('nf-zilla--left');
-      if (dir === 'right') root.classList.add('nf-zilla--right');
-      if (dir === 'equal') root.classList.add('nf-zilla--equal');
+      mouth.textContent = GLYPHS[dir] || '';
+      if (dir === 'left' || dir === 'right' || dir === 'equal') root.classList.add('nf-zilla--' + dir);
     }
     return { root, point };
   }
@@ -108,5 +111,71 @@
     return root;
   }
 
-  window.NFWidgets = { bondDiagram, fruitRow, blockzilla, staircase, hostBadge, rainbow, stamp };
+  // audioGuide — kids can't read, so every game must SPEAK its instructions.
+  // Speaks the instruction once on load, injects a repeatable 🔊 button into
+  // .activity-header, and retries the initial speak on the first tap anywhere
+  // if the browser blocked speech before a user gesture.
+  //
+  // Usage:
+  //   const audio = NFWidgets.audioGuide({ instructionKey: 'section.activities.foo.instruction' });
+  //   // ...later, for rounds whose instruction text changes dynamically:
+  //   audio.say(currentInstructionText);
+  function audioGuide(opts) {
+    opts = opts || {};
+    let currentText = '';
+
+    function resolveInitialText() {
+      if (typeof opts.text === 'function') return opts.text();
+      if (opts.text) return opts.text;
+      if (opts.instructionKey && window.i18n) {
+        const v = window.i18n.t(opts.instructionKey);
+        return (v && v !== opts.instructionKey) ? v : '';
+      }
+      return '';
+    }
+
+    function speakNow(text) {
+      if (!text) return;
+      currentText = text;
+      window.BlockEngine.speak(text);
+    }
+
+    function armAutoplayRetry() {
+      // Some browsers silently drop speechSynthesis.speak() calls that
+      // aren't triggered by a user gesture. If nothing appears to be
+      // speaking shortly after our attempt, retry once on the first tap.
+      setTimeout(() => {
+        if (!window.speechSynthesis) return;
+        if (window.speechSynthesis.speaking || window.speechSynthesis.pending) return;
+        const retry = () => { document.removeEventListener('pointerdown', retry); speakNow(currentText); };
+        document.addEventListener('pointerdown', retry, { once: true });
+      }, 300);
+    }
+
+    function say(text) {
+      speakNow(text != null ? text : resolveInitialText());
+    }
+
+    // (a) speak once, right away (this is called from a page's init(), which
+    // itself runs after DOMContentLoaded + i18n.ready()).
+    const initial = resolveInitialText();
+    if (initial) { speakNow(initial); armAutoplayRetry(); }
+
+    // (b) round 🔊 button that re-speaks the current instruction on tap.
+    const header = document.querySelector('.activity-header');
+    if (header && !header.querySelector('.nf-speak-btn')) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'nf-speak-btn';
+      btn.textContent = '🔊';
+      const label = (window.i18n && window.i18n.t('buttons.listen')) || 'Hear instructions';
+      btn.setAttribute('aria-label', label);
+      btn.addEventListener('click', () => say(currentText || resolveInitialText()));
+      header.appendChild(btn);
+    }
+
+    return { say };
+  }
+
+  window.NFWidgets = { bondDiagram, fruitRow, blockzilla, staircase, hostBadge, rainbow, stamp, audioGuide };
 })();

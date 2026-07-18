@@ -207,12 +207,22 @@
 
   function el(tag, cls) { const e = document.createElement(tag); if (cls) e.className = cls; return e; }
 
-  function buildCreature(value, color) {
-    const size = gridSize(value);
+  function towerCells(n) {
+    const cells = [];
+    for (let i = 0; i < n; i++) cells.push({ r: i, c: 0 });
+    return cells;
+  }
+
+  function buildCreature(value, color, opts) {
+    opts = opts || {};
+    const isTower = opts.layout === 'tower';
+    const cells = isTower ? towerCells(value) : PATTERNS[value];
+    const size = isTower ? { rows: value, cols: value > 0 ? 1 : 0 } : gridSize(value);
     const friendStyle = FRIEND_STYLES[value] || FRIEND_STYLES[10];
     const wrap = el('div', 'nb-creature');
     wrap.classList.add('nb-creature--value-' + value, 'nb-expression-' + friendStyle.expression);
     if (value > 10) wrap.classList.add('nb-creature--teen');
+    if (isTower) wrap.classList.add('nb-creature--tower');
     if (size.cols >= 5) wrap.classList.add('nb-creature--wide');
     if (size.rows >= 4) wrap.classList.add('nb-creature--tall');
     wrap.dataset.value = value;
@@ -221,7 +231,7 @@
     wrap.style.setProperty('--nb-accent', friendStyle.accent);
     wrap.style.setProperty('--nb-cols', size.cols || 1);
     wrap.style.setProperty('--nb-rows', size.rows || 1);
-    PATTERNS[value].forEach((cell, index) => {
+    cells.forEach((cell, index) => {
       const cube = el('div', 'nb-cube');
       cube.style.gridRowStart = cell.r + 1;
       cube.style.gridColumnStart = cell.c + 1;
@@ -258,7 +268,7 @@
     const color = opts.color || COLORS[value] || COLORS[Math.min(value, 20)] || COLORS[10];
     const root = el('div', 'nb-group');
     root.classList.add('nb-group--value-' + value);
-    root.appendChild(buildCreature(value, color));
+    root.appendChild(buildCreature(value, color, opts));
     if (opts.scale && opts.scale !== 1) root.style.transform = `scale(${opts.scale})`;
     if (opts.label != null) {
       const lab = el('div', 'nb-label');

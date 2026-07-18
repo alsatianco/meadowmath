@@ -91,10 +91,16 @@
   <script src="../../js/navigation.js"></script>
   <script src="../../js/activity-base.js"></script>
   <script src="../../js/block-engine.js"></script>
+  <script src="nf-widgets.js"></script>
   <script>
     class SubitizeFlash extends ActivityBase {
       constructor() { super({ totalRounds: 8, activityId: 'subitize-flash', gradeLevel: 'number-friends', autoAdvanceDelay: 1500 }); }
-      init() { super.init(); this.stage = document.getElementById('stage'); this.choices = document.getElementById('choices'); this.nextRound(); }
+      init() {
+        super.init();
+        this.stage = document.getElementById('stage'); this.choices = document.getElementById('choices');
+        NFWidgets.audioGuide({ instructionKey: 'section.activities.subitize-flash.instruction' });
+        this.nextRound();
+      }
       reducedMotion() { return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
       startRound() {
         this.n = this.randomInt(1, 10);

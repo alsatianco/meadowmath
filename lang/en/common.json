@@ -79,7 +79,8 @@
     "check": "Check!",
     "playAgain": "Play Again",
     "addOne": "+ 1 more!",
-    "ok": "OK, let's go!"
+    "ok": "OK, let's go!",
+    "listen": "Hear instructions"
   },
   "tabs": {
     "exercises": "Exercises",

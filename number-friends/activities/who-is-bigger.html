@@ -19,6 +19,11 @@
   <link rel="stylesheet" href="../../css/sidebar.css">
   <link rel="stylesheet" href="../../css/navigation.css">
   <link rel="stylesheet" href="activity.css">
+  <style>
+    /* Bigger cubes + a real single-column tower here so height differences
+       (the whole point of "who is bigger") actually read as taller/shorter. */
+    .nf-compare .nb-creature { --nb-cube-size: 46px; }
+  </style>
 </head>
 <body>
   <button class="hamburger" aria-label="Toggle navigation menu">
@@ -105,6 +110,7 @@
         this.sideB = document.getElementById('side-b');
         this.choices = document.getElementById('choices');
         this.zilla = NFWidgets.blockzilla(document.getElementById('zilla'));
+        this.audio = NFWidgets.audioGuide({ instructionKey: 'section.activities.who-is-bigger.instruction' });
         this.sideA.addEventListener('click', () => this.pick('left'));
         this.sideB.addEventListener('click', () => this.pick('right'));
         this.nextRound();
@@ -115,8 +121,8 @@
         this.b = equal ? this.a : this.randomInt(1, 10);
         if (!equal && this.b === this.a) this.b = (this.a % 10) + 1;
         BlockEngine.clear(this.sideA); BlockEngine.clear(this.sideB);
-        BlockEngine.render(this.sideA, { value: this.a, label: this.a });
-        BlockEngine.render(this.sideB, { value: this.b, label: this.b });
+        BlockEngine.render(this.sideA, { value: this.a, label: this.a, layout: 'tower' });
+        BlockEngine.render(this.sideB, { value: this.b, label: this.b, layout: 'tower' });
         this.zilla.point(null);
         this.choices.innerHTML = '';
         const eq = document.createElement('button');

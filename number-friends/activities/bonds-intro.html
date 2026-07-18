@@ -124,13 +124,20 @@
             BlockEngine.render(pair, { value: b });
             target.appendChild(pair);
           });
-          BlockEngine.speak(steps()[4] || '');
+          return;
+        }
+        if (idx === 5) {
+          // Final teaser step — celebrate Six one more time instead of
+          // leaving the stage empty.
+          const g = BlockEngine.render(target, { value: 6, label: 6 });
+          BlockEngine.celebrate(g);
         }
       }
       function show() {
         const s = steps();
         caption.textContent = s[i] || '';
         scene(i, stage);
+        BlockEngine.speak(s[i] || '');
         const last = i >= s.length - 1;
         btn.textContent = last ? label('buttons.done', 'Done') : label('buttons.next', 'Next');
       }
