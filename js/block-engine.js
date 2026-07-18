@@ -159,6 +159,7 @@
 
   let _audioCtx = null;
   let _narrationAudio = null;
+  let _narrationRequest = 0;
   let _deferredNarration = null;
   let _deferredNarrationListening = false;
   let _deferredNarrationPrompt = null;
@@ -194,12 +195,20 @@
     opts = opts || {};
     if (_muted || typeof window === 'undefined') return;
     try {
+      const request = ++_narrationRequest;
       const value = String(text);
       const lang = opts.lang || (window.i18n && window.i18n.currentLang === 'en' ? 'en-US' : 'vi-VN');
-      const file = lang.startsWith('en') && (
+      const exactFile = lang.startsWith('en') && (
         (opts.audioId && window.TTS_AUDIO_BY_ID && window.TTS_AUDIO_BY_ID[opts.audioId]) ||
         (window.TTS_AUDIO && window.TTS_AUDIO[value])
       );
+      // Dynamic math feedback (for example, "Yes! That's 7.") has many
+      // possible combinations. Speak its final numeric result with the
+      // generated voice rather than dropping to a robotic system voice.
+      const numberMatch = value.match(/\b\d+\b/g);
+      const resultFile = !exactFile && lang.startsWith('en') && numberMatch && window.TTS_AUDIO &&
+        window.TTS_AUDIO[numberMatch[numberMatch.length - 1]];
+      const file = exactFile || resultFile;
       if (_narrationAudio) {
         _narrationAudio.pause();
         _narrationAudio = null;
@@ -210,12 +219,16 @@
         _narrationAudio = audio;
         audio.onended = audio.onerror = () => { if (_narrationAudio === audio) _narrationAudio = null; };
         audio.play().catch((error) => {
+          // A later narration superseded this request. In particular, pausing
+          // the old Audio can reject its promise with AbortError; never turn
+          // that stale rejection into duplicate browser speech.
+          if (request !== _narrationRequest) return;
           if (_narrationAudio === audio) _narrationAudio = null;
           // iPad/iPhone only permits media playback after a gesture in the
           // current document. Preserve the generated narration and replay it
           // on the next touch instead of replacing it with Web Speech.
           if (error && error.name === 'NotAllowedError') {
-            deferNarration(value, opts);
+            deferNarration(value, opts, request);
             return;
           }
           speakWithBrowser(value, lang);
@@ -226,8 +239,8 @@
     } catch (e) { /* speech is optional */ }
   }
 
-  function deferNarration(text, opts) {
-    _deferredNarration = { text, opts };
+  function deferNarration(text, opts, request) {
+    _deferredNarration = { text, opts, request };
     showDeferredNarrationPrompt();
     if (_deferredNarrationListening) return;
     _deferredNarrationListening = true;
@@ -241,7 +254,7 @@
       const pending = _deferredNarration;
       _deferredNarration = null;
       _deferredNarrationListening = false;
-      if (pending) speak(pending.text, pending.opts);
+      if (pending && pending.request === _narrationRequest) speak(pending.text, pending.opts);
     };
     window.addEventListener('pointerdown', retry, { once: true, capture: true });
     window.addEventListener('touchstart', retry, { once: true, capture: true });

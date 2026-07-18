@@ -1633,6 +1633,246 @@
               "text": "20",
               "created": true,
               "voiceText": "twenty"
+            },
+            {
+              "id": "number-21",
+              "text": "21",
+              "voiceText": "twenty-one",
+              "created": true
+            },
+            {
+              "id": "number-22",
+              "text": "22",
+              "voiceText": "twenty-two",
+              "created": true
+            },
+            {
+              "id": "number-23",
+              "text": "23",
+              "voiceText": "twenty-three",
+              "created": true
+            },
+            {
+              "id": "number-24",
+              "text": "24",
+              "voiceText": "twenty-four",
+              "created": true
+            },
+            {
+              "id": "number-25",
+              "text": "25",
+              "voiceText": "twenty-five",
+              "created": true
+            },
+            {
+              "id": "number-26",
+              "text": "26",
+              "voiceText": "twenty-six",
+              "created": true
+            },
+            {
+              "id": "number-27",
+              "text": "27",
+              "voiceText": "twenty-seven",
+              "created": true
+            },
+            {
+              "id": "number-28",
+              "text": "28",
+              "voiceText": "twenty-eight",
+              "created": true
+            },
+            {
+              "id": "number-29",
+              "text": "29",
+              "voiceText": "twenty-nine",
+              "created": true
+            },
+            {
+              "id": "number-30",
+              "text": "30",
+              "voiceText": "thirty",
+              "created": true
+            },
+            {
+              "id": "number-31",
+              "text": "31",
+              "voiceText": "thirty-one",
+              "created": true
+            },
+            {
+              "id": "number-32",
+              "text": "32",
+              "voiceText": "thirty-two",
+              "created": true
+            },
+            {
+              "id": "number-33",
+              "text": "33",
+              "voiceText": "thirty-three",
+              "created": true
+            },
+            {
+              "id": "number-34",
+              "text": "34",
+              "voiceText": "thirty-four",
+              "created": true
+            },
+            {
+              "id": "number-35",
+              "text": "35",
+              "voiceText": "thirty-five",
+              "created": true
+            },
+            {
+              "id": "number-36",
+              "text": "36",
+              "voiceText": "thirty-six",
+              "created": true
+            },
+            {
+              "id": "number-37",
+              "text": "37",
+              "voiceText": "thirty-seven",
+              "created": true
+            },
+            {
+              "id": "number-38",
+              "text": "38",
+              "voiceText": "thirty-eight",
+              "created": true
+            },
+            {
+              "id": "number-39",
+              "text": "39",
+              "voiceText": "thirty-nine",
+              "created": true
+            },
+            {
+              "id": "number-40",
+              "text": "40",
+              "voiceText": "forty",
+              "created": true
+            },
+            {
+              "id": "number-41",
+              "text": "41",
+              "voiceText": "forty-one",
+              "created": true
+            },
+            {
+              "id": "number-42",
+              "text": "42",
+              "voiceText": "forty-two",
+              "created": true
+            },
+            {
+              "id": "number-43",
+              "text": "43",
+              "voiceText": "forty-three",
+              "created": true
+            },
+            {
+              "id": "number-44",
+              "text": "44",
+              "voiceText": "forty-four",
+              "created": true
+            },
+            {
+              "id": "number-45",
+              "text": "45",
+              "voiceText": "forty-five",
+              "created": true
+            },
+            {
+              "id": "number-46",
+              "text": "46",
+              "voiceText": "forty-six",
+              "created": true
+            },
+            {
+              "id": "number-47",
+              "text": "47",
+              "voiceText": "forty-seven",
+              "created": true
+            },
+            {
+              "id": "number-48",
+              "text": "48",
+              "voiceText": "forty-eight",
+              "created": true
+            },
+            {
+              "id": "number-49",
+              "text": "49",
+              "voiceText": "forty-nine",
+              "created": true
+            },
+            {
+              "id": "number-50",
+              "text": "50",
+              "voiceText": "fifty",
+              "created": true
+            },
+            {
+              "id": "number-51",
+              "text": "51",
+              "voiceText": "fifty-one",
+              "created": true
+            },
+            {
+              "id": "number-52",
+              "text": "52",
+              "voiceText": "fifty-two",
+              "created": true
+            },
+            {
+              "id": "number-53",
+              "text": "53",
+              "voiceText": "fifty-three",
+              "created": true
+            },
+            {
+              "id": "number-54",
+              "text": "54",
+              "voiceText": "fifty-four",
+              "created": true
+            },
+            {
+              "id": "number-55",
+              "text": "55",
+              "voiceText": "fifty-five",
+              "created": true
+            },
+            {
+              "id": "number-56",
+              "text": "56",
+              "voiceText": "fifty-six",
+              "created": true
+            },
+            {
+              "id": "number-57",
+              "text": "57",
+              "voiceText": "fifty-seven",
+              "created": true
+            },
+            {
+              "id": "number-58",
+              "text": "58",
+              "voiceText": "fifty-eight",
+              "created": true
+            },
+            {
+              "id": "number-59",
+              "text": "59",
+              "voiceText": "fifty-nine",
+              "created": true
+            },
+            {
+              "id": "number-60",
+              "text": "60",
+              "voiceText": "sixty",
+              "created": true
             }
           ]
         },
