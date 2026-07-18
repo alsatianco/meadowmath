@@ -20,6 +20,10 @@
     "subtitle": "Không gian vui vẻ để khám phá toán học"
   },
   "regions": {
+    "numberFriends": {
+      "title": "Bạn Số",
+      "desc": "Mỗi con số là những khối có thể tách ra và gộp lại"
+    },
     "prek": {
       "title": "Mầm non",
       "desc": "Nơi ấm áp để bắt đầu khám phá số và hình"

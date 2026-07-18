@@ -20,6 +20,10 @@
     "subtitle": "A gentle, joyful space to explore mathematics"
   },
   "regions": {
+    "numberFriends": {
+      "title": "Number Friends",
+      "desc": "Numbers are blocks you can pull apart and snap together"
+    },
     "prek": {
       "title": "Pre-K",
       "desc": "A cozy place to begin exploring numbers and shapes"
