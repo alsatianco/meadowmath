@@ -225,6 +225,7 @@
     if (isTower) wrap.classList.add('nb-creature--tower');
     if (size.cols >= 5) wrap.classList.add('nb-creature--wide');
     if (size.rows >= 4) wrap.classList.add('nb-creature--tall');
+    if (size.rows >= 7) wrap.classList.add('nb-creature--xtall');
     wrap.dataset.value = value;
     wrap.setAttribute('aria-label', 'Number ' + value + ' block friend');
     wrap.style.setProperty('--nb-color', color);

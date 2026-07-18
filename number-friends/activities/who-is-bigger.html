@@ -21,8 +21,15 @@
   <link rel="stylesheet" href="activity.css">
   <style>
     /* Bigger cubes + a real single-column tower here so height differences
-       (the whole point of "who is bigger") actually read as taller/shorter. */
-    .nf-compare .nb-creature { --nb-cube-size: 46px; }
+       (the whole point of "who is bigger") actually read as taller/shorter.
+       Fixed size (not the auto tall/wide/xtall system) keeps height strictly
+       monotonic with value across the whole 1-10 range. */
+    .nf-compare .nb-creature { --nb-cube-size: 58px; }
+    @media (max-width: 560px) {
+      /* same fixed-size reasoning, just scaled down so two 10-towers side by
+         side don't overflow a narrow phone screen. */
+      .nf-compare .nb-creature { --nb-cube-size: 34px; }
+    }
   </style>
 </head>
 <body>

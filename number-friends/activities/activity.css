@@ -10,8 +10,8 @@
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
-  width: min(100%, 540px);
-  min-height: 220px !important;
+  width: min(100%, 640px);
+  min-height: 300px !important;
   margin: 0 auto;
   padding: 24px;
   border: 4px solid #6d4b38;
@@ -39,10 +39,10 @@
 #stage > * { position: relative; z-index: 1; }
 
 .answer-btn {
-  min-width: 72px; height: 72px; padding: 0 12px;
-  border: 4px solid #6d4b38; border-radius: 18px;
+  min-width: 92px; height: 92px; padding: 0 18px;
+  border: 4px solid #6d4b38; border-radius: 20px;
   background: linear-gradient(135deg, #fff8e8, #f5d489);
-  font-family: Georgia, 'Times New Roman', serif; font-size: 2rem; font-weight: 800;
+  font-family: Georgia, 'Times New Roman', serif; font-size: 2.2rem; font-weight: 800;
   color: #3d2c24; cursor: pointer;
   transition: transform .15s cubic-bezier(.175,.885,.32,1.275), border-color .15s, box-shadow .15s;
   box-shadow: 0 5px 0 #c59155, 0 13px 18px rgba(91, 66, 42, .12);
@@ -80,19 +80,23 @@
 .nf-pair-plus { font: 800 1.3rem/1 Georgia, serif; color: #6d4b38; }
 
 /* mini creature lineup buttons (inside-me) — shrink the creature, keep a big tap target */
-.nf-mini.answer-btn { height: auto; min-height: 72px; padding: 6px; }
+.nf-mini.answer-btn { height: auto; min-height: 92px; padding: 6px; }
 .nf-mini .nb-creature { --nb-cube-size: 16px; }
 .nf-mini .nb-group { padding: 4px 4px 2px; gap: 3px; }
 
-/* choice buttons holding a mini rendered creature (fill-shape) */
-.nf-block-choice .nb-group { transform: scale(.45); transform-origin: center; }
-.nf-block-choice { min-height: 120px; }
+/* choice buttons holding a mini rendered creature (fill-shape) — cube base grew
+   38px -> 60px (1.58x), so the old .45 scale is knocked back down to .3 to
+   render the same on-screen size and still fit inside the button. */
+.nf-block-choice .nb-group { transform: scale(.3); transform-origin: center; }
+.nf-block-choice { min-height: 130px; }
 
-/* mini creatures rendered inside bond-diagram circles (bond-missing) */
-.nf-bond-block .nb-group, .nf-bond-circle .nb-group { transform: scale(.4); transform-origin: center; }
+/* mini creatures rendered inside bond-diagram circles (bond-missing) — same
+   1.58x cube-base correction, .4 -> .25, so the mini creature still fits the
+   (now-bigger) bond circle instead of overflowing it. */
+.nf-bond-block .nb-group, .nf-bond-circle .nb-group { transform: scale(.25); transform-origin: center; }
 
 @media (prefers-reduced-motion: reduce) { .answer-btn { transition: none; } .answer-btn.incorrect { animation: none; } }
 @media (max-width: 767px) {
-  #stage { width: 100%; min-height: 200px !important; padding: 18px; }
-  .answer-btn { height: 64px; min-width: 64px; font-size: 1.6rem; }
+  #stage { width: 100%; min-height: 260px !important; padding: 18px; }
+  .answer-btn { height: 76px; min-width: 76px; font-size: 1.8rem; }
 }
