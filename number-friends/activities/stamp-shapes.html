@@ -128,16 +128,18 @@
       }
       startRound() {
         this.n = this.randomInt(2, 6);
-        this.odd = this.currentRound % 2 === 1;      // alternate: find-mine / find-the-stranger
+        // Every round asks the straightforward question ("which stamp belongs
+        // to N?") with three DIFFERENT counts. The old alternate "which is NOT
+        // N's" mode required two same-count stamps on screen, which reads as
+        // "two right answers" to a 4-5 year old.
         BlockEngine.clear(this.stage); this.choices.innerHTML = '';
         BlockEngine.render(this.stage, { value: this.n, label: this.n });
         const others = [2, 3, 4, 5, 6].filter(v => v !== this.n);
         const wrongN = others[Math.floor(Math.random() * others.length)];
-        // build three stamp buttons; in normal mode 1 has n cells, in odd mode 1 has wrongN cells
-        const counts = this.odd ? [this.n, this.n, wrongN] : [this.n, wrongN, others[(others.indexOf(wrongN) + 1) % others.length]];
+        const counts = [this.n, wrongN, others[(others.indexOf(wrongN) + 1) % others.length]];
         counts.sort(() => Math.random() - 0.5);
-        this.answer = this.odd ? wrongN : this.n;
-        const instr = i18n.t('section.activities.stamp-shapes.' + (this.odd ? 'askOdd' : 'askMine')).replace('{{n}}', this.n);
+        this.answer = this.n;
+        const instr = i18n.t('section.activities.stamp-shapes.askMine').replace('{{n}}', this.n);
         document.querySelector('.activity-instruction').textContent = instr;
         this.audio.say(instr);
         const stamps = pickStamps(counts);
