@@ -1,0 +1,89 @@
+# Thiết kế — "Bạn Số" hoàn thiện Chặng 1–6 + 4 cơ chế từ sách bài tập Numberblocks
+
+Ngày: 2026-07-16 · Trạng thái: Đã duyệt · Nhánh: `feature/number-friends-tach-gop`
+Kế thừa: [2026-06-26-number-friends-tach-gop-design.md](2026-06-26-number-friends-tach-gop-design.md) (spec gốc, vẫn hiệu lực) — tài liệu này đặc tả phần *còn thiếu* (Chặng 1–6) và các cơ chế mới bổ sung.
+
+## 1. Mục tiêu
+
+Hoàn thiện toàn bộ chuỗi game tách gộp của thế giới "Bạn Số": trẻ **chụp hình ảnh lượng gắn với số** (subitizing) rồi thấy tận mắt logic **tách–gộp** (phần–toàn thể) qua thao tác kéo vỡ / dính lại, theo tinh thần Numberblocks.
+Bổ sung 4 cơ chế học được từ bộ sách bài tập Numberblocks song ngữ (file tham khảo của người dùng): máy tách quả *Fruit Salad*, lấp hình bóng *Make-9*, bậc thang *Number Magic*, so sánh *Blockzilla*.
+
+## 2. Quyết định đã chốt (decision log, 2026-07-16)
+
+- **Phạm vi:** toàn bộ Chặng 1–6 trong một đợt (20 mini-game + 6 intro).
+- **Cơ chế mới:** đưa đủ cả 4 — Fruit Salad thành game riêng ở Chặng 3; Make-9 thành game `fill-shape` ở Chặng 3; Number Magic thành hoạt cảnh intro Chặng 2; Blockzilla thành game `who-is-bigger` bổ sung vào Chặng 0 (so sánh là kỹ năng liền sau đếm/nhận mặt số).
+- **Code đang dở:** commit phần storybook UI redesign hiện có thành một commit riêng trước, rồi xây game trên nền đó.
+- **Kiến trúc:** phương án A — mỗi mini-game một trang HTML tự chứa theo đúng pattern repo; phần dùng chung mở rộng vào `js/block-engine.js` + file mới `number-friends/activities/nf-widgets.js`. Không build step.
+- **Nghệ thuật:** thuần CSS/emoji, art gốc, không dùng tên/hình nhân vật Numberblocks (an toàn bản quyền, nhất quán spec gốc).
+
+## 3. Sư phạm — trục xuyên suốt
+
+- **CPA (Concrete → Pictorial → Abstract):** khối (cụ thể) → quả/hình bóng (chuyển giao sang vật thể bất kỳ) → sơ đồ bond + đẳng thức `5 = 2 + 3` hiện *thụ động* (trừu tượng — trẻ nhìn quen mắt, không bắt đọc/viết).
+- **Subitizing mọi nơi:** mọi số hiển thị theo bố cục chuẩn của engine (`patternCoords`) — bố cục tự để lộ cấu trúc tách gộp (4=2+2, 7=6+1, 10=5+5).
+- **No-fail dịu nhẹ:** sai → rung nhẹ → tự diễn lại cách đúng → đi tiếp; game khám phá (`split-free`, `merge-free`) không có khái niệm sai.
+- **Không phụ thuộc chữ:** chơi được hoàn toàn bằng hình + loa 🔊 (Web Speech vi/en); chữ chỉ là phụ đề.
+
+## 4. Chuỗi game (delta so với spec gốc in đậm)
+
+| Chặng | Intro | Mini-games |
+|---|---|---|
+| 0 Làm quen *(đã có)* | *(đã có)* | **+ `who-is-bigger` — Blockzilla:** hai tháp khối xuất hiện, trẻ chạm/xoay miệng quái vật (ký hiệu `>` `<` `=` cách điệu thành miệng) về phía tháp lớn hơn; ba trạng thái lớn hơn/bé hơn/bằng nhau. *(Nguồn: Trang 51.)* |
+| 1 Tách | `split-intro`: tháp 4 tự vỡ thành 2+2 rồi 3+1, đọc "bốn tách thành hai và hai" | `split-free` (bẻ khối tự do, không có sai) · `split-name` (tách ra mấy-và-mấy) · `missing-part` (biết tổng + một phần → phần kia) |
+| 2 Gộp | **`merge-intro` — bậc thang Number Magic:** hai bạn khối leo hai bậc thang cạnh nhau, dính lại thành tháp cao bằng bậc tổng — chiều cao *là* phép cộng *(Nguồn: Trang 69.)* | `merge-free` (kéo hai bạn vào nhau) · `merge-name` (gộp thành mấy) · `pick-pair` (cặp nào làm nên tớ) |
+| 3 Toàn thể của tớ | `bonds-intro`: số 5 khoe lần lượt mọi cách tách của mình | **`fruit-salad` — Máy Tách Quả:** sơ đồ bond 3 vòng, quả từ vòng trên rơi tách vào 2 bát dưới; hai chiều chơi (tách tự do / điền bát khuyết), kèm đẳng thức thụ động *(Nguồn: Trang 58.)* · `all-bonds` (tìm đủ cách tách một số) · **`fill-shape` — Lấp hình bóng:** hình bóng bố cục chuẩn của số N đã lấp sẵn một phần bởi một bạn khối, chọn bạn khối lấp vừa khít phần còn lại *(Nguồn: Trang 85.)* · `doubles` (số đôi 1+1…5+5) |
+| 4 Trốn tìm (mầm trừ) | `hide-intro`: vài ô của tháp nấp sau bụi cây rồi ló ra | `hide-seek` (mấy bạn đang trốn) · `bond-missing` (sơ đồ bond khuyết một phần, bằng khối) · `take-away` (lấy đi còn mấy) |
+| 5 Bạn của 5 & 10 ⭐ | `frame-intro`: bàn tay 5 ngón và khung 10 | `five-frame` (đầy khung 5) · `ten-frame` (đầy khung 10) · `number-rainbow` (cầu vồng cặp make-10) · `how-many-more` (thiếu mấy nữa đầy 10) |
+| 6 Mười-và-lẻ (11–20) | `teen-intro`: "Ten Again" — teen = tháp 10 + vài ô lẻ | `teen-build` (dựng 10 + lẻ) · `teen-split` (tách teen thành 10 và lẻ) |
+
+Ghi chú so với spec gốc: `number-rainbow` chuyển từ Chặng 3 sang Chặng 5 (bản chất là make-10) và thay thế `make-ten-pairs` (trùng cơ chế); Chặng 3 nhận `fruit-salad` + `fill-shape` mới.
+
+## 5. Mở rộng phần dùng chung
+
+### 5.1 `js/block-engine.js` (giữ API cũ nguyên vẹn, chỉ thêm)
+- `renderSilhouette(container, { value, filledCells })` — vẽ bố cục chuẩn của số dưới dạng ô viền đứt (ghost); `filledCells` là số ô đầu đã lấp màu. Dùng cho `fill-shape`, `five-frame`/`ten-frame` (khung = silhouette 5/10), `teen-build`.
+- Kéo-tách / kéo-gộp bằng Pointer Events: `makeSplittable(el, onSplit)` (kéo/chạm khe giữa hai hàng-cột để tách theo đường nối tự nhiên của bố cục) và `makeDraggable(el, targets, onDrop)` (kéo tháp vào mục tiêu, có snap). Mọi thao tác kéo có lối chạm tương đương (chạm khe / chạm lần lượt hai đối tượng).
+- Tôn trọng `prefers-reduced-motion` như hiện tại.
+
+### 5.2 `number-friends/activities/nf-widgets.js` (mới) + CSS đi kèm trong `activity.css`
+- `bondDiagram(container, opts)` — sơ đồ 3 vòng tròn nối mũi tên (toàn thể trên, hai phần dưới), chứa được khối hoặc quả; dùng cho `fruit-salad`, `bond-missing`, và đẳng thức thụ động.
+- `fruitRow(container, { kind: '🍊'|'🍎'|…, count })` — hàng quả đếm được, xếp theo bố cục chuẩn subitizing.
+- `blockzilla(container)` — quái vật CSS: thân tròn xanh lá, mắt lồi, miệng là ký hiệu `>` xoay được về 3 trạng thái (`>`, `<`, `=`); có hàm `point(direction)`.
+- `staircase(container, steps)` — bậc thang cho intro Chặng 2.
+
+### 5.3 Dữ liệu & i18n
+- `data/number-friends.json`: điền `intro` + `activities[]` cho stage-1…stage-6; thêm `who-is-bigger` vào stage-0. Schema giữ nguyên.
+- `lang/vi/number-friends.json` + `lang/en/number-friends.json`: khóa `section.activities.<id>.title|instruction` cho ~26 mục mới; lời loa đọc đặt trong từng trang qua khóa i18n riêng (`…speak.*`) khi cần.
+- Hub `number-friends.js`: đã render từ JSON — chỉ cần dữ liệu mới là các chặng hết "Sắp ra mắt"; kiểm tra chip intro + sao hoạt động cho stage 1–6.
+
+## 6. Vòng chơi chuẩn của một mini-game
+
+10 câu/lượt (theo `ActivityBase` hiện có): sinh đề tránh trùng liên tiếp, distractor không trùng đáp án (kế thừa cách `makeChoices` của engine); đúng → `celebrate` + `sfx('correct')` + loa đọc đẳng thức; sai → rung + tự diễn cách đúng + cho đi tiếp; xong lượt → modal sao + lưu `storage.js`.
+Game khám phá (`split-free`, `merge-free`, `fruit-salad` chiều tự do) đếm "số lần khám phá" thay vì đúng/sai — đủ N thao tác là hoàn thành, không chấm điểm.
+
+## 7. Lỗi & biên
+
+- Kế thừa toàn bộ mục 7 spec gốc (Web Speech thiếu giọng vi → nút loa trơ; số 0; `prefers-reduced-motion`; kéo-thả luôn có lối chạm).
+- `fill-shape`: các lựa chọn phải cùng *hình dáng phần khuyết* hợp lệ — phần khuyết tính từ bố cục chuẩn, distractor lệch ±1..2 và không âm, không trùng.
+- `who-is-bigger`: trộn đều 3 trạng thái, có cả cặp bằng nhau; hai tháp hiện đồng thời, thẳng hàng đáy để chiều cao so được bằng mắt.
+- `fruit-salad`: tổng ≤ 10; quả xếp bố cục chuẩn để trẻ subitize thay vì đếm từng quả.
+- Số teen: chỉ 11–20, luôn phân rã `10 + n` qua `decomposeTeen` sẵn có.
+
+## 8. Kiểm thử
+
+- Cập nhật `number-friends/block-engine.test.html`: thêm khối thử `renderSilhouette`, `makeSplittable`/`makeDraggable`, và các widget mới (bond, blockzilla, staircase).
+- Checklist QA thủ công mỗi game (kéo + chạm, đúng/sai, loa, tắt tiếng, mobile, reduced-motion) như spec gốc mục 8.
+- Chạy `js/block-engine.test.js` hiện có sau khi mở rộng engine (không phá API cũ).
+
+## 9. Thứ tự xây & commit
+
+1. Commit riêng phần storybook UI redesign đang dở (chốt nền).
+2. Commit mở rộng engine (`renderSilhouette`, drag/split/merge tương tác) + `nf-widgets.js` + trang test.
+3. Mỗi chặng một commit: data + i18n + intro + mini-games (thứ tự 1 → 2 → 3 → 4 → 5 → 6, thêm `who-is-bigger` vào commit Chặng 0-bổ-sung cùng đợt Chặng 1).
+4. Commit chót: sitemap/SEO, QA sửa vặt.
+
+## 10. Tiêu chí thành công
+
+- Trẻ 4–5 tuổi tự chơi trọn hành trình 7 chặng trên cảm ứng, không cần đọc chữ.
+- Nhìn lượng nhận ra số (subitizing) và *thấy* logic tách gộp qua thao tác — đúng mục tiêu "chụp hình ảnh lượng gắn với số".
+- 4 cơ chế mới chạy đúng nguồn cảm hứng: máy tách quả, lấp hình bóng, bậc thang, miệng Blockzilla.
+- Hub sáng đủ 7 chặng, hết "Sắp ra mắt"; song ngữ vi/en; mobile mượt; không build step; API engine cũ không đổi.
