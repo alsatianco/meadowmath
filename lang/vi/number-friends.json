@@ -1,7 +1,9 @@
 {
   "world": { "title": "Bạn Số", "tagline": "Mỗi con số là những khối có thể tách ra và gộp lại.", "missionsButton": "Nhiệm vụ thật", "missionsTitle": "Nhiệm vụ nhà thám hiểm số", "nextStage": "Chặng sau" },
   "stages": {
-    "stage-0": { "title": "Làm quen khối số", "goal": "Thấy mỗi số là một tháp khối — và nhận ra số nhờ hình dạng." },
+    "stage-0": { "title": "Làm quen khối số", "goal": "Thấy mỗi số là một tháp khối — và nhận ra số nhờ hình dạng.",
+      "hostLine": "Tớ là Một! Đi khám phá cùng tớ nhé!",
+      "missions": ["Đứng bằng 1 chân và đếm đến 5!", "Tìm 1 đồ vật màu đỏ trong nhà."] },
     "stage-1": { "title": "Tách", "goal": "Tách một tháp thành hai phần." },
     "stage-2": { "title": "Gộp", "goal": "Gộp hai phần thành một." },
     "stage-3": { "title": "Toàn thể của tớ", "goal": "Tìm tất cả các cách tách một số." },
@@ -36,6 +38,14 @@
       "title": "Nhìn nhanh", "instruction": "Nhìn thật nhanh — mấy khối?",
       "correct": "Mắt tinh ghê! Là {{n}}.", "incorrect": "Vừa rồi là {{n}}.",
       "perfect": "Mắt đại bàng!", "great": "Mắt nhanh ghê!", "good": "Nhìn giỏi lắm!", "keepPracticing": "Nhìn tiếp nhé!"
-    }
+    },
+    "who-is-bigger": { "title": "Ai lớn hơn?", "instruction": "Chạm vào tháp cao hơn — hoặc dấu = nếu bằng nhau!",
+      "correct": "Đúng rồi! {{big}} lớn hơn {{small}}.", "incorrect": "Nhìn lại nhé — {{big}} cao hơn {{small}}.",
+      "equalMsg": "Hai bạn cao bằng nhau — là {{n}} đó!",
+      "perfect": "Mắt so tài ba!", "great": "So giỏi lắm!", "good": "Làm tốt lắm!", "keepPracticing": "Thử lại nhé!" },
+    "stamp-shapes": { "title": "Dấu in nhún nhảy", "instruction": "Nhìn dấu in — của bạn số nào?",
+      "askMine": "Dấu in nào là của bạn {{n}}?", "askOdd": "Dấu in nào KHÔNG phải của bạn {{n}}?",
+      "correct": "Chuẩn luôn! Vẫn là {{n}} dù đứng kiểu gì.", "incorrect": "Đếm thử nhé — bạn {{n}} có {{n}} ô.",
+      "perfect": "Vua nhận hình!", "great": "Tinh mắt ghê!", "good": "Làm tốt lắm!", "keepPracticing": "Nhìn kỹ hơn nhé!" }
   }
 }

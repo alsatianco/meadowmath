@@ -11,7 +11,9 @@
       "activities": [
         { "id": "count-blocks", "icon": "🔢", "path": "activities/count-blocks.html", "type": "count-blocks" },
         { "id": "tower-to-numeral", "icon": "🔤", "path": "activities/tower-to-numeral.html", "type": "tower-to-numeral" },
-        { "id": "subitize-flash", "icon": "⚡", "path": "activities/subitize-flash.html", "type": "subitize-flash" }
+        { "id": "subitize-flash", "icon": "⚡", "path": "activities/subitize-flash.html", "type": "subitize-flash" },
+        { "id": "who-is-bigger", "icon": "🐊", "path": "activities/who-is-bigger.html", "type": "who-is-bigger" },
+        { "id": "stamp-shapes", "icon": "🎪", "path": "activities/stamp-shapes.html", "type": "stamp-shapes" }
       ]
     },
     { "id": "stage-1", "number": 1, "title": "Tách", "icon": "✂️", "goal": "Split a tower into two parts.", "host": 4, "missions": 2, "activities": [] },

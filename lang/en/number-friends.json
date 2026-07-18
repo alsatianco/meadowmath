@@ -1,7 +1,9 @@
 {
   "world": { "title": "Number Friends", "tagline": "Numbers are blocks you can pull apart and snap together.", "missionsButton": "Real-world missions", "missionsTitle": "Number Explorer missions", "nextStage": "Next stage" },
   "stages": {
-    "stage-0": { "title": "Meet the Blocks", "goal": "See each number as a tower of blocks — and know it by its shape." },
+    "stage-0": { "title": "Meet the Blocks", "goal": "See each number as a tower of blocks — and know it by its shape.",
+      "hostLine": "I'm One! Come explore with me!",
+      "missions": ["Stand on 1 leg and count to 5!", "Spot 1 red thing in your home."] },
     "stage-1": { "title": "Pull Apart", "goal": "Split a tower into two parts." },
     "stage-2": { "title": "Snap Together", "goal": "Join two parts into one." },
     "stage-3": { "title": "The Whole of Me", "goal": "Find every way to split a number." },
@@ -36,6 +38,14 @@
       "title": "Quick Look", "instruction": "Look fast — how many?",
       "correct": "Sharp eyes! It's {{n}}.", "incorrect": "It was {{n}}.",
       "perfect": "Eagle eyes!", "great": "Quick eyes!", "good": "Nice spotting!", "keepPracticing": "Keep looking!"
-    }
+    },
+    "who-is-bigger": { "title": "Who Is Bigger?", "instruction": "Tap the taller tower — or = if they match!",
+      "correct": "Yes! {{big}} is bigger than {{small}}.", "incorrect": "Look again — {{big}} is taller than {{small}}.",
+      "equalMsg": "They're the same — both are {{n}}!",
+      "perfect": "Compare champion!", "great": "Great comparing!", "good": "Nice work!", "keepPracticing": "Try again!" },
+    "stamp-shapes": { "title": "Bouncy Stamps", "instruction": "Look at the stamps — whose are they?",
+      "askMine": "Which stamp belongs to {{n}}?", "askOdd": "Which stamp is NOT {{n}}'s?",
+      "correct": "Right! It's still {{n}}, any way it stands.", "incorrect": "Count and see — {{n}} has {{n}} squares.",
+      "perfect": "Shape master!", "great": "Sharp eyes!", "good": "Nice work!", "keepPracticing": "Look closely!" }
   }
 }
