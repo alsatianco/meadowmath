@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Search every free Meadow Math activity, game, and tool by skill, topic, grade, or age. From Pre-K to Grade 5.">
+  <!-- Internal search results are not useful landing pages for search engines. -->
+  <meta name="robots" content="noindex, follow">
+    <meta property="og:title" content="Search Activities | Meadow Math">
+  <meta property="og:description" content="Search every free Meadow Math activity, game, and tool by skill, topic, grade, or age. From Pre-K to Grade 5.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://math.alsatian.co/search.html">
+  <meta property="og:image" content="https://math.alsatian.co/images/og/og-home.png">
+  <meta property="og:site_name" content="Meadow Math">
+<title>Search Activities | Meadow Math</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/search.css">
+</head>
+<body>
+  <!-- Hamburger Menu (Mobile Only) -->
+  <button class="hamburger" aria-label="Toggle navigation menu">
+    <div class="hamburger-icon">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </button>
+
+  <!-- Sidebar Backdrop (Mobile Only) -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Application Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a href="index.html" class="sidebar-logo">
+        <span class="sidebar-logo-text" data-i18n="siteName">Meadow Math</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-item">
+          <span class="nav-item-icon">🏠</span>
+          <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="search.html" class="nav-item active" aria-current="page">
+          <span class="nav-item-icon">🔍</span>
+          <span class="nav-item-text" data-i18n="nav.search">Search</span>
+        </a>
+        <a href="number-friends/index.html" class="nav-item">
+          <span class="nav-item-icon">🧱</span>
+          <span class="nav-item-text" data-i18n="nav.numberFriends">Number Friends</span>
+        </a>
+        <a href="prek/index.html" class="nav-item">
+          <span class="nav-item-icon">🪺</span>
+          <span class="nav-item-text" data-i18n="nav.prek">Pre-K</span>
+        </a>
+        <a href="kinder/index.html" class="nav-item">
+          <span class="nav-item-icon">🌱</span>
+          <span class="nav-item-text" data-i18n="nav.kindergarten">Kinder</span>
+        </a>
+        <a href="grade1/index.html" class="nav-item">
+          <span class="nav-item-icon">📐</span>
+          <span class="nav-item-text" data-i18n="nav.grade1">Grade 1</span>
+        </a>
+        <a href="grade2/index.html" class="nav-item">
+          <span class="nav-item-icon">➕</span>
+          <span class="nav-item-text" data-i18n="nav.grade2">Grade 2</span>
+        </a>
+        <a href="grade3/index.html" class="nav-item">
+          <span class="nav-item-icon">➖</span>
+          <span class="nav-item-text" data-i18n="nav.grade3">Grade 3</span>
+        </a>
+        <a href="grade4/index.html" class="nav-item">
+          <span class="nav-item-icon">✖️</span>
+          <span class="nav-item-text" data-i18n="nav.grade4">Grade 4</span>
+        </a>
+        <a href="grade5/index.html" class="nav-item">
+          <span class="nav-item-icon">➗</span>
+          <span class="nav-item-text" data-i18n="nav.grade5">Grade 5</span>
+        </a>
+
+        <div class="nav-divider"></div>
+
+        <a href="tools/index.html" class="nav-item">
+          <span class="nav-item-icon">🧰</span>
+          <span class="nav-item-text" data-i18n="nav.tools">Tools</span>
+        </a>
+        <a href="about/index.html" class="nav-item">
+          <span class="nav-item-icon">ℹ️</span>
+          <span class="nav-item-text" data-i18n="nav.about">About</span>
+        </a>
+      </nav>
+
+      <!-- Language Switcher with Flag Buttons -->
+      <div class="language-switcher">
+        <span class="language-label" data-i18n="language">Language</span>
+        <div class="language-buttons">
+          <button class="lang-btn active" data-lang="en" aria-label="English">🇺🇸</button>
+          <button class="lang-btn" data-lang="vi" aria-label="Tiếng Việt">🇻🇳</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="search-page">
+        <h1 class="search-page-title" data-i18n="search.title">Find an activity</h1>
+        <p class="search-page-subtitle" data-i18n="search.subtitle">Search every game, activity and tool by skill, topic, grade or age.</p>
+
+        <form id="search-form" class="search-block" role="search" action="search.html" method="get">
+          <label class="search-block-label" for="search-input" data-i18n="search.label">Search activities</label>
+          <div class="search-field">
+            <div class="search-input-wrap">
+              <span class="search-input-icon" aria-hidden="true">🔍</span>
+              <input id="search-input" class="search-input" type="search" name="q"
+                     autocomplete="off" enterkeyhint="search" maxlength="100"
+                     placeholder="e.g. counting, telling time, grade 3 fractions"
+                     data-i18n-placeholder="search.placeholder"
+                     aria-describedby="search-hint">
+            </div>
+            <button type="submit" class="search-button" data-i18n="search.button">Search</button>
+          </div>
+          <p id="search-hint" class="search-hint" data-i18n="search.hint">Type a skill, topic, grade or age — like “adding”, “shapes” or “4 year old counting”.</p>
+        </form>
+
+        <div class="search-filters" hidden>
+          <span id="search-filters-label" class="search-filters-label" data-i18n="search.filterLabel">Show results for</span>
+          <div id="search-chips" class="search-chips" role="group" aria-labelledby="search-filters-label"></div>
+        </div>
+
+        <p id="search-status" class="search-status" role="status" aria-live="polite"></p>
+
+        <p id="search-message" class="search-message" hidden></p>
+
+        <ol id="search-results" class="search-results"></ol>
+        <button type="button" id="search-more" class="search-button search-more" data-i18n="search.showMore" hidden>Show more results</button>
+
+        <section id="search-related" class="search-related" aria-labelledby="search-related-title" hidden>
+          <h2 id="search-related-title" class="search-section-title" data-i18n="search.related">You might also like</h2>
+          <p class="search-section-hint" data-i18n="search.relatedHint">These match some of your words, or are in the same topic.</p>
+          <ol id="search-related-results" class="search-results"></ol>
+        </section>
+
+        <div id="search-help" class="search-help" hidden>
+          <p id="search-help-message" class="search-help-message"></p>
+          <div id="search-tips-block" hidden>
+            <h2 class="search-section-title" data-i18n="search.tipsTitle">Try this</h2>
+            <ul id="search-tips" class="search-tips"></ul>
+          </div>
+          <div>
+            <h2 class="search-section-title" data-i18n="search.suggestionsTitle">Popular searches</h2>
+            <div id="search-suggestions" class="search-chips"></div>
+          </div>
+          <div>
+            <h2 class="search-section-title" data-i18n="search.browseTitle">Or browse by grade</h2>
+            <div id="search-browse" class="search-chips"></div>
+          </div>
+        </div>
+
+        <noscript>
+          <p class="search-message">Search needs JavaScript. You can still browse activities by grade using the menu.</p>
+        </noscript>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="footer-content">
+          <div class="footer-links">
+            <a href="about/index.html" class="footer-link" data-i18n="footer.about">About</a>
+            <span class="footer-divider">•</span>
+            <a href="about/index.html#privacy" class="footer-link" data-i18n="footer.privacy">Privacy & Terms</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="js/utils.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/vendor/minisearch.min.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/search-page.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a210a35ec7c04feabcf2a3fe1cb19bc4"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

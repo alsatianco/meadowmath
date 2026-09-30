@@ -4,6 +4,7 @@
   "explore": "Explore",
   "nav": {
     "home": "Home",
+    "search": "Search",
     "numberFriends": "Number Friends",
     "prek": "Pre-K",
     "kindergarten": "Kinder",
@@ -17,7 +18,59 @@
   },
   "home": {
     "title": "Welcome to Meadow Math",
-    "subtitle": "A gentle, joyful space to explore mathematics"
+    "subtitle": "A gentle, joyful space to explore mathematics",
+    "search": {
+      "label": "Find an activity",
+      "placeholder": "e.g. counting, telling time, grade 3 fractions",
+      "hint": "Type a skill, topic, grade or age — like “adding”, “shapes” or “4 year old counting”.",
+      "button": "Search"
+    }
+  },
+  "search": {
+    "pageTitle": "Search Activities | Meadow Math",
+    "title": "Find an activity",
+    "subtitle": "Search every game, activity and tool by skill, topic, grade or age.",
+    "label": "Search activities",
+    "placeholder": "e.g. counting, telling time, grade 3 fractions",
+    "hint": "Type a skill, topic, grade or age — like “adding”, “shapes” or “4 year old counting”.",
+    "button": "Search",
+    "filterLabel": "Show results for",
+    "allGrades": "All grades",
+    "loading": "Loading…",
+    "loadError": "Sorry, search isn’t available right now. Please try again later.",
+    "resultsOne": "1 result for “{query}”",
+    "resultsMany": "{count} results for “{query}”",
+    "inSection": "in {section}",
+    "browseCount": "{count} activities in {section}",
+    "related": "You might also like",
+    "relatedHint": "These match some of your words, or are in the same topic.",
+    "noResults": "We couldn’t find anything for “{query}”.",
+    "noResultsInSection": "Nothing in {section} matches “{query}”.",
+    "searchAllGrades": "Search all grades",
+    "tipsTitle": "Try this",
+    "tips": [
+      "Check the spelling, or use fewer words.",
+      "Use a simple math word like “adding”, “shapes” or “time”.",
+      "Choose “All grades” to search everywhere."
+    ],
+    "suggestionsTitle": "Popular searches",
+    "suggestions": [
+      "counting",
+      "addition",
+      "subtraction",
+      "shapes",
+      "telling time",
+      "money",
+      "fractions",
+      "times tables"
+    ],
+    "browseTitle": "Or browse by grade",
+    "showMore": "Show more results",
+    "types": {
+      "activity": "Activity",
+      "tool": "Tool",
+      "grade": "Grade page"
+    }
   },
   "regions": {
     "numberFriends": {

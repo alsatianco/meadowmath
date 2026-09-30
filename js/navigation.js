@@ -77,7 +77,8 @@ function setActiveNavItem() {
   // e.g., "/meadow-math/prek/index.html" -> "prek"
   // e.g., "/meadow-math/index.html" -> "index" (home)
   const pathParts = currentPath.split('/').filter(part => part && part !== 'index.html');
-  const currentSection = pathParts[pathParts.length - 1] || 'index';
+  // Ignore ".html" so pretty URLs (e.g. "/search") match "search.html" links.
+  const currentSection = (pathParts[pathParts.length - 1] || 'index').replace(/\.html$/, '');
 
   navItems.forEach(item => {
     const href = item.getAttribute('href');
@@ -92,7 +93,7 @@ function setActiveNavItem() {
     // e.g., "index.html" -> "index" (home)
     const hrefLower = href.toLowerCase();
     const hrefParts = hrefLower.split('/').filter(part => part && part !== 'index.html');
-    const hrefSection = hrefParts[hrefParts.length - 1] || 'index';
+    const hrefSection = (hrefParts[hrefParts.length - 1] || 'index').replace(/\.html$/, '');
 
     // Match sections
     if (currentSection === hrefSection) {

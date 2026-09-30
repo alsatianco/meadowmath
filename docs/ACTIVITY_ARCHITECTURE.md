@@ -160,6 +160,33 @@ MigrationHelper.generateTemplate('activity-id', 'Activity Name', 'grade1');
 4. **Keep activity-specific code** in the activity file
 5. **Use i18n keys** for all user-facing text
 6. **Test on mobile** - all activities should be responsive
+7. **Rebuild the search index** after adding, renaming, or re-describing an activity (see below)
+
+## Site Search
+
+`search.html` searches every activity, tool, and grade page. The home page search box
+submits a normal `GET` form to `search.html?q=...`; the sidebar **Search** link opens it empty.
+
+| File | Purpose |
+|------|---------|
+| `data/search-index.json` | Generated index: per-language title, description, level topic/goal/skills, grade |
+| `utils/search/build_search_index.py` | Builds the index from `data/*.json` + `lang/{en,vi}/*.json` |
+| `js/vendor/minisearch.min.js` | [MiniSearch](https://github.com/lucaong/minisearch) v7.2.0 (MIT): BM25+ ranking, prefix and typo-tolerant matching |
+| `js/search.js` | `MeadowSearch` engine: accents, stemming, synonyms ("plus" → addition), grade/age detection ("grade 2", "4 year old") |
+| `js/search-page.js` | Results page UI (`?q=` query, `?grade=` filter, History API) |
+| `js/search.test.js` | Engine tests |
+
+When you add or change an activity (its entry in `data/<section>.json` and its title/description
+in `lang/en|vi/<section>.json`), regenerate and test:
+
+```bash
+python3 utils/search/build_search_index.py          # write data/search-index.json
+python3 utils/search/build_search_index.py --check  # CI: fail if the index is stale
+node --test js/*.test.js
+```
+
+To help people find things with everyday words, extend `SYNONYM_GROUPS` / `PHRASES` in `js/search.js`.
+New tools must also be added to the `TOOLS` list in the build script.
 
 ## File Size Comparison
 

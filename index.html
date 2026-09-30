@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/sidebar.css">
   <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/search.css">
 </head>
 <body>
   <!-- Hamburger Menu (Mobile Only) -->
@@ -45,6 +46,10 @@
         <a href="index.html" class="nav-item active">
           <span class="nav-item-icon">🏠</span>
           <span class="nav-item-text" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="search.html" class="nav-item">
+          <span class="nav-item-icon">🔍</span>
+          <span class="nav-item-text" data-i18n="nav.search">Search</span>
         </a>
         <a href="number-friends/index.html" class="nav-item">
           <span class="nav-item-icon">🧱</span>
@@ -107,6 +112,23 @@
         <!-- Header -->
         <h1 class="world-map-title" data-i18n="home.title">Welcome to Meadow Math</h1>
         <p class="world-map-subtitle" data-i18n="home.subtitle">A gentle, joyful space to explore mathematics</p>
+
+        <!-- Search -->
+        <form class="search-block" role="search" action="search.html" method="get">
+          <label class="search-block-label" for="home-search-input" data-i18n="home.search.label">Find an activity</label>
+          <div class="search-field">
+            <div class="search-input-wrap">
+              <span class="search-input-icon" aria-hidden="true">🔍</span>
+              <input id="home-search-input" class="search-input" type="search" name="q"
+                     autocomplete="off" enterkeyhint="search" maxlength="100"
+                     placeholder="e.g. counting, telling time, grade 3 fractions"
+                     data-i18n-placeholder="home.search.placeholder"
+                     aria-describedby="home-search-hint">
+            </div>
+            <button type="submit" class="search-button" data-i18n="home.search.button">Search</button>
+          </div>
+          <p id="home-search-hint" class="search-hint" data-i18n="home.search.hint">Type a skill, topic, grade or age — like “adding”, “shapes” or “4 year old counting”.</p>
+        </form>
 
         <!-- Regions Grid -->
         <div class="regions-grid">

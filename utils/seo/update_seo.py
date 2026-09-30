@@ -242,6 +242,13 @@ def _manual_pages() -> Dict[str, SeoMeta]:
                 ],
             ),
         ),
+        "search.html": SeoMeta(
+            title="Search Activities | Meadow Math",
+            description=_compose_description(
+                "Search every free Meadow Math activity, game, and tool by skill, topic, grade, or age",
+                ["From Pre-K to Grade 5."],
+            ),
+        ),
         "about/index.html": SeoMeta(
             title="About Meadow Math | Free K-5 Math Activities",
             description=_compose_description(

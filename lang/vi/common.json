@@ -4,6 +4,7 @@
   "explore": "Khám phá",
   "nav": {
     "home": "Trang chủ",
+    "search": "Tìm kiếm",
     "numberFriends": "Bạn Số",
     "prek": "Mầm non",
     "kindergarten": "Mẫu giáo",
@@ -17,7 +18,59 @@
   },
   "home": {
     "title": "Chào mừng đến Meadow Math",
-    "subtitle": "Không gian vui vẻ để khám phá toán học"
+    "subtitle": "Không gian vui vẻ để khám phá toán học",
+    "search": {
+      "label": "Tìm hoạt động",
+      "placeholder": "VD: đếm, xem giờ, phân số lớp 3",
+      "hint": "Gõ kỹ năng, chủ đề, lớp hoặc tuổi — như “phép cộng”, “hình” hoặc “đếm 4 tuổi”.",
+      "button": "Tìm"
+    }
+  },
+  "search": {
+    "pageTitle": "Tìm hoạt động | Meadow Math",
+    "title": "Tìm hoạt động",
+    "subtitle": "Tìm mọi trò chơi, hoạt động và công cụ theo kỹ năng, chủ đề, lớp hoặc tuổi.",
+    "label": "Tìm hoạt động",
+    "placeholder": "VD: đếm, xem giờ, phân số lớp 3",
+    "hint": "Gõ kỹ năng, chủ đề, lớp hoặc tuổi — như “phép cộng”, “hình” hoặc “đếm 4 tuổi”.",
+    "button": "Tìm",
+    "filterLabel": "Hiển thị kết quả cho",
+    "allGrades": "Mọi lớp",
+    "loading": "Đang tải…",
+    "loadError": "Xin lỗi, hiện chưa tìm kiếm được. Vui lòng thử lại sau.",
+    "resultsOne": "1 kết quả cho “{query}”",
+    "resultsMany": "{count} kết quả cho “{query}”",
+    "inSection": "trong {section}",
+    "browseCount": "{count} hoạt động trong {section}",
+    "related": "Có thể bạn cũng thích",
+    "relatedHint": "Những hoạt động này khớp một phần từ khóa, hoặc cùng chủ đề.",
+    "noResults": "Không tìm thấy kết quả cho “{query}”.",
+    "noResultsInSection": "Không có kết quả trong {section} cho “{query}”.",
+    "searchAllGrades": "Tìm ở mọi lớp",
+    "tipsTitle": "Hãy thử",
+    "tips": [
+      "Kiểm tra chính tả, hoặc dùng ít từ hơn.",
+      "Dùng từ toán học đơn giản như “cộng”, “hình” hoặc “giờ”.",
+      "Chọn “Mọi lớp” để tìm ở tất cả các lớp."
+    ],
+    "suggestionsTitle": "Tìm kiếm phổ biến",
+    "suggestions": [
+      "đếm",
+      "phép cộng",
+      "phép trừ",
+      "hình",
+      "xem giờ",
+      "tiền",
+      "phân số",
+      "bảng cửu chương"
+    ],
+    "browseTitle": "Hoặc xem theo lớp",
+    "showMore": "Xem thêm kết quả",
+    "types": {
+      "activity": "Hoạt động",
+      "tool": "Công cụ",
+      "grade": "Trang lớp"
+    }
   },
   "regions": {
     "numberFriends": {
